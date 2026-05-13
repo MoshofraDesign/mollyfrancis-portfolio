@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 64" role="img" aria-label="Molly Francis">
+  <defs>
+    <style>
+      .mark-m { font-family: "Fraunces", "Cormorant Garamond", Georgia, serif; font-weight: 500; font-size: 44px; letter-spacing: -1.4px; fill: currentColor; }
+      .mark-f { font-family: "Fraunces", "Cormorant Garamond", Georgia, serif; font-weight: 300; font-style: italic; font-size: 44px; letter-spacing: -1.2px; fill: currentColor; }
+      .dot   { fill: #c8744a; }
+    </style>
+  </defs>
+  <text x="0" y="46" class="mark-m">Molly</text>
+  <text x="135" y="46" class="mark-f">Francis</text>
+  <circle cx="128" cy="40" r="3" class="dot" />
+</svg>

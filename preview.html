@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Molly Francis — Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: { DEFAULT: "#141414", 100: "#ecebe6", 500: "#3a3833" },
+          cream: "#f5f2eb",
+          ochre: "#c8744a",
+          sage: "#7a8a6f",
+        },
+        fontFamily: {
+          serif: ["Fraunces", "Georgia", "serif"],
+          sans: ["Inter", "system-ui", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root { --cream: #f5f2eb; --ink: #141414; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { background: var(--cream); color: var(--ink); font-family: Inter, system-ui, sans-serif; }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.025; mix-blend-mode: multiply;
+  }
+  ::selection { background: #141414; color: #f5f2eb; }
+  .font-serif-h { font-family: "Fraunces", Georgia, serif; letter-spacing: -0.03em; }
+  .display { font-size: clamp(3.5rem, 9vw, 9rem); line-height: 0.95; letter-spacing: -0.04em; }
+  .hero { font-size: clamp(2.5rem, 6vw, 5.5rem); line-height: 1.02; letter-spacing: -0.03em; }
+  .h1 { font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.02em; }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
+  .reveal.is-in { opacity: 1; transform: translateY(0); }
+  .pill { display: inline-block; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; padding: .35rem .7rem; border-radius: 999px; border: 1px solid rgba(20,20,20,.18); color: #3a3833; }
+  .magnetic { display: inline-flex; align-items: center; gap: .6rem; padding: .85rem 1.4rem; border-radius: 999px; background: #141414; color: #f5f2eb; font-weight: 500; font-size: .95rem; transition: transform .4s cubic-bezier(.22,1,.36,1), background-color .3s; cursor: pointer; }
+  .magnetic:hover { background: #2a2a2a; }
+  .magnetic.ghost { background: transparent; color: #141414; border: 1px solid rgba(20,20,20,.2); }
+  .magnetic.ghost:hover { background: rgba(20,20,20,.06); }
+  .link-underline { position: relative; display: inline-block; }
+  .link-underline::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1px; background: currentColor; transform-origin: right; transform: scaleX(0); transition: transform .5s cubic-bezier(.22,1,.36,1); }
+  .link-underline:hover::after { transform-origin: left; transform: scaleX(1); }
+  .project-card { position: relative; overflow: hidden; border-radius: 18px; background: #fff; transition: transform .6s cubic-bezier(.22,1,.36,1); cursor: pointer; }
+  .project-card:hover { transform: translateY(-4px); }
+  .project-card .thumb { transition: transform .8s cubic-bezier(.22,1,.36,1); }
+  .project-card:hover .thumb { transform: scale(1.04); }
+  .marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .cursor-blob { position: fixed; top: 0; left: 0; width: 28px; height: 28px; border-radius: 999px; background: rgba(20,20,20,.85); pointer-events: none; z-index: 60; mix-blend-mode: difference; transform: translate(-50%, -50%); transition: width .25s, height .25s; }
+  @media (hover: none) { .cursor-blob { display: none; } }
+  .stagger > * { opacity: 0; transform: translateY(60px); animation: fadeUp .9s cubic-bezier(.22,1,.36,1) forwards; }
+  .stagger > *:nth-child(1) { animation-delay: .05s; }
+  .stagger > *:nth-child(2) { animation-delay: .15s; }
+  .stagger > *:nth-child(3) { animation-delay: .25s; }
+  .stagger > *:nth-child(4) { animation-delay: .35s; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .page-shell { position: relative; z-index: 2; }
+  .logo-lockup:hover .logo-mark { transform: rotate(8deg) scale(1.04); }
+  .footer-wordmark { font-family: "Fraunces", Georgia, serif; line-height: 0.9; letter-spacing: -0.05em; white-space: nowrap; }
+  /* Polaroid */
+  .polaroid { background: #fff; padding: 12px 12px 20px; box-shadow: 0 8px 24px -12px rgba(20,20,20,0.25); transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s; will-change: transform; }
+  .polaroid:hover { transform: rotate(0deg) translateY(-8px) !important; box-shadow: 0 16px 36px -12px rgba(20,20,20,0.32); }
+  .polaroid .photo { width: 100%; aspect-ratio: 1; background: #e9e3d6; display: grid; place-items: center; color: rgba(20,20,20,0.35); font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; }
+  .polaroid figcaption { margin-top: 8px; font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 12px; color: rgba(20,20,20,0.6); text-align: center; }
+  .trait { display: inline-flex; align-items: baseline; gap: 4px; padding: 4px 12px; border-radius: 999px; border: 1px solid rgba(20,20,20,0.15); font-size: 14px; transition: all .3s; cursor: default; }
+  .trait:hover { background: #141414; color: #f5f2eb; }
+  .trait:hover .trait-letter { color: #f5f2eb; }
+  .trait-letter { font-family: "Fraunces", Georgia, serif; font-style: italic; color: #c8744a; transition: color .3s; }
+</style>
+</head>
+<body>
+<div class="cursor-blob" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 h-24 flex items-center justify-between">
+    <a href="#top" class="flex items-center group logo-lockup text-ink">
+      <span class="logo-mark inline-flex transition-transform duration-500 ease-out">
+        <svg width="52" height="49" viewBox="0 0 52 49" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Molly Francis" role="img" class="block">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M28.78 41.8523V42.31C28.7399 43.2269 28.9003 44.1415 29.25 44.99C29.5404 45.6144 30.0649 46.0993 30.71 46.34C31.589 46.6339 32.5139 46.766 33.44 46.73V48.02C29.67 47.86 27.22 47.78 26.07 47.78C24.92 47.78 22.6 47.86 19.15 48.02V46.73C19.9716 46.7665 20.7919 46.6338 21.56 46.34C21.8488 46.2093 22.1088 46.0228 22.325 45.791C22.5413 45.5593 22.7095 45.2871 22.82 44.99C23.1135 44.1282 23.2458 43.2197 23.21 42.31V24.53C23.2316 23.2545 23.1412 21.9797 22.94 20.72C22.7912 19.8066 22.3364 18.9708 21.65 18.35C20.7655 17.6716 19.6614 17.3439 18.55 17.43C16.9977 17.4209 15.4897 17.9471 14.28 18.92C12.9492 19.9945 11.9163 21.3924 11.28 22.98C10.555 24.781 10.198 26.7088 10.23 28.65V42.34C10.1907 43.2515 10.33 44.1619 10.64 45.02C10.8702 45.6189 11.3262 46.1037 11.91 46.37C12.6787 46.6616 13.4986 46.7943 14.32 46.76V48.05C10.8667 47.89 8.56002 47.81 7.40002 47.81C6.24002 47.81 3.77333 47.89 0 48.05V46.76C0.932583 46.7949 1.8639 46.6628 2.75 46.37C3.40268 46.1338 3.93498 45.6483 4.23001 45.02C4.57568 44.1705 4.73262 43.2561 4.69 42.34V23.06C4.82102 21.6012 4.46972 20.1398 3.69 18.9C2.99 18.04 1.78 17.61 0.0299988 17.61V16.32C1.31 16.44 2.59001 16.5 3.85001 16.5C6.01766 16.561 8.18125 16.2774 10.26 15.66V22.91C11.0583 20.6516 12.5271 18.6909 14.47 17.29C16.2071 16.1001 18.2645 15.4654 20.37 15.47C21.3255 15.3378 22.2969 15.3965 23.2281 15.6416C23.2386 13.8772 23.3393 12.1144 23.53 10.36C23.6867 8.93347 24.0227 7.53244 24.53 6.19C24.9757 5.04813 25.6113 3.98986 26.41 3.05999C27.2561 2.06321 28.3297 1.28465 29.54 0.790005C30.8617 0.229701 32.2845 -0.0528343 33.72 -0.0400122C35.6433 -0.0992369 37.5297 0.496654 39.07 1.64999C39.6676 2.09185 40.1534 2.66749 40.4885 3.33084C40.8237 3.99418 40.9988 4.7268 41 5.47C41.013 5.9005 40.9381 6.32913 40.7799 6.72973C40.6217 7.13033 40.3836 7.49448 40.08 7.79998C39.7699 8.10587 39.4007 8.34525 38.9949 8.50344C38.5891 8.66164 38.1553 8.73533 37.72 8.72C36.8343 8.74465 35.975 8.41744 35.33 7.80999C34.9984 7.50706 34.7371 7.13528 34.5643 6.7207C34.3916 6.30611 34.3116 5.85876 34.33 5.41C34.2924 4.64842 34.5463 3.90112 35.04 3.32C35.5224 2.7546 36.1875 2.37601 36.92 2.25C36.8321 2.02291 36.6977 1.81669 36.5255 1.6445C36.3533 1.4723 36.1471 1.33793 35.92 1.25C35.2907 0.971561 34.6079 0.835005 33.92 0.850002C33.1036 0.806564 32.2921 0.999494 31.5826 1.40567C30.8731 1.81184 30.2958 2.41403 29.92 3.14001C29.364 4.29357 29.0541 5.55017 29.01 6.82998C28.87 8.45665 28.8 11.1233 28.8 14.83V22.3669C29.5227 20.3652 30.8409 18.6284 32.5818 17.3931C34.4329 16.0797 36.6613 15.4046 38.93 15.47C40.1006 15.3946 41.2742 15.5617 42.3772 15.961C43.4802 16.3602 44.4888 16.9829 45.34 17.79C46.118 18.6874 46.6548 19.7679 46.9 20.93C47.2338 22.5581 47.3847 24.2184 47.35 25.88V42.34C47.3099 43.2569 47.4703 44.1715 47.82 45.02H47.79C48.0845 45.645 48.6122 46.1297 49.26 46.37C50.1461 46.6628 51.0774 46.7949 52.01 46.76V48.05C48.24 47.89 45.78 47.81 44.61 47.81C43.44 47.81 41.17 47.89 37.72 48.05V46.76C38.5382 46.7952 39.355 46.6624 40.12 46.37C40.6994 46.1007 41.1512 45.6165 41.38 45.02C41.6866 44.161 41.8258 43.2513 41.79 42.34V24.53C41.814 23.2541 41.7202 21.9787 41.51 20.72C41.3639 19.8079 40.9127 18.9723 40.23 18.35C39.3354 17.6687 38.221 17.3411 37.1 17.43C35.5604 17.4221 34.0643 17.9408 32.86 18.9C31.5352 19.9556 30.5025 21.3326 29.86 22.9C29.2448 24.3996 28.8872 25.99 28.8 27.604V41.85L28.78 41.8523Z" fill="currentColor"/>
+        </svg>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-1">
+      <a href="#top" class="px-4 py-2 text-sm rounded-full bg-ink text-cream">Index</a>
+      <a href="#work" class="px-4 py-2 text-sm rounded-full text-ink/70 hover:text-ink">Work</a>
+      <a href="#about-me" class="px-4 py-2 text-sm rounded-full text-ink/70 hover:text-ink">About</a>
+      <a href="#contact" class="px-4 py-2 text-sm rounded-full text-ink/70 hover:text-ink">Contact</a>
+    </nav>
+    <a href="#contact" class="hidden md:inline-flex magnetic ghost text-sm">
+      <span class="w-1.5 h-1.5 rounded-full bg-sage animate-pulse"></span>
+      Available for work
+    </a>
+  </div>
+</header>
+
+<main id="top" class="page-shell pt-24">
+
+  <!-- HERO -->
+  <section class="mx-auto max-w-7xl px-6 lg:px-10 pt-8 lg:pt-12 pb-24 lg:pb-32">
+    <div class="grid lg:grid-cols-12 gap-10 items-end">
+      <div class="lg:col-span-8">
+        <p class="text-xs uppercase tracking-[0.25em] text-ink/50 mb-8 stagger" style="display:block">
+          <span style="display:inline-block">Lead · Principal · Senior UX Product Designer — Austin, TX</span>
+        </p>
+        <h1 class="font-serif-h display stagger">
+          <span class="block"><span>Hello,</span> <span>I&rsquo;m</span></span>
+          <span class="block italic font-light"><span>Molly Francis.</span></span>
+        </h1>
+        <p class="mt-8 max-w-2xl text-lg lg:text-xl text-ink/75 leading-relaxed reveal">
+          I&rsquo;m a UI/UX product designer, researcher, and leader. For 20+ years I&rsquo;ve shipped simple, clean, and smart experiences across healthcare, fintech, and SaaS — now integrating <em class="font-serif-h text-ochre not-italic">AI tools</em> into research, design, and operations to make teams faster and insights sharper.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-3 reveal">
+          <a href="#work" class="magnetic">See selected work <span>→</span></a>
+          <a href="#about-me" class="magnetic ghost">About me</a>
+          <a href="https://www.mollyfrancis.com/s/Molly-Francis-Product-Designer-Researcher-and-Leader-Resume-1.pdf" target="_blank" rel="noreferrer" class="link-underline text-sm text-ink/60 ml-2">Download résumé ↗</a>
+        </div>
+      </div>
+      <div class="lg:col-span-4 reveal">
+        <div class="relative aspect-[4/5] rounded-[28px] overflow-hidden bg-ink/5">
+          <img src="https://static1.squarespace.com/static/5387376ae4b08610fe281471/t/68a76115151c7a37103f620b/1755799829545/Molly.jpg?format=1500w" alt="Molly Francis" class="absolute inset-0 w-full h-full object-cover" />
+          <span class="absolute bottom-4 left-4 pill" style="background:rgba(245,242,235,.8);backdrop-filter:blur(8px)">Featured · Built In ATX</span>
+        </div>
+        <a href="https://www.builtinaustin.com/company/bright-health/product-tech" target="_blank" rel="noreferrer" class="link-underline mt-4 inline-block text-sm text-ink/60">Read the feature ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="border-y border-ink/10 bg-ink text-cream overflow-hidden py-6">
+    <div class="marquee-track gap-12 whitespace-nowrap text-3xl lg:text-5xl font-serif-h italic">
+      <span class="px-6 flex items-center gap-12">Healthcare<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">Design systems<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">0 → 1<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">AI-augmented research<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">Telehealth<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">FinTech<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">Enterprise SaaS<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">Mobile<span class="text-ochre">✦</span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="px-6 flex items-center gap-12">Healthcare<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">Design systems<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">0 → 1<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">AI-augmented research<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">Telehealth<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">FinTech<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">Enterprise SaaS<span class="text-ochre">✦</span></span>
+      <span class="px-6 flex items-center gap-12">Mobile<span class="text-ochre">✦</span></span>
+    </div>
+  </section>
+
+  <!-- AI WORKFLOWS -->
+  <section id="approach" class="mx-auto max-w-7xl px-6 lg:px-10 py-28">
+    <div class="grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4 reveal">
+        <p class="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">How I work, 2026</p>
+        <h2 class="font-serif-h h1">Design plus a working AI stack.</h2>
+      </div>
+      <div class="lg:col-span-8 grid sm:grid-cols-2 gap-6">
+        <div class="reveal p-7 rounded-2xl bg-white/60 border border-ink/10 hover:border-ink/30 transition-colors">
+          <p class="font-mono text-xs text-ochre mb-3">01</p>
+          <h3 class="font-serif-h text-2xl mb-3">AI-augmented research</h3>
+          <p class="text-ink/70 leading-relaxed">Cluster, synthesize, and tag interview transcripts in hours, not weeks. I keep the rigor — the model handles the volume.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl bg-white/60 border border-ink/10 hover:border-ink/30 transition-colors">
+          <p class="font-mono text-xs text-ochre mb-3">02</p>
+          <h3 class="font-serif-h text-2xl mb-3">Generative prototyping</h3>
+          <p class="text-ink/70 leading-relaxed">Lo-fi to hi-fi in a single afternoon. Faster discovery rounds; more options shown to stakeholders.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl bg-white/60 border border-ink/10 hover:border-ink/30 transition-colors">
+          <p class="font-mono text-xs text-ochre mb-3">03</p>
+          <h3 class="font-serif-h text-2xl mb-3">Design system ops</h3>
+          <p class="text-ink/70 leading-relaxed">Token audits, accessibility checks, and component documentation generated and reviewed weekly.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl bg-white/60 border border-ink/10 hover:border-ink/30 transition-colors">
+          <p class="font-mono text-xs text-ochre mb-3">04</p>
+          <h3 class="font-serif-h text-2xl mb-3">Workflow design for AI</h3>
+          <p class="text-ink/70 leading-relaxed">I also design the AI itself — surfacing trust, explainability, and fallbacks in products that use it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORK -->
+  <section id="work" class="mx-auto max-w-7xl px-6 lg:px-10 py-16">
+    <div class="flex items-end justify-between mb-12">
+      <div>
+        <p class="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">Featured</p>
+        <h2 class="font-serif-h h1">Selected work</h2>
+      </div>
+      <a href="#archive" class="link-underline text-sm hidden md:inline-block">View all (10)</a>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-10">
+      <a href="#" class="project-card block reveal">
+        <div class="relative aspect-[4/3] overflow-hidden" style="background:#3a6e8f22">
+          <img class="thumb absolute inset-0 w-full h-full object-cover" src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489640575-FE1X3BSOCUHJVV45MVW0/Landing.jpg" alt="Bright HealthCare Prior Authorization Portal" />
+          <span class="absolute top-4 left-4 pill" style="background:rgba(245,242,235,.7);backdrop-filter:blur(8px)">2021–2022</span>
+        </div>
+        <div class="p-6 lg:p-7">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-serif-h text-2xl">Prior Authorization Portal</h3>
+            <span class="text-ink/40">↗</span>
+          </div>
+          <p class="text-ink/60 text-sm mb-4">Replacing fax with a live, validated authorization workflow</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill">Healthcare</span>
+            <span class="pill">Provider tools</span>
+            <span class="pill">0→1</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="project-card block reveal">
+        <div class="relative aspect-[4/3] overflow-hidden" style="background:#2f6e5d22">
+          <img class="thumb absolute inset-0 w-full h-full object-cover" src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/9049760a-bc08-470b-a819-28ee75091d8a/Provider-Native-Group.png" alt="DocSquad Telehealth" />
+          <span class="absolute top-4 left-4 pill" style="background:rgba(245,242,235,.7);backdrop-filter:blur(8px)">2022–2023</span>
+        </div>
+        <div class="p-6 lg:p-7">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-serif-h text-2xl">Virtual Care Telehealth</h3>
+            <span class="text-ink/40">↗</span>
+          </div>
+          <p class="text-ink/60 text-sm mb-4">A provider desktop + native app for async and sync visits</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill">Telehealth</span>
+            <span class="pill">Design system</span>
+            <span class="pill">iOS/Android</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="project-card block reveal">
+        <div class="relative aspect-[4/3] overflow-hidden" style="background:#5b6cff22">
+          <img class="thumb absolute inset-0 w-full h-full object-cover" src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580738797928-S404IR0JKTVC5D2VOISQ/Twitter-PublicExample.png" alt="LivePerson SocialConnect" />
+          <span class="absolute top-4 left-4 pill" style="background:rgba(245,242,235,.7);backdrop-filter:blur(8px)">2019–2020</span>
+        </div>
+        <div class="p-6 lg:p-7">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-serif-h text-2xl">SocialConnect</h3>
+            <span class="text-ink/40">↗</span>
+          </div>
+          <p class="text-ink/60 text-sm mb-4">Bringing every brand conversation into a single agent surface</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill">SaaS</span>
+            <span class="pill">Messaging</span>
+            <span class="pill">Enterprise</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="project-card block reveal">
+        <div class="relative aspect-[4/3] overflow-hidden" style="background:#76358f22">
+          <img class="thumb absolute inset-0 w-full h-full object-cover" src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462027297-GRU05DN2D33B2JIOLPDP/CH-Dashboard.png" alt="athenahealth Consumer Health" />
+          <span class="absolute top-4 left-4 pill" style="background:rgba(245,242,235,.7);backdrop-filter:blur(8px)">2018–2019</span>
+        </div>
+        <div class="p-6 lg:p-7">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-serif-h text-2xl">Consumer Health Portal</h3>
+            <span class="text-ink/40">↗</span>
+          </div>
+          <p class="text-ink/60 text-sm mb-4">Re-architecting a 25M-patient portal around what people do</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill">Healthcare</span>
+            <span class="pill">IA</span>
+            <span class="pill">Responsive</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ARCHIVE LIST -->
+  <section id="archive" class="mx-auto max-w-7xl px-6 lg:px-10 py-16">
+    <p class="text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">Archive</p>
+    <div>
+      <a href="#" class="group block border-t border-ink/10 py-10 reveal">
+        <div class="grid lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-1 font-mono text-xs text-ink/40">01</div>
+          <div class="lg:col-span-5">
+            <h3 class="font-serif-h text-3xl leading-none">Homepay Payroll</h3>
+            <p class="mt-2 text-ink/60 text-sm">Hour tracking + approvals for household payroll</p>
+          </div>
+          <div class="lg:col-span-3 text-sm text-ink/60">Care.com · 2020–2021</div>
+          <div class="lg:col-span-2 flex flex-wrap gap-2">
+            <span class="pill">FinTech</span>
+            <span class="pill">Mobile</span>
+          </div>
+          <div class="lg:col-span-1 flex items-center justify-end">
+            <span class="inline-grid place-items-center w-10 h-10 rounded-full border border-ink/20 group-hover:bg-ink group-hover:text-cream transition-colors">→</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="group block border-t border-ink/10 py-10 reveal">
+        <div class="grid lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-1 font-mono text-xs text-ink/40">02</div>
+          <div class="lg:col-span-5">
+            <h3 class="font-serif-h text-3xl leading-none">athenaWell</h3>
+            <p class="mt-2 text-ink/60 text-sm">Standalone apps for care plans, care teams, and patients</p>
+          </div>
+          <div class="lg:col-span-3 text-sm text-ink/60">athenahealth · 2017–2018</div>
+          <div class="lg:col-span-2 flex flex-wrap gap-2">
+            <span class="pill">Healthcare</span>
+            <span class="pill">Native apps</span>
+          </div>
+          <div class="lg:col-span-1 flex items-center justify-end">
+            <span class="inline-grid place-items-center w-10 h-10 rounded-full border border-ink/20 group-hover:bg-ink group-hover:text-cream transition-colors">→</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="group block border-t border-ink/10 py-10 reveal">
+        <div class="grid lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-1 font-mono text-xs text-ink/40">03</div>
+          <div class="lg:col-span-5">
+            <h3 class="font-serif-h text-3xl leading-none">Patient IO</h3>
+            <p class="mt-2 text-ink/60 text-sm">A patient engagement platform that bridges visit-to-visit</p>
+          </div>
+          <div class="lg:col-span-3 text-sm text-ink/60">athenahealth · 2016–2017</div>
+          <div class="lg:col-span-2 flex flex-wrap gap-2">
+            <span class="pill">Healthcare</span>
+            <span class="pill">Mobile</span>
+          </div>
+          <div class="lg:col-span-1 flex items-center justify-end">
+            <span class="inline-grid place-items-center w-10 h-10 rounded-full border border-ink/20 group-hover:bg-ink group-hover:text-cream transition-colors">→</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="group block border-t border-ink/10 py-10 reveal">
+        <div class="grid lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-1 font-mono text-xs text-ink/40">04</div>
+          <div class="lg:col-span-5">
+            <h3 class="font-serif-h text-3xl leading-none">athenahealth Marketplace 2.0</h3>
+            <p class="mt-2 text-ink/60 text-sm">A discovery platform for health-tech partners</p>
+          </div>
+          <div class="lg:col-span-3 text-sm text-ink/60">athenahealth · 2017</div>
+          <div class="lg:col-span-2 flex flex-wrap gap-2">
+            <span class="pill">B2B</span>
+            <span class="pill">Marketplace</span>
+          </div>
+          <div class="lg:col-span-1 flex items-center justify-end">
+            <span class="inline-grid place-items-center w-10 h-10 rounded-full border border-ink/20 group-hover:bg-ink group-hover:text-cream transition-colors">→</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="group block border-t border-b border-ink/10 py-10 reveal">
+        <div class="grid lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-1 font-mono text-xs text-ink/40">05</div>
+          <div class="lg:col-span-5">
+            <h3 class="font-serif-h text-3xl leading-none">Volusion Ecommerce Admin</h3>
+            <p class="mt-2 text-ink/60 text-sm">A modern admin for tens of thousands of merchants</p>
+          </div>
+          <div class="lg:col-span-3 text-sm text-ink/60">Volusion · 2014–2016</div>
+          <div class="lg:col-span-2 flex flex-wrap gap-2">
+            <span class="pill">Ecommerce</span>
+            <span class="pill">SaaS</span>
+          </div>
+          <div class="lg:col-span-1 flex items-center justify-end">
+            <span class="inline-grid place-items-center w-10 h-10 rounded-full border border-ink/20 group-hover:bg-ink group-hover:text-cream transition-colors">→</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- AI SUMMARY CARD (sample) -->
+  <section class="mx-auto max-w-7xl px-6 lg:px-10 py-16">
+    <p class="text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">How case studies look</p>
+    <div class="relative p-8 lg:p-12 rounded-3xl bg-ink text-cream overflow-hidden reveal">
+      <div class="absolute -top-10 -right-10 w-72 h-72 rounded-full" style="background:#3a6e8f;filter:blur(80px);opacity:.6"></div>
+      <div class="relative">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="inline-grid place-items-center w-7 h-7 rounded-full bg-cream/15 text-xs font-mono">AI</span>
+          <p class="text-xs uppercase tracking-[0.25em] text-cream/60">Generated summary · Bright HealthCare</p>
+        </div>
+        <p class="font-serif-h text-2xl lg:text-3xl leading-snug max-w-3xl">
+          Designed a provider-facing portal that lets clinicians submit prior authorization requests electronically — replacing a paper fax workflow used across five state markets. Within months the team scaled from 100 monthly users to ~10K, surfaced $1.9M in operational savings, and cut clinical intake time in half.
+        </p>
+        <div class="mt-8 grid sm:grid-cols-4 gap-4">
+          <div class="p-5 rounded-2xl bg-cream/10">
+            <div class="font-serif-h text-3xl">100 → 10K</div>
+            <p class="text-sm text-cream/60 mt-1">Monthly active users</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-cream/10">
+            <div class="font-serif-h text-3xl">$1.9M</div>
+            <p class="text-sm text-cream/60 mt-1">Operational savings</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-cream/10">
+            <div class="font-serif-h text-3xl">50%</div>
+            <p class="text-sm text-cream/60 mt-1">Intake time reduction</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-cream/10">
+            <div class="font-serif-h text-3xl">$2.5M</div>
+            <p class="text-sm text-cream/60 mt-1">2022 forecasted savings</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT — adapted from "About Me" slides -->
+  <section id="about-me" class="border-t border-ink/10 mt-20">
+    <!-- Slide 1: Pronunciation hero -->
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 pt-24 pb-24 lg:pb-32">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5 order-2 lg:order-1 reveal">
+          <div class="relative aspect-square rounded-full overflow-hidden bg-ink/5 max-w-md mx-auto">
+            <img src="https://static1.squarespace.com/static/5387376ae4b08610fe281471/t/68a76115151c7a37103f620b/1755799829545/Molly.jpg?format=1500w" alt="Molly Francis" class="absolute inset-0 w-full h-full object-cover" />
+          </div>
+        </div>
+        <div class="lg:col-span-7 order-1 lg:order-2 reveal">
+          <div class="mb-6 text-ink">
+            <svg width="56" height="53" viewBox="0 0 52 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M28.78 41.8523V42.31C28.7399 43.2269 28.9003 44.1415 29.25 44.99C29.5404 45.6144 30.0649 46.0993 30.71 46.34C31.589 46.6339 32.5139 46.766 33.44 46.73V48.02C29.67 47.86 27.22 47.78 26.07 47.78C24.92 47.78 22.6 47.86 19.15 48.02V46.73C19.9716 46.7665 20.7919 46.6338 21.56 46.34C21.8488 46.2093 22.1088 46.0228 22.325 45.791C22.5413 45.5593 22.7095 45.2871 22.82 44.99C23.1135 44.1282 23.2458 43.2197 23.21 42.31V24.53C23.2316 23.2545 23.1412 21.9797 22.94 20.72C22.7912 19.8066 22.3364 18.9708 21.65 18.35C20.7655 17.6716 19.6614 17.3439 18.55 17.43C16.9977 17.4209 15.4897 17.9471 14.28 18.92C12.9492 19.9945 11.9163 21.3924 11.28 22.98C10.555 24.781 10.198 26.7088 10.23 28.65V42.34C10.1907 43.2515 10.33 44.1619 10.64 45.02C10.8702 45.6189 11.3262 46.1037 11.91 46.37C12.6787 46.6616 13.4986 46.7943 14.32 46.76V48.05C10.8667 47.89 8.56002 47.81 7.40002 47.81C6.24002 47.81 3.77333 47.89 0 48.05V46.76C0.932583 46.7949 1.8639 46.6628 2.75 46.37C3.40268 46.1338 3.93498 45.6483 4.23001 45.02C4.57568 44.1705 4.73262 43.2561 4.69 42.34V23.06C4.82102 21.6012 4.46972 20.1398 3.69 18.9C2.99 18.04 1.78 17.61 0.0299988 17.61V16.32C1.31 16.44 2.59001 16.5 3.85001 16.5C6.01766 16.561 8.18125 16.2774 10.26 15.66V22.91C11.0583 20.6516 12.5271 18.6909 14.47 17.29C16.2071 16.1001 18.2645 15.4654 20.37 15.47C21.3255 15.3378 22.2969 15.3965 23.2281 15.6416C23.2386 13.8772 23.3393 12.1144 23.53 10.36C23.6867 8.93347 24.0227 7.53244 24.53 6.19C24.9757 5.04813 25.6113 3.98986 26.41 3.05999C27.2561 2.06321 28.3297 1.28465 29.54 0.790005C30.8617 0.229701 32.2845 -0.0528343 33.72 -0.0400122C35.6433 -0.0992369 37.5297 0.496654 39.07 1.64999C39.6676 2.09185 40.1534 2.66749 40.4885 3.33084C40.8237 3.99418 40.9988 4.7268 41 5.47C41.013 5.9005 40.9381 6.32913 40.7799 6.72973C40.6217 7.13033 40.3836 7.49448 40.08 7.79998C39.7699 8.10587 39.4007 8.34525 38.9949 8.50344C38.5891 8.66164 38.1553 8.73533 37.72 8.72C36.8343 8.74465 35.975 8.41744 35.33 7.80999C34.9984 7.50706 34.7371 7.13528 34.5643 6.7207C34.3916 6.30611 34.3116 5.85876 34.33 5.41C34.2924 4.64842 34.5463 3.90112 35.04 3.32C35.5224 2.7546 36.1875 2.37601 36.92 2.25C36.8321 2.02291 36.6977 1.81669 36.5255 1.6445C36.3533 1.4723 36.1471 1.33793 35.92 1.25C35.2907 0.971561 34.6079 0.835005 33.92 0.850002C33.1036 0.806564 32.2921 0.999494 31.5826 1.40567C30.8731 1.81184 30.2958 2.41403 29.92 3.14001C29.364 4.29357 29.0541 5.55017 29.01 6.82998C28.87 8.45665 28.8 11.1233 28.8 14.83V22.3669C29.5227 20.3652 30.8409 18.6284 32.5818 17.3931C34.4329 16.0797 36.6613 15.4046 38.93 15.47C40.1006 15.3946 41.2742 15.5617 42.3772 15.961C43.4802 16.3602 44.4888 16.9829 45.34 17.79C46.118 18.6874 46.6548 19.7679 46.9 20.93C47.2338 22.5581 47.3847 24.2184 47.35 25.88V42.34C47.3099 43.2569 47.4703 44.1715 47.82 45.02H47.79C48.0845 45.645 48.6122 46.1297 49.26 46.37C50.1461 46.6628 51.0774 46.7949 52.01 46.76V48.05C48.24 47.89 45.78 47.81 44.61 47.81C43.44 47.81 41.17 47.89 37.72 48.05V46.76C38.5382 46.7952 39.355 46.6624 40.12 46.37C40.6994 46.1007 41.1512 45.6165 41.38 45.02C41.6866 44.161 41.8258 43.2513 41.79 42.34V24.53C41.814 23.2541 41.7202 21.9787 41.51 20.72C41.3639 19.8079 40.9127 18.9723 40.23 18.35C39.3354 17.6687 38.221 17.3411 37.1 17.43C35.5604 17.4221 34.0643 17.9408 32.86 18.9C31.5352 19.9556 30.5025 21.3326 29.86 22.9C29.2448 24.3996 28.8872 25.99 28.8 27.604V41.85L28.78 41.8523Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h2 class="font-serif-h hero leading-[0.95]">Molly Francis</h2>
+          <p class="mt-4 font-mono text-ink/60 text-lg">/ mol•ly /</p>
+          <div class="mt-8 flex flex-wrap items-center gap-2">
+            <span class="text-sm text-ink/60 mr-2">ENFP — Campaigner</span>
+            <span class="trait"><span class="trait-letter">E</span><span>Extraverted</span></span>
+            <span class="trait"><span class="trait-letter">N</span><span>Intuitive</span></span>
+            <span class="trait"><span class="trait-letter">F</span><span>Feeling</span></span>
+            <span class="trait"><span class="trait-letter">P</span><span>Prospecting</span></span>
+          </div>
+          <p class="mt-8 text-lg lg:text-xl text-ink/80 leading-relaxed max-w-2xl">
+            I tend to embrace big ideas and actions that reflect a sense of hope and goodwill toward others. I have a vibrant energy and can flow in many directions.
+          </p>
+          <p class="mt-5 text-lg lg:text-xl text-ink/80 leading-relaxed max-w-2xl">
+            These traits allow me to be an <em class="font-serif-h text-ochre not-italic">empathetic designer</em> who thrives on understanding and connecting with the end users — always keeping their needs and experiences at the forefront of my work.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Family -->
+    <div class="border-t border-ink/10 py-24 lg:py-32" style="background:#f5f2eb">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 reveal">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+              <figure class="polaroid" style="transform:rotate(-4deg)"><div class="photo">family · 1</div></figure>
+              <figure class="polaroid" style="transform:rotate(3deg)"><div class="photo">family · 2</div></figure>
+              <figure class="polaroid" style="transform:rotate(-2deg)"><div class="photo">family · 3</div></figure>
+              <figure class="polaroid" style="transform:rotate(4deg)"><div class="photo">family · 4</div></figure>
+            </div>
+          </div>
+          <div class="lg:col-span-5 reveal">
+            <h3 class="font-serif-h h1 mb-6">I have a <em class="not-italic font-light text-ochre">wonderful family</em>.</h3>
+            <p class="text-lg text-ink/80 leading-relaxed">
+              My dad is a retired Architect and my mother was an early-childhood Preschool Director. Having a meticulous, detail-loving father and an empathetic mother who spent her career helping children gave me the exact combination of skills I use as a Product Designer today.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Sixbees -->
+    <div class="border-t border-ink/10 py-24 lg:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-7 relative reveal">
+            <svg width="180" height="180" viewBox="0 0 100 100" class="absolute -top-6 -left-4" style="z-index:0;transform:rotate(-15deg)" aria-hidden="true"><polygon points="50,10 90,90 10,90" fill="#a48bff"/></svg>
+            <svg width="150" height="150" viewBox="0 0 100 100" class="absolute -bottom-6 right-12" style="z-index:0;transform:rotate(20deg)" aria-hidden="true"><polygon points="50,5 95,50 50,95 5,50" fill="#f7c948"/></svg>
+            <svg width="140" height="140" viewBox="0 0 100 100" class="absolute" style="z-index:0;top:33%;left:33%;opacity:.9" aria-hidden="true"><circle cx="50" cy="50" r="45" fill="#f0997b"/></svg>
+            <div class="relative" style="z-index:10">
+              <figure class="polaroid max-w-xl mx-auto grayscale" style="transform:rotate(-1deg)"><div class="photo" style="aspect-ratio:4/3">the sixbees · group photo</div></figure>
+            </div>
+          </div>
+          <div class="lg:col-span-5 reveal">
+            <p class="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">Community</p>
+            <h3 class="font-serif-h h1 mb-6">The Sixbees.</h3>
+            <p class="text-lg text-ink/80 leading-relaxed">
+              My design friends and I started a blog years ago. It was a blast. We wrote articles, ran regular meetups, made each other laugh too loud at coffee shops.
+            </p>
+            <p class="mt-4 text-lg text-ink/80 leading-relaxed">
+              As life got busy and a few of us moved away, the cadence slowed — but we still find each other for a beer or a coffee whenever we can.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Animals -->
+    <div class="border-t border-ink/10 py-24 lg:py-32" style="background:#f5f2eb">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5 reveal">
+            <p class="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">Coworkers (unpaid)</p>
+            <h3 class="font-serif-h h1 mb-6">I love <em class="not-italic font-light text-ochre">animals</em>.</h3>
+            <p class="text-lg text-ink/80 leading-relaxed">
+              Two cats and a dog. They love to crash a good meeting :) Sometimes the standup is improved by the cat that has decided your laptop is now her bed.
+            </p>
+            <div class="mt-8 grid grid-cols-2 gap-4 max-w-md">
+              <figure class="polaroid" style="transform:rotate(-3deg)"><div class="photo">pet · 1</div></figure>
+              <figure class="polaroid" style="transform:rotate(2deg)"><div class="photo">pet · 2</div></figure>
+              <figure class="polaroid" style="transform:rotate(3deg)"><div class="photo">pet · 3</div></figure>
+              <figure class="polaroid" style="transform:rotate(-2deg)"><div class="photo">pet · 4</div></figure>
+            </div>
+          </div>
+          <div class="lg:col-span-7 reveal">
+            <div class="relative aspect-[3/4] rounded-3xl overflow-hidden grid place-items-center" style="background:#e9e3d6;color:rgba(20,20,20,0.35);font-size:11px;letter-spacing:0.15em;text-transform:uppercase">
+              pet · hero photo
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: When I was little -->
+    <div class="border-t border-ink/10 py-24 lg:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-6 reveal">
+            <div class="relative" style="height:500px">
+              <figure class="polaroid absolute" style="top:0;left:48px;width:220px;z-index:10;transform:rotate(6deg)"><div class="photo">fisher price jeep</div></figure>
+              <figure class="polaroid absolute" style="top:128px;left:0;width:240px;z-index:20;transform:rotate(-7deg)"><div class="photo" style="aspect-ratio:3/4">molly + dad</div></figure>
+              <figure class="polaroid absolute" style="top:176px;left:192px;width:220px;z-index:0;transform:rotate(4deg)"><div class="photo">bigfoot</div></figure>
+            </div>
+          </div>
+          <div class="lg:col-span-6 reveal">
+            <p class="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">Origin story</p>
+            <h3 class="font-serif-h h1 mb-6"><span aria-hidden="true" class="mr-2">👣</span>When I was little…</h3>
+            <p class="text-lg text-ink/80 leading-relaxed">
+              My dad asked me what I wanted to be when I grew up. I told him I wanted to find <em class="font-serif-h text-ochre not-italic">BigFoot</em>.
+            </p>
+            <p class="mt-4 text-lg text-ink/80 leading-relaxed">
+              I&rsquo;m pretty sure my imagination was sparked by the Fisher Price Jeep adventurer set :) Either way, I&rsquo;ve been chasing big interesting things ever since.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: Collections -->
+    <div class="border-t border-ink/10 py-24 lg:py-32" style="background:#f5f2eb">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5 reveal">
+            <p class="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">Habit</p>
+            <h3 class="font-serif-h h1 mb-6">I collect a <em class="not-italic font-light text-ochre">LOT</em> of things.</h3>
+            <p class="text-lg text-ink/80 leading-relaxed">
+              I blame McDonald&rsquo;s Happy Meal toys (the California Raisins, specifically) and the Scholastic Book Fair for the habit. It never fully went away — pens, doll heads, little ceramic houses, LEGO succulents, globes, the works.
+            </p>
+            <div class="mt-8 grid grid-cols-2 gap-4 max-w-md">
+              <figure class="polaroid" style="transform:rotate(-3deg)"><div class="photo">lego</div></figure>
+              <figure class="polaroid" style="transform:rotate(3deg)"><div class="photo">tubes</div></figure>
+              <figure class="polaroid" style="transform:rotate(2deg)"><div class="photo">sculpture</div></figure>
+              <figure class="polaroid" style="transform:rotate(-2deg)"><div class="photo">dolls</div></figure>
+            </div>
+          </div>
+          <div class="lg:col-span-7 reveal">
+            <div class="relative aspect-[4/5] rounded-3xl overflow-hidden grid place-items-center" style="background:#e9e3d6;color:rgba(20,20,20,0.35);font-size:11px;letter-spacing:0.15em;text-transform:uppercase">
+              pens + globes · hero photo
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: I love what I do -->
+    <div class="border-t border-ink/10 py-24 lg:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 reveal">
+            <p class="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">Twenty years in</p>
+            <h3 class="font-serif-h hero">I love <em class="not-italic font-light text-ochre">what I do</em>.</h3>
+            <p class="mt-6 text-lg text-ink/80 leading-relaxed max-w-xl">
+              I&rsquo;d never want to change career paths. I keep learning and evolving with the changes that come through tech — right now, that means treating AI as a working partner inside the design process, not a threat to it.
+            </p>
+            <blockquote class="mt-10 pl-6" style="border-left:2px solid #c8744a">
+              <p class="font-serif-h text-2xl lg:text-3xl italic text-ink/90 leading-snug">&ldquo;Welcome to your life — there&rsquo;s no turning back.&rdquo;</p>
+              <cite class="block mt-3 not-italic text-sm text-ink/50">— a sticky note on my desk</cite>
+            </blockquote>
+          </div>
+          <div class="lg:col-span-6 reveal">
+            <div class="relative aspect-square rounded-3xl overflow-hidden grid place-items-center" style="background:rgba(200,116,74,0.15);color:rgba(20,20,20,0.35);font-size:11px;letter-spacing:0.15em;text-transform:uppercase">
+              coffee + sticky-note sketch
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="mx-auto max-w-7xl px-6 lg:px-10 pt-32 pb-12">
+    <div class="relative rounded-[32px] bg-ink text-cream p-10 lg:p-16 overflow-hidden reveal">
+      <div class="absolute -top-20 -right-20 w-[420px] h-[420px] rounded-full bg-ochre/40" style="filter:blur(80px)"></div>
+      <div class="relative max-w-2xl">
+        <p class="text-xs uppercase tracking-[0.25em] text-cream/60 mb-6">Currently</p>
+        <h3 class="font-serif-h h1 mb-6">
+          Open to <em class="not-italic font-light text-ochre">Lead</em>, <em class="not-italic font-light text-ochre">Principal</em>, and <em class="not-italic font-light text-ochre">Staff</em> design roles.
+        </h3>
+        <p class="text-cream/80 mb-8 leading-relaxed">
+          Healthcare, AI-native products, design system leadership, or anything where the right interaction quietly changes how someone&rsquo;s day goes. Let&rsquo;s talk.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="mailto:yo@mollyfrancis.com" class="magnetic" style="background:#f5f2eb;color:#141414">yo@mollyfrancis.com →</a>
+          <a href="#" class="magnetic ghost" style="border-color:rgba(245,242,235,.3);color:#f5f2eb">Project inquiry</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="relative z-2 mt-20 border-t border-ink/10 bg-cream">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20">
+      <div class="grid lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-7">
+          <p class="text-xs uppercase tracking-widest text-ink/50 mb-6">Have a problem worth designing?</p>
+          <h2 class="font-serif-h" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1.02">
+            Let&rsquo;s build<br>
+            <em class="not-italic font-light text-ochre">something useful.</em>
+          </h2>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="mailto:yo@mollyfrancis.com" class="magnetic">yo@mollyfrancis.com →</a>
+            <a href="#" class="magnetic ghost">Project inquiry form</a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 grid grid-cols-2 gap-8 lg:pl-12">
+          <div>
+            <p class="text-xs uppercase tracking-widest text-ink/50 mb-3">Sitemap</p>
+            <ul class="space-y-2 text-sm">
+              <li><a class="link-underline" href="#top">Index</a></li>
+              <li><a class="link-underline" href="#work">Work</a></li>
+              <li><a class="link-underline" href="#about-me">About</a></li>
+              <li><a class="link-underline" href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-widest text-ink/50 mb-3">Elsewhere</p>
+            <ul class="space-y-2 text-sm">
+              <li><a class="link-underline" target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/molly-francis-89041515/">LinkedIn ↗</a></li>
+              <li><a class="link-underline" target="_blank" rel="noreferrer" href="https://dribbble.com/mollyfrancis">Dribbble ↗</a></li>
+              <li><a class="link-underline" target="_blank" rel="noreferrer" href="https://www.instagram.com/moshofra/">Instagram ↗</a></li>
+              <li><a class="link-underline" href="mailto:yo@mollyfrancis.com">Email ↗</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="mt-20 select-none overflow-hidden">
+        <p class="footer-wordmark" style="font-size:clamp(4rem,18vw,18rem); color:#141414">
+          Molly<span class="italic font-light text-ochre">.</span>
+          <span class="italic font-light" style="color:rgba(20,20,20,0.4)">Francis</span>
+        </p>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-ink/10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs text-ink/50">
+        <p>© 2026 Molly Francis. Designed &amp; built in Austin, TX.</p>
+        <p class="font-mono">v2026.05 · refreshed with care &amp; a little AI</p>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script>
+  // Sticky nav style
+  const nav = document.getElementById("nav");
+  const onScroll = () => {
+    if (window.scrollY > 12) {
+      nav.style.backdropFilter = "blur(10px)";
+      nav.style.background = "rgba(245,242,235,0.75)";
+      nav.style.borderBottom = "1px solid rgba(20,20,20,0.05)";
+    } else {
+      nav.style.backdropFilter = "none";
+      nav.style.background = "transparent";
+      nav.style.borderBottom = "none";
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Scroll reveal via IntersectionObserver
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+  // Magnetic buttons
+  document.querySelectorAll(".magnetic").forEach((btn) => {
+    btn.addEventListener("mousemove", (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * 0.25;
+      const y = (e.clientY - r.top - r.height / 2) * 0.25;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    btn.addEventListener("mouseleave", () => (btn.style.transform = "translate(0,0)"));
+  });
+
+  // Custom cursor blob
+  const blob = document.querySelector(".cursor-blob");
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2, cx = mx, cy = my;
+  window.addEventListener("mousemove", (e) => { mx = e.clientX; my = e.clientY; });
+  document.querySelectorAll("a, button").forEach((el) => {
+    el.addEventListener("mouseenter", () => { blob.style.width = "60px"; blob.style.height = "60px"; });
+    el.addEventListener("mouseleave", () => { blob.style.width = "28px"; blob.style.height = "28px"; });
+  });
+  const tick = () => {
+    cx += (mx - cx) * 0.18;
+    cy += (my - cy) * 0.18;
+    blob.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+    requestAnimationFrame(tick);
+  };
+  tick();
+</script>
+</body>
+</html>

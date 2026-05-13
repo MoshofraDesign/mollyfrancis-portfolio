@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Molly Francis monogram">
+  <defs>
+    <style>
+      .ring  { fill: #f5f2eb; stroke: #141414; stroke-width: 1.5; }
+      .mark  { font-family: "Fraunces", "Cormorant Garamond", Georgia, serif; font-weight: 400; font-style: italic; font-size: 38px; fill: #141414; }
+      .dot   { fill: #c8744a; }
+    </style>
+  </defs>
+  <circle cx="32" cy="32" r="31" class="ring" />
+  <text x="50%" y="56%" text-anchor="middle" dominant-baseline="middle" class="mark">mf</text>
+  <circle cx="48" cy="46" r="2.5" class="dot" />
+</svg>
