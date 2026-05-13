@@ -125,7 +125,7 @@ export default function Home() {
           >
             <div className="relative aspect-[4/5] rounded-[28px] overflow-hidden bg-ink/5">
               <Image
-                src="https://static1.squarespace.com/static/5387376ae4b08610fe281471/t/68a76115151c7a37103f620b/1755799829545/Molly.jpg?format=1500w"
+                src="/molly-portrait.jpg"
                 alt="Portrait of Molly Francis"
                 fill
                 sizes="(max-width: 1024px) 100vw, 33vw"
