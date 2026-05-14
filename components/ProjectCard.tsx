@@ -72,7 +72,7 @@ export default function ProjectCard({
         data-cursor="hover"
       >
         <div
-          className="relative aspect-[4/3] overflow-hidden"
+          className="relative aspect-square overflow-hidden"
           style={{ backgroundColor: project.accent + "22" }}
         >
           <Image
