@@ -313,7 +313,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Dashboard", "SaaS"],
     thumbnail:
-      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1445352837378-8FPSDW9COG151VP4RI0M/Mozu-Dashboard.jpg",
+      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1463503467399-9DZNY2S0CFK4GBKENHNL/image-asset.png",
     accent: "#0a7cff",
     aiSummary:
       "Redesigned the admin used by Volusion's merchant base — order management, catalog, marketing, and storefront tools. Defined patterns for data-heavy tables, bulk actions, and a navigation that scaled as the product added modules.",
