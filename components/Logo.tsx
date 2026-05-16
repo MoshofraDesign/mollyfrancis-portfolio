@@ -66,7 +66,7 @@ export default function Logo({
       className={`inline-flex items-center text-ink ${className}`}
       aria-label="Molly Francis"
     >
-      <span className="logo-mark inline-flex transition-transform duration-500 ease-out group-hover:rotate-[8deg] group-hover:scale-[1.04]">
+      <span className="logo-mark inline-flex transition-transform duration-500 ease-out group-hover:scale-[1.04]">
         {Mark}
       </span>
     </span>

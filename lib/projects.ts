@@ -32,8 +32,7 @@ export const projects: Project[] = [
     year: "2021–2022",
     role: "Lead Product Designer",
     tags: ["Healthcare", "Provider tools", "Design system", "0→1"],
-    thumbnail:
-      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1619463661666-4EQEUJPCEE6NJ3FFBOP4/Color.png",
+    thumbnail: "/work-thumbnails/bright-healthcare.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489640575-FE1X3BSOCUHJVV45MVW0/Landing.jpg",
     accent: "#3a6e8f",
     featured: true,
@@ -56,6 +55,11 @@ export const projects: Project[] = [
     prototype:
       "https://www.figma.com/proto/cxXiQ6LQOpNNjWi4Auf2DC/Bright-Provider-PreAuthPortal",
     images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/6a83a6f4-3382-4474-a3d6-85c0bad4e6df/BH-PortFax.png",
+        caption:
+          "The prior authorization fax form providers used before the Portal existed.",
+      },
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489521988-W8AEB4S7N95NOK3EGATT/01.jpg",
         caption: "Authorization dashboard with status filtering",
@@ -82,8 +86,7 @@ export const projects: Project[] = [
     year: "2022–2023",
     role: "Principal Designer · Design system lead",
     tags: ["Telehealth", "Design system", "iOS/Android", "Research"],
-    thumbnail:
-      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/058f8457-5a7d-42b2-867a-29d8140bd99d/Color.png",
+    thumbnail: "/work-thumbnails/docsquad.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/9049760a-bc08-470b-a819-28ee75091d8a/Provider-Native-Group.png",
     accent: "#2f6e5d",
     featured: true,
@@ -107,6 +110,10 @@ export const projects: Project[] = [
       "https://www.figma.com/proto/Bx8fqdyIcTj47ecKAdRGXg/DST_DES_Provider_Desktop",
     images: [
       {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/4b2ec0d1-89e3-4c05-8a23-053303f95c99/Screenshot+2023-01-15+at+2.35.png",
+        caption: "Virtual moonlighter research, methods and findings",
+      },
+      {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/3fd58c3c-6a14-476c-a087-596685afc660/Page-Visit-MASTER-wDrawer.png",
         caption: "Provider visit view with collaborative drawer",
       },
@@ -117,6 +124,10 @@ export const projects: Project[] = [
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/f9c3cb73-9cb5-47d5-8a3d-fc4c84bbacc5/GetCare-Interview-FollowUpCare.jpg",
         caption: "Async intelligent interview and follow-up care",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0459224a-b153-4792-a831-b71431df373f/DS-LoggedIn.jpg",
+        caption: "Patient dashboard — logged in",
       },
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/3ae628cf-bbed-4581-878d-f6b77fe14fb0/icons+3.25.22+PM.jpg",
@@ -132,8 +143,7 @@ export const projects: Project[] = [
     year: "2019–2020",
     role: "Senior Product Designer",
     tags: ["SaaS", "Messaging", "Enterprise"],
-    thumbnail:
-      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580736831479-YXDMO1XPMB8T605ZIU72/Liveperson.png",
+    thumbnail: "/work-thumbnails/liveperson.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580738797928-S404IR0JKTVC5D2VOISQ/Twitter-PublicExample.png",
     accent: "#5b6cff",
     featured: true,
@@ -146,6 +156,10 @@ export const projects: Project[] = [
     outcome:
       "Brands manage all channels from one conversation tree. Self-service setup removed a manual onboarding bottleneck. A future-state vision was used to align platform roadmap across three product teams.",
     images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580740297879-79PSPSYKH5N02J9ZE1J3/SocialConnect-Logo-Color.png",
+        caption: "SocialConnect identity",
+      },
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580743086322-L6ILER7K3CPFW4WMCO1E/Accounts-Multiple.png",
         caption: "Self-service: connect, assign, and manage social accounts",
@@ -164,8 +178,7 @@ export const projects: Project[] = [
     year: "2020–2021",
     role: "Senior Product Designer",
     tags: ["FinTech", "Mobile", "Two-sided product"],
-    thumbnail:
-      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/531603c8-fd81-48cd-8c4c-04d0dab6b7d1/new+Care_Logo%402x.png",
+    thumbnail: "/work-thumbnails/care-homepay.webp",
     accent: "#c1395c",
     aiSummary:
       "Designed paired employee and employer mobile apps so caregivers could log hours and household employers could review, approve, and pay payroll — all on a phone. The two products share a design system but speak two very different mental models, one trust-driven, one operational.",
@@ -202,8 +215,7 @@ export const projects: Project[] = [
     year: "2018–2019",
     role: "Senior Product Designer · IA lead",
     tags: ["Healthcare", "Information architecture", "Responsive"],
-    thumbnail:
-      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555258070452-G8YAI2PTZ97S97DNK29J/athenahealthlogo.png",
+    thumbnail: "/work-thumbnails/consumer-health.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462027297-GRU05DN2D33B2JIOLPDP/CH-Dashboard.png",
     accent: "#76358f",
     aiSummary:
@@ -217,6 +229,24 @@ export const projects: Project[] = [
       { label: "Will switch providers without good digital exp.", value: "90%" },
       { label: "Top-3 priority: revamping patient experience", value: "49% of execs" },
     ],
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555335056852-1WDNMCGCPZAVC7GBU365/CH-Current-MyHealth.png",
+        caption: "Current My Health section — landed on Test Results only",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555437931422-FA85FIDWKHIDE0549C67/CH-MyHealth.png",
+        caption: "Redesigned My Health landing — consolidated dashboard",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555335711321-VWKGE5EMWNE0E69EP9KD/CH-Current-Navigation.png",
+        caption: "Current navigation — confusing structure",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462092362-M7ZKRJUT3DHC4SR7NI7H/CH-Navigation-Horz-04.png",
+        caption: "New responsive navigation",
+      },
+    ],
   },
   {
     slug: "athenawell",
@@ -226,8 +256,7 @@ export const projects: Project[] = [
     year: "2017–2018",
     role: "Senior Product Designer",
     tags: ["Healthcare", "Care management", "Native apps", "Personas"],
-    thumbnail:
-      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511793259682-744277WLTQWTDUEI3TNF/logo.png",
+    thumbnail: "/work-thumbnails/athenawell.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1558469800892-B0L920CQQ1NRG9FD0HAL/Patient-CarePlans-Landing+Copy+2.png",
     accent: "#1d8a8a",
     aiSummary:
@@ -243,12 +272,60 @@ export const projects: Project[] = [
       "Established three patient personas (Healthy, Rising Risk, High Risk) with distinct values, goals, and pain points. Designed a Care Plan landing, task patterns (numeric, survey, education), and a content surface for assessments, programs, and discharge management.",
     images: [
       {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513349531314-89U1IJ39DE46WB88QYI0/Screen+Shot+2017-12-15+at+8.51.43+AM.png",
+        caption: "Care Team section — communicate with doctors, video chat",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513347566910-HH68WSGR9O1PVB5XS541/Screen+Shot+2017-12-15+at+8.16.49+AM.png",
+        caption: "Timeline — users confused this with a notes section",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513349705989-WQ7I6ILZSZLZKCM94VK3/image-asset.png",
+        caption: "Education content tied to specific health concerns",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513349151416-RF4TP9N5LWQVAAVQGQB7/Screen+Shot+2017-12-15+at+8.44.23+AM.png",
+        caption: "Goal charts — patients want device sync (Validic)",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513348975246-YKX6GH1QTGSD7AYQAJJ2/Screen+Shot+2017-12-15+at+8.37.37+AM.png",
+        caption: "Patient task header with date scroller and progress heart",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513351438113-EPM17AK9DDN1K1WP606Q/Screen+Shot+2017-12-15+at+9.22.51+AM.png",
+        caption: "Care Plans separated into tabs by health concern",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/7ee7afe8-0b05-49b4-945f-c262783bd07a/image+15.png",
+        caption: "Three patient personas: Healthy, Rising Risk, High Risk",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511797670597-GC4XEDFX1GCSSHSPBH8T/Screen+Shot+2017-11-27+at+9.47.42+AM.png",
+        caption: "Care management services that span the network",
+      },
+      {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1558469827169-WR8GVVBZMQ7UK549Z42D/Native-Group.png",
         caption: "Native apps for patient and care team collaboration",
       },
       {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512147964858-EC8HGJ01NLT5B50QQIK9/image-asset.png",
+        caption: "Content services for patients and care teams",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511799588851-C976JM5PO3QPNJIZ883Q/Artboard.png",
+        caption: "Automation engine — workflow automation, IFTTT editor",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511887822756-7ZM6EN7LRVHC4UP8YMJR/collaboration.png",
+        caption: "Standalone apps for care teams to collaborate",
+      },
+      {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1557770189426-JXHTF1H63USRK1TUB5J7/Tasks-1+12.17.12+PM.png",
         caption: "Patient task patterns: numeric, survey, education",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511882483036-EAJSG05F7LF78N78MFO8/image-asset.png",
+        caption: "Style guide",
       },
     ],
   },
@@ -260,8 +337,7 @@ export const projects: Project[] = [
     year: "2016–2017",
     role: "Product Designer",
     tags: ["Healthcare", "Mobile", "Behavior change"],
-    thumbnail:
-      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965711930-PYJIKQTS3BVVZTDIDD88/PatientIO-Logo-Color.png",
+    thumbnail: "/work-thumbnails/patient-io.webp",
     accent: "#e07a3c",
     aiSummary:
       "Patient IO gave health professionals a way to track behaviors between visits and helped patients stay on top of complex treatment regimens. I owned medication design — including a generative pill-shape component system drawn from Epocrates data — so every prescription rendered correctly without artwork-per-drug.",
@@ -271,6 +347,14 @@ export const projects: Project[] = [
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965854643-56K9O8S9XMT6ZK4P38J8/Devices.png",
         caption: "Patient IO across devices",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511967913957-U3LHYLLHH507187LL8WZ/image-asset.png",
+        caption: "Tracking medications, vitals, and adherence",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511968056680-OYW7HQTA481IA0KX2EV3/image-asset.png",
+        caption: "Medications module",
       },
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0a7d94ff-64a3-4bb9-9202-85911eb02bbc/Screen+Shot+2022-11-02+at+8.03.55+PM.png",
@@ -286,8 +370,7 @@ export const projects: Project[] = [
     year: "2017",
     role: "Senior Product Designer",
     tags: ["B2B", "Marketplace", "CMS"],
-    thumbnail:
-      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511206680178-HTOXMD682JJ42BBNJ84B/athena-MDP-group.png",
+    thumbnail: "/work-thumbnails/athenahealth-marketplace.webp",
     accent: "#3b5bdb",
     aiSummary:
       "Rebuilt the MDP marketplace so partners could self-publish, clinicians could find products faster, and athena could measure intent across the funnel. Filtering, partner pages, and tracking were redesigned together — partners maintain their own content; athena curates discovery.",
@@ -302,6 +385,18 @@ export const projects: Project[] = [
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511208886561-QEYLKEZXK4YNYD3U9EI9/athena-MDP-responsive.png",
         caption: "Responsive partner page",
       },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511208615512-TOZSQLS04IT7XF998XIQ/athena-MDP-2.jpg",
+        caption: "Filtering and product discovery",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511208983621-R0HR2E9SSSTBL2GHIHBR/image-asset.png",
+        caption: "Marketplace detail surfaces",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511209804473-70IPUOD52W9HAPR1DB7A/image-asset.jpeg",
+        caption: "athenaNet user self-service tools — partners manage their own content",
+      },
     ],
   },
   {
@@ -312,13 +407,99 @@ export const projects: Project[] = [
     year: "2014–2016",
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Dashboard", "SaaS"],
-    thumbnail:
-      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1463503467399-9DZNY2S0CFK4GBKENHNL/image-asset.png",
+    thumbnail: "/work-thumbnails/volusion-admin.webp",
     accent: "#0a7cff",
     aiSummary:
       "Redesigned the admin used by Volusion's merchant base — order management, catalog, marketing, and storefront tools. Defined patterns for data-heavy tables, bulk actions, and a navigation that scaled as the product added modules.",
     overview:
       "Volusion's ecommerce admin gave small businesses everything they needed to run an online store. I worked across order management, catalog, storefront, and onboarding — defining patterns that could outlive any one feature.",
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462542831010-IXQ56XR6374O1BYZQ6LK/image-asset.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512052373839-DA345Q6MBX2L3GTAFUJH/1.png",
+        caption: "Persona — Struck out on their own (freedom seekers)",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512052602566-26V6KZU2NGIHU07IIP90/2.png",
+        caption: "Persona — Family business owners (legacy builders)",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512052727029-3KBO4H3QWR38EJZKSGZ3/3.png",
+        caption: "Persona — Considering starting or recently started",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512053462663-OQUN662NOW47OD7YADHH/image-asset.png",
+        caption: "Top pages, based on Google Analytics",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893263562-TPA3IIUV00PKF9KU1J61/OLD-Dashboard-Landing.jpg",
+        caption: "Dashboard landing",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893264400-VHB0BCUP27M7KI7T7721/01-1+-+Top+Nav+-SubNav.jpg",
+        caption: "Top nav with sub-nav",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893264133-1HB13QG0TKQ1AL9MLZWO/01-2+-+Top+Nav+-+Account+Dropdown.jpg",
+        caption: "Top nav — account dropdown",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893263481-GH93PMP36ECBJITKXI97/01-3+-+Admin+Notification.jpg",
+        caption: "Admin notification",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893847300-J3TO347Y1HC2PGN012V3/02-1+-+Products+Grid.jpg",
+        caption: "Products grid",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893847163-A8RCW12MLK1L8HF31S19/02-2+-+Products+-+Grid+-Hover+Single.jpg",
+        caption: "Products grid — hover, single select",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893847913-PTIZDDPSH2LIQXAUL7J2/02-3+-+Products+-+Grid+-+Hover+Multiple.jpg",
+        caption: "Products grid — hover, multi-select",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893846066-VJ7G4Y7Q70V9DQB2755Y/04-1+-+Products+-+Search+Dropdown.jpg",
+        caption: "Products — search dropdown",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893846722-JJI1JWGLT9V0AOGIU0T4/04-2+-+Products+-+Search.jpg",
+        caption: "Products — search results",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893846614-BNH6SJJ0FPR2T6DKHVJV/04-3+-+Products+-+Settings+Dropdown.jpg",
+        caption: "Products — settings dropdown",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462889690104-X4CR0710EAPEKFKS1GD9/image-asset.jpeg",
+        caption: "Product page — list view",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462889711347-3CZHI632LG7AJPVYK37G/image-asset.jpeg",
+        caption: "Advanced settings",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462889728893-PFO6HB9TJDOYN5M0HT7G/image-asset.jpeg",
+        caption: "Product page",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462890251993-3RRX7PD8KCSM2MB4DXP6/image-asset.jpeg",
+        caption: "Process orders",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462933946295-QSEVGLELQHKVKHNKJA2Q/-Order+Page-NEW.jpg",
+        caption: "Order page — redesigned",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462542691474-54ZUVT0SMV4KUESUG9X6/image-asset.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462542909021-QGKA1KCN566886NHKS47/image-asset.png",
+      },
+    ],
   },
   {
     slug: "mozu",
@@ -328,13 +509,556 @@ export const projects: Project[] = [
     year: "2014–2015",
     role: "Product Designer",
     tags: ["Ecommerce", "Platform", "Brand"],
-    thumbnail:
-      "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1445352837378-8FPSDW9COG151VP4RI0M/Mozu-Dashboard.jpg",
+    thumbnail: "/work-thumbnails/mozu.webp",
     accent: "#222",
     aiSummary:
       "Mozu was Volusion's enterprise platform play — flexible storefronts, multi-channel commerce, and a modular admin. I contributed to the product UI, brand surfaces, demo storefronts, and the visual language that positioned Mozu against established players.",
     overview:
       "Mozu provided online merchants with a flexible shopping cart system and control over the look, content, and functionality of their store. Multi-channel marketing, search, and catalog management rounded out the platform.",
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1445352837378-8FPSDW9COG151VP4RI0M/Mozu-Dashboard.jpg",
+        caption: "Mozu dashboard",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1447607206085-XXEGCSJKLL1DMYTPFLG3/Style+Guide+Option+1.png",
+        caption: "Style guide exploration",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422380202365-4M7I5HHJHCOJBQHBPOVA/Web-MysticSportsDemo.jpg",
+        caption: "Demo storefront — Mystic Sports",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422380355242-98VVE5W07AV1RS05VY0S/FutureOfShopping-molly-final.jpg",
+        caption: "Future of shopping — concept",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423167879870-FVGY2CMMRHL0334U07CG/mozuswag.png",
+        caption: "Mozu swag",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422380282144-NG5ULUBDWM460PLUKQ2P/Ad-Molly.jpg",
+        caption: "Advertisement",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1447607256429-DDF0485AM32PEDNCXW4I/InsideCover-Exploration.jpg",
+        caption: "Inside cover exploration",
+      },
+    ],
+  },
+  {
+    slug: "onboarding",
+    title: "Ecommerce Admin Onboarding",
+    subtitle: "Helping new Volusion free-trial users sign up and start selling",
+    client: "Volusion",
+    year: "2015–2016",
+    role: "Senior Product Designer",
+    tags: ["Ecommerce", "Onboarding", "SaaS"],
+    thumbnail: "/work-thumbnails/onboarding.webp",
+    accent: "#2f6e5d",
+    aiSummary:
+      "Designed the onboarding flow new Volusion free-trial customers walked through on their way to a live store — competitive research, sketches, three workflow options, prototypes, and user testing. Goal was to bump trial-to-paid conversion by getting merchants past setup faster.",
+    overview:
+      "An e-commerce software solution for a wide range of businesses needed to convert more free-trial users into paying customers. The team ran competitive research, sketched flows, narrowed to three workflow candidates, and prototyped the winner in InVision for testing.",
+    approach:
+      "Lots of whiteboarding and collaborative sketching narrowed the flows to three iterations. Product managers, engineers, designers, sales, and support all fed into the process — sales and customer support brought feature requests and reported pain points throughout.",
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511977251623-DJMYF373QEVG1DTUATTQ/sketch.png",
+        caption: "Early whiteboarding and sketches",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511977264098-MEX3I9CMNZMGMBLE6H7V/image-asset.png",
+        caption: "Three workflow options after iteration",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1460488316766-9X4EFRWXZ9K56SJVWT4E/image-asset.gif",
+        caption: "Prototyped onboarding flow",
+      },
+    ],
+  },
+  {
+    slug: "storefront-editor",
+    title: "Storefront Editor",
+    subtitle: "Inline editing so new merchants could customize their store immediately",
+    client: "Volusion",
+    year: "2015–2016",
+    role: "Senior Product Designer",
+    tags: ["Ecommerce", "Front-end editor", "SaaS"],
+    thumbnail: "/work-thumbnails/storefront-editor.webp",
+    accent: "#2f6e5d",
+    aiSummary:
+      "Built an inline storefront editor so Volusion's free-trial customers could upload a logo, edit navigation, swap content blocks, and manage themes without leaving the front end. 75% of new customers wanted to start customizing immediately — this took the friction out.",
+    overview:
+      "Volusion's storefront editor let merchants edit their store from the front end with a clear path back into the admin. Research with sales and customer support confirmed the demand. The biggest constraint was the legacy .asp codebase — every interaction had to thread that needle without overwhelming new customers.",
+    approach:
+      "Competitor research, interviews with sales and customer support, content builder modules for hero, colors, navigation, and logos. Iterated on the editor's open and closed states across many states (theme picker, color options, hero select, logo placement) to keep the UI calm during edit mode.",
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965376270-XA8FL44C6KYTMIED72QD/00%2BEdit%2BClosed.jpg",
+        caption: "Storefront with editor closed",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965372460-FIJQLLVYWY0R6IUBX66U/Content%2BBuilder%2B-%2BColor%2BOptions%2B-%2BComplete.jpg",
+        caption: "Content Builder — color options applied",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965373705-04E6JNWMB1UXKU3OZIGA/Content%2BBuilder%2B-%2BHero%2BSelect%2B2.jpg",
+        caption: "Content Builder — hero select",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965377412-9YJMP2DFVQXIBU81BB7I/Content%2BBuilder%2B-%2BColor%2BOptions%2B-%2BDropdown.jpg",
+        caption: "Content Builder — color options dropdown",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965373140-NU7FOUSCHOLN56Z78MGE/Content%2BBuilder%2B-%2BColor%2BOptions.jpg",
+        caption: "Content Builder — color picker",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965373660-QUQ7UOAT2N5W52G6224O/Content%2BBuilder%2B-%2BHero%2BSelect.jpg",
+        caption: "Content Builder — hero select state",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965372758-OVBJO6P6YEG4YCYZO7XQ/05-1%2BCB%2B-%2BCB%2BStructure%2BCopy.jpg",
+        caption: "Content Builder structure",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965377418-E754Z42RC0AGOBRZ6LK4/Logo-ImageEmpty.jpg",
+        caption: "Logo placement — empty state",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965378501-X7HX7OP5Q8B163ZF142F/Logo-ImageAdded.jpg",
+        caption: "Logo placement — uploaded",
+      },
+    ],
+  },
+  {
+    slug: "ecommerce",
+    title: "Ecommerce Designs",
+    subtitle: "Custom Volusion storefronts and paid templates for independent merchants",
+    client: "Volusion",
+    year: "2014–2016",
+    role: "Senior Product Designer",
+    tags: ["Ecommerce", "Storefront", "Templates"],
+    thumbnail: "/work-thumbnails/ecommerce.webp",
+    accent: "#993556",
+    aiSummary:
+      "A gallery of Volusion ecommerce designs — each started with a client phone call to align on look, feel, and merchandising goals, plus a set of paid templates flexible enough that clients could swap their own imagery and brand colors without breaking the design.",
+    overview:
+      "Custom client storefronts and a library of paid templates sold on Volusion.com. The templates were designed for easy upkeep — merchants could change images and design elements without breaking the layout. Designs spanned fashion, home, food, lifestyle, and more.",
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492582146-8CG7TNOVTMUVBXD8YYV0/web-bombshell.jpg",
+        caption: "Bombshell — apparel",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492906906-X91PFJ8K71PIR26M5PAK/web-vestidos.jpg",
+        caption: "Vestidos",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492886734-FJ69AYIZ87IDZTHDAOZR/combi.png",
+        caption: "Combi",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492987626-03RPZRPX9V2U1W6BU9N0/modernliving2.jpg",
+        caption: "Modern Living",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492117946-E967FF9AR5FE6Z769YRZ/temptaion.png",
+        caption: "Temptation",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492117511-NYQZT9PR0Y0NULZA2PVF/venetian.png",
+        caption: "Venetian",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492907630-PKRIA7S5BTR64JOJYT7G/web-express.jpg",
+        caption: "Express",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492906956-4BBIIG1S5QG8WMVAMVAJ/web-pewter.jpg",
+        caption: "Pewter",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492907480-F8C5VAWAIOK73SP4ICZZ/web-hillbillystills.jpg",
+        caption: "Hillbilly Stills",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422474229873-WVIY6F1FUOJNEB2LIS69/52f2bf9d604c0.jpg",
+        caption: "Boutique storefront",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422381428436-R3GEUY7IA5DQY6BXAO4H/web-sweetgrass.jpg",
+        caption: "Sweetgrass",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667325725456-C9Y95F7G9ZJ62SX46B54/Definition-Device-Home.png",
+        caption: "Definition — homepage across devices",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667325725320-HBQC7TAFA1KHYYNWII6T/Definition-Device-product.png",
+        caption: "Definition — product page",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667326780441-08UMYK6WSYKQE5NJ7JMU/StFrancis-Device-Home.png",
+        caption: "St. Francis — homepage",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667326779786-81IQWBLOAPRPKSH3LK1R/StFrancis-Device-Category.png",
+        caption: "St. Francis — category",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667326779753-C3DXSBEL52V7O1YV5E56/StFrancis-Device-Product.png",
+        caption: "St. Francis — product",
+      },
+    ],
+  },
+  {
+    slug: "volusion-gallery",
+    title: "Volusion",
+    subtitle: "Marketing visual design — site, swag, ads, banners, promos",
+    client: "Volusion",
+    year: "2013–2016",
+    role: "Senior Product Designer",
+    tags: ["Brand", "Marketing", "Visual design"],
+    thumbnail: "/work-thumbnails/volusion-gallery.webp",
+    accent: "#534ab7",
+    aiSummary:
+      "A wide gallery of work from Volusion's internal marketing department — Volusion.com pages, the employee swag site, landing pages, advertising, banners, and promos. The swag store was a fully responsive ecommerce experience with photography of products and the people wearing them.",
+    overview:
+      "Visual design across Volusion's marketing surfaces, including the employee swag store (responsive ecommerce with custom product photography), Volusion.com landing pages, the India landing site, and a range of marketing campaigns.",
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1446124598217-SMHUMTEN8T4GU22LT4O2/vnext-homepage.jpg",
+        caption: "vNext homepage concept",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1446124664197-6C1Q183C10QT00A0Q569/volusion-imac.png",
+        caption: "Volusion Swag — responsive employee store",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423153710411-QZJO0C1V58VTCHTN9KYV/Volusion-Services-Landing.jpg",
+        caption: "Volusion services landing",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423153632703-DLAKRATJFJOAP1RLJWHQ/Volusion-StoreShowcase.png",
+        caption: "Store showcase",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422911303704-3MV613XLG2Q7PN953GIT/web-spotify.jpg",
+        caption: "Spotify-inspired marketing page",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423153632110-JN8U1JFWS20POST6ICUK/Blog_ResponsiveThemeImprovement.jpg",
+        caption: "Blog — responsive theme improvement",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423493717026-GEAKBYS3JNSJ587CGK4M/volusion-indialanding.png",
+        caption: "Volusion India landing page",
+      },
+    ],
+  },
+  {
+    slug: "bohemian-hair-bows",
+    title: "Bohemian Hair Bows",
+    subtitle: "Logo, brand kit, and style guide for an eclectic bow brand",
+    client: "Bohemian Hair Bows",
+    year: "2014",
+    role: "Designer",
+    tags: ["Brand", "Logo", "Style guide"],
+    thumbnail: "/work-thumbnails/bohemian-hair-bows.webp",
+    accent: "#d4537e",
+    aiSummary:
+      "A Volusion client purchased a logo, brand kit, and style guide for their eclectic bow brand. The mark was traced from a vintage Valentine character and her cat, then simplified through a series of iterations until the line work felt modern and ownable.",
+    overview:
+      "Bohemian Hair Bows sells a variety of eclectic bows and wanted a logo built around a vintage Valentine girl character with her cat. I began by tracing the vintage card in Illustrator and then simplified the artwork in steps until the final mark was clean enough to scale across packaging, print, and web.",
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422913536234-GEZ4TJXBYK6U46ZQWPCB/Logo-BohemianHairBows-2.png",
+        caption: "Final logo — Bohemian Hair Bows",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422378919468-M0ZXRYNS18CJHNCYALLF/print-bohemian.jpg",
+        caption: "Print collateral",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422918265526-6F32WTQVS9JMV0WHZEVO/Bohemian-Styleguide.jpg",
+        caption: "Style guide",
+      },
+    ],
+  },
+  {
+    slug: "eclectic-provencal",
+    title: "Eclectic Provencal",
+    subtitle: "Responsive ecommerce + brand for a vintage Provençal furniture store",
+    client: "Eclectic Provencal",
+    year: "2015",
+    role: "Designer",
+    tags: ["Ecommerce", "Brand", "Responsive"],
+    thumbnail: "/work-thumbnails/eclectic-provencal.webp",
+    accent: "#8a5a3b",
+    aiSummary:
+      "Logo, brand, and responsive ecommerce design for a vintage Provençal furniture store. Built out homepage, category, and product flows for desktop, tablet, and mobile, plus a style guide that kept the warm-mid-century mood consistent across the whole store.",
+    overview:
+      "Vintage and handcrafted Provençal furniture needed a storefront that felt warm and editorial, not template-y. The work spanned logo, brand kit, full storefront mockups across breakpoints, and a style guide for the merchant to maintain.",
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422398789354-DSYZ3RRADRPU2SL4IDC9/provencal-logo.png",
+        caption: "Logo",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909522259-P7GSIEKXJV8IH2KK6MD0/provencal-devicemock.png",
+        caption: "Homepage across devices",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909653937-K5YQVCMG51D6IHV1KQ15/desktop-homepage-hover2.jpg",
+        caption: "Desktop homepage with hover state",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422910501460-ZJMNVIUA61NXNVRQCNVU/mobile-tablet-homepage.png",
+        caption: "Mobile + tablet homepage",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909760933-0WUHOR46B4SW27MZJJ6O/provencal-category-device.png",
+        caption: "Category — devices",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909928769-3UI2C0WE464OAOGBQK32/desktop-category.jpg",
+        caption: "Desktop category page",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1447425094165-7ITXXOPHBLHMTHS7HFPL/mobile-tablet-category.png",
+        caption: "Mobile + tablet category",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1447425040529-LGQTEH90FC6HRUL334G5/provencal-product-device.png",
+        caption: "Product — devices",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909699126-7TQMEOWNKOJQX76DX2LK/desktop-product.jpg",
+        caption: "Desktop product page",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1447425134588-A7HAAQVGEY50FGP6EH6N/mobile-tablet-product.png",
+        caption: "Mobile + tablet product",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909417402-X9849TFTOV7QTSZXCFLV/provencal-styleguide.png",
+        caption: "Style guide",
+      },
+    ],
+  },
+  {
+    slug: "logos",
+    title: "Logos",
+    subtitle: "Selected logo and identity work for clients and side projects",
+    client: "Various",
+    year: "2010–2022",
+    role: "Designer",
+    tags: ["Brand", "Logo", "Identity"],
+    thumbnail: "/work-thumbnails/logos.webp",
+    accent: "#1d9e75",
+    aiSummary:
+      "A collection of logo and identity work spanning clients across consumer, lifestyle, food, and personal branding. Marks range from playful illustrative to clean wordmarks, depending on the audience and how the brand needed to feel in use.",
+    overview:
+      "Logo and identity work for a mix of paying clients and personal projects — wordmarks, illustrative marks, and full identity systems.",
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593463214-AW8X3YLIHXQIB1GVFWA6/gigglepoo.png",
+        caption: "Gigglepoo",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593459897-0H5XDZOLOJNWD1QHTUEQ/babybemine.png",
+        caption: "Baby Be Mine",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593465947-M92PQ2T8DP9M3I6G6NHE/orionleather.png",
+        caption: "Orion Leather",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593460738-R59BUTVUBCYPA19EXSLQ/bass.png",
+        caption: "Bass",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593462820-7LJZAXVEAFTPZKMWD7XZ/dunhamcarr.png",
+        caption: "Dunham Carr",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593461718-KQL0JND2R1XG9WJBFNIR/chisholmtrail.png",
+        caption: "Chisholm Trail",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593467310-LC1EG7AQ8F4OTWTVV1G0/Screen%2BShot%2B2022-11-03%2Bat%2B2.11.18%2BPM.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593461933-4GD54TS6L8BLHQ356MAW/circle7.png",
+        caption: "Circle 7",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593467846-V31NHJHRLP9YB31CKXAZ/sparko.png",
+        caption: "Sparko",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593462450-K18FXOTL5WC36UWBR8ML/countryhearth.png",
+        caption: "Country Hearth",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593460100-JGCQW5ZI42N7ERKNAXRR/allah.png",
+        caption: "Allah",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593463438-H01437G4FTC82RMWEJFE/jessicalynn.png",
+        caption: "Jessica Lynn",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593466999-H83JWA8KFZ0QYRQH0OCP/Screen%2BShot%2B2022-11-03%2Bat%2B1.51.31%2BPM.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593466845-VEVOKWETUJ91PJBONWDG/Screen%2BShot%2B2022-11-03%2Bat%2B1.50.18%2BPM.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593463885-9Z9XMQ3QPWAX72K8281K/jilli.png",
+        caption: "Jilli",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593464186-GEEJB3SIXK8CG11V5QL1/kristinanderson.png",
+        caption: "Kristin Anderson",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593464695-4UFYQVQLPH5CH911VEND/malaka.png",
+        caption: "Malaka",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593465023-GVM99XE3TSHFU3NXLLJD/mylittlejewel.png",
+        caption: "My Little Jewel",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593465336-303KAM619OC98GX6XAFT/origami.png",
+        caption: "Origami",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593469432-YRO0O6NVTMT6RPUCR9BW/wonkos.png",
+        caption: "Wonko's",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593467731-14TVIV315JH0H3ZV4VH9/southernliving.png",
+        caption: "Southern Living",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593468849-3XUNRWTD7XJE87RD1HBD/templatetrader.png",
+        caption: "Template Trader",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593468958-IGEUTR1VLOFR11UIPKWM/usabride.png",
+        caption: "USA Bride",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593461261-1FJMQFNCHKCDFEL0CLY1/blackstarr.png",
+        caption: "Black Starr",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593466025-49K9OCCEH1L707AMJMWE/Screen%2BShot%2B2022-11-03%2Bat%2B1.42.49%2BPM.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1715958656162-PXTW17VCIIGQ6O2QJWPV/provencal-thumb.jpg",
+        caption: "Eclectic Provencal",
+      },
+    ],
+  },
+  {
+    slug: "print",
+    title: "Print",
+    subtitle: "Print design across holiday cards, invites, and editorial",
+    client: "Various",
+    year: "2010–2022",
+    role: "Designer",
+    tags: ["Print", "Editorial", "Brand"],
+    thumbnail: "/work-thumbnails/print.webp",
+    accent: "#639922",
+    aiSummary:
+      "Print work over the years — holiday cards and corporate gifts at Volusion, personal stationery, invitations, posters, and seasonal lookbooks. A mix of agency, client, and personal projects that lean illustrative.",
+    overview:
+      "Selected print design across holiday cards, invitations, posters, and editorial pieces — both client work and personal projects.",
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591094175-0ZZBPBUC2XOYMON8UNJC/holiday1+2.43.23+PM.jpg",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591094207-HNEM47TFPX4AZ32Z9RH6/Holiday2+2.43.23+PM.jpg",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591094816-KPNMAKBPL1DPSNO4SFL7/Volusion-HolidayCard+2.43.24+PM.jpg",
+        caption: "Volusion holiday card",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591552901-ZUK91M7N582K9KDG5PSF/Screen%2BShot%2B2022-11-03%2Bat%2B1.45.29%2BPM.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591552506-LL9YL5D47JFB4RRLYYCU/Screen%2BShot%2B2022-11-03%2Bat%2B1.45.43%2BPM.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591553656-FXXC6HMDFLIHM7BHY6I2/Screen%2BShot%2B2022-11-03%2Bat%2B1.46.10%2BPM.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591627485-TVIXZEO42AQLQEV6WBMK/print-fromevelyn+2.43.23+PM.jpg",
+        caption: "From Evelyn",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591627216-YERG84UEVVK0FQYHOWS3/print-madebyjoy+2.43.23+PM.jpg",
+        caption: "Made by Joy",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591627963-LAOW14896A4HSFWN1JDC/print-vitagals+2.43.23+PM.jpg",
+        caption: "Vita Gals",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591686173-DC0V25R1YOFRETGHABIE/Adri+2.43.24+PM.png",
+        caption: "Adri",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591686493-JJ6K1BAI23L7F1EBO2YQ/print-christineinvite+2.43.23+PM.jpg",
+        caption: "Christine — invite",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591721541-JO4705XY7T8VL8UG1O7B/Amor+2.43.23+PM.png",
+        caption: "Amor",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591721618-TO18J4QVCDKMNODTACKH/FakeItTilYaMakeIt+2.43.23+PM.jpg",
+        caption: "Fake It 'Til Ya Make It",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591722530-FYH33FRLO67SWQEDTP4M/print-memyselfi+2.43.23+PM.jpg",
+        caption: "Me, Myself, & I",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591891691-I9JWERCKS5T60MYBRWJW/Screen%2BShot%2B2022-11-03%2Bat%2B1.52.54%2BPM.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591895955-V45CCDPTK02VQ0ATLKCR/Screen+Shot+2021-12-01+at+12.59.55+PM.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667590765493-U248DF258FOBXNGKRNUX/print-shopgrl%2Bcopy.jpg",
+        caption: "Shopgrl",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667592293689-0HWYCXINWWPXW3G24UK6/Screen%2BShot%2B2022-11-03%2Bat%2B1.53.54%2BPM.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667590776300-6QQP3A0SGY3E1SSQTW2H/Screen%2BShot%2B2022-11-03%2Bat%2B1.47.45%2BPM.png",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591258473-AVMBX10G1K86Y4BEOWMM/cw-fall-2013+2.43.23+PM.jpg",
+        caption: "Fall 2013 lookbook",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591258255-KMJOCCDALMUWU0T039W0/cw-winter-2013-specialedition+2.43.23+PM.jpg",
+        caption: "Winter 2013 special edition",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591260063-M820WMIOE9EAM0IM16XA/Screen%2BShot%2B2022-11-03%2Bat%2B1.55.32%2BPM.png",
+      },
+    ],
   },
 ];
 

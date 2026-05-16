@@ -34,9 +34,8 @@ export default function Polaroid({
   return (
     <figure
       className={`relative bg-white p-3 pb-5 shadow-[0_8px_24px_-12px_rgba(20,20,20,0.25)] transition-all duration-500 will-change-transform ${
-        hover ? "hover:rotate-0 hover:-translate-y-2 hover:shadow-[0_16px_36px_-12px_rgba(20,20,20,0.32)]" : ""
+        hover ? "hover:-translate-y-2 hover:shadow-[0_16px_36px_-12px_rgba(20,20,20,0.32)]" : ""
       } ${className}`}
-      style={{ transform: `rotate(${rotate}deg)` }}
     >
       <div
         className="relative w-full overflow-hidden"

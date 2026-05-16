@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #f5f2eb;
+  --color-bg: #f5f5f5;
   --color-fg: #141414;
   --color-muted: #6e6a62;
-  --color-accent: #c8744a;
+  --color-accent: #3DC185;
   --grain-opacity: 0.025;
 }
 
@@ -25,7 +25,7 @@ body {
 
 ::selection {
   background-color: #141414;
-  color: #f5f2eb;
+  color: #f5f5f5;
 }
 
 /* Subtle paper-grain backdrop */
@@ -116,7 +116,7 @@ body::before {
   padding: 0.85rem 1.4rem;
   border-radius: 999px;
   background: #141414;
-  color: #f5f2eb;
+  color: #f5f5f5;
   font-weight: 500;
   font-size: 0.95rem;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
@@ -133,24 +133,6 @@ body::before {
 }
 .magnetic.ghost:hover {
   background: rgba(20, 20, 20, 0.06);
-}
-
-/* Project card hover */
-.project-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 18px;
-  background: #fff;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.project-card:hover {
-  transform: translateY(-4px);
-}
-.project-card .thumb {
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.project-card:hover .thumb {
-  transform: scale(1.04);
 }
 
 /* Pill */

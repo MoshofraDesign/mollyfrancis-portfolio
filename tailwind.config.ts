@@ -18,8 +18,8 @@ const config: Config = {
           500: "#3a3833",
           900: "#141414",
         },
-        cream: "#f5f2eb",
-        ochre: "#c8744a",
+        cream: "#f5f5f5",
+        ochre: "#3DC185",
         sage: "#7a8a6f",
       },
       fontFamily: {

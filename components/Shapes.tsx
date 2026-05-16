@@ -20,7 +20,6 @@ export function Triangle({
       height={size}
       viewBox="0 0 100 100"
       className={className}
-      style={{ transform: `rotate(${rotate}deg)` }}
       aria-hidden
     >
       <polygon points="50,10 90,90 10,90" fill={color} />
@@ -45,7 +44,6 @@ export function Diamond({
       height={size}
       viewBox="0 0 100 100"
       className={className}
-      style={{ transform: `rotate(${rotate}deg)` }}
       aria-hidden
     >
       <polygon points="50,5 95,50 50,95 5,50" fill={color} />
@@ -76,7 +74,7 @@ export function Circle({
 }
 
 export function Blob({
-  color = "#c8744a",
+  color = "#3DC185",
   size = 240,
   className = "",
 }: {

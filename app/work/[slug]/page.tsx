@@ -116,13 +116,14 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
       {/* HERO IMAGE */}
       {project.hero && (
         <section className="mx-auto max-w-7xl px-6 lg:px-10 py-8">
-          <Reveal as="div" className="relative aspect-[16/9] rounded-3xl overflow-hidden bg-ink/5">
+          <Reveal as="div" className="rounded-3xl overflow-hidden">
             <Image
               src={project.hero}
               alt={`${project.title} hero`}
-              fill
-              sizes="100vw"
-              className="object-cover"
+              width={1600}
+              height={1000}
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="w-full h-auto"
               priority
             />
           </Reveal>
@@ -244,16 +245,17 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-8">
             Selected screens
           </p>
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-start">
             {project.images.map((img, i) => (
               <Reveal key={img.src} as="figure" delay={i * 60} className="space-y-3">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-ink/5">
+                <div className="rounded-2xl overflow-hidden">
                   <Image
                     src={img.src}
                     alt={img.caption || `${project.title} screen ${i + 1}`}
-                    fill
+                    width={1200}
+                    height={900}
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
+                    className="w-full h-auto"
                   />
                 </div>
                 {img.caption && (
