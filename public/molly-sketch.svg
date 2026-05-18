@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Molly Francis — line illustration">
+  <g fill="none" stroke="#141414" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Hair: loose, slightly tousled bob -->
+    <path d="M 120 95 C 105 75, 125 55, 155 50 C 175 38, 210 36, 240 46 C 270 50, 295 70, 300 100 C 305 130, 305 165, 300 195 C 295 220, 285 245, 280 260" />
+    <path d="M 120 95 C 110 130, 105 170, 110 210 C 113 235, 122 255, 128 268" />
+    <!-- Hair side strands -->
+    <path d="M 135 90 C 145 110, 138 140, 142 165" opacity="0.45" />
+    <path d="M 282 95 C 275 115, 282 145, 278 175" opacity="0.45" />
+
+    <!-- Face oval -->
+    <path d="M 140 175 C 138 215, 148 255, 175 280 C 195 295, 220 295, 240 280 C 268 258, 280 220, 278 180" />
+
+    <!-- Bangs sweep -->
+    <path d="M 152 110 C 175 102, 205 100, 235 105 C 250 108, 265 115, 275 130" />
+    <path d="M 165 115 C 180 132, 195 138, 215 138" opacity="0.5" />
+
+    <!-- Eyebrows -->
+    <path d="M 168 162 C 178 158, 192 158, 200 162" />
+    <path d="M 222 162 C 232 158, 246 158, 256 162" />
+
+    <!-- Eyes (soft almond shape) -->
+    <path d="M 170 178 C 178 174, 192 174, 200 178 C 192 184, 178 184, 170 178 Z" />
+    <path d="M 222 178 C 230 174, 244 174, 252 178 C 244 184, 230 184, 222 178 Z" />
+    <!-- Pupils -->
+    <circle cx="185" cy="179" r="2.2" fill="#141414" stroke="none" />
+    <circle cx="237" cy="179" r="2.2" fill="#141414" stroke="none" />
+
+    <!-- Nose: minimal suggestion -->
+    <path d="M 208 195 C 206 210, 204 222, 209 232 C 212 236, 218 236, 220 232" />
+
+    <!-- Mouth: soft, neutral -->
+    <path d="M 195 252 C 205 256, 220 256, 230 252" />
+    <path d="M 198 250 C 208 245, 220 245, 228 250" opacity="0.5" />
+
+    <!-- Earrings hint -->
+    <circle cx="139" cy="220" r="2.5" fill="#3DC185" stroke="none" />
+    <circle cx="281" cy="220" r="2.5" fill="#3DC185" stroke="none" />
+
+    <!-- Neck + shoulders -->
+    <path d="M 188 290 C 186 305, 184 320, 180 332" />
+    <path d="M 230 290 C 232 305, 234 320, 238 332" />
+    <path d="M 140 365 C 165 345, 185 335, 205 333 C 225 335, 245 345, 270 365" />
+
+  </g>
+</svg>

@@ -3,8 +3,6 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
 import Polaroid from "@/components/Polaroid";
-import { Triangle, Diamond, Circle } from "@/components/Shapes";
-import Logo from "@/components/Logo";
 
 export const metadata = {
   title: "About — Molly Francis",
@@ -68,18 +66,73 @@ const experience = [
   },
 ];
 
+// ── small reusable photo card used for the flat (non-polaroid) sections ──
+function Photo({
+  src,
+  alt,
+  aspect = "1 / 1",
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  aspect?: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`relative overflow-hidden bg-white border-[10px] border-white shadow-[0_2px_12px_-4px_rgba(20,20,20,0.18)] w-full max-w-[350px] mx-auto ${className}`}
+      style={{ aspectRatio: aspect }}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 1024px) 50vw, 25vw"
+        className="object-cover"
+      />
+    </div>
+  );
+}
+
 export default function AboutPage() {
   return (
     <div className="page-shell">
-      {/* ──────────────────────────────────────────────────────────
-         SLIDE 1 — Pronunciation hero
-         ────────────────────────────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-8 pb-24 lg:pb-32">
+      {/* ── HERO — I love what I do (full-bleed) ───────────────── */}
+      <section className="-mt-28 relative isolate">
+        <Reveal as="div" className="relative isolate">
+          <Image
+            src="/about/love-coffee.jpg"
+            alt="Coffee cup and 'welcome to your life' sketch"
+            width={2000}
+            height={1200}
+            sizes="100vw"
+            className="w-full h-[80vh] lg:h-[90vh] object-cover"
+            priority
+          />
+          <div className="absolute inset-0 flex items-end px-6 lg:px-16 pb-12 lg:pb-20">
+            <div className="max-w-2xl">
+              <p className="text-xs uppercase tracking-[0.25em] text-ink/60 mb-4">
+                Hi, I&rsquo;m Molly
+              </p>
+              <blockquote className="font-serif italic text-4xl lg:text-6xl leading-[1.05] text-ink">
+                &ldquo;I love what I do.&rdquo;
+              </blockquote>
+              <p className="mt-6 text-base lg:text-lg text-ink/80 leading-relaxed max-w-lg">
+                I would never want to change career paths, and strive to learn
+                and evolve with changes that come in the tech world.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ── SLIDE 1 — Intro ─────────────────────────────────────── */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-24 lg:pt-32 pb-24 lg:pb-32">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <Reveal as="div" className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative aspect-square rounded-full overflow-hidden bg-ink/5 max-w-md mx-auto">
               <Image
-                src="https://static1.squarespace.com/static/5387376ae4b08610fe281471/t/68a76115151c7a37103f620b/1755799829545/Molly.jpg?format=1500w"
+                src="/about/molly-headshot.jpg"
                 alt="Molly Francis"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -90,39 +143,32 @@ export default function AboutPage() {
           </Reveal>
 
           <Reveal as="div" className="lg:col-span-7 order-1 lg:order-2">
-            <div className="mb-6 text-ink">
-              <Logo variant="mark" size={56} />
-            </div>
-            <h1 className="font-serif text-hero leading-[0.95]">
+            <h1 className="text-5xl lg:text-6xl font-medium leading-[1.05] tracking-tight">
               Molly Francis
             </h1>
-            <p className="mt-4 font-mono text-ink/60 text-lg">/ mol•ly /</p>
+            <p className="mt-3 font-mono text-ink/60">/ mol•ly /</p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-2">
-              <span className="text-sm text-ink/60 mr-2">ENFP — Campaigner</span>
-              {traits.map((t) => (
-                <span
-                  key={t.letter}
-                  className="group inline-flex items-baseline gap-1 px-3 py-1 rounded-full border border-ink/15 text-sm hover:bg-ink hover:text-cream transition-colors cursor-default"
-                >
-                  <span className="font-serif italic text-ochre group-hover:text-cream">
-                    {t.letter}
-                  </span>
-                  <span>{t.word}</span>
+            <p className="mt-6 text-sm text-ink/70">
+              <span className="font-medium">ENFP (Campaigner)</span>{" "}
+              <span className="underline-offset-2">{traits.map((t, i) => (
+                <span key={t.word}>
+                  <em className="not-italic underline">{t.word}</em>
+                  {i < traits.length - 1 ? ", " : ""}
+                  {i === traits.length - 2 ? "and " : ""}
                 </span>
-              ))}
-            </div>
+              ))}</span>
+              {" "}traits
+            </p>
 
-            <p className="mt-8 text-lg lg:text-xl text-ink/80 leading-relaxed max-w-2xl">
+            <p className="mt-6 text-base lg:text-lg text-ink/80 leading-relaxed max-w-2xl">
               I tend to embrace big ideas and actions that reflect a sense of hope
               and goodwill toward others. I have a vibrant energy and can flow in
               many directions.
             </p>
-            <p className="mt-5 text-lg lg:text-xl text-ink/80 leading-relaxed max-w-2xl">
-              These traits allow me to be an{" "}
-              <em className="font-serif text-ochre not-italic">empathetic designer</em>{" "}
-              who thrives on understanding and connecting with the end users — always
-              keeping their needs and experiences at the forefront of my work.
+            <p className="mt-4 text-base lg:text-lg text-ink/80 leading-relaxed max-w-2xl">
+              These traits allow me to be an empathetic designer who thrives on
+              understanding and connecting with the end users, always keeping their
+              needs and experiences at the forefront of my work.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
@@ -140,242 +186,138 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────
-         SLIDE 2 — I have a wonderful family
-         ────────────────────────────────────────────────────────── */}
-      <section className="border-t border-ink/10 py-24 lg:py-32 bg-cream">
+      {/* ── SLIDE 2 — I have a wonderful family ──────────────────── */}
+      <section className="border-t border-ink/10 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <Reveal as="div" className="lg:col-span-7">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
-                <Polaroid
-                  src="/about/family-1.jpg"
-                  alt="Family group photo"
-                  rotate={-4}
-                />
-                <Polaroid
-                  src="/about/family-2.jpg"
-                  alt="Parents at the game"
-                  rotate={3}
-                />
-                <Polaroid
-                  src="/about/family-3.jpg"
-                  alt="Daughter with pink blanket"
-                  rotate={-2}
-                />
-                <Polaroid
-                  src="/about/family-4.jpg"
-                  alt="Molly and daughter"
-                  rotate={4}
-                />
-              </div>
-            </Reveal>
-
-            <Reveal as="div" className="lg:col-span-5">
-              <h2 className="font-serif text-h1 mb-6">
-                I have a <em className="not-italic font-light text-ochre">wonderful family</em>.
-              </h2>
-              <p className="text-lg text-ink/80 leading-relaxed">
-                My dad is a retired Architect and my mother was an early-childhood
-                Preschool Director. Having a meticulous, detail-loving father and an
-                empathetic mother who spent her career helping children gave me the
-                exact combination of skills I use as a Product Designer today.
-              </p>
-            </Reveal>
-          </div>
+          <Reveal as="div" className="grid grid-cols-3 gap-6 lg:gap-8 mb-12">
+            <Photo src="/about/family-1.jpg" alt="Family group photo" />
+            <Photo src="/about/family-2.jpg" alt="Daughter with pink blanket" />
+            <Photo src="/about/family-3.jpg" alt="Molly and daughter" />
+          </Reveal>
+          <Reveal as="div" className="max-w-2xl">
+            <h2 className="text-3xl lg:text-4xl font-medium mb-5">
+              I have a wonderful family
+            </h2>
+            <p className="text-base lg:text-lg text-ink/80 leading-relaxed">
+              My dad is a retired Architect and my mother was an early-childhood
+              Preschool Director. I think having a mix of a very meticulous,
+              detailed father and an empathetic mother who was a helper of
+              children created a combo of the skills I possess as Product
+              Designer I am today.
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────
-         SLIDE 3 — The Sixbees
-         ────────────────────────────────────────────────────────── */}
+      {/* ── SLIDE 3 — The Sixbees ────────────────────────────────── */}
       <section className="border-t border-ink/10 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <Reveal as="div" className="lg:col-span-7 relative">
-              {/* Decorative shape backdrop */}
-              <Triangle
-                color="#a48bff"
-                size={180}
-                rotate={-15}
-                className="absolute -top-6 -left-4 -z-0"
+              <Image
+                src="/about/sixbees.jpg"
+                alt="The Sixbees — design friends"
+                width={854}
+                height={555}
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="w-full h-auto"
               />
-              <Diamond
-                color="#f7c948"
-                size={150}
-                rotate={20}
-                className="absolute -bottom-6 right-12 -z-0"
-              />
-              <Circle
-                color="#f0997b"
-                size={140}
-                className="absolute top-1/3 left-1/3 -z-0 opacity-90"
-              />
-              <div className="relative z-10">
-                <Polaroid
-                  src="/about/sixbees.jpg"
-                  alt="The Sixbees — design friends"
-                  aspect={4 / 3}
-                  rotate={-1}
-                  className="max-w-xl mx-auto grayscale"
-                />
-              </div>
             </Reveal>
 
             <Reveal as="div" className="lg:col-span-5">
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
-                Community
+              <h2 className="text-3xl lg:text-4xl font-medium mb-5">The Sixbees</h2>
+              <p className="text-base lg:text-lg text-ink/80 leading-relaxed">
+                My design friends and I started a blog years ago. It was a blast!
+                We wrote articles and had regular meetups.
               </p>
-              <h2 className="font-serif text-h1 mb-6">The Sixbees.</h2>
-              <p className="text-lg text-ink/80 leading-relaxed">
-                My design friends and I started a blog years ago. It was a blast.
-                We wrote articles, ran regular meetups, made each other laugh too
-                loud at coffee shops.
-              </p>
-              <p className="mt-4 text-lg text-ink/80 leading-relaxed">
-                As life got busy and a few of us moved away, the cadence slowed —
-                but we still find each other for a beer or a coffee whenever we
-                can.
+              <p className="mt-4 text-base lg:text-lg text-ink/80 leading-relaxed">
+                As time went by, our lives got busy with family and life and a
+                few moved to other states, but we still meet up to grab a beer
+                or coffee whenever we can.
               </p>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────
-         SLIDE 4 — I love animals
-         ────────────────────────────────────────────────────────── */}
-      <section className="border-t border-ink/10 py-24 lg:py-32 bg-cream">
+      {/* ── SLIDE 4 — I love animals ─────────────────────────────── */}
+      <section className="border-t border-ink/10 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <Reveal as="div" className="lg:col-span-5">
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
-                Coworkers (unpaid)
-              </p>
-              <h2 className="font-serif text-h1 mb-6">
-                I love <em className="not-italic font-light text-ochre">animals</em>.
-              </h2>
-              <p className="text-lg text-ink/80 leading-relaxed">
-                Two cats and a dog. They love to crash a good meeting{" "}
-                <span aria-hidden>:)</span> Sometimes the standup is improved by
-                the cat that has decided your laptop is now her bed.
-              </p>
-
-              <div className="mt-8 grid grid-cols-2 gap-4 max-w-md">
-                <Polaroid src="/about/pet-1.jpg" alt="Black cat" rotate={-3} />
-                <Polaroid src="/about/pet-2.jpg" alt="Dog" rotate={2} />
-                <Polaroid src="/about/pet-3.jpg" alt="Gray fluffy cat" rotate={3} />
-                <Polaroid src="/about/pet-4.jpg" alt="Black cat sleeping" rotate={-2} />
-              </div>
-            </Reveal>
-
-            <Reveal as="div" className="lg:col-span-7">
-              <div className="relative aspect-[4/5] lg:aspect-[3/4] rounded-3xl overflow-hidden bg-ink/5">
-                <Image
-                  src="/about/pet-bed.jpg"
-                  alt="Black cat asleep on a bed"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 grid place-items-center bg-ink/[0.03] pointer-events-none">
-                  {/* fallback caption layered behind the image, only visible if image fails to load */}
-                </div>
-              </div>
-            </Reveal>
-          </div>
+          <Reveal as="div" className="max-w-xl mb-10">
+            <h2 className="text-3xl lg:text-4xl font-medium mb-3">
+              I love animals
+            </h2>
+            <p className="text-base lg:text-lg text-ink/80 leading-relaxed">
+              I have two cats and a dog. They love to crash a good meeting :)
+            </p>
+          </Reveal>
+          <Reveal as="div" className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-6">
+            <Photo src="/about/pet-1.jpg" alt="Henry on chair" />
+            <Photo src="/about/pet-2.jpg" alt="Joey, gray fluffy cat" />
+            <Photo src="/about/pet-3.jpg" alt="Henry on couch" />
+            <Photo src="/about/pet-4.jpg" alt="Saskatoon the dog" />
+          </Reveal>
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────
-         SLIDE 5 — When I was little...
-         ────────────────────────────────────────────────────────── */}
+      {/* ── SLIDE 5 — When I was little ──────────────────────────── */}
       <section className="border-t border-ink/10 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <Reveal as="div" className="lg:col-span-6">
-              <div className="relative">
-                <Polaroid
-                  src="/about/little-jeep.jpg"
-                  alt="Fisher Price Jeep adventurer"
-                  rotate={6}
-                  className="absolute top-0 left-12 w-48 lg:w-56 z-10"
-                />
-                <Polaroid
-                  src="/about/little-dad.jpg"
-                  alt="Molly with dad"
-                  rotate={-7}
-                  aspect={3 / 4}
-                  className="absolute top-32 left-0 w-52 lg:w-60 z-20"
-                />
-                <Polaroid
-                  src="/about/little-bigfoot.jpg"
-                  alt="BigFoot photo"
-                  rotate={4}
-                  className="absolute top-44 left-48 w-48 lg:w-56 z-0"
-                />
-                {/* Spacer to give the absolute polaroids a parent height */}
-                <div className="h-[440px] lg:h-[500px]" />
+            <Reveal as="div" className="lg:col-span-7">
+              <div className="grid grid-cols-3 gap-4 lg:gap-6">
+                <Photo src="/about/little-jeep.jpg" alt="Fisher Price Jeep adventurer" />
+                <Photo src="/about/little-dad.jpg" alt="Molly with dad" />
+                <Photo src="/about/little-bigfoot.jpg" alt="BigFoot photo" />
               </div>
             </Reveal>
 
-            <Reveal as="div" className="lg:col-span-6">
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
-                Origin story
-              </p>
-              <h2 className="font-serif text-h1 mb-6">
+            <Reveal as="div" className="lg:col-span-5">
+              <h2 className="text-3xl lg:text-4xl font-medium mb-5">
                 <span aria-hidden className="mr-2">👣</span>
                 When I was little…
               </h2>
-              <p className="text-lg text-ink/80 leading-relaxed">
+              <p className="text-base lg:text-lg text-ink/80 leading-relaxed">
                 My dad asked me what I wanted to be when I grew up. I told him I
-                wanted to find <em className="font-serif text-ochre not-italic">BigFoot</em>.
+                wanted to find BigFoot.
               </p>
-              <p className="mt-4 text-lg text-ink/80 leading-relaxed">
-                I&rsquo;m pretty sure my imagination was sparked by the Fisher Price
-                Jeep adventurer set <span aria-hidden>:)</span> Either way, I&rsquo;ve
-                been chasing big interesting things ever since.
+              <p className="mt-4 text-base lg:text-lg text-ink/80 leading-relaxed">
+                I&rsquo;m pretty sure my imagination was sparked with the Fisher
+                Price Jeep adventurer collection :)
               </p>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────
-         SLIDE 6 — I collect a LOT of things
-         ────────────────────────────────────────────────────────── */}
-      <section className="border-t border-ink/10 py-24 lg:py-32 bg-cream">
+      {/* ── SLIDE 6 — I collect a LOT of things ──────────────────── */}
+      <section className="border-t border-ink/10 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <Reveal as="div" className="lg:col-span-5">
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
-                Habit
-              </p>
-              <h2 className="font-serif text-h1 mb-6">
-                I collect a <em className="not-italic font-light text-ochre">LOT</em> of things.
+          <div className="grid lg:grid-cols-12 gap-10 items-stretch">
+            <Reveal as="div" className="lg:col-span-7">
+              <h2 className="text-3xl lg:text-4xl font-medium mb-3">
+                I collect a LOT of things
               </h2>
-              <p className="text-lg text-ink/80 leading-relaxed">
-                I blame McDonald&rsquo;s Happy Meal toys (the California Raisins,
-                specifically) and the Scholastic Book Fair for the habit. It never
-                fully went away — pens, doll heads, little ceramic houses, LEGO
-                succulents, globes, the works.
+              <p className="text-base text-ink/80 mb-8 max-w-md">
+                I blame McDonald&rsquo;s and Hardies happy meal toys (the
+                California Raisins) and the scholastic book fair when I was a
+                kid :)
               </p>
-
-              <div className="mt-8 grid grid-cols-2 gap-4 max-w-md">
-                <Polaroid src="/about/collect-1.jpg" alt="LEGO succulents" rotate={-3} />
-                <Polaroid src="/about/collect-2.jpg" alt="Travel toothpastes" rotate={3} />
-                <Polaroid src="/about/collect-3.jpg" alt="Terracotta sculpture" rotate={2} />
-                <Polaroid src="/about/collect-4.jpg" alt="Doll heads shelf" rotate={-2} />
+              <div className="grid grid-cols-2 gap-4 max-w-lg">
+                <Photo src="/about/collect-1.jpg" alt="LEGO succulents" />
+                <Photo src="/about/collect-2.jpg" alt="Mini Brands collectibles" />
+                <Photo src="/about/collect-3.jpg" alt="Terracotta sculpture" />
+                <Photo src="/about/collect-4.jpg" alt="Doll heads shelf" />
               </div>
             </Reveal>
 
-            <Reveal as="div" className="lg:col-span-7">
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-ink/5">
+            <Reveal as="div" className="lg:col-span-5">
+              <div className="relative h-full min-h-[400px] overflow-hidden">
                 <Image
                   src="/about/collect-pens.jpg"
                   alt="Pen cup with globes"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
                 />
               </div>
@@ -384,63 +326,34 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────
-         SLIDE 7 — I love what I do
-         ────────────────────────────────────────────────────────── */}
+      {/* ── SLIDE 7 — I Love Packaging  (NEW from deck) ──────────── */}
       <section className="border-t border-ink/10 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <Reveal as="div" className="lg:col-span-6">
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
-                Twenty years in
-              </p>
-              <h2 className="font-serif text-hero">
-                I love <em className="not-italic font-light text-ochre">what I do</em>.
-              </h2>
-              <p className="mt-6 text-lg text-ink/80 leading-relaxed max-w-xl">
-                I&rsquo;d never want to change career paths. I keep learning and
-                evolving with the changes that come through tech — right now, that
-                means treating AI as a working partner inside the design process,
-                not a threat to it.
-              </p>
-              <blockquote className="mt-10 pl-6 border-l-2 border-ochre">
-                <p className="font-serif text-2xl lg:text-3xl italic text-ink/90 leading-snug">
-                  &ldquo;Welcome to your life — there&rsquo;s no turning back.&rdquo;
-                </p>
-                <cite className="block mt-3 not-italic text-sm text-ink/50">
-                  — a sticky note on my desk
-                </cite>
-              </blockquote>
-            </Reveal>
-
-            <Reveal as="div" className="lg:col-span-6">
-              <div className="relative aspect-square rounded-3xl overflow-hidden bg-ochre/15">
-                <Image
-                  src="/about/love-coffee.jpg"
-                  alt="Coffee cup and Welcome to your life sketch"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-            </Reveal>
-          </div>
+          <Reveal as="div" className="mb-12 max-w-xl">
+            <h2 className="text-3xl lg:text-4xl font-medium mb-3">
+              I Love Packaging
+            </h2>
+            <p className="text-base lg:text-lg text-ink/80 leading-relaxed">
+              I will always buy something if the packaging is cool.
+            </p>
+          </Reveal>
+          <Reveal as="div" className="grid grid-cols-3 gap-6 lg:gap-8">
+            <Photo src="/about/packaging-1.jpg" alt="Dolly Parton coconut flakes" />
+            <Photo src="/about/packaging-2.jpg" alt="Pickle beer" />
+            <Photo src="/about/packaging-3.jpg" alt="Cheetos Mac n Cheese" />
+          </Reveal>
         </div>
       </section>
 
-      {/* ──────────────────────────────────────────────────────────
-         Now, the work — bridge into professional content
-         ────────────────────────────────────────────────────────── */}
+      {/* ── Bridge to the work (additional content beyond the deck) ── */}
       <section className="border-t border-ink/10 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal as="div" className="mb-16">
             <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
               And — the work
             </p>
-            <h2 className="font-serif text-hero max-w-3xl">
-              I design things that <em className="not-italic font-light text-ochre">work</em>,
-              for people on their <em className="not-italic font-light text-ochre">hardest</em>{" "}
-              day.
+            <h2 className="text-4xl lg:text-5xl font-medium max-w-3xl leading-[1.1]">
+              I design things that work, for people on their hardest day.
             </h2>
             <p className="mt-6 text-lg text-ink/75 leading-relaxed max-w-2xl">
               Most of my career has been in healthcare and complex SaaS — places
@@ -449,7 +362,6 @@ export default function AboutPage() {
             </p>
           </Reveal>
 
-          {/* Stats */}
           <div className="grid sm:grid-cols-3 gap-6 mb-16">
             {[
               { v: "20+", l: "years designing" },
@@ -459,21 +371,20 @@ export default function AboutPage() {
               <Reveal
                 key={s.l}
                 as="div"
-                className="p-7 rounded-2xl border border-ink/10 bg-white/60"
+                className="p-7 rounded-md border border-ink/10 bg-white/60"
               >
-                <div className="font-serif text-5xl mb-2">{s.v}</div>
+                <div className="text-5xl font-medium mb-2">{s.v}</div>
                 <div className="text-sm text-ink/60">{s.l}</div>
               </Reveal>
             ))}
           </div>
 
-          {/* Principles */}
           <div className="grid lg:grid-cols-12 gap-12">
             <Reveal as="div" className="lg:col-span-4">
               <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
                 Operating principles
               </p>
-              <h3 className="font-serif text-h1">How I show up</h3>
+              <h3 className="text-3xl lg:text-4xl font-medium">How I show up</h3>
             </Reveal>
 
             <div className="lg:col-span-8 space-y-1">
@@ -484,11 +395,11 @@ export default function AboutPage() {
                   delay={i * 60}
                   className="grid grid-cols-12 py-7 border-t border-ink/10"
                 >
-                  <div className="col-span-1 font-mono text-xs text-ochre">
+                  <div className="col-span-1 font-mono text-[18px] text-ink/40 leading-none">
                     0{i + 1}
                   </div>
                   <div className="col-span-11">
-                    <h4 className="font-serif text-2xl lg:text-3xl mb-2">
+                    <h4 className="text-xl lg:text-2xl font-medium mb-2">
                       {p.t}
                     </h4>
                     <p className="text-ink/70 leading-relaxed max-w-2xl">
@@ -503,14 +414,16 @@ export default function AboutPage() {
       </section>
 
       {/* Experience */}
-      <section className="border-t border-ink/10 py-24 lg:py-32 bg-cream">
+      <section className="border-t border-ink/10 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-12">
             <Reveal as="div" className="lg:col-span-4">
               <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
                 Experience
               </p>
-              <h2 className="font-serif text-h1">A long, useful résumé.</h2>
+              <h2 className="text-3xl lg:text-4xl font-medium">
+                A long, useful résumé.
+              </h2>
               <p className="mt-4 text-ink/70 leading-relaxed">
                 Highlights below — see the{" "}
                 <a
@@ -541,12 +454,12 @@ export default function AboutPage() {
                     {e.period}
                   </div>
                   <div className="col-span-12 lg:col-span-9">
-                    <h3 className="font-serif text-2xl">{e.role}</h3>
+                    <h3 className="text-xl lg:text-2xl font-medium">{e.role}</h3>
                     <p className="text-ink/60 mb-3">{e.company}</p>
                     <ul className="space-y-1.5">
                       {e.bullets.map((b) => (
                         <li key={b} className="text-ink/75 flex gap-3">
-                          <span className="text-ochre mt-1.5">·</span>
+                          <span className="text-ink/40 mt-1.5">·</span>
                           <span>{b}</span>
                         </li>
                       ))}
@@ -564,16 +477,14 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal
             as="div"
-            className="rounded-[32px] bg-ink text-cream p-10 lg:p-16 relative overflow-hidden"
+            className="rounded-md bg-ink text-cream p-10 lg:p-16 relative overflow-hidden"
           >
-            <div className="absolute -top-20 -right-20 w-[420px] h-[420px] rounded-full bg-ochre/40 blur-3xl" />
             <div className="relative max-w-2xl">
               <p className="text-xs uppercase tracking-[0.25em] text-cream/60 mb-6">
                 Still reading?
               </p>
-              <h2 className="font-serif text-h1 mb-6">
-                Let&rsquo;s {" "}
-                <em className="not-italic font-light text-ochre">talk</em>.
+              <h2 className="text-4xl lg:text-5xl font-medium mb-6 leading-[1.05]">
+                Let&rsquo;s talk.
               </h2>
               <p className="text-cream/80 mb-8 leading-relaxed">
                 If any of this resonates — the work, the cats, or the BigFoot

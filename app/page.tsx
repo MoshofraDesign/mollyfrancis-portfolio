@@ -39,10 +39,10 @@ export default function Home() {
         ref={heroRef}
         className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-8 lg:pt-12 pb-24 lg:pb-32"
       >
-        <div className="grid lg:grid-cols-12 gap-10 items-end">
+        <div className="grid lg:grid-cols-12 gap-10 items-center">
           <motion.div
             style={{ y }}
-            className="lg:col-span-8"
+            className="lg:col-span-8 lg:order-2"
           >
             <motion.p
               initial={{ opacity: 0, y: 12 }}
@@ -117,24 +117,34 @@ export default function Home() {
                 Download résumé ↗
               </a>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="mt-8 flex flex-wrap gap-2 max-w-2xl"
+            >
+              {marqueeWords.map((w) => (
+                <span key={w} className="pill">
+                  {w}
+                </span>
+              ))}
+            </motion.div>
           </motion.div>
 
           <motion.div
             style={{ scale: portraitScale, opacity: portraitOpacity }}
-            className="lg:col-span-4"
+            className="lg:col-span-4 lg:order-1"
           >
-            <div className="relative aspect-[4/5] rounded-[28px] overflow-hidden bg-ink/5">
+            <div className="relative aspect-square max-w-md mx-auto">
               <Image
-                src="/molly-portrait.jpg"
-                alt="Portrait of Molly Francis"
+                src="/molly-sketch.svg"
+                alt="Line illustration of Molly Francis"
                 fill
                 sizes="(max-width: 1024px) 100vw, 33vw"
-                className="object-cover"
+                className="object-contain"
                 priority
               />
-              <span className="absolute bottom-4 left-4 pill bg-cream/80 backdrop-blur">
-                Featured · Built In ATX
-              </span>
             </div>
             <a
               href="https://www.builtinaustin.com/company/bright-health/product-tech"
@@ -145,18 +155,6 @@ export default function Home() {
               Read the feature ↗
             </a>
           </motion.div>
-        </div>
-      </section>
-
-      {/* MARQUEE -------------------------------------------------------- */}
-      <section className="border-y border-ink/10 bg-ink text-cream overflow-hidden py-6">
-        <div className="marquee gap-12 whitespace-nowrap text-3xl lg:text-5xl font-serif italic">
-          {[...marqueeWords, ...marqueeWords].map((w, i) => (
-            <span key={i} className="px-6 flex items-center gap-12">
-              {w}
-              <span className="text-ochre">✦</span>
-            </span>
-          ))}
         </div>
       </section>
 
@@ -195,9 +193,9 @@ export default function Home() {
                 key={c.title}
                 as="div"
                 delay={i * 80}
-                className="p-7 rounded-2xl bg-white/60 border border-ink/10 hover:border-ink/30 transition-colors"
+                className="p-7 rounded-md bg-white/60 border border-ink/10 hover:border-ink/30 transition-colors"
               >
-                <p className="font-mono text-xs text-ochre mb-3">
+                <p className="font-mono text-[18px] text-ochre mb-3 leading-none">
                   0{i + 1}
                 </p>
                 <h3 className="font-serif text-2xl mb-3">{c.title}</h3>
@@ -210,7 +208,7 @@ export default function Home() {
 
       {/* FEATURED WORK -------------------------------------------------- */}
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
-        <div className="flex items-end justify-between mb-12">
+        <div className="flex items-end justify-between mb-16">
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
               Featured
@@ -222,30 +220,86 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-10">
-          {featuredProjects.map((p, i) => (
-            <ProjectCard key={p.slug} project={p} index={i} />
-          ))}
+        <div className="space-y-24 lg:space-y-36">
+          {featuredProjects.map((p, i) => {
+            const reverse = i % 2 === 1;
+            return (
+              <Reveal key={p.slug} as="article">
+                <Link
+                  href={`/work/${p.slug}`}
+                  className="group flex flex-col lg:flex-row gap-y-8 lg:gap-x-16 items-center"
+                >
+                  <div
+                    className={`relative aspect-square w-full max-w-[400px] flex-none overflow-hidden rounded-[8px] ${
+                      reverse ? "lg:order-2" : ""
+                    }`}
+                  >
+                    <Image
+                      src={p.thumbnail}
+                      alt={p.title}
+                      fill
+                      sizes="400px"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                    />
+                  </div>
+
+                  <div
+                    className={`flex-1 min-w-0 ${
+                      reverse ? "lg:order-1" : ""
+                    }`}
+                  >
+                    <div className="flex items-baseline gap-4 mb-5">
+                      <span className="font-mono text-[18px] text-ink/40 leading-none">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink/50">
+                        {p.client} · {p.year}
+                      </span>
+                    </div>
+                    <div className="mb-6 flex flex-wrap gap-2">
+                      {p.tags.slice(0, 4).map((t) => (
+                        <span key={t} className="pill">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="font-serif text-[clamp(2.25rem,4.5vw,4rem)] leading-[1] tracking-tight group-hover:text-ochre transition-colors">
+                      {p.title}
+                    </h3>
+                    <p className="mt-5 text-lg text-ink/75 leading-relaxed max-w-prose">
+                      {p.subtitle}
+                    </p>
+                    <span className="mt-8 inline-flex items-center gap-3 text-sm font-mono uppercase tracking-[0.22em]">
+                      Read case study
+                      <span className="inline-block transition-transform duration-500 group-hover:translate-x-2">
+                        →
+                      </span>
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
       {/* MORE WORK (list) ---------------------------------------------- */}
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
         <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">
-          Archive
+          All projects
         </p>
         <div>
           {projects
             .filter((p) => !p.featured)
             .map((p, i) => (
-              <ProjectCard key={p.slug} project={p} index={i} variant="row" />
+              <ProjectCard key={p.slug} project={p} index={i} />
             ))}
         </div>
       </section>
 
       {/* CTA STRIP ------------------------------------------------------ */}
       <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-32 pb-12">
-        <Reveal as="div" className="relative rounded-[32px] bg-ink text-cream p-10 lg:p-16 overflow-hidden">
+        <Reveal as="div" className="relative rounded-md bg-ink text-cream p-10 lg:p-16 overflow-hidden">
           <div className="absolute -top-20 -right-20 w-[420px] h-[420px] rounded-full bg-ochre/40 blur-3xl" />
           <div className="relative max-w-2xl">
             <p className="text-xs uppercase tracking-[0.25em] text-cream/60 mb-6">

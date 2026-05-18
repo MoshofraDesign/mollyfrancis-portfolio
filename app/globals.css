@@ -14,13 +14,28 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
 }
 
 body {
   background: var(--color-bg);
   color: var(--color-fg);
-  font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  font-family: var(--font-sans), "DM Sans", system-ui, sans-serif;
   font-feature-settings: "ss01", "ss02", "cv11";
+}
+
+/* Balance line breaks across the whole site */
+* {
+  text-wrap: balance;
 }
 
 ::selection {

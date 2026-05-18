@@ -28,43 +28,79 @@ export default function WorkPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-10">
-        <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">
-          Selected
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 justify-items-center sm:justify-items-start">
+        <div className="flex items-baseline justify-between mb-16">
+          <p className="text-xs uppercase tracking-[0.25em] text-ink/50">
+            Selected
+          </p>
+          <p className="text-xs uppercase tracking-[0.25em] text-ink/40 font-mono">
+            {projects.filter((p) => p.featured).length} projects
+          </p>
+        </div>
+
+        <div className="space-y-24 lg:space-y-36">
           {projects
             .filter((p) => p.featured)
-            .map((p) => (
-              <Reveal key={p.slug} as="div" className="w-full max-w-[375px]">
-                <Link href={`/work/${p.slug}`} className="group block">
-                  <div className="relative w-full aspect-square overflow-hidden rounded-2xl">
-                    <Image
-                      src={p.thumbnail}
-                      alt={p.title}
-                      fill
-                      sizes="375px"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="mt-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-ink/50 mb-2">
-                      {p.client} · {p.year}
-                    </p>
-                    <h3 className="font-serif text-2xl leading-tight group-hover:text-ochre transition-colors">
-                      {p.title}
-                    </h3>
-                    <p className="mt-1 text-ink/60 text-sm">{p.subtitle}</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {p.tags.slice(0, 3).map((t) => (
-                        <span key={t} className="pill">
-                          {t}
-                        </span>
-                      ))}
+            .map((p, i) => {
+              const reverse = i % 2 === 1;
+              return (
+                <Reveal key={p.slug} as="article">
+                  <Link
+                    href={`/work/${p.slug}`}
+                    className="group flex flex-col lg:flex-row gap-y-8 lg:gap-x-16 items-center"
+                  >
+                    {/* image */}
+                    <div
+                      className={`relative aspect-square w-full max-w-[400px] flex-none overflow-hidden rounded-[8px] ${
+                        reverse ? "lg:order-2" : ""
+                      }`}
+                    >
+                      <Image
+                        src={p.thumbnail}
+                        alt={p.title}
+                        fill
+                        sizes="400px"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                      />
                     </div>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
+
+                    {/* text */}
+                    <div
+                      className={`flex-1 min-w-0 ${
+                        reverse ? "lg:order-1" : ""
+                      }`}
+                    >
+                      <div className="flex items-baseline gap-4 mb-5">
+                        <span className="font-mono text-[18px] text-ink/40 leading-none">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink/50">
+                          {p.client} · {p.year}
+                        </span>
+                      </div>
+                      <div className="mb-6 flex flex-wrap gap-2">
+                        {p.tags.slice(0, 4).map((t) => (
+                          <span key={t} className="pill">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <h2 className="font-serif text-[clamp(2.25rem,4.5vw,4rem)] leading-[1] tracking-tight group-hover:text-ochre transition-colors">
+                        {p.title}
+                      </h2>
+                      <p className="mt-5 text-lg text-ink/75 leading-relaxed max-w-prose">
+                        {p.subtitle}
+                      </p>
+                      <span className="mt-8 inline-flex items-center gap-3 text-sm font-mono uppercase tracking-[0.22em]">
+                        Read case study
+                        <span className="inline-block transition-transform duration-500 group-hover:translate-x-2">
+                          →
+                        </span>
+                      </span>
+                    </div>
+                  </Link>
+                </Reveal>
+              );
+            })}
         </div>
       </section>
 

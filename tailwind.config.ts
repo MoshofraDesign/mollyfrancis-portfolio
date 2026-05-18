@@ -23,8 +23,8 @@ const config: Config = {
         sage: "#7a8a6f",
       },
       fontFamily: {
-        serif: ["var(--font-fraunces)", "Cormorant Garamond", "Georgia", "serif"],
-        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Bodoni Moda", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "DM Sans", "system-ui", "sans-serif"],
         mono: ["ui-monospace", "SFMono-Regular", "monospace"],
       },
       fontSize: {

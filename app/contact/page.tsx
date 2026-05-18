@@ -42,7 +42,7 @@ export default function ContactPage() {
                 e.preventDefault();
                 setSubmitted(true);
               }}
-              className="space-y-8 p-8 lg:p-10 rounded-3xl bg-white border border-ink/10"
+              className="space-y-8 p-8 lg:p-10 rounded-md bg-white border border-ink/10"
             >
               {submitted ? (
                 <motion.div
@@ -104,7 +104,7 @@ export default function ContactPage() {
 
           {/* SIDEBAR */}
           <Reveal as="div" className="lg:col-span-5 space-y-8">
-            <div className="p-8 rounded-3xl border border-ink/10 bg-cream/60">
+            <div className="p-8 rounded-md border border-ink/10 bg-cream/60">
               <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
                 Or just email
               </p>
@@ -120,7 +120,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="p-8 rounded-3xl border border-ink/10">
+            <div className="p-8 rounded-md border border-ink/10">
               <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
                 I&rsquo;m especially interested in
               </p>
@@ -133,7 +133,7 @@ export default function ContactPage() {
               </ul>
             </div>
 
-            <div className="p-8 rounded-3xl border border-ink/10">
+            <div className="p-8 rounded-md border border-ink/10">
               <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
                 Elsewhere
               </p>

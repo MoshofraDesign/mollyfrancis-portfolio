@@ -25,6 +25,74 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "govos-esubmission",
+    title: "GovOS eSubmission",
+    subtitle:
+      "A direct-to-county electronic recording portal that takes the middleman out of land records",
+    client: "GovOS",
+    year: "2023–2024",
+    role: "Lead Product Designer",
+    tags: ["GovTech", "B2B", "Workflow", "AI-augmented research", "Design system"],
+    thumbnail: "/work-thumbnails/govos-esubmission.webp",
+    hero: "/work/govos/hero.jpg",
+    accent: "#185fa5",
+    featured: true,
+    aiSummary:
+      "Designed an electronic-recording portal that lets title companies submit deeds and recordings directly to county offices — replacing the third-party submitters that traditionally sit between them. AI tooling sped up the research synthesis: Dovetail clustered interview transcripts, and an in-house GPT prompt converted Userbit usability findings into prioritized Jira tickets the day after each session.",
+    overview:
+      "Recording a deed used to mean handing paper (or fax) to a third-party submitter who relayed it to the county. GovOS eSubmission gave title companies a direct channel: upload documents, validate compliance, and settle payments by ACH — all without leaving the portal. The county side gets clean structured data, drops manual scanning, and serves submitters directly.",
+    problem:
+      "Electronic recording was indirect and expensive. Title companies paid intermediaries to relay documents, county recorders re-scanned everything by hand, and payment reconciliation was a per-document mess. Submitters had no visibility into status until the recording cleared.",
+    approach:
+      "I led design across discovery, prototyping, validation, and rollout. Generative interviews with title-company submitters and county recorders shaped a step-by-step submission flow with a persistent progress bar, a built-in document-compliance review assistant, and a checkout that consolidated dozens of recordings into a single ACH transfer. Round-the-loop usability testing in Userbit surfaced 12+ issues per session — synthesized in Dovetail, prioritized with the PM in an AI-assisted impact/effort sort, and queued into Jira ahead of development.",
+    outcome:
+      "eSubmission shipped as a self-serve product. The Cuyahoga County recorder called it \"a fantastic opportunity to more directly and better serve our title companies,\" and one Berks County title abstractor said they could \"pull someone off the street and show them how to do this in about 20 minutes.\" Counties run a single ACH report per submitter per period; the old reconciliation queue disappeared.",
+    research: [
+      "Generative interviews with title-company submitters and county recording offices",
+      "Live usability testing in Userbit with 5 Business/Company users in a QA environment",
+      "AI-assisted synthesis in Dovetail to cluster transcripts into themes and tag pain points",
+      "Pendo + Amazon QuickSight instrumentation to track adoption and friction once live",
+    ],
+    prototype:
+      "https://www.figma.com/proto/oSWznKlxwvUazo3oNNTdkF/GovOS-Pay",
+    images: [
+      {
+        src: "/work/govos/objective.jpg",
+        caption:
+          "The objective — give title companies and county recorders one direct channel",
+      },
+      {
+        src: "/work/govos/login.jpg",
+        caption:
+          "Login picks up where you left off — recent submission types and last package surface immediately",
+      },
+      {
+        src: "/work/govos/submission-flow.jpg",
+        caption:
+          "Step-by-step submission with a persistent progress bar — easy to save and finish later",
+      },
+      {
+        src: "/work/govos/document-review.jpg",
+        caption:
+          "Document compliance review — guides submitters through the most common rejection causes",
+      },
+      {
+        src: "/work/govos/checkout.jpg",
+        caption: "Checkout with shareable receipts of the transaction",
+      },
+      {
+        src: "/work/govos/ach-payment.jpg",
+        caption:
+          "ACH payment fulfillment — a single transfer rolls up every recording per submitter per period",
+      },
+      {
+        src: "/work/govos/usability-findings.jpg",
+        caption:
+          "Usability findings from Userbit, ranked by impact and routed straight into Jira",
+      },
+    ],
+  },
+  {
     slug: "bright-healthcare",
     title: "Prior Authorization Portal",
     subtitle: "Replacing fax with a live, validated authorization workflow",

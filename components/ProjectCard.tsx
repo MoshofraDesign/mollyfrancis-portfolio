@@ -23,16 +23,16 @@ export default function ProjectCard({ project, index = 0 }: Props) {
         className="group block border-t border-ink/10 py-6 lg:py-8"
       >
         <div className="grid lg:grid-cols-12 gap-6 items-center">
-          <div className="lg:col-span-1 font-mono text-xs text-ink/40">
+          <div className="lg:col-span-1 font-mono text-[18px] text-ink/40 leading-none">
             {String(index + 1).padStart(2, "0")}
           </div>
-          <div className="lg:col-span-2 relative aspect-square rounded-xl overflow-hidden">
+          <div className="lg:col-span-2 relative aspect-square rounded-[8px] overflow-hidden">
             <Image
               src={project.thumbnail}
               alt=""
               fill
               sizes="(max-width: 1024px) 25vw, 160px"
-              className="object-contain"
+              className="object-contain transition-opacity duration-500 ease-out group-hover:opacity-80"
             />
           </div>
           <div className="lg:col-span-4">

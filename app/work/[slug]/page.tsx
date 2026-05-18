@@ -66,7 +66,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 -mt-8 lg:-mt-12 mb-16">
         <Reveal
           as="div"
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8 rounded-2xl bg-white border border-ink/10"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8 rounded-md bg-white border border-ink/10"
         >
           {[
             { l: "Role", v: project.role },
@@ -91,7 +91,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-8">
         <Reveal
           as="div"
-          className="relative p-8 lg:p-12 rounded-3xl bg-ink text-cream overflow-hidden"
+          className="relative p-8 lg:p-12 rounded-md bg-ink text-cream overflow-hidden"
         >
           <div
             className="absolute -top-10 -right-10 w-72 h-72 rounded-full blur-3xl opacity-60"
@@ -116,7 +116,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
       {/* HERO IMAGE */}
       {project.hero && (
         <section className="mx-auto max-w-7xl px-6 lg:px-10 py-8">
-          <Reveal as="div" className="rounded-3xl overflow-hidden">
+          <Reveal as="div" className="rounded-md overflow-hidden">
             <Image
               src={project.hero}
               alt={`${project.title} hero`}
@@ -197,7 +197,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
                   key={m.label}
                   as="div"
                   delay={i * 80}
-                  className="p-7 rounded-2xl border border-ink/10 bg-white"
+                  className="p-7 rounded-md border border-ink/10 bg-white"
                 >
                   <div className="font-serif text-4xl lg:text-5xl mb-3 leading-none">
                     {m.value}
@@ -227,7 +227,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
                     key={r}
                     className="flex gap-4 py-4 border-b border-ink/10"
                   >
-                    <span className="font-mono text-xs text-ochre mt-1">
+                    <span className="font-mono text-[18px] text-ochre leading-none mt-1">
                       0{i + 1}
                     </span>
                     <span className="text-lg text-ink/80">{r}</span>
@@ -248,7 +248,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-start">
             {project.images.map((img, i) => (
               <Reveal key={img.src} as="figure" delay={i * 60} className="space-y-3">
-                <div className="rounded-2xl overflow-hidden">
+                <div className="rounded-md overflow-hidden">
                   <Image
                     src={img.src}
                     alt={img.caption || `${project.title} screen ${i + 1}`}
@@ -274,7 +274,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
           <Reveal
             as="div"
-            className="rounded-3xl bg-ochre/10 p-10 lg:p-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
+            className="rounded-md bg-ochre/10 p-10 lg:p-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
           >
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">

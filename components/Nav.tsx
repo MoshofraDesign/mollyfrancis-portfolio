@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import Logo from "./Logo";
 
 const links = [
-  { href: "/", label: "Index" },
+  { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -79,12 +79,12 @@ export default function Nav() {
               <span className="block w-5 h-px bg-ink" />
             </div>
           </summary>
-          <div className="absolute right-0 mt-2 w-56 p-2 rounded-2xl bg-cream border border-ink/10 shadow-xl">
+          <div className="absolute right-0 mt-2 w-56 p-2 rounded-md bg-cream border border-ink/10 shadow-xl">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="block px-3 py-2 rounded-xl text-sm hover:bg-ink hover:text-cream"
+                className="block px-3 py-2 rounded-sm text-sm hover:bg-ink hover:text-cream"
               >
                 {l.label}
               </Link>
