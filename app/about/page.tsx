@@ -36,36 +36,6 @@ const principles = [
   },
 ];
 
-const experience = [
-  {
-    role: "Lead / Principal Product Designer",
-    company: "Bright HealthCare",
-    period: "2021 – 2022",
-    bullets: [
-      "Led the Prior Authorization Portal from 100 to ~10K monthly users",
-      "$1.9M in operational savings within a year of go-live",
-    ],
-  },
-  {
-    role: "Principal Designer · Design system lead",
-    company: "DocSquad",
-    period: "2022 – 2023",
-    bullets: [
-      "Rebuilt a desktop-only Zipnosis app into a unified desktop + native (Flutter) experience",
-      "Ran generative research with 'virtual moonlighter' clinicians",
-    ],
-  },
-  {
-    role: "Senior Product Designer",
-    company: "LivePerson · Care.com · athenahealth · Volusion",
-    period: "2014 – 2021",
-    bullets: [
-      "SocialConnect, Homepay Payroll, Consumer Health Portal, athenaWell, Patient IO",
-      "MDP Marketplace 2.0, Volusion admin & storefront tooling",
-    ],
-  },
-];
-
 // ── small reusable photo card used for the flat (non-polaroid) sections ──
 function Photo({
   src,
@@ -405,65 +375,6 @@ export default function AboutPage() {
                     <p className="text-ink/70 leading-relaxed max-w-2xl">
                       {p.b}
                     </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience */}
-      <section className="border-t border-ink/10 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-12">
-            <Reveal as="div" className="lg:col-span-4">
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
-                Experience
-              </p>
-              <h2 className="text-3xl lg:text-4xl font-medium">
-                A long, useful résumé.
-              </h2>
-              <p className="mt-4 text-ink/70 leading-relaxed">
-                Highlights below — see the{" "}
-                <a
-                  href="https://www.mollyfrancis.com/s/Molly-Francis-Product-Designer-Researcher-and-Leader-Resume-1.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="link-underline"
-                >
-                  résumé PDF
-                </a>{" "}
-                for the full timeline, or{" "}
-                <Link href="/work" className="link-underline">
-                  the case studies
-                </Link>{" "}
-                for the work itself.
-              </p>
-            </Reveal>
-
-            <div className="lg:col-span-8">
-              {experience.map((e, i) => (
-                <Reveal
-                  key={e.role + e.company}
-                  as="div"
-                  delay={i * 60}
-                  className="grid grid-cols-12 gap-4 py-8 border-t border-ink/10"
-                >
-                  <div className="col-span-12 lg:col-span-3 font-mono text-xs text-ink/50">
-                    {e.period}
-                  </div>
-                  <div className="col-span-12 lg:col-span-9">
-                    <h3 className="text-xl lg:text-2xl font-medium">{e.role}</h3>
-                    <p className="text-ink/60 mb-3">{e.company}</p>
-                    <ul className="space-y-1.5">
-                      {e.bullets.map((b) => (
-                        <li key={b} className="text-ink/75 flex gap-3">
-                          <span className="text-ink/40 mt-1.5">·</span>
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </Reveal>
               ))}
