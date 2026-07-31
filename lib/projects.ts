@@ -34,7 +34,7 @@ export const projects: Project[] = [
     role: "Lead Product Designer",
     tags: ["GovTech", "B2B", "Workflow", "AI-augmented research", "Design system"],
     thumbnail: "/work-thumbnails/govos-esubmission.webp",
-    hero: "/work/govos/hero.jpg",
+    hero: "/work/govos/hero-laptop.webp",
     accent: "#185fa5",
     featured: true,
     aiSummary:
@@ -56,11 +56,6 @@ export const projects: Project[] = [
     prototype:
       "https://www.figma.com/proto/oSWznKlxwvUazo3oNNTdkF/GovOS-Pay",
     images: [
-      {
-        src: "/work/govos/objective.jpg",
-        caption:
-          "The objective — give title companies and county recorders one direct channel",
-      },
       {
         src: "/work/govos/login.jpg",
         caption:
@@ -84,11 +79,6 @@ export const projects: Project[] = [
         src: "/work/govos/ach-payment.jpg",
         caption:
           "ACH payment fulfillment — a single transfer rolls up every recording per submitter per period",
-      },
-      {
-        src: "/work/govos/usability-findings.jpg",
-        caption:
-          "Usability findings from Userbit, ranked by impact and routed straight into Jira",
       },
     ],
   },

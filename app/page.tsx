@@ -136,13 +136,13 @@ export default function Home() {
             style={{ scale: portraitScale, opacity: portraitOpacity }}
             className="lg:col-span-4 lg:order-1"
           >
-            <div className="relative aspect-square max-w-md mx-auto">
+            <div className="relative aspect-square w-[350px] max-w-full mx-auto rounded-full overflow-hidden bg-ink/5">
               <Image
-                src="/molly-sketch.svg"
-                alt="Line illustration of Molly Francis"
+                src="/about/molly-headshot.jpg"
+                alt="Molly Francis"
                 fill
-                sizes="(max-width: 1024px) 100vw, 33vw"
-                className="object-contain"
+                sizes="350px"
+                className="object-cover"
                 priority
               />
             </div>

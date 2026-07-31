@@ -5,8 +5,14 @@ import { projects, getProject } from "@/lib/projects";
 import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
 
+// govos-esubmission has its own dedicated page at /app/work/govos-esubmission/
+// so we exclude it here to avoid a duplicate build.
+const customSlugs = new Set(["govos-esubmission"]);
+
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return projects
+    .filter((p) => !customSlugs.has(p.slug))
+    .map((p) => ({ slug: p.slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }) {

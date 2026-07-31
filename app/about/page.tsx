@@ -221,10 +221,9 @@ export default function AboutPage() {
               I have two cats and a dog. They love to crash a good meeting :)
             </p>
           </Reveal>
-          <Reveal as="div" className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-6">
+          <Reveal as="div" className="grid grid-cols-2 sm:grid-cols-3 gap-4 lg:gap-6">
             <Photo src="/about/pet-1.jpg" alt="Henry on chair" />
             <Photo src="/about/pet-2.jpg" alt="Joey, gray fluffy cat" />
-            <Photo src="/about/pet-3.jpg" alt="Henry on couch" />
             <Photo src="/about/pet-4.jpg" alt="Saskatoon the dog" />
           </Reveal>
         </div>
