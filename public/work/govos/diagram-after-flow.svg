@@ -1,0 +1,53 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" font-family="'Poppins','Century Gothic','Futura','Helvetica Neue',Arial,sans-serif">
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+
+  <path d="M 300 260 C 500 150, 950 150, 1150 255" fill="none" stroke="#0091CF" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 1150 255 L 1130 248 M 1150 255 L 1136 270" fill="none" stroke="#0091CF" stroke-width="3" stroke-linecap="round"/>
+  <text x="725" y="130" text-anchor="middle" font-size="24" font-weight="600" fill="#0091CF">The county reaches the submitter directly —</text>
+  <text x="725" y="162" text-anchor="middle" font-size="24" font-weight="600" fill="#0091CF">no vendor in between.</text>
+
+  <line x1="330" y1="470" x2="565" y2="470" stroke="#0091CF" stroke-width="4"/>
+  <path d="M 565 470 L 547 460 M 565 470 L 547 480" fill="none" stroke="#0091CF" stroke-width="4" stroke-linecap="round"/>
+  <line x1="835" y1="470" x2="1065" y2="470" stroke="#0091CF" stroke-width="4"/>
+  <path d="M 1065 470 L 1047 460 M 1065 470 L 1047 480" fill="none" stroke="#0091CF" stroke-width="4" stroke-linecap="round"/>
+  <line x1="1235" y1="470" x2="1345" y2="470" stroke="#0091CF" stroke-width="4"/>
+  <path d="M 1345 470 L 1327 460 M 1345 470 L 1327 480" fill="none" stroke="#0091CF" stroke-width="4" stroke-linecap="round"/>
+
+  <line x1="1345" y1="610" x2="330" y2="610" stroke="#3DC185" stroke-width="3" stroke-dasharray="1 8" stroke-linecap="round"/>
+  <path d="M 330 610 L 348 600 M 330 610 L 348 620" fill="none" stroke="#3DC185" stroke-width="3" stroke-linecap="round"/>
+  <text x="837" y="665" text-anchor="middle" font-size="22" font-weight="400" fill="#1F8A5C">Recorded / rejected documents route straight back through GovOS</text>
+
+  <circle cx="250" cy="470" r="58" fill="#FFFFFF" stroke="#0091CF" stroke-width="3"/>
+  <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="250" cy="452" r="14"/>
+    <path d="M 223 495 Q 250 465 277 495"/>
+  </g>
+  <text x="250" y="565" text-anchor="middle" font-size="26" font-weight="600" fill="#0B1F33">Submitter</text>
+
+  <circle cx="700" cy="470" r="90" fill="#0091CF"/>
+  <g stroke="#FFFFFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="660" y="440" width="45" height="35" rx="3"/>
+    <path d="M 683 475 L 683 488 M 668 488 L 698 488"/>
+    <path d="M 712 448 L 740 448 L 740 480" />
+    <path d="M 740 480 L 730 470 M 740 480 L 730 490"/>
+  </g>
+  <text x="700" y="500" text-anchor="middle" font-size="21" font-weight="600" fill="#FFFFFF">GovOS</text>
+  <text x="700" y="602" text-anchor="middle" font-size="26" font-weight="600" fill="#0B1F33">eSubmission portal</text>
+
+  <circle cx="1150" cy="470" r="58" fill="#FFFFFF" stroke="#0091CF" stroke-width="3"/>
+  <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 1123 495 L 1150 445 L 1177 495 Z"/>
+    <path d="M 1150 445 L 1150 458"/>
+    <circle cx="1150" cy="470" r="6"/>
+  </g>
+  <text x="1150" y="565" text-anchor="middle" font-size="26" font-weight="600" fill="#0B1F33">County land</text>
+  <text x="1150" y="592" text-anchor="middle" font-size="26" font-weight="600" fill="#0B1F33">records dept.</text>
+
+  <circle cx="1400" cy="470" r="58" fill="#FFFFFF" stroke="#0091CF" stroke-width="3"/>
+  <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 1373 452 L 1373 495 L 1427 495 L 1427 462 L 1407 462 L 1407 452 Z"/>
+    <path d="M 1373 470 L 1427 470"/>
+  </g>
+  <text x="1400" y="565" text-anchor="middle" font-size="26" font-weight="600" fill="#0B1F33">Recorded /</text>
+  <text x="1400" y="592" text-anchor="middle" font-size="26" font-weight="600" fill="#0B1F33">rejected</text>
+</svg>

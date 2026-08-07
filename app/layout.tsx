@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans, Bodoni_Moda } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import CursorBlob from "@/components/CursorBlob";
-import PageTransition from "@/components/PageTransition";
+import SiteChrome from "@/components/SiteChrome";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -45,11 +43,7 @@ export default function RootLayout({
     <html lang="en" className={`${dmSans.variable} ${bodoniModa.variable}`}>
       <body>
         <CursorBlob />
-        <Nav />
-        <PageTransition>
-          <main className="page-shell pt-28">{children}</main>
-        </PageTransition>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

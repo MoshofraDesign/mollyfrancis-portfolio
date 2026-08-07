@@ -1,0 +1,51 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" font-family="'Poppins','Century Gothic','Futura','Helvetica Neue',Arial,sans-serif">
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+  <text x="800" y="90" text-anchor="middle" font-size="44" font-weight="600" fill="#0B1F33">Challenges for submitters</text>
+
+  <rect x="80" y="150" width="700" height="320" rx="16" fill="#F5F8FA"/>
+  <circle cx="160" cy="230" r="38" fill="#E6F1FB" stroke="#0091CF" stroke-width="2.5"/>
+  <text x="160" y="242" text-anchor="middle" font-size="34" font-weight="600" fill="#0091CF">$</text>
+  <text x="228" y="242" font-size="28" font-weight="600" fill="#0B1F33">Expensive</text>
+  <text x="120" y="320" font-size="21" fill="#55606B">
+    <tspan x="120" dy="0">eRecording vendors charge a significant</tspan>
+    <tspan x="120" dy="30">fee on top of the county's own fee.</tspan>
+  </text>
+
+  <rect x="820" y="150" width="700" height="320" rx="16" fill="#F5F8FA"/>
+  <circle cx="900" cy="230" r="38" fill="#E6F1FB" stroke="#0091CF" stroke-width="2.5"/>
+  <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 884 231 L 896 244 L 918 216"/>
+  </g>
+  <text x="968" y="222" font-size="28" font-weight="600" fill="#0B1F33">Payment</text>
+  <text x="968" y="254" font-size="28" font-weight="600" fill="#0B1F33">reconciliation</text>
+  <text x="860" y="320" font-size="21" fill="#55606B">
+    <tspan x="860" dy="0">Matching what was submitted against</tspan>
+    <tspan x="860" dy="30">what was paid is a manual, end-of-day slog.</tspan>
+  </text>
+
+  <rect x="80" y="500" width="700" height="320" rx="16" fill="#F5F8FA"/>
+  <circle cx="160" cy="580" r="38" fill="#E6F1FB" stroke="#0091CF" stroke-width="2.5"/>
+  <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 145 560 L 145 602 L 178 602 L 178 570 L 163 555 L 145 555 Z"/>
+    <path d="M 163 555 L 163 570 L 178 570"/>
+  </g>
+  <text x="228" y="592" font-size="28" font-weight="600" fill="#0B1F33">Limited document types</text>
+  <text x="120" y="670" font-size="21" fill="#55606B">
+    <tspan x="120" dy="0">Vendors only handle certain document</tspan>
+    <tspan x="120" dy="30">types — the rest still goes in on paper.</tspan>
+  </text>
+
+  <rect x="820" y="500" width="700" height="320" rx="16" fill="#F5F8FA"/>
+  <circle cx="900" cy="580" r="38" fill="#E6F1FB" stroke="#0091CF" stroke-width="2.5"/>
+  <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 884 566 L 900 582 L 884 598"/>
+    <path d="M 900 582 L 916 582"/>
+    <circle cx="920" cy="582" r="4" fill="#0091CF" stroke="none"/>
+  </g>
+  <text x="968" y="572" font-size="28" font-weight="600" fill="#0B1F33">Disconnected from</text>
+  <text x="968" y="604" font-size="28" font-weight="600" fill="#0B1F33">the recorder</text>
+  <text x="860" y="670" font-size="21" fill="#55606B">
+    <tspan x="860" dy="0">Every rejection or approval has to pass</tspan>
+    <tspan x="860" dy="30">through the vendor as a middleman.</tspan>
+  </text>
+</svg>

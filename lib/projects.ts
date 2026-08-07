@@ -14,11 +14,28 @@ export type Project = {
   // Longer overview for case-study pages
   overview: string;
   problem?: string;
+  // Supporting diagrams/screenshots shown alongside the Problem statement
+  problemImages?: { src: string; caption?: string }[];
+  // Objective statement — the target state, paired with optional bullets
+  objective?: string;
+  objectiveBullets?: string[];
   approach?: string;
   outcome?: string;
   metrics?: { label: string; value: string }[];
   research?: string[];
   images?: { src: string; caption?: string }[];
+  // Rich feature panels: heading + body/bullets, paired with an optional
+  // screenshot and/or screen-recording video, rendered in order.
+  features?: {
+    eyebrow: string;
+    heading: string;
+    body?: string;
+    bullets?: string[];
+    image?: string;
+    imageCaption?: string;
+    video?: string;
+    videoCaption?: string;
+  }[];
   prototype?: string;
   featured?: boolean;
 };
@@ -43,6 +60,28 @@ export const projects: Project[] = [
       "Recording a deed used to mean handing paper (or fax) to a third-party submitter who relayed it to the county. GovOS eSubmission gave title companies a direct channel: upload documents, validate compliance, and settle payments by ACH — all without leaving the portal. The county side gets clean structured data, drops manual scanning, and serves submitters directly.",
     problem:
       "Electronic recording was indirect and expensive. Title companies paid intermediaries to relay documents, county recorders re-scanned everything by hand, and payment reconciliation was a per-document mess. Submitters had no visibility into status until the recording cleared.",
+    problemImages: [
+      {
+        src: "/work/govos/problem-before.jpg",
+        caption:
+          "Every submission and every county question passed through a third-party eRecording vendor — neither side could reach the other directly.",
+      },
+      {
+        src: "/work/govos/problem-challenges-submitters.jpg",
+        caption: "Challenges for submitters",
+      },
+      {
+        src: "/work/govos/problem-challenges-counties.jpg",
+        caption: "Challenges for counties",
+      },
+    ],
+    objective:
+      "Give Submitters — title companies or any county-approved entity — a direct interface to submit electronic recordings to the County, without the relay layer in between.",
+    objectiveBullets: [
+      "Obviating the need for Submitters to physically present the documents in a county office",
+      "Enhancing the productivity of the Recorder's office by not having to scan the recording",
+      "Streamline payment into a bulk wire transfer (ACH) for each Submitter",
+    ],
     approach:
       "I led design across discovery, prototyping, validation, and rollout. Generative interviews with title-company submitters and county recorders shaped a step-by-step submission flow with a persistent progress bar, a built-in document-compliance review assistant, and a checkout that consolidated dozens of recordings into a single ACH transfer. Round-the-loop usability testing in Userbit surfaced 12+ issues per session — synthesized in Dovetail, prioritized with the PM in an AI-assisted impact/effort sort, and queued into Jira ahead of development.",
     outcome:
@@ -54,31 +93,76 @@ export const projects: Project[] = [
       "Pendo + Amazon QuickSight instrumentation to track adoption and friction once live",
     ],
     prototype:
-      "https://www.figma.com/proto/oSWznKlxwvUazo3oNNTdkF/GovOS-Pay",
-    images: [
+      "https://www.figma.com/proto/loYXUbmV2BozRpIuUrgHMR/Direct-eRecording-eSubmission?node-id=8070-88481&viewport=470%2C-869%2C0.06&t=0tNaCeVcCCjTfQLn-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=8070%3A88481&show-proto-sidebar=1&page-id=306%3A47587",
+    features: [
       {
-        src: "/work/govos/login.jpg",
-        caption:
+        eyebrow: "Remember the user",
+        heading: "Quick and compliant submissions start at sign-in.",
+        bullets: [
+          "Gives users a sense of place upon login",
+          "Remembered recent submission types",
+          "Start where they left off",
+          "Recent submission history",
+        ],
+        image: "/work/govos/login.jpg",
+        imageCaption:
           "Login picks up where you left off — recent submission types and last package surface immediately",
+        // TODO: swap in real screen recording once uploaded — see
+        // /public/work/govos/videos/remember-the-user.mp4
+        video: "/work/govos/videos/remember-the-user.mp4",
+        videoCaption: "Signing in and picking up a recent submission",
       },
       {
-        src: "/work/govos/submission-flow.jpg",
-        caption:
+        eyebrow: "Submission flow",
+        heading: "A flow that helps business and government work efficiently.",
+        body: "Always know where you are in the submission process by referencing the progress bar. The step-by-step process puts the focus on the task at hand and removes unnecessary inputs. Easily navigate to previous steps or save your progress on a submission and finish it later.",
+        image: "/work/govos/submission-flow.jpg",
+        imageCaption:
           "Step-by-step submission with a persistent progress bar — easy to save and finish later",
+        // TODO: swap in real screen recording once uploaded — see
+        // /public/work/govos/videos/submission-flow.mp4
+        video: "/work/govos/videos/submission-flow.mp4",
+        videoCaption: "Walking through a submission end to end",
       },
       {
-        src: "/work/govos/document-review.jpg",
-        caption:
+        eyebrow: "Document review",
+        heading: "Clear images. A review assistant for compliance.",
+        body: "eSubmission mitigates the most common rejection causes by guiding the user inline and giving them the option to replace a document mid-process — so packages move to recording on the first try.",
+        image: "/work/govos/document-review.jpg",
+        imageCaption:
           "Document compliance review — guides submitters through the most common rejection causes",
       },
       {
-        src: "/work/govos/checkout.jpg",
-        caption: "Checkout with shareable receipts of the transaction",
+        eyebrow: "Checkout",
+        heading: "Checkout with ease — and shareable receipts of the transaction.",
+        body: "Submitters share receipts of the submission transaction downstream into their accounting flow, without copying numbers by hand.",
+        image: "/work/govos/checkout.jpg",
+        imageCaption: "Checkout with shareable receipts of the transaction",
       },
       {
-        src: "/work/govos/ach-payment.jpg",
-        caption:
+        eyebrow: "Simplified user invitations",
+        heading: "Simplified User Invitations",
+        body: "A flow reducing complex security loops with a single, intuitive modal, letting administrators enter an email, assign a role, and send an invite in seconds. This eliminated onboarding friction and significantly reduced support tickets.",
+        // TODO: swap in real screen recording once uploaded — see
+        // /public/work/govos/videos/user-invitations.mp4
+        video: "/work/govos/videos/user-invitations.mp4",
+        videoCaption: "Inviting a teammate in a single modal",
+      },
+      {
+        eyebrow: "Payment fulfillment & reporting",
+        heading: "One ACH transfer per period, per submitter.",
+        bullets: [
+          "Payments are fulfilled by initiating ACH with each submitter",
+          "The county runs an ACH report for a time period and a title company — surfacing the total amount due",
+          "The county authorizes the ACH transaction",
+        ],
+        image: "/work/govos/ach-payment.jpg",
+        imageCaption:
           "ACH payment fulfillment — a single transfer rolls up every recording per submitter per period",
+        // TODO: swap in real screen recording once uploaded — see
+        // /public/work/govos/videos/payment-fulfillment.mp4
+        video: "/work/govos/videos/payment-fulfillment.mp4",
+        videoCaption: "Running and authorizing an ACH report",
       },
     ],
   },

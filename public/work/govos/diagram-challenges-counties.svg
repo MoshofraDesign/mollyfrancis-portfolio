@@ -1,0 +1,59 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" font-family="'Poppins','Century Gothic','Futura','Helvetica Neue',Arial,sans-serif">
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+  <text x="800" y="90" text-anchor="middle" font-size="44" font-weight="600" fill="#0B1F33">Challenges for the counties</text>
+
+  <rect x="80" y="150" width="700" height="320" rx="16" fill="#F5F8FA"/>
+  <circle cx="160" cy="230" r="38" fill="#E6F1FB" stroke="#0091CF" stroke-width="2.5"/>
+  <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="144" y="212" width="32" height="40" rx="2"/>
+    <path d="M 144 224 L 176 224"/>
+    <path d="M 152 234 L 168 234 M 152 242 L 168 242"/>
+  </g>
+  <text x="228" y="222" font-size="28" font-weight="600" fill="#0B1F33">Paper-based</text>
+  <text x="228" y="254" font-size="28" font-weight="600" fill="#0B1F33">submissions</text>
+  <text x="120" y="320" font-size="21" fill="#55606B">
+    <tspan x="120" dy="0">Many document types still arrive on</tspan>
+    <tspan x="120" dy="30">paper, meaning manual printing and scanning.</tspan>
+  </text>
+
+  <rect x="820" y="150" width="700" height="320" rx="16" fill="#F5F8FA"/>
+  <circle cx="900" cy="230" r="38" fill="#E6F1FB" stroke="#0091CF" stroke-width="2.5"/>
+  <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 884 231 L 896 244 L 918 216"/>
+  </g>
+  <text x="968" y="222" font-size="28" font-weight="600" fill="#0B1F33">Payment</text>
+  <text x="968" y="254" font-size="28" font-weight="600" fill="#0B1F33">reconciliation</text>
+  <text x="860" y="320" font-size="21" fill="#55606B">
+    <tspan x="860" dy="0">Confirming what's been paid before</tspan>
+    <tspan x="860" dy="30">end of day is a difficult, manual process.</tspan>
+  </text>
+
+  <rect x="80" y="500" width="700" height="320" rx="16" fill="#F5F8FA"/>
+  <circle cx="160" cy="580" r="38" fill="#E6F1FB" stroke="#0091CF" stroke-width="2.5"/>
+  <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="148" cy="572" r="8"/>
+    <circle cx="172" cy="572" r="8"/>
+    <path d="M 138 596 Q 148 582 158 596"/>
+    <path d="M 162 596 Q 172 582 182 596"/>
+  </g>
+  <text x="228" y="592" font-size="28" font-weight="600" fill="#0B1F33">Multiple vendors</text>
+  <text x="120" y="670" font-size="21" fill="#55606B">
+    <tspan x="120" dy="0">Each vendor has its own disparate</tspan>
+    <tspan x="120" dy="30">process for reaching submitters.</tspan>
+  </text>
+
+  <rect x="820" y="500" width="700" height="320" rx="16" fill="#F5F8FA"/>
+  <circle cx="900" cy="580" r="38" fill="#E6F1FB" stroke="#0091CF" stroke-width="2.5"/>
+  <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="900" cy="580" r="20"/>
+    <circle cx="892" cy="574" r="2.5" fill="#0091CF"/>
+    <circle cx="908" cy="574" r="2.5" fill="#0091CF"/>
+    <path d="M 890 590 Q 900 582 910 590"/>
+  </g>
+  <text x="968" y="572" font-size="28" font-weight="600" fill="#0B1F33">Submitter</text>
+  <text x="968" y="604" font-size="28" font-weight="600" fill="#0B1F33">dissatisfaction</text>
+  <text x="860" y="670" font-size="21" fill="#55606B">
+    <tspan x="860" dy="0">Vendor fees stack on top of the</tspan>
+    <tspan x="860" dy="30">county's own recording fee.</tspan>
+  </text>
+</svg>

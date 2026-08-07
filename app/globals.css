@@ -171,3 +171,28 @@ body::before {
 /* Hide scrollbars on horizontal carousels */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* iOS momentum scrolling for touch carousels — not a Tailwind utility since
+   it's a vendor-prefixed property with no core-plugin equivalent. */
+.momentum-scroll { -webkit-overflow-scrolling: touch; }
+
+/* v2 homepage — morphing grid blocks, echoing karinasirqueira.com's idle
+   shape-loop (blob corner -> rounded square -> pill -> circle -> repeat).
+   Four variants with different starting corners + durations so the grid
+   doesn't pulse in lockstep. */
+@keyframes v2Morph1 { 0%{border-radius:0% 60% 0% 0%;} 25%{border-radius:2.5rem;} 50%{border-radius:999px;} 75%{border-radius:50%;} 100%{border-radius:0% 60% 0% 0%;} }
+@keyframes v2Morph2 { 0%{border-radius:60% 0% 0% 0%;} 25%{border-radius:50%;} 50%{border-radius:2.5rem;} 75%{border-radius:999px;} 100%{border-radius:60% 0% 0% 0%;} }
+@keyframes v2Morph3 { 0%{border-radius:0% 0% 60% 0%;} 25%{border-radius:999px;} 50%{border-radius:50%;} 75%{border-radius:2.5rem;} 100%{border-radius:0% 0% 60% 0%;} }
+@keyframes v2Morph4 { 0%{border-radius:0% 0% 0% 60%;} 25%{border-radius:50%;} 50%{border-radius:999px;} 75%{border-radius:2.5rem;} 100%{border-radius:0% 0% 0% 60%;} }
+
+.v2-morph-1 { animation: v2Morph1 16s ease-in-out infinite; }
+.v2-morph-2 { animation: v2Morph2 18s ease-in-out infinite; }
+.v2-morph-3 { animation: v2Morph3 15s ease-in-out infinite; }
+.v2-morph-4 { animation: v2Morph4 17s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .v2-morph-1, .v2-morph-2, .v2-morph-3, .v2-morph-4 {
+    animation: none;
+    border-radius: 2rem;
+  }
+}

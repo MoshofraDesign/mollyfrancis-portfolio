@@ -1,0 +1,65 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" font-family="'Poppins','Century Gothic','Futura','Helvetica Neue',Arial,sans-serif">
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+
+  <text x="400" y="100" text-anchor="middle" font-size="36" font-weight="600" fill="#0091CF">Submitter benefits</text>
+  <text x="1200" y="100" text-anchor="middle" font-size="36" font-weight="600" fill="#0B1F33">County benefits</text>
+  <line x1="800" y1="60" x2="800" y2="840" stroke="#E4E9ED" stroke-width="2"/>
+
+  <circle cx="800" cy="450" r="86" fill="#FFFFFF" stroke="#0091CF" stroke-width="3"/>
+  <circle cx="800" cy="450" r="70" fill="#0091CF"/>
+  <text x="800" y="443" text-anchor="middle" font-size="24" font-weight="600" fill="#FFFFFF">GovOS</text>
+  <text x="800" y="470" text-anchor="middle" font-size="17" font-weight="400" fill="#FFFFFF">eSubmission</text>
+
+  <g>
+    <rect x="90" y="190" width="60" height="60" rx="14" fill="#E6F1FB"/>
+    <text x="120" y="232" text-anchor="middle" font-size="30" font-weight="600" fill="#0091CF">$</text>
+    <text x="175" y="215" font-size="27" font-weight="600" fill="#0B1F33">Reduced cost</text>
+    <text x="175" y="245" font-size="20" fill="#55606B">No vendor fee stacked on the recording fee</text>
+  </g>
+  <g>
+    <rect x="90" y="410" width="60" height="60" rx="14" fill="#E6F1FB"/>
+    <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="106" y="428" width="28" height="24" rx="2"/>
+      <path d="M 106 436 L 134 436"/>
+    </g>
+    <text x="175" y="435" font-size="27" font-weight="600" fill="#0B1F33">Simplified payment tracking</text>
+    <text x="175" y="465" font-size="20" fill="#55606B">One bulk ACH transfer instead of many</text>
+  </g>
+  <g>
+    <rect x="90" y="630" width="60" height="60" rx="14" fill="#E6F1FB"/>
+    <g stroke="#0091CF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="112" cy="654" r="9"/>
+      <circle cx="128" cy="654" r="9"/>
+      <path d="M 112 663 L 128 663" />
+    </g>
+    <text x="175" y="655" font-size="27" font-weight="600" fill="#0B1F33">Direct interaction with the county</text>
+    <text x="175" y="685" font-size="20" fill="#55606B">Status and questions, without a go-between</text>
+  </g>
+
+  <g>
+    <rect x="1450" y="190" width="60" height="60" rx="14" fill="#F5F8FA"/>
+    <g stroke="#0B1F33" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 1466 226 L 1478 238 L 1500 210"/>
+    </g>
+    <text x="1425" y="215" text-anchor="end" font-size="27" font-weight="600" fill="#0B1F33">Simplified day-end reconciliation</text>
+    <text x="1425" y="245" text-anchor="end" font-size="20" fill="#55606B">One clean report per submitter, per period</text>
+  </g>
+  <g>
+    <rect x="1450" y="410" width="60" height="60" rx="14" fill="#F5F8FA"/>
+    <g stroke="#0B1F33" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="1466" y="428" width="28" height="24" rx="2"/>
+      <path d="M 1466 436 L 1494 436"/>
+    </g>
+    <text x="1425" y="435" text-anchor="end" font-size="27" font-weight="600" fill="#0B1F33">Reduced paper submissions</text>
+    <text x="1425" y="465" text-anchor="end" font-size="20" fill="#55606B">Fewer manual printing and scanning steps</text>
+  </g>
+  <g>
+    <rect x="1450" y="630" width="60" height="60" rx="14" fill="#F5F8FA"/>
+    <g stroke="#0B1F33" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="1480" cy="660" r="20"/>
+      <path d="M 1480 640 L 1480 626 M 1474 632 L 1480 626 L 1486 632"/>
+    </g>
+    <text x="1425" y="655" text-anchor="end" font-size="27" font-weight="600" fill="#0B1F33">Serve submitters directly</text>
+    <text x="1425" y="685" text-anchor="end" font-size="20" fill="#55606B">No vendor standing between county and customer</text>
+  </g>
+</svg>
