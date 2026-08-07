@@ -291,33 +291,27 @@ function ChallengeBlock({
 }
 
 /**
- * Full-bleed circular portrait — the "meet the audience" panel that
- * precedes each benefits panel. Figma centers the 600px circle in the
- * viewport; skips silently like CardPanel used to until the photo is
+ * Circular portrait — the "meet the audience" panel that precedes each
+ * benefits panel. Figma's canvas has this frame at the full 1440 width with
+ * the 600px circle dead-centered (left-1/2 -translate-x-1/2) — but as a
+ * horizontal-scroll beat between two full-bleed text panels, a full-width
+ * slide read as too wide. Narrowed to lg:w-[46vw], matching the other
+ * non-full-bleed panels (Panel), with the circle simply centered inside it,
+ * same as Figma. Skips silently like CardPanel used to until the photo is
  * exported into /public.
  */
 function PortraitPanel({ src, alt }: { src: string; alt: string }) {
   if (!hasImage(src)) return null;
-  // Matches Figma exactly: a 950px-wide column anchored at the same x=100
-  // left inset every other section uses (lg:pl-[100px], not a symmetric
-  // lg:px, so the column hugs the same edge as the text panels rather than
-  // re-centering itself in the extra space). The circle is then centered
-  // within that 950px column. Side padding below lg is tighter than the
-  // text panels on purpose — the circle has no edge-aligned content to line
-  // up against, so it can run closer to the viewport edge without looking
-  // cramped, unlike a text column that needs room around its longest line.
   return (
-    <section className="relative flex w-full items-center px-2 py-14 sm:px-4 sm:py-16 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:overflow-y-auto lg:overscroll-contain lg:pl-[100px] lg:py-12">
-      <div className="flex w-full max-w-[950px] justify-center">
-        <div className="relative aspect-square w-full max-w-[200px] sm:max-w-[240px] lg:max-w-[280px]">
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            sizes="(max-width: 1023px) 50vw, 20vw"
-            className="rounded-full object-cover"
-          />
-        </div>
+    <section className="relative flex w-full items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-[46vw] lg:shrink-0 lg:snap-center lg:overflow-y-auto lg:overscroll-contain lg:py-12">
+      <div className="relative aspect-square w-[60vw] max-w-[280px] sm:w-[46vw] sm:max-w-[360px] lg:w-[65%] lg:max-w-[420px]">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 1023px) 55vw, 30vw"
+          className="rounded-full object-cover"
+        />
       </div>
     </section>
   );
