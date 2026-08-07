@@ -307,14 +307,14 @@ function PortraitPanel({ src, alt }: { src: string; alt: string }) {
   // up against, so it can run closer to the viewport edge without looking
   // cramped, unlike a text column that needs room around its longest line.
   return (
-    <section className="relative flex w-full items-center px-3 py-14 sm:px-5 sm:py-16 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:overflow-y-auto lg:overscroll-contain lg:pl-[100px] lg:py-12">
+    <section className="relative flex w-full items-center px-2 py-14 sm:px-4 sm:py-16 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:overflow-y-auto lg:overscroll-contain lg:pl-[100px] lg:py-12">
       <div className="flex w-full max-w-[950px] justify-center">
-        <div className="relative aspect-square w-full max-w-[480px] sm:max-w-[580px] lg:max-w-[600px]">
+        <div className="relative aspect-square w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[420px]">
           <Image
             src={src}
             alt={alt}
             fill
-            sizes="(max-width: 1023px) 92vw, 42vw"
+            sizes="(max-width: 1023px) 70vw, 30vw"
             className="rounded-full object-cover"
           />
         </div>
