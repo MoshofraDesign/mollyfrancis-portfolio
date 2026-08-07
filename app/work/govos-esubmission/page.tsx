@@ -293,17 +293,19 @@ function ChallengeBlock({
 /**
  * Circular portrait — the "meet the audience" panel that precedes each
  * benefits panel. Figma's canvas has this frame at the full 1440 width with
- * the 600px circle dead-centered (left-1/2 -translate-x-1/2) — but as a
- * horizontal-scroll beat between two full-bleed text panels, a full-width
- * slide read as too wide. Narrowed to lg:w-[46vw], matching the other
- * non-full-bleed panels (Panel), with the circle simply centered inside it,
- * same as Figma. Skips silently like CardPanel used to until the photo is
+ * the 600px circle dead-centered — but as a horizontal-scroll beat between
+ * two full-bleed text panels, a full-width slide read as too wide. Narrowed
+ * to lg:w-[46vw], matching the other non-full-bleed panels (Panel), with
+ * the circle right-justified at lg+ so it sits toward the panel it's
+ * leading into, rather than centered. Below lg it stays centered — there's
+ * no adjacent panel bleeding into view there since the page is a normal
+ * vertical scroll. Skips silently like CardPanel used to until the photo is
  * exported into /public.
  */
 function PortraitPanel({ src, alt }: { src: string; alt: string }) {
   if (!hasImage(src)) return null;
   return (
-    <section className="relative flex w-full items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-[46vw] lg:shrink-0 lg:snap-center lg:overflow-y-auto lg:overscroll-contain lg:py-12">
+    <section className="relative flex w-full items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-[46vw] lg:shrink-0 lg:snap-center lg:justify-end lg:overflow-y-auto lg:overscroll-contain lg:py-12">
       <div className="relative aspect-square w-[60vw] max-w-[280px] sm:w-[46vw] sm:max-w-[360px] lg:w-[65%] lg:max-w-[420px]">
         <Image
           src={src}
