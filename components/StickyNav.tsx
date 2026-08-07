@@ -52,11 +52,10 @@ export default function StickyNav({ watch, logo, action }: Props) {
     }
 
     const update = () => {
-      // Matches the logo wrapper's own left inset below (pl-6 / sm:pl-12 /
-      // lg:pl-[100px]) — which in turn matches every section's text column
-      // (Panel / TextPanel), so the logo finishes its slide exactly where
-      // the next panel's own heading sits, not offset from it.
-      const pad = window.innerWidth >= 1024 ? 100 : window.innerWidth >= 640 ? 48 : 24;
+      // Matches the logo wrapper's own left inset below (pl-5 / sm:pl-8 /
+      // lg:pl-[48px]) so the slide lands exactly on the resting position,
+      // not short of or past it.
+      const pad = window.innerWidth >= 1024 ? 48 : window.innerWidth >= 640 ? 32 : 20;
       // Parked just off the right edge while the title panel is up, then moves
       // left 1:1 with the scroll — so it slides in with the second section
       // rather than sitting on screen waiting. Stops dead in the corner.
@@ -80,21 +79,22 @@ export default function StickyNav({ watch, logo, action }: Props) {
   }, [watch]);
 
   return (
-    // Left and right insets are independent on purpose: the logo's left
-    // inset (pl-6 / sm:pl-12 / lg:pl-[100px]) has to match every section's
-    // text column exactly, while the Close action just hugs the corner —
-    // there's no text column on the right for it to line up with.
+    // Left and right insets are independent on purpose: the Close action
+    // just hugs the corner, while the logo's left inset is intentionally
+    // tighter than the section text columns (pl-[100px]) — once it's
+    // parked, it reads as nav chrome hugging the corner, not another text
+    // column that needs to line up with the page's content grid.
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex items-start justify-between py-5 pr-5 sm:py-7 sm:pr-8">
       {/* Below lg: plain fade-in once the title section is scrolled past. */}
       <div
-        className="pl-6 sm:pl-12 lg:hidden"
+        className="pl-5 sm:pl-8 lg:hidden"
         style={{ opacity: pastTitle ? 1 : 0, transition: "opacity 400ms ease" }}
       >
         {logo}
       </div>
       {/* lg+: slides in 1:1 with horizontal scrollLeft, as before. */}
       <div
-        className="hidden lg:block lg:pl-[100px]"
+        className="hidden lg:block lg:pl-12"
         style={{
           // Hidden until measured on the client — `window` isn't available
           // during SSR, and this avoids a flash in the corner on first paint.
