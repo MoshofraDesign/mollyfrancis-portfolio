@@ -1,14 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
-// Centered, minimal hero — eyebrow line + a single big headline that cycles
-// through a short rotation of taglines, each held on screen for a beat then
-// crossfaded for the next. Mirrors the calm, single-focal-point hero pattern
-// (logo/nav top, one big centered statement, contact + location anchored to
-// the bottom corners) rather than the previous side-by-side portrait layout.
+// Two-column hero — halftone portrait on the left, left-justified intro
+// text on the right: a static "Hello, I'm Molly Francis" line, then a
+// larger line that cycles through a short rotation of taglines, each held
+// on screen for a beat then crossfaded for the next.
 const headlines = [
-  "Hello, I'm Molly Francis.",
+  "I'm a UI/UX product designer, artist & collector of many things.",
   "I turn complex healthcare and fintech problems into simple experiences.",
   "20+ years designing — now augmented with a working AI stack.",
 ];
@@ -32,36 +32,33 @@ export default function RotatingHero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-[92vh] flex-col items-center justify-center px-6 text-center">
-      <p className="mb-6 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-ink/50">
-        Welcome! I&rsquo;m Molly <span aria-hidden="true">✦</span>
-      </p>
+    <section className="flex min-h-[80vh] items-center px-6 lg:px-10">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 sm:grid-cols-[minmax(0,340px)_1fr] sm:gap-12 lg:gap-16">
+        <div className="relative mx-auto aspect-square w-full max-w-[280px] sm:mx-0 sm:max-w-none">
+          {/* unoptimized: the optimizer only passes SVGs through with
+              dangerouslyAllowSVG set, and this is our own trusted asset. */}
+          <Image
+            src="/hero-halftone.svg"
+            alt="Halftone portrait of Molly Francis"
+            fill
+            unoptimized
+            priority
+            className="object-contain"
+          />
+        </div>
 
-      <h1
-        className="max-w-4xl font-jost font-semibold text-[clamp(2rem,5vw,3.75rem)] leading-[1.08] tracking-tight transition-opacity duration-[400ms] ease-out"
-        style={{ opacity: visible ? 1 : 0 }}
-      >
-        {headlines[index]}
-      </h1>
-
-      {/* Bottom-left: how to reach her. */}
-      <div className="absolute bottom-8 left-6 hidden sm:block lg:left-10">
-        <p className="mb-2 text-xs uppercase tracking-[0.2em] text-ink/50">
-          Get in touch
-        </p>
-        <a
-          href="mailto:yo@mollyfrancis.com"
-          className="link-underline text-sm text-ink/70"
-        >
-          yo@mollyfrancis.com
-        </a>
-      </div>
-
-      {/* Bottom-right: location. */}
-      <div className="absolute bottom-8 right-6 hidden text-right sm:block lg:right-10">
-        <p className="text-xs uppercase tracking-[0.2em] text-ink/50">
-          Austin, TX
-        </p>
+        <div className="text-left">
+          <p className="mb-3 flex items-center gap-1.5 text-base font-semibold text-ink">
+            Hello, I&rsquo;m Molly Francis
+            <span aria-hidden="true">🖐️</span>
+          </p>
+          <h1
+            className="max-w-xl font-jost text-[clamp(1.375rem,2.6vw,1.875rem)] font-normal leading-snug text-ink transition-opacity duration-[400ms] ease-out"
+            style={{ opacity: visible ? 1 : 0 }}
+          >
+            {headlines[index]}
+          </h1>
+        </div>
       </div>
     </section>
   );
