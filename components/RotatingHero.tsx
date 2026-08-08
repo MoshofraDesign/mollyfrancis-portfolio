@@ -32,9 +32,9 @@ export default function RotatingHero() {
   }, []);
 
   return (
-    <section className="flex min-h-[80vh] items-center px-6 lg:px-10">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 sm:grid-cols-[minmax(0,340px)_1fr] sm:gap-12 lg:gap-16">
-        <div className="relative mx-auto aspect-square w-full max-w-[280px] sm:mx-0 sm:max-w-[575px]">
+    <section className="flex min-h-[70vh] items-center px-6 py-16 sm:min-h-[75vh] sm:py-0 lg:min-h-[80vh] lg:px-10">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,380px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,650px)_1fr] lg:gap-16">
+        <div className="relative mx-auto aspect-square w-full max-w-[240px] sm:max-w-[340px] md:mx-0 md:max-w-none lg:max-w-[650px]">
           {/* unoptimized: the optimizer only passes SVGs through with
               dangerouslyAllowSVG set, and this is our own trusted asset. */}
           <Image
@@ -48,12 +48,12 @@ export default function RotatingHero() {
         </div>
 
         <div className="text-left">
-          <p className="mb-3 flex items-center gap-1.5 text-[40px] font-normal text-ink">
+          <p className="mb-2 flex items-center gap-1.5 text-sm font-normal text-ink sm:mb-3 sm:text-base md:text-lg lg:text-[20px]">
             Hello, I&rsquo;m Molly Francis
             <span aria-hidden="true">🖐️</span>
           </p>
           <h1
-            className="max-w-xl font-jost text-[55px] font-medium leading-snug text-ink transition-opacity duration-[400ms] ease-out"
+            className="max-w-2xl font-jost text-2xl font-medium leading-snug text-ink transition-opacity duration-[400ms] ease-out sm:text-3xl md:max-w-3xl md:text-4xl lg:max-w-4xl lg:text-[55px]"
             style={{ opacity: visible ? 1 : 0 }}
           >
             {headlines[index]}

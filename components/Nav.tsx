@@ -84,9 +84,9 @@ export default function Nav() {
                 target={href.startsWith("mailto:") ? undefined : "_blank"}
                 rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
                 aria-label={label}
-                className="grid h-8 w-8 place-items-center rounded-full text-ink/60 transition-colors hover:bg-ink hover:text-cream"
+                className="grid h-10 w-10 place-items-center rounded-full text-ink/60 transition-colors hover:bg-ink hover:text-cream"
               >
-                <Icon size={15} />
+                <Icon size={20} />
               </a>
             ))}
           </div>
@@ -118,9 +118,9 @@ export default function Nav() {
                     target={href.startsWith("mailto:") ? undefined : "_blank"}
                     rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
                     aria-label={label}
-                    className="grid h-8 w-8 place-items-center rounded-full text-ink/60 hover:bg-ink hover:text-cream"
+                    className="grid h-10 w-10 place-items-center rounded-full text-ink/60 hover:bg-ink hover:text-cream"
                   >
-                    <Icon size={15} />
+                    <Icon size={20} />
                   </a>
                 ))}
               </div>

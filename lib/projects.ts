@@ -204,7 +204,7 @@ export const projects: Project[] = [
     tags: ["Healthcare", "Provider tools", "Design system", "0→1"],
     thumbnail: "/work-thumbnails/bright-healthcare-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489640575-FE1X3BSOCUHJVV45MVW0/Landing.jpg",
-    logo: "/logos/bright-healthcare.svg",
+    logo: "/logos/bright-healthcare-vert-2.svg",
     accent: "#FFAF00",
     featured: true,
     aiSummary:
