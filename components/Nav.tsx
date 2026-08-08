@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Linkedin, Dribbble, Instagram, Mail } from "lucide-react";
+import { FaLinkedin, FaDribbble, FaInstagram, FaEnvelope } from "react-icons/fa";
 import Logo from "./Logo";
 
 const links = [
@@ -20,10 +20,10 @@ const links = [
 // Same set as the footer's social row (mollyfrancis.com), mirrored here so
 // they're reachable without scrolling all the way down.
 const socials = [
-  { href: "https://www.linkedin.com/in/molly-francis-89041515/", label: "LinkedIn", icon: Linkedin },
-  { href: "https://dribbble.com/mollyfrancis", label: "Dribbble", icon: Dribbble },
-  { href: "https://www.instagram.com/moshofra/", label: "Instagram", icon: Instagram },
-  { href: "mailto:yo@mollyfrancis.com", label: "Email", icon: Mail },
+  { href: "https://www.linkedin.com/in/molly-francis-89041515/", label: "LinkedIn", icon: FaLinkedin },
+  { href: "https://dribbble.com/mollyfrancis", label: "Dribbble", icon: FaDribbble },
+  { href: "https://www.instagram.com/moshofra/", label: "Instagram", icon: FaInstagram },
+  { href: "mailto:yo@mollyfrancis.com", label: "Email", icon: FaEnvelope },
 ];
 
 export default function Nav() {
@@ -42,11 +42,7 @@ export default function Nav() {
       initial={{ y: -32, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "backdrop-blur-md bg-cream/75 border-b border-ink/5"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-500"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-24 flex items-center justify-between">
         <Link href="/" className="group">
@@ -78,14 +74,6 @@ export default function Nav() {
             })}
           </nav>
 
-          <Link
-            href="/contact"
-            className="hidden md:inline-flex items-center gap-2 text-sm magnetic ghost"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-sage animate-pulse" />
-            Available for work
-          </Link>
-
           {/* Social row — same links as the footer, kept reachable from the
               top on every page. */}
           <div className="hidden md:flex items-center gap-1 border-l border-ink/10 pl-3">
@@ -98,7 +86,7 @@ export default function Nav() {
                 aria-label={label}
                 className="grid h-8 w-8 place-items-center rounded-full text-ink/60 transition-colors hover:bg-ink hover:text-cream"
               >
-                <Icon size={15} strokeWidth={1.75} />
+                <Icon size={15} />
               </a>
             ))}
           </div>
@@ -132,7 +120,7 @@ export default function Nav() {
                     aria-label={label}
                     className="grid h-8 w-8 place-items-center rounded-full text-ink/60 hover:bg-ink hover:text-cream"
                   >
-                    <Icon size={15} strokeWidth={1.75} />
+                    <Icon size={15} />
                   </a>
                 ))}
               </div>

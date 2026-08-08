@@ -822,9 +822,9 @@ export const projects: Project[] = [
     year: "2014–2016",
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Storefront", "Templates"],
-    thumbnail: "/work-thumbnails/volusion-figma.webp",
-    logo: "/logos/volusion.svg",
-    accent: "#8759F2",
+    thumbnail: "/work-thumbnails/ecommerce-websites-figma.webp",
+    logo: "/logos/ecommerce-websites.svg",
+    accent: "#A3CC00",
     aiSummary:
       "A gallery of Volusion ecommerce designs — each started with a client phone call to align on look, feel, and merchandising goals, plus a set of paid templates flexible enough that clients could swap their own imagery and brand colors without breaking the design.",
     overview:

@@ -48,12 +48,12 @@ export default function RotatingHero() {
         </div>
 
         <div className="text-left">
-          <p className="mb-3 flex items-center gap-1.5 text-[40px] font-semibold text-ink">
+          <p className="mb-3 flex items-center gap-1.5 text-[40px] font-normal text-ink">
             Hello, I&rsquo;m Molly Francis
             <span aria-hidden="true">🖐️</span>
           </p>
           <h1
-            className="max-w-xl font-jost text-[55px] font-normal leading-snug text-ink transition-opacity duration-[400ms] ease-out"
+            className="max-w-xl font-jost text-[55px] font-medium leading-snug text-ink transition-opacity duration-[400ms] ease-out"
             style={{ opacity: visible ? 1 : 0 }}
           >
             {headlines[index]}
