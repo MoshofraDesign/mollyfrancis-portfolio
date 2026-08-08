@@ -9,27 +9,33 @@ type Props = {
 };
 
 /**
- * Edge-to-edge grid of square project tiles, modeled on Figma's "Care" /
- * "Care - Hover" thumbnail states: the thumbnail sits under a flat
- * accent-colored overlay (project.accent) at partial opacity, with the
- * client name reading over it like a wordmark. On hover the overlay goes
- * fully opaque and the wordmark is replaced by the project title + subtitle.
- * No rounded corners anywhere, by design — tiles butt up against each other.
+ * Grid of square project tiles, modeled on Figma's "Care" / "Care - Hover"
+ * thumbnail states: the thumbnail sits under a flat accent-colored overlay
+ * (project.accent) at partial opacity, with the client name reading over it
+ * like a wordmark. On hover the overlay goes fully opaque and the wordmark
+ * is replaced by the project title + subtitle. No rounded corners anywhere,
+ * by design.
+ *
+ * Tiles are capped at 375px and separated by gutters (auto-fill/minmax +
+ * gap), like mollyfrancis.com's work grid — not edge-to-edge.
  */
 export default function CareGrid({ projects }: Props) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <div
+      className="grid justify-center gap-6 sm:gap-8"
+      style={{ gridTemplateColumns: "repeat(auto-fill, minmax(240px, 375px))" }}
+    >
       {projects.map((project) => (
         <Link
           key={project.slug}
           href={`/work/${project.slug}`}
-          className="group relative block aspect-square overflow-hidden"
+          className="group relative block aspect-square w-full max-w-[375px] overflow-hidden"
         >
           <Image
             src={project.thumbnail}
             alt={project.title}
             fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 34vw"
+            sizes="375px"
             className="object-cover"
           />
 

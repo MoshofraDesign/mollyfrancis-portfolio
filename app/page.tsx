@@ -60,9 +60,10 @@ export default function Home() {
 
       {/* WORK GRID -------------------------------------------------------
           Anchor for the "Work" nav item — jumps here instead of a separate
-          /work route. Full-bleed, no max-w wrapper: tiles run edge to edge. */}
-      <section id="work" className="scroll-mt-24 py-16">
-        <div className="mx-auto mb-16 max-w-7xl px-6 lg:px-10">
+          /work route. Tiles are capped at 375px with gutters between them,
+          so this shares the page's padded container like every other section. */}
+      <section id="work" className="mx-auto max-w-7xl scroll-mt-24 px-6 py-16 lg:px-10">
+        <div className="mb-16">
           <p className="mb-3 text-xs uppercase tracking-[0.25em] text-ink/50">
             Selected work, 2014 — 2026
           </p>
