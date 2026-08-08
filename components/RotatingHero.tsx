@@ -38,7 +38,7 @@ export default function RotatingHero() {
       </p>
 
       <h1
-        className="max-w-4xl font-serif text-[clamp(2rem,5vw,3.75rem)] leading-[1.08] tracking-tight transition-opacity duration-[400ms] ease-out"
+        className="max-w-4xl font-jost font-semibold text-[clamp(2rem,5vw,3.75rem)] leading-[1.08] tracking-tight transition-opacity duration-[400ms] ease-out"
         style={{ opacity: visible ? 1 : 0 }}
       >
         {headlines[index]}

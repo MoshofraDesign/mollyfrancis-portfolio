@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Bodoni_Moda } from "next/font/google";
+import { DM_Sans, Bodoni_Moda, Jost } from "next/font/google";
 import "./globals.css";
 import CursorBlob from "@/components/CursorBlob";
 import SiteChrome from "@/components/SiteChrome";
@@ -17,6 +17,16 @@ const bodoniModa = Bodoni_Moda({
   weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
   variable: "--font-serif",
+  display: "swap",
+});
+
+// Matches the Figma "Care - Hover" spec (Jost SemiBold headline / Regular
+// body) used for the homepage hero + work-grid hover text.
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal"],
+  variable: "--font-jost",
   display: "swap",
 });
 
@@ -40,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${bodoniModa.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${bodoniModa.variable} ${jost.variable}`}>
       <body>
         <CursorBlob />
         <SiteChrome>{children}</SiteChrome>

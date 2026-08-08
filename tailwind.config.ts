@@ -27,6 +27,7 @@ const config: Config = {
         sans: ["var(--font-sans)", "DM Sans", "system-ui", "sans-serif"],
         mono: ["ui-monospace", "SFMono-Regular", "monospace"],
         display: ["var(--font-display)", "Arial Narrow", "sans-serif"],
+        jost: ["var(--font-jost)", "Jost", "sans-serif"],
       },
       fontSize: {
         display: ["clamp(3.5rem, 9vw, 9rem)", { lineHeight: "0.95", letterSpacing: "-0.04em" }],
