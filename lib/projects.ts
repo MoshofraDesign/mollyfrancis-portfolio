@@ -12,6 +12,9 @@ export type Project = {
   // the homepage grid tile — see CareGrid. Falls back to no mark at all
   // (never rendered HTML text) if unset.
   logo?: string;
+  // Per-project size multiplier for the thumbnail logo (CareGrid), since
+  // logo aspect ratios vary a lot — defaults to 1 when unset.
+  logoScale?: number;
   accent: string;
   // AI-enhanced description (generated, 2-3 sentences)
   aiSummary: string;
@@ -80,6 +83,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/govos-esubmission-figma.webp",
     hero: "/work/govos/hero-laptop.webp",
     logo: "/logos/govos-esubmission-figma.svg",
+    logoScale: 0.75,
     accent: "#70ACF4",
     featured: true,
     aiSummary:
@@ -205,6 +209,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/bright-healthcare-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489640575-FE1X3BSOCUHJVV45MVW0/Landing.jpg",
     logo: "/logos/bright-healthcare-vert-2.svg",
+    logoScale: 1.4,
     accent: "#FFAF00",
     featured: true,
     aiSummary:
@@ -536,6 +541,7 @@ export const projects: Project[] = [
     tags: ["Ecommerce", "Onboarding", "SaaS"],
     thumbnail: "/work-thumbnails/onboarding-figma.webp",
     logo: "/logos/onboarding.svg",
+    logoScale: 0.75,
     accent: "#173CB7",
     aiSummary:
       "Designed the onboarding flow new Volusion free-trial customers walked through on their way to a live store — competitive research, sketches, three workflow options, prototypes, and user testing. Goal was to bump trial-to-paid conversion by getting merchants past setup faster.",
@@ -624,6 +630,7 @@ export const projects: Project[] = [
     tags: ["Ecommerce", "Storefront", "Templates"],
     thumbnail: "/work-thumbnails/ecommerce-websites-raw.webp",
     logo: "/logos/ecommerce-websites.svg",
+    logoScale: 0.75,
     accent: "#A3CC00",
     aiSummary:
       "A gallery of Volusion ecommerce designs — each started with a client phone call to align on look, feel, and merchandising goals, plus a set of paid templates flexible enough that clients could swap their own imagery and brand colors without breaking the design.",
@@ -752,6 +759,7 @@ export const projects: Project[] = [
     tags: ["Brand", "Logo", "Identity"],
     thumbnail: "/work-thumbnails/logos-figma.webp",
     logo: "/logos/logos-project.svg",
+    logoScale: 0.75,
     accent: "#00EADA",
     aiSummary:
       "A collection of logo and identity work spanning clients across consumer, lifestyle, food, and personal branding. Marks range from playful illustrative to clean wordmarks, depending on the audience and how the brand needed to feel in use.",
