@@ -547,9 +547,9 @@ export const projects: Project[] = [
     year: "2017",
     role: "Senior Product Designer",
     tags: ["B2B", "Marketplace", "CMS"],
-    thumbnail: "/work-thumbnails/athenahealth-figma.webp",
-    logo: "/logos/athenahealth.svg",
-    accent: "#4717B7",
+    thumbnail: "/work-thumbnails/athenahealth-marketplace-figma.webp",
+    logo: "/logos/athenahealth-marketplace.svg",
+    accent: "#17B797",
     aiSummary:
       "Rebuilt the MDP marketplace so partners could self-publish, clinicians could find products faster, and athena could measure intent across the funnel. Filtering, partner pages, and tracking were redesigned together — partners maintain their own content; athena curates discovery.",
     overview:
@@ -586,6 +586,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Dashboard", "SaaS"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
+    logo: "/logos/volusion.svg",
     accent: "#8759F2",
     aiSummary:
       "Redesigned the admin used by Volusion's merchant base — order management, catalog, marketing, and storefront tools. Defined patterns for data-heavy tables, bulk actions, and a navigation that scaled as the product added modules.",
@@ -688,6 +689,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Platform", "Brand"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
+    logo: "/logos/volusion.svg",
     accent: "#8759F2",
     aiSummary:
       "Mozu was Volusion's enterprise platform play — flexible storefronts, multi-channel commerce, and a modular admin. I contributed to the product UI, brand surfaces, demo storefronts, and the visual language that positioned Mozu against established players.",
@@ -765,6 +767,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Front-end editor", "SaaS"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
+    logo: "/logos/volusion.svg",
     accent: "#173CB7",
     aiSummary:
       "Built an inline storefront editor so Volusion's free-trial customers could upload a logo, edit navigation, swap content blocks, and manage themes without leaving the front end. 75% of new customers wanted to start customizing immediately — this took the friction out.",
@@ -820,6 +823,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Storefront", "Templates"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
+    logo: "/logos/volusion.svg",
     accent: "#8759F2",
     aiSummary:
       "A gallery of Volusion ecommerce designs — each started with a client phone call to align on look, feel, and merchandising goals, plus a set of paid templates flexible enough that clients could swap their own imagery and brand colors without breaking the design.",
@@ -901,6 +905,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Brand", "Marketing", "Visual design"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
+    logo: "/logos/volusion.svg",
     accent: "#8759F2",
     aiSummary:
       "A wide gallery of work from Volusion's internal marketing department — Volusion.com pages, the employee swag site, landing pages, advertising, banners, and promos. The swag store was a fully responsive ecommerce experience with photography of products and the people wearing them.",
@@ -952,6 +957,10 @@ export const projects: Project[] = [
     overview:
       "Logo and identity work for a mix of paying clients and personal projects — wordmarks, illustrative marks, and full identity systems.",
     images: [
+      {
+        src: "/work/bohemian-hair-bows-card.jpg",
+        caption: "Bohemian Hair Bows — logo and product card",
+      },
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593463214-AW8X3YLIHXQIB1GVFWA6/gigglepoo.png",
         caption: "Gigglepoo",
