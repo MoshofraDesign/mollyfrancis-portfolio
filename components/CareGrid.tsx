@@ -71,7 +71,7 @@ export default function CareGrid({ projects }: Props) {
             <p className="font-jost text-lg font-bold leading-[1.15] text-white sm:text-xl md:text-2xl lg:text-[28px]">
               {project.title}
             </p>
-            <p className="mt-2 max-w-[36ch] font-jost text-xs leading-relaxed text-white/85 sm:mt-3 sm:text-sm md:text-2xl lg:text-[48px]">
+            <p className="mt-2 max-w-[36ch] font-jost text-xs leading-relaxed text-white/85 sm:mt-3 sm:text-sm md:text-base">
               {project.subtitle}
             </p>
           </div>
