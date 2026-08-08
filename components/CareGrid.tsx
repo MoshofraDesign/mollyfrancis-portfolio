@@ -64,12 +64,14 @@ export default function CareGrid({ projects }: Props) {
             </div>
           )}
 
-          {/* Hover state: title + subtitle, left-aligned like Care - Hover. */}
-          <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 sm:p-8">
-            <p className="font-jost text-[clamp(1.5rem,2.6vw,2.25rem)] font-semibold leading-[1.05] text-white">
+          {/* Hover state: title + subtitle, left-aligned and vertically
+              centered in the tile, with sizes that step down at each
+              breakpoint rather than scaling continuously. */}
+          <div className="absolute inset-0 flex flex-col justify-center p-6 text-left opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 sm:p-8">
+            <p className="font-jost text-lg font-bold leading-[1.15] text-white sm:text-xl md:text-2xl lg:text-[28px]">
               {project.title}
             </p>
-            <p className="mt-3 max-w-[36ch] font-jost text-sm leading-relaxed text-white/85">
+            <p className="mt-2 max-w-[36ch] font-jost text-xs leading-relaxed text-white/85 sm:mt-3 sm:text-sm md:text-base">
               {project.subtitle}
             </p>
           </div>

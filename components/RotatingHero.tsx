@@ -34,7 +34,7 @@ export default function RotatingHero() {
   return (
     <section className="flex min-h-[80vh] items-center px-6 lg:px-10">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 sm:grid-cols-[minmax(0,340px)_1fr] sm:gap-12 lg:gap-16">
-        <div className="relative mx-auto aspect-square w-full max-w-[280px] sm:mx-0 sm:max-w-none">
+        <div className="relative mx-auto aspect-square w-full max-w-[280px] sm:mx-0 sm:max-w-[575px]">
           {/* unoptimized: the optimizer only passes SVGs through with
               dangerouslyAllowSVG set, and this is our own trusted asset. */}
           <Image
@@ -48,12 +48,12 @@ export default function RotatingHero() {
         </div>
 
         <div className="text-left">
-          <p className="mb-3 flex items-center gap-1.5 text-base font-semibold text-ink">
+          <p className="mb-3 flex items-center gap-1.5 text-[40px] font-semibold text-ink">
             Hello, I&rsquo;m Molly Francis
             <span aria-hidden="true">🖐️</span>
           </p>
           <h1
-            className="max-w-xl font-jost text-[clamp(1.375rem,2.6vw,1.875rem)] font-normal leading-snug text-ink transition-opacity duration-[400ms] ease-out"
+            className="max-w-xl font-jost text-[55px] font-normal leading-snug text-ink transition-opacity duration-[400ms] ease-out"
             style={{ opacity: visible ? 1 : 0 }}
           >
             {headlines[index]}

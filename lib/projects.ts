@@ -951,6 +951,7 @@ export const projects: Project[] = [
     role: "Designer",
     tags: ["Brand", "Logo", "Identity"],
     thumbnail: "/work-thumbnails/logos-figma.webp",
+    logo: "/logos/logos-project.svg",
     accent: "#00EADA",
     aiSummary:
       "A collection of logo and identity work spanning clients across consumer, lifestyle, food, and personal branding. Marks range from playful illustrative to clean wordmarks, depending on the audience and how the brand needed to feel in use.",
