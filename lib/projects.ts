@@ -681,52 +681,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "mozu",
-    title: "Mozu",
-    subtitle: "Flexible commerce platform for ambitious merchants",
-    client: "Volusion / Mozu",
-    year: "2014–2015",
-    role: "Senior Product Designer",
-    tags: ["Ecommerce", "Platform", "Brand"],
-    thumbnail: "/work-thumbnails/volusion-figma.webp",
-    logo: "/logos/volusion.svg",
-    accent: "#8759F2",
-    aiSummary:
-      "Mozu was Volusion's enterprise platform play — flexible storefronts, multi-channel commerce, and a modular admin. I contributed to the product UI, brand surfaces, demo storefronts, and the visual language that positioned Mozu against established players.",
-    overview:
-      "Mozu provided online merchants with a flexible shopping cart system and control over the look, content, and functionality of their store. Multi-channel marketing, search, and catalog management rounded out the platform.",
-    images: [
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1445352837378-8FPSDW9COG151VP4RI0M/Mozu-Dashboard.jpg",
-        caption: "Mozu dashboard",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1447607206085-XXEGCSJKLL1DMYTPFLG3/Style+Guide+Option+1.png",
-        caption: "Style guide exploration",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422380202365-4M7I5HHJHCOJBQHBPOVA/Web-MysticSportsDemo.jpg",
-        caption: "Demo storefront — Mystic Sports",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422380355242-98VVE5W07AV1RS05VY0S/FutureOfShopping-molly-final.jpg",
-        caption: "Future of shopping — concept",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423167879870-FVGY2CMMRHL0334U07CG/mozuswag.png",
-        caption: "Mozu swag",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422380282144-NG5ULUBDWM460PLUKQ2P/Ad-Molly.jpg",
-        caption: "Advertisement",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1447607256429-DDF0485AM32PEDNCXW4I/InsideCover-Exploration.jpg",
-        caption: "Inside cover exploration",
-      },
-    ],
-  },
-  {
     slug: "onboarding",
     title: "Ecommerce Admin Onboarding",
     subtitle: "Helping new Volusion free-trial users sign up and start selling",
