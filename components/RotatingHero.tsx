@@ -53,7 +53,7 @@ export default function RotatingHero() {
             <span aria-hidden="true">🖐️</span>
           </p>
           <h1
-            className="max-w-2xl font-jost text-2xl font-medium leading-snug text-ink transition-opacity duration-[400ms] ease-out sm:text-3xl md:max-w-3xl md:text-4xl lg:max-w-4xl lg:text-[55px]"
+            className="max-w-3xl font-jost text-2xl font-medium leading-snug text-ink transition-opacity duration-[400ms] ease-out sm:text-3xl md:max-w-4xl md:text-4xl lg:max-w-5xl lg:text-[55px] lg:leading-[65px]"
             style={{ opacity: visible ? 1 : 0 }}
           >
             {headlines[index]}
