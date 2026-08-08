@@ -822,7 +822,7 @@ export const projects: Project[] = [
     year: "2014–2016",
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Storefront", "Templates"],
-    thumbnail: "/work-thumbnails/ecommerce-websites-figma.webp",
+    thumbnail: "/work-thumbnails/ecommerce-websites-raw.webp",
     logo: "/logos/ecommerce-websites.svg",
     accent: "#A3CC00",
     aiSummary:
