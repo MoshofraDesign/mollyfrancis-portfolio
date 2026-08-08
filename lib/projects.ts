@@ -383,7 +383,7 @@ export const projects: Project[] = [
   },
   {
     slug: "consumer-health",
-    title: "athenahealth / Consumer Health Patient Portal",
+    title: "athenahealth",
     subtitle: "Re-architecting a 25M-patient portal around what people actually do",
     client: "athenahealth",
     year: "2018–2019",
