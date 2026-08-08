@@ -315,7 +315,7 @@ export const projects: Project[] = [
     year: "2019–2020",
     role: "Lead Product Designer",
     tags: ["SaaS", "Messaging", "Enterprise"],
-    thumbnail: "/work-thumbnails/liveperson-figma.webp",
+    thumbnail: "/work-thumbnails/liveperson-figma-2.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580738797928-S404IR0JKTVC5D2VOISQ/Twitter-PublicExample.png",
     logo: "/logos/liveperson.svg",
     accent: "#FE5E00",
