@@ -559,6 +559,18 @@ export default function GovOSCaseStudy() {
             >
               Open prototype ↗
             </a>
+            {/* Tool icons (Figma, Lovable, Gemini, Jira, Miro, Pendo,
+                UserTesting) — Figma export, dropped in by hand like the
+                screen-recording videos. Skips silently until it's there. */}
+            {hasImage("/work/govos/tools-icons.png") && (
+              <Image
+                src="/work/govos/tools-icons.png"
+                alt="Tools used: Figma, Lovable, Gemini, Jira, Miro, Pendo, UserTesting"
+                width={576}
+                height={48}
+                className="mt-10 h-8 w-auto sm:h-10"
+              />
+            )}
           </Panel>
         )}
 

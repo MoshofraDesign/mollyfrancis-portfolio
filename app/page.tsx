@@ -1,162 +1,14 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { projects, featuredProjects } from "@/lib/projects";
-import ProjectCard from "@/components/ProjectCard";
-import MagneticButton from "@/components/MagneticButton";
+import { projects } from "@/lib/projects";
+import CareGrid from "@/components/CareGrid";
+import RotatingHero from "@/components/RotatingHero";
 import Reveal from "@/components/Reveal";
 
-const marqueeWords = [
-  "Healthcare",
-  "Design systems",
-  "0 → 1",
-  "AI-augmented research",
-  "Telehealth",
-  "FinTech",
-  "Enterprise SaaS",
-  "Mobile",
-  "Information architecture",
-  "Strategy",
-];
-
 export default function Home() {
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [0, -120]);
-  const portraitScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-  const portraitOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.4]);
-
   return (
-    <div className="page-shell">
+    <div className="page-shell min-h-screen bg-white">
       {/* HERO ---------------------------------------------------------- */}
-      <section
-        ref={heroRef}
-        className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-8 lg:pt-12 pb-24 lg:pb-32"
-      >
-        <div className="grid lg:grid-cols-12 gap-10 items-center">
-          <motion.div
-            style={{ y }}
-            className="lg:col-span-8 lg:order-2"
-          >
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-8"
-            >
-              Lead · Principal · Senior UX Product Designer — Austin, TX
-            </motion.p>
-
-            <h1 className="font-serif text-display">
-              <span className="block">
-                <motion.span
-                  initial={{ y: 80, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-block"
-                >
-                  Hello,
-                </motion.span>{" "}
-                <motion.span
-                  initial={{ y: 80, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.9, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-block"
-                >
-                  I&rsquo;m
-                </motion.span>
-              </span>
-              <span className="block">
-                <motion.span
-                  initial={{ y: 80, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.9, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-block italic font-light"
-                >
-                  Molly Francis.
-                </motion.span>
-              </span>
-            </h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-8 max-w-2xl text-lg lg:text-xl text-ink/75 leading-relaxed"
-            >
-              I&rsquo;m a UI/UX product designer, researcher, and leader. For 20+ years I&rsquo;ve
-              shipped simple, clean, and smart experiences across healthcare, fintech, and SaaS —
-              now integrating <em className="font-serif text-ochre not-italic">AI tools</em> into
-              research, design, and operations to make teams faster and insights sharper.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.55 }}
-              className="mt-10 flex flex-wrap items-center gap-3"
-            >
-              <MagneticButton href="/work">
-                See selected work <span aria-hidden>→</span>
-              </MagneticButton>
-              <MagneticButton href="/about" variant="ghost">
-                About me
-              </MagneticButton>
-              <a
-                href="https://www.mollyfrancis.com/s/Molly-Francis-Product-Designer-Researcher-and-Leader-Resume-1.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="link-underline text-sm text-ink/60 ml-2"
-              >
-                Download résumé ↗
-              </a>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="mt-8 flex flex-wrap gap-2 max-w-2xl"
-            >
-              {marqueeWords.map((w) => (
-                <span key={w} className="pill">
-                  {w}
-                </span>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            style={{ scale: portraitScale, opacity: portraitOpacity }}
-            className="lg:col-span-4 lg:order-1"
-          >
-            <div className="relative aspect-square w-[350px] max-w-full mx-auto rounded-full overflow-hidden bg-ink/5">
-              <Image
-                src="/about/molly-headshot.jpg"
-                alt="Molly Francis"
-                fill
-                sizes="350px"
-                className="object-cover"
-                priority
-              />
-            </div>
-            <a
-              href="https://www.builtinaustin.com/company/bright-health/product-tech"
-              target="_blank"
-              rel="noreferrer"
-              className="link-underline mt-4 inline-block text-sm text-ink/60"
-            >
-              Read the feature ↗
-            </a>
-          </motion.div>
-        </div>
-      </section>
+      <RotatingHero />
 
       {/* AI WORKFLOWS --------------------------------------------------- */}
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-28">
@@ -206,95 +58,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED WORK -------------------------------------------------- */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
-        <div className="flex items-end justify-between mb-16">
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
-              Featured
-            </p>
-            <h2 className="font-serif text-h1">Selected work</h2>
-          </div>
-          <Link href="/work" className="link-underline text-sm hidden md:inline-block">
-            View all ({projects.length})
-          </Link>
+      {/* WORK GRID -------------------------------------------------------
+          Anchor for the "Work" nav item — jumps here instead of a separate
+          /work route. Full-bleed, no max-w wrapper: tiles run edge to edge. */}
+      <section id="work" className="scroll-mt-24 py-16">
+        <div className="mx-auto mb-16 max-w-7xl px-6 lg:px-10">
+          <p className="mb-3 text-xs uppercase tracking-[0.25em] text-ink/50">
+            Selected work, 2014 — 2026
+          </p>
+          <h2 className="font-serif text-h1">Case studies</h2>
         </div>
-
-        <div className="space-y-24 lg:space-y-36">
-          {featuredProjects.map((p, i) => {
-            const reverse = i % 2 === 1;
-            return (
-              <Reveal key={p.slug} as="article">
-                <Link
-                  href={`/work/${p.slug}`}
-                  className="group flex flex-col lg:flex-row gap-y-8 lg:gap-x-16 items-center"
-                >
-                  <div
-                    className={`relative aspect-square w-full max-w-[400px] flex-none overflow-hidden rounded-[8px] ${
-                      reverse ? "lg:order-2" : ""
-                    }`}
-                  >
-                    <Image
-                      src={p.thumbnail}
-                      alt={p.title}
-                      fill
-                      sizes="400px"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                    />
-                  </div>
-
-                  <div
-                    className={`flex-1 min-w-0 ${
-                      reverse ? "lg:order-1" : ""
-                    }`}
-                  >
-                    <div className="flex items-baseline gap-4 mb-5">
-                      <span className="font-mono text-[18px] text-ink/40 leading-none">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink/50">
-                        {p.client} · {p.year}
-                      </span>
-                    </div>
-                    <div className="mb-6 flex flex-wrap gap-2">
-                      {p.tags.slice(0, 4).map((t) => (
-                        <span key={t} className="pill">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                    <h3 className="font-serif text-[clamp(2.25rem,4.5vw,4rem)] leading-[1] tracking-tight group-hover:text-ochre transition-colors">
-                      {p.title}
-                    </h3>
-                    <p className="mt-5 text-lg text-ink/75 leading-relaxed max-w-prose">
-                      {p.subtitle}
-                    </p>
-                    <span className="mt-8 inline-flex items-center gap-3 text-sm font-mono uppercase tracking-[0.22em]">
-                      Read case study
-                      <span className="inline-block transition-transform duration-500 group-hover:translate-x-2">
-                        →
-                      </span>
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* MORE WORK (list) ---------------------------------------------- */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
-        <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">
-          All projects
-        </p>
-        <div>
-          {projects
-            .filter((p) => !p.featured)
-            .map((p, i) => (
-              <ProjectCard key={p.slug} project={p} index={i} />
-            ))}
-        </div>
+        <CareGrid projects={projects} />
       </section>
 
       {/* CTA STRIP ------------------------------------------------------ */}
