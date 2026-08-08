@@ -48,7 +48,7 @@ export default function Nav() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 h-24 flex items-center justify-between">
+      <div className="w-full px-6 lg:px-10 h-24 flex items-center justify-between">
         <Link href="/" className="group">
           <Logo variant="lockup" />
         </Link>
@@ -88,7 +88,7 @@ export default function Nav() {
                 target={href.startsWith("mailto:") ? undefined : "_blank"}
                 rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
                 aria-label={label}
-                className="grid h-10 w-10 place-items-center rounded-full text-ink/60 transition-colors hover:bg-ink hover:text-cream"
+                className="grid h-10 w-10 place-items-center rounded-full text-ink transition-colors hover:bg-ink hover:text-cream"
               >
                 <Icon size={20} />
               </a>
@@ -122,7 +122,7 @@ export default function Nav() {
                     target={href.startsWith("mailto:") ? undefined : "_blank"}
                     rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
                     aria-label={label}
-                    className="grid h-10 w-10 place-items-center rounded-full text-ink/60 hover:bg-ink hover:text-cream"
+                    className="grid h-10 w-10 place-items-center rounded-full text-ink hover:bg-ink hover:text-cream"
                   >
                     <Icon size={20} />
                   </a>
