@@ -33,8 +33,8 @@ export default function RotatingHero() {
 
   return (
     <section className="flex min-h-[70vh] items-center px-6 py-16 sm:min-h-[75vh] sm:py-0 lg:min-h-[80vh] lg:px-10">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,380px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,650px)_1fr] lg:gap-16">
-        <div className="relative mx-auto aspect-square w-full max-w-[240px] sm:max-w-[340px] md:mx-0 md:max-w-none lg:max-w-[650px]">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,340px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,570px)_1fr] lg:gap-16">
+        <div className="relative mx-auto aspect-square w-full max-w-[210px] sm:max-w-[300px] md:mx-0 md:max-w-none lg:max-w-[570px]">
           {/* unoptimized: the optimizer only passes SVGs through with
               dangerouslyAllowSVG set, and this is our own trusted asset. */}
           <Image
