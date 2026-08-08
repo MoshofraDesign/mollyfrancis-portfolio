@@ -382,6 +382,48 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "consumer-health",
+    title: "athenahealth / Consumer Health Patient Portal",
+    subtitle: "Re-architecting a 25M-patient portal around what people actually do",
+    client: "athenahealth",
+    year: "2018–2019",
+    role: "Senior Product Designer · IA lead",
+    tags: ["Healthcare", "Information architecture", "Responsive"],
+    thumbnail: "/work-thumbnails/consumer-health-2-raw.webp",
+    hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462027297-GRU05DN2D33B2JIOLPDP/CH-Dashboard.png",
+    logo: "/logos/athenahealth.svg",
+    accent: "#1A17B7",
+    aiSummary:
+      "Led the IA and navigation redesign of athenahealth's patient portal — used by 25M registered patients. Cards, scrolls, and category labels were tested with hundreds of users to surface a structure that didn't bury appointments under 'Test Results' and that finally worked on mobile.",
+    overview:
+      "The legacy portal landed users on Test Results — a single sub-category — and obscured everything else. With 92% of healthcare consumers saying customer experience is a top strategic priority for providers, the structure was costing athena's clients renewals. We rebuilt the IA, dashboard, and navigation for responsive web and laid groundwork for native iOS/Android apps.",
+    approach:
+      "Card sorts in Optimal Workshop, unmoderated remote testing, and content audits drove a new taxonomy. Designed a consolidated My Health dashboard, mobile-first navigation, and a system that could degrade gracefully across athena's many client deployments.",
+    metrics: [
+      { label: "Registered patients", value: "25M" },
+      { label: "Will switch providers without good digital exp.", value: "90%" },
+      { label: "Top-3 priority: revamping patient experience", value: "49% of execs" },
+    ],
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555335056852-1WDNMCGCPZAVC7GBU365/CH-Current-MyHealth.png",
+        caption: "Current My Health section — landed on Test Results only",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555437931422-FA85FIDWKHIDE0549C67/CH-MyHealth.png",
+        caption: "Redesigned My Health landing — consolidated dashboard",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555335711321-VWKGE5EMWNE0E69EP9KD/CH-Current-Navigation.png",
+        caption: "Current navigation — confusing structure",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462092362-M7ZKRJUT3DHC4SR7NI7H/CH-Navigation-Horz-04.png",
+        caption: "New responsive navigation",
+      },
+    ],
+  },
+  {
     slug: "volusion-admin",
     title: "Volusion Ecommerce Admin",
     subtitle: "A modern admin for tens of thousands of independent merchants",
