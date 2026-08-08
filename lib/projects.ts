@@ -8,6 +8,10 @@ export type Project = {
   tags: string[];
   thumbnail: string;
   hero?: string;
+  // White/single-color wordmark or mark shown over the accent overlay on
+  // the homepage grid tile — see CareGrid. Falls back to no mark at all
+  // (never rendered HTML text) if unset.
+  logo?: string;
   accent: string;
   // AI-enhanced description (generated, 2-3 sentences)
   aiSummary: string;
@@ -52,6 +56,7 @@ export const projects: Project[] = [
     tags: ["GovTech", "B2B", "Workflow", "AI-augmented research", "Design system"],
     thumbnail: "/work-thumbnails/govos-esubmission.webp",
     hero: "/work/govos/hero-laptop.webp",
+    logo: "/logos/govos-esubmission.svg",
     accent: "#185fa5",
     featured: true,
     aiSummary:

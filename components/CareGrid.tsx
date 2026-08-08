@@ -11,10 +11,10 @@ type Props = {
 /**
  * Grid of square project tiles, modeled on Figma's "Care" / "Care - Hover"
  * thumbnail states: the thumbnail sits under a flat accent-colored overlay
- * (project.accent) at partial opacity, with the client name reading over it
- * like a wordmark. On hover the overlay goes fully opaque and the wordmark
- * is replaced by the project title + subtitle. No rounded corners anywhere,
- * by design.
+ * (project.accent) at partial opacity, with the client's logo mark (an
+ * actual SVG, never rendered HTML text) centered over it. On hover the
+ * overlay goes fully opaque and the mark is replaced by the project title +
+ * subtitle. No rounded corners anywhere, by design.
  *
  * Tiles are capped at 375px and separated by gutters (auto-fill/minmax +
  * gap), like mollyfrancis.com's work grid — not edge-to-edge.
@@ -45,12 +45,20 @@ export default function CareGrid({ projects }: Props) {
             style={{ backgroundColor: project.accent }}
           />
 
-          {/* Default state: client name reads like a wordmark, centered. */}
-          <div className="absolute inset-0 flex items-center justify-center p-6 opacity-100 transition-opacity duration-300 ease-out group-hover:opacity-0">
-            <p className="text-center font-serif text-[clamp(1.75rem,3.4vw,2.75rem)] italic leading-none text-white">
-              {project.client}
-            </p>
-          </div>
+          {/* Default state: client's SVG mark, centered — only rendered once
+              a logo asset actually exists for this project. */}
+          {project.logo && (
+            <div className="absolute inset-0 flex items-center justify-center p-10 opacity-100 transition-opacity duration-300 ease-out group-hover:opacity-0 sm:p-14">
+              <div className="relative h-full w-full max-h-24 max-w-[70%]">
+                <Image
+                  src={project.logo}
+                  alt={`${project.client} logo`}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          )}
 
           {/* Hover state: title + subtitle, left-aligned like Care - Hover. */}
           <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 sm:p-8">
