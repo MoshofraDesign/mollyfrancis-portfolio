@@ -50,10 +50,14 @@ export default function CareGrid({ projects }: Props) {
           {project.logo && (
             <div className="absolute inset-0 flex items-center justify-center p-10 opacity-100 transition-opacity duration-300 ease-out group-hover:opacity-0 sm:p-14">
               <div className="relative h-full w-full max-h-24 max-w-[70%]">
+                {/* unoptimized: the optimizer only passes SVGs through with
+                    dangerouslyAllowSVG set, and these are our own trusted
+                    assets — same fix as the GovOS case study page. */}
                 <Image
                   src={project.logo}
                   alt={`${project.client} logo`}
                   fill
+                  unoptimized
                   className="object-contain"
                 />
               </div>
