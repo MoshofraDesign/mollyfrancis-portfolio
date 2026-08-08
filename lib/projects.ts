@@ -46,6 +46,29 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    // NOTE: year is a placeholder — confirm/adjust before this ships.
+    slug: "netspend",
+    title: "Netspend Rewards",
+    subtitle:
+      "Redesigning the app rewards experience and the internal tool that powers it",
+    client: "Netspend",
+    year: "2024–2026",
+    role: "Lead UX Designer",
+    tags: ["FinTech", "Rewards", "Design system", "AI-augmented workflow"],
+    thumbnail: "/work-thumbnails/netspend.webp",
+    logo: "/logos/netspend.svg",
+    accent: "#323232",
+    featured: true,
+    aiSummary:
+      "Led design on Netspend's app Rewards program and Unified Commerce Media (UCM) — the internal tool that builds and manages the rewards surfaced on the consumer app. Reworked the consumer rewards layout and information architecture around new features shipped in UCM, using Claude, Gemini, and Figma Make throughout research synthesis and prototyping.",
+    overview:
+      "Netspend's app Rewards program needed a consumer layout that could keep pace with what the internal Unified Commerce Media tool made possible — new reward types, new merchant partnerships, more configuration — without the experience turning into a junk drawer. UCM is the system of record: it's where the team builds and manages every reward that eventually surfaces to cardholders.",
+    approach:
+      "I owned design across both sides of this: the UCM internal tool merchandising/ops teams use to build and manage rewards, and the consumer-facing rewards layout and IA that had to scale with it. Heavy use of generative and moderated user testing shaped both. AI tools — Claude, Gemini, and Figma Make — assisted research synthesis and rapid prototyping, letting me test more layout directions per round than a fully manual process would allow.",
+    outcome:
+      "A consumer rewards experience with an IA that scales as UCM ships new reward types, and an internal tool that lets non-technical teams configure rewards without engineering tickets.",
+  },
+  {
     slug: "govos-esubmission",
     title: "GovOS eSubmission",
     subtitle:
