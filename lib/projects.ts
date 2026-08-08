@@ -391,7 +391,7 @@ export const projects: Project[] = [
     tags: ["Healthcare", "Information architecture", "Responsive"],
     thumbnail: "/work-thumbnails/athenahealth-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462027297-GRU05DN2D33B2JIOLPDP/CH-Dashboard.png",
-    logo: "/logos/athenahealth.svg",
+    logo: "/logos/consumer-health.svg",
     accent: "#76358f",
     aiSummary:
       "Led the IA and navigation redesign of athenahealth's patient portal — used by 25M registered patients. Cards, scrolls, and category labels were tested with hundreds of users to surface a structure that didn't bury appointments under 'Test Results' and that finally worked on mobile.",
@@ -933,96 +933,6 @@ export const projects: Project[] = [
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423493717026-GEAKBYS3JNSJ587CGK4M/volusion-indialanding.png",
         caption: "Volusion India landing page",
-      },
-    ],
-  },
-  {
-    slug: "bohemian-hair-bows",
-    title: "Bohemian Hair Bows",
-    subtitle: "Logo, brand kit, and style guide for an eclectic bow brand",
-    client: "Bohemian Hair Bows",
-    year: "2014",
-    role: "Designer",
-    tags: ["Brand", "Logo", "Style guide"],
-    thumbnail: "/work-thumbnails/bohemian-hair-bows.webp",
-    accent: "#d4537e",
-    aiSummary:
-      "A Volusion client purchased a logo, brand kit, and style guide for their eclectic bow brand. The mark was traced from a vintage Valentine character and her cat, then simplified through a series of iterations until the line work felt modern and ownable.",
-    overview:
-      "Bohemian Hair Bows sells a variety of eclectic bows and wanted a logo built around a vintage Valentine girl character with her cat. I began by tracing the vintage card in Illustrator and then simplified the artwork in steps until the final mark was clean enough to scale across packaging, print, and web.",
-    images: [
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422913536234-GEZ4TJXBYK6U46ZQWPCB/Logo-BohemianHairBows-2.png",
-        caption: "Final logo — Bohemian Hair Bows",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422378919468-M0ZXRYNS18CJHNCYALLF/print-bohemian.jpg",
-        caption: "Print collateral",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422918265526-6F32WTQVS9JMV0WHZEVO/Bohemian-Styleguide.jpg",
-        caption: "Style guide",
-      },
-    ],
-  },
-  {
-    slug: "eclectic-provencal",
-    title: "Eclectic Provencal",
-    subtitle: "Responsive ecommerce + brand for a vintage Provençal furniture store",
-    client: "Eclectic Provencal",
-    year: "2015",
-    role: "Designer",
-    tags: ["Ecommerce", "Brand", "Responsive"],
-    thumbnail: "/work-thumbnails/eclectic-provencal.webp",
-    accent: "#8a5a3b",
-    aiSummary:
-      "Logo, brand, and responsive ecommerce design for a vintage Provençal furniture store. Built out homepage, category, and product flows for desktop, tablet, and mobile, plus a style guide that kept the warm-mid-century mood consistent across the whole store.",
-    overview:
-      "Vintage and handcrafted Provençal furniture needed a storefront that felt warm and editorial, not template-y. The work spanned logo, brand kit, full storefront mockups across breakpoints, and a style guide for the merchant to maintain.",
-    images: [
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422398789354-DSYZ3RRADRPU2SL4IDC9/provencal-logo.png",
-        caption: "Logo",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909522259-P7GSIEKXJV8IH2KK6MD0/provencal-devicemock.png",
-        caption: "Homepage across devices",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909653937-K5YQVCMG51D6IHV1KQ15/desktop-homepage-hover2.jpg",
-        caption: "Desktop homepage with hover state",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422910501460-ZJMNVIUA61NXNVRQCNVU/mobile-tablet-homepage.png",
-        caption: "Mobile + tablet homepage",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909760933-0WUHOR46B4SW27MZJJ6O/provencal-category-device.png",
-        caption: "Category — devices",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909928769-3UI2C0WE464OAOGBQK32/desktop-category.jpg",
-        caption: "Desktop category page",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1447425094165-7ITXXOPHBLHMTHS7HFPL/mobile-tablet-category.png",
-        caption: "Mobile + tablet category",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1447425040529-LGQTEH90FC6HRUL334G5/provencal-product-device.png",
-        caption: "Product — devices",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909699126-7TQMEOWNKOJQX76DX2LK/desktop-product.jpg",
-        caption: "Desktop product page",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1447425134588-A7HAAQVGEY50FGP6EH6N/mobile-tablet-product.png",
-        caption: "Mobile + tablet product",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422909417402-X9849TFTOV7QTSZXCFLV/provencal-styleguide.png",
-        caption: "Style guide",
       },
     ],
   },
