@@ -389,7 +389,7 @@ export const projects: Project[] = [
     year: "2018–2019",
     role: "Senior Product Designer · IA lead",
     tags: ["Healthcare", "Information architecture", "Responsive"],
-    thumbnail: "/work-thumbnails/athenahealth-figma.webp",
+    thumbnail: "/work-thumbnails/consumer-health-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462027297-GRU05DN2D33B2JIOLPDP/CH-Dashboard.png",
     logo: "/logos/consumer-health.svg",
     accent: "#76358f",
