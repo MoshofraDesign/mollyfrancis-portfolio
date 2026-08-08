@@ -56,7 +56,7 @@ export const projects: Project[] = [
     tags: ["GovTech", "B2B", "Workflow", "AI-augmented research", "Design system"],
     thumbnail: "/work-thumbnails/govos-esubmission.webp",
     hero: "/work/govos/hero-laptop.webp",
-    logo: "/logos/govos-esubmission.svg",
+    logo: "/logos/govos-esubmission-figma.svg",
     accent: "#185fa5",
     featured: true,
     aiSummary:
@@ -181,6 +181,7 @@ export const projects: Project[] = [
     tags: ["Healthcare", "Provider tools", "Design system", "0→1"],
     thumbnail: "/work-thumbnails/bright-healthcare.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489640575-FE1X3BSOCUHJVV45MVW0/Landing.jpg",
+    logo: "/logos/bright-healthcare.svg",
     accent: "#3a6e8f",
     featured: true,
     aiSummary:
@@ -235,6 +236,7 @@ export const projects: Project[] = [
     tags: ["Telehealth", "Design system", "iOS/Android", "Research"],
     thumbnail: "/work-thumbnails/docsquad.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/9049760a-bc08-470b-a819-28ee75091d8a/Provider-Native-Group.png",
+    logo: "/logos/docsquad.svg",
     accent: "#2f6e5d",
     featured: true,
     aiSummary:
@@ -292,6 +294,7 @@ export const projects: Project[] = [
     tags: ["SaaS", "Messaging", "Enterprise"],
     thumbnail: "/work-thumbnails/liveperson.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580738797928-S404IR0JKTVC5D2VOISQ/Twitter-PublicExample.png",
+    logo: "/logos/liveperson.svg",
     accent: "#5b6cff",
     featured: true,
     aiSummary:
@@ -326,6 +329,7 @@ export const projects: Project[] = [
     role: "Principal Product Designer",
     tags: ["FinTech", "Mobile", "Two-sided product"],
     thumbnail: "/work-thumbnails/care-homepay.webp",
+    logo: "/logos/care-homepay.svg",
     accent: "#c1395c",
     aiSummary:
       "Designed paired employee and employer mobile apps so caregivers could log hours and household employers could review, approve, and pay payroll — all on a phone. The two products share a design system but speak two very different mental models, one trust-driven, one operational.",
@@ -364,6 +368,7 @@ export const projects: Project[] = [
     tags: ["Healthcare", "Information architecture", "Responsive"],
     thumbnail: "/work-thumbnails/consumer-health.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462027297-GRU05DN2D33B2JIOLPDP/CH-Dashboard.png",
+    logo: "/logos/athenahealth.svg",
     accent: "#76358f",
     aiSummary:
       "Led the IA and navigation redesign of athenahealth's patient portal — used by 25M registered patients. Cards, scrolls, and category labels were tested with hundreds of users to surface a structure that didn't bury appointments under 'Test Results' and that finally worked on mobile.",
@@ -405,6 +410,7 @@ export const projects: Project[] = [
     tags: ["Healthcare", "Care management", "Native apps", "Personas"],
     thumbnail: "/work-thumbnails/athenawell.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1558469800892-B0L920CQQ1NRG9FD0HAL/Patient-CarePlans-Landing+Copy+2.png",
+    logo: "/logos/athenahealth.svg",
     accent: "#1d8a8a",
     aiSummary:
       "Designed an 'untethered' care management system that travels with the patient across the network — coordinating clinicians, partners, and patients around one source-of-truth care plan. Built the experience for three patient personas (healthy, rising risk, high risk) with very different relationships to their own health.",
@@ -485,6 +491,7 @@ export const projects: Project[] = [
     role: "Product Designer",
     tags: ["Healthcare", "Mobile", "Behavior change"],
     thumbnail: "/work-thumbnails/patient-io.webp",
+    logo: "/logos/athenahealth.svg",
     accent: "#e07a3c",
     aiSummary:
       "Patient IO gave health professionals a way to track behaviors between visits and helped patients stay on top of complex treatment regimens. I owned medication design — including a generative pill-shape component system drawn from Epocrates data — so every prescription rendered correctly without artwork-per-drug.",
@@ -518,6 +525,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["B2B", "Marketplace", "CMS"],
     thumbnail: "/work-thumbnails/athenahealth-marketplace.webp",
+    logo: "/logos/athenahealth.svg",
     accent: "#3b5bdb",
     aiSummary:
       "Rebuilt the MDP marketplace so partners could self-publish, clinicians could find products faster, and athena could measure intent across the funnel. Filtering, partner pages, and tracking were redesigned together — partners maintain their own content; athena curates discovery.",
@@ -1121,6 +1129,7 @@ export const projects: Project[] = [
     role: "Designer",
     tags: ["Print", "Editorial", "Brand"],
     thumbnail: "/work-thumbnails/print.webp",
+    logo: "/logos/print.svg",
     accent: "#639922",
     aiSummary:
       "Print work over the years — holiday cards and corporate gifts at Volusion, personal stationery, invitations, posters, and seasonal lookbooks. A mix of agency, client, and personal projects that lean illustrative.",
