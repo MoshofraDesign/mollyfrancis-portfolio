@@ -57,7 +57,7 @@ export const projects: Project[] = [
     tags: ["FinTech", "Rewards", "Design system", "AI-augmented workflow"],
     thumbnail: "/work-thumbnails/netspend.webp",
     logo: "/logos/netspend.svg",
-    accent: "#323232",
+    accent: "#000000",
     featured: true,
     aiSummary:
       "Led design on Netspend's app Rewards program and Unified Commerce Media (UCM) — the internal tool that builds and manages the rewards surfaced on the consumer app. Reworked the consumer rewards layout and information architecture around new features shipped in UCM, using Claude, Gemini, and Figma Make throughout research synthesis and prototyping.",
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/govos-esubmission-figma.webp",
     hero: "/work/govos/hero-laptop.webp",
     logo: "/logos/govos-esubmission-figma.svg",
-    accent: "#185fa5",
+    accent: "#70ACF4",
     featured: true,
     aiSummary:
       "Designed an electronic-recording portal that lets title companies submit deeds and recordings directly to county offices — replacing the third-party submitters that traditionally sit between them. AI tooling sped up the research synthesis: Dovetail clustered interview transcripts, and an in-house GPT prompt converted Userbit usability findings into prioritized Jira tickets the day after each session.",
@@ -205,7 +205,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/bright-healthcare-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489640575-FE1X3BSOCUHJVV45MVW0/Landing.jpg",
     logo: "/logos/bright-healthcare.svg",
-    accent: "#3a6e8f",
+    accent: "#FFAF00",
     featured: true,
     aiSummary:
       "Designed a provider-facing portal that lets clinicians submit prior authorization requests electronically — replacing a paper fax workflow used across five state markets. Within months the team scaled from 100 monthly users to ~10K, surfaced $1.9M in operational savings, and cut clinical intake time in half.",
@@ -260,7 +260,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/docsquad-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/9049760a-bc08-470b-a819-28ee75091d8a/Provider-Native-Group.png",
     logo: "/logos/docsquad.svg",
-    accent: "#2f6e5d",
+    accent: "#DA28DE",
     featured: true,
     aiSummary:
       "Rebuilt a desktop-only telehealth tool into a unified provider experience across desktop and native mobile (Flutter). Generative research with 'virtual moonlighter' clinicians shaped a workflow that can diagnose a routine visit in under two minutes — without a second video call.",
@@ -318,7 +318,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/liveperson-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580738797928-S404IR0JKTVC5D2VOISQ/Twitter-PublicExample.png",
     logo: "/logos/liveperson.svg",
-    accent: "#5b6cff",
+    accent: "#FE5E00",
     featured: true,
     aiSummary:
       "Unified email, X, Instagram, Facebook, and chat into a single LiveEngage conversation surface so customer-care agents could stop swivel-chairing between dashboards. Self-service setup meant brands could connect their own social accounts, route them to specific teams, and ship a consistent voice across channels.",
@@ -353,7 +353,7 @@ export const projects: Project[] = [
     tags: ["FinTech", "Mobile", "Two-sided product"],
     thumbnail: "/work-thumbnails/care-homepay-figma.webp",
     logo: "/logos/care-homepay.svg",
-    accent: "#c1395c",
+    accent: "#F05844",
     aiSummary:
       "Designed paired employee and employer mobile apps so caregivers could log hours and household employers could review, approve, and pay payroll — all on a phone. The two products share a design system but speak two very different mental models, one trust-driven, one operational.",
     overview:
@@ -392,7 +392,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/consumer-health-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462027297-GRU05DN2D33B2JIOLPDP/CH-Dashboard.png",
     logo: "/logos/consumer-health.svg",
-    accent: "#76358f",
+    accent: "#0097FC",
     aiSummary:
       "Led the IA and navigation redesign of athenahealth's patient portal — used by 25M registered patients. Cards, scrolls, and category labels were tested with hundreds of users to surface a structure that didn't bury appointments under 'Test Results' and that finally worked on mobile.",
     overview:
@@ -434,7 +434,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/athenahealth-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1558469800892-B0L920CQQ1NRG9FD0HAL/Patient-CarePlans-Landing+Copy+2.png",
     logo: "/logos/athenahealth.svg",
-    accent: "#1d8a8a",
+    accent: "#4717B7",
     aiSummary:
       "Designed an 'untethered' care management system that travels with the patient across the network — coordinating clinicians, partners, and patients around one source-of-truth care plan. Built the experience for three patient personas (healthy, rising risk, high risk) with very different relationships to their own health.",
     overview:
@@ -515,7 +515,7 @@ export const projects: Project[] = [
     tags: ["Healthcare", "Mobile", "Behavior change"],
     thumbnail: "/work-thumbnails/athenahealth-figma.webp",
     logo: "/logos/athenahealth.svg",
-    accent: "#e07a3c",
+    accent: "#4717B7",
     aiSummary:
       "Patient IO gave health professionals a way to track behaviors between visits and helped patients stay on top of complex treatment regimens. I owned medication design — including a generative pill-shape component system drawn from Epocrates data — so every prescription rendered correctly without artwork-per-drug.",
     overview:
@@ -549,7 +549,7 @@ export const projects: Project[] = [
     tags: ["B2B", "Marketplace", "CMS"],
     thumbnail: "/work-thumbnails/athenahealth-figma.webp",
     logo: "/logos/athenahealth.svg",
-    accent: "#3b5bdb",
+    accent: "#4717B7",
     aiSummary:
       "Rebuilt the MDP marketplace so partners could self-publish, clinicians could find products faster, and athena could measure intent across the funnel. Filtering, partner pages, and tracking were redesigned together — partners maintain their own content; athena curates discovery.",
     overview:
@@ -586,7 +586,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Dashboard", "SaaS"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
-    accent: "#0a7cff",
+    accent: "#8759F2",
     aiSummary:
       "Redesigned the admin used by Volusion's merchant base — order management, catalog, marketing, and storefront tools. Defined patterns for data-heavy tables, bulk actions, and a navigation that scaled as the product added modules.",
     overview:
@@ -688,7 +688,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Platform", "Brand"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
-    accent: "#222",
+    accent: "#8759F2",
     aiSummary:
       "Mozu was Volusion's enterprise platform play — flexible storefronts, multi-channel commerce, and a modular admin. I contributed to the product UI, brand surfaces, demo storefronts, and the visual language that positioned Mozu against established players.",
     overview:
@@ -732,8 +732,9 @@ export const projects: Project[] = [
     year: "2015–2016",
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Onboarding", "SaaS"],
-    thumbnail: "/work-thumbnails/volusion-figma.webp",
-    accent: "#2f6e5d",
+    thumbnail: "/work-thumbnails/onboarding-figma.webp",
+    logo: "/logos/onboarding.svg",
+    accent: "#173CB7",
     aiSummary:
       "Designed the onboarding flow new Volusion free-trial customers walked through on their way to a live store — competitive research, sketches, three workflow options, prototypes, and user testing. Goal was to bump trial-to-paid conversion by getting merchants past setup faster.",
     overview:
@@ -764,7 +765,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Front-end editor", "SaaS"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
-    accent: "#2f6e5d",
+    accent: "#173CB7",
     aiSummary:
       "Built an inline storefront editor so Volusion's free-trial customers could upload a logo, edit navigation, swap content blocks, and manage themes without leaving the front end. 75% of new customers wanted to start customizing immediately — this took the friction out.",
     overview:
@@ -819,7 +820,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Ecommerce", "Storefront", "Templates"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
-    accent: "#993556",
+    accent: "#8759F2",
     aiSummary:
       "A gallery of Volusion ecommerce designs — each started with a client phone call to align on look, feel, and merchandising goals, plus a set of paid templates flexible enough that clients could swap their own imagery and brand colors without breaking the design.",
     overview:
@@ -900,7 +901,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Brand", "Marketing", "Visual design"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
-    accent: "#534ab7",
+    accent: "#8759F2",
     aiSummary:
       "A wide gallery of work from Volusion's internal marketing department — Volusion.com pages, the employee swag site, landing pages, advertising, banners, and promos. The swag store was a fully responsive ecommerce experience with photography of products and the people wearing them.",
     overview:
@@ -945,7 +946,7 @@ export const projects: Project[] = [
     role: "Designer",
     tags: ["Brand", "Logo", "Identity"],
     thumbnail: "/work-thumbnails/logos-figma.webp",
-    accent: "#1d9e75",
+    accent: "#00EADA",
     aiSummary:
       "A collection of logo and identity work spanning clients across consumer, lifestyle, food, and personal branding. Marks range from playful illustrative to clean wordmarks, depending on the audience and how the brand needed to feel in use.",
     overview:
@@ -1063,7 +1064,7 @@ export const projects: Project[] = [
     tags: ["Print", "Editorial", "Brand"],
     thumbnail: "/work-thumbnails/print-figma.webp",
     logo: "/logos/print.svg",
-    accent: "#639922",
+    accent: "#1EB571",
     aiSummary:
       "Print work over the years — holiday cards and corporate gifts at Volusion, personal stationery, invitations, posters, and seasonal lookbooks. A mix of agency, client, and personal projects that lean illustrative.",
     overview:
