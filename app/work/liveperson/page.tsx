@@ -42,47 +42,72 @@ const metrics = [
 ];
 
 /** Two images side by side, full-bleed panel — matches the Figma pairings. */
+/**
+ * Two images side by side, each rendered at its own natural aspect ratio
+ * (no forced crop box) — width/height should match the source file's real
+ * dimensions so Next/Image can reserve the right proportions and the image
+ * scales down via w-full/h-auto without ever cropping content.
+ */
 function TwoImagePanel({
   a,
   b,
 }: {
-  a: { src: string; alt: string };
-  b: { src: string; alt: string };
+  a: { src: string; alt: string; width: number; height: number };
+  b: { src: string; alt: string; width: number; height: number };
 }) {
   return (
     <Panel width="lg:w-[96vw]" className="items-center">
       <div className="grid w-full max-w-[1400px] grid-cols-1 items-center gap-8 sm:grid-cols-2">
-        <SlideIn>
-          <div className="relative aspect-square w-full overflow-hidden rounded-md">
-            <Image src={a.src} alt={a.alt} fill sizes="(max-width: 640px) 92vw, 46vw" className="object-cover" />
-          </div>
+        <SlideIn className="flex justify-center">
+          <Image
+            src={a.src}
+            alt={a.alt}
+            width={a.width}
+            height={a.height}
+            sizes="(max-width: 640px) 92vw, 46vw"
+            className="h-auto max-h-[60vh] w-full rounded-md object-contain"
+          />
         </SlideIn>
-        <SlideIn delay={100}>
-          <div className="relative aspect-square w-full overflow-hidden rounded-md">
-            <Image src={b.src} alt={b.alt} fill sizes="(max-width: 640px) 92vw, 46vw" className="object-cover" />
-          </div>
+        <SlideIn delay={100} className="flex justify-center">
+          <Image
+            src={b.src}
+            alt={b.alt}
+            width={b.width}
+            height={b.height}
+            sizes="(max-width: 640px) 92vw, 46vw"
+            className="h-auto max-h-[60vh] w-full rounded-md object-contain"
+          />
         </SlideIn>
       </div>
     </Panel>
   );
 }
 
-/** One large image, centered — for standalone screens. */
+/** One large image, centered, at its natural aspect ratio — no cropping. */
 function BigImagePanel({
   src,
   alt,
+  width,
+  height,
   caption,
 }: {
   src: string;
   alt: string;
+  width: number;
+  height: number;
   caption?: string;
 }) {
   return (
     <Panel width="lg:w-[80vw]" className="items-center">
-      <SlideIn className="w-full max-w-[1100px]">
-        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-md">
-          <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 92vw, 76vw" className="object-cover" />
-        </div>
+      <SlideIn className="flex w-full max-w-[1200px] flex-col items-center">
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          sizes="(max-width: 1024px) 92vw, 76vw"
+          className="h-auto max-h-[70vh] w-full rounded-md object-contain"
+        />
         {caption && <p className="mt-4 max-w-[70ch] text-sm opacity-80 sm:text-base">{caption}</p>}
       </SlideIn>
     </Panel>
@@ -134,28 +159,26 @@ export default function LivePersonCaseStudy() {
           </div>
 
           <div className="mt-10 grid w-full grid-cols-1 items-center gap-6 sm:grid-cols-2 lg:mt-0">
-            <SlideIn>
-              <div className="relative aspect-square w-full overflow-hidden rounded-md">
-                <Image
-                  src="/work/liveperson/homeco-conversational-commerce.png"
-                  alt="Conversational commerce example inside LiveEngage"
-                  fill
-                  sizes="(max-width: 640px) 92vw, 46vw"
-                  className="object-cover"
-                  priority
-                />
-              </div>
+            <SlideIn className="flex justify-center">
+              <Image
+                src="/work/liveperson/homeco-conversational-commerce.png"
+                alt="Conversational commerce example inside LiveEngage"
+                width={1280}
+                height={1280}
+                sizes="(max-width: 640px) 92vw, 46vw"
+                className="h-auto max-h-[52vh] w-full rounded-md object-contain"
+                priority
+              />
             </SlideIn>
-            <SlideIn delay={100}>
-              <div className="relative aspect-square w-full overflow-hidden rounded-md">
-                <Image
-                  src="/work/liveperson/bb-mobile-social-dm.png"
-                  alt="A public tweet routed into a private DM conversation"
-                  fill
-                  sizes="(max-width: 640px) 92vw, 46vw"
-                  className="object-cover"
-                />
-              </div>
+            <SlideIn delay={100} className="flex justify-center">
+              <Image
+                src="/work/liveperson/bb-mobile-social-dm.png"
+                alt="A public tweet routed into a private DM conversation"
+                width={1108}
+                height={920}
+                sizes="(max-width: 640px) 92vw, 46vw"
+                className="h-auto max-h-[52vh] w-full rounded-md object-contain"
+              />
             </SlideIn>
           </div>
 
@@ -185,6 +208,8 @@ export default function LivePersonCaseStudy() {
         <BigImagePanel
           src="/work/liveperson/public-tweet-private-thread.webp"
           alt="A public tweet routed into a private thread, with agent response history alongside it"
+          width={1800}
+          height={739}
         />
 
         {/* ── SINGLE PLATFORM ───────────────────────────────────────────── */}
@@ -208,10 +233,14 @@ export default function LivePersonCaseStudy() {
           a={{
             src: "/work/liveperson/agent-workspace-social-queue.png",
             alt: "Agent workspace — every social thread lands in one queue, alongside the profile behind it",
+            width: 1280,
+            height: 1125,
           }}
           b={{
             src: "/work/liveperson/all-channels-unified.png",
             alt: "One surface for every channel — Facebook, Instagram, X, WhatsApp, SMS, and more",
+            width: 1206,
+            height: 915,
           }}
         />
 
@@ -231,6 +260,8 @@ export default function LivePersonCaseStudy() {
           src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580743086322-L6ILER7K3CPFW4WMCO1E/Accounts-Multiple.png"
           alt="Self-service: connect, assign, and manage social accounts"
           caption="Self-service: connect, assign, and manage social accounts"
+          width={1122}
+          height={562}
         />
 
         {/* ── FUTURE VISION ─────────────────────────────────────────────── */}
@@ -238,6 +269,8 @@ export default function LivePersonCaseStudy() {
           src="/work/liveperson/connections-self-service.webp"
           alt="Future vision — SocialConnect inside the agent workspace"
           caption="Future Vision: Integrate the SocialConnect feature into the entire LiveEngage experience."
+          width={1280}
+          height={760}
         />
 
         {/* ── IMPACT ────────────────────────────────────────────────────── */}
