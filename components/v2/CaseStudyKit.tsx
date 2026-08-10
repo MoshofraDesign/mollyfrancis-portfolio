@@ -44,9 +44,14 @@ export function Panel({
   className?: string;
   width?: string;
 }) {
+  // justify-[safe_center]: centers content when it fits, but falls back to
+  // start-alignment (scrollable) once it overflows the fixed 100dvh height —
+  // plain `justify-center` combined with `overflow-y-auto` silently clips
+  // whatever overflows above the centered midpoint, since a scroll container
+  // can't scroll to a negative offset. Bit us on LivePerson's image panels.
   return (
     <section
-      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-0 lg:py-12 lg:pl-[100px] lg:pr-[16%] ${className}`}
+      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:[justify-content:safe_center] lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-0 lg:py-12 lg:pl-[100px] lg:pr-[16%] ${className}`}
     >
       {children}
     </section>
@@ -63,10 +68,13 @@ export function TextPanel({
   id?: string;
   width?: string;
 }) {
+  // items-[safe_center]: same reasoning as Panel's justify-[safe_center] —
+  // centers vertically when content fits, falls back to top-alignment
+  // (scrollable) rather than silently clipping once content overflows.
   return (
     <section
       id={id}
-      className={`relative flex w-full px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain lg:px-[100px] lg:py-12`}
+      className={`relative flex w-full px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] lg:overflow-y-auto lg:overscroll-contain lg:px-[100px] lg:py-12`}
     >
       <div className="w-full max-w-[950px]">{children}</div>
     </section>
