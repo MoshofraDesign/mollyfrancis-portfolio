@@ -5,14 +5,16 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import PageTransition from "./PageTransition";
 
-// Routes that own their full-viewport chrome and opt out of the shared
-// nav / footer / page-shell padding.
-const FULL_BLEED_ROUTES = ["/work/govos-esubmission"];
+// Individual case-study pages (/work/<slug>) all own their full-viewport
+// horizontal-scroll chrome now — this matches any single path segment under
+// /work/ (govos-esubmission's dedicated route included) but excludes the
+// /work listing page itself, which still uses the shared nav/footer.
+const FULL_BLEED_PATTERN = /^\/work\/[^/]+\/?$/;
 
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isV2 = pathname?.startsWith("/v2");
-  const isFullBleed = FULL_BLEED_ROUTES.some((r) => pathname?.startsWith(r));
+  const isFullBleed = pathname ? FULL_BLEED_PATTERN.test(pathname) : false;
 
   if (isV2 || isFullBleed) {
     // /v2 is a fully separate design language, and full-bleed case studies
