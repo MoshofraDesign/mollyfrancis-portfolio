@@ -321,7 +321,7 @@ export const projects: Project[] = [
     role: "Lead Product Designer",
     tags: ["SaaS", "Messaging", "Enterprise"],
     thumbnail: "/work-thumbnails/liveperson-figma-2.webp",
-    hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580738797928-S404IR0JKTVC5D2VOISQ/Twitter-PublicExample.png",
+    hero: "/work/liveperson/bb-mobile-social-dm.png",
     logo: "/logos/liveperson.svg",
     accent: "#FE5E00",
     featured: true,
@@ -335,16 +335,24 @@ export const projects: Project[] = [
       "Brands manage all channels from one conversation tree. Self-service setup removed a manual onboarding bottleneck. A future-state vision was used to align platform roadmap across three product teams.",
     images: [
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580740297879-79PSPSYKH5N02J9ZE1J3/SocialConnect-Logo-Color.png",
-        caption: "SocialConnect identity",
+        src: "/work/liveperson/homeco-conversational-commerce.png",
+        caption: "Conversational commerce — browsing and buying without leaving the chat",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580743086322-L6ILER7K3CPFW4WMCO1E/Accounts-Multiple.png",
+        src: "/work/liveperson/agent-workspace-social-queue.png",
+        caption: "Agent workspace — every social thread lands in one queue, alongside the profile behind it",
+      },
+      {
+        src: "/work/liveperson/all-channels-unified.png",
+        caption: "One surface for every channel — Facebook, Instagram, X, WhatsApp, SMS, and more",
+      },
+      {
+        src: "/work/liveperson/connections-self-service.webp",
         caption: "Self-service: connect, assign, and manage social accounts",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580743508177-H3C8QOVWQ7ZX0XAXER1I/Twitter-Landing-01.png",
-        caption: "Future vision — SocialConnect inside the agent workspace",
+        src: "/work/liveperson/public-tweet-private-thread.webp",
+        caption: "A public tweet routed into a private thread, with agent response history alongside it",
       },
     ],
   },
