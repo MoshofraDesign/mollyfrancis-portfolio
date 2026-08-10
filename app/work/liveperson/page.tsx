@@ -1,0 +1,273 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Jost } from "next/font/google";
+import { projects, getProject } from "@/lib/projects";
+import HorizontalScroll from "@/components/v2/HorizontalScroll";
+import StickyNav from "@/components/StickyNav";
+import SlideIn from "@/components/SlideIn";
+import { contrastColor } from "@/lib/contrastColor";
+import { Panel, TextPanel, Heading, Body } from "@/components/v2/CaseStudyKit";
+
+/**
+ * Bespoke horizontal-scroll case study for LivePerson/SocialConnect,
+ * matching the Figma reference at node 4477:14881 — same mechanics as the
+ * GovOS page (HorizontalScroll + StickyNav + snap panels), hand-authored
+ * instead of running through the shared app/work/[slug]/page.tsx template
+ * because the Figma calls out specific image pairings and a stacked
+ * metrics list that the generic per-project template doesn't model.
+ * Excluded from the generic template via customSlugs there.
+ */
+
+export const metadata = {
+  title: "SocialConnect — LivePerson — Molly Francis",
+  description:
+    "Redesigned the LivePerson SocialConnect agent workspace to unify public and private social threads into a single, cohesive interface.",
+};
+
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-jost",
+  display: "swap",
+});
+
+const ACCENT = "#FE5E00";
+const LOGO = "/logos/liveperson.svg";
+
+const metrics = [
+  { label: "Average Agent Response Time (ARTA)", value: "Dropped by 18%" },
+  { label: "First Contact Resolution (FCR)", value: "Increased by 12%" },
+  { label: "Meaningful Automated Conversation Score (MACS)", value: "Improved by 15%" },
+  { label: "Overall Customer Satisfaction (CSAT)", value: "4.5-point lift" },
+];
+
+/** Two images side by side, full-bleed panel — matches the Figma pairings. */
+function TwoImagePanel({
+  a,
+  b,
+}: {
+  a: { src: string; alt: string };
+  b: { src: string; alt: string };
+}) {
+  return (
+    <Panel width="lg:w-[96vw]" className="items-center">
+      <div className="grid w-full max-w-[1400px] grid-cols-1 items-center gap-8 sm:grid-cols-2">
+        <SlideIn>
+          <div className="relative aspect-square w-full overflow-hidden rounded-md">
+            <Image src={a.src} alt={a.alt} fill sizes="(max-width: 640px) 92vw, 46vw" className="object-cover" />
+          </div>
+        </SlideIn>
+        <SlideIn delay={100}>
+          <div className="relative aspect-square w-full overflow-hidden rounded-md">
+            <Image src={b.src} alt={b.alt} fill sizes="(max-width: 640px) 92vw, 46vw" className="object-cover" />
+          </div>
+        </SlideIn>
+      </div>
+    </Panel>
+  );
+}
+
+/** One large image, centered — for standalone screens. */
+function BigImagePanel({
+  src,
+  alt,
+  caption,
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+}) {
+  return (
+    <Panel width="lg:w-[80vw]" className="items-center">
+      <SlideIn className="w-full max-w-[1100px]">
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-md">
+          <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 92vw, 76vw" className="object-cover" />
+        </div>
+        {caption && <p className="mt-4 max-w-[70ch] text-sm opacity-80 sm:text-base">{caption}</p>}
+      </SlideIn>
+    </Panel>
+  );
+}
+
+export default function LivePersonCaseStudy() {
+  const project = getProject("liveperson");
+  const idx = projects.findIndex((p) => p.slug === "liveperson");
+  const next = projects[(idx + 1) % projects.length];
+  const fg = contrastColor(ACCENT);
+
+  return (
+    <main
+      className={`${jost.variable} relative`}
+      style={{ background: ACCENT, color: fg, fontFamily: "var(--font-jost), system-ui, sans-serif" }}
+    >
+      <StickyNav
+        watch="title"
+        logo={
+          <div className="relative h-6 w-[110px] sm:h-7 sm:w-[130px]">
+            <Image src={LOGO} alt="LivePerson" fill unoptimized className="object-contain object-left" />
+          </div>
+        }
+        action={
+          <Link
+            href="/work"
+            aria-label="Back to work"
+            className="pointer-events-auto -m-3 flex min-h-11 min-w-11 items-center justify-center p-3 text-[11px] font-semibold uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60"
+          >
+            Close
+          </Link>
+        }
+      />
+
+      <HorizontalScroll>
+        {/* ── TITLE ─────────────────────────────────────────────────── */}
+        <section
+          id="title"
+          className="relative flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-12 lg:pb-16 lg:pt-10"
+        >
+          <div className="flex flex-wrap items-start justify-between gap-6">
+            <div className="relative h-10 w-[220px] sm:h-14 sm:w-[300px]">
+              <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
+            </div>
+            <p className="max-w-[300px] text-lg font-semibold sm:text-xl">
+              Social Media Management Product
+            </p>
+          </div>
+
+          <div className="mt-10 grid w-full grid-cols-1 items-center gap-6 sm:grid-cols-2 lg:mt-0">
+            <SlideIn>
+              <div className="relative aspect-square w-full overflow-hidden rounded-md">
+                <Image
+                  src="/work/liveperson/homeco-conversational-commerce.png"
+                  alt="Conversational commerce example inside LiveEngage"
+                  fill
+                  sizes="(max-width: 640px) 92vw, 46vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </SlideIn>
+            <SlideIn delay={100}>
+              <div className="relative aspect-square w-full overflow-hidden rounded-md">
+                <Image
+                  src="/work/liveperson/bb-mobile-social-dm.png"
+                  alt="A public tweet routed into a private DM conversation"
+                  fill
+                  sizes="(max-width: 640px) 92vw, 46vw"
+                  className="object-cover"
+                />
+              </div>
+            </SlideIn>
+          </div>
+
+          <SlideIn delay={200} className="mt-8 max-w-[70ch] lg:mt-10">
+            <p className="text-lg leading-relaxed opacity-95 sm:text-2xl">
+              Enables brands to interact with consumers over email and social
+              media platforms through the LiveEngage messaging product.
+            </p>
+          </SlideIn>
+        </section>
+
+        {/* ── SOCIAL MEDIA MANAGEMENT ──────────────────────────────────── */}
+        <TextPanel>
+          <Heading>Social Media Management</Heading>
+          <Body>
+            To streamline LivePerson&rsquo;s omnichannel support, I redesigned
+            the LivePerson SocialConnect agent workspace to unify disparate
+            public and private social threads into a single, cohesive
+            interface. By implementing contextual post previews, intuitive
+            automated routing indicators, and clear threading for
+            asynchronous conversations, the new design significantly reduced
+            agent cognitive load.
+          </Body>
+        </TextPanel>
+
+        {/* ── PUBLIC TWEET / PRIVATE THREAD ────────────────────────────── */}
+        <BigImagePanel
+          src="/work/liveperson/public-tweet-private-thread.webp"
+          alt="A public tweet routed into a private thread, with agent response history alongside it"
+        />
+
+        {/* ── SINGLE PLATFORM ───────────────────────────────────────────── */}
+        <TextPanel>
+          <Heading>
+            Connecting those channels to a single conversation management
+            platform
+          </Heading>
+          <Body>
+            Most brands support customer inquiries across a variety of
+            channels — emails, tweets, DMs, chats, posts, texts — but have to
+            use multiple services and dashboards to manage everything. By
+            connecting those channels to a single conversation management
+            platform, brands can dramatically increase agent efficiency and
+            ensure they have access to standardized content and reporting.
+          </Body>
+        </TextPanel>
+
+        {/* ── AGENT WORKSPACE + ALL CHANNELS ───────────────────────────── */}
+        <TwoImagePanel
+          a={{
+            src: "/work/liveperson/agent-workspace-social-queue.png",
+            alt: "Agent workspace — every social thread lands in one queue, alongside the profile behind it",
+          }}
+          b={{
+            src: "/work/liveperson/all-channels-unified.png",
+            alt: "One surface for every channel — Facebook, Instagram, X, WhatsApp, SMS, and more",
+          }}
+        />
+
+        {/* ── SOCIALCONNECT — SELF-SERVICE SETUP ───────────────────────── */}
+        <TextPanel>
+          <Heading>SocialConnect</Heading>
+          <Body>
+            Allows agents to connect social accounts that would be active in
+            the LiveEngage portal, with the options to assign to admin and
+            specific agents. Includes adding media content and
+            keywords/hashtags for agents to use in the social transcript when
+            replying to public and private messages.
+          </Body>
+        </TextPanel>
+
+        <BigImagePanel
+          src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580743086322-L6ILER7K3CPFW4WMCO1E/Accounts-Multiple.png"
+          alt="Self-service: connect, assign, and manage social accounts"
+          caption="Self-service: connect, assign, and manage social accounts"
+        />
+
+        {/* ── FUTURE VISION ─────────────────────────────────────────────── */}
+        <BigImagePanel
+          src="/work/liveperson/connections-self-service.webp"
+          alt="Future vision — SocialConnect inside the agent workspace"
+          caption="Future Vision: Integrate the SocialConnect feature into the entire LiveEngage experience."
+        />
+
+        {/* ── IMPACT ────────────────────────────────────────────────────── */}
+        <Panel width="lg:w-[62vw]">
+          <Heading>Impact</Heading>
+          <div className="mt-10 w-full max-w-[750px] space-y-8">
+            {metrics.map((m, i) => (
+              <SlideIn key={m.label} delay={120 + i * 90}>
+                <p className="text-sm font-medium opacity-80 sm:text-base">{m.label}</p>
+                <p className="mt-1 text-[clamp(1.75rem,5vw,2.75rem)] font-semibold leading-tight">
+                  {m.value}
+                </p>
+              </SlideIn>
+            ))}
+          </div>
+        </Panel>
+
+        {/* ── NEXT PROJECT ──────────────────────────────────────────────── */}
+        <Link
+          href={`/work/${next.slug}`}
+          className="group relative flex w-full flex-col justify-center bg-[#141414] px-6 py-20 text-[#f5f5f5] sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[56vw] lg:shrink-0 lg:snap-start lg:px-[7%] lg:py-0"
+        >
+          <p className="text-[clamp(0.95rem,2.2vw,1.1rem)] font-normal text-white/50 sm:text-[1vw]">
+            Up next — {next.client}
+          </p>
+          <h2 className="mt-4 text-[clamp(1.75rem,7vw,3.5rem)] font-semibold leading-[1.1] transition-transform group-hover:translate-x-3 sm:text-[4vw]">
+            {next.title} →
+          </h2>
+        </Link>
+      </HorizontalScroll>
+    </main>
+  );
+}

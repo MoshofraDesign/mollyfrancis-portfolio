@@ -5,11 +5,12 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import PageTransition from "./PageTransition";
 
-// Individual case-study pages (/work/<slug>) all own their full-viewport
-// horizontal-scroll chrome now — this matches any single path segment under
-// /work/ (govos-esubmission's dedicated route included) but excludes the
-// /work listing page itself, which still uses the shared nav/footer.
-const FULL_BLEED_PATTERN = /^\/work\/[^/]+\/?$/;
+// Individual case-study pages (/work/<slug>) and the About page all own
+// their full-viewport horizontal-scroll chrome now — this matches any
+// single path segment under /work/ (govos-esubmission's dedicated route
+// included) plus /about exactly, but excludes the /work listing page
+// itself, which still uses the shared nav/footer.
+const FULL_BLEED_PATTERN = /^\/(work\/[^/]+|about)\/?$/;
 
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

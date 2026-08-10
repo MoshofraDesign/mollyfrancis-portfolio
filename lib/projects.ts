@@ -59,8 +59,9 @@ export const projects: Project[] = [
     role: "Lead UX Designer",
     tags: ["FinTech", "Rewards", "Design system", "AI-augmented workflow"],
     thumbnail: "/work-thumbnails/netspend.webp",
+    hero: "/work/netspend/debit-cards-falling.png",
     logo: "/logos/netspend.svg",
-    accent: "#000000",
+    accent: "#313131",
     featured: true,
     aiSummary:
       "Led design on Netspend's app Rewards program and Unified Commerce Media (UCM) — the internal tool that builds and manages the rewards surfaced on the consumer app. Reworked the consumer rewards layout and information architecture around new features shipped in UCM, using Claude, Gemini, and Figma Make throughout research synthesis and prototyping.",

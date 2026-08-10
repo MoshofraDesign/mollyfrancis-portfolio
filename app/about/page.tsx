@@ -1,14 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import Reveal from "@/components/Reveal";
-import MagneticButton from "@/components/MagneticButton";
-import Polaroid from "@/components/Polaroid";
+import { Jost } from "next/font/google";
+import HorizontalScroll from "@/components/v2/HorizontalScroll";
+import StickyNav from "@/components/StickyNav";
+import SlideIn from "@/components/SlideIn";
+import Logo from "@/components/Logo";
+import { TEXT_W, Eyebrow, Panel, TextPanel, Heading, Body } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "About — Molly Francis",
   description:
     "Lead / Principal UX Product Designer in Austin, TX. ENFP, big ideas, twenty years of design — plus cats, a dog, BigFoot, and a small mountain of collections.",
 };
+
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-jost",
+  display: "swap",
+});
 
 const traits = [
   { letter: "E", word: "Extraverted" },
@@ -36,385 +46,367 @@ const principles = [
   },
 ];
 
-// ── small reusable photo card used for the flat (non-polaroid) sections ──
+const stats = [
+  { v: "20+", l: "years designing" },
+  { v: "9", l: "industries shipped in" },
+  { v: "100+", l: "products in market" },
+];
+
+// ── small reusable photo card (white border, like a print) ────────────────
 function Photo({
   src,
   alt,
   aspect = "1 / 1",
-  className = "",
 }: {
   src: string;
   alt: string;
   aspect?: string;
-  className?: string;
 }) {
   return (
     <div
-      className={`relative overflow-hidden bg-white border-[10px] border-white shadow-[0_2px_12px_-4px_rgba(20,20,20,0.18)] w-full max-w-[350px] mx-auto ${className}`}
+      className="relative w-full max-w-[220px] overflow-hidden border-[8px] border-white bg-white shadow-[0_2px_12px_-4px_rgba(20,20,20,0.18)]"
       style={{ aspectRatio: aspect }}
     >
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes="(max-width: 1024px) 50vw, 25vw"
-        className="object-cover"
-      />
+      <Image src={src} alt={alt} fill sizes="220px" className="object-cover" />
     </div>
+  );
+}
+
+/** A heading + copy + small photo grid, side by side — the shape most of
+ *  the personal-facts panels share. */
+function StoryPanel({
+  heading,
+  eyebrow,
+  children,
+  photos,
+  reverse = false,
+}: {
+  heading: string;
+  eyebrow?: string;
+  children: React.ReactNode;
+  photos: { src: string; alt: string }[];
+  reverse?: boolean;
+}) {
+  return (
+    <Panel width="lg:w-[86vw]" className="items-center">
+      <div
+        className={`grid w-full max-w-[1100px] items-center gap-10 sm:grid-cols-2 sm:gap-14 ${
+          reverse ? "sm:[&>*:first-child]:order-2" : ""
+        }`}
+      >
+        <SlideIn>
+          <div className={`grid gap-4 ${photos.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
+            {photos.map((p) => (
+              <Photo key={p.src} src={p.src} alt={p.alt} />
+            ))}
+          </div>
+        </SlideIn>
+        <SlideIn delay={100}>
+          {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+          <h2 className="mt-2 text-[clamp(1.5rem,4.5vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
+            {heading}
+          </h2>
+          <div className="mt-4 space-y-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
+            {children}
+          </div>
+        </SlideIn>
+      </div>
+    </Panel>
   );
 }
 
 export default function AboutPage() {
   return (
-    <div className="page-shell">
-      {/* ── HERO — I love what I do (full-bleed) ───────────────── */}
-      <section className="-mt-28 relative isolate">
-        <Reveal as="div" className="relative isolate">
-          <Image
-            src="/about/love-coffee.jpg"
-            alt="Coffee cup and 'welcome to your life' sketch"
-            width={2000}
-            height={1200}
-            sizes="100vw"
-            className="w-full h-[80vh] lg:h-[90vh] object-cover"
-            priority
-          />
-          <div className="absolute inset-0 flex items-end px-6 lg:px-16 pb-12 lg:pb-20">
-            <div className="max-w-2xl">
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/60 mb-4">
-                Hi, I&rsquo;m Molly
-              </p>
-              <blockquote className="font-serif italic text-4xl lg:text-6xl leading-[1.05] text-ink">
+    <main
+      className={`${jost.variable} relative bg-[#f5f5f5] text-[#141414]`}
+      style={{ fontFamily: "var(--font-jost), system-ui, sans-serif" }}
+    >
+      <StickyNav
+        watch="title"
+        logo={<Logo variant="mark" size={26} />}
+        action={
+          <Link
+            href="/"
+            aria-label="Back to home"
+            className="pointer-events-auto -m-3 flex min-h-11 min-w-11 items-center justify-center p-3 text-[11px] font-semibold uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60"
+          >
+            Close
+          </Link>
+        }
+      />
+
+      <HorizontalScroll>
+        {/* ── TITLE — I love what I do ─────────────────────────────── */}
+        <section
+          id="title"
+          className="relative flex w-full flex-col md:flex-row md:items-center lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:overflow-y-auto lg:overscroll-contain"
+        >
+          <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[42%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-12">
+            <Logo variant="lockup" size={56} />
+            <div>
+              <Eyebrow>Hi, I&rsquo;m Molly</Eyebrow>
+              <p className="mt-3 font-serif italic text-[clamp(1.75rem,6vw,3rem)] leading-[1.08]">
                 &ldquo;I love what I do.&rdquo;
-              </blockquote>
-              <p className="mt-6 text-base lg:text-lg text-ink/80 leading-relaxed max-w-lg">
+              </p>
+              <p className="mt-4 max-w-[60ch] text-[clamp(0.95rem,4vw,1.2rem)] leading-[1.4] opacity-85 sm:text-[clamp(0.95rem,2.2vw,1.2rem)] md:text-[1.05vw]">
                 I would never want to change career paths, and strive to learn
                 and evolve with changes that come in the tech world.
               </p>
             </div>
           </div>
-        </Reveal>
-      </section>
-
-      {/* ── SLIDE 1 — Intro ─────────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-24 lg:pt-32 pb-24 lg:pb-32">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          <Reveal as="div" className="lg:col-span-5 order-2 lg:order-1">
-            <div className="relative aspect-square rounded-full overflow-hidden bg-ink/5 max-w-md mx-auto">
+          <div className="w-full px-5 pb-10 sm:px-8 md:mr-[5%] md:w-[58%] md:px-0 md:pb-0">
+            <div className="relative aspect-[4/3] w-full">
               <Image
-                src="/about/molly-headshot.jpg"
-                alt="Molly Francis"
+                src="/about/love-coffee.jpg"
+                alt="Coffee cup and 'welcome to your life' sketch"
                 fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
+                sizes="(max-width: 767px) 92vw, (max-width: 1023px) 80vw, 55vw"
                 className="object-cover"
                 priority
               />
             </div>
-          </Reveal>
-
-          <Reveal as="div" className="lg:col-span-7 order-1 lg:order-2">
-            <h1 className="text-5xl lg:text-6xl font-medium leading-[1.05] tracking-tight">
-              Molly Francis
-            </h1>
-            <p className="mt-3 font-mono text-ink/60">/ mol•ly /</p>
-
-            <p className="mt-6 text-sm text-ink/70">
-              <span className="font-medium">ENFP (Campaigner)</span>{" "}
-              <span className="underline-offset-2">{traits.map((t, i) => (
-                <span key={t.word}>
-                  <em className="not-italic underline">{t.word}</em>
-                  {i < traits.length - 1 ? ", " : ""}
-                  {i === traits.length - 2 ? "and " : ""}
-                </span>
-              ))}</span>
-              {" "}traits
-            </p>
-
-            <p className="mt-6 text-base lg:text-lg text-ink/80 leading-relaxed max-w-2xl">
-              I tend to embrace big ideas and actions that reflect a sense of hope
-              and goodwill toward others. I have a vibrant energy and can flow in
-              many directions.
-            </p>
-            <p className="mt-4 text-base lg:text-lg text-ink/80 leading-relaxed max-w-2xl">
-              These traits allow me to be an empathetic designer who thrives on
-              understanding and connecting with the end users, always keeping their
-              needs and experiences at the forefront of my work.
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-3">
-              <MagneticButton
-                href="https://www.mollyfrancis.com/s/Molly-Francis-Product-Designer-Researcher-and-Leader-Resume-1.pdf"
-                external
-              >
-                Résumé ↗
-              </MagneticButton>
-              <MagneticButton href="/contact" variant="ghost">
-                Say hi
-              </MagneticButton>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── SLIDE 2 — I have a wonderful family ──────────────────── */}
-      <section className="border-t border-ink/10 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <Reveal as="div" className="grid grid-cols-3 gap-6 lg:gap-8 mb-12">
-            <Photo src="/about/family-1.jpg" alt="Family group photo" />
-            <Photo src="/about/family-2.jpg" alt="Daughter with pink blanket" />
-            <Photo src="/about/family-3.jpg" alt="Molly and daughter" />
-          </Reveal>
-          <Reveal as="div" className="max-w-2xl">
-            <h2 className="text-3xl lg:text-4xl font-medium mb-5">
-              I have a wonderful family
-            </h2>
-            <p className="text-base lg:text-lg text-ink/80 leading-relaxed">
-              My dad is a retired Architect and my mother was an early-childhood
-              Preschool Director. I think having a mix of a very meticulous,
-              detailed father and an empathetic mother who was a helper of
-              children created a combo of the skills I possess as Product
-              Designer I am today.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── SLIDE 3 — The Sixbees ────────────────────────────────── */}
-      <section className="border-t border-ink/10 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <Reveal as="div" className="lg:col-span-7 relative">
-              <Image
-                src="/about/sixbees.jpg"
-                alt="The Sixbees — design friends"
-                width={854}
-                height={555}
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                className="w-full h-auto"
-              />
-            </Reveal>
-
-            <Reveal as="div" className="lg:col-span-5">
-              <h2 className="text-3xl lg:text-4xl font-medium mb-5">The Sixbees</h2>
-              <p className="text-base lg:text-lg text-ink/80 leading-relaxed">
-                My design friends and I started a blog years ago. It was a blast!
-                We wrote articles and had regular meetups.
-              </p>
-              <p className="mt-4 text-base lg:text-lg text-ink/80 leading-relaxed">
-                As time went by, our lives got busy with family and life and a
-                few moved to other states, but we still meet up to grab a beer
-                or coffee whenever we can.
-              </p>
-            </Reveal>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── SLIDE 4 — I love animals ─────────────────────────────── */}
-      <section className="border-t border-ink/10 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <Reveal as="div" className="max-w-xl mb-10">
-            <h2 className="text-3xl lg:text-4xl font-medium mb-3">
-              I love animals
-            </h2>
-            <p className="text-base lg:text-lg text-ink/80 leading-relaxed">
-              I have two cats and a dog. They love to crash a good meeting :)
-            </p>
-          </Reveal>
-          <Reveal as="div" className="grid grid-cols-2 sm:grid-cols-3 gap-4 lg:gap-6">
-            <Photo src="/about/pet-1.jpg" alt="Henry on chair" />
-            <Photo src="/about/pet-2.jpg" alt="Joey, gray fluffy cat" />
-            <Photo src="/about/pet-4.jpg" alt="Saskatoon the dog" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── SLIDE 5 — When I was little ──────────────────────────── */}
-      <section className="border-t border-ink/10 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <Reveal as="div" className="lg:col-span-7">
-              <div className="grid grid-cols-3 gap-4 lg:gap-6">
-                <Photo src="/about/little-jeep.jpg" alt="Fisher Price Jeep adventurer" />
-                <Photo src="/about/little-dad.jpg" alt="Molly with dad" />
-                <Photo src="/about/little-bigfoot.jpg" alt="BigFoot photo" />
-              </div>
-            </Reveal>
-
-            <Reveal as="div" className="lg:col-span-5">
-              <h2 className="text-3xl lg:text-4xl font-medium mb-5">
-                <span aria-hidden className="mr-2">👣</span>
-                When I was little…
-              </h2>
-              <p className="text-base lg:text-lg text-ink/80 leading-relaxed">
-                My dad asked me what I wanted to be when I grew up. I told him I
-                wanted to find BigFoot.
-              </p>
-              <p className="mt-4 text-base lg:text-lg text-ink/80 leading-relaxed">
-                I&rsquo;m pretty sure my imagination was sparked with the Fisher
-                Price Jeep adventurer collection :)
-              </p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SLIDE 6 — I collect a LOT of things ──────────────────── */}
-      <section className="border-t border-ink/10 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-10 items-stretch">
-            <Reveal as="div" className="lg:col-span-7">
-              <h2 className="text-3xl lg:text-4xl font-medium mb-3">
-                I collect a LOT of things
-              </h2>
-              <p className="text-base text-ink/80 mb-8 max-w-md">
-                I blame McDonald&rsquo;s and Hardies happy meal toys (the
-                California Raisins) and the scholastic book fair when I was a
-                kid :)
-              </p>
-              <div className="grid grid-cols-2 gap-4 max-w-lg">
-                <Photo src="/about/collect-1.jpg" alt="LEGO succulents" />
-                <Photo src="/about/collect-2.jpg" alt="Mini Brands collectibles" />
-                <Photo src="/about/collect-3.jpg" alt="Terracotta sculpture" />
-                <Photo src="/about/collect-4.jpg" alt="Doll heads shelf" />
-              </div>
-            </Reveal>
-
-            <Reveal as="div" className="lg:col-span-5">
-              <div className="relative h-full min-h-[400px] overflow-hidden">
+        {/* ── INTRO — Molly Francis ────────────────────────────────── */}
+        <Panel width="lg:w-[86vw]" className="items-center">
+          <div className="grid w-full max-w-[1100px] items-center gap-10 sm:grid-cols-2 sm:gap-14">
+            <SlideIn>
+              <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-full bg-black/5">
                 <Image
-                  src="/about/collect-pens.jpg"
-                  alt="Pen cup with globes"
+                  src="/about/molly-headshot.jpg"
+                  alt="Molly Francis"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  sizes="(max-width: 1024px) 60vw, 24vw"
                   className="object-cover"
                 />
               </div>
-            </Reveal>
+            </SlideIn>
+            <SlideIn delay={100}>
+              <h2 className="text-[clamp(2rem,5vw,3rem)] font-semibold leading-[1.05] tracking-[-0.01em]">
+                Molly Francis
+              </h2>
+              <p className="mt-2 font-mono text-sm opacity-60">/ mol&bull;ly /</p>
+              <p className="mt-5 text-sm opacity-80">
+                <span className="font-semibold">ENFP (Campaigner)</span>{" "}
+                {traits.map((t, i) => (
+                  <span key={t.word}>
+                    <em className="not-italic underline">{t.word}</em>
+                    {i < traits.length - 1 ? ", " : ""}
+                    {i === traits.length - 2 ? "and " : ""}
+                  </span>
+                ))}
+                {" "}traits
+              </p>
+              <p className="mt-5 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
+                I tend to embrace big ideas and actions that reflect a sense of
+                hope and goodwill toward others. I have a vibrant energy and
+                can flow in many directions.
+              </p>
+              <p className="mt-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
+                These traits allow me to be an empathetic designer who thrives
+                on understanding and connecting with the end users, always
+                keeping their needs and experiences at the forefront of my
+                work.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <a
+                  href="https://www.mollyfrancis.com/s/Molly-Francis-Product-Designer-Researcher-and-Leader-Resume-1.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center rounded-full bg-[#141414] px-7 py-3 text-sm font-semibold text-[#f5f5f5] transition-opacity hover:opacity-80"
+                >
+                  Résumé ↗
+                </a>
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-11 items-center rounded-full border border-[#141414]/30 px-7 py-3 text-sm font-semibold transition-opacity hover:opacity-60"
+                >
+                  Say hi
+                </Link>
+              </div>
+            </SlideIn>
           </div>
-        </div>
-      </section>
+        </Panel>
 
-      {/* ── SLIDE 7 — I Love Packaging  (NEW from deck) ──────────── */}
-      <section className="border-t border-ink/10 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <Reveal as="div" className="mb-12 max-w-xl">
-            <h2 className="text-3xl lg:text-4xl font-medium mb-3">
-              I Love Packaging
-            </h2>
-            <p className="text-base lg:text-lg text-ink/80 leading-relaxed">
-              I will always buy something if the packaging is cool.
-            </p>
-          </Reveal>
-          <Reveal as="div" className="grid grid-cols-3 gap-6 lg:gap-8">
-            <Photo src="/about/packaging-1.jpg" alt="Dolly Parton coconut flakes" />
-            <Photo src="/about/packaging-2.jpg" alt="Pickle beer" />
-            <Photo src="/about/packaging-3.jpg" alt="Cheetos Mac n Cheese" />
-          </Reveal>
-        </div>
-      </section>
+        {/* ── FAMILY ────────────────────────────────────────────────── */}
+        <StoryPanel
+          heading="I have a wonderful family"
+          photos={[
+            { src: "/about/family-1.jpg", alt: "Family group photo" },
+            { src: "/about/family-2.jpg", alt: "Daughter with pink blanket" },
+            { src: "/about/family-3.jpg", alt: "Molly and daughter" },
+          ]}
+        >
+          <p>
+            My dad is a retired Architect and my mother was an early-childhood
+            Preschool Director. I think having a mix of a very meticulous,
+            detailed father and an empathetic mother who was a helper of
+            children created a combo of the skills I possess as Product
+            Designer I am today.
+          </p>
+        </StoryPanel>
 
-      {/* ── Bridge to the work (additional content beyond the deck) ── */}
-      <section className="border-t border-ink/10 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <Reveal as="div" className="mb-16">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
-              And — the work
-            </p>
-            <h2 className="text-4xl lg:text-5xl font-medium max-w-3xl leading-[1.1]">
-              I design things that work, for people on their hardest day.
-            </h2>
-            <p className="mt-6 text-lg text-ink/75 leading-relaxed max-w-2xl">
-              Most of my career has been in healthcare and complex SaaS — places
-              where the tool is the difference between &ldquo;I got my answer&rdquo;
-              and &ldquo;I gave up.&rdquo;
-            </p>
-          </Reveal>
+        {/* ── THE SIXBEES ───────────────────────────────────────────── */}
+        <StoryPanel
+          heading="The Sixbees"
+          photos={[{ src: "/about/sixbees.jpg", alt: "The Sixbees — design friends" }]}
+          reverse
+        >
+          <p>
+            My design friends and I started a blog years ago. It was a blast!
+            We wrote articles and had regular meetups.
+          </p>
+          <p>
+            As time went by, our lives got busy with family and life and a few
+            moved to other states, but we still meet up to grab a beer or
+            coffee whenever we can.
+          </p>
+        </StoryPanel>
 
-          <div className="grid sm:grid-cols-3 gap-6 mb-16">
-            {[
-              { v: "20+", l: "years designing" },
-              { v: "9", l: "industries shipped in" },
-              { v: "100+", l: "products in market" },
-            ].map((s) => (
-              <Reveal
-                key={s.l}
-                as="div"
-                className="p-7 rounded-md border border-ink/10 bg-white/60"
-              >
-                <div className="text-5xl font-medium mb-2">{s.v}</div>
-                <div className="text-sm text-ink/60">{s.l}</div>
-              </Reveal>
+        {/* ── ANIMALS ───────────────────────────────────────────────── */}
+        <StoryPanel
+          heading="I love animals"
+          photos={[
+            { src: "/about/pet-1.jpg", alt: "Henry on chair" },
+            { src: "/about/pet-2.jpg", alt: "Joey, gray fluffy cat" },
+            { src: "/about/pet-4.jpg", alt: "Saskatoon the dog" },
+          ]}
+        >
+          <p>I have two cats and a dog. They love to crash a good meeting :)</p>
+        </StoryPanel>
+
+        {/* ── WHEN I WAS LITTLE ─────────────────────────────────────── */}
+        <StoryPanel
+          heading="👣 When I was little…"
+          photos={[
+            { src: "/about/little-jeep.jpg", alt: "Fisher Price Jeep adventurer" },
+            { src: "/about/little-dad.jpg", alt: "Molly with dad" },
+            { src: "/about/little-bigfoot.jpg", alt: "BigFoot photo" },
+          ]}
+          reverse
+        >
+          <p>
+            My dad asked me what I wanted to be when I grew up. I told him I
+            wanted to find BigFoot.
+          </p>
+          <p>
+            I&rsquo;m pretty sure my imagination was sparked with the Fisher
+            Price Jeep adventurer collection :)
+          </p>
+        </StoryPanel>
+
+        {/* ── COLLECTIONS ───────────────────────────────────────────── */}
+        <StoryPanel
+          heading="I collect a LOT of things"
+          photos={[
+            { src: "/about/collect-1.jpg", alt: "LEGO succulents" },
+            { src: "/about/collect-2.jpg", alt: "Mini Brands collectibles" },
+            { src: "/about/collect-3.jpg", alt: "Terracotta sculpture" },
+            { src: "/about/collect-4.jpg", alt: "Doll heads shelf" },
+            { src: "/about/collect-pens.jpg", alt: "Pen cup with globes" },
+          ]}
+        >
+          <p>
+            I blame McDonald&rsquo;s and Hardies happy meal toys (the
+            California Raisins) and the scholastic book fair when I was a kid
+            :)
+          </p>
+        </StoryPanel>
+
+        {/* ── PACKAGING ─────────────────────────────────────────────── */}
+        <StoryPanel
+          heading="I Love Packaging"
+          photos={[
+            { src: "/about/packaging-1.jpg", alt: "Dolly Parton coconut flakes" },
+            { src: "/about/packaging-2.jpg", alt: "Pickle beer" },
+            { src: "/about/packaging-3.jpg", alt: "Cheetos Mac n Cheese" },
+          ]}
+          reverse
+        >
+          <p>I will always buy something if the packaging is cool.</p>
+        </StoryPanel>
+
+        {/* ── BRIDGE TO THE WORK — stats ────────────────────────────── */}
+        <TextPanel>
+          <Eyebrow>And — the work</Eyebrow>
+          <Heading>
+            I design things that work, for people on their hardest day.
+          </Heading>
+          <Body>
+            Most of my career has been in healthcare and complex SaaS —
+            places where the tool is the difference between &ldquo;I got my
+            answer&rdquo; and &ldquo;I gave up.&rdquo;
+          </Body>
+          <div className={`mt-10 grid grid-cols-3 gap-6 ${TEXT_W}`}>
+            {stats.map((s, i) => (
+              <SlideIn key={s.l} delay={240 + i * 90}>
+                <div className="rounded-md border border-[#141414]/10 bg-white/60 p-6">
+                  <div className="text-[clamp(1.75rem,5vw,3rem)] font-semibold leading-none">
+                    {s.v}
+                  </div>
+                  <p className="mt-2 text-xs opacity-60 sm:text-sm">{s.l}</p>
+                </div>
+              </SlideIn>
             ))}
           </div>
+        </TextPanel>
 
-          <div className="grid lg:grid-cols-12 gap-12">
-            <Reveal as="div" className="lg:col-span-4">
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
-                Operating principles
-              </p>
-              <h3 className="text-3xl lg:text-4xl font-medium">How I show up</h3>
-            </Reveal>
-
-            <div className="lg:col-span-8 space-y-1">
-              {principles.map((p, i) => (
-                <Reveal
-                  key={p.t}
-                  as="div"
-                  delay={i * 60}
-                  className="grid grid-cols-12 py-7 border-t border-ink/10"
-                >
-                  <div className="col-span-1 font-mono text-[18px] text-ink/40 leading-none">
+        {/* ── OPERATING PRINCIPLES ──────────────────────────────────── */}
+        <Panel width="lg:w-[92vw]">
+          <Eyebrow>Operating principles</Eyebrow>
+          <h2 className="mt-2 text-[clamp(1.75rem,6vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.01em] sm:text-[clamp(2rem,3.6vw,3rem)]">
+            How I show up
+          </h2>
+          <div className="mt-8 w-full max-w-[900px] space-y-1">
+            {principles.map((p, i) => (
+              <SlideIn key={p.t} delay={120 + i * 90}>
+                <div className="grid grid-cols-12 gap-4 border-t border-[#141414]/10 py-6">
+                  <div className="col-span-1 font-mono text-base opacity-40">
                     0{i + 1}
                   </div>
                   <div className="col-span-11">
-                    <h4 className="text-xl lg:text-2xl font-medium mb-2">
-                      {p.t}
-                    </h4>
-                    <p className="text-ink/70 leading-relaxed max-w-2xl">
+                    <h3 className="text-lg font-semibold sm:text-xl">{p.t}</h3>
+                    <p className="mt-1.5 max-w-xl text-sm leading-relaxed opacity-75 sm:text-base">
                       {p.b}
                     </p>
                   </div>
-                </Reveal>
-              ))}
-            </div>
+                </div>
+              </SlideIn>
+            ))}
           </div>
-        </div>
-      </section>
+        </Panel>
 
-      {/* CTA */}
-      <section className="border-t border-ink/10 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <Reveal
-            as="div"
-            className="rounded-md bg-ink text-cream p-10 lg:p-16 relative overflow-hidden"
-          >
-            <div className="relative max-w-2xl">
-              <p className="text-xs uppercase tracking-[0.25em] text-cream/60 mb-6">
-                Still reading?
-              </p>
-              <h2 className="text-4xl lg:text-5xl font-medium mb-6 leading-[1.05]">
-                Let&rsquo;s talk.
-              </h2>
-              <p className="text-cream/80 mb-8 leading-relaxed">
-                If any of this resonates — the work, the cats, or the BigFoot
-                thing — I&rsquo;d love to hear what you&rsquo;re building.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="mailto:yo@mollyfrancis.com"
-                  className="magnetic bg-cream text-ink hover:bg-cream/90"
-                >
-                  yo@mollyfrancis.com →
-                </a>
-                <Link href="/contact" className="magnetic ghost border-cream/30 text-cream">
-                  Project inquiry
-                </Link>
-              </div>
+        {/* ── CTA — Let's talk ──────────────────────────────────────── */}
+        <section className="relative flex w-full flex-col justify-center bg-[#141414] px-6 py-20 text-[#f5f5f5] sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[56vw] lg:shrink-0 lg:snap-start lg:px-[7%] lg:py-0">
+          <SlideIn>
+            <p className="text-xs uppercase tracking-[0.25em] text-white/60">
+              Still reading?
+            </p>
+            <h2 className="mt-4 text-[clamp(2rem,7vw,3.5rem)] font-semibold leading-[1.05] sm:text-[4vw]">
+              Let&rsquo;s talk.
+            </h2>
+            <p className="mt-5 max-w-md text-white/80 leading-relaxed">
+              If any of this resonates — the work, the cats, or the BigFoot
+              thing — I&rsquo;d love to hear what you&rsquo;re building.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="mailto:yo@mollyfrancis.com"
+                className="inline-flex min-h-11 items-center rounded-full bg-[#f5f5f5] px-7 py-3 text-sm font-semibold text-[#141414] transition-opacity hover:opacity-90"
+              >
+                yo@mollyfrancis.com →
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex min-h-11 items-center rounded-full border border-white/30 px-7 py-3 text-sm font-semibold transition-opacity hover:opacity-60"
+              >
+                Project inquiry
+              </Link>
             </div>
-          </Reveal>
-        </div>
-      </section>
-    </div>
+          </SlideIn>
+        </section>
+      </HorizontalScroll>
+    </main>
   );
 }
