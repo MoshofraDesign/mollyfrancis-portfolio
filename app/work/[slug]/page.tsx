@@ -1,12 +1,25 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { Jost } from "next/font/google";
 import { projects, getProject } from "@/lib/projects";
-import Reveal from "@/components/Reveal";
-import MagneticButton from "@/components/MagneticButton";
+import HorizontalScroll from "@/components/v2/HorizontalScroll";
+import StickyNav from "@/components/StickyNav";
+import SlideIn from "@/components/SlideIn";
+import { contrastColor } from "@/lib/contrastColor";
 
-// govos-esubmission has its own dedicated page at /app/work/govos-esubmission/
-// so we exclude it here to avoid a duplicate build.
+/**
+ * Shared horizontal-scroll case-study template — every project except
+ * govos-esubmission (which has its own bespoke Figma-matched build at
+ * /app/work/govos-esubmission/) runs through here. Mirrors the GovOS
+ * page's mechanics (HorizontalScroll + StickyNav + snap panels) but is
+ * driven entirely by each project's existing data in lib/projects.ts —
+ * no per-project hand authoring. Page background is the project's own
+ * accent color at full opacity (matching its homepage thumbnail overlay
+ * color, just solid instead of blended over the thumbnail image), with
+ * text color picked for contrast via lib/contrastColor.
+ */
+
 const customSlugs = new Set(["govos-esubmission"]);
 
 export function generateStaticParams() {
@@ -24,301 +37,393 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   };
 }
 
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-jost",
+  display: "swap",
+});
+
+// ── shared panel primitives (kept local — mirrors, but doesn't share code
+//    with, the govos-esubmission page so that page stays untouched) ────────
+
+const TEXT_W = "w-full max-w-[950px]";
+
+/** Keeps the last two words together so a line never ends on a lone orphan. */
+function noOrphan(text: string) {
+  const words = text.trim().split(/\s+/);
+  if (words.length < 3) return text;
+  return `${words.slice(0, -1).join(" ")} ${words[words.length - 1]}`;
+}
+
+function chunk<T>(arr: T[], size: number): T[][] {
+  const out: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
+}
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-xs uppercase tracking-[0.25em] opacity-60">{children}</p>
+  );
+}
+
+/**
+ * Fixed-height horizontal slice of the viewport at lg+, snapping and
+ * peeking into the next panel — below lg it's a normal full-width block in
+ * a vertically scrolling page. Same mechanics as the govos page's Panel.
+ */
+function Panel({
+  children,
+  className = "",
+  width = "lg:w-[68vw]",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  width?: string;
+}) {
+  return (
+    <section
+      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-0 lg:py-12 lg:pl-[100px] lg:pr-[16%] ${className}`}
+    >
+      {children}
+    </section>
+  );
+}
+
+/** Full-viewport text section — Overview/Problem/Approach/Outcome/Research. */
+function TextPanel({
+  children,
+  id,
+}: {
+  children: React.ReactNode;
+  id?: string;
+}) {
+  return (
+    <section
+      id={id}
+      className="relative flex w-full px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain lg:px-[100px] lg:py-12"
+    >
+      <div className="w-full max-w-[950px]">{children}</div>
+    </section>
+  );
+}
+
+function Heading({ children }: { children: React.ReactNode }) {
+  return (
+    <SlideIn className={TEXT_W}>
+      <h2 className="text-[clamp(1.75rem,7vw,2.75rem)] font-semibold leading-[1.17] tracking-[-0.01em] sm:text-[clamp(2rem,4.4vw,5.5rem)] [text-wrap:pretty]">
+        {typeof children === "string" ? noOrphan(children) : children}
+      </h2>
+    </SlideIn>
+  );
+}
+
+function Body({ children }: { children: React.ReactNode }) {
+  return (
+    <SlideIn delay={120} className={TEXT_W}>
+      <p className="mt-6 text-[clamp(1rem,3.4vw,1.375rem)] font-normal leading-[1.45] opacity-90 sm:text-[clamp(1rem,1.7vw,1.375rem)] [text-wrap:pretty]">
+        {typeof children === "string" ? noOrphan(children) : children}
+      </p>
+    </SlideIn>
+  );
+}
+
+function Bullets({ items }: { items: string[] }) {
+  return (
+    <ul className={`mt-6 space-y-2 ${TEXT_W}`}>
+      {items.map((b, i) => (
+        <SlideIn
+          key={b}
+          as="li"
+          delay={120 + i * 90}
+          className="text-[clamp(1rem,3.4vw,1.375rem)] font-normal leading-[1.45] opacity-90 sm:text-[clamp(1rem,1.7vw,1.375rem)] [text-wrap:pretty]"
+        >
+          {noOrphan(b)}
+        </SlideIn>
+      ))}
+    </ul>
+  );
+}
+
+function MetricsPanel({
+  metrics,
+}: {
+  metrics: { label: string; value: string }[];
+}) {
+  return (
+    <Panel width="lg:w-[68vw]">
+      <Heading>Impact</Heading>
+      <div className="mt-10 grid w-full max-w-[950px] grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+        {metrics.map((m, i) => (
+          <SlideIn key={m.label} delay={120 + i * 90}>
+            <div className="text-[clamp(1.75rem,5vw,3rem)] font-semibold leading-none">
+              {m.value}
+            </div>
+            <p className="mt-3 text-sm opacity-70">{m.label}</p>
+          </SlideIn>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
+/** A handful of screens/photos in a grid, one panel per chunk of 4. */
+function ImageGridPanel({
+  images,
+}: {
+  images: { src: string; caption?: string }[];
+}) {
+  return (
+    <Panel width="lg:w-[92vw]" className="items-center">
+      <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-4">
+        {images.map((img, i) => (
+          <figure key={img.src + i} className="space-y-2">
+            <div className="relative aspect-[3/4] overflow-hidden">
+              <Image
+                src={img.src}
+                alt={img.caption || ""}
+                fill
+                sizes="(max-width: 768px) 45vw, 20vw"
+                className="object-cover"
+              />
+            </div>
+            {img.caption && (
+              <figcaption className="text-xs opacity-70 [text-wrap:pretty]">
+                {img.caption}
+              </figcaption>
+            )}
+          </figure>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
+/**
+ * Logos project only — every image *is* a mark, so instead of the cropped
+ * screen-grid treatment above, lay them out the same way CareGrid lays out
+ * the homepage (square tiles, same gutter/column formula) but with no
+ * accent overlay and no separate SVG mark layer — just the logo itself,
+ * plain, per the brief ("grid like homepage but no overlay or svg").
+ */
+function LogosGridPanel({
+  images,
+}: {
+  images: { src: string; caption?: string }[];
+}) {
+  return (
+    <section className="relative flex w-full flex-col px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[130vw] lg:shrink-0 lg:snap-start lg:items-start lg:overflow-y-auto lg:overscroll-contain lg:px-[100px] lg:py-16">
+      <SlideIn className={TEXT_W}>
+        <h2 className="text-[clamp(1.75rem,7vw,2.75rem)] font-semibold leading-[1.17] tracking-[-0.01em] sm:text-[clamp(2rem,4.4vw,3.5rem)] [text-wrap:pretty]">
+          Selected marks
+        </h2>
+      </SlideIn>
+      <div
+        className="mt-10 grid w-full justify-start gap-6 sm:gap-8"
+        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(200px, 300px))" }}
+      >
+        {images.map((img, i) => (
+          <div
+            key={img.src + i}
+            className="relative aspect-square w-full max-w-[300px] overflow-hidden"
+          >
+            <Image
+              src={img.src}
+              alt={img.caption || "Logo mark"}
+              fill
+              sizes="300px"
+              className="object-contain p-6"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/** Title panel — logo, title + subtitle, hero (or thumbnail) image. */
+function TitlePanel({
+  project,
+}: {
+  project: NonNullable<ReturnType<typeof getProject>>;
+}) {
+  const heroSrc = project.hero || project.thumbnail;
+  return (
+    <section
+      id="title"
+      className="relative flex w-full flex-col md:flex-row md:items-center lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:overflow-y-auto lg:overscroll-contain"
+    >
+      <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[40%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-12">
+        {project.logo ? (
+          <div className="relative h-16 w-full max-w-[380px] sm:h-20 md:h-24">
+            <Image
+              src={project.logo}
+              alt={project.client}
+              fill
+              unoptimized
+              priority
+              className="object-contain object-left"
+              style={{ transform: `scale(${project.logoScale ?? 1})`, transformOrigin: "left center" }}
+            />
+          </div>
+        ) : (
+          <p className="text-[clamp(1.75rem,5vw,2.5rem)] font-semibold">
+            {project.title}
+          </p>
+        )}
+        <div>
+          <Eyebrow>
+            {project.client} · {project.year}
+          </Eyebrow>
+          <p className="mt-3 text-[clamp(1.1rem,5.5vw,1.75rem)] font-semibold leading-tight sm:text-[clamp(1.1rem,3vw,1.75rem)] md:text-[1.5vw]">
+            {project.title}
+          </p>
+          <p className="mt-4 max-w-[60ch] text-[clamp(0.95rem,4vw,1.2rem)] font-normal leading-[1.4] opacity-90 sm:text-[clamp(0.95rem,2.2vw,1.2rem)] md:text-[1.05vw]">
+            {project.subtitle}
+          </p>
+        </div>
+      </div>
+      <div className="w-full px-5 pb-10 sm:px-8 md:mr-[5%] md:w-[58%] md:px-0 md:pb-0">
+        {heroSrc && (
+          <div className="relative aspect-[4/3] w-full">
+            <Image
+              src={heroSrc}
+              alt={project.title}
+              fill
+              sizes="(max-width: 767px) 92vw, (max-width: 1023px) 80vw, 55vw"
+              className="object-contain"
+              priority
+            />
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+// ── page ────────────────────────────────────────────────────────────────────
+
 export default function CaseStudy({ params }: { params: { slug: string } }) {
   const project = getProject(params.slug);
   if (!project) notFound();
 
   const idx = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(idx + 1) % projects.length];
+  const fg = contrastColor(project.accent);
+  const isLogos = project.slug === "logos";
 
   return (
-    <article className="page-shell">
-      {/* HERO */}
-      <header
-        className="relative pt-8 pb-20 lg:pb-28 overflow-hidden"
-        style={{
-          background: `linear-gradient(180deg, ${project.accent}18 0%, transparent 90%)`,
-        }}
-      >
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="flex items-center gap-3 mb-8 text-sm">
-            <Link href="/work" className="link-underline text-ink/60">
-              ← Back to work
-            </Link>
-            <span className="text-ink/30">/</span>
-            <span className="text-ink/60">{project.client}</span>
-          </div>
-
-          <Reveal as="div">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">
-              {project.client} · {project.year}
-            </p>
-            <h1 className="font-serif text-hero max-w-4xl">{project.title}</h1>
-            <p className="mt-6 max-w-3xl text-xl text-ink/75 leading-relaxed">
-              {project.subtitle}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {project.tags.map((t) => (
-                <span key={t} className="pill">
-                  {t}
-                </span>
-              ))}
+    <main
+      className={`${jost.variable} relative`}
+      style={{ background: project.accent, color: fg, fontFamily: "var(--font-jost), system-ui, sans-serif" }}
+    >
+      <StickyNav
+        watch="title"
+        logo={
+          project.logo ? (
+            <div className="relative h-6 w-[90px] sm:h-7 sm:w-[110px]">
+              <Image
+                src={project.logo}
+                alt={project.client}
+                fill
+                unoptimized
+                className="object-contain object-left"
+              />
             </div>
-          </Reveal>
-        </div>
-      </header>
-
-      {/* META BAR */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 -mt-8 lg:-mt-12 mb-16">
-        <Reveal
-          as="div"
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8 rounded-md bg-white border border-ink/10"
-        >
-          {[
-            { l: "Role", v: project.role },
-            { l: "Client", v: project.client },
-            { l: "Year", v: project.year },
-            {
-              l: "Discipline",
-              v: project.tags.slice(0, 2).join(" · "),
-            },
-          ].map((m) => (
-            <div key={m.l}>
-              <p className="text-xs uppercase tracking-[0.18em] text-ink/40 mb-2">
-                {m.l}
-              </p>
-              <p className="font-serif text-lg leading-tight">{m.v}</p>
-            </div>
-          ))}
-        </Reveal>
-      </section>
-
-      {/* AI SUMMARY */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-8">
-        <Reveal
-          as="div"
-          className="relative p-8 lg:p-12 rounded-md bg-ink text-cream overflow-hidden"
-        >
-          <div
-            className="absolute -top-10 -right-10 w-72 h-72 rounded-full blur-3xl opacity-60"
-            style={{ background: project.accent }}
-          />
-          <div className="relative">
-            <div className="flex items-center gap-2 mb-5">
-              <span className="inline-grid place-items-center w-7 h-7 rounded-full bg-cream/15 text-xs font-mono">
-                AI
-              </span>
-              <p className="text-xs uppercase tracking-[0.25em] text-cream/60">
-                Generated summary
-              </p>
-            </div>
-            <p className="font-serif text-2xl lg:text-3xl leading-snug max-w-3xl">
-              {project.aiSummary}
-            </p>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* HERO IMAGE */}
-      {project.hero && (
-        <section className="mx-auto max-w-7xl px-6 lg:px-10 py-8">
-          <Reveal as="div" className="rounded-md overflow-hidden">
-            <Image
-              src={project.hero}
-              alt={`${project.title} hero`}
-              width={1600}
-              height={1000}
-              sizes="(max-width: 1280px) 100vw, 1280px"
-              className="w-full h-auto"
-              priority
-            />
-          </Reveal>
-        </section>
-      )}
-
-      {/* OVERVIEW */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
-        <div className="grid lg:grid-cols-12 gap-12">
-          <Reveal as="div" className="lg:col-span-4">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50">
-              Overview
-            </p>
-          </Reveal>
-          <Reveal as="div" className="lg:col-span-8 space-y-5">
-            <p className="font-serif text-2xl leading-snug">
-              {project.overview}
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* PROBLEM / APPROACH / OUTCOME */}
-      {(project.problem || project.approach || project.outcome) && (
-        <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
-          <div className="grid lg:grid-cols-3 gap-10">
-            {project.problem && (
-              <Reveal as="div">
-                <p className="text-xs uppercase tracking-[0.25em] text-ochre mb-3">
-                  Problem
-                </p>
-                <p className="text-lg text-ink/80 leading-relaxed">
-                  {project.problem}
-                </p>
-              </Reveal>
-            )}
-            {project.approach && (
-              <Reveal as="div" delay={80}>
-                <p className="text-xs uppercase tracking-[0.25em] text-ochre mb-3">
-                  Approach
-                </p>
-                <p className="text-lg text-ink/80 leading-relaxed">
-                  {project.approach}
-                </p>
-              </Reveal>
-            )}
-            {project.outcome && (
-              <Reveal as="div" delay={160}>
-                <p className="text-xs uppercase tracking-[0.25em] text-ochre mb-3">
-                  Outcome
-                </p>
-                <p className="text-lg text-ink/80 leading-relaxed">
-                  {project.outcome}
-                </p>
-              </Reveal>
-            )}
-          </div>
-        </section>
-      )}
-
-      {/* METRICS */}
-      {project.metrics && project.metrics.length > 0 && (
-        <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
-          <Reveal as="div">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-8">
-              Impact
-            </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {project.metrics.map((m, i) => (
-                <Reveal
-                  key={m.label}
-                  as="div"
-                  delay={i * 80}
-                  className="p-7 rounded-md border border-ink/10 bg-white"
-                >
-                  <div className="font-serif text-4xl lg:text-5xl mb-3 leading-none">
-                    {m.value}
-                  </div>
-                  <p className="text-sm text-ink/60">{m.label}</p>
-                </Reveal>
-              ))}
-            </div>
-          </Reveal>
-        </section>
-      )}
-
-      {/* RESEARCH */}
-      {project.research && project.research.length > 0 && (
-        <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
-          <div className="grid lg:grid-cols-12 gap-12">
-            <Reveal as="div" className="lg:col-span-4">
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
-                Research methods
-              </p>
-              <h2 className="font-serif text-h1">What we learned, how.</h2>
-            </Reveal>
-            <Reveal as="div" className="lg:col-span-8">
-              <ul className="space-y-3">
-                {project.research.map((r, i) => (
-                  <li
-                    key={r}
-                    className="flex gap-4 py-4 border-b border-ink/10"
-                  >
-                    <span className="font-mono text-[18px] text-ochre leading-none mt-1">
-                      0{i + 1}
-                    </span>
-                    <span className="text-lg text-ink/80">{r}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
-        </section>
-      )}
-
-      {/* IMAGES */}
-      {project.images && project.images.length > 0 && (
-        <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
-          <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-8">
-            Selected screens
-          </p>
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-start">
-            {project.images.map((img, i) => (
-              <Reveal key={img.src} as="figure" delay={i * 60} className="space-y-3">
-                <div className="rounded-md overflow-hidden">
-                  <Image
-                    src={img.src}
-                    alt={img.caption || `${project.title} screen ${i + 1}`}
-                    width={1200}
-                    height={900}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="w-full h-auto"
-                  />
-                </div>
-                {img.caption && (
-                  <figcaption className="text-sm text-ink/60">
-                    {img.caption}
-                  </figcaption>
-                )}
-              </Reveal>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* PROTOTYPE */}
-      {project.prototype && (
-        <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
-          <Reveal
-            as="div"
-            className="rounded-md bg-ochre/10 p-10 lg:p-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
-          >
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
-                Try it
-              </p>
-              <h3 className="font-serif text-h2">Live Figma prototype</h3>
-            </div>
-            <MagneticButton href={project.prototype} external>
-              Open prototype ↗
-            </MagneticButton>
-          </Reveal>
-        </section>
-      )}
-
-      {/* NEXT PROJECT */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-24 border-t border-ink/10">
-        <Reveal as="div">
-          <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">
-            Up next
-          </p>
+          ) : (
+            <span className="text-sm font-semibold">{project.title}</span>
+          )
+        }
+        action={
           <Link
-            href={`/work/${next.slug}`}
-            className="group block py-12 border-y border-ink/15"
+            href="/work"
+            aria-label="Back to work"
+            className="pointer-events-auto -m-3 flex min-h-11 min-w-11 items-center justify-center p-3 text-[11px] font-semibold uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60"
           >
-            <div className="flex items-center justify-between gap-8">
-              <div>
-                <p className="text-sm text-ink/60 mb-2">{next.client}</p>
-                <h2 className="font-serif text-hero group-hover:text-ochre transition-colors">
-                  {next.title}
-                </h2>
-              </div>
-              <span className="font-serif text-6xl lg:text-8xl group-hover:translate-x-4 transition-transform">
-                →
-              </span>
-            </div>
+            Close
           </Link>
-        </Reveal>
-      </section>
-    </article>
+        }
+      />
+
+      <HorizontalScroll>
+        <TitlePanel project={project} />
+
+        {project.overview && (
+          <TextPanel>
+            <Heading>Overview</Heading>
+            <Body>{project.overview}</Body>
+          </TextPanel>
+        )}
+
+        {project.problem && (
+          <TextPanel>
+            <Heading>Problem</Heading>
+            <Body>{project.problem}</Body>
+          </TextPanel>
+        )}
+
+        {project.approach && (
+          <TextPanel>
+            <Heading>Approach</Heading>
+            <Body>{project.approach}</Body>
+          </TextPanel>
+        )}
+
+        {project.outcome && (
+          <TextPanel>
+            <Heading>Outcome</Heading>
+            <Body>{project.outcome}</Body>
+          </TextPanel>
+        )}
+
+        {project.metrics && project.metrics.length > 0 && (
+          <MetricsPanel metrics={project.metrics} />
+        )}
+
+        {project.research && project.research.length > 0 && (
+          <TextPanel>
+            <Heading>Research methods</Heading>
+            <Bullets items={project.research} />
+          </TextPanel>
+        )}
+
+        {project.images && project.images.length > 0 && isLogos && (
+          <LogosGridPanel images={project.images} />
+        )}
+
+        {project.images && project.images.length > 0 && !isLogos &&
+          chunk(project.images, 4).map((group, i) => (
+            <ImageGridPanel key={i} images={group} />
+          ))}
+
+        {project.prototype && (
+          <Panel width="lg:w-[46vw]">
+            <Heading>Live Figma prototype</Heading>
+            <a
+              href={project.prototype}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border px-8 py-3 text-[clamp(0.95rem,2.4vw,1.1rem)] transition-opacity hover:opacity-60 sm:text-[1.05vw]"
+              style={{ borderColor: `${fg}99` }}
+            >
+              Open prototype ↗
+            </a>
+          </Panel>
+        )}
+
+        <Link
+          href={`/work/${next.slug}`}
+          className="group relative flex w-full flex-col justify-center bg-[#141414] px-6 py-20 text-[#f5f5f5] sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[56vw] lg:shrink-0 lg:snap-start lg:px-[7%] lg:py-0"
+        >
+          <p className="text-[clamp(0.95rem,2.2vw,1.1rem)] font-normal text-white/50 sm:text-[1vw]">
+            Up next — {next.client}
+          </p>
+          <h2 className="mt-4 text-[clamp(1.75rem,7vw,3.5rem)] font-semibold leading-[1.1] transition-transform group-hover:translate-x-3 sm:text-[4vw]">
+            {next.title} →
+          </h2>
+        </Link>
+      </HorizontalScroll>
+    </main>
   );
 }
