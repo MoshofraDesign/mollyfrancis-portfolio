@@ -16,15 +16,15 @@ import { Panel, TextPanel, Heading, Body } from "@/components/v2/CaseStudyKit";
  * the generic app/work/[slug]/page.tsx template because the Figma calls
  * out a two-phone hero, a screen-recording panel, and per-feature imagery.
  *
- * Note on assets: Figma's title panel uses two elaborate photoreal iPhone
- * mockups (a splash-screen photo + a separate app screenshot) and Google
- * Play/App Store badge icons that weren't recoverable from Figma (export
- * downloads for that specific frame were blocked) — substituted with a
- * simplified CSS phone frame around two real product screenshots already
- * in the project's asset library, and dropped the store badges rather than
- * fabricate them. The circular portrait photos next to "Secure Messaging"
- * and "Clock In and Out" in Figma are likewise not available locally, so
- * those panels pair the heading/body with the feature screenshot instead.
+ * Note on assets: Figma's title panel uses two photoreal Getty stock-photo
+ * splash screens (a dad + daughter in the rain, a girl hugging a teddy
+ * bear) with the HomePay wordmark baked in, plus Google Play/App Store
+ * badges and circular lifestyle portraits next to "Secure Messaging" and
+ * "Clock In and Out" — none of that stock photography is downloadable from
+ * here (Figma export URLs return 403 from this sandbox), so rather than
+ * fabricate placeholder photography, every phone screen below uses Molly's
+ * real Homepay product screenshots instead, each inside the same portrait
+ * PhoneFrame so nothing gets cropped into the wrong aspect ratio.
  * Excluded from the generic template via customSlugs there.
  */
 
@@ -68,14 +68,20 @@ function PhoneFrame({
   return (
     <div className={`relative aspect-[9/19] w-full max-w-[260px] rounded-[2.25rem] border-[6px] border-black/90 bg-black shadow-[0_20px_50px_-12px_rgba(0,0,0,0.4)] ${className}`}>
       <div className="absolute left-1/2 top-0 z-10 h-[22px] w-[38%] -translate-x-1/2 rounded-b-2xl bg-black" />
-      <div className="relative h-full w-full overflow-hidden rounded-[1.85rem]">
-        <Image src={src} alt={alt} fill sizes="260px" className="object-cover" />
+      <div className="relative h-full w-full overflow-hidden rounded-[1.85rem] bg-white">
+        {/* object-contain (not cover) — real screenshot dimensions aren't
+            verified, so this guarantees the full screen is always visible
+            rather than risking another bad crop like the Figma-box version
+            this replaced. */}
+        <Image src={src} alt={alt} fill sizes="260px" className="object-contain" />
       </div>
     </div>
   );
 }
 
-/** Feature panel: heading + body copy alongside a screenshot. */
+/** Feature panel: heading + body copy alongside a screenshot in a phone
+ *  frame. Matches Figma's structure — each feature panel pairs the copy
+ *  with a real portrait screenshot, not a cropped landscape box. */
 function FeaturePanel({
   heading,
   body,
@@ -97,9 +103,7 @@ function FeaturePanel({
         }`}
       >
         <SlideIn className="flex justify-center">
-          <div className="relative aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-md">
-            <Image src={image} alt={alt} fill sizes="(max-width: 640px) 92vw, 46vw" className="object-cover" />
-          </div>
+          <PhoneFrame src={image} alt={alt} className="max-w-[300px]" />
         </SlideIn>
         <SlideIn delay={100}>
           <h2 className="text-[clamp(1.75rem,5vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
@@ -149,24 +153,26 @@ export default function CareHomepayCaseStudy() {
           id="title"
           className="relative flex w-full flex-col gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-12 lg:pt-10"
         >
-          <div className="relative h-9 w-[190px] sm:h-11 sm:w-[230px]">
-            <Image src={LOGO} alt="Care.com Homepay" fill unoptimized priority className="object-contain object-left" />
+          {/* Logo left, headline right — matches the Figma title row. */}
+          <div className="flex flex-wrap items-start justify-between gap-6">
+            <div className="relative h-9 w-[190px] sm:h-11 sm:w-[230px]">
+              <Image src={LOGO} alt="Care.com Homepay" fill unoptimized priority className="object-contain object-left" />
+            </div>
+            <SlideIn className="max-w-[420px]">
+              <p className="text-right text-2xl font-semibold leading-tight sm:text-4xl">
+                Homepay Employee &amp; Employer Payroll App
+              </p>
+            </SlideIn>
           </div>
 
-          <div className="mt-8 flex flex-1 items-end justify-center gap-6 sm:gap-10 lg:mt-0 lg:justify-start">
-            <SlideIn>
+          <div className="mt-8 flex flex-1 items-end justify-center gap-6 sm:gap-10 lg:mt-0 lg:justify-center">
+            <SlideIn delay={100}>
               <PhoneFrame src={SSO_SIGNUP} alt="SSO-aware onboarding for new caregivers" />
             </SlideIn>
-            <SlideIn delay={100} className="mt-10 sm:mt-16">
+            <SlideIn delay={200} className="mt-10 sm:mt-16">
               <PhoneFrame src={TIMESHEETS} alt="Weekly timesheet with zero-state guidance" />
             </SlideIn>
           </div>
-
-          <SlideIn delay={200} className="mt-8 max-w-[460px] pb-8 lg:absolute lg:bottom-16 lg:left-12 lg:mt-0 lg:pb-0">
-            <p className="text-2xl font-semibold leading-tight sm:text-4xl">
-              Homepay Employee &amp; Employer Payroll App
-            </p>
-          </SlideIn>
         </section>
 
         {/* ── STATEMENT ─────────────────────────────────────────────── */}
