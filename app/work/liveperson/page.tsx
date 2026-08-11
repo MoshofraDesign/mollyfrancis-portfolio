@@ -90,22 +90,26 @@ function BigImagePanel({
   width,
   height,
   caption,
+  maxWidth = 1200,
 }: {
   src: string;
   alt: string;
   width: number;
   height: number;
   caption?: string;
+  /** Caps how wide the image can render at its largest breakpoint, in px —
+   *  still scales down responsively below that on smaller viewports. */
+  maxWidth?: number;
 }) {
   return (
     <Panel width="lg:w-[80vw]" className="items-center">
-      <SlideIn className="flex w-full max-w-[1200px] flex-col items-center">
+      <SlideIn className="flex w-full flex-col items-center" style={{ maxWidth: `${maxWidth}px` }}>
         <Image
           src={src}
           alt={alt}
           width={width}
           height={height}
-          sizes="(max-width: 1024px) 92vw, 76vw"
+          sizes={`(max-width: 1024px) 92vw, min(76vw, ${maxWidth}px)`}
           className="h-auto max-h-[70vh] w-full rounded-md object-contain"
         />
         {caption && <p className="mt-4 max-w-[70ch] text-sm opacity-80 sm:text-base">{caption}</p>}
