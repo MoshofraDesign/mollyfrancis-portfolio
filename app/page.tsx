@@ -3,10 +3,16 @@ import { projects } from "@/lib/projects";
 import CareGrid from "@/components/CareGrid";
 import RotatingHero from "@/components/RotatingHero";
 import Reveal from "@/components/Reveal";
+import ScrollToWork from "@/components/ScrollToWork";
 
 export default function Home() {
   return (
     <div className="page-shell min-h-screen bg-white">
+      {/* Landing on "/" with a #work hash (Close buttons, Nav "Work" link
+          from another page, footer, etc.) no longer snaps straight past
+          the hero — see ScrollToWork for why. */}
+      <ScrollToWork />
+
       {/* HERO ---------------------------------------------------------- */}
       <RotatingHero />
 

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Bodoni_Moda, Jost } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import CursorBlob from "@/components/CursorBlob";
 import SiteChrome from "@/components/SiteChrome";
@@ -63,6 +64,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${bodoniModa.variable} ${jost.variable}`}>
       <body>
+        {/* Cancels the browser's native instant jump-to-#work on page load
+            (that native jump ignores the smooth-scroll CSS below) — see
+            components/ScrollToWork.tsx, which does the smooth version once
+            the homepage has mounted. beforeInteractive runs before
+            hydration, ahead of the browser's own anchor-scroll. */}
+        <Script id="cancel-hash-jump" strategy="beforeInteractive">
+          {`try{if(window.location.hash){history.scrollRestoration='manual';window.scrollTo(0,0);}}catch(e){}`}
+        </Script>
         <CursorBlob />
         <SiteChrome>{children}</SiteChrome>
       </body>
