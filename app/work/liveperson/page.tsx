@@ -145,9 +145,15 @@ export default function LivePersonCaseStudy() {
 
       <HorizontalScroll>
         {/* ── TITLE ─────────────────────────────────────────────────── */}
+        {/* Matches the Figma reference (node 4477:14882): logo + heading in
+            the top row, then the phone mock and tweet/DM composite anchored
+            to the very bottom of the panel — the phone bleeds past the
+            bottom edge, cropped, rather than floating centered. lg:overflow-
+            hidden (not overflow-y-auto like the other panels) is deliberate
+            here so that bleed actually crops instead of adding scroll. */}
         <section
           id="title"
-          className="relative flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-12 lg:pb-16 lg:pt-10"
+          className="relative flex w-full flex-col gap-10 px-5 pb-0 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-12 lg:pt-10"
         >
           <div className="flex flex-wrap items-start justify-between gap-6">
             <div className="relative h-10 w-[220px] sm:h-14 sm:w-[300px]">
@@ -158,36 +164,43 @@ export default function LivePersonCaseStudy() {
             </p>
           </div>
 
-          <div className="mt-10 grid w-full grid-cols-1 items-center gap-6 sm:grid-cols-2 lg:mt-0">
-            <SlideIn className="flex justify-center">
+          <div className="mt-8 flex flex-1 items-end gap-4 sm:gap-8 lg:mt-0">
+            {/* Phone mock — bottom-anchored, allowed to bleed off the panel's
+                bottom edge at lg+ (negative margin pushes it past the fold,
+                the section's overflow-hidden crops it cleanly). */}
+            <SlideIn className="w-[48%] max-w-[380px] shrink-0 self-end lg:-mb-20">
               <Image
                 src="/work/liveperson/homeco-conversational-commerce.png"
                 alt="Conversational commerce example inside LiveEngage"
                 width={1280}
                 height={1280}
-                sizes="(max-width: 640px) 92vw, 46vw"
-                className="h-auto max-h-[52vh] w-full rounded-md object-contain"
+                sizes="(max-width: 1024px) 48vw, 32vw"
+                className="h-auto w-full object-contain"
                 priority
               />
             </SlideIn>
-            <SlideIn delay={100} className="flex justify-center">
-              <Image
-                src="/work/liveperson/bb-mobile-social-dm.png"
-                alt="A public tweet routed into a private DM conversation"
-                width={1108}
-                height={920}
-                sizes="(max-width: 640px) 92vw, 46vw"
-                className="h-auto max-h-[52vh] w-full rounded-md object-contain"
-              />
-            </SlideIn>
-          </div>
 
-          <SlideIn delay={200} className="mt-8 max-w-[70ch] lg:mt-10">
-            <p className="text-lg leading-relaxed opacity-95 sm:text-2xl">
-              Enables brands to interact with consumers over email and social
-              media platforms through the LiveEngage messaging product.
-            </p>
-          </SlideIn>
+            {/* Tweet/DM composite + copy — stacked, also bottom-anchored. */}
+            <div className="flex flex-1 flex-col items-start gap-5 self-end pb-6 sm:gap-7 lg:pb-16">
+              <SlideIn delay={100} className="w-full max-w-[440px]">
+                <Image
+                  src="/work/liveperson/bb-mobile-social-dm.png"
+                  alt="A public tweet routed into a private DM conversation"
+                  width={1108}
+                  height={920}
+                  sizes="(max-width: 1024px) 48vw, 30vw"
+                  className="h-auto w-full object-contain"
+                />
+              </SlideIn>
+              <SlideIn delay={200} className="max-w-[46ch]">
+                <p className="text-base leading-relaxed opacity-95 sm:text-xl lg:text-2xl">
+                  Enables brands to interact with consumers over email and
+                  social media platforms through the LiveEngage messaging
+                  product.
+                </p>
+              </SlideIn>
+            </div>
+          </div>
         </section>
 
         {/* ── SOCIAL MEDIA MANAGEMENT ──────────────────────────────────── */}

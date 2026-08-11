@@ -32,7 +32,7 @@ import {
  * components/v2/CaseStudyKit so app/about/page.tsx can reuse them too.
  */
 
-const customSlugs = new Set(["govos-esubmission", "liveperson"]);
+const customSlugs = new Set(["govos-esubmission", "liveperson", "care-homepay"]);
 
 export function generateStaticParams() {
   return projects

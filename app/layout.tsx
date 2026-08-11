@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, Bodoni_Moda, Jost } from "next/font/google";
 import "./globals.css";
 import CursorBlob from "@/components/CursorBlob";
@@ -42,6 +42,17 @@ export const metadata: Metadata = {
     siteName: "Molly Francis",
     type: "website",
   },
+};
+
+// viewport-fit=cover lets full-bleed pages (project case studies, About)
+// paint their own background under the iOS status bar / notch instead of
+// leaving a strip of the default body background showing above them on
+// mobile — without this, each colored project page's background stopped
+// short of the true top of the screen.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
