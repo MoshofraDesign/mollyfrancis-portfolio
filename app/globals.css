@@ -38,6 +38,46 @@ body {
   text-wrap: balance;
 }
 
+/* Halftone hero — subtle diagonal fade that sweeps across the dots on
+   hover, à la https://codepen.io/thebabydino/pen/gOpMeWv ("Simple linear
+   fade at an angle"). A soft band of reduced opacity, wider than the
+   image, animates diagonally across it; mask-position is natively
+   animatable so no @property/Houdini is needed. Paused by default and
+   only runs while hovered, so it never plays unprompted. */
+.halftone-sweep {
+  -webkit-mask-image: linear-gradient(115deg, transparent 25%, rgba(0, 0, 0, 0.45) 50%, transparent 75%);
+  mask-image: linear-gradient(115deg, transparent 25%, rgba(0, 0, 0, 0.45) 50%, transparent 75%);
+  -webkit-mask-size: 260% 260%;
+  mask-size: 260% 260%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 130% -30%;
+  mask-position: 130% -30%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .halftone-sweep {
+    animation: halftone-sweep 2.8s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+
+  .halftone-sweep:hover {
+    animation-play-state: running;
+  }
+}
+
+@keyframes halftone-sweep {
+  0%,
+  100% {
+    -webkit-mask-position: 130% -30%;
+    mask-position: 130% -30%;
+  }
+  50% {
+    -webkit-mask-position: -30% 130%;
+    mask-position: -30% 130%;
+  }
+}
+
 ::selection {
   background-color: #141414;
   color: #f5f5f5;
