@@ -16,7 +16,7 @@ export default function NotFound() {
         <Link href="/" className="magnetic">
           Back home
         </Link>
-        <Link href="/work" className="magnetic ghost">
+        <Link href="/#work" className="magnetic ghost">
           Browse work
         </Link>
       </div>

@@ -292,7 +292,7 @@ export default function ResumePage() {
           <Reveal as="div" className="lg:col-span-9 self-end">
             <p className="text-ink/70 leading-relaxed max-w-2xl">
               See the{" "}
-              <Link href="/work" className="link-underline">
+              <Link href="/#work" className="link-underline">
                 case studies
               </Link>{" "}
               for the work in detail, or grab the PDF above for the print

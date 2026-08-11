@@ -76,7 +76,7 @@ export default function Footer() {
               </p>
               <ul className="space-y-2 text-sm">
                 <li><Link className="link-underline" href="/">Home</Link></li>
-                <li><Link className="link-underline" href="/work">Work</Link></li>
+                <li><Link className="link-underline" href="/#work">Work</Link></li>
                 <li><Link className="link-underline" href="/about">About</Link></li>
                 <li><Link className="link-underline" href="/contact">Contact</Link></li>
               </ul>

@@ -352,7 +352,7 @@ export default function GovOSCaseStudy() {
         }
         action={
           <Link
-            href="/work"
+            href="/#work"
             aria-label="Back to work"
             // min-h/w-11 (44px) gives the link a proper touch target without
             // growing the visible "Close" chip — the padding is invisible,
