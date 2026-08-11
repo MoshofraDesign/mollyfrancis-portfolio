@@ -249,8 +249,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         }
         action={
           <Link
-            href="/#work"
-            aria-label="Back to work"
+            href="/"
+            aria-label="Back to home"
             className="pointer-events-auto -m-3 flex min-h-11 min-w-11 items-center justify-center p-3 text-[11px] font-semibold uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60"
           >
             Close

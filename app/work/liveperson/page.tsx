@@ -134,8 +134,8 @@ export default function LivePersonCaseStudy() {
         }
         action={
           <Link
-            href="/#work"
-            aria-label="Back to work"
+            href="/"
+            aria-label="Back to home"
             className="pointer-events-auto -m-3 flex min-h-11 min-w-11 items-center justify-center p-3 text-[11px] font-semibold uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60"
           >
             Close
@@ -145,30 +145,33 @@ export default function LivePersonCaseStudy() {
 
       <HorizontalScroll>
         {/* ── TITLE ─────────────────────────────────────────────────── */}
-        {/* Matches the Figma reference (node 4477:14882): logo + heading in
-            the top row, then the phone mock and tweet/DM composite anchored
-            to the very bottom of the panel — the phone bleeds past the
-            bottom edge, cropped, rather than floating centered. lg:overflow-
-            hidden (not overflow-y-auto like the other panels) is deliberate
-            here so that bleed actually crops instead of adding scroll. */}
+        {/* Matches the Figma reference (node 4477:14882) closely: every
+            element below is positioned from that frame's real 1440×1000
+            coordinates, converted to vw/vh (site convention — see the
+            govos-esubmission title panel for the same approach). The phone
+            mock sits flush against the very bottom edge with zero gap
+            (Figma: y 360, height 640 on a 1000-tall frame — 360+640=1000),
+            while the tweet/DM composite and body copy sit independently
+            higher up, not bottom-anchored to the phone. Below lg, all of
+            this collapses back to a plain stacked flex column. */}
         <section
           id="title"
-          className="relative flex w-full flex-col gap-10 px-5 pb-0 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-12 lg:pt-10"
+          className="relative flex w-full flex-col gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pt-0"
         >
-          <div className="flex flex-wrap items-start justify-between gap-6">
-            <div className="relative h-10 w-[220px] sm:h-14 sm:w-[300px]">
-              <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
-            </div>
-            <p className="max-w-[300px] text-lg font-semibold sm:text-xl">
-              Social Media Management Product
-            </p>
+          {/* Logo — Figma: 100,100, 668×106 */}
+          <div className="relative h-10 w-[220px] sm:h-14 sm:w-[300px] lg:absolute lg:left-[6.94vw] lg:top-[6.94vw] lg:h-[7.36vw] lg:w-[46.4vw] lg:max-w-[668px]">
+            <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
           </div>
 
-          <div className="mt-8 flex flex-1 items-end gap-4 sm:gap-8 lg:mt-0">
-            {/* Phone mock — bottom-anchored, allowed to bleed off the panel's
-                bottom edge at lg+ (negative margin pushes it past the fold,
-                the section's overflow-hidden crops it cleanly). */}
-            <SlideIn className="w-[48%] max-w-[380px] shrink-0 self-end lg:-mb-20">
+          {/* Heading — Figma: 890,107, 417 wide, top-right */}
+          <p className="max-w-[300px] text-lg font-semibold sm:text-xl lg:absolute lg:right-[6.94vw] lg:top-[7.4vw] lg:max-w-[29vw] lg:text-[2.3vw] lg:leading-[1.25]">
+            Social Media Management Product
+          </p>
+
+          <div className="mt-8 flex flex-1 items-end gap-4 sm:gap-8 lg:mt-0 lg:block lg:h-full">
+            {/* Phone mock — Figma: 100,360, 640×640, flush to the frame's
+                bottom edge (no gap below it at all). */}
+            <SlideIn className="w-[48%] max-w-[380px] shrink-0 self-end lg:absolute lg:bottom-0 lg:left-[6.94vw] lg:w-[44.4vw] lg:max-w-[640px]">
               <Image
                 src="/work/liveperson/homeco-conversational-commerce.png"
                 alt="Conversational commerce example inside LiveEngage"
@@ -180,20 +183,29 @@ export default function LivePersonCaseStudy() {
               />
             </SlideIn>
 
-            {/* Tweet/DM composite + copy — stacked, also bottom-anchored. */}
-            <div className="flex flex-1 flex-col items-start gap-5 self-end pb-6 sm:gap-7 lg:pb-16">
-              <SlideIn delay={100} className="w-full max-w-[440px]">
+            {/* Tweet/DM composite — Figma: 740,300, 554×460. Independent of
+                the phone's bottom anchor — sits higher, doesn't touch the
+                edge. */}
+            <div className="flex flex-1 flex-col items-start gap-5 self-end pb-6 sm:gap-7 lg:block lg:pb-0">
+              <SlideIn
+                delay={100}
+                className="w-full max-w-[440px] lg:absolute lg:left-[51.4vw] lg:top-[30vh] lg:w-[38.5vw] lg:max-w-[554px]"
+              >
                 <Image
                   src="/work/liveperson/bb-mobile-social-dm.png"
                   alt="A public tweet routed into a private DM conversation"
                   width={1108}
                   height={920}
-                  sizes="(max-width: 1024px) 48vw, 30vw"
+                  sizes="(max-width: 1024px) 48vw, 39vw"
                   className="h-auto w-full object-contain"
                 />
               </SlideIn>
-              <SlideIn delay={200} className="max-w-[46ch]">
-                <p className="text-base leading-relaxed opacity-95 sm:text-xl lg:text-2xl">
+              {/* Body copy — Figma: 752,782, 630 wide */}
+              <SlideIn
+                delay={200}
+                className="max-w-[46ch] lg:absolute lg:left-[52.2vw] lg:top-[78.2vh] lg:max-w-[43.75vw]"
+              >
+                <p className="text-base leading-relaxed opacity-95 sm:text-xl lg:text-[1.6vw] lg:leading-[1.4]">
                   Enables brands to interact with consumers over email and
                   social media platforms through the LiveEngage messaging
                   product.
