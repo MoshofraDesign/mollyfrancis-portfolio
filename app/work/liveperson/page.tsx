@@ -207,7 +207,7 @@ export default function LivePersonCaseStudy() {
               {/* Body copy — Figma: 752,782, 630 wide */}
               <SlideIn
                 delay={200}
-                className="max-w-[46ch] lg:absolute lg:left-[52.2vw] lg:top-[78.2vh] lg:max-w-[43.75vw]"
+                className="max-w-[46ch] lg:absolute lg:left-[52.2vw] lg:top-[86vh] lg:max-w-[43.75vw]"
               >
                 <p className="text-base leading-relaxed opacity-95 sm:text-xl lg:text-[1.6vw] lg:leading-[1.4]">
                   Enables brands to interact with consumers over email and

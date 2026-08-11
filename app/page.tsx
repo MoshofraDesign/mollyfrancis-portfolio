@@ -16,65 +16,11 @@ export default function Home() {
       {/* HERO ---------------------------------------------------------- */}
       <RotatingHero />
 
-      {/* AI WORKFLOWS --------------------------------------------------- */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-28">
-        <div className="grid lg:grid-cols-12 gap-10">
-          <Reveal as="div" className="lg:col-span-4">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
-              How I work, 2026
-            </p>
-            <h2 className="font-serif text-h1">
-              Design plus a working AI stack.
-            </h2>
-          </Reveal>
-
-          <div className="lg:col-span-8 grid sm:grid-cols-2 gap-6">
-            {[
-              {
-                title: "AI-augmented research",
-                body: "Cluster, synthesize, and tag interview transcripts in hours, not weeks. I keep the rigor — the model handles the volume.",
-              },
-              {
-                title: "Generative prototyping",
-                body: "Lo-fi to hi-fi in a single afternoon. Faster discovery rounds; more options shown to stakeholders.",
-              },
-              {
-                title: "Design system ops",
-                body: "Token audits, accessibility checks, and component documentation generated and reviewed weekly.",
-              },
-              {
-                title: "Workflow design for AI",
-                body: "I also design the AI itself — surfacing trust, explainability, and fallbacks in products that use it.",
-              },
-            ].map((c, i) => (
-              <Reveal
-                key={c.title}
-                as="div"
-                delay={i * 80}
-                className="p-7 rounded-md bg-white/60 border border-ink/10 hover:border-ink/30 transition-colors"
-              >
-                <p className="font-mono text-[18px] text-ochre mb-3 leading-none">
-                  0{i + 1}
-                </p>
-                <h3 className="font-serif text-2xl mb-3">{c.title}</h3>
-                <p className="text-ink/70 leading-relaxed">{c.body}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* WORK GRID -------------------------------------------------------
           Anchor for the "Work" nav item — jumps here instead of a separate
           /work route. Tiles are capped at 375px with gutters between them,
           so this shares the page's padded container like every other section. */}
       <section id="work" className="mx-auto max-w-7xl scroll-mt-24 px-6 py-16 lg:px-10">
-        <div className="mb-16">
-          <p className="mb-3 text-xs uppercase tracking-[0.25em] text-ink/50">
-            Selected work, 2014 — 2026
-          </p>
-          <h2 className="font-serif text-h1">Case studies</h2>
-        </div>
         <CareGrid projects={projects} />
       </section>
 

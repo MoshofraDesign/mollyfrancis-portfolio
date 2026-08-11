@@ -1,7 +1,52 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+
+const HOTSPOTS = [
+  {
+    id: "brain",
+    label: "🧠 Currently running 12 browser tabs and one very good idea.",
+    // forehead
+    style: { top: "10%", left: "36%", width: "28%", height: "12%" },
+    bubble: { bottom: "auto", top: "-18%", left: "30%", transformOrigin: "bottom left" },
+    dotA: { bottom: "-8%", left: "38%", width: 10, height: 10 },
+    dotB: { bottom: "-13%", left: "46%", width: 6, height: 6 },
+  },
+  {
+    id: "eye-l",
+    label: "👁 That spacing is off by 4px. I can't unsee it.",
+    style: { top: "31%", left: "28%", width: "18%", height: "8%" },
+    bubble: { top: "14%", left: "-55%", transformOrigin: "bottom right" },
+    dotA: { bottom: "-8%", right: "20%", width: 10, height: 10 },
+    dotB: { bottom: "-13%", right: "12%", width: 6, height: 6 },
+  },
+  {
+    id: "eye-r",
+    label: "👁 Is that a drop shadow on a drop shadow?",
+    style: { top: "31%", left: "52%", width: "18%", height: "8%" },
+    bubble: { top: "14%", left: "30%", transformOrigin: "bottom left" },
+    dotA: { bottom: "-8%", left: "20%", width: 10, height: 10 },
+    dotB: { bottom: "-13%", left: "12%", width: 6, height: 6 },
+  },
+  {
+    id: "ear",
+    label: "👂 \"We'll just add it in dev.\" — heard that before.",
+    style: { top: "42%", left: "10%", width: "10%", height: "14%" },
+    bubble: { top: "0%", left: "110%", transformOrigin: "bottom left" },
+    dotA: { top: "50%", left: "-8%", width: 10, height: 10 },
+    dotB: { top: "50%", left: "-14%", width: 6, height: 6 },
+  },
+  {
+    id: "mouth",
+    label: "💬 \"Can we make the logo bigger?\" No. No we cannot.",
+    style: { top: "63%", left: "32%", width: "24%", height: "8%" },
+    bubble: { top: "auto", bottom: "-160%", left: "10%", transformOrigin: "top left" },
+    dotA: { top: "-8%", left: "30%", width: 10, height: 10 },
+    dotB: { top: "-13%", left: "40%", width: 6, height: 6 },
+  },
+] as const;
 
 // Two-column hero — halftone portrait on the left, left-justified intro
 // text on the right: a static "Hello, I'm Molly Francis" line, then a
@@ -18,6 +63,7 @@ const ROTATE_MS = 3400;
 export default function RotatingHero() {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -45,6 +91,59 @@ export default function RotatingHero() {
             priority
             className="object-contain"
           />
+
+          {/* Thought bubble hotspots */}
+          {HOTSPOTS.map((h) => (
+            <div
+              key={h.id}
+              className="absolute cursor-pointer"
+              style={h.style as React.CSSProperties}
+              onMouseEnter={() => setActiveHotspot(h.id)}
+              onMouseLeave={() => setActiveHotspot(null)}
+            >
+              {/* Thought bubble */}
+              <div
+                className="absolute z-20 pointer-events-none"
+                style={{
+                  ...(h.bubble as React.CSSProperties),
+                  opacity: activeHotspot === h.id ? 1 : 0,
+                  transform: activeHotspot === h.id ? "scale(1) translateY(0)" : "scale(0.88) translateY(4px)",
+                  transition: "opacity 0.2s ease, transform 0.2s ease",
+                  background: "white",
+                  border: "2px solid #1a1a1a",
+                  borderRadius: "14px",
+                  padding: "9px 13px",
+                  fontSize: "clamp(10px, 1.4vw, 13px)",
+                  lineHeight: 1.45,
+                  color: "#1a1a1a",
+                  whiteSpace: "nowrap",
+                  boxShadow: "3px 3px 0 #1a1a1a",
+                  minWidth: "160px",
+                  maxWidth: "220px",
+                  whiteSpace: "normal" as const,
+                }}
+              >
+                {h.label}
+              </div>
+              {/* Connector dots */}
+              <div
+                className="absolute z-10 pointer-events-none rounded-full bg-white border-2 border-[#1a1a1a]"
+                style={{
+                  ...(h.dotA as React.CSSProperties),
+                  opacity: activeHotspot === h.id ? 1 : 0,
+                  transition: "opacity 0.15s ease",
+                }}
+              />
+              <div
+                className="absolute z-10 pointer-events-none rounded-full bg-white border-2 border-[#1a1a1a]"
+                style={{
+                  ...(h.dotB as React.CSSProperties),
+                  opacity: activeHotspot === h.id ? 1 : 0,
+                  transition: "opacity 0.15s ease 0.05s",
+                }}
+              />
+            </div>
+          ))}
         </div>
 
         <div className="text-left">
