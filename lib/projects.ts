@@ -352,8 +352,8 @@ export const projects: Project[] = [
         caption: "Self-service: connect, assign, and manage social accounts",
       },
       {
-        src: "/work/liveperson/public-tweet-private-thread.webp",
-        caption: "A public tweet routed into a private thread, with agent response history alongside it",
+        src: "/work/liveperson/public-tweet-private-thread.png",
+        caption: "A public tweet on Twitter routed into the LiveEngage agent workspace, with the full private thread and social profile alongside it",
       },
     ],
   },

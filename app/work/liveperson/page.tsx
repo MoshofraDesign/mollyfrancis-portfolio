@@ -235,10 +235,11 @@ export default function LivePersonCaseStudy() {
 
         {/* ── PUBLIC TWEET / PRIVATE THREAD ────────────────────────────── */}
         <BigImagePanel
-          src="/work/liveperson/public-tweet-private-thread.webp"
-          alt="A public tweet routed into a private thread, with agent response history alongside it"
-          width={1800}
-          height={739}
+          src="/work/liveperson/public-tweet-private-thread.png"
+          alt="A public tweet on Twitter routed into the LiveEngage agent workspace, with the full private thread and social profile alongside it"
+          width={1100}
+          height={446}
+          maxWidth={1100}
         />
 
         {/* ── SINGLE PLATFORM ───────────────────────────────────────────── */}

@@ -11,6 +11,9 @@ type Props = {
   distance?: number;
   /** Element to render as — use "li" inside a list to keep the HTML valid. */
   as?: "div" | "li" | "span";
+  /** Merged with the animation's own inline style (e.g. a dynamic max-width
+   *  that can't be expressed as a static Tailwind class). */
+  style?: React.CSSProperties;
 };
 
 /**
@@ -27,6 +30,7 @@ export default function SlideIn({
   delay = 0,
   distance = 56,
   as = "div",
+  style: styleProp,
 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
   const [shown, setShown] = useState(false);
@@ -56,8 +60,9 @@ export default function SlideIn({
       ref: ref as React.RefObject<HTMLElement>,
       className,
       style: reduced
-        ? undefined
+        ? styleProp
         : {
+            ...styleProp,
             opacity: shown ? 1 : 0,
             transform: shown ? "translateX(0)" : `translateX(${distance}px)`,
             transition: `opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
