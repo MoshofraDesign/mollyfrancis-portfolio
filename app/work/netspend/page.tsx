@@ -78,7 +78,7 @@ export default function NetspendCaseStudy() {
           className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
         >
           {/* Large logo — top left */}
-          <div className="relative h-[60px] w-[300px] sm:h-[70px] sm:w-[420px] lg:absolute lg:left-[6.94vw] lg:top-[10vh] lg:h-[8.98vw] lg:w-[58.47vw] lg:max-w-[842px]">
+          <div className="relative h-[26px] w-[200px] lg:absolute lg:left-[6.94vw] lg:top-[10vh] lg:h-[26px] lg:w-[200px]">
             <Image src={LOGO} alt="Netspend" fill unoptimized priority className="object-contain object-left" />
           </div>
 
