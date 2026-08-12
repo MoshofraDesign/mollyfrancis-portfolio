@@ -3143,33 +3143,70 @@
   `).join('');
 
   // ---------- Media Library data ----------
+  const logoMap = {
+    'CVS': 'cvs.com',
+    'Home Depot': 'homedepot.com',
+    'DoorDash': 'doordash.com',
+    'Temu': 'temu.com',
+    'Dollar General': 'dollargeneral.com',
+    'Marriott Bonvoy': 'marriott.com',
+    'Uber': 'uber.com',
+    'Ulta Beauty': 'ulta.com',
+    'Chevron': 'chevron.com',
+    'eBay': 'ebay.com',
+    "Disney+": 'disneyplus.com',
+    'Amazon Music': 'amazon.com',
+    "Kohl's": 'kohls.com',
+    'Home Chef': 'homechef.com',
+    'IHG Hotels': 'ihg.com',
+  };
   const mediaAssets = [
-    { name: 'macys-deposit-banner.png', kind: 'IMG', status: 'live', grad: 'linear-gradient(135deg,#fb6f17,#ff9152)' },
-    { name: 'telco-stack-tile.jpg', kind: 'IMG', status: 'live', grad: 'linear-gradient(135deg,#6c5ce7,#a29bfe)' },
-    { name: 'dd-bonus-hero.mp4', kind: 'VID', status: 'draft', grad: 'linear-gradient(135deg,#065474,#0a86b3)' },
-    { name: 'grocery-cashback.png', kind: 'IMG', status: 'live', grad: 'linear-gradient(135deg,#1a9e6f,#3ecf8e)' },
-    { name: 'kroger-logo.svg', kind: 'SVG', status: 'live', grad: 'linear-gradient(135deg,#e0453f,#ff7a75)' },
-    { name: 'balance-maint-icon.svg', kind: 'SVG', status: 'draft', grad: 'linear-gradient(135deg,#b8860b,#e0b13a)' },
-    { name: 'summer-offer-banner.png', kind: 'IMG', status: 'live', grad: 'linear-gradient(135deg,#fb6f17,#e35e0c)' },
-    { name: 'partner-macys.svg', kind: 'SVG', status: 'live', grad: 'linear-gradient(135deg,#16181d,#4a4d55)' },
-    { name: 'reward-explainer.mp4', kind: 'VID', status: 'draft', grad: 'linear-gradient(135deg,#6c5ce7,#8e7cff)' },
-    { name: 'home-category-icon.svg', kind: 'SVG', status: 'live', grad: 'linear-gradient(135deg,#065474,#3b8fae)' },
-    { name: 'delta-travel-banner.png', kind: 'IMG', status: 'draft', grad: 'linear-gradient(135deg,#6c5ce7,#4b3fb0)' },
-    { name: 'atandt-partner-logo.svg', kind: 'SVG', status: 'live', grad: 'linear-gradient(135deg,#065474,#0a86b3)' },
-    { name: 'welcome-bonus-tile.png', kind: 'IMG', status: 'live', grad: 'linear-gradient(135deg,#1a9e6f,#0f7a56)' },
-    { name: 'holiday-boost-hero.mp4', kind: 'VID', status: 'draft', grad: 'linear-gradient(135deg,#e0453f,#b8342f)' },
+    { name:'cvs-logo.svg',           folder:'CVS',            type:'SVG', size:'48 KB',   status:'live',      grad:'linear-gradient(135deg,#cc0000,#ff4444)' },
+    { name:'cvs-hero-banner.jpg',    folder:'CVS',            type:'IMAGE', size:'1.4 MB',status:'live',      grad:'linear-gradient(135deg,#cc0000,#ff4444)' },
+    { name:'homedepot-logo.svg',     folder:'Home Depot',     type:'SVG', size:'62 KB',   status:'live',      grad:'linear-gradient(135deg,#f96302,#ffab40)' },
+    { name:'homedepot-summer.jpg',   folder:'Home Depot',     type:'IMAGE', size:'2.1 MB',status:'live',      grad:'linear-gradient(135deg,#f96302,#ffab40)' },
+    { name:'doordash-logo.svg',      folder:'DoorDash',       type:'SVG', size:'38 KB',   status:'live',      grad:'linear-gradient(135deg,#ff3008,#ff7043)' },
+    { name:'doordash-dasher.jpg',    folder:'DoorDash',       type:'IMAGE', size:'1.8 MB',status:'live',      grad:'linear-gradient(135deg,#ff3008,#ff7043)' },
+    { name:'temu-logo.svg',          folder:'Temu',           type:'SVG', size:'44 KB',   status:'live',      grad:'linear-gradient(135deg,#ff6900,#ffb347)' },
+    { name:'temu-30off-badge.jpg',   folder:'Temu',           type:'IMAGE', size:'890 KB',status:'live',      grad:'linear-gradient(135deg,#ff6900,#ffb347)' },
+    { name:'dollargeneral-logo.svg', folder:'Dollar General', type:'SVG', size:'32 KB',   status:'live',      grad:'linear-gradient(135deg,#ffd700,#e6b800)' },
+    { name:'marriott-logo.svg',      folder:'Marriott Bonvoy',type:'SVG', size:'55 KB',   status:'live',      grad:'linear-gradient(135deg,#8b1a1a,#c0392b)' },
+    { name:'marriott-hero.jpg',      folder:'Marriott Bonvoy',type:'IMAGE', size:'2.4 MB',status:'live',      grad:'linear-gradient(135deg,#8b1a1a,#c0392b)' },
+    { name:'uber-logo.svg',          folder:'Uber',           type:'SVG', size:'22 KB',   status:'live',      grad:'linear-gradient(135deg,#1a1a1a,#444)' },
+    { name:'ulta-logo.svg',          folder:'Ulta Beauty',    type:'SVG', size:'40 KB',   status:'live',      grad:'linear-gradient(135deg,#cc3399,#ff66cc)' },
+    { name:'ulta-banner.jpg',        folder:'Ulta Beauty',    type:'IMAGE', size:'1.6 MB',status:'live',      grad:'linear-gradient(135deg,#cc3399,#ff66cc)' },
+    { name:'chevron-logo.svg',       folder:'Chevron',        type:'SVG', size:'44 KB',   status:'live',      grad:'linear-gradient(135deg,#003da5,#0052cc)' },
+    { name:'ebay-logo.svg',          folder:'eBay',           type:'SVG', size:'28 KB',   status:'live',      grad:'linear-gradient(135deg,#e53238,#0064d2)' },
+    { name:'disneyplus-logo.svg',    folder:'Disney+',        type:'SVG', size:'36 KB',   status:'live',      grad:'linear-gradient(135deg,#011328,#1a3a6b)' },
+    { name:'kohls-logo.svg',         folder:"Kohl's",         type:'SVG', size:'34 KB',   status:'scheduled', grad:'linear-gradient(135deg,#5a0050,#8b0073)' },
+    { name:'homechef-logo.svg',      folder:'Home Chef',      type:'SVG', size:'30 KB',   status:'draft',     grad:'linear-gradient(135deg,#2d6a2d,#3d8b3d)' },
+    { name:'ihg-logo.svg',           folder:'IHG Hotels',     type:'SVG', size:'42 KB',   status:'live',      grad:'linear-gradient(135deg,#003580,#0052cc)' },
   ];
-  document.getElementById('media-grid').innerHTML = mediaAssets.map(m => `
+  const logoMap = {
+    'CVS':'cvs.com', 'Home Depot':'homedepot.com', 'DoorDash':'doordash.com',
+    'Temu':'temu.com', 'Dollar General':'dollargeneral.com', 'Marriott Bonvoy':'marriott.com',
+    'Uber':'uber.com', 'Ulta Beauty':'ulta.com', 'Chevron':'chevron.com',
+    'eBay':'ebay.com', "Disney+":'disneyplus.com', "Kohl's":'kohls.com',
+    'Home Chef':'homechef.com', 'IHG Hotels':'ihg.com', 'Amazon Music':'amazon.com',
+  };
+  document.getElementById('media-grid').innerHTML = mediaAssets.map(m => {
+    const isLogo = m.type === 'SVG' || m.name.toLowerCase().includes('logo');
+    const logoDomain = logoMap[m.folder];
+    const thumbBg = isLogo && logoDomain ? '#ffffff' : m.grad;
+    const thumbInner = isLogo && logoDomain
+      ? `<img src="https://logo.clearbit.com/${logoDomain}" alt="${m.folder} logo" style="max-width:78%;max-height:78%;object-fit:contain;" onerror="this.parentElement.style.background='${m.grad}'; this.remove();" />`
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="9" r="1.6"/><path d="M21 15.5l-5.5-5.5-9.5 9.5"/></svg>`;
+    return `
     <div class="media-card">
-      <div class="media-thumb" style="background:${m.grad}">
-        <span class="badge">${m.kind}</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="9" r="1.6"/><path d="M21 15.5l-5.5-5.5-9.5 9.5"/></svg>
+      <div class="media-thumb" style="background:${thumbBg}; display:flex; align-items:center; justify-content:center;">
+        ${thumbInner}
+        <span class="badge">${m.type}</span>
       </div>
       <div class="media-info">
         <div class="name">${m.name}</div>
         <div class="meta">
           <span class="status-pill ${m.status}">${m.status}</span>
-          <span>2.1 MB</span>
+          <span>${m.size}</span>
         </div>
       </div>
     </div>
@@ -3407,9 +3444,8 @@
           <div class="acc-toggle-cell">
             <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
             <div class="entity-cell">
-              <div class="entity-avatar" style="background:${a.grad}">
-                ${a.initials}
-                ${a.domain ? `<img src="https://www.google.com/s2/favicons?sz=64&domain=${a.domain}" alt="" onerror="this.remove()" />` : ''}
+              <div class="entity-avatar" style="background:#fff; border:1px solid #e4e5ea; overflow:hidden;">
+                ${a.domain ? `<img src="https://logo.clearbit.com/${a.domain}" alt="${a.name} logo" style="width:100%;height:100%;object-fit:contain;padding:4px;" onerror="this.parentElement.style.background='${a.grad}'; this.parentElement.style.border='none'; this.outerHTML='<span style=&quot;color:#fff;font-weight:700;font-size:12px;&quot;>${a.initials}</span>'" />` : `<span style="color:#fff;font-weight:700;font-size:12px;">${a.initials}</span>`}
               </div>
               <div class="entity-name">${a.name}</div>
             </div>
@@ -3440,8 +3476,8 @@
         </td>
         <td>
           <div class="entity-cell">
-            <div class="entity-avatar" style="width:24px; height:24px; border-radius:6px; background:${adv ? adv.grad : 'var(--brand-blue)'}">
-              ${adv && adv.domain ? `<img src="https://www.google.com/s2/favicons?sz=64&domain=${adv.domain}" alt="" onerror="this.remove()" />` : ''}
+            <div class="entity-avatar" style="width:24px; height:24px; border-radius:6px; background:#fff; border:1px solid #e4e5ea; overflow:hidden;">
+              ${adv && adv.domain ? `<img src="https://logo.clearbit.com/${adv.domain}" alt="" style="width:100%;height:100%;object-fit:contain;padding:2px;" onerror="this.parentElement.style.background=adv.grad; this.parentElement.style.border='none'; this.outerHTML='<span style=&quot;color:#fff;font-weight:700;font-size:9px;&quot;>'+(adv.initials)+'</span>'" />` : ''}
             </div>
             ${c.advertiser}
           </div>
