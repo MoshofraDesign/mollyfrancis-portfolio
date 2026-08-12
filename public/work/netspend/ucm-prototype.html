@@ -15,8 +15,8 @@
     --border-soft: #edeef2;
 
     --text-primary: #16181d;
-    --text-secondary: #666b76;
-    --text-tertiary: #9297a1;
+    --text-secondary: #555b67;
+    --text-tertiary: #6b7280;
 
     --brand-orange: #fb6f17;
     --brand-orange-dark: #e35e0c;
@@ -24,13 +24,13 @@
     --brand-blue: #065474;
     --brand-blue-light: #eaf6fb;
 
-    --accent-purple: #6c5ce7;
+    --accent-purple: #4a3cbf;
     --accent-purple-light: #f1eefe;
     --accent-green: #1a9e6f;
     --accent-green-light: #e8f8f1;
     --accent-red: #e0453f;
     --accent-red-light: #fdecec;
-    --accent-yellow: #b8860b;
+    --accent-yellow: #7a5a00;
     --accent-yellow-light: #fdf6e3;
 
     --radius-sm: 8px;
@@ -551,14 +551,45 @@
   .chip-option{ font-size:12.5px; font-weight:600; padding:7px 13px; border-radius: var(--radius-pill); border:1px solid var(--border-default); background: var(--bg-surface); color: var(--text-secondary); cursor:pointer; }
   .chip-option.selected{ background: var(--brand-orange-light); border-color: var(--brand-orange); color: var(--brand-orange-dark); }
 
+
+  /* WCAG 2.1 AA — visible focus indicators for all interactive elements */
+  :focus-visible {
+    outline: 3px solid var(--brand-orange);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 3px solid var(--brand-orange);
+    outline-offset: 2px;
+  }
+  /* Remove default outline only when focus-visible is supported */
+  :focus:not(:focus-visible) { outline: none; }
+
+
+  /* Screen reader only utility */
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
 </style>
 </head>
 <body>
-<div class="app">
+<a href="#main-content" class="skip-link" style="
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+  z-index:9999; padding:12px 24px; background:var(--brand-orange); color:#fff;
+  font-weight:700; font-size:14px; border-radius:0 0 8px 0; text-decoration:none;
+">Skip to main content</a>
+<div class="app" role="application">
 
   <!-- ================= SIDEBAR ================= -->
-  <aside class="sidebar">
-    <div class="brand">
+  <aside class="sidebar" aria-label="Application navigation">
+    <div class="brand" role="banner">
       <svg width="151" height="16" viewBox="0 0 151 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:132px; height:auto; flex-shrink:0;">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M7.99989 5.00873C6.92622 4.17821 5.8278 3.37314 4.6727 2.67816C2.60358 1.43279 0.0012207 2.95336 0.0012207 5.4203V5.52545V8.07864V8.18379C1.55146 5.79408 4.33104 8.17804 6.55023 9.93685C7.0292 10.3164 7.51215 10.6976 7.99989 11.0746C9.07357 11.9051 10.1728 12.7102 11.3271 13.4052C13.397 14.6506 15.9994 13.13 15.9994 10.663V10.5579V8.00389V7.89873C14.4491 10.2884 11.6695 7.90531 9.45035 6.1465C8.97059 5.76697 8.48843 5.3858 7.99989 5.00873Z" fill="#FB6F17"></path>
         <path fill-rule="evenodd" clip-rule="evenodd" d="M6.74819 11.2516C6.00796 10.6655 5.27493 10.0646 4.49068 9.54028C3.38714 8.80192 1.64739 7.64705 0.516635 8.99948C0.140517 9.44891 -0.00192765 10.0638 0.00127335 10.6565C0.00447435 11.4245 0.239748 12.1949 0.69189 12.8057C1.66419 14.1211 3.55279 14.4545 4.92122 13.6058C5.43978 13.2831 6.4697 12.5094 7.45241 11.8072C7.4156 11.7776 7.37959 11.748 7.34358 11.7183C7.14511 11.5627 6.94505 11.4072 6.74819 11.2516Z" fill="#FB6F17"></path>
@@ -575,52 +606,53 @@
     </div>
     <div class="brand-sub" style="padding:0 10px 20px;">Advanced Rule Engine</div>
 
-    <div class="nav-section-label">Overview</div>
-    <a class="nav-item active" data-page="dashboard">
+    <nav aria-label="Overview"><div class="nav-section-label" aria-hidden="true">Overview</div>
+    <a class="nav-item active" data-page="dashboard" aria-current="page" role="link" tabindex="0" role="link" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>
       Dashboard
     </a>
 
-    <div class="nav-section-label">Loyalty Engine</div>
-    <a class="nav-item" data-page="rules">
+    </nav><nav aria-label="Loyalty Engine"><div class="nav-section-label" aria-hidden="true">Loyalty Engine</div>
+    <a class="nav-item" data-page="rules" role="link" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.4 7.2 16.9l.9-5.4L4.2 7.7l5.4-.8z"></path></svg>
       Reward Rules
       <span class="nav-badge">12</span>
     </a>
-    <a class="nav-item active-target" data-page="categories" id="nav-categories">
+    <a class="nav-item active-target" data-page="categories" id="nav-categories" role="link" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"></rect><rect x="13" y="3" width="8" height="8" rx="1.5"></rect><rect x="3" y="13" width="8" height="8" rx="1.5"></rect><rect x="13" y="13" width="8" height="8" rx="1.5"></rect></svg>
       Custom Categories
     </a>
-    <a class="nav-item" data-page="segments">
+    <a class="nav-item" data-page="segments" role="link" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><circle cx="17.5" cy="8" r="3"></circle><path d="M15.5 13.5a6.5 6.5 0 0 1 6 6.5"></path></svg>
       Segments
     </a>
 
-    <div class="nav-section-label">Commerce Media</div>
-    <a class="nav-item" data-page="advertisers">
+    </nav><nav aria-label="Commerce Media"><div class="nav-section-label" aria-hidden="true">Commerce Media</div>
+    <a class="nav-item" data-page="advertisers" role="link" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"></path></svg>
       Advertisers
     </a>
-    <a class="nav-item" data-page="campaigns">
+    <a class="nav-item" data-page="campaigns" role="link" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12.3 12 20.8 3.2 12l0-7.8 7.8 0z"></path><circle cx="8" cy="8" r="1.5"></circle></svg>
       Campaigns
     </a>
-    <a class="nav-item" data-page="flights">
+    <a class="nav-item" data-page="flights" role="link" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h5m10 0h5M8 12l3-7h2l-1.5 7H14l3 7h-2l-2-5"></path><circle cx="12" cy="12" r="1.4"></circle></svg>
       Flights
     </a>
 
-    <div class="nav-section-label">Content</div>
-    <a class="nav-item" data-page="media">
+    </nav><nav aria-label="Content"><div class="nav-section-label" aria-hidden="true">Content</div>
+    <a class="nav-item" data-page="media" role="link" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"></rect><circle cx="8.5" cy="9" r="1.6"></circle><path d="M21 15.5l-5.5-5.5-9.5 9.5"></path></svg>
       Media Library
       <span class="nav-badge">New</span>
     </a>
-    <a class="nav-item" data-page="settings">
+    <a class="nav-item" data-page="settings" role="link" tabindex="0">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.9 2.9l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V21a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.9-2.9l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H3a2 2 0 1 1 0-4h.2a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.9-2.9l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.6V3a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.9 2.9l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.6 1H21a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.6 1z"></path></svg>
       Settings
     </a>
 
+    </nav>
     <div class="sidebar-footer">
       <div class="avatar">MF</div>
       <div class="sidebar-footer-text">
@@ -632,25 +664,25 @@
 
   <!-- ================= MAIN ================= -->
   <div class="main">
-    <header class="topbar">
-      <div class="search-box">
+    <header class="topbar" role="banner" aria-label="Top navigation">
+      <label for="global-search" class="sr-only">Search rules, categories, campaigns</label><div class="search-box" role="search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
-        Search rules, categories, campaigns...
+        <input id="global-search" type="search" placeholder="Search rules, categories, campaigns…" style="border:none;background:transparent;flex:1;font-size:13px;color:var(--text-primary);outline:none;font-family:inherit;" aria-label="Search rules, categories, campaigns">
       </div>
       <div class="topbar-actions">
-        <button class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg><span class="dot"></span></button>
-        <button class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg></button>
+        <button class="icon-btn" aria-label="Notifications (unread)" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg><span class="dot" aria-hidden="true"></span></button>
+        <button class="icon-btn" aria-label="Help and information"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg></button>
         <div class="avatar" style="background:var(--brand-orange)">MF</div>
       </div>
     </header>
 
-    <main class="content">
+    <main class="content" id="main-content" tabindex="-1">
 
       <!-- ============ DASHBOARD PAGE ============ -->
-      <section class="page active" id="page-dashboard">
+      <section class="page active" id="page-dashboard" aria-labelledby="dash-title">
         <div class="page-header">
           <div>
-            <h1 class="page-title">Rewards &amp; Loyalty Dashboard</h1>
+            <h1 class="page-title" id="dash-title">Rewards &amp; Loyalty Dashboard</h1>
             <p class="page-desc">Real-time performance across every stacked offer and status-contingent reward.</p>
           </div>
           <div style="display:flex; gap:10px;">
@@ -675,7 +707,7 @@
               </div>
             </div>
             <div class="kpi-value">$3.37M</div>
-            <span class="kpi-delta up">▲ 18.2%</span><span class="kpi-sub">2026 upside unlocked</span>
+            <span class="kpi-delta up"><span aria-label="increased by 18.2 percent">▲ 18.2%</span></span><span class="kpi-sub">2026 upside unlocked</span>
           </div>
           <div class="card kpi-card">
             <div class="kpi-top">
@@ -685,7 +717,7 @@
               </div>
             </div>
             <div class="kpi-value">42</div>
-            <span class="kpi-delta up">▲ 6</span><span class="kpi-sub">incl. 9 stacked offers</span>
+            <span class="kpi-delta up"><span aria-label="increased by 6">▲ 6</span><span class="kpi-sub">incl. 9 stacked offers</span>
           </div>
           <div class="card kpi-card">
             <div class="kpi-top">
@@ -695,7 +727,7 @@
               </div>
             </div>
             <div class="kpi-value">128,940</div>
-            <span class="kpi-delta up">▲ 11.4%</span><span class="kpi-sub">vs. prior period</span>
+            <span class="kpi-delta up"><span aria-label="increased by 11.4 percent">▲ 11.4%</span></span><span class="kpi-sub">vs. prior period</span>
           </div>
           <div class="card kpi-card">
             <div class="kpi-top">
@@ -705,7 +737,7 @@
               </div>
             </div>
             <div class="kpi-value">86.3%</div>
-            <span class="kpi-delta down">▼ 1.1%</span><span class="kpi-sub">maintaining active status</span>
+            <span class="kpi-delta down"><span aria-label="decreased by 1.1 percent">▼ 1.1%</span></span><span class="kpi-sub">maintaining active status</span>
           </div>
         </div>
 
@@ -741,31 +773,31 @@
           <div class="card">
             <div class="card-header"><h3>Top Performing Campaigns</h3></div>
             <div class="card-body" style="padding-top:4px;">
-              <table class="table-simple">
-                <thead><tr><th>Campaign</th><th>Partner</th><th>Progress to Budget</th><th>Redemptions</th></tr></thead>
+              <table class="table-simple" aria-label="Top performing campaigns">
+                <thead><tr><th scope="col">Campaign</th><th scope="col">Partner</th><th scope="col">Progress to Budget</th><th scope="col">Redemptions</th></tr></thead>
                 <tbody>
                   <tr>
                     <td><div class="campaign-name">Deposit + Telco Stack</div><span class="tag">Stacked</span></td>
                     <td>Macy's</td>
-                    <td style="width:180px;"><div class="progress-track"><div class="progress-fill" style="width:82%"></div></div></td>
+                    <td style="width:180px;"><div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="82% of budget used" style="width:82%"></div></div></td>
                     <td>24,120</td>
                   </tr>
                   <tr>
                     <td><div class="campaign-name">Active DD Bonus</div><span class="tag">Conditional</span></td>
                     <td>Netspend Core</td>
-                    <td style="width:180px;"><div class="progress-track"><div class="progress-fill" style="width:64%"></div></div></td>
+                    <td style="width:180px;"><div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" aria-label="64% of budget used" style="width:64%"></div></div></td>
                     <td>18,552</td>
                   </tr>
                   <tr>
                     <td><div class="campaign-name">Grocery Cashback</div><span class="tag">Single-event</span></td>
                     <td>Kroger</td>
-                    <td style="width:180px;"><div class="progress-track"><div class="progress-fill" style="width:47%"></div></div></td>
+                    <td style="width:180px;"><div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100" aria-label="47% of budget used" style="width:47%"></div></div></td>
                     <td>12,904</td>
                   </tr>
                   <tr>
                     <td><div class="campaign-name">Balance Maintenance</div><span class="tag">Conditional</span></td>
                     <td>Netspend Core</td>
-                    <td style="width:180px;"><div class="progress-track"><div class="progress-fill" style="width:39%"></div></div></td>
+                    <td style="width:180px;"><div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100" aria-label="39% of budget used" style="width:39%"></div></div></td>
                     <td>9,310</td>
                   </tr>
                 </tbody>
@@ -1147,7 +1179,7 @@
       <div class="media-info">
         <div class="name">macys-deposit-banner.png</div>
         <div class="meta">
-          <span class="status-pill live">live</span>
+          <span class="status-pill live" role="status">live</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1161,7 +1193,7 @@
       <div class="media-info">
         <div class="name">telco-stack-tile.jpg</div>
         <div class="meta">
-          <span class="status-pill live">live</span>
+          <span class="status-pill live" role="status">live</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1175,7 +1207,7 @@
       <div class="media-info">
         <div class="name">dd-bonus-hero.mp4</div>
         <div class="meta">
-          <span class="status-pill draft">draft</span>
+          <span class="status-pill draft" role="status">draft</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1189,7 +1221,7 @@
       <div class="media-info">
         <div class="name">grocery-cashback.png</div>
         <div class="meta">
-          <span class="status-pill live">live</span>
+          <span class="status-pill live" role="status">live</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1203,7 +1235,7 @@
       <div class="media-info">
         <div class="name">kroger-logo.svg</div>
         <div class="meta">
-          <span class="status-pill live">live</span>
+          <span class="status-pill live" role="status">live</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1217,7 +1249,7 @@
       <div class="media-info">
         <div class="name">balance-maint-icon.svg</div>
         <div class="meta">
-          <span class="status-pill draft">draft</span>
+          <span class="status-pill draft" role="status">draft</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1231,7 +1263,7 @@
       <div class="media-info">
         <div class="name">summer-offer-banner.png</div>
         <div class="meta">
-          <span class="status-pill live">live</span>
+          <span class="status-pill live" role="status">live</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1245,7 +1277,7 @@
       <div class="media-info">
         <div class="name">partner-macys.svg</div>
         <div class="meta">
-          <span class="status-pill live">live</span>
+          <span class="status-pill live" role="status">live</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1259,7 +1291,7 @@
       <div class="media-info">
         <div class="name">reward-explainer.mp4</div>
         <div class="meta">
-          <span class="status-pill draft">draft</span>
+          <span class="status-pill draft" role="status">draft</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1273,7 +1305,7 @@
       <div class="media-info">
         <div class="name">home-category-icon.svg</div>
         <div class="meta">
-          <span class="status-pill live">live</span>
+          <span class="status-pill live" role="status">live</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1287,7 +1319,7 @@
       <div class="media-info">
         <div class="name">delta-travel-banner.png</div>
         <div class="meta">
-          <span class="status-pill draft">draft</span>
+          <span class="status-pill draft" role="status">draft</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1301,7 +1333,7 @@
       <div class="media-info">
         <div class="name">atandt-partner-logo.svg</div>
         <div class="meta">
-          <span class="status-pill live">live</span>
+          <span class="status-pill live" role="status">live</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1315,7 +1347,7 @@
       <div class="media-info">
         <div class="name">welcome-bonus-tile.png</div>
         <div class="meta">
-          <span class="status-pill live">live</span>
+          <span class="status-pill live" role="status">live</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1329,7 +1361,7 @@
       <div class="media-info">
         <div class="name">holiday-boost-hero.mp4</div>
         <div class="meta">
-          <span class="status-pill draft">draft</span>
+          <span class="status-pill draft" role="status">draft</span>
           <span>2.1 MB</span>
         </div>
       </div>
@@ -1348,7 +1380,7 @@
             <button class="btn btn-secondary btn-dropdown">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 15l4-5 3 3 5-7"></path></svg>
               Reporting
-              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+              <svg aria-hidden="true" class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
             </button>
             <button class="btn btn-primary" data-open-modal="modal-advertiser">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg>
@@ -1387,7 +1419,7 @@
       <tr class="acc-row " data-adv-name="Macy&#39;s">
         <td>
           <div class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <div class="entity-cell">
               <div class="entity-avatar" style="background:linear-gradient(135deg,#fb6f17,#ff9152)">
                 MC
@@ -1407,7 +1439,7 @@
       <tr class="acc-row " data-adv-name="Kroger">
         <td>
           <div class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <div class="entity-cell">
               <div class="entity-avatar" style="background:linear-gradient(135deg,#1a9e6f,#3ecf8e)">
                 KR
@@ -1427,7 +1459,7 @@
       <tr class="acc-row " data-adv-name="AT&amp;T">
         <td>
           <div class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <div class="entity-cell">
               <div class="entity-avatar" style="background:linear-gradient(135deg,#065474,#0a86b3)">
                 AT
@@ -1447,7 +1479,7 @@
       <tr class="acc-row " data-adv-name="Delta Air Lines">
         <td>
           <div class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <div class="entity-cell">
               <div class="entity-avatar" style="background:linear-gradient(135deg,#6c5ce7,#a29bfe)">
                 DL
@@ -1467,7 +1499,7 @@
       <tr class="acc-row " data-adv-name="Netspend Core">
         <td>
           <div class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <div class="entity-cell">
               <div class="entity-avatar" style="background:linear-gradient(135deg,#16181d,#4a4d55)">
                 NS
@@ -1487,7 +1519,7 @@
       <tr class="acc-row " data-adv-name="Sephora">
         <td>
           <div class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <div class="entity-cell">
               <div class="entity-avatar" style="background:linear-gradient(135deg,#16181d,#3a3d47)">
                 SE
@@ -1507,7 +1539,7 @@
       <tr class="acc-row " data-adv-name="Verizon">
         <td>
           <div class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <div class="entity-cell">
               <div class="entity-avatar" style="background:linear-gradient(135deg,#e0453f,#ff7a75)">
                 VZ
@@ -1527,7 +1559,7 @@
       <tr class="acc-row " data-adv-name="Southwest Airlines">
         <td>
           <div class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <div class="entity-cell">
               <div class="entity-avatar" style="background:linear-gradient(135deg,#b8860b,#e0b13a)">
                 SW
@@ -1547,7 +1579,7 @@
       <tr class="acc-row " data-adv-name="Walgreens">
         <td>
           <div class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <div class="entity-cell">
               <div class="entity-avatar" style="background:linear-gradient(135deg,#065474,#3b8fae)">
                 WG
@@ -1589,7 +1621,7 @@
             <button class="btn btn-secondary btn-dropdown">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 15l4-5 3 3 5-7"></path></svg>
               Reporting
-              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+              <svg aria-hidden="true" class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
             </button>
             <button class="btn btn-primary" data-open-modal="modal-campaign">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg>
@@ -1635,7 +1667,7 @@
       <tr class="acc-row " data-camp-name="Deposit + Telco Stack">
         <td>
           <span class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="Deposit + Telco Stack">Deposit + Telco Stack</span>
           </span>
         </td>
@@ -1652,14 +1684,14 @@
         <td>Jun 1</td>
         <td>Sep 30</td>
         <td><span class="tag">Direct</span></td>
-        <td style="text-align:right;"><span class="status-pill active">Live</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">Live</span></td>
       </tr>
       
     
       <tr class="acc-row " data-camp-name="Active DD Bonus">
         <td>
           <span class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="Active DD Bonus">Active DD Bonus</span>
           </span>
         </td>
@@ -1676,14 +1708,14 @@
         <td>May 1</td>
         <td>Dec 31</td>
         <td><span class="tag">Direct</span></td>
-        <td style="text-align:right;"><span class="status-pill active">Live</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">Live</span></td>
       </tr>
       
     
       <tr class="acc-row " data-camp-name="Grocery Cashback">
         <td>
           <span class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="Grocery Cashback">Grocery Cashback</span>
           </span>
         </td>
@@ -1700,14 +1732,14 @@
         <td>Jun 15</td>
         <td>Aug 31</td>
         <td><span class="tag">Direct</span></td>
-        <td style="text-align:right;"><span class="status-pill active">Live</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">Live</span></td>
       </tr>
       
     
       <tr class="acc-row " data-camp-name="Fall Travel Rewards">
         <td>
           <span class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="Fall Travel Rewards">Fall Travel Rewards</span>
           </span>
         </td>
@@ -1724,14 +1756,14 @@
         <td>Sep 1</td>
         <td>Nov 30</td>
         <td><span class="tag">Affiliate</span></td>
-        <td style="text-align:right;"><span class="status-pill draft">Draft</span></td>
+        <td style="text-align:right;"><span class="status-pill draft" role="status">Draft</span></td>
       </tr>
       
     
       <tr class="acc-row " data-camp-name="Balance Maintenance">
         <td>
           <span class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="Balance Maintenance">Balance Maintenance</span>
           </span>
         </td>
@@ -1748,14 +1780,14 @@
         <td>Apr 1</td>
         <td>Dec 31</td>
         <td><span class="tag">Direct</span></td>
-        <td style="text-align:right;"><span class="status-pill active">Live</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">Live</span></td>
       </tr>
       
     
       <tr class="acc-row " data-camp-name="Telco Bundle Bonus">
         <td>
           <span class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="Telco Bundle Bonus">Telco Bundle Bonus</span>
           </span>
         </td>
@@ -1779,7 +1811,7 @@
       <tr class="acc-row " data-camp-name="Beauty Rewards Boost">
         <td>
           <span class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="Beauty Rewards Boost">Beauty Rewards Boost</span>
           </span>
         </td>
@@ -1796,14 +1828,14 @@
         <td>Jun 1</td>
         <td>Aug 15</td>
         <td><span class="tag">Direct</span></td>
-        <td style="text-align:right;"><span class="status-pill active">Live</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">Live</span></td>
       </tr>
       
     
       <tr class="acc-row " data-camp-name="Unlimited Plan Bonus">
         <td>
           <span class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="Unlimited Plan Bonus">Unlimited Plan Bonus</span>
           </span>
         </td>
@@ -1820,14 +1852,14 @@
         <td>May 15</td>
         <td>Oct 15</td>
         <td><span class="tag">Affiliate</span></td>
-        <td style="text-align:right;"><span class="status-pill active">Live</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">Live</span></td>
       </tr>
       
     
       <tr class="acc-row " data-camp-name="Companion Fare Stack">
         <td>
           <span class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="Companion Fare Stack">Companion Fare Stack</span>
           </span>
         </td>
@@ -1844,14 +1876,14 @@
         <td>Oct 1</td>
         <td>Dec 15</td>
         <td><span class="tag">Direct</span></td>
-        <td style="text-align:right;"><span class="status-pill draft">Draft</span></td>
+        <td style="text-align:right;"><span class="status-pill draft" role="status">Draft</span></td>
       </tr>
       
     
       <tr class="acc-row " data-camp-name="Prescription Savings">
         <td>
           <span class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
             <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="Prescription Savings">Prescription Savings</span>
           </span>
         </td>
@@ -1868,7 +1900,7 @@
         <td>Jun 1</td>
         <td>Sep 1</td>
         <td><span class="tag">Direct</span></td>
-        <td style="text-align:right;"><span class="status-pill active">Live</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">Live</span></td>
       </tr>
       
     </tbody>
@@ -1898,7 +1930,7 @@
             <button class="btn btn-secondary btn-dropdown">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 15l4-5 3 3 5-7"></path></svg>
               Reporting
-              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+              <svg aria-hidden="true" class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
             </button>
             <button class="btn btn-danger" id="campaign-detail-cancel">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path></svg>
@@ -1974,7 +2006,7 @@
           <td>May 1</td>
           <td>Sep 30</td>
           <td><span class="tag">Direct - Spend</span></td>
-          <td style="text-align:right;"><span class="status-pill live">live</span></td>
+          <td style="text-align:right;"><span class="status-pill live" role="status">live</span></td>
         </tr>
       
         <tr>
@@ -1983,7 +2015,7 @@
           <td>Oct 1</td>
           <td>Dec 31</td>
           <td><span class="tag">Direct - Spend</span></td>
-          <td style="text-align:right;"><span class="status-pill scheduled">scheduled</span></td>
+          <td style="text-align:right;"><span class="status-pill scheduled" role="status">scheduled</span></td>
         </tr>
       </tbody>
           </table>
@@ -2035,10 +2067,10 @@
         <td>Jun 1 – Jul 15</td>
         <td>$3,500</td>
         <td class="budget-cell">
-          <div class="progress-track"><div class="progress-fill" style="width:96%"></div></div>
+          <div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" aria-label="96% of budget used" style="width:96%"></div></div>
           <div class="budget-figures"><span>96% delivered</span></div>
         </td>
-        <td style="text-align:right;"><span class="status-pill live">live</span></td>
+        <td style="text-align:right;"><span class="status-pill live" role="status">live</span></td>
       </tr>
     
       <tr>
@@ -2049,10 +2081,10 @@
         <td>Jul 16 – Aug 31</td>
         <td>$4,200</td>
         <td class="budget-cell">
-          <div class="progress-track"><div class="progress-fill" style="width:74%"></div></div>
+          <div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100" aria-label="74% of budget used" style="width:74%"></div></div>
           <div class="budget-figures"><span>74% delivered</span></div>
         </td>
-        <td style="text-align:right;"><span class="status-pill live">live</span></td>
+        <td style="text-align:right;"><span class="status-pill live" role="status">live</span></td>
       </tr>
     
       <tr>
@@ -2063,10 +2095,10 @@
         <td>Sep 1 – Sep 30</td>
         <td>$3,800</td>
         <td class="budget-cell">
-          <div class="progress-track"><div class="progress-fill" style="width:8%"></div></div>
+          <div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100" aria-label="8% of budget used" style="width:8%"></div></div>
           <div class="budget-figures"><span>8% delivered</span></div>
         </td>
-        <td style="text-align:right;"><span class="status-pill scheduled">scheduled</span></td>
+        <td style="text-align:right;"><span class="status-pill scheduled" role="status">scheduled</span></td>
       </tr>
     
       <tr>
@@ -2077,10 +2109,10 @@
         <td>May 1 – Sep 30</td>
         <td>$1,800</td>
         <td class="budget-cell">
-          <div class="progress-track"><div class="progress-fill" style="width:61%"></div></div>
+          <div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="61" aria-valuemin="0" aria-valuemax="100" aria-label="61% of budget used" style="width:61%"></div></div>
           <div class="budget-figures"><span>61% delivered</span></div>
         </td>
-        <td style="text-align:right;"><span class="status-pill live">live</span></td>
+        <td style="text-align:right;"><span class="status-pill live" role="status">live</span></td>
       </tr>
     
       <tr>
@@ -2091,10 +2123,10 @@
         <td>Oct 1 – Dec 31</td>
         <td>$1,800</td>
         <td class="budget-cell">
-          <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+          <div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="0% of budget used" style="width:0%"></div></div>
           <div class="budget-figures"><span>0% delivered</span></div>
         </td>
-        <td style="text-align:right;"><span class="status-pill scheduled">scheduled</span></td>
+        <td style="text-align:right;"><span class="status-pill scheduled" role="status">scheduled</span></td>
       </tr>
     
       <tr>
@@ -2105,10 +2137,10 @@
         <td>Jun 15 – Aug 31</td>
         <td>$2,100</td>
         <td class="budget-cell">
-          <div class="progress-track"><div class="progress-fill" style="width:47%"></div></div>
+          <div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100" aria-label="47% of budget used" style="width:47%"></div></div>
           <div class="budget-figures"><span>47% delivered</span></div>
         </td>
-        <td style="text-align:right;"><span class="status-pill live">live</span></td>
+        <td style="text-align:right;"><span class="status-pill live" role="status">live</span></td>
       </tr>
     
       <tr>
@@ -2119,10 +2151,10 @@
         <td>Jul 1 – Sep 30</td>
         <td>$900</td>
         <td class="budget-cell">
-          <div class="progress-track"><div class="progress-fill" style="width:12%"></div></div>
+          <div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100" aria-label="12% of budget used" style="width:12%"></div></div>
           <div class="budget-figures"><span>12% delivered</span></div>
         </td>
-        <td style="text-align:right;"><span class="status-pill scheduled">scheduled</span></td>
+        <td style="text-align:right;"><span class="status-pill scheduled" role="status">scheduled</span></td>
       </tr>
     
       <tr>
@@ -2133,7 +2165,7 @@
         <td>Apr 1 – May 31</td>
         <td>$1,500</td>
         <td class="budget-cell">
-          <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+          <div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="100% of budget used" style="width:100%"></div></div>
           <div class="budget-figures"><span>100% delivered</span></div>
         </td>
         <td style="text-align:right;"><span class="status-pill ended">ended</span></td>
@@ -2147,10 +2179,10 @@
         <td>Jun 1 – Aug 15</td>
         <td>$1,300</td>
         <td class="budget-cell">
-          <div class="progress-track"><div class="progress-fill" style="width:54%"></div></div>
+          <div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" aria-label="54% of budget used" style="width:54%"></div></div>
           <div class="budget-figures"><span>54% delivered</span></div>
         </td>
-        <td style="text-align:right;"><span class="status-pill live">live</span></td>
+        <td style="text-align:right;"><span class="status-pill live" role="status">live</span></td>
       </tr>
     
       <tr>
@@ -2161,10 +2193,10 @@
         <td>May 15 – Oct 15</td>
         <td>$950</td>
         <td class="budget-cell">
-          <div class="progress-track"><div class="progress-fill" style="width:44%"></div></div>
+          <div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="44" aria-valuemin="0" aria-valuemax="100" aria-label="44% of budget used" style="width:44%"></div></div>
           <div class="budget-figures"><span>44% delivered</span></div>
         </td>
-        <td style="text-align:right;"><span class="status-pill live">live</span></td>
+        <td style="text-align:right;"><span class="status-pill live" role="status">live</span></td>
       </tr>
     
       <tr>
@@ -2175,10 +2207,10 @@
         <td>Jun 1 – Sep 1</td>
         <td>$620</td>
         <td class="budget-cell">
-          <div class="progress-track"><div class="progress-fill" style="width:50%"></div></div>
+          <div class="progress-track"><div class="progress-fill" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="50% of budget used" style="width:50%"></div></div>
           <div class="budget-figures"><span>50% delivered</span></div>
         </td>
-        <td style="text-align:right;"><span class="status-pill live">live</span></td>
+        <td style="text-align:right;"><span class="status-pill live" role="status">live</span></td>
       </tr>
     </tbody>
           </table>
@@ -2249,11 +2281,11 @@
 
                 <div class="placement-row">
                   <div class="placement-row-text"><b>Display-Only / Teaser Offer</b><span>Bypasses downstream reward caps and payout configuration — leaves only required Advertiser and Conversion settings.</span></div>
-                  <label class="switch"><input type="checkbox" id="wizard-teaser"><span class="switch-track"></span></label>
+                  <label class="switch"><input type="checkbox" role="switch" id="wizard-teaser"><span class="switch-track"></span></label>
                 </div>
                 <div class="form-group">
                   <label>Flight Name</label>
-                  <input class="form-input" id="wizard-flight-name" placeholder="e.g. Deposit Stack — Wave 3">
+                  <input class="form-input" id="wizard-flight-name" aria-required="true" placeholder="e.g. Deposit Stack — Wave 3">
                 </div>
                 <div class="form-row">
                   <div class="form-group">
@@ -2268,11 +2300,11 @@
                 <div class="form-row">
                   <div class="form-group">
                     <label>Start Date</label>
-                    <input class="form-input" id="wizard-start" type="date">
+                    <input class="form-input" id="wizard-start" aria-required="true" type="date">
                   </div>
                   <div class="form-group">
                     <label>End Date</label>
-                    <input class="form-input" id="wizard-end" type="date">
+                    <input class="form-input" id="wizard-end" aria-required="true" type="date">
                   </div>
                 </div>
                 <div style="font-size:11.5px; color:var(--text-tertiary); display:flex; gap:6px; align-items:center;">
@@ -2296,7 +2328,7 @@
               <div class="wizard-card-body">
                 <div class="placement-row" style="border-top:none; padding-top:0;">
                   <div class="placement-row-text"><b>Link to Parent Offer</b><span>Inherit targeting from the parent campaign's offer.</span></div>
-                  <label class="switch"><input type="checkbox" id="wizard-link-parent" checked=""><span class="switch-track"></span></label>
+                  <label class="switch"><input type="checkbox" role="switch" id="wizard-link-parent" checked=""><span class="switch-track"></span></label>
                 </div>
                 <div class="form-group">
                   <select class="form-select" id="wizard-target-profile">
@@ -2347,7 +2379,7 @@
               <div class="wizard-card-body">
                 <div class="placement-row" style="border-top:none; padding-top:0;">
                   <div class="placement-row-text"><b>Allow stacking with other active offers</b><span>Members can earn this reward in addition to other qualifying offers.</span></div>
-                  <label class="switch"><input type="checkbox" id="wizard-stacking" checked=""><span class="switch-track"></span></label>
+                  <label class="switch"><input type="checkbox" role="switch" id="wizard-stacking" checked=""><span class="switch-track"></span></label>
                 </div>
                 <label style="font-size:12px; font-weight:600; color:var(--text-secondary);">Eligibility conditions</label>
                 <div class="chip-select" id="wizard-eligibility-chips">
@@ -2387,14 +2419,14 @@
                   <div class="placement-row-text"><b>Banner Placement</b><span>Displays in the banner on the Rewards page.</span></div>
                   <div class="placement-row-controls">
                     <input class="form-input" placeholder="Flight Priority">
-                    <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+                    <label class="switch"><input type="checkbox" role="switch"><span class="switch-track"></span></label>
                   </div>
                 </div>
                 <div class="placement-row">
                   <div class="placement-row-text"><b>Home Carousal (Dashboard)</b><span>Appears in the premium home carousel for maximum visibility.</span></div>
                   <div class="placement-row-controls">
                     <input class="form-input" placeholder="Flight Priority">
-                    <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+                    <label class="switch"><input type="checkbox" role="switch"><span class="switch-track"></span></label>
                   </div>
                 </div>
                 <span class="link-btn" style="align-self:flex-start;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path></svg>View Priorities</span>
@@ -2406,7 +2438,7 @@
               <div class="wizard-card-body">
                 <div class="placement-row" style="border-top:none; padding-top:0;">
                   <div class="placement-row-text"><b>Show this offer to customers</b><span>Turn this off if you only need the flight for backend tracking, processing, or API integration without displaying it on the rewards UI.</span></div>
-                  <label class="switch"><input type="checkbox" id="wizard-show-offer" checked=""><span class="switch-track"></span></label>
+                  <label class="switch"><input type="checkbox" role="switch" id="wizard-show-offer" checked=""><span class="switch-track"></span></label>
                 </div>
                 <div style="font-size:11.5px; color:var(--text-tertiary); display:flex; gap:6px; align-items:center;">
                   <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
@@ -2528,7 +2560,7 @@
             <div class="card">
               <div class="detail-card-header" style="padding-bottom:14px;">
                 <h3 class="wizard-card-title" style="padding:0;">Body/Disclosure</h3>
-                <label class="switch"><input type="checkbox" id="wizard-disclosure-toggle" checked=""><span class="switch-track"></span></label>
+                <label class="switch"><input type="checkbox" role="switch" id="wizard-disclosure-toggle" checked=""><span class="switch-track"></span></label>
               </div>
               <div class="wizard-card-body">
                 <div class="step-row-format"><button type="button">B</button><button type="button">U</button></div>
@@ -2548,21 +2580,21 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 7l10 6 10-6"></path></svg>
                     <div><b>Email Notifications</b><span>Send promotional emails</span></div>
                   </div>
-                  <label class="switch"><input type="checkbox" checked=""><span class="switch-track"></span></label>
+                  <label class="switch"><input type="checkbox" role="switch" checked=""><span class="switch-track"></span></label>
                 </div>
                 <div class="guardrail-row">
                   <div class="guardrail-row-text">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M11 18h2"></path></svg>
                     <div><b>SMS Notifications</b><span>Send text message alerts</span></div>
                   </div>
-                  <label class="switch"><input type="checkbox" checked=""><span class="switch-track"></span></label>
+                  <label class="switch"><input type="checkbox" role="switch" checked=""><span class="switch-track"></span></label>
                 </div>
                 <div class="guardrail-row">
                   <div class="guardrail-row-text">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg>
                     <div><b>Push Notifications</b><span>Send app push notifications</span></div>
                   </div>
-                  <label class="switch"><input type="checkbox" checked=""><span class="switch-track"></span></label>
+                  <label class="switch"><input type="checkbox" role="switch" checked=""><span class="switch-track"></span></label>
                 </div>
               </div>
             </div>
@@ -2638,7 +2670,7 @@
         <td><span class="tag">Stacked</span></td>
         <td style="max-width:340px; color:var(--text-secondary);">$100 for $400+ deposit, plus $10 for a telco bill payment within 30 days</td>
         <td>All Members</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2646,7 +2678,7 @@
         <td><span class="tag">Conditional</span></td>
         <td style="max-width:340px; color:var(--text-secondary);">$15/month while Direct Deposit stays active</td>
         <td>DD Members</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2654,7 +2686,7 @@
         <td><span class="tag">Conditional</span></td>
         <td style="max-width:340px; color:var(--text-secondary);">$5/month while balance stays ≥ $500</td>
         <td>High Balance Members</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2662,7 +2694,7 @@
         <td><span class="tag">Single-event</span></td>
         <td style="max-width:340px; color:var(--text-secondary);">$25 credited on first qualifying deposit</td>
         <td>New Members</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2670,7 +2702,7 @@
         <td><span class="tag">Single-event</span></td>
         <td style="max-width:340px; color:var(--text-secondary);">3% cashback on grocery MCC spend, capped at $50/mo</td>
         <td>All Members</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2678,7 +2710,7 @@
         <td><span class="tag">Stacked</span></td>
         <td style="max-width:340px; color:var(--text-secondary);">$50 for a flight booking, plus $20 for a linked hotel booking</td>
         <td>Travel Segment</td>
-        <td style="text-align:right;"><span class="status-pill draft">draft</span></td>
+        <td style="text-align:right;"><span class="status-pill draft" role="status">draft</span></td>
       </tr>
     
       <tr>
@@ -2686,7 +2718,7 @@
         <td><span class="tag">Stacked</span></td>
         <td style="max-width:340px; color:var(--text-secondary);">2x points on retail spend, Nov 1 – Dec 31</td>
         <td>All Members</td>
-        <td style="text-align:right;"><span class="status-pill scheduled">scheduled</span></td>
+        <td style="text-align:right;"><span class="status-pill scheduled" role="status">scheduled</span></td>
       </tr>
     
       <tr>
@@ -2694,7 +2726,7 @@
         <td><span class="tag">Single-event</span></td>
         <td style="max-width:340px; color:var(--text-secondary);">$20 credited per successful referral, max 5/year</td>
         <td>All Members</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2702,7 +2734,7 @@
         <td><span class="tag">Conditional</span></td>
         <td style="max-width:340px; color:var(--text-secondary);">$5/month while a savings goal is met 3 consecutive months</td>
         <td>Savers Segment</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2751,7 +2783,7 @@
         <td style="color:var(--text-secondary);">Base population — every active Netspend cardholder</td>
         <td>2,840,120</td>
         <td>Today</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2759,7 +2791,7 @@
         <td style="color:var(--text-secondary);">Members with an active Direct Deposit on file</td>
         <td>1,203,884</td>
         <td>Today</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2767,7 +2799,7 @@
         <td style="color:var(--text-secondary);">Average daily balance ≥ $500 over trailing 30 days</td>
         <td>412,660</td>
         <td>Yesterday</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2775,7 +2807,7 @@
         <td style="color:var(--text-secondary);">Account age under 90 days</td>
         <td>88,432</td>
         <td>Today</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2783,7 +2815,7 @@
         <td style="color:var(--text-secondary);">Travel-MCC spend in the trailing 90 days</td>
         <td>154,210</td>
         <td>2 days ago</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2791,7 +2823,7 @@
         <td style="color:var(--text-secondary);">Has an active savings goal in the app</td>
         <td>96,004</td>
         <td>3 days ago</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2799,7 +2831,7 @@
         <td style="color:var(--text-secondary);">No login in 30 days and no active Direct Deposit</td>
         <td>61,850</td>
         <td>Today</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     
       <tr>
@@ -2807,7 +2839,7 @@
         <td style="color:var(--text-secondary);">Enrolled in telco bill pay</td>
         <td>203,411</td>
         <td>1 week ago</td>
-        <td style="text-align:right;"><span class="status-pill active">active</span></td>
+        <td style="text-align:right;"><span class="status-pill active" role="status">active</span></td>
       </tr>
     </tbody>
           </table>
@@ -2861,19 +2893,19 @@
               <p class="settings-section-desc">Choose what triggers an alert to your team.</p>
               <div class="toggle-row">
                 <div class="toggle-row-text"><b>Budget pacing alerts</b><span>Notify when a flight exceeds 90% of daily budget</span></div>
-                <label class="switch"><input type="checkbox" checked=""><span class="switch-track"></span></label>
+                <label class="switch"><input type="checkbox" role="switch" checked=""><span class="switch-track"></span></label>
               </div>
               <div class="toggle-row">
                 <div class="toggle-row-text"><b>Campaign status changes</b><span>Notify when a campaign moves to Active or Ended</span></div>
-                <label class="switch"><input type="checkbox" checked=""><span class="switch-track"></span></label>
+                <label class="switch"><input type="checkbox" role="switch" checked=""><span class="switch-track"></span></label>
               </div>
               <div class="toggle-row">
                 <div class="toggle-row-text"><b>Rule publish confirmations</b><span>Notify when a reward rule is published to production</span></div>
-                <label class="switch"><input type="checkbox" checked=""><span class="switch-track"></span></label>
+                <label class="switch"><input type="checkbox" role="switch" checked=""><span class="switch-track"></span></label>
               </div>
               <div class="toggle-row">
                 <div class="toggle-row-text"><b>Weekly performance digest</b><span>Summary email every Monday at 8am CT</span></div>
-                <label class="switch"><input type="checkbox"><span class="switch-track"></span></label>
+                <label class="switch"><input type="checkbox" role="switch"><span class="switch-track"></span></label>
               </div>
             </div>
           </div>
@@ -2886,9 +2918,9 @@
             <table class="data-table">
               <thead><tr><th>Name</th><th>Email</th><th>Role</th><th style="text-align:right;">Status</th></tr></thead>
               <tbody>
-                <tr><td class="entity-name">Molly Francis</td><td>mfrancis7@mac.com</td><td><span class="role-pill">Owner</span></td><td style="text-align:right;"><span class="status-pill active">active</span></td></tr>
-                <tr><td class="entity-name">Diego Ramirez</td><td>diego.ramirez@netspend.com</td><td><span class="role-pill editor">Editor</span></td><td style="text-align:right;"><span class="status-pill active">active</span></td></tr>
-                <tr><td class="entity-name">Priya Natarajan</td><td>priya.n@netspend.com</td><td><span class="role-pill editor">Editor</span></td><td style="text-align:right;"><span class="status-pill active">active</span></td></tr>
+                <tr><td class="entity-name">Molly Francis</td><td>mfrancis7@mac.com</td><td><span class="role-pill">Owner</span></td><td style="text-align:right;"><span class="status-pill active" role="status">active</span></td></tr>
+                <tr><td class="entity-name">Diego Ramirez</td><td>diego.ramirez@netspend.com</td><td><span class="role-pill editor">Editor</span></td><td style="text-align:right;"><span class="status-pill active" role="status">active</span></td></tr>
+                <tr><td class="entity-name">Priya Natarajan</td><td>priya.n@netspend.com</td><td><span class="role-pill editor">Editor</span></td><td style="text-align:right;"><span class="status-pill active" role="status">active</span></td></tr>
                 <tr><td class="entity-name">Sam Whitfield</td><td>sam.whitfield@netspend.com</td><td><span class="role-pill viewer">Viewer</span></td><td style="text-align:right;"><span class="status-pill paused">invited</span></td></tr>
               </tbody>
             </table>
@@ -2904,7 +2936,7 @@
               </div>
               <div class="toggle-row">
                 <div class="toggle-row-text"><b>Rule evaluation webhook</b><span class="code-chip">https://hooks.netspend.com/rewards/eval</span></div>
-                <span class="status-pill active">connected</span>
+                <span class="status-pill active" role="status">connected</span>
               </div>
             </div>
           </div>
@@ -2914,7 +2946,7 @@
     </main>
 
     <!-- ============ MODAL: New Campaign ============ -->
-    <div class="modal-overlay" id="modal-campaign">
+    <div class="modal-overlay" id="modal-campaign" role="dialog" aria-modal="true" aria-labelledby="modal-campaign-title">
       <div class="modal">
         <form id="campaign-form">
           <div class="modal-header">
@@ -2987,7 +3019,7 @@
     </div>
 
     <!-- ============ MODAL: Add Advertiser ============ -->
-    <div class="modal-overlay" id="modal-advertiser">
+    <div class="modal-overlay" id="modal-advertiser" role="dialog" aria-modal="true" aria-labelledby="modal-advertiser-title">
       <div class="modal">
         <form id="advertiser-form">
           <div class="modal-header">
@@ -3028,7 +3060,7 @@
     </div>
 
     <!-- ============ MODAL: Success ============ -->
-    <div class="modal-overlay" id="modal-success">
+    <div class="modal-overlay" id="modal-success" role="alertdialog" aria-modal="true" aria-labelledby="modal-success-title" aria-live="assertive">
       <div class="modal success-modal">
         <button type="button" class="modal-close-btn" data-close-modal="modal-success" style="position:absolute; top:16px; right:16px;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
@@ -3324,7 +3356,7 @@
               <tr class="acc-row-sub" data-camp-key="${key}">
                 <td>
                   <span class="acc-toggle-cell">
-                    <svg class="acc-chevron" style="${isOpen ? 'transform:rotate(90deg); color:var(--text-primary);' : ''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+                    <svg aria-hidden="true" class="acc-chevron" style="${isOpen ? 'transform:rotate(90deg); color:var(--text-primary);' : ''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
                     <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="${c.name}">${c.name}</span>
                   </span>
                 </td>
@@ -3373,7 +3405,7 @@
       <tr class="acc-row ${isOpen ? 'expanded' : ''}" data-adv-name="${a.name}">
         <td>
           <div class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
             <div class="entity-cell">
               <div class="entity-avatar" style="background:${a.grad}">
                 ${a.initials}
@@ -3402,7 +3434,7 @@
       <tr class="acc-row ${isOpen ? 'expanded' : ''}" data-camp-name="${c.name}">
         <td>
           <span class="acc-toggle-cell">
-            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            <svg aria-hidden="true" class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
             <span class="entity-name" style="cursor:pointer; color:var(--brand-blue);" data-action="view-campaign" data-campaign="${c.name}">${c.name}</span>
           </span>
         </td>
