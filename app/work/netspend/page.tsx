@@ -191,17 +191,36 @@ export default function NetspendCaseStudy() {
           </div>
         </Panel>
 
-        {/* ── PANEL 5: EMPTY / IMAGE PLACEHOLDER (screens coming) ───── */}
+        {/* ── PANEL 5: UCM PROTOTYPE (interactive iframe) ──────────── */}
         <Panel width="lg:w-screen">
-          <div className="mb-8 lg:absolute lg:left-[6.94vw] lg:top-[10vh]">
+          <div className="mb-6 lg:absolute lg:left-[6.94vw] lg:top-[10vh]">
             <SmallLogo />
           </div>
-          <div className="flex flex-1 items-center justify-center lg:absolute lg:inset-0">
-            <SlideIn className="w-full max-w-[1100px] px-6 lg:px-0">
-              <div className="w-full aspect-[16/9] rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center">
-                <p className="text-white/30 text-sm font-medium text-center px-8">
-                  UCM screens — drop Figma exports here when ready
-                </p>
+          <div className="flex flex-1 flex-col items-center justify-center lg:absolute lg:inset-0 lg:pt-[10vh] px-6 lg:px-[6.94vw]">
+            <SlideIn className="w-full">
+              <div className="flex items-end justify-between mb-4 w-full max-w-[1200px]">
+                <div>
+                  <p className="text-white/40 text-xs uppercase tracking-[0.2em] mb-1">Internal tool</p>
+                  <h2 className="font-semibold text-white text-[clamp(1.25rem,2.5vw,1.75rem)] leading-[1.2]">
+                    UCM — Unified Commerce Management
+                  </h2>
+                </div>
+                <a
+                  href="/work/netspend/ucm-prototype.html"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="shrink-0 ml-4 inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold text-white/70 hover:border-white/50 hover:text-white transition-colors"
+                >
+                  Open full screen ↗
+                </a>
+              </div>
+              <div className="w-full max-w-[1200px] overflow-hidden rounded-xl border border-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.4)]" style={{ height: "clamp(420px, 55vh, 680px)" }}>
+                <iframe
+                  src="/work/netspend/ucm-prototype.html"
+                  title="UCM Rewards Internal Tool Prototype"
+                  className="w-full h-full"
+                  style={{ border: "none" }}
+                />
               </div>
             </SlideIn>
           </div>
