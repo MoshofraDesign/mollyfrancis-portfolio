@@ -116,11 +116,10 @@ export default function RotatingHero() {
                   fontSize: "clamp(10px, 1.4vw, 13px)",
                   lineHeight: 1.45,
                   color: "#1a1a1a",
-                  whiteSpace: "nowrap",
+                  whiteSpace: "normal" as const,
                   boxShadow: "3px 3px 0 #1a1a1a",
                   minWidth: "160px",
                   maxWidth: "220px",
-                  whiteSpace: "normal" as const,
                 }}
               >
                 {h.label}
