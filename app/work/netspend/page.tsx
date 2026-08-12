@@ -37,7 +37,7 @@ const imgAppStore      = "https://www.figma.com/api/mcp/asset/f4aa88ed-c1a4-4aad
 
 function SmallLogo() {
   return (
-    <div className="relative h-[26px] w-[245px]">
+    <div className="relative h-[32px] w-[260px]">
       <Image src={LOGO} alt="Netspend" fill unoptimized className="object-contain object-left" />
     </div>
   );
@@ -55,7 +55,7 @@ export default function NetspendCaseStudy() {
       <StickyNav
         watch="title"
         logo={
-          <div className="relative h-[26px] w-[200px]">
+          <div className="relative h-[32px] w-[260px]">
             <Image src={LOGO} alt="Netspend" fill unoptimized className="object-contain object-left" />
           </div>
         }
