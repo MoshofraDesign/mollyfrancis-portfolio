@@ -25,6 +25,18 @@ type Job = {
 const experience: Job[] = [
   {
     role: "Lead Product Designer",
+    company: "Netspend",
+    domain: "netspend.com",
+    period: "November 2025 — Current",
+    bullets: [
+      "Lead UX for Netspend's Rewards program: consumer app and the internal UCM tool that powers it.",
+      "Reworked the rewards layout and Information Architecture around new UCM capabilities.",
+      "Run user testing to guide iteration.",
+      "Use Claude, Gemini, and Figma Make to speed up design and prototyping.",
+    ],
+  },
+  {
+    role: "Lead Product Designer",
     company: "GovOS (Neumo)",
     domain: "govos.com",
     period: "October 2023 — October 2025",
