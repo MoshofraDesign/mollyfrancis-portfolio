@@ -64,7 +64,7 @@ function MetricsPanel({
   metrics: { label: string; value: string }[];
 }) {
   return (
-    <Panel width="lg:w-[68vw]">
+    <Panel width="lg:w-screen">
       <Heading>Impact</Heading>
       <div className="mt-10 grid w-full max-w-[950px] grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
         {metrics.map((m, i) => (

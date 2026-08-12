@@ -304,9 +304,9 @@ export default function LivePersonCaseStudy() {
         />
 
         {/* ── IMPACT ────────────────────────────────────────────────────── */}
-        <Panel width="lg:w-[62vw]">
+        <Panel width="lg:w-screen">
           <Heading>Impact</Heading>
-          <div className="mt-10 w-full max-w-[750px] space-y-8">
+          <div className="mt-10 w-full max-w-[950px] space-y-8">
             {metrics.map((m, i) => (
               <SlideIn key={m.label} delay={120 + i * 90}>
                 <p className="text-sm font-medium opacity-80 sm:text-base">{m.label}</p>
