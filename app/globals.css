@@ -29,7 +29,7 @@ img, video {
 body {
   background: var(--color-bg);
   color: var(--color-fg);
-  font-family: var(--font-sans), "DM Sans", system-ui, sans-serif;
+  font-family: var(--font-jost), "Jost", system-ui, sans-serif;
   font-feature-settings: "ss01", "ss02", "cv11";
 }
 

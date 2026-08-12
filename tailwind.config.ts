@@ -23,10 +23,10 @@ const config: Config = {
         sage: "#7a8a6f",
       },
       fontFamily: {
-        serif: ["var(--font-serif)", "Bodoni Moda", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "DM Sans", "system-ui", "sans-serif"],
+        serif: ["var(--font-jost)", "Jost", "system-ui", "sans-serif"],
+        sans: ["var(--font-jost)", "Jost", "system-ui", "sans-serif"],
         mono: ["ui-monospace", "SFMono-Regular", "monospace"],
-        display: ["var(--font-display)", "Arial Narrow", "sans-serif"],
+        display: ["var(--font-jost)", "Jost", "sans-serif"],
         jost: ["var(--font-jost)", "Jost", "sans-serif"],
       },
       fontSize: {
