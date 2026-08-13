@@ -168,12 +168,11 @@ export default function NetspendCaseStudy() {
               <h2 className={H_DISPLAY}>Goal</h2>
             </SlideIn>
             <SlideIn delay={100}>
-              <div className="mt-8 grid gap-8 text-white sm:grid-cols-2 sm:gap-x-10 sm:gap-y-10">
+              <div className="mt-8 grid gap-8 text-white md:grid-cols-3 md:gap-x-8">
                 {[
                   ["UCM internal tool", "Design a 0→1 internal platform — wizard-based campaign setup, live revenue dashboard, direct-access nav, external media library, and Transaction Engine — built in 5 months."],
                   ["Consumer Rewards Tab", "Redesign the cardholder experience around personalization, category browsing, earnings transparency, and a validated search — scaled to match what UCM makes possible."],
                   ["Both sides, one data model", "What's configured in UCM surfaces directly in the consumer tab. Category, offer type, reward amount, and eligibility logic all flow through the same system."],
-                  ["0 → 1 in 5 months", "From first wireframe to handoff-ready product — advertiser onboarding, campaign management, flight configuration, revenue dashboard, and media library."],
                 ].map(([h, b], i) => (
                   <SlideIn key={h} delay={i * 60}>
                     <div className="border-t border-white/15 pt-5">
