@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, CSSProperties } from "react";
+import { useEffect, useRef, useState, CSSProperties } from "react";
 
 interface Hotspot {
   id: string;
@@ -67,6 +67,19 @@ export default function RotatingHero() {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
+  const portraitRef = useRef<HTMLDivElement>(null);
+  const [spot, setSpot] = useState({ x: 50, y: 50, on: false });
+
+  const onPortraitMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = portraitRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    setSpot({
+      x: ((e.clientX - r.left) / r.width) * 100,
+      y: ((e.clientY - r.top) / r.height) * 100,
+      on: true,
+    });
+  };
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -82,31 +95,53 @@ export default function RotatingHero() {
   return (
     <section className="flex min-h-[70vh] items-center px-6 py-16 sm:min-h-[75vh] sm:py-0 lg:min-h-[80vh] lg:px-10">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,340px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,570px)_1fr] lg:gap-16">
-        <div className="group relative mx-auto aspect-square w-full max-w-[210px] sm:max-w-[300px] md:mx-0 md:max-w-none lg:max-w-[570px]">
-          {/* Figma 4588:10034 — color photo behind, dark dots on top. */}
+        <div
+          onMouseMove={onPortraitMove}
+          onMouseEnter={onPortraitMove}
+          onMouseLeave={() => setSpot((s) => ({ ...s, on: false }))}
+          className="group relative mx-auto aspect-square w-full max-w-[210px] sm:max-w-[300px] md:mx-0 md:max-w-none lg:max-w-[570px]"
+        >
+          {/* Gray dotted portrait at rest. On hover, a spotlight of the
+              color photo is masked to the same dots. */}
           <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-full"
+            ref={portraitRef}
+            className="pointer-events-none absolute left-[10.4%] top-[8.4%] z-[1] h-[83.2%] w-[82.3%]"
           >
-            <Image
-              src="/hero-color.png"
-              alt=""
-              fill
-              unoptimized
-              sizes="(max-width: 640px) 210px, (max-width: 768px) 300px, 570px"
-              className="object-cover"
-              priority
-            />
-          </div>
-          <div className="pointer-events-none absolute left-[10.4%] top-[8.4%] z-[1] h-[83.2%] w-[82.3%]">
             <Image
               src="/hero-halftone.svg"
               alt="Halftone portrait of Molly Francis"
               fill
               unoptimized
               priority
-              className="object-contain"
+              className="pointer-events-none object-contain"
             />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 overflow-hidden"
+              style={{
+                clipPath: spot.on
+                  ? `circle(22% at ${spot.x}% ${spot.y}%)`
+                  : "circle(0% at 50% 50%)",
+                WebkitMaskImage: "url(/hero-halftone.svg)",
+                maskImage: "url(/hero-halftone.svg)",
+                WebkitMaskSize: "contain",
+                maskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskPosition: "center",
+                maskPosition: "center",
+              }}
+            >
+              <Image
+                src="/hero-color.png"
+                alt=""
+                fill
+                unoptimized
+                sizes="(max-width: 640px) 210px, (max-width: 768px) 300px, 570px"
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
           <div className="absolute left-[10.4%] top-[8.4%] z-[3] h-[83.2%] w-[82.3%]">
 
