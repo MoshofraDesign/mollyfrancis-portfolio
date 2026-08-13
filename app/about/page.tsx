@@ -3,9 +3,10 @@ import Link from "next/link";
 import { Jost } from "next/font/google";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
+import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import Logo from "@/components/Logo";
-import { TEXT_W, Eyebrow, Panel, TextPanel, Heading, Body } from "@/components/v2/CaseStudyKit";
+import { TEXT_W, MEASURE, VIEW, Eyebrow, Panel, TextPanel, Heading, Body } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "About — Molly Francis",
@@ -88,9 +89,9 @@ function StoryPanel({
   reverse?: boolean;
 }) {
   return (
-    <Panel width="lg:w-[86vw]" className="items-center">
+    <Panel width={VIEW} pad="center" className="items-center">
       <div
-        className={`grid w-full max-w-[1100px] items-center gap-10 sm:grid-cols-2 sm:gap-14 ${
+        className={`mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 sm:grid-cols-2 sm:gap-14 ${
           reverse ? "sm:[&>*:first-child]:order-2" : ""
         }`}
       >
@@ -124,15 +125,7 @@ export default function AboutPage() {
       <StickyNav
         watch="title"
         logo={<Logo variant="mark" size={26} />}
-        action={
-          <Link
-            href="/"
-            aria-label="Back to home"
-            className="pointer-events-auto -m-3 flex min-h-11 min-w-11 items-center justify-center p-3 text-[11px] font-semibold uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60"
-          >
-            Close
-          </Link>
-        }
+        action={<CloseLink />}
       />
 
       <HorizontalScroll>
@@ -169,8 +162,8 @@ export default function AboutPage() {
         </section>
 
         {/* ── INTRO — Molly Francis ────────────────────────────────── */}
-        <Panel width="lg:w-[86vw]" className="items-center">
-          <div className="grid w-full max-w-[1100px] items-center gap-10 sm:grid-cols-2 sm:gap-14">
+        <Panel width={VIEW} pad="center" className="items-center">
+          <div className="mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 sm:grid-cols-2 sm:gap-14">
             <SlideIn>
               <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-full bg-black/5">
                 <Image
@@ -353,32 +346,35 @@ export default function AboutPage() {
         </TextPanel>
 
         {/* ── OPERATING PRINCIPLES ──────────────────────────────────── */}
-        <Panel width="lg:w-[92vw]">
-          <Eyebrow>Operating principles</Eyebrow>
-          <h2 className="mt-2 text-[clamp(1.75rem,6vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.01em] sm:text-[clamp(2rem,3.6vw,3rem)]">
-            How I show up
-          </h2>
-          <div className="mt-8 w-full max-w-[900px] space-y-1">
-            {principles.map((p, i) => (
-              <SlideIn key={p.t} delay={120 + i * 90}>
-                <div className="grid grid-cols-12 gap-4 border-t border-[#141414]/10 py-6">
-                  <div className="col-span-1 font-mono text-base opacity-40">
-                    0{i + 1}
+        <Panel width={VIEW} pad="center">
+          <div className={`mx-auto ${MEASURE}`}>
+            <Eyebrow>Operating principles</Eyebrow>
+            <h2 className="mt-2 text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.15] tracking-[-0.02em]">
+              How I show up
+            </h2>
+            <div className="mt-8 w-full space-y-1">
+              {principles.map((p, i) => (
+                <SlideIn key={p.t} delay={120 + i * 90}>
+                  <div className="grid grid-cols-12 gap-4 border-t border-[#141414]/10 py-6">
+                    <div className="col-span-1 font-mono text-base opacity-40">
+                      0{i + 1}
+                    </div>
+                    <div className="col-span-11">
+                      <h3 className="text-[clamp(1.1rem,1.5vw,1.25rem)] font-semibold">{p.t}</h3>
+                      <p className="mt-1.5 max-w-xl text-[clamp(1rem,1.25vw,1.1rem)] leading-relaxed opacity-75">
+                        {p.b}
+                      </p>
+                    </div>
                   </div>
-                  <div className="col-span-11">
-                    <h3 className="text-lg font-semibold sm:text-xl">{p.t}</h3>
-                    <p className="mt-1.5 max-w-xl text-sm leading-relaxed opacity-75 sm:text-base">
-                      {p.b}
-                    </p>
-                  </div>
-                </div>
-              </SlideIn>
-            ))}
+                </SlideIn>
+              ))}
+            </div>
           </div>
         </Panel>
 
         {/* ── CTA — Let's talk ──────────────────────────────────────── */}
-        <section className="relative flex w-full flex-col justify-center bg-[#141414] px-6 py-20 text-[#f5f5f5] sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[56vw] lg:shrink-0 lg:snap-start lg:px-[7%] lg:py-0">
+        <section className="relative flex w-full flex-col justify-center bg-[#141414] px-6 py-20 text-[#f5f5f5] sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-0">
+          <div className={MEASURE}>
           <SlideIn>
             <p className="text-xs uppercase tracking-[0.25em] text-white/60">
               Still reading?
@@ -405,6 +401,7 @@ export default function AboutPage() {
               </Link>
             </div>
           </SlideIn>
+          </div>
         </section>
       </HorizontalScroll>
     </main>

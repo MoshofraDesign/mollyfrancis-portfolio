@@ -1,14 +1,16 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { Jost } from "next/font/google";
-import { projects, getProject } from "@/lib/projects";
+import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
+import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
 import {
-  TEXT_W,
+  MEASURE,
+  MEDIA,
+  VIEW,
   chunk,
   Eyebrow,
   Panel,
@@ -16,6 +18,8 @@ import {
   Heading,
   Body,
   Bullets,
+  NextProjectLink,
+  CaseStudyMetaPanel,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -64,17 +68,19 @@ function MetricsPanel({
   metrics: { label: string; value: string }[];
 }) {
   return (
-    <Panel width="lg:w-screen">
-      <Heading>Impact</Heading>
-      <div className="mt-10 grid w-full max-w-[950px] grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
-        {metrics.map((m, i) => (
-          <SlideIn key={m.label} delay={120 + i * 90}>
-            <div className="text-[clamp(1.75rem,5vw,3rem)] font-semibold leading-none">
-              {m.value}
-            </div>
-            <p className="mt-3 text-sm opacity-70">{m.label}</p>
-          </SlideIn>
-        ))}
+    <Panel width={VIEW} pad="center">
+      <div className={`${MEASURE} mx-auto`}>
+        <Heading>Impact</Heading>
+        <div className="mt-10 grid w-full grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+          {metrics.map((m, i) => (
+            <SlideIn key={m.label} delay={120 + i * 90}>
+              <div className="text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-none">
+                {m.value}
+              </div>
+              <p className="mt-3 text-[clamp(0.85rem,1.1vw,1rem)] opacity-70">{m.label}</p>
+            </SlideIn>
+          ))}
+        </div>
       </div>
     </Panel>
   );
@@ -87,8 +93,8 @@ function ImageGridPanel({
   images: { src: string; caption?: string }[];
 }) {
   return (
-    <Panel width="lg:w-[92vw]" className="items-center">
-      <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-4">
+    <Panel width={VIEW} pad="center" className="items-center">
+      <div className={`mx-auto grid ${MEDIA} grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6`}>
         {images.map((img, i) => (
           <figure key={img.src + i} className="space-y-2">
             <div className="relative aspect-[3/4] overflow-hidden">
@@ -125,32 +131,34 @@ function LogosGridPanel({
   images: { src: string; caption?: string }[];
 }) {
   return (
-    <section className="relative flex w-full flex-col px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[130vw] lg:shrink-0 lg:snap-start lg:items-start lg:overflow-y-auto lg:overscroll-contain lg:px-[100px] lg:py-16">
-      <SlideIn className={TEXT_W}>
-        <h2 className="text-[clamp(1.75rem,7vw,2.75rem)] font-semibold leading-[1.17] tracking-[-0.01em] sm:text-[clamp(2rem,4.4vw,3.5rem)] [text-wrap:pretty]">
-          Selected marks
-        </h2>
-      </SlideIn>
-      <div
-        className="mt-10 grid w-full justify-start gap-6 sm:gap-8"
-        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(200px, 300px))" }}
-      >
-        {images.map((img, i) => (
-          <div
-            key={img.src + i}
-            className="relative aspect-square w-full max-w-[300px] overflow-hidden"
-          >
-            <Image
-              src={img.src}
-              alt={img.caption || "Logo mark"}
-              fill
-              sizes="300px"
-              className="object-contain p-6"
-            />
-          </div>
-        ))}
+    <Panel width={VIEW} pad="center">
+      <div className={`mx-auto ${MEASURE}`}>
+        <SlideIn>
+          <h2 className="text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.15] tracking-[-0.02em] [text-wrap:pretty]">
+            Selected marks
+          </h2>
+        </SlideIn>
+        <div
+          className="mt-10 grid w-full justify-start gap-6 sm:gap-8"
+          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))" }}
+        >
+          {images.map((img, i) => (
+            <div
+              key={img.src + i}
+              className="relative aspect-square w-full overflow-hidden"
+            >
+              <Image
+                src={img.src}
+                alt={img.caption || "Logo mark"}
+                fill
+                sizes="300px"
+                className="object-contain p-6"
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
+    </Panel>
   );
 }
 
@@ -247,15 +255,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             <span className="text-sm font-semibold">{project.title}</span>
           )
         }
-        action={
-          <Link
-            href="/"
-            aria-label="Back to home"
-            className="pointer-events-auto -m-3 flex min-h-11 min-w-11 items-center justify-center p-3 text-[11px] font-semibold uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60"
-          >
-            Close
-          </Link>
-        }
+        action={<CloseLink />}
       />
 
       <HorizontalScroll>
@@ -310,31 +310,33 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           ))}
 
         {project.prototype && (
-          <Panel width="lg:w-[46vw]">
-            <Heading>Live Figma prototype</Heading>
-            <a
-              href={project.prototype}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border px-8 py-3 text-[clamp(0.95rem,2.4vw,1.1rem)] transition-opacity hover:opacity-60 sm:text-[1.05vw]"
-              style={{ borderColor: `${fg}99` }}
-            >
-              Open prototype ↗
-            </a>
+          <Panel width={VIEW} pad="center">
+            <div className={`${MEASURE} mx-auto`}>
+              <Heading>Live Figma prototype</Heading>
+              <a
+                href={project.prototype}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border px-8 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] transition-opacity hover:opacity-60"
+                style={{ borderColor: `${fg}99` }}
+              >
+                Open prototype ↗
+              </a>
+            </div>
           </Panel>
         )}
 
-        <Link
+        <CaseStudyMetaPanel
+          meta={getCaseStudyMeta(project)}
+          lightText={fg === "#f5f5f5"}
+        />
+
+        <NextProjectLink
           href={`/work/${next.slug}`}
-          className="group relative flex w-full flex-col justify-center bg-[#141414] px-6 py-20 text-[#f5f5f5] sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[56vw] lg:shrink-0 lg:snap-start lg:px-[7%] lg:py-0"
-        >
-          <p className="text-[clamp(0.95rem,2.2vw,1.1rem)] font-normal text-white/50 sm:text-[1vw]">
-            Up next — {next.client}
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,7vw,3.5rem)] font-semibold leading-[1.1] transition-transform group-hover:translate-x-3 sm:text-[4vw]">
-            {next.title} →
-          </h2>
-        </Link>
+          client={next.client}
+          title={next.title}
+          accent={next.accent}
+        />
       </HorizontalScroll>
     </main>
   );

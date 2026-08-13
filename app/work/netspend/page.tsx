@@ -1,12 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Jost } from "next/font/google";
-import { projects } from "@/lib/projects";
+import { projects, getCaseStudyMeta } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
+import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel } from "@/components/v2/CaseStudyKit";
+import UcmScreensCarousel from "@/components/UcmScreensCarousel";
+import { Panel, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Netspend Rewards & UCM — Molly Francis",
@@ -24,10 +25,26 @@ const jost = Jost({
 const ACCENT = "#313131";
 const LOGO = "/logos/netspend.svg";
 const ASSET = "/work/netspend";
+/** Full-viewport panels (Fresh Direct–style); content is centered inside. */
+const VIEW = "lg:w-screen";
+/** ~132rem on their fluid root ≈ 860px — readable measure that scales. */
+const MEASURE = "w-full max-w-[min(54rem,86vw)]";
+const MEDIA = "w-full max-w-[min(950px,90vw)]";
+
+const H_DISPLAY =
+  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[clamp(2rem,4.5vw,4.05rem)] [text-wrap:pretty]";
+const H_SECTION =
+  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[clamp(1.75rem,3.6vw,3rem)] [text-wrap:pretty]";
+const BODY =
+  "text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white [text-wrap:pretty]";
+const BODY_MUTED =
+  "text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white/70 [text-wrap:pretty]";
 
 export default function NetspendCaseStudy() {
   const idx = projects.findIndex((p) => p.slug === "netspend");
+  const project = projects[idx];
   const next = projects[(idx + 1) % projects.length];
+  const meta = getCaseStudyMeta(project);
 
   return (
     <main
@@ -36,32 +53,27 @@ export default function NetspendCaseStudy() {
     >
       <StickyNav
         watch="title"
+        parkLeft={32}
         logo={
-          <div className="relative h-[26px] w-[245px]">
+          <div className="relative h-[22px] w-[200px]">
             <Image src={LOGO} alt="Netspend" fill unoptimized className="object-contain object-left" />
           </div>
         }
-        action={
-          <Link
-            href="/"
-            aria-label="Back to home"
-            className="pointer-events-auto -m-3 flex min-h-11 min-w-11 items-center justify-center p-3 text-[11px] font-semibold uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60"
-          >
-            Close
-          </Link>
-        }
+        action={<CloseLink />}
       />
 
       <HorizontalScroll>
 
         {/* ── PANEL 1: HERO — Figma 4553:22203
-            Logo 842×90 at 100,100; cards at 498,226; copy + badges bottom-left. */}
+            Logo 842×90 at 100,100; cards at 498,226; copy + badges bottom-left.
+            Use 100dvw (not w-screen/100vw) so the panel matches the scroller
+            and the card fan isn’t clipped by the scrollbar gutter. */}
         <section
           id="title"
-          className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
+          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-6 sm:px-10 lg:h-[100dvh] lg:w-[100dvw] lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
-          {/* Large logo — same anchor (left/top), slightly smaller than Figma 842×90 */}
-          <div className="relative h-[52px] w-[260px] sm:h-[60px] sm:w-[360px] lg:absolute lg:left-[6.94%] lg:top-[10%] lg:h-[72px] lg:w-[min(680px,47vw)]">
+          {/* Large logo — same left/top anchor; height-driven so the wordmark never clips */}
+          <div className="relative z-10 h-[52px] w-[min(100%,20rem)] sm:h-[60px] sm:w-[22.5rem] lg:absolute lg:left-[6.94%] lg:top-[10%] lg:h-[72px] lg:w-[min(680px,47vw)]">
             <Image
               src={LOGO}
               alt="Netspend"
@@ -72,8 +84,41 @@ export default function NetspendCaseStudy() {
             />
           </div>
 
-          {/* Description — Figma bottom:103 left:100 w:308 */}
-          <div className="flex flex-1 flex-col justify-end lg:absolute lg:bottom-[10.3%] lg:left-[6.94%] lg:w-[308px]">
+          {/* Debit cards — sit in the open area right of the logo/copy, fully inside
+              the frame (Figma 498,226 / 791×638). Insets + object-contain keep the
+              orange tip from getting cropped. */}
+          <div className="pointer-events-none relative z-0 mx-auto flex aspect-[791/638] w-full max-w-[min(90vw,26rem)] items-center justify-center lg:absolute lg:left-[24%] lg:right-[6%] lg:top-[14%] lg:bottom-[24%] lg:aspect-auto lg:w-auto lg:max-w-none lg:p-6">
+            <Image
+              src={`${ASSET}/debit-cards.png`}
+              alt="Netspend debit cards"
+              width={1200}
+              height={967}
+              priority
+              unoptimized
+              className="h-auto max-h-full w-auto max-w-full object-contain"
+            />
+          </div>
+
+          {/* Badges + copy — one block on mobile so they can’t overlap */}
+          <div className="relative z-10 flex flex-col gap-5 lg:absolute lg:bottom-[10.3%] lg:left-[6.94%] lg:z-10 lg:w-[308px] lg:gap-8">
+            <div className="flex items-center gap-4">
+              <Image
+                src={`${ASSET}/google-play.svg`}
+                alt="Google Play"
+                width={50}
+                height={50}
+                unoptimized
+                className="size-10 sm:size-[50px]"
+              />
+              <Image
+                src={`${ASSET}/app-store.svg`}
+                alt="App Store"
+                width={50}
+                height={50}
+                unoptimized
+                className="size-10 sm:size-[50px]"
+              />
+            </div>
             <SlideIn className="flex flex-col gap-2 text-white">
               <p className="font-semibold leading-[1.28] text-[clamp(1.25rem,2.5vw,2.25rem)]">
                 Netspend Rewards
@@ -84,102 +129,46 @@ export default function NetspendCaseStudy() {
               </p>
             </SlideIn>
           </div>
-
-          {/* App badges — Figma left:100 top:699 */}
-          <div className="mt-6 flex items-center gap-4 lg:absolute lg:left-[6.94%] lg:top-[69.9%] lg:mt-0">
-            <Image
-              src={`${ASSET}/google-play.svg`}
-              alt="Google Play"
-              width={50}
-              height={50}
-              unoptimized
-              className="size-[50px]"
-            />
-            <Image
-              src={`${ASSET}/app-store.svg`}
-              alt="App Store"
-              width={50}
-              height={50}
-              unoptimized
-              className="size-[50px]"
-            />
-          </div>
-
-          {/* Debit cards — pulled left from Figma 498 (~34.58%) so they sit closer to center */}
-          <SlideIn
-            delay={100}
-            className="flex justify-center lg:absolute lg:left-[26%] lg:top-[226px] lg:w-[54.93%] lg:max-w-[791px]"
-          >
-            <Image
-              src={`${ASSET}/debit-cards.png`}
-              alt="Netspend debit cards"
-              width={1200}
-              height={967}
-              priority
-              className="h-auto w-full object-contain"
-            />
-          </SlideIn>
         </section>
 
-        {/* ── PANEL 2: CONTEXT TITLE — Figma 4553:22209 */}
-        <Panel width="lg:w-screen">
-          <div className="flex flex-1 flex-col justify-center lg:absolute lg:left-[6.94%] lg:top-1/2 lg:-translate-y-1/2 lg:w-full lg:max-w-[950px]">
+        {/* ── PANEL 3: CONTEXT BODY ──────────────────────────────────── */}
+        <Panel width={VIEW} pad="center">
+          <div className={`${MEASURE} mx-auto space-y-6`}>
             <SlideIn>
-              <h1 className="font-semibold leading-[1.17] text-white text-[clamp(2.5rem,5.6vw,5.0625rem)]">
-                Context / The Setup
-              </h1>
+              <h2 className={H_DISPLAY}>Context / The Setup</h2>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="mt-4 text-[clamp(1rem,2.2vw,2rem)] leading-normal text-white/70">
-                From Spreadsheets to a Single Platform
+              <p className={`mt-5 ${BODY_MUTED}`}>From Spreadsheets to a Single Platform</p>
+            </SlideIn>
+            <SlideIn delay={140}>
+              <p className={`mt-6 ${BODY}`}>
+                Netspend&rsquo;s Rewards program powered cashback and partner offers for
+                millions of cardholders — but it ran on Meridian, a legacy stack that
+                couldn&rsquo;t keep up. Internally there was no dedicated tool: campaigns
+                lived in Excel, with no single view of what was live or performing.
+              </p>
+            </SlideIn>
+            <SlideIn delay={220}>
+              <p className={BODY}>
+                I designed both sides:{" "}
+                <span className="font-semibold">Unified Commerce Management (UCM)</span>
+                {" "}for the rewards team to run advertisers, campaigns, and offer flights —
+                and the{" "}
+                <span className="font-semibold">consumer Rewards Tab</span>
+                {" "}cardholders see in the Netspend app.
               </p>
             </SlideIn>
           </div>
         </Panel>
 
-        {/* ── PANEL 3: CONTEXT BODY — Figma 4574:1918 */}
-        <Panel width="lg:w-screen">
-          <div className="flex flex-1 flex-col justify-center gap-4 lg:absolute lg:left-[6.94%] lg:top-1/2 lg:-translate-y-1/2 lg:w-full lg:max-w-[950px]">
+        {/* ── PANEL 4: GOAL ──────────────────────────────────────────── */}
+        <Panel width={VIEW} pad="center">
+          <div className={`${MEASURE} mx-auto`}>
             <SlideIn>
-              <h2 className="font-semibold leading-[1.17] text-white text-[clamp(2.5rem,5.6vw,5.0625rem)]">
-                Context / The Setup
-              </h2>
+              <h2 className={H_DISPLAY}>Goal</h2>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="text-[clamp(1rem,2.2vw,2rem)] leading-normal text-white">
-                Netspend&rsquo;s Rewards program — powering cashback, affiliate offers, and
-                partner campaigns for millions of cardholders — was being managed entirely
-                through a legacy system called Meridian, built on a siloed tech stack that
-                couldn&rsquo;t keep up with the business. Internally, the team setting up
-                and managing those rewards had no dedicated tool. Campaigns were configured
-                manually, data lived in Excel, and there was no single place to see what
-                was live, what was performing, and what needed attention.
-              </p>
-            </SlideIn>
-            <SlideIn delay={180}>
-              <p className="text-[clamp(1rem,2.2vw,2rem)] leading-normal text-white">
-                My role was to design the{" "}
-                <span className="font-semibold">Unified Commerce Management (UCM) tool</span>
-                {" "}— an internal platform that gives the Netspend rewards team full control
-                over advertisers, campaigns, and offer flights — while simultaneously
-                redesigning the{" "}
-                <span className="font-semibold">consumer-facing Rewards Tab</span>
-                {" "}that cardholders see in the Netspend app and desktop experience.
-              </p>
-            </SlideIn>
-          </div>
-        </Panel>
-
-        {/* ── PANEL 4: GOAL — Figma 4553:22214 */}
-        <Panel width="lg:w-screen">
-          <div className="flex flex-1 flex-col justify-center lg:absolute lg:left-[6.94%] lg:top-1/2 lg:-translate-y-1/2 lg:w-full lg:max-w-[950px]">
-            <SlideIn>
-              <h2 className="font-semibold leading-[1.17] text-white text-[clamp(2.5rem,5.6vw,5.0625rem)]">
-                Goal
-              </h2>
-            </SlideIn>
-            <SlideIn delay={100}>
-              <div className="mt-6 grid gap-8 text-white sm:grid-cols-2">
+              <div className="mt-8 grid gap-8 text-white sm:grid-cols-2 sm:gap-x-10 sm:gap-y-10">
                 {[
                   ["UCM internal tool", "Design a 0→1 internal platform — wizard-based campaign setup, live revenue dashboard, direct-access nav, external media library, and Transaction Engine — built in 5 months."],
                   ["Consumer Rewards Tab", "Redesign the cardholder experience around personalization, category browsing, earnings transparency, and a validated search — scaled to match what UCM makes possible."],
@@ -188,8 +177,8 @@ export default function NetspendCaseStudy() {
                 ].map(([h, b], i) => (
                   <SlideIn key={h} delay={i * 60}>
                     <div className="border-t border-white/15 pt-5">
-                      <p className="mb-2 text-lg font-semibold">{h}</p>
-                      <p className="text-sm leading-relaxed text-white/60">{b}</p>
+                      <p className="mb-2 text-[clamp(1.15rem,1.6vw,1.35rem)] font-semibold">{h}</p>
+                      <p className={BODY_MUTED}>{b}</p>
                     </div>
                   </SlideIn>
                 ))}
@@ -198,212 +187,158 @@ export default function NetspendCaseStudy() {
           </div>
         </Panel>
 
-        {/* ── PANEL 5: UCM PROTOTYPE (interactive iframe) ──────────── */}
-        <Panel width="lg:w-screen" className="items-center">
-          <div className="flex flex-1 flex-col items-center justify-center gap-4 px-5 sm:px-8 lg:absolute lg:inset-0 lg:px-[6.94%]">
-            <SlideIn className="w-full max-w-[950px]">
-              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
-                    Internal tool
-                  </p>
-                  <h2 className="mt-2 font-semibold leading-[1.17] text-white text-[clamp(1.5rem,3.5vw,2.75rem)]">
-                    UCM — Unified Commerce Management
-                  </h2>
-                </div>
-                <a
-                  href="/work/netspend/ucm/index.html"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="shrink-0 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold text-white/70 transition-colors hover:border-white/50 hover:text-white"
-                >
-                  Open full screen ↗
-                </a>
-              </div>
-              <div
-                className="aspect-[16/10] w-full max-h-[min(70vh,720px)] overflow-hidden rounded-xl border border-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.4)]"
-              >
-                <iframe
-                  src="/work/netspend/ucm/index.html"
-                  title="UCM Rewards Internal Tool Prototype"
-                  className="h-full w-full bg-white"
-                  style={{ border: "none" }}
-                />
-              </div>
-            </SlideIn>
-          </div>
+        {/* ── PANEL 5: UCM SCREENSHOTS — single carousel section ───── */}
+        <Panel width={VIEW} pad="center" className="items-center">
+          <SlideIn className="w-full">
+            <UcmScreensCarousel
+              headingClassName={H_SECTION}
+              bodyClassName={BODY_MUTED}
+              caption="Internal Rewards Tool"
+              screens={[
+                {
+                  title: "Live revenue dashboard",
+                  body: "Real-time performance across stacked offers, redemptions, and retention — the single view Meridian never had.",
+                  src: `${ASSET}/ucm/screens/01-dashboard.png`,
+                },
+                {
+                  title: "Advertiser onboarding",
+                  body: "Partner accounts that fund offers, campaigns, and flights — with budget, status, and domain in one table.",
+                  src: `${ASSET}/ucm/screens/02-advertisers.png`,
+                },
+                {
+                  title: "Campaign management",
+                  body: "Advertiser-funded programs grouped into flights, with spend pacing and offer type at a glance.",
+                  src: `${ASSET}/ucm/screens/03-campaigns.png`,
+                },
+                {
+                  title: "Wizard-based flight setup",
+                  body: "Four-step Create Flight flow — basic info, incentive config, ad setup, review — without leaving the tool.",
+                  src: `${ASSET}/ucm/screens/08-flight-wizard.png`,
+                },
+                {
+                  title: "Media library",
+                  body: "Upload and manage creatives for offer flights — logos, banners, and campaign assets in one place.",
+                  src: `${ASSET}/ucm/screens/05-media.png`,
+                },
+                {
+                  title: "Reward rules engine",
+                  body: "Multi-event, stacked, and status-contingent rules — configured without code.",
+                  src: `${ASSET}/ucm/screens/06-rules.png`,
+                },
+              ]}
+            />
+          </SlideIn>
         </Panel>
 
-        {/* ── PANEL 5b: UCM SCREENSHOTS — mapped to Goal pillars ───── */}
-        {(
-          [
-            {
-              title: "Live revenue dashboard",
-              body: "Real-time performance across stacked offers, redemptions, and retention — the single view Meridian never had.",
-              src: `${ASSET}/ucm/screens/01-dashboard.png`,
-            },
-            {
-              title: "Advertiser onboarding",
-              body: "Partner accounts that fund offers, campaigns, and flights — with budget, status, and domain in one table.",
-              src: `${ASSET}/ucm/screens/02-advertisers.png`,
-            },
-            {
-              title: "Campaign management",
-              body: "Advertiser-funded programs grouped into flights, with spend pacing and offer type at a glance.",
-              src: `${ASSET}/ucm/screens/03-campaigns.png`,
-            },
-            {
-              title: "Wizard-based flight setup",
-              body: "Four-step Create Flight flow — basic info, incentive config, ad setup, review — without leaving the tool.",
-              src: `${ASSET}/ucm/screens/08-flight-wizard.png`,
-            },
-            {
-              title: "Media library",
-              body: "Upload and manage creatives for offer flights — logos, banners, and campaign assets in one place.",
-              src: `${ASSET}/ucm/screens/05-media.png`,
-            },
-            {
-              title: "Reward rules engine",
-              body: "Multi-event, stacked, and status-contingent rules — configured without code.",
-              src: `${ASSET}/ucm/screens/06-rules.png`,
-            },
-          ] as const
-        ).map((shot) => (
-          <Panel key={shot.src} width="lg:w-screen">
-            <div className="flex flex-1 flex-col justify-center gap-5 px-5 sm:px-8 lg:absolute lg:left-[6.94%] lg:right-[6.94%] lg:top-1/2 lg:-translate-y-1/2 lg:px-0">
-              <SlideIn className="w-full max-w-[950px]">
-                <h2 className="font-semibold leading-[1.17] text-white text-[clamp(1.75rem,4vw,3rem)]">
-                  {shot.title}
-                </h2>
-                <p className="mt-3 max-w-[70ch] text-[clamp(1rem,1.6vw,1.35rem)] leading-normal text-white/70">
-                  {shot.body}
-                </p>
-              </SlideIn>
-              <SlideIn delay={100} className="w-full max-w-[950px]">
-                <div className="overflow-hidden rounded-xl border border-white/10 shadow-[0_12px_48px_rgba(0,0,0,0.35)]">
-                  <Image
-                    src={shot.src}
-                    alt={shot.title}
-                    width={2880}
-                    height={1800}
-                    sizes="(max-width: 950px) 100vw, 950px"
-                    className="h-auto w-full"
-                  />
-                </div>
-              </SlideIn>
-            </div>
-          </Panel>
-        ))}
-
-        {/* ── PANEL 6: USER-TEST PHONES — Figma 4553:22218 (277×600 ×4, gap 40) */}
-        <Panel width="lg:w-screen" className="items-center">
-          <div className="flex flex-1 items-center justify-center lg:absolute lg:inset-0">
-            <div className="flex flex-wrap justify-center gap-6 px-4 lg:gap-10 lg:px-0">
+        {/* ── PANEL 6: USER-TEST PHONES — one row at lg+, 2×2 below */}
+        <Panel width={VIEW} pad="center" className="items-center">
+          <div className="mx-auto w-full max-w-[min(1200px,94vw)]">
+            <div className="grid grid-cols-2 items-end justify-items-center gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
               {[
                 [`${ASSET}/phone-landing.png`, "Rewards home — popular offers"],
                 [`${ASSET}/phone-hellofresh.png`, "Offer detail — Hello Fresh"],
                 [`${ASSET}/phone-transactions.png`, "Cash back transactions"],
                 [`${ASSET}/phone-groceries.png`, "Grocery category browsing"],
               ].map(([src, alt], i) => (
-                <SlideIn key={alt} delay={i * 60}>
+                <SlideIn key={alt} delay={i * 60} className="w-full max-w-[240px]">
                   <Image
                     src={src}
                     alt={alt}
                     width={393}
                     height={852}
-                    className="h-auto w-[min(277px,42vw)] object-contain"
+                    className="h-auto w-full object-contain"
                   />
                 </SlideIn>
               ))}
             </div>
+            <p className="mt-5 text-center text-[11px] font-medium uppercase tracking-[0.16em] text-white/45">
+              Consumer App
+            </p>
           </div>
         </Panel>
 
-        {/* ── PANEL 7: OUTCOME — Figma 4553:22220 */}
-        <Panel width="lg:w-screen">
-          <div className="flex flex-1 flex-col justify-center lg:absolute lg:left-[6.94%] lg:top-1/2 lg:-translate-y-1/2 lg:w-full lg:max-w-[950px]">
+        {/* ── PANEL: CUSTOMER APP SCREEN RECORDING ───────────────────── */}
+        <Panel width={VIEW} pad="center" className="items-center">
+          <SlideIn className={`${MEDIA} mx-auto`}>
+            <div className="relative aspect-[1416/1030] w-full overflow-hidden rounded-xl bg-black/40 shadow-[0_20px_60px_-12px_rgba(0,0,0,0.45)]">
+              <AutoplayVideo
+                sources={[
+                  { src: `${ASSET}/videos/netspend-rewards.mov`, type: "video/quicktime" },
+                  { src: `${ASSET}/videos/netspend-rewards.mp4`, type: "video/mp4" },
+                ]}
+                className="h-full w-full object-contain"
+              />
+            </div>
+            <p className="mt-3 text-center text-[11px] font-medium uppercase tracking-[0.16em] text-white/45">
+              Consumer App
+            </p>
+          </SlideIn>
+        </Panel>
+
+        {/* ── PANEL: PORTRAIT + CASH BACK (single composite) ─────────── */}
+        <Panel width={VIEW} pad="center" className="items-center">
+          <SlideIn className="mx-auto w-full max-w-[min(834px,90vw)]">
+            <Image
+              src={`${ASSET}/portrait-cashback.png`}
+              alt="Netspend cardholder with cash back offers"
+              width={834}
+              height={600}
+              className="h-auto w-full object-contain"
+            />
+            <p className="mt-3 text-center text-[11px] font-medium uppercase tracking-[0.16em] text-white/45">
+              Consumer App
+            </p>
+          </SlideIn>
+        </Panel>
+
+        {/* ── PANEL: OUTCOME — before next project ───────────────────── */}
+        <Panel width={VIEW} pad="center">
+          <div className={`${MEASURE} mx-auto`}>
             <SlideIn>
-              <h2 className="font-semibold leading-[1.17] text-white text-[clamp(2.5rem,5.6vw,5.0625rem)]">
-                Outcome
-              </h2>
+              <h2 className={H_DISPLAY}>Outcome</h2>
             </SlideIn>
             <SlideIn delay={100}>
-              <div className="mt-6 grid gap-8 text-white sm:grid-cols-2">
-                {[
-                  ["0 → 1 in 5 months", "The UCM tool went from no existing product to a fully designed, handoff-ready platform — covering advertiser onboarding, campaign management, flight configuration, revenue dashboard, and media library."],
-                  ["Dev starts June 2026", "Development scoped to begin end of June / early July, with a target launch by end of year."],
-                  ["$500K → $10M revenue target", "Rewards revenue projected to grow from ~$500K (2025) toward a $10M target. UCM and the consumer redesign are the infrastructure that makes that growth manageable."],
-                  ["AI-augmented throughout", "Used Claude, Gemini, and Figma Make throughout — for research synthesis, rapid prototyping, and exploring more layout directions per round than a manual process allows."],
-                ].map(([h, b], i) => (
-                  <SlideIn key={h} delay={i * 60}>
-                    <div className="border-t border-white/15 pt-5">
-                      <p className="mb-2 text-lg font-semibold">{h}</p>
-                      <p className="text-sm leading-relaxed text-white/60">{b}</p>
-                    </div>
-                  </SlideIn>
-                ))}
-              </div>
+              <p className={`mt-8 ${BODY}`}>
+                The UCM tool went from no existing product to a fully designed,
+                handoff-ready platform in five months — covering advertiser
+                onboarding, campaign management, flight configuration, revenue
+                dashboard, and media library. Bringing rewards management in-house
+                replaced a third-party vendor and saved the company from continuing
+                to pay for that stack. AI tools (Claude, Gemini, and Figma Make)
+                ran throughout: research synthesis, rapid prototyping, and more
+                layout directions per round than a manual process allows.
+              </p>
             </SlideIn>
           </div>
         </Panel>
 
-        {/* ── PANEL 8: CUSTOMER APP SCREEN RECORDING — max 950px
-            Source: Desktop Screen Recording 2026-08-12 at 3.42.17 PM (1416×1030). */}
-        <Panel width="lg:w-screen" className="items-center">
-          <div className="flex flex-1 items-center justify-center lg:absolute lg:inset-0">
-            <SlideIn className="w-full max-w-[950px] px-4 lg:px-0">
-              <div className="relative aspect-[1416/1030] w-full overflow-hidden rounded-xl bg-black/40 shadow-[0_20px_60px_-12px_rgba(0,0,0,0.45)]">
-                <AutoplayVideo
-                  src={`${ASSET}/videos/netspend-rewards.mp4`}
-                  className="h-full w-full object-contain"
-                />
-              </div>
-            </SlideIn>
-          </div>
-        </Panel>
+        <CaseStudyMetaPanel meta={meta} />
 
-        {/* ── PANEL 9: PORTRAIT + CASH BACK — Figma 4553:22234 (1078×1000)
-            Circle 600×600 + offers card 389×305 overlapping at right. */}
-        <Panel width="lg:w-[74.86vw] lg:max-w-[1078px]" className="items-center">
-          <div className="flex flex-1 items-center justify-center lg:absolute lg:inset-0">
-            <SlideIn className="relative w-full max-w-[824px] px-6 lg:px-0">
-              <div className="relative mx-auto aspect-[824/600] w-full max-w-[824px]">
-                <div className="absolute left-0 top-0 size-[72.8%] max-w-[600px] overflow-hidden rounded-full">
-                  <Image
-                    src={`${ASSET}/portrait.png`}
-                    alt="Netspend cardholder"
-                    fill
-                    sizes="600px"
-                    className="object-cover"
-                    style={{ objectPosition: "30% center" }}
-                  />
-                </div>
-                <div className="absolute bottom-[7.3%] right-0 w-[47.2%] max-w-[389px] overflow-hidden rounded-[30px] shadow-[0_0_10px_rgba(0,0,0,0.19)]">
-                  <Image
-                    src={`${ASSET}/cash-back.png`}
-                    alt="Cash back rewards offers"
-                    width={640}
-                    height={501}
-                    className="h-auto w-full object-cover"
-                  />
-                </div>
-              </div>
-            </SlideIn>
-          </div>
-        </Panel>
+        {/* ── PANEL: LIVE PROTOTYPE — title + link (GovOS pattern) ─── */}
+        {project.prototype && (
+          <Panel width="lg:w-[min(100vw,36rem)]" pad="center">
+            <div className={`${MEASURE} mx-auto`}>
+              <SlideIn>
+                <h2 className={H_DISPLAY}>Live UCM prototype</h2>
+                <a
+                  href={project.prototype}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] text-white transition-opacity hover:opacity-60"
+                >
+                  Open prototype ↗
+                </a>
+              </SlideIn>
+            </div>
+          </Panel>
+        )}
 
-        {/* ── NEXT PROJECT ──────────────────────────────────────────── */}
-        <Link
+        <NextProjectLink
           href={`/work/${next.slug}`}
-          className="group relative flex w-full flex-col justify-center bg-[#141414] px-6 py-20 text-[#f5f5f5] sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[56vw] lg:shrink-0 lg:snap-start lg:px-[7%] lg:py-0"
-        >
-          <p className="text-[clamp(0.95rem,2.2vw,1.1rem)] font-normal text-white/50 sm:text-[1vw]">
-            Up next — {next.client}
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,7vw,3.5rem)] font-semibold leading-[1.1] transition-transform group-hover:translate-x-3 sm:text-[4vw]">
-            {next.title} →
-          </h2>
-        </Link>
+          client={next.client}
+          title={next.title}
+          accent={next.accent}
+        />
 
       </HorizontalScroll>
     </main>

@@ -63,6 +63,7 @@ export const projects: Project[] = [
     logo: "/logos/netspend.svg",
     accent: "#313131",
     featured: true,
+    prototype: "/work/netspend/ucm/index.html",
     aiSummary:
       "Led design on Netspend's app Rewards program and Unified Commerce Media (UCM) — the internal tool that builds and manages the rewards surfaced on the consumer app. Reworked the consumer rewards layout and information architecture around new features shipped in UCM, using Claude, Gemini, and Figma Make throughout research synthesis and prototyping.",
     overview:
@@ -983,3 +984,220 @@ export const getProject = (slug: string) =>
   projects.find((p) => p.slug === slug);
 
 export const featuredProjects = projects.filter((p) => p.featured);
+
+/** Shared tool icon filenames under /public/icons/tools. */
+export type ToolName =
+  | "Figma"
+  | "Claude"
+  | "Gemini"
+  | "Cursor"
+  | "UserTesting"
+  | "Miro"
+  | "Jira";
+
+export const TOOL_ICONS: Record<ToolName, string> = {
+  Figma: "/icons/tools/figma.png",
+  Claude: "/icons/tools/claude.png",
+  Gemini: "/icons/tools/gemini.png",
+  Cursor: "/icons/tools/cursor.svg",
+  UserTesting: "/icons/tools/usertesting.png",
+  Miro: "/icons/tools/miro.png",
+  Jira: "/icons/tools/jira.png",
+};
+
+export type CaseStudyMeta = {
+  team: string[];
+  timing: { value: string; label: string }[];
+  tools: ToolName[];
+  projected: { value: string; label: string }[];
+};
+
+const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
+  netspend: {
+    team: [
+      "1 Lead UX Designer",
+      "1 Product Manager",
+      "4 Engineers",
+      "Merchandising & ops partners",
+    ],
+    timing: [
+      { value: "5 months", label: "0→1 design to handoff-ready" },
+      { value: "June 2026", label: "Development kickoff" },
+      { value: "Year End 2026", label: "Target launch" },
+    ],
+    tools: ["Figma", "Claude", "Gemini", "Cursor", "UserTesting", "Miro", "Jira"],
+    projected: [
+      { value: "$500K → $10M", label: "Rewards revenue target" },
+      { value: "0 → 1", label: "UCM platform in 5 months" },
+    ],
+  },
+  "govos-esubmission": {
+    team: [
+      "1 Lead Product Designer",
+      "1 Product Manager",
+      "Engineering partners",
+      "County & title stakeholders",
+    ],
+    timing: [
+      { value: "2023–2024", label: "Discovery through launch" },
+      { value: "Live", label: "Self-serve product shipped" },
+    ],
+    tools: ["Figma", "Gemini", "UserTesting", "Miro", "Jira", "Claude"],
+    projected: [
+      { value: "Direct channel", label: "Submitter → county, no middleman" },
+      { value: "1 ACH report", label: "Per submitter per period" },
+    ],
+  },
+  "bright-healthcare": {
+    team: [
+      "1 Principal Product Designer",
+      "Clinical ops partners",
+      "Engineering & product",
+    ],
+    timing: [
+      { value: "2021–2022", label: "Design through multi-state rollout" },
+      { value: "Weeks", label: "15%+ shift to portal after go-live" },
+    ],
+    tools: ["Figma", "Miro", "Jira", "UserTesting"],
+    projected: [
+      { value: "$1.9M", label: "Operational savings" },
+      { value: "$2.5M", label: "2022 forecasted savings" },
+      { value: "100 → 10K", label: "Monthly active users" },
+    ],
+  },
+  docsquad: {
+    team: [
+      "1 Principal Designer",
+      "Design system lead",
+      "Flutter engineering partners",
+    ],
+    timing: [
+      { value: "2022–2023", label: "Rebuild across desktop + native" },
+      { value: "< 2 min", label: "Routine visit diagnosis target" },
+    ],
+    tools: ["Figma", "Miro", "Jira", "UserTesting"],
+    projected: [
+      { value: "Desktop + native", label: "One Flutter UI surface" },
+      { value: "Async + sync", label: "Visit modalities in one flow" },
+    ],
+  },
+  liveperson: {
+    team: [
+      "1 Lead Product Designer",
+      "Platform product partners",
+      "Engineering across 3 teams",
+    ],
+    timing: [
+      { value: "2019–2020", label: "SocialConnect design & vision" },
+      { value: "Self-serve", label: "Brand onboarding unblocked" },
+    ],
+    tools: ["Figma", "Miro", "Jira"],
+    projected: [
+      { value: "1 surface", label: "Every social channel in LiveEngage" },
+      { value: "3 teams", label: "Roadmap aligned on end-state vision" },
+    ],
+  },
+  "care-homepay": {
+    team: [
+      "1 Principal Product Designer",
+      "Brand design partners",
+      "Mobile engineering",
+    ],
+    timing: [
+      { value: "2020–2021", label: "Paired employee + employer apps" },
+      { value: "Phone-first", label: "Hours, approvals, payroll" },
+    ],
+    tools: ["Figma", "Miro", "Jira", "UserTesting"],
+    projected: [
+      { value: "2 apps", label: "Shared system, two mental models" },
+      { value: "Auto roll-up", label: "Default that cuts payroll edits" },
+    ],
+  },
+  "consumer-health": {
+    team: [
+      "1 Senior Product Designer",
+      "IA lead",
+      "Cross-functional athena partners",
+    ],
+    timing: [
+      { value: "Engagement", label: "Marketplace + care apps" },
+    ],
+    tools: ["Figma", "Miro", "Jira"],
+    projected: [
+      { value: "IA-led", label: "Partner + product discovery" },
+    ],
+  },
+  "volusion-admin": {
+    team: ["1 Senior Product Designer", "Product & engineering partners"],
+    timing: [{ value: "Multi-year", label: "Admin patterns & modules" }],
+    tools: ["Figma", "Miro", "Jira"],
+    projected: [
+      { value: "Scalable admin", label: "Tables, bulk actions, nav" },
+    ],
+  },
+  onboarding: {
+    team: ["1 Senior Product Designer", "PM, eng, sales & support"],
+    timing: [{ value: "Sprint cycle", label: "Research → prototype → test" }],
+    tools: ["Figma", "Miro", "Jira", "UserTesting"],
+    projected: [
+      { value: "Trial → paid", label: "Faster path to a live store" },
+    ],
+  },
+  "storefront-editor": {
+    team: ["1 Senior Product Designer", "Product & engineering partners"],
+    timing: [{ value: "Feature cycle", label: "Style editor redesign" }],
+    tools: ["Figma", "Miro", "Jira"],
+    projected: [
+      { value: "Merchant control", label: "Look & feel without code" },
+    ],
+  },
+  ecommerce: {
+    team: ["1 Senior Product Designer", "Client services partners"],
+    timing: [{ value: "Ongoing", label: "Client storefronts & templates" }],
+    tools: ["Figma", "Miro"],
+    projected: [
+      { value: "Flexible themes", label: "Merchant-ready ecommerce" },
+    ],
+  },
+  "volusion-gallery": {
+    team: ["1 Senior Product Designer", "Internal marketing"],
+    timing: [{ value: "Campaign work", label: "Brand & promo surfaces" }],
+    tools: ["Figma"],
+    projected: [
+      { value: "Brand system", label: "Swag, landing, promo" },
+    ],
+  },
+  logos: {
+    team: ["1 Designer"],
+    timing: [{ value: "Project-based", label: "Identity & brand kits" }],
+    tools: ["Figma"],
+    projected: [
+      { value: "Logo + kit", label: "Wordmark through guidelines" },
+    ],
+  },
+  print: {
+    team: ["1 Designer"],
+    timing: [{ value: "Project-based", label: "Print & collateral" }],
+    tools: ["Figma"],
+    projected: [
+      { value: "Print-ready", label: "Collateral & special editions" },
+    ],
+  },
+};
+
+/** Meta panel content for a case study — explicit override or sensible defaults. */
+export function getCaseStudyMeta(project: Project): CaseStudyMeta {
+  const override = CASE_STUDY_META[project.slug];
+  if (override) return override;
+
+  return {
+    team: [project.role, "Cross-functional partners"],
+    timing: [{ value: project.year, label: "Engagement" }],
+    tools: ["Figma", "Miro", "Jira"],
+    projected:
+      project.metrics?.slice(0, 2).map((m) => ({
+        value: m.value,
+        label: m.label,
+      })) ?? [{ value: project.client, label: project.subtitle }],
+  };
+}

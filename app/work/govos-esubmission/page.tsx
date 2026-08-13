@@ -1,13 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
-import Link from "next/link";
 import { Jost } from "next/font/google";
-import { projects, getProject } from "@/lib/projects";
+import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
+import CloseLink from "@/components/CloseLink";
+import { NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 /**
  * GovOS eSubmission — horizontal case study built to match the Figma deck
@@ -81,29 +82,17 @@ function hasImage(src: string) {
 function Panel({
   children,
   className = "",
-  width = "lg:w-[68vw]",
+  width = "lg:w-screen",
 }: {
   children: React.ReactNode;
   className?: string;
   width?: string;
 }) {
-  // Below lg (1024px) this is a normal, full-width block in a vertically
-  // scrolling page — no scroll-jacking on touch, just stack top to bottom
-  // like any other site. At lg+ it becomes the original fixed-height
-  // horizontal panel: ${width} sets its slice of the viewport, wide right
-  // padding opens the gutter to the next panel peeking in from the right,
-  // and snap-center + overflow-y-auto/overscroll-contain are the same
-  // safety nets as before for a short/landscape viewport. (Tried
-  // `justify-[safe_center]` here for that edge case once — Tailwind doesn't
-  // emit an arbitrary value for that keyword, so the class was silently
-  // dropped and every panel fell back to top-aligned. Plain justify-center
-  // is correct; `safe_center` was the bug.) pl-[100px], not a vw fraction,
-  // so this panel's text starts at the exact same x as every other section
-  // (and the nav logo) — matches Figma, where every Description frame sits
-  // at x=100 regardless of its parent panel's width.
+  // Full-viewport panels with equal fluid padding — content centered so
+  // ultra-wide screens don’t leave a long empty trail after left-rail copy.
   return (
     <section
-      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-0 lg:py-12 lg:pl-[100px] lg:pr-[16%] ${className}`}
+      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:items-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-[clamp(1.5rem,4vh,3rem)] ${className}`}
     >
       {children}
     </section>
@@ -111,12 +100,11 @@ function Panel({
 }
 
 /**
- * Every text group is capped at the same 950px measure — matching the
- * macOS "Desktop Frame" video width — so headings, body copy, and bullets
- * share one left-aligned column that lines up with the screen-recording
- * panels across all panels.
+ * Every text group shares one centered measure (~860px) so headings, body,
+ * and bullets line up with media panels across the case study.
  */
-const TEXT_W = "w-full max-w-[950px]";
+const TEXT_W = "w-full max-w-[min(54rem,86vw)]";
+const MEDIA_W = "w-full max-w-[min(950px,90vw)]";
 
 /**
  * Keeps the last two words together so a line never ends on a lone orphan.
@@ -140,18 +128,18 @@ function noOrphan(text: string) {
 function Heading({ children }: { children: React.ReactNode }) {
   return (
     <SlideIn className={TEXT_W}>
-      <h2 className="text-[clamp(1.75rem,7vw,2.75rem)] font-semibold leading-[1.17] tracking-[-0.01em] text-white sm:text-[clamp(2rem,4.4vw,5.5rem)] [text-wrap:pretty]">
+      <h2 className="text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </h2>
     </SlideIn>
   );
 }
 
-/** Figma "Paragraph": Jost Regular 32 on 1440 → ~2.2vw. Trails the heading. */
+/** Figma "Paragraph": fluid rem-like body that stays readable at extremes. */
 function Body({ children }: { children: React.ReactNode }) {
   return (
     <SlideIn delay={120} className={TEXT_W}>
-      <p className="mt-6 text-[clamp(1rem,3.4vw,1.375rem)] font-normal leading-[1.45] text-white sm:text-[clamp(1rem,1.7vw,1.375rem)] [text-wrap:pretty]">
+      <p className="mt-6 text-[clamp(1.05rem,1.4vw,1.35rem)] font-normal leading-[1.35] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </p>
     </SlideIn>
@@ -167,7 +155,7 @@ function Bullets({ items }: { items: string[] }) {
           key={b}
           as="li"
           delay={120 + i * 90}
-          className="text-[clamp(1rem,3.4vw,1.375rem)] font-normal leading-[1.45] text-white sm:text-[clamp(1rem,1.7vw,1.375rem)] [text-wrap:pretty]"
+          className="text-[clamp(1.05rem,1.4vw,1.35rem)] font-normal leading-[1.35] text-white [text-wrap:pretty]"
         >
           {noOrphan(b)}
         </SlideIn>
@@ -206,7 +194,7 @@ function Frame({ src, alt }: { src: string; alt: string }) {
  */
 function BrowserFrame({ children }: { children: React.ReactNode }) {
   return (
-    <div className="w-full max-w-[950px] overflow-hidden rounded-[10px] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.1)]">
+    <div className={`${MEDIA_W} overflow-hidden rounded-[10px] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.1)]`}>
       <div className="flex h-9 items-center gap-2 pl-3.5">
         <span className="h-3 w-3 rounded-full bg-[#FF5F57]" />
         <span className="h-3 w-3 rounded-full bg-[#FFBD2E]" />
@@ -221,12 +209,12 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
 function VideoPanel({ src, caption }: { src: string | null; caption?: string }) {
   if (!src) return null;
   return (
-    <Panel width="lg:w-[74vw]" className="items-center">
+    <Panel width="lg:w-screen" className="items-center">
       <BrowserFrame>
         <AutoplayVideo src={src} className="aspect-[950/592] w-full bg-black" />
       </BrowserFrame>
       {caption && (
-        <p className="mt-5 text-center text-[2.4vw] text-white/75 sm:text-[1.1vw]">
+        <p className="mt-5 text-center text-[clamp(0.9rem,1.1vw,1.1rem)] text-white/75">
           {caption}
         </p>
       )}
@@ -235,13 +223,7 @@ function VideoPanel({ src, caption }: { src: string | null; caption?: string }) 
 }
 
 /**
- * Full-viewport text section for Problem, Solution, and both benefits
- * panels — Figma anchors each of these 950px columns 100px from the left
- * edge (lg:px-[100px]), vertically centered. Panel's own width is a vw
- * fraction of the viewport with padding taken as a percentage of THAT
- * (already-reduced) width, so 950px is frequently unreachable there and
- * text wraps short of the frame — sizing directly off the full viewport
- * instead reaches 950px at any normal desktop width.
+ * Full-viewport text section — centered measure with equal fluid padding.
  */
 function TextPanel({
   children,
@@ -253,9 +235,9 @@ function TextPanel({
   return (
     <section
       id={id}
-      className="relative flex w-full px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain lg:px-[100px] lg:py-12"
+      className="relative flex w-full justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-[clamp(1.5rem,4vh,3rem)]"
     >
-      <div className="w-full max-w-[950px]">{children}</div>
+      <div className={TEXT_W}>{children}</div>
     </section>
   );
 }
@@ -305,8 +287,8 @@ function ChallengeBlock({
 function PortraitPanel({ src, alt }: { src: string; alt: string }) {
   if (!hasImage(src)) return null;
   return (
-    <section className="relative flex w-full items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-[46vw] lg:shrink-0 lg:snap-center lg:justify-end lg:overflow-y-auto lg:overscroll-contain lg:py-12">
-      <div className="relative aspect-square w-[60vw] max-w-[280px] sm:w-[46vw] sm:max-w-[360px] lg:w-[65%] lg:max-w-[420px]">
+    <section className="relative flex w-full items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-12">
+      <div className="relative aspect-square w-[60vw] max-w-[280px] sm:w-[46vw] sm:max-w-[360px] lg:w-[min(42vw,420px)]">
         <Image
           src={src}
           alt={alt}
@@ -350,18 +332,7 @@ export default function GovOSCaseStudy() {
             className="h-auto w-[86px] sm:w-[110px]"
           />
         }
-        action={
-          <Link
-            href="/"
-            aria-label="Back to home"
-            // min-h/w-11 (44px) gives the link a proper touch target without
-            // growing the visible "Close" chip — the padding is invisible,
-            // just extra hit area.
-            className="pointer-events-auto -m-3 flex min-h-11 min-w-11 items-center justify-center p-3 text-[11px] font-semibold uppercase leading-none tracking-[0.14em] text-white transition-opacity hover:opacity-60"
-          >
-            Close
-          </Link>
-        }
+        action={<CloseLink className="text-white" />}
       />
 
       <HorizontalScroll>
@@ -549,43 +520,39 @@ export default function GovOSCaseStudy() {
 
         {/* 10 — PROTOTYPE */}
         {project.prototype && (
-          <Panel width="lg:w-[46vw]">
-            <Heading>Live Figma prototype</Heading>
-            <a
-              href={project.prototype}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[clamp(0.95rem,2.4vw,1.1rem)] text-white transition-opacity hover:opacity-60 sm:text-[1.05vw]"
-            >
-              Open prototype ↗
-            </a>
-            {/* Tool icons (Figma, Lovable, Gemini, Jira, Miro, Pendo,
-                UserTesting) — Figma export, dropped in by hand like the
-                screen-recording videos. Skips silently until it's there. */}
-            {hasImage("/work/govos/tools-icons.png") && (
-              <Image
-                src="/work/govos/tools-icons.png"
-                alt="Tools used: Figma, Lovable, Gemini, Jira, Miro, Pendo, UserTesting"
-                width={576}
-                height={48}
-                className="mt-10 h-8 w-auto sm:h-10"
-              />
-            )}
+          <Panel width="lg:w-screen">
+            <div className={TEXT_W}>
+              <Heading>Live Figma prototype</Heading>
+              <a
+                href={project.prototype}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] text-white transition-opacity hover:opacity-60"
+              >
+                Open prototype ↗
+              </a>
+              {hasImage("/work/govos/tools-icons.png") && (
+                <Image
+                  src="/work/govos/tools-icons.png"
+                  alt="Tools used: Figma, Lovable, Gemini, Jira, Miro, Pendo, UserTesting"
+                  width={576}
+                  height={48}
+                  className="mt-10 h-8 w-auto sm:h-10"
+                />
+              )}
+            </div>
           </Panel>
         )}
 
+        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} />
+
         {/* 11 — NEXT */}
-        <Link
+        <NextProjectLink
           href={`/work/${next.slug}`}
-          className="group relative flex w-full flex-col justify-center bg-[#141414] px-6 py-20 text-white sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[56vw] lg:shrink-0 lg:snap-start lg:px-[7%] lg:py-0"
-        >
-          <p className="text-[clamp(0.95rem,2.2vw,1.1rem)] font-normal text-white/50 sm:text-[1vw]">
-            Up next — {next.client}
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,7vw,3.5rem)] font-semibold leading-[1.1] transition-transform group-hover:translate-x-3 sm:text-[4vw]">
-            {next.title} →
-          </h2>
-        </Link>
+          client={next.client}
+          title={next.title}
+          accent={next.accent}
+        />
       </HorizontalScroll>
     </main>
   );
