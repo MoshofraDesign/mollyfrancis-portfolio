@@ -96,52 +96,45 @@ export default function RotatingHero() {
     <section className="flex min-h-[70vh] items-center px-6 py-16 sm:min-h-[75vh] sm:py-0 lg:min-h-[80vh] lg:px-10">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,340px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,570px)_1fr] lg:gap-16">
         <div
+          ref={portraitRef}
           onMouseMove={onPortraitMove}
           onMouseEnter={onPortraitMove}
           onMouseLeave={() => setSpot((s) => ({ ...s, on: false }))}
           className="group relative mx-auto aspect-square w-full max-w-[210px] sm:max-w-[300px] md:mx-0 md:max-w-none lg:max-w-[570px]"
         >
-          {/* Gray dotted portrait at rest. On hover, a spotlight of the
-              color photo is masked to the same dots. */}
+          {/* Color photo behind the dots. A ~6.5rem spotlight follows the
+              cursor so color shows through the gaps, not as a full overlay. */}
           <div
-            ref={portraitRef}
-            className="pointer-events-none absolute left-[10.4%] top-[8.4%] z-[1] h-[83.2%] w-[82.3%]"
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-full"
+            style={{
+              clipPath: spot.on
+                ? `circle(6.5rem at ${spot.x}% ${spot.y}%)`
+                : "circle(0px at 50% 50%)",
+              WebkitClipPath: spot.on
+                ? `circle(6.5rem at ${spot.x}% ${spot.y}%)`
+                : "circle(0px at 50% 50%)",
+            }}
           >
+            <Image
+              src="/hero-color.png"
+              alt=""
+              fill
+              unoptimized
+              sizes="(max-width: 640px) 210px, (max-width: 768px) 300px, 570px"
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="pointer-events-none absolute left-[10.4%] top-[8.4%] z-[1] h-[83.2%] w-[82.3%]">
             <Image
               src="/hero-halftone.svg"
               alt="Halftone portrait of Molly Francis"
               fill
               unoptimized
               priority
-              className="pointer-events-none object-contain"
+              className="object-contain [filter:brightness(0)_invert(0.28)]"
             />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 overflow-hidden"
-              style={{
-                clipPath: spot.on
-                  ? `circle(22% at ${spot.x}% ${spot.y}%)`
-                  : "circle(0% at 50% 50%)",
-                WebkitMaskImage: "url(/hero-halftone.svg)",
-                maskImage: "url(/hero-halftone.svg)",
-                WebkitMaskSize: "contain",
-                maskSize: "contain",
-                WebkitMaskRepeat: "no-repeat",
-                maskRepeat: "no-repeat",
-                WebkitMaskPosition: "center",
-                maskPosition: "center",
-              }}
-            >
-              <Image
-                src="/hero-color.png"
-                alt=""
-                fill
-                unoptimized
-                sizes="(max-width: 640px) 210px, (max-width: 768px) 300px, 570px"
-                className="object-cover"
-                priority
-              />
-            </div>
           </div>
           <div className="absolute left-[10.4%] top-[8.4%] z-[3] h-[83.2%] w-[82.3%]">
 
