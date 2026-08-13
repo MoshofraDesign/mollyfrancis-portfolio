@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState, CSSProperties } from "react";
+import { useEffect, useState, CSSProperties } from "react";
 
 interface Hotspot {
   id: string;
@@ -67,15 +67,6 @@ export default function RotatingHero() {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
-  const portraitRef = useRef<HTMLDivElement>(null);
-
-  const onPortraitMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = portraitRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    el.style.setProperty("--my", `${e.clientY - r.top}px`);
-  };
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -91,27 +82,17 @@ export default function RotatingHero() {
   return (
     <section className="flex min-h-[70vh] items-center px-6 py-16 sm:min-h-[75vh] sm:py-0 lg:min-h-[80vh] lg:px-10">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,340px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,570px)_1fr] lg:gap-16">
-        <div
-          ref={portraitRef}
-          onMouseMove={onPortraitMove}
-          className="group relative mx-auto aspect-square w-full max-w-[210px] [--mx:50%] [--my:50%] [--spot:0px] hover:[--spot:6.5rem] sm:max-w-[300px] md:mx-0 md:max-w-none lg:max-w-[570px]"
-        >
-          {/* Figma 4588:10034 — color photo behind, dots on top.
-              Spotlight follows the cursor so only a cluster reveals. */}
+        <div className="group relative mx-auto aspect-square w-full max-w-[210px] sm:max-w-[300px] md:mx-0 md:max-w-none lg:max-w-[570px]">
+          {/* Figma 4588:10034 — color photo behind, dark dots on top. */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-full"
-            style={{
-              WebkitMaskImage:
-                "radial-gradient(circle var(--spot) at var(--mx) var(--my), #000 40%, transparent 72%)",
-              maskImage:
-                "radial-gradient(circle var(--spot) at var(--mx) var(--my), #000 40%, transparent 72%)",
-            }}
           >
             <Image
               src="/hero-color.png"
               alt=""
               fill
+              unoptimized
               sizes="(max-width: 640px) 210px, (max-width: 768px) 300px, 570px"
               className="object-cover"
               priority
@@ -124,7 +105,7 @@ export default function RotatingHero() {
               fill
               unoptimized
               priority
-              className="object-contain [filter:brightness(0)_invert(0.28)]"
+              className="object-contain"
             />
           </div>
           <div className="absolute left-[10.4%] top-[8.4%] z-[3] h-[83.2%] w-[82.3%]">
