@@ -59,19 +59,6 @@ function findVideo(name: string): string | null {
   return null;
 }
 
-function DesktopFrame({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="overflow-hidden rounded-[10px] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.1)]">
-      <div className="flex h-9 items-center gap-2 pl-3.5">
-        <span className="h-3 w-3 rounded-full bg-[#FF5F57]" />
-        <span className="h-3 w-3 rounded-full bg-[#FFBD2E]" />
-        <span className="h-3 w-3 rounded-full bg-[#28C840]" />
-      </div>
-      {children}
-    </div>
-  );
-}
-
 /** Full-bleed 1440 panel; content uses Figma % positions at lg+. */
 function ScreenPanel({
   children,
@@ -217,25 +204,21 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 5 — DESKTOP FRAME. Figma 4553:21891: 244,183 / 953×657 */}
+        {/* 5 — DESKTOP. Figma 4669:14416: 232,183 / 977×681 (macOS Patient Queue) */}
         <ScreenPanel>
-          <div className="w-full max-w-[953px] lg:absolute lg:left-[16.94vw] lg:top-[18.3vh] lg:w-[66.18vw] lg:max-w-none">
-            <DesktopFrame>
-              {desktopVideo ? (
-                <AutoplayVideo src={desktopVideo} className="aspect-[953/621] w-full bg-black" />
-              ) : (
-                <div className="relative aspect-[953/621] w-full bg-white">
-                  <Image
-                    src={`${ASSET}/desktop-app.webp`}
-                    alt="Provider desktop — patient visit view with collaborative drawer"
-                    fill
-                    sizes="(max-width: 1023px) 92vw, 66vw"
-                    className="object-cover object-top"
-                    unoptimized
-                  />
-                </div>
-              )}
-            </DesktopFrame>
+          <div className="relative aspect-[977/681] w-full max-w-[977px] lg:absolute lg:left-[16.11vw] lg:top-[18.3vh] lg:w-[67.85vw] lg:max-w-none">
+            {desktopVideo ? (
+              <AutoplayVideo src={desktopVideo} className="h-full w-full rounded-[10px] bg-black" />
+            ) : (
+              <Image
+                src={`${ASSET}/desktop-app.png`}
+                alt="Provider desktop — Patient Queue with locked visits, modality, and wait times"
+                fill
+                sizes="(max-width: 1023px) 92vw, 68vw"
+                className="object-contain"
+                unoptimized
+              />
+            )}
           </div>
         </ScreenPanel>
 
@@ -279,35 +262,17 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 8 — INTERVIEW + DASHBOARD. Figma 4553:21903: 260,180 / 920×683 */}
+        {/* 8 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
         <ScreenPanel>
           <div className="relative mx-auto aspect-[920/683] w-full max-w-[920px] lg:absolute lg:left-[18.06vw] lg:top-[18vh] lg:mx-0 lg:w-[63.89vw] lg:max-w-none">
-            <div
-              className="absolute overflow-hidden rounded-[10px]"
-              style={{ left: "0%", top: "20.64%", width: "56.2%", height: "56.51%" }}
-            >
-              <Image
-                src={`${ASSET}/interview.png`}
-                alt="Async intelligent interview and follow-up care"
-                fill
-                sizes="40vw"
-                className="object-cover object-top"
-                unoptimized
-              />
-            </div>
-            <div
-              className="absolute overflow-hidden rounded-[10px]"
-              style={{ left: "43.91%", top: "0%", width: "56.09%", height: "100%" }}
-            >
-              <Image
-                src={`${ASSET}/dashboard.png`}
-                alt="Patient dashboard — logged in"
-                fill
-                sizes="40vw"
-                className="object-cover object-top"
-                unoptimized
-              />
-            </div>
+            <Image
+              src={`${ASSET}/interview-dashboard.png`}
+              alt="Patient interview overlapping the logged-in DocSquad dashboard"
+              fill
+              sizes="(max-width: 1023px) 92vw, 64vw"
+              className="object-contain"
+              unoptimized
+            />
           </div>
         </ScreenPanel>
 
