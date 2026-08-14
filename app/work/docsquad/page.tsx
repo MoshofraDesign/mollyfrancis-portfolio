@@ -13,7 +13,7 @@ import { NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKi
 /**
  * DocSquad — Figma deck (Portfolio › 4553:21862), left to right:
  * Title → Problem → Research → board → Patient Queue → 4 phones →
- * icons → interview+dashboard → 950px portrait.
+ * icons → interview+dashboard → 950px portrait → Outcome.
  * 1440×1000 panels on #dd00e2. Large wordmark on the title panel; small
  * 200×27 wordmark parks at 100,100 via StickyNav.
  */
@@ -36,6 +36,38 @@ const H_DISPLAY =
 /** Figma Paragraph: Jost Regular 32, 16px under the heading. */
 const BODY =
   "text-[clamp(1.05rem,2.22vw,2rem)] font-normal leading-normal text-white [text-wrap:pretty]";
+
+/** Figma 4672:15482 — Helvetica Bold/Regular metric stack. */
+const STAT_FACE = "font-[Helvetica,Arial,sans-serif]";
+const STAT_HERO =
+  `${STAT_FACE} text-[clamp(2.75rem,6.25vw,5.625rem)] font-bold uppercase leading-[1.06] text-white`;
+const STAT_KICKER =
+  `${STAT_FACE} text-[clamp(1.1rem,2.08vw,1.875rem)] font-bold uppercase leading-[50px] text-white`;
+const STAT_DELTA =
+  `${STAT_FACE} text-[clamp(1.75rem,3.75vw,3.375rem)] font-bold leading-[50px] text-white whitespace-nowrap`;
+const STAT_DETAIL =
+  `${STAT_FACE} text-[clamp(1.1rem,2.08vw,1.875rem)] font-normal leading-[50px] text-white`;
+
+const OUTCOME_STATS = [
+  {
+    hero: "29%",
+    kicker: "Synchronous",
+    delta: "2.5min",
+    detail: "12 to 9.5 minutes",
+  },
+  {
+    hero: "71%",
+    kicker: "aSynchronous",
+    delta: "1.5min",
+    detail: "8 to 6.5 minutes",
+  },
+  {
+    hero: "$",
+    kicker: "Projected",
+    delta: "$1.2m",
+    detail: "Savings at 1 Year",
+  },
+] as const;
 
 /** Figma crops of the 4-phone sprite (node 4553:21876). */
 const PHONE_CROPS = [
@@ -299,7 +331,44 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText />
+        {/* 10 — OUTCOME. Figma 4672:15331: 950×616 centered, y=228 / bottom 156 */}
+        <ScreenPanel>
+          <div className="flex w-full max-w-[950px] flex-col gap-[70px] lg:absolute lg:left-1/2 lg:top-[22.8vh] lg:w-[65.97vw] lg:max-w-none lg:-translate-x-1/2">
+            <div className="flex flex-col gap-4">
+              <SlideIn>
+                <h2 className={H_DISPLAY}>Outcome</h2>
+              </SlideIn>
+              <SlideIn delay={80}>
+                <p className={BODY}>{project.outcome}</p>
+              </SlideIn>
+            </div>
+            <SlideIn delay={160}>
+              <div className="flex flex-col gap-10 sm:flex-row sm:gap-[70px]">
+                {OUTCOME_STATS.map((stat) => (
+                  <div key={stat.kicker} className="flex min-w-0 flex-col gap-[5px] sm:w-[273px] sm:shrink-0 first:sm:w-[248px]">
+                    <div className="flex flex-col">
+                      <p className={`${STAT_HERO} -mb-1`}>{stat.hero}</p>
+                      <p className={STAT_KICKER}>{stat.kicker}</p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <p className={STAT_DELTA}>{stat.delta}</p>
+                      <img
+                        src={`${ASSET}/down-triangle.svg`}
+                        alt=""
+                        width={40}
+                        height={40}
+                        className="size-10 shrink-0 rotate-180"
+                      />
+                    </div>
+                    <p className={STAT_DETAIL}>{stat.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </SlideIn>
+          </div>
+        </ScreenPanel>
+
+        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText showProjected={false} />
 
         <NextProjectLink
           href={`/work/${next.slug}`}

@@ -278,7 +278,7 @@ export const projects: Project[] = [
     approach:
       "Led discovery with 'Virtual Moonlighters' — clinicians picking up shifts on the side — to understand what would actually fit into their week. From there I shaped a new design system, refactored the diagnosis flow to support both async and sync modalities, and partnered with engineering on a Flutter implementation that shipped the same UI to web and native.",
     outcome:
-      "A single design system spans the patient and provider apps. Providers can complete routine async visits (urgent care, prescription refills) in as little as two minutes. Custom illustration and a calmer visual language replaced a clinical, dated UI.",
+      "Rebuilt the Zipnosis app for desktop and mobile using Flutter—improving UX, creating a design system, and updating UI and flows. Focused on urgent care visits and prescription refills, with extensive user testing around virtual moonlighting providers.",
     research: [
       "5 generative interviews with practicing virtual clinicians",
       "Power-user comparison with Patient IO veterans",
