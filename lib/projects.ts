@@ -290,23 +290,23 @@ export const projects: Project[] = [
     images: [
       {
         src: "/work/docsquad/research-board.png",
-        caption: "Virtual moonlighter research — tagged provider interviews",
-      },
-      {
-        src: "/work/docsquad/interview-dashboard.png",
-        caption: "Async patient interview and the logged-in dashboard",
-      },
-      {
-        src: "/work/docsquad/icons.png",
-        caption: "Custom illustration set for visit reasons and the design system",
+        caption: "Virtual moonlighter research, methods and findings",
       },
       {
         src: "/work/docsquad/desktop-app.png",
-        caption: "Provider desktop — Patient queue for async and sync visits",
+        caption: "Provider desktop — Patient queue",
       },
       {
-        src: "/work/docsquad/phone-1.png",
-        caption: "Native visit — Intake, Video, Assessment, Review",
+        src: "/work/docsquad/phones.png",
+        caption: "Provider native app — Intake, Video, Assessment, Review",
+      },
+      {
+        src: "/work/docsquad/icons.png",
+        caption: "Custom illustration set for the new design system",
+      },
+      {
+        src: "/work/docsquad/interview-dashboard.png",
+        caption: "Patient interview and logged-in dashboard",
       },
     ],
   },
