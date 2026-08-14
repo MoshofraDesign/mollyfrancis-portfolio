@@ -256,11 +256,15 @@ export function CaseStudyMetaPanel({
               </h2>
               <ul className="mt-5 flex flex-row flex-wrap items-center gap-4 sm:gap-5">
                 {meta.tools.map((name) => (
-                  <li key={name} title={name}>
-                    <span className="relative flex size-9 items-center justify-center sm:size-10">
+                  <li key={name} className="group relative">
+                    <span
+                      tabIndex={0}
+                      aria-label={name}
+                      className="relative flex size-9 items-center justify-center rounded-md outline-none focus-visible:ring-2 focus-visible:ring-current/40 sm:size-10"
+                    >
                       <Image
                         src={TOOL_ICONS[name]}
-                        alt={name}
+                        alt=""
                         width={40}
                         height={40}
                         unoptimized
@@ -268,6 +272,12 @@ export function CaseStudyMetaPanel({
                           name === "Cursor" && lightText ? "brightness-0 invert" : ""
                         }`}
                       />
+                    </span>
+                    <span
+                      role="tooltip"
+                      className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-md bg-neutral-900 px-2.5 py-1 text-xs font-medium text-white opacity-0 shadow-lg transition duration-150 after:absolute after:left-1/2 after:top-full after:h-0 after:w-0 after:-translate-x-1/2 after:border-x-4 after:border-t-4 after:border-x-transparent after:border-t-neutral-900 after:content-[''] group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100"
+                    >
+                      {name}
                     </span>
                   </li>
                 ))}
