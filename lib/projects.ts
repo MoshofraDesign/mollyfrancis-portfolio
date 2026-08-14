@@ -267,7 +267,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/docsquad-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/9049760a-bc08-470b-a819-28ee75091d8a/Provider-Native-Group.png",
     logo: "/logos/docsquad.svg",
-    accent: "#DA28DE",
+    accent: "#dd00e2",
     featured: true,
     aiSummary:
       "Rebuilt a desktop-only telehealth tool into a unified provider experience across desktop and native mobile (Flutter). Generative research with 'virtual moonlighter' clinicians shaped a workflow that can diagnose a routine visit in under two minutes — without a second video call.",
