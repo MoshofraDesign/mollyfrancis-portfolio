@@ -345,7 +345,7 @@ export default function DocSquadCaseStudy() {
             <SlideIn delay={160}>
               <div className="flex flex-col gap-10 sm:flex-row sm:gap-[70px]">
                 {OUTCOME_STATS.map((stat) => (
-                  <div key={stat.kicker} className="flex min-w-0 flex-col gap-[5px] sm:w-[273px] sm:shrink-0 first:sm:w-[248px]">
+                  <div key={stat.kicker} className="flex min-w-0 flex-col gap-[5px] sm:w-[273px] sm:shrink-0 sm:first:w-[248px]">
                     <div className="flex flex-col">
                       <p className={`${STAT_HERO} -mb-1`}>{stat.hero}</p>
                       <p className={STAT_KICKER}>{stat.kicker}</p>
