@@ -47,7 +47,7 @@ function Panel({
 }) {
   return (
     <section
-      className={`relative flex w-full shrink-0 flex-col overflow-hidden px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:snap-start lg:items-center lg:justify-center lg:overflow-y-auto lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-[clamp(1.5rem,4vh,3rem)] ${width} ${className}`}
+      className={`relative flex w-full shrink-0 flex-col overflow-hidden px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:snap-start lg:items-center lg:justify-center lg:overflow-y-auto lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)] ${width} ${className}`}
     >
       {children}
     </section>
@@ -83,7 +83,7 @@ export default function CareHomepayCaseStudy() {
             />
           </div>
         }
-        action={<CloseLink />}
+        action={<CloseLink large />}
       />
 
       <HorizontalScroll>

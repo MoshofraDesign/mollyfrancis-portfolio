@@ -59,7 +59,7 @@ export default function NetspendCaseStudy() {
             <Image src={LOGO} alt="Netspend" fill unoptimized className="object-contain object-left" />
           </div>
         }
-        action={<CloseLink />}
+        action={<CloseLink large />}
       />
 
       <HorizontalScroll>
@@ -193,6 +193,7 @@ export default function NetspendCaseStudy() {
               headingClassName={H_SECTION}
               bodyClassName={BODY_MUTED}
               caption="Internal Rewards Tool"
+              frameClassName="overflow-hidden rounded-xl border border-white/10 shadow-[0_12px_48px_rgba(0,0,0,0.35)]"
               screens={[
                 {
                   title: "Live revenue dashboard",

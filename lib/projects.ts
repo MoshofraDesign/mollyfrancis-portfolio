@@ -205,13 +205,13 @@ export const projects: Project[] = [
     title: "Prior Authorization Portal",
     subtitle: "Replacing fax with a live, validated authorization workflow",
     client: "Bright HealthCare",
-    year: "2021–2022",
+    year: "2021",
     role: "Principal Product Designer",
     tags: ["Healthcare", "Provider tools", "Design system", "0→1"],
     thumbnail: "/work-thumbnails/bright-healthcare-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489640575-FE1X3BSOCUHJVV45MVW0/Landing.jpg",
     logo: "/logos/bright-healthcare-vert-2.svg",
-    logoScale: 1.4,
+    logoScale: 1.7,
     accent: "#FFAF00",
     featured: true,
     aiSummary:
@@ -225,19 +225,14 @@ export const projects: Project[] = [
     outcome:
       "Within weeks of go-live in new markets, 15%+ of authorizations shifted to the portal — climbing rapidly afterward. Providers consistently rated it the best tool they had used; one team estimated the workflow saved them four hours per provider per day.",
     metrics: [
-      { label: "Monthly active users", value: "100 → 10K" },
+      { label: "Monthly usage", value: "9–10K" },
       { label: "Operational savings", value: "$1.9M" },
-      { label: "Intake time reduction", value: "50%" },
-      { label: "2022 forecasted savings", value: "$2.5M" },
+      { label: "Hours saved / provider / day", value: "4" },
+      { label: "Authorization submissions", value: "50K" },
     ],
     prototype:
-      "https://www.figma.com/proto/cxXiQ6LQOpNNjWi4Auf2DC/Bright-Provider-PreAuthPortal",
+      "https://www.figma.com/proto/cxXiQ6LQOpNNjWi4Auf2DC/Bright-Provider-PreAuthPortal?node-id=892-27971&viewport=4575%2C-2862%2C0.5&t=0OJuceJUKOSH6o1m-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=892%3A31473&page-id=892%3A27941",
     images: [
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/6a83a6f4-3382-4474-a3d6-85c0bad4e6df/BH-PortFax.png",
-        caption:
-          "The prior authorization fax form providers used before the Portal existed.",
-      },
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489521988-W8AEB4S7N95NOK3EGATT/01.jpg",
         caption: "Authorization dashboard with status filtering",
@@ -253,6 +248,11 @@ export const projects: Project[] = [
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489524593-1VI6DO5CFVOIJXS8BCS2/Submit.jpg",
         caption: "Submission confirmation and provider next steps",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/6a83a6f4-3382-4474-a3d6-85c0bad4e6df/BH-PortFax.png",
+        caption:
+          "The prior authorization fax form providers used before the Portal existed.",
       },
     ],
   },
@@ -774,7 +774,7 @@ export const projects: Project[] = [
     aiSummary:
       "A collection of logo and identity work spanning clients across consumer, lifestyle, food, and personal branding. Marks range from playful illustrative to clean wordmarks, depending on the audience and how the brand needed to feel in use.",
     overview:
-      "Logo and identity work for a mix of paying clients and personal projects — wordmarks, illustrative marks, and full identity systems.",
+      "Logo and identity work for a mix of paying clients and personal projects — wordmarks, illustrative marks, and full identity systems. Every mark here was drawn in Illustrator in the early years: no AI, no prompt, just the Pen tool, a graveyard of extra anchor points, and the wild hope that this time the curve would actually land.",
     images: [
       {
         src: "/work/bohemian-hair-bows-card.jpg",
@@ -884,7 +884,7 @@ export const projects: Project[] = [
   },
   {
     slug: "print",
-    title: "Print",
+    title: "Print Over the Years",
     subtitle: "Print design across holiday cards, invites, and editorial",
     client: "Various",
     year: "2010–2022",
@@ -988,21 +988,43 @@ export const featuredProjects = projects.filter((p) => p.featured);
 /** Shared tool icon filenames under /public/icons/tools. */
 export type ToolName =
   | "Figma"
+  | "Sketch"
+  | "InVision"
+  | "Zeplin"
+  | "Abstract"
   | "Claude"
   | "Gemini"
   | "Cursor"
   | "UserTesting"
   | "Miro"
-  | "Jira";
+  | "Jira"
+  | "Confluence"
+  | "Pendo"
+  | "Amplitude"
+  | "Validic"
+  | "Dovetail"
+  | "Adobe"
+  | "Apple Health Kit";
 
 export const TOOL_ICONS: Record<ToolName, string> = {
   Figma: "/icons/tools/figma.png",
+  Sketch: "/icons/tools/sketch.png",
+  InVision: "/icons/tools/invision.png",
+  Zeplin: "/icons/tools/zeplin.png",
+  Abstract: "/icons/tools/abstract.png",
   Claude: "/icons/tools/claude.png",
   Gemini: "/icons/tools/gemini.png",
   Cursor: "/icons/tools/cursor.svg",
   UserTesting: "/icons/tools/usertesting.png",
   Miro: "/icons/tools/miro.png",
   Jira: "/icons/tools/jira.png",
+  Confluence: "/icons/tools/confluence.png",
+  Pendo: "/icons/tools/pendo.png",
+  Amplitude: "/icons/tools/amplitude.png",
+  Validic: "/icons/tools/validic.png",
+  Dovetail: "/icons/tools/dovetail.png",
+  Adobe: "/icons/tools/adobe.png",
+  "Apple Health Kit": "/icons/tools/apple-health.png",
 };
 
 export type CaseStudyMeta = {
@@ -1050,19 +1072,20 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
   },
   "bright-healthcare": {
     team: [
-      "1 Principal Product Designer",
-      "Clinical ops partners",
-      "Engineering & product",
+      "Worked with 5–7 engineers, 1 Product Manager, Director of Product, and 1 Content",
+      "Hired and managed 1 designer midway",
+      "Worked with clinical teams to understand their workflows and competitors they have used",
     ],
     timing: [
-      { value: "2021–2022", label: "Design through multi-state rollout" },
+      { value: "March – July 2021", label: "6 months" },
       { value: "Weeks", label: "15%+ shift to portal after go-live" },
     ],
-    tools: ["Figma", "Miro", "Jira", "UserTesting"],
+    tools: ["Figma", "Jira", "Confluence", "Miro", "Pendo", "Dovetail"],
     projected: [
-      { value: "$1.9M", label: "Operational savings" },
-      { value: "$2.5M", label: "2022 forecasted savings" },
-      { value: "100 → 10K", label: "Monthly active users" },
+      { value: "$1.9M", label: "Savings at 9–10K monthly usage" },
+      { value: "$800K", label: "Clinician review savings (7 min/case)" },
+      { value: "4 hrs/day", label: "Saved per provider" },
+      { value: "50K", label: "Authorization submissions" },
     ],
   },
   docsquad: {

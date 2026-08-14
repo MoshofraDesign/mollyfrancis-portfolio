@@ -102,18 +102,18 @@ export default function RotatingHero() {
           onMouseLeave={() => setSpot((s) => ({ ...s, on: false }))}
           className="group relative mx-auto aspect-square w-full max-w-[210px] sm:max-w-[300px] md:mx-0 md:max-w-none lg:max-w-[570px]"
         >
-          {/* Color photo behind the dots. A ~6.5rem spotlight follows the
-              cursor so color shows through the gaps, not as a full overlay. */}
+          {/* Color photo full-bleed (the circular headshot). Soft spotlight
+              follows the cursor; gray dots sit inset on top, same as Figma. */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-full"
             style={{
-              clipPath: spot.on
-                ? `circle(6.5rem at ${spot.x}% ${spot.y}%)`
-                : "circle(0px at 50% 50%)",
-              WebkitClipPath: spot.on
-                ? `circle(6.5rem at ${spot.x}% ${spot.y}%)`
-                : "circle(0px at 50% 50%)",
+              WebkitMaskImage: spot.on
+                ? `radial-gradient(circle 6.5rem at ${spot.x}% ${spot.y}%, #000 38%, transparent 72%)`
+                : "radial-gradient(circle 0px at 50% 50%, #000, transparent)",
+              maskImage: spot.on
+                ? `radial-gradient(circle 6.5rem at ${spot.x}% ${spot.y}%, #000 38%, transparent 72%)`
+                : "radial-gradient(circle 0px at 50% 50%, #000, transparent)",
             }}
           >
             <Image

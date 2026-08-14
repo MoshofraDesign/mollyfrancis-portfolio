@@ -8,6 +8,12 @@ import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
 import {
+  WORK_THUMB_GRID_CLASS,
+  WORK_THUMB_GRID_STYLE,
+  WORK_THUMB_SECTION,
+  WORK_THUMB_TILE,
+} from "@/components/CareGrid";
+import {
   MEASURE,
   MEDIA,
   VIEW,
@@ -36,7 +42,7 @@ import {
  * components/v2/CaseStudyKit so app/about/page.tsx can reuse them too.
  */
 
-const customSlugs = new Set(["govos-esubmission", "liveperson", "care-homepay", "netspend"]);
+const customSlugs = new Set(["govos-esubmission", "liveperson", "care-homepay", "netspend", "bright-healthcare"]);
 
 export function generateStaticParams() {
   return projects
@@ -119,11 +125,8 @@ function ImageGridPanel({
 }
 
 /**
- * Logos project only — every image *is* a mark, so instead of the cropped
- * screen-grid treatment above, lay them out the same way CareGrid lays out
- * the homepage (square tiles, same gutter/column formula) but with no
- * accent overlay and no separate SVG mark layer — just the logo itself,
- * plain, per the brief ("grid like homepage but no overlay or svg").
+ * Logos project only — square tiles matching the homepage work grid
+ * (375px cap, same gutters), no accent overlay and no hover copy.
  */
 function LogosGridPanel({
   images,
@@ -131,34 +134,21 @@ function LogosGridPanel({
   images: { src: string; caption?: string }[];
 }) {
   return (
-    <Panel width={VIEW} pad="center">
-      <div className={`mx-auto ${MEASURE}`}>
-        <SlideIn>
-          <h2 className="text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.15] tracking-[-0.02em] [text-wrap:pretty]">
-            Selected marks
-          </h2>
-        </SlideIn>
-        <div
-          className="mt-10 grid w-full justify-start gap-6 sm:gap-8"
-          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))" }}
-        >
-          {images.map((img, i) => (
-            <div
-              key={img.src + i}
-              className="relative aspect-square w-full overflow-hidden"
-            >
-              <Image
-                src={img.src}
-                alt={img.caption || "Logo mark"}
-                fill
-                sizes="300px"
-                className="object-contain p-6"
-              />
-            </div>
-          ))}
-        </div>
+    <section className={`${WORK_THUMB_SECTION} pb-16 pt-4`}>
+      <div className={WORK_THUMB_GRID_CLASS} style={WORK_THUMB_GRID_STYLE}>
+        {images.map((img, i) => (
+          <figure key={img.src + i} className={WORK_THUMB_TILE}>
+            <Image
+              src={img.src}
+              alt={img.caption || "Logo mark"}
+              fill
+              sizes="375px"
+              className="object-cover"
+            />
+          </figure>
+        ))}
       </div>
-    </Panel>
+    </section>
   );
 }
 
@@ -169,6 +159,35 @@ function TitlePanel({
   project: NonNullable<ReturnType<typeof getProject>>;
 }) {
   const heroSrc = project.hero || project.thumbnail;
+  const isPrint = project.slug === "print";
+
+  if (isPrint) {
+    return (
+      <section
+        id="title"
+        className="relative flex w-full flex-col justify-center gap-10 px-6 py-20 sm:px-12 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-0"
+      >
+        {project.logo ? (
+          <div className="relative h-20 w-full max-w-[480px] sm:h-24 md:h-32">
+            <Image
+              src={project.logo}
+              alt="Print"
+              fill
+              unoptimized
+              priority
+              className="object-contain object-left"
+            />
+          </div>
+        ) : null}
+        {project.overview ? (
+          <p className="max-w-[36rem] text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] [text-wrap:pretty]">
+            {project.overview}
+          </p>
+        ) : null}
+      </section>
+    );
+  }
+
   return (
     <section
       id="title"
@@ -176,7 +195,13 @@ function TitlePanel({
     >
       <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[40%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-12">
         {project.logo ? (
-          <div className="relative h-16 w-full max-w-[380px] sm:h-20 md:h-24">
+          <div
+            className={
+              project.slug === "bright-healthcare"
+                ? "relative h-[5.5rem] w-full max-w-[520px] sm:h-28 md:h-36"
+                : "relative h-16 w-full max-w-[380px] sm:h-20 md:h-24"
+            }
+          >
             <Image
               src={project.logo}
               alt={project.client}
@@ -184,7 +209,11 @@ function TitlePanel({
               unoptimized
               priority
               className="object-contain object-left"
-              style={{ transform: `scale(${project.logoScale ?? 1})`, transformOrigin: "left center" }}
+              style={
+                project.slug === "bright-healthcare"
+                  ? undefined
+                  : { transform: `scale(${project.logoScale ?? 1})`, transformOrigin: "left center" }
+              }
             />
           </div>
         ) : (
@@ -230,8 +259,77 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
 
   const idx = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(idx + 1) % projects.length];
-  const fg = contrastColor(project.accent);
+  const isBright = project.slug === "bright-healthcare";
+  const fg = isBright ? "#ffffff" : contrastColor(project.accent);
   const isLogos = project.slug === "logos";
+
+  if (isLogos) {
+    return (
+      <main
+        className={`${jost.variable} relative min-h-screen bg-white text-[#141414]`}
+        style={{ fontFamily: "var(--font-jost), system-ui, sans-serif" }}
+      >
+        <StickyNav
+          watch="title"
+          logo={
+            project.logo ? (
+              <div className="relative h-6 w-[90px] sm:h-7 sm:w-[110px]">
+                <Image
+                  src={project.logo}
+                  alt={project.client}
+                  fill
+                  unoptimized
+                  className="object-contain object-left brightness-0 opacity-60"
+                />
+              </div>
+            ) : (
+              <span className="text-sm font-semibold">{project.title}</span>
+            )
+          }
+          action={<CloseLink large className="text-[#141414]" />}
+        />
+
+        <section
+          id="title"
+          className={`${WORK_THUMB_SECTION} flex w-full flex-col gap-10 pb-6 pt-16 lg:pt-20`}
+        >
+          {project.logo ? (
+            <div className="relative h-20 w-full max-w-[480px] sm:h-24 md:h-32">
+              <Image
+                src={project.logo}
+                alt="Logos"
+                fill
+                unoptimized
+                priority
+                className="object-contain object-left brightness-0 opacity-80"
+              />
+            </div>
+          ) : null}
+          {project.overview ? (
+            <p className="max-w-[36rem] text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] [text-wrap:pretty]">
+              {project.overview}
+            </p>
+          ) : null}
+        </section>
+
+        {project.images && project.images.length > 0 && (
+          <LogosGridPanel images={project.images} />
+        )}
+
+        <CaseStudyMetaPanel
+          meta={getCaseStudyMeta(project)}
+          lightText={false}
+        />
+
+        <NextProjectLink
+          href={`/work/${next.slug}`}
+          client={next.client}
+          title={next.title}
+          accent={next.accent}
+        />
+      </main>
+    );
+  }
 
   return (
     <main
@@ -242,7 +340,13 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         watch="title"
         logo={
           project.logo ? (
-            <div className="relative h-6 w-[90px] sm:h-7 sm:w-[110px]">
+            <div
+              className={
+                isBright
+                  ? "relative h-8 w-[130px] sm:h-9 sm:w-[150px]"
+                  : "relative h-6 w-[90px] sm:h-7 sm:w-[110px]"
+              }
+            >
               <Image
                 src={project.logo}
                 alt={project.client}
@@ -255,13 +359,13 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             <span className="text-sm font-semibold">{project.title}</span>
           )
         }
-        action={<CloseLink />}
+        action={<CloseLink large className={isBright ? "text-white" : ""} />}
       />
 
       <HorizontalScroll>
         <TitlePanel project={project} />
 
-        {project.overview && (
+        {project.overview && project.slug !== "print" && (
           <TextPanel>
             <Heading>Overview</Heading>
             <Body>{project.overview}</Body>
@@ -300,11 +404,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           </TextPanel>
         )}
 
-        {project.images && project.images.length > 0 && isLogos && (
-          <LogosGridPanel images={project.images} />
-        )}
-
-        {project.images && project.images.length > 0 && !isLogos &&
+        {project.images && project.images.length > 0 &&
           chunk(project.images, 4).map((group, i) => (
             <ImageGridPanel key={i} images={group} />
           ))}
@@ -328,7 +428,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
 
         <CaseStudyMetaPanel
           meta={getCaseStudyMeta(project)}
-          lightText={fg === "#f5f5f5"}
+          lightText={isBright || fg === "#f5f5f5"}
         />
 
         <NextProjectLink

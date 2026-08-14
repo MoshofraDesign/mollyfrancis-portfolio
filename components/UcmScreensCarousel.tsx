@@ -4,9 +4,10 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 
 export type UcmScreen = {
-  title: string;
-  body: string;
+  title?: string;
+  body?: string;
   src: string;
+  alt?: string;
 };
 
 type Props = {
@@ -15,6 +16,9 @@ type Props = {
   bodyClassName?: string;
   /** Small label under the screenshot, e.g. Internal Rewards Tool */
   caption?: string;
+  label?: string;
+  imageClassName?: string;
+  frameClassName?: string;
 };
 
 /**
@@ -26,6 +30,9 @@ export default function UcmScreensCarousel({
   headingClassName = "",
   bodyClassName = "",
   caption,
+  label = "Screens",
+  imageClassName = "h-auto w-full max-h-[min(70dvh,calc(100dvh-8.5rem))] object-contain object-top",
+  frameClassName = "overflow-hidden rounded-xl",
 }: Props) {
   const [index, setIndex] = useState(0);
   const total = screens.length;
@@ -54,26 +61,30 @@ export default function UcmScreensCarousel({
 
   return (
     <div
-      className="mx-auto flex w-full max-w-[min(54rem,100%)] flex-col gap-6"
+      className="mx-auto flex w-full max-w-[min(54rem,86vw)] flex-col gap-4"
       role="region"
       aria-roledescription="carousel"
-      aria-label="UCM screens"
+      aria-label={label}
     >
-      <div className="min-h-[5.5rem] sm:min-h-[6.5rem]">
-        <h2 className={headingClassName}>{shot.title}</h2>
-        <p className={`mt-3 ${bodyClassName}`}>{shot.body}</p>
-      </div>
+      {shot.title || shot.body ? (
+        <div>
+          {shot.title ? <h2 className={headingClassName}>{shot.title}</h2> : null}
+          {shot.body ? <p className={`mt-2 ${bodyClassName}`}>{shot.body}</p> : null}
+        </div>
+      ) : null}
 
       <div className="relative">
-        <div className="overflow-hidden rounded-xl border border-white/10 shadow-[0_12px_48px_rgba(0,0,0,0.35)]">
+        <div
+          className={`relative mx-auto max-h-[min(70dvh,calc(100dvh-8.5rem))] w-full ${frameClassName}`}
+        >
           <Image
             key={shot.src}
             src={shot.src}
-            alt={shot.title}
-            width={2880}
+            alt={shot.alt ?? shot.title ?? `Screen ${index + 1}`}
+            width={1024}
             height={1800}
             sizes="(max-width: 950px) 100vw, 950px"
-            className="h-auto w-full"
+            className={imageClassName}
             priority={index === 0}
           />
         </div>
@@ -125,7 +136,7 @@ export default function UcmScreensCarousel({
             type="button"
             role="tab"
             aria-selected={i === index}
-            aria-label={`Show ${s.title}`}
+            aria-label={`Show ${s.title ?? s.alt ?? `screen ${i + 1}`}`}
             onClick={() => setIndex(i)}
             className={`h-2 rounded-full transition-all ${
               i === index

@@ -8,6 +8,14 @@ type Props = {
   projects: Project[];
 };
 
+export const WORK_THUMB_SECTION = "mx-auto max-w-7xl px-6 lg:px-10";
+export const WORK_THUMB_GRID_CLASS = "grid w-full justify-center gap-6 sm:gap-8";
+export const WORK_THUMB_GRID_STYLE = {
+  gridTemplateColumns: "repeat(auto-fill, minmax(240px, 375px))",
+} as const;
+export const WORK_THUMB_TILE =
+  "relative aspect-square w-full max-w-[375px] overflow-hidden";
+
 /**
  * Grid of square project tiles, modeled on Figma's "Care" / "Care - Hover"
  * thumbnail states: the thumbnail image sits under a flat accent-colored
@@ -21,15 +29,12 @@ type Props = {
  */
 export default function CareGrid({ projects }: Props) {
   return (
-    <div
-      className="grid justify-center gap-6 sm:gap-8"
-      style={{ gridTemplateColumns: "repeat(auto-fill, minmax(240px, 375px))" }}
-    >
+    <div className={WORK_THUMB_GRID_CLASS} style={WORK_THUMB_GRID_STYLE}>
       {projects.map((project) => (
         <Link
           key={project.slug}
           href={`/work/${project.slug}`}
-          className="group relative block aspect-square w-full max-w-[375px] overflow-hidden"
+          className={`group block ${WORK_THUMB_TILE}`}
         >
           <Image
             src={project.thumbnail}

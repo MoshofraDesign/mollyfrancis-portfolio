@@ -28,6 +28,10 @@ export const TEXT_W = MEASURE;
 
 export const VIEW = "lg:w-screen";
 
+/** Top inset so media never runs under the fixed logo + Close control. */
+export const NAV_CLEAR =
+  "lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]";
+
 /** Keeps the last two words together so a line never ends on a lone orphan. */
 export function noOrphan(text: string) {
   const words = text.trim().split(/\s+/);
@@ -72,8 +76,8 @@ export function Panel({
   // can't scroll to a negative offset. Bit us on LivePerson's image panels.
   const padLg =
     pad === "center"
-      ? "lg:items-center lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-[clamp(1.5rem,4vh,3rem)]"
-      : "lg:px-0 lg:py-12 lg:pl-[100px] lg:pr-[min(16%,120px)]";
+      ? `lg:items-center lg:px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR}`
+      : `lg:px-0 ${NAV_CLEAR} lg:pl-[100px] lg:pr-[min(16%,120px)]`;
 
   return (
     <section
@@ -100,7 +104,7 @@ export function TextPanel({
   return (
     <section
       id={id}
-      className={`relative flex w-full justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-[clamp(1.5rem,4vh,3rem)]`}
+      className={`relative flex w-full justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR}`}
     >
       <div className={MEASURE}>{children}</div>
     </section>

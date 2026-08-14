@@ -92,7 +92,7 @@ function Panel({
   // ultra-wide screens don’t leave a long empty trail after left-rail copy.
   return (
     <section
-      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:items-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-[clamp(1.5rem,4vh,3rem)] ${className}`}
+      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:items-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)] ${className}`}
     >
       {children}
     </section>
@@ -235,7 +235,7 @@ function TextPanel({
   return (
     <section
       id={id}
-      className="relative flex w-full justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-[clamp(1.5rem,4vh,3rem)]"
+      className="relative flex w-full justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]"
     >
       <div className={TEXT_W}>{children}</div>
     </section>
@@ -287,7 +287,7 @@ function ChallengeBlock({
 function PortraitPanel({ src, alt }: { src: string; alt: string }) {
   if (!hasImage(src)) return null;
   return (
-    <section className="relative flex w-full items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-12">
+    <section className="relative flex w-full items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]">
       <div className="relative aspect-square w-[60vw] max-w-[280px] sm:w-[46vw] sm:max-w-[360px] lg:w-[min(42vw,420px)]">
         <Image
           src={src}
@@ -332,7 +332,7 @@ export default function GovOSCaseStudy() {
             className="h-auto w-[86px] sm:w-[110px]"
           />
         }
-        action={<CloseLink className="text-white" />}
+        action={<CloseLink large className="text-white" />}
       />
 
       <HorizontalScroll>

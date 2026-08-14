@@ -135,7 +135,7 @@ export default function LivePersonCaseStudy() {
             <Image src={LOGO} alt="LivePerson" fill unoptimized className="object-contain object-left" />
           </div>
         }
-        action={<CloseLink />}
+        action={<CloseLink large />}
       />
 
       <HorizontalScroll>
