@@ -286,7 +286,7 @@ export const projects: Project[] = [
       "Resonance testing of the Digital Diagnosis workflow",
     ],
     prototype:
-      "https://www.figma.com/proto/Bx8fqdyIcTj47ecKAdRGXg/DST_DES_Provider_Desktop",
+      "https://www.figma.com/design/OZvS6ltydnegvXtVxD1yEH/Portfolio?node-id=4553-21862&t=UalCBBDmPBjqhPwk-1",
     images: [
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/4b2ec0d1-89e3-4c05-8a23-053303f95c99/Screenshot+2023-01-15+at+2.35.png",
