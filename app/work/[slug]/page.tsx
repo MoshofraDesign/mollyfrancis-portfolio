@@ -409,22 +409,25 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             <ImageGridPanel key={i} images={group} />
           ))}
 
-        {project.prototype && (
-          <Panel width={VIEW} pad="center">
-            <div className={`${MEASURE} mx-auto`}>
-              <Heading>Live Figma prototype</Heading>
-              <a
-                href={project.prototype}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border px-8 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] transition-opacity hover:opacity-60"
-                style={{ borderColor: `${fg}99` }}
-              >
-                Open prototype ↗
-              </a>
-            </div>
-          </Panel>
-        )}
+        {project.prototype && (() => {
+          const isFigmaFile = /figma\.com\/(design|file)\//.test(project.prototype);
+          return (
+            <Panel width={VIEW} pad="center">
+              <div className={`${MEASURE} mx-auto`}>
+                <Heading>{isFigmaFile ? "Explore the Figma file" : "Live Figma prototype"}</Heading>
+                <a
+                  href={project.prototype}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border px-8 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] transition-opacity hover:opacity-60"
+                  style={{ borderColor: `${fg}99` }}
+                >
+                  {isFigmaFile ? "Open in Figma ↗" : "Open prototype ↗"}
+                </a>
+              </div>
+            </Panel>
+          );
+        })()}
 
         <CaseStudyMetaPanel
           meta={getCaseStudyMeta(project)}
