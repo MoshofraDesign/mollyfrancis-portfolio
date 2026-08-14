@@ -329,15 +329,15 @@ export default function DocSquadCaseStudy() {
 
         {/* 10 — OUTCOME. Heading + copy, then two visit-mix circles and Time = Money. */}
         <ScreenPanel>
-          <div className="flex w-full max-w-[950px] flex-col gap-10 lg:absolute lg:left-1/2 lg:top-1/2 lg:w-[65.97vw] lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2 lg:gap-12">
+          <div className="flex w-full max-w-[950px] flex-col gap-6 pt-4 lg:absolute lg:left-1/2 lg:top-[128px] lg:w-[65.97vw] lg:max-w-none lg:-translate-x-1/2 lg:gap-7 lg:pt-0">
             <div className="flex flex-col gap-4">
               <SlideIn>
                 <h2 className={H_DISPLAY}>Outcome</h2>
               </SlideIn>
               <SlideIn delay={80}>
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-4">
                   {project.outcome.split("\n\n").map((para) => (
-                    <p key={para.slice(0, 24)} className={BODY}>
+                    <p key={para.slice(0, 24)} className="text-[clamp(1rem,1.85vw,1.5rem)] font-normal leading-snug text-white [text-wrap:pretty]">
                       {para}
                     </p>
                   ))}
@@ -346,30 +346,30 @@ export default function DocSquadCaseStudy() {
             </div>
 
             <SlideIn delay={160}>
-              <div className="flex flex-col items-center gap-8 sm:gap-10">
-                <div className="flex w-full flex-col items-center justify-center gap-6 sm:flex-row sm:gap-10">
+              <div className="flex flex-col items-center gap-6 sm:gap-7">
+                <div className="flex w-full flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
                   {OUTCOME_STATS.map((stat) => (
                     <div
                       key={stat.kicker}
-                      className="flex aspect-square w-[min(100%,340px)] flex-col items-center justify-center rounded-full bg-[#E6EAF8] px-8 text-center text-[#1A2744]"
+                      className="flex aspect-square w-[min(100%,250px)] flex-col items-center justify-center rounded-full bg-[#E6EAF8] px-6 text-center text-[#1A2744]"
                     >
-                      <p className="text-[clamp(2.5rem,5.5vw,4.5rem)] font-semibold leading-none tracking-[-0.03em]">
+                      <p className="text-[clamp(2.1rem,4.2vw,3.25rem)] font-semibold leading-none tracking-[-0.03em]">
                         {stat.hero}
                       </p>
-                      <p className="mt-2 text-[clamp(0.85rem,1.4vw,1.05rem)] font-semibold uppercase tracking-[0.12em] text-[#5A6578]">
+                      <p className="mt-1.5 text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-[#5A6578] sm:text-[0.9rem]">
                         {stat.kicker}
                       </p>
-                      <p className="mt-4 flex items-center gap-2 text-[clamp(1.35rem,2.4vw,1.85rem)] font-semibold leading-none">
+                      <p className="mt-3 flex items-center gap-2 text-[clamp(1.2rem,2.1vw,1.6rem)] font-semibold leading-none">
                         {stat.delta}
                         <img
                           src={`${ASSET}/down-triangle-green.svg`}
                           alt=""
-                          width={22}
-                          height={22}
-                          className="size-[22px] shrink-0 rotate-180"
+                          width={20}
+                          height={20}
+                          className="size-5 shrink-0 rotate-180"
                         />
                       </p>
-                      <p className="mt-2 text-[clamp(0.9rem,1.3vw,1.05rem)] font-normal text-[#6B7385]">
+                      <p className="mt-1.5 text-[0.9rem] font-normal text-[#6B7385]">
                         {stat.detail}
                       </p>
                     </div>
@@ -377,12 +377,12 @@ export default function DocSquadCaseStudy() {
                 </div>
 
                 <div className="relative mx-auto w-fit max-w-full px-[1.7em] text-center">
-                  <p className="relative text-[clamp(1.75rem,3.6vw,3.25rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white">
+                  <p className="relative text-[clamp(1.5rem,3.1vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white">
                     <OutcomeQuoteMark className="-left-[1.55em] top-0 h-[0.85em] w-[1.08em]" />
                     Time = Money
                     <OutcomeQuoteMark close className="left-[calc(100%+0.08em)] top-0 h-[0.85em] w-[1.08em]" />
                   </p>
-                  <p className="mt-4 text-[clamp(1.15rem,2vw,1.65rem)] font-semibold leading-snug text-white">
+                  <p className="mt-3 text-[clamp(1.05rem,1.7vw,1.45rem)] font-semibold leading-snug text-white">
                     Projected $1.2m Savings at 1 Year
                   </p>
                 </div>
