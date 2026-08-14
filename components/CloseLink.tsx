@@ -17,7 +17,7 @@ export default function CloseLink({ href = "/", className = "", large = false }:
       aria-label="Back to home"
       className={`group pointer-events-auto -m-3 flex items-center justify-center font-semibold uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60 ${
         large
-          ? "min-h-12 min-w-12 gap-2 p-3 text-[13px]"
+          ? "min-h-12 min-w-12 gap-2.5 p-3 text-[15px]"
           : "min-h-11 min-w-11 gap-1.5 p-3 text-[11px]"
       } ${className}`}
     >
@@ -26,7 +26,7 @@ export default function CloseLink({ href = "/", className = "", large = false }:
         aria-hidden
         viewBox="0 0 12 12"
         className={`shrink-0 transition-transform duration-500 ease-out group-hover:rotate-[360deg] ${
-          large ? "size-3.5" : "size-2.5"
+          large ? "size-4" : "size-2.5"
         }`}
         fill="none"
       >
