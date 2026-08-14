@@ -37,17 +37,7 @@ const H_DISPLAY =
 const BODY =
   "text-[clamp(1.05rem,2.22vw,2rem)] font-normal leading-normal text-white [text-wrap:pretty]";
 
-/** Figma 4672:15482 — Helvetica Bold/Regular metric stack. */
-const STAT_FACE = "font-[Helvetica,Arial,sans-serif]";
-const STAT_HERO =
-  `${STAT_FACE} text-[clamp(2.75rem,6.25vw,5.625rem)] font-bold uppercase leading-[1.06] text-white`;
-const STAT_KICKER =
-  `${STAT_FACE} text-[clamp(1.1rem,2.08vw,1.875rem)] font-bold uppercase leading-[50px] text-white`;
-const STAT_DELTA =
-  `${STAT_FACE} text-[clamp(1.75rem,3.75vw,3.375rem)] font-bold leading-[50px] text-white whitespace-nowrap`;
-const STAT_DETAIL =
-  `${STAT_FACE} text-[clamp(1.1rem,2.08vw,1.875rem)] font-normal leading-[50px] text-white`;
-
+/** Visit-mix circles from the Outcome stats frame. */
 const OUTCOME_STATS = [
   {
     hero: "29%",
@@ -57,17 +47,23 @@ const OUTCOME_STATS = [
   },
   {
     hero: "71%",
-    kicker: "aSynchronous",
+    kicker: "Asynchronous",
     delta: "1.5min",
     detail: "8 to 6.5 minutes",
   },
-  {
-    hero: "$",
-    kicker: "Projected",
-    delta: "$1.2m",
-    detail: "Savings at 1 Year",
-  },
 ] as const;
+
+function OutcomeQuoteMark({ close = false, className = "" }: { close?: boolean; className?: string }) {
+  return (
+    <img
+      src={`${ASSET}/quote.svg`}
+      alt=""
+      width={100}
+      height={79}
+      className={`pointer-events-none absolute max-w-none ${close ? "rotate-180" : ""} ${className}`}
+    />
+  );
+}
 
 /** Figma crops of the 4-phone sprite (node 4553:21876). */
 const PHONE_CROPS = [
@@ -331,38 +327,65 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 10 — OUTCOME. Figma 4672:15331: 950×616 centered, y=228 / bottom 156 */}
+        {/* 10 — OUTCOME. Heading + copy, then two visit-mix circles and Time = Money. */}
         <ScreenPanel>
-          <div className="flex w-full max-w-[950px] flex-col gap-[70px] lg:absolute lg:left-1/2 lg:top-[22.8vh] lg:w-[65.97vw] lg:max-w-none lg:-translate-x-1/2">
+          <div className="flex w-full max-w-[950px] flex-col gap-10 lg:absolute lg:left-1/2 lg:top-1/2 lg:w-[65.97vw] lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2 lg:gap-12">
             <div className="flex flex-col gap-4">
               <SlideIn>
                 <h2 className={H_DISPLAY}>Outcome</h2>
               </SlideIn>
               <SlideIn delay={80}>
-                <p className={BODY}>{project.outcome}</p>
+                <div className="flex flex-col gap-6">
+                  {project.outcome.split("\n\n").map((para) => (
+                    <p key={para.slice(0, 24)} className={BODY}>
+                      {para}
+                    </p>
+                  ))}
+                </div>
               </SlideIn>
             </div>
+
             <SlideIn delay={160}>
-              <div className="flex flex-col gap-10 sm:flex-row sm:gap-[70px]">
-                {OUTCOME_STATS.map((stat) => (
-                  <div key={stat.kicker} className="flex min-w-0 flex-col gap-[5px] sm:w-[273px] sm:shrink-0 sm:first:w-[248px]">
-                    <div className="flex flex-col">
-                      <p className={`${STAT_HERO} -mb-1`}>{stat.hero}</p>
-                      <p className={STAT_KICKER}>{stat.kicker}</p>
+              <div className="flex flex-col items-center gap-8 sm:gap-10">
+                <div className="flex w-full flex-col items-center justify-center gap-6 sm:flex-row sm:gap-10">
+                  {OUTCOME_STATS.map((stat) => (
+                    <div
+                      key={stat.kicker}
+                      className="flex aspect-square w-[min(100%,340px)] flex-col items-center justify-center rounded-full bg-[#E6EAF8] px-8 text-center text-[#1A2744]"
+                    >
+                      <p className="text-[clamp(2.5rem,5.5vw,4.5rem)] font-semibold leading-none tracking-[-0.03em]">
+                        {stat.hero}
+                      </p>
+                      <p className="mt-2 text-[clamp(0.85rem,1.4vw,1.05rem)] font-semibold uppercase tracking-[0.12em] text-[#5A6578]">
+                        {stat.kicker}
+                      </p>
+                      <p className="mt-4 flex items-center gap-2 text-[clamp(1.35rem,2.4vw,1.85rem)] font-semibold leading-none">
+                        {stat.delta}
+                        <img
+                          src={`${ASSET}/down-triangle-green.svg`}
+                          alt=""
+                          width={22}
+                          height={22}
+                          className="size-[22px] shrink-0 rotate-180"
+                        />
+                      </p>
+                      <p className="mt-2 text-[clamp(0.9rem,1.3vw,1.05rem)] font-normal text-[#6B7385]">
+                        {stat.detail}
+                      </p>
                     </div>
-                    <div className="flex items-center gap-4">
-                      <p className={STAT_DELTA}>{stat.delta}</p>
-                      <img
-                        src={`${ASSET}/down-triangle.svg`}
-                        alt=""
-                        width={40}
-                        height={40}
-                        className="size-10 shrink-0 rotate-180"
-                      />
-                    </div>
-                    <p className={STAT_DETAIL}>{stat.detail}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                <div className="relative mx-auto w-fit max-w-full px-[1.7em] text-center">
+                  <p className="relative text-[clamp(1.75rem,3.6vw,3.25rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white">
+                    <OutcomeQuoteMark className="-left-[1.55em] top-0 h-[0.85em] w-[1.08em]" />
+                    Time = Money
+                    <OutcomeQuoteMark close className="left-[calc(100%+0.08em)] top-0 h-[0.85em] w-[1.08em]" />
+                  </p>
+                  <p className="mt-4 text-[clamp(1.15rem,2vw,1.65rem)] font-semibold leading-snug text-white">
+                    Projected $1.2m Savings at 1 Year
+                  </p>
+                </div>
               </div>
             </SlideIn>
           </div>
