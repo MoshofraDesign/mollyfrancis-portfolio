@@ -312,7 +312,7 @@ export default function BrightHealthcareCaseStudy() {
                 <h3 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-white/45">
                   Projected Numbers
                 </h3>
-                <ul className="mt-5 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
+                <ul className="mt-5 grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-x-10 lg:gap-x-12">
                   {meta.projected.map((row) => (
                     <li key={`${row.value}-${row.label}`}>
                       <p className="text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
