@@ -165,10 +165,10 @@ export function NextProjectLink({
   return (
     <Link
       href={href}
-      className="group relative flex w-full flex-col justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[min(100vw,28rem)] lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,2.5rem)] lg:py-0"
+      className="group relative flex w-full flex-col justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[min(100vw,600px)] lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,2.5rem)] lg:py-0"
       style={{ background: accent, color: fg }}
     >
-      <div className="w-full max-w-[min(22rem,86vw)]">
+      <div className="w-full max-w-[min(32rem,86vw)]">
         <p
           className="text-[clamp(0.95rem,1.2vw,1.1rem)] font-normal"
           style={{ color: fg, opacity: 0.55 }}
