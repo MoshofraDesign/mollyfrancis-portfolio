@@ -4,7 +4,7 @@ import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
 import {
   type CaseStudyMeta,
-  TOOL_ICONS,
+  toolIconSrc,
 } from "@/lib/projects";
 
 /**
@@ -258,19 +258,27 @@ export function CaseStudyMetaPanel({
               <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-current/45">
                 Tools Used
               </h2>
-              <ul className="mt-5 flex flex-row flex-wrap items-center gap-4 sm:gap-5">
+              <ul
+                className={`mt-5 flex flex-row flex-wrap items-center ${
+                  meta.toolIconBase ? "gap-10" : "gap-4 sm:gap-5"
+                }`}
+              >
                 {meta.tools.map((name) => (
                   <li key={name} className="group relative">
                     <span
                       tabIndex={0}
                       aria-label={name}
-                      className="relative flex size-9 items-center justify-center rounded-md outline-none focus-visible:ring-2 focus-visible:ring-current/40 sm:size-10"
+                      className={`relative flex items-center justify-center rounded-md outline-none focus-visible:ring-2 focus-visible:ring-current/40 ${
+                        meta.toolIconBase
+                          ? "size-12"
+                          : "size-9 sm:size-10"
+                      }`}
                     >
                       <Image
-                        src={TOOL_ICONS[name]}
+                        src={toolIconSrc(name, meta.toolIconBase)}
                         alt=""
-                        width={40}
-                        height={40}
+                        width={meta.toolIconBase ? 48 : 40}
+                        height={meta.toolIconBase ? 48 : 40}
                         unoptimized
                         className={`size-full object-contain ${
                           name === "Cursor" && lightText ? "brightness-0 invert" : ""

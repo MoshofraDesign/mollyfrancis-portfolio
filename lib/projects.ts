@@ -1023,11 +1023,19 @@ export const TOOL_ICONS: Record<ToolName, string> = {
   "Apple Health Kit": "/icons/tools/apple-health.png",
 };
 
+export function toolIconSrc(name: ToolName, base?: string) {
+  const shared = TOOL_ICONS[name];
+  if (!base) return shared;
+  return `${base}/${shared.slice(shared.lastIndexOf("/") + 1)}`;
+}
+
 export type CaseStudyMeta = {
   team: string[];
   timing: { value: string; label: string }[];
   tools: ToolName[];
   projected: { value: string; label: string }[];
+  /** Optional directory of per-project tool marks (same filenames as TOOL_ICONS). */
+  toolIconBase?: string;
 };
 
 const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
@@ -1094,7 +1102,16 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
       { value: "2022–2023", label: "Rebuild across desktop + native" },
       { value: "< 2 min", label: "Routine visit diagnosis target" },
     ],
-    tools: ["Figma", "Miro", "Jira", "UserTesting"],
+    tools: [
+      "Figma",
+      "Jira",
+      "Confluence",
+      "Miro",
+      "Pendo",
+      "Amplitude",
+      "UserTesting",
+    ],
+    toolIconBase: "/work/docsquad/tools",
     projected: [
       { value: "Desktop + native", label: "One Flutter UI surface" },
       { value: "Async + sync", label: "Visit modalities in one flow" },
