@@ -298,12 +298,33 @@ export default function BrightHealthcareCaseStudy() {
         </Panel>
 
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto space-y-6`}>
-            <SlideIn>
-              <h2 className={H_DISPLAY}>Outcome</h2>
-            </SlideIn>
-            <SlideIn delay={80}>
-              <p className={BODY}>{project.outcome}</p>
+          <div className={`${MEASURE} mx-auto space-y-10`}>
+            <div className="space-y-6">
+              <SlideIn>
+                <h2 className={H_DISPLAY}>Outcome</h2>
+              </SlideIn>
+              <SlideIn delay={80}>
+                <p className={BODY}>{project.outcome}</p>
+              </SlideIn>
+            </div>
+            <SlideIn delay={160}>
+              <div>
+                <h3 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-white/45">
+                  Projected Numbers
+                </h3>
+                <ul className="mt-5 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
+                  {meta.projected.map((row) => (
+                    <li key={`${row.value}-${row.label}`}>
+                      <p className="text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                        {row.value}
+                      </p>
+                      <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                        {row.label}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </SlideIn>
           </div>
         </Panel>
@@ -321,7 +342,7 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </Panel>
 
-        <CaseStudyMetaPanel meta={meta} lightText />
+        <CaseStudyMetaPanel meta={meta} lightText showProjected={false} />
 
         <Panel width={VIEW} pad="center">
           <div className={`${MEASURE} mx-auto`}>

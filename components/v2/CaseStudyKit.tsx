@@ -192,16 +192,18 @@ export function NextProjectLink({
 export function CaseStudyMetaPanel({
   meta,
   lightText = true,
+  showProjected = true,
 }: {
   meta: CaseStudyMeta;
   lightText?: boolean;
+  showProjected?: boolean;
 }) {
   return (
     <Panel width={VIEW} pad="center">
       <div className={`${MEASURE} mx-auto`}>
         <SlideIn>
           <div className="flex flex-col gap-14 sm:gap-16">
-            <div className="grid gap-10 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
+            <div className={`grid gap-10 ${showProjected ? "sm:grid-cols-3" : "sm:grid-cols-2"} sm:gap-x-14 lg:gap-x-20`}>
               <div>
                 <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-current/45">
                   The Team
@@ -231,23 +233,25 @@ export function CaseStudyMetaPanel({
                 </ul>
               </div>
 
-              <div>
-                <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-current/45">
-                  Projected Numbers
-                </h2>
-                <ul className="mt-5 space-y-5">
-                  {meta.projected.map((row) => (
-                    <li key={`${row.value}-${row.label}`}>
-                      <p className="text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
-                        {row.value}
-                      </p>
-                      <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-current/55">
-                        {row.label}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {showProjected && (
+                <div>
+                  <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-current/45">
+                    Projected Numbers
+                  </h2>
+                  <ul className="mt-5 space-y-5">
+                    {meta.projected.map((row) => (
+                      <li key={`${row.value}-${row.label}`}>
+                        <p className="text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                          {row.value}
+                        </p>
+                        <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-current/55">
+                          {row.label}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             <div>
