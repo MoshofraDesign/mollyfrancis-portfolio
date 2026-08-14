@@ -265,7 +265,7 @@ export const projects: Project[] = [
     role: "Principal Designer · Design system lead",
     tags: ["Telehealth", "Design system", "iOS/Android", "Research"],
     thumbnail: "/work-thumbnails/docsquad-figma.webp",
-    hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/9049760a-bc08-470b-a819-28ee75091d8a/Provider-Native-Group.png",
+    hero: "/work/docsquad/hero.png",
     logo: "/logos/docsquad.svg",
     accent: "#dd00e2",
     featured: true,
@@ -289,28 +289,24 @@ export const projects: Project[] = [
       "https://www.figma.com/design/OZvS6ltydnegvXtVxD1yEH/Portfolio?node-id=4553-21862&t=UalCBBDmPBjqhPwk-1",
     images: [
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/4b2ec0d1-89e3-4c05-8a23-053303f95c99/Screenshot+2023-01-15+at+2.35.png",
-        caption: "Virtual moonlighter research, methods and findings",
+        src: "/work/docsquad/research-board.png",
+        caption: "Virtual moonlighter research — tagged provider interviews",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/3fd58c3c-6a14-476c-a087-596685afc660/Page-Visit-MASTER-wDrawer.png",
-        caption: "Provider visit view with collaborative drawer",
+        src: "/work/docsquad/interview-dashboard.png",
+        caption: "Async patient interview and the logged-in dashboard",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/6d59c7f7-3cea-4a82-b055-737ce5010839/DS-GetCare.jpg",
-        caption: "Patient — Get Care modality selection",
+        src: "/work/docsquad/icons.png",
+        caption: "Custom illustration set for visit reasons and the design system",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/f9c3cb73-9cb5-47d5-8a3d-fc4c84bbacc5/GetCare-Interview-FollowUpCare.jpg",
-        caption: "Async intelligent interview and follow-up care",
+        src: "/work/docsquad/desktop-app.png",
+        caption: "Provider desktop — Patient queue for async and sync visits",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0459224a-b153-4792-a831-b71431df373f/DS-LoggedIn.jpg",
-        caption: "Patient dashboard — logged in",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/3ae628cf-bbed-4581-878d-f6b77fe14fb0/icons+3.25.22+PM.jpg",
-        caption: "Custom illustration set for the new design system",
+        src: "/work/docsquad/phone-1.png",
+        caption: "Native visit — Intake, Video, Assessment, Review",
       },
     ],
   },

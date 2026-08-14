@@ -78,6 +78,15 @@ function ScreenPanel({
   );
 }
 
+/** Names the screen so the still matches the story around it. */
+function MediaCaption({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="relative z-10 max-w-[40rem] text-center text-[clamp(0.9rem,1.1vw,1.1rem)] text-white/75 lg:absolute lg:bottom-[4.5vh] lg:left-1/2 lg:w-[min(50vw,40rem)] lg:-translate-x-1/2">
+      {children}
+    </p>
+  );
+}
+
 export default function DocSquadCaseStudy() {
   const project = getProject(SLUG);
   if (!project) return null;
@@ -190,21 +199,54 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 4 — RESEARCH BOARD. Figma 4553:21888: 403,234 / 633×593 r10 */}
+        {/* RESEARCH BOARD — evidence for the interviews just described */}
         <ScreenPanel>
           <div className="relative aspect-[633/593] w-full max-w-[633px] overflow-hidden rounded-[10px] lg:absolute lg:left-[28vw] lg:top-[23.4vh] lg:w-[43.96vw] lg:max-w-none">
             <Image
               src={`${ASSET}/research-board.png`}
-              alt="Virtual moonlighter research — methods and findings board"
+              alt="Dovetail board of tagged provider interviews"
               fill
               sizes="(max-width: 1023px) 90vw, 44vw"
               className="object-cover"
               unoptimized
             />
           </div>
+          <MediaCaption>Virtual moonlighter research — tagged provider interviews</MediaCaption>
         </ScreenPanel>
 
-        {/* 5 — DESKTOP. Figma 4669:14416: 232,183 / 977×681 (macOS Patient Queue) */}
+        {/* ASYNC INTERVIEW + DASHBOARD — the flow Research just named */}
+        <ScreenPanel>
+          <div className="relative mx-auto aspect-[920/683] w-full max-w-[920px] lg:absolute lg:left-[18.06vw] lg:top-[18vh] lg:mx-0 lg:w-[63.89vw] lg:max-w-none">
+            <Image
+              src={`${ASSET}/interview-dashboard.png`}
+              alt="Patient interview overlapping the logged-in DocSquad dashboard"
+              fill
+              sizes="(max-width: 1023px) 92vw, 64vw"
+              className="object-contain"
+              unoptimized
+            />
+          </div>
+          <MediaCaption>
+            Async patient interview (“reason for visit”) and the logged-in dashboard
+          </MediaCaption>
+        </ScreenPanel>
+
+        {/* ICONS — visit-reason illustrations used in that interview */}
+        <ScreenPanel>
+          <div className="relative aspect-[720/519] w-full max-w-[720px] overflow-hidden rounded-[10px] lg:absolute lg:left-[25vw] lg:top-[24vh] lg:w-[50vw] lg:max-w-none">
+            <Image
+              src={`${ASSET}/icons.png`}
+              alt="Custom medical illustration set for visit reasons and the design system"
+              fill
+              sizes="(max-width: 1023px) 90vw, 50vw"
+              className="object-cover"
+              unoptimized
+            />
+          </div>
+          <MediaCaption>Custom illustration set for visit reasons and the design system</MediaCaption>
+        </ScreenPanel>
+
+        {/* PROVIDER DESKTOP — Patient Queue (sync + async modalities) */}
         <ScreenPanel>
           <div className="relative aspect-[977/681] w-full max-w-[977px] lg:absolute lg:left-[16.11vw] lg:top-[18.3vh] lg:w-[67.85vw] lg:max-w-none">
             {desktopVideo ? (
@@ -220,9 +262,10 @@ export default function DocSquadCaseStudy() {
               />
             )}
           </div>
+          <MediaCaption>Provider desktop — Patient queue for async and sync visits</MediaCaption>
         </ScreenPanel>
 
-        {/* 6 — FOUR PHONES. Figma 4553:21876: 227,285 / 986×470, 40px gaps */}
+        {/* NATIVE APP — Intake / Video / Assessment / Review */}
         <ScreenPanel>
           <div className="grid w-full max-w-[986px] grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6 lg:absolute lg:left-[15.76vw] lg:top-[28.5vh] lg:w-[68.47vw] lg:max-w-none lg:grid-cols-4 lg:gap-[2.78vw]">
             {[
@@ -246,34 +289,7 @@ export default function DocSquadCaseStudy() {
               </div>
             ))}
           </div>
-        </ScreenPanel>
-
-        {/* 7 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
-        <ScreenPanel>
-          <div className="relative aspect-[720/519] w-full max-w-[720px] overflow-hidden rounded-[10px] lg:absolute lg:left-[25vw] lg:top-[24vh] lg:w-[50vw] lg:max-w-none">
-            <Image
-              src={`${ASSET}/icons.png`}
-              alt="Custom illustration and icon set for the DocSquad design system"
-              fill
-              sizes="(max-width: 1023px) 90vw, 50vw"
-              className="object-cover"
-              unoptimized
-            />
-          </div>
-        </ScreenPanel>
-
-        {/* 8 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
-        <ScreenPanel>
-          <div className="relative mx-auto aspect-[920/683] w-full max-w-[920px] lg:absolute lg:left-[18.06vw] lg:top-[18vh] lg:mx-0 lg:w-[63.89vw] lg:max-w-none">
-            <Image
-              src={`${ASSET}/interview-dashboard.png`}
-              alt="Patient interview overlapping the logged-in DocSquad dashboard"
-              fill
-              sizes="(max-width: 1023px) 92vw, 64vw"
-              className="object-contain"
-              unoptimized
-            />
-          </div>
+          <MediaCaption>Native visit — Intake, Video, Assessment, Review</MediaCaption>
         </ScreenPanel>
 
         {/* 9 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at 175,220 */}
