@@ -5,25 +5,16 @@ import { Jost } from "next/font/google";
 import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import AutoplayVideo from "@/components/AutoplayVideo";
+import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import {
-  MEASURE,
-  VIEW,
-  Panel,
-  TextPanel,
-  Heading,
-  Body,
-  NextProjectLink,
-  CaseStudyMetaPanel,
-} from "@/components/v2/CaseStudyKit";
+import { NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 /**
- * DocSquad — Virtual Care Telehealth. Horizontal case study built to match the
- * Figma deck (Portfolio › node 4553:21862) rather than the shared vertical
- * template. Mirrors the GovOS/Bright bespoke pattern: a #dd00e2 field, Jost
- * type, and a large wordmark on the title panel that hands off to the small
- * StickyNav wordmark, which slides in 1:1 with scroll and parks top-left.
+ * DocSquad — rebuilt to the Figma deck (Portfolio › node 4553:21862).
+ * 1440×1000 panels on #dd00e2. Large wordmark on the title panel; small
+ * 200×27 wordmark parks at 100,100 via StickyNav (same slide/stick as
+ * GovOS / Bright). Copy and media positions follow the Figma marks.
  */
 
 const jost = Jost({
@@ -38,6 +29,13 @@ const BRAND = "#dd00e2";
 const LOGO = "/logos/docsquad.svg";
 const ASSET = "/work/docsquad";
 
+/** Figma Header Large: Jost SemiBold 81/95 on 1440. */
+const H_DISPLAY =
+  "font-semibold leading-[1.17] text-white text-[clamp(2rem,5.625vw,5.0625rem)] [text-wrap:pretty]";
+/** Figma Paragraph: Jost Regular 32. */
+const BODY =
+  "text-[clamp(1.05rem,2.22vw,2rem)] font-normal leading-normal text-white [text-wrap:pretty]";
+
 export function generateMetadata() {
   const p = getProject(SLUG);
   if (!p) return {};
@@ -49,7 +47,6 @@ export function generateMetadata() {
 
 const VIDEO_EXTS = [".mp4", ".mov", ".webm", ".m4v"];
 
-/** Resolve a bare video name to whichever extension is on disk, else null. */
 function findVideo(name: string): string | null {
   for (const ext of VIDEO_EXTS) {
     const src = `${ASSET}/videos/${name}${ext}`;
@@ -62,14 +59,9 @@ function findVideo(name: string): string | null {
   return null;
 }
 
-/**
- * macOS "Desktop Frame" chrome from the Figma spec — a white rounded card
- * (10px radius, soft shadow) with a traffic-light title bar wrapping the
- * provider desktop screen. Matches the GovOS BrowserFrame treatment.
- */
 function DesktopFrame({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mx-auto w-full max-w-[min(953px,92vw)] overflow-hidden rounded-[10px] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.1)]">
+    <div className="overflow-hidden rounded-[10px] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.1)]">
       <div className="flex h-9 items-center gap-2 pl-3.5">
         <span className="h-3 w-3 rounded-full bg-[#FF5F57]" />
         <span className="h-3 w-3 rounded-full bg-[#FFBD2E]" />
@@ -77,6 +69,25 @@ function DesktopFrame({ children }: { children: React.ReactNode }) {
       </div>
       {children}
     </div>
+  );
+}
+
+/** Full-bleed 1440 panel; content uses Figma % positions at lg+. */
+function ScreenPanel({
+  children,
+  className = "",
+  width = "lg:w-screen",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  width?: string;
+}) {
+  return (
+    <section
+      className={`relative flex w-full flex-col items-center justify-center gap-8 px-6 py-16 sm:px-10 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:overflow-hidden lg:px-0 lg:py-0 ${className}`}
+    >
+      {children}
+    </section>
   );
 }
 
@@ -93,10 +104,10 @@ export default function DocSquadCaseStudy() {
       className={`${jost.variable} relative`}
       style={{ background: BRAND, color: "#ffffff", fontFamily: "var(--font-jost), system-ui, sans-serif" }}
     >
-      {/* Small wordmark — hidden while the title panel's large logo is on
-          screen, then slides in 1:1 with scroll and parks top-left. */}
       <StickyNav
         watch="docsquad-title"
+        parkLeft={100}
+        parkTop={100}
         logo={
           <Image
             src={LOGO}
@@ -104,155 +115,176 @@ export default function DocSquadCaseStudy() {
             width={200}
             height={27}
             unoptimized
-            className="h-auto w-[86px] sm:w-[110px]"
+            className="h-[27px] w-[200px] max-w-[28vw] object-contain object-left"
           />
         }
         action={<CloseLink large className="text-white" />}
       />
 
       <HorizontalScroll>
-        {/* 1 — TITLE: large wordmark top-left, description bottom-left, hero right. */}
+        {/* 1 — TITLE. Figma 4553:21863
+            Logo 100,100 / 842×112 · Description 100,689 / 308×208
+            Hero 479,349 / 891×529 */}
         <section
           id="docsquad-title"
-          className="relative flex w-full flex-col md:flex-row md:items-center lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:overflow-y-auto lg:overscroll-contain"
+          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
-          <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[40%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-12">
+          <div className="relative z-10 aspect-[842/112] w-[min(100%,842px)] lg:absolute lg:left-[6.94vw] lg:top-[10vh] lg:w-[min(58.47vw,842px)]">
             <Image
               src={LOGO}
               alt="DocSquad"
-              width={842}
-              height={112}
+              fill
+              unoptimized
+              priority
+              className="object-contain object-left"
+            />
+          </div>
+
+          <SlideIn className="relative z-10 max-w-[308px] text-white lg:absolute lg:bottom-[10.3vh] lg:left-[6.94vw] lg:max-w-[21.39vw]">
+            <p className="text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-[1.28]">
+              Virtual Care Telehealth App
+            </p>
+            <p className="mt-4 text-[clamp(0.95rem,1.25vw,1.125rem)] font-normal leading-normal">
+              Provider Desktop And Native Apps For Doctors, Nurses And Staff To Diagnosis Patients With Asynchronous And Synchronous Visits.
+            </p>
+          </SlideIn>
+
+          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,891px)] lg:absolute lg:left-[33.26vw] lg:top-[34.9vh] lg:mx-0 lg:w-[61.88vw] lg:max-w-none">
+            <Image
+              src={`${ASSET}/hero.png`}
+              alt="DocSquad provider desktop, native app, and watch"
+              width={2026}
+              height={1203}
               priority
               unoptimized
-              className="h-auto w-[70%] max-w-[300px] sm:w-[58%] md:w-[92%] md:max-w-[420px]"
+              className="h-auto w-full"
             />
-            <div>
-              <p className="text-[clamp(1.5rem,5.5vw,2.25rem)] font-semibold leading-tight sm:text-[clamp(1.5rem,3vw,2.25rem)] md:text-[2vw]">
-                Virtual Care Telehealth App
-              </p>
-              <p className="mt-4 max-w-[40ch] text-[clamp(0.95rem,4vw,1.125rem)] font-normal leading-[1.4] opacity-90 sm:text-[clamp(0.95rem,2.2vw,1.125rem)] md:text-[1.05vw]">
-                Provider desktop and native apps for doctors, nurses, and staff to
-                diagnose patients with asynchronous and synchronous visits.
-              </p>
-            </div>
-          </div>
-          <div className="w-full px-5 pb-10 sm:px-8 md:mr-[5%] md:w-[57%] md:px-0 md:pb-0">
-            <div className="relative aspect-[891/529] w-full">
-              <Image
-                src={`${ASSET}/hero.png`}
-                alt="DocSquad provider desktop dashboard alongside the native mobile app"
-                fill
-                sizes="(max-width: 767px) 92vw, (max-width: 1023px) 80vw, 57vw"
-                className="object-contain"
-                priority
-                unoptimized
-              />
-            </div>
           </div>
         </section>
 
-        {/* 2 — PROBLEM */}
-        <TextPanel>
-          <Heading>Problem</Heading>
-          <Body>
-            Healthcare providers are overwhelmed—juggling back-to-back appointments,
-            redundant data entry, and clunky telehealth tools that add friction instead
-            of removing it. Meanwhile, patients face long wait times for issues that
-            could be resolved in minutes. The core challenge: How might we reduce the
-            clinical burden of virtual visits so providers can diagnose and treat
-            patients in under two minutes—without sacrificing quality of care?
-          </Body>
-        </TextPanel>
+        {/* 2 — PROBLEM. Figma 4553:21871: 100,296 / 999×409 */}
+        <ScreenPanel>
+          <div className="w-full max-w-[999px] lg:absolute lg:left-[6.94vw] lg:top-1/2 lg:w-[min(69.375vw,999px)] lg:max-w-none lg:-translate-y-1/2">
+            <SlideIn>
+              <h2 className={H_DISPLAY}>Problem</h2>
+            </SlideIn>
+            <SlideIn delay={80}>
+              <p className={`mt-4 ${BODY}`}>
+                Healthcare providers are overwhelmed—juggling back-to-back appointments,
+                redundant data entry, and clunky telehealth tools that add friction instead
+                of removing it. Meanwhile, patients face long wait times for issues that
+                could be resolved in minutes. The core challenge: How might we reduce the
+                clinical burden of virtual visits so providers can diagnose and treat
+                patients in under two minutes—without sacrificing quality of care?
+              </p>
+            </SlideIn>
+          </div>
+        </ScreenPanel>
 
-        {/* 3 — RESEARCH */}
-        <TextPanel>
-          <Heading>Research</Heading>
-          <Body>
-            Providers are already stretched thin with packed schedules and tedious EHR
-            entries. They don&apos;t need another platform that adds to their workload —
-            they need technology that lightens it. By collecting symptoms upfront through
-            asynchronous intelligent interviews, providers can diagnose and recommend
-            treatment in as little as two minutes — no video call, no extra data entry.
-            It&apos;s a faster, smarter model of care that reduces burden without
-            compromising quality.
-          </Body>
-        </TextPanel>
+        {/* 3 — RESEARCH. Figma 4553:21883: 100,237 / 950×525 */}
+        <ScreenPanel>
+          <div className="w-full max-w-[950px] lg:absolute lg:left-[6.94vw] lg:top-1/2 lg:w-[min(65.97vw,950px)] lg:max-w-none lg:-translate-y-1/2">
+            <SlideIn>
+              <h2 className={H_DISPLAY}>Research</h2>
+            </SlideIn>
+            <SlideIn delay={80}>
+              <p className={`mt-4 ${BODY}`}>
+                Providers are already stretched thin with packed schedules and tedious EHR
+                entries. They don&apos;t need another platform that adds to their workload —
+                they need technology that lightens it.
+              </p>
+              <p className={`mt-8 ${BODY}`}>
+                By collecting symptoms upfront through asynchronous intelligent interviews,
+                providers can diagnose and recommend treatment in as little as two minutes —
+                no video call, no extra data entry. It&apos;s a faster, smarter model of care
+                that reduces burden without compromising quality.
+              </p>
+            </SlideIn>
+          </div>
+        </ScreenPanel>
 
-        {/* 4 — RESEARCH BOARD */}
-        <Panel width={VIEW} className="items-center">
-          <div className="relative mx-auto aspect-[633/593] w-full max-w-[min(633px,86vw)] overflow-hidden rounded-[10px]">
+        {/* 4 — RESEARCH BOARD. Figma 4553:21888: 403,234 / 633×593 r10 */}
+        <ScreenPanel>
+          <div className="relative aspect-[633/593] w-full max-w-[633px] overflow-hidden rounded-[10px] lg:absolute lg:left-[28vw] lg:top-[23.4vh] lg:w-[43.96vw] lg:max-w-none">
             <Image
               src={`${ASSET}/research-board.png`}
               alt="Virtual moonlighter research — methods and findings board"
               fill
-              sizes="(max-width: 1023px) 86vw, 633px"
+              sizes="(max-width: 1023px) 90vw, 44vw"
               className="object-cover"
               unoptimized
             />
           </div>
-        </Panel>
+        </ScreenPanel>
 
-        {/* 5 — PROVIDER DESKTOP (screen recording in a macOS desktop frame) */}
-        <Panel width={VIEW} className="items-center">
-          <DesktopFrame>
-            {desktopVideo ? (
-              <AutoplayVideo src={desktopVideo} className="aspect-[953/621] w-full bg-black" />
-            ) : (
-              <div className="relative aspect-[953/621] w-full bg-white">
-                <Image
-                  src={`${ASSET}/desktop-app.webp`}
-                  alt="Provider desktop — patient visit view with collaborative drawer"
-                  fill
-                  sizes="(max-width: 1023px) 92vw, 953px"
-                  className="object-cover object-top"
-                  unoptimized
-                />
-              </div>
-            )}
-          </DesktopFrame>
-        </Panel>
+        {/* 5 — DESKTOP FRAME. Figma 4553:21891: 244,183 / 953×657 */}
+        <ScreenPanel>
+          <div className="w-full max-w-[953px] lg:absolute lg:left-[16.94vw] lg:top-[18.3vh] lg:w-[66.18vw] lg:max-w-none">
+            <DesktopFrame>
+              {desktopVideo ? (
+                <AutoplayVideo src={desktopVideo} className="aspect-[953/621] w-full bg-black" />
+              ) : (
+                <div className="relative aspect-[953/621] w-full bg-white">
+                  <Image
+                    src={`${ASSET}/desktop-app.webp`}
+                    alt="Provider desktop — patient visit view with collaborative drawer"
+                    fill
+                    sizes="(max-width: 1023px) 92vw, 66vw"
+                    className="object-cover object-top"
+                    unoptimized
+                  />
+                </div>
+              )}
+            </DesktopFrame>
+          </div>
+        </ScreenPanel>
 
-        {/* 6 — NATIVE MOBILE SCREENS */}
-        <Panel width={VIEW} className="items-center">
-          <div className="mx-auto grid w-full max-w-[min(986px,92vw)] grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6 lg:gap-10">
-            {[1, 2, 3, 4].map((n) => (
+        {/* 6 — FOUR PHONES. Figma 4553:21876: 227,285 / 986×470, 40px gaps */}
+        <ScreenPanel>
+          <div className="grid w-full max-w-[986px] grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6 lg:absolute lg:left-[15.76vw] lg:top-[28.5vh] lg:w-[68.47vw] lg:max-w-none lg:grid-cols-4 lg:gap-[2.78vw]">
+            {[
+              "Intake — encounter history",
+              "Video visit in progress",
+              "Assessment and diagnosis",
+              "Review response to patient",
+            ].map((alt, i) => (
               <div
-                key={n}
+                key={alt}
                 className="relative aspect-[217/470] overflow-hidden rounded-[10px]"
               >
                 <Image
-                  src={`${ASSET}/phone-${n}.png`}
-                  alt={`DocSquad provider native app — screen ${n}`}
+                  src={`${ASSET}/phone-${i + 1}.png`}
+                  alt={`DocSquad provider native app — ${alt}`}
                   fill
-                  sizes="(max-width: 1023px) 45vw, 22vw"
+                  sizes="(max-width: 1023px) 45vw, 15vw"
                   className="object-cover object-top"
                   unoptimized
                 />
               </div>
             ))}
           </div>
-        </Panel>
+        </ScreenPanel>
 
-        {/* 7 — DESIGN SYSTEM ICONS */}
-        <Panel width={VIEW} className="items-center">
-          <div className="relative mx-auto aspect-[720/519] w-full max-w-[min(720px,90vw)]">
+        {/* 7 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
+        <ScreenPanel>
+          <div className="relative aspect-[720/519] w-full max-w-[720px] overflow-hidden rounded-[10px] lg:absolute lg:left-[25vw] lg:top-[24vh] lg:w-[50vw] lg:max-w-none">
             <Image
               src={`${ASSET}/icons.png`}
               alt="Custom illustration and icon set for the DocSquad design system"
               fill
-              sizes="(max-width: 1023px) 90vw, 720px"
-              className="object-contain"
+              sizes="(max-width: 1023px) 90vw, 50vw"
+              className="object-cover"
               unoptimized
             />
           </div>
-        </Panel>
+        </ScreenPanel>
 
-        {/* 8 — INTERVIEW + PATIENT DASHBOARD */}
-        <Panel width={VIEW} className="items-center">
-          <div className="relative mx-auto aspect-[920/683] w-full max-w-[min(820px,92vw)]">
+        {/* 8 — INTERVIEW + DASHBOARD. Figma 4553:21903: 260,180 / 920×683 */}
+        <ScreenPanel>
+          <div className="relative mx-auto aspect-[920/683] w-full max-w-[920px] lg:absolute lg:left-[18.06vw] lg:top-[18vh] lg:mx-0 lg:w-[63.89vw] lg:max-w-none">
             <div
-              className="absolute overflow-hidden rounded-[10px] shadow-[0_2px_12px_rgba(0,0,0,0.12)]"
-              style={{ left: "0%", top: "20.6%", width: "56.2%", height: "56.5%" }}
+              className="absolute overflow-hidden rounded-[10px]"
+              style={{ left: "0%", top: "20.64%", width: "56.2%", height: "56.51%" }}
             >
               <Image
                 src={`${ASSET}/interview.png`}
@@ -264,55 +296,37 @@ export default function DocSquadCaseStudy() {
               />
             </div>
             <div
-              className="absolute overflow-hidden rounded-[10px] shadow-[0_2px_12px_rgba(0,0,0,0.12)]"
-              style={{ left: "43.9%", top: "0%", width: "56.1%", height: "100%" }}
+              className="absolute overflow-hidden rounded-[10px]"
+              style={{ left: "43.91%", top: "0%", width: "56.09%", height: "100%" }}
             >
               <Image
                 src={`${ASSET}/dashboard.png`}
                 alt="Patient dashboard — logged in"
                 fill
-                sizes="45vw"
+                sizes="40vw"
                 className="object-cover object-top"
                 unoptimized
               />
             </div>
           </div>
-        </Panel>
+        </ScreenPanel>
 
-        {/* 9 — PORTRAIT */}
-        <Panel width={VIEW} className="items-center">
-          <div className="relative mx-auto aspect-square w-[min(600px,78vw)] overflow-hidden rounded-full">
+        {/* 9 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at 175,220 */}
+        <ScreenPanel width="lg:w-[min(100vw,59.375rem)]">
+          <div className="relative aspect-square w-[min(600px,78vw)] overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:top-[calc(50%+20px)] lg:w-[min(39.37vw,600px)] lg:-translate-x-1/2 lg:-translate-y-1/2">
             <Image
               src={`${ASSET}/portrait.png`}
               alt="A virtual moonlighter clinician"
               fill
-              sizes="(max-width: 1023px) 78vw, 600px"
+              sizes="600px"
               className="object-cover"
               unoptimized
             />
           </div>
-        </Panel>
-
-        {/* PROTOTYPE — link to the source Figma file */}
-        {project.prototype && (
-          <Panel width="lg:w-[min(100vw,36rem)]">
-            <div className={`${MEASURE} mx-auto`}>
-              <Heading>Explore the Figma file</Heading>
-              <a
-                href={project.prototype}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] text-white transition-opacity hover:opacity-60"
-              >
-                Open in Figma ↗
-              </a>
-            </div>
-          </Panel>
-        )}
+        </ScreenPanel>
 
         <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText />
 
-        {/* NEXT */}
         <NextProjectLink
           href={`/work/${next.slug}`}
           client={next.client}
