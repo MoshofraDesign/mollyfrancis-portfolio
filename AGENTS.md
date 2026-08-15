@@ -12,3 +12,5 @@ Non-obvious notes:
 - **Images/fonts are external**: case-study images are hot-linked from the Squarespace CDN and fonts come from Google Fonts. If outbound network is blocked, pages still render but images/fonts fall back — this is not a setup failure.
 - **Contact form**: submission is a local success state only (no email is sent), so submitting the form and seeing "Thanks, got it." is the expected end-to-end behavior.
 - **No tests**: there is no test framework or `test` script configured.
+- **Do not mix `npm run build` with a running `next dev`**: a production build writes `.next` while the dev server is still serving, which 404s `/_next/static/css` until you restart `npm run dev`. Use a separate process or stop the dev server first.
+- **Horizontal case studies**: at `lg` (1024px+) several work pages (`/work/docsquad`, etc.) use `[data-hscroll]` — mouse wheel down scrolls right. Below `lg` they stack vertically.
