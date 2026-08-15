@@ -94,6 +94,7 @@ function BigImagePanel({
   maxHeightClass = "max-h-[70vh]",
   unoptimized = false,
   rounded = true,
+  panelClassName = "items-center",
 }: {
   src: string;
   alt: string;
@@ -104,19 +105,20 @@ function BigImagePanel({
   maxHeightClass?: string;
   unoptimized?: boolean;
   rounded?: boolean;
+  panelClassName?: string;
 }) {
   return (
-    <Panel width={VIEW} pad="center" className="items-center">
+    <Panel width={VIEW} pad="center" className={panelClassName}>
       <SlideIn
         className="mx-auto flex w-full flex-col items-center"
-        style={{ maxWidth: `min(${maxWidth}px, 94vw)` }}
+        style={{ maxWidth: `min(${maxWidth}px, 98vw)` }}
       >
         <Image
           src={src}
           alt={alt}
           width={width}
           height={height}
-          sizes={`(max-width: 1024px) 94vw, min(94vw, ${maxWidth}px)`}
+          sizes={`(max-width: 1024px) 96vw, min(98vw, ${maxWidth}px)`}
           unoptimized={unoptimized}
           className={`h-auto ${maxHeightClass} w-full object-contain ${rounded ? "rounded-md" : ""}`}
         />
@@ -243,10 +245,11 @@ export default function LivePersonCaseStudy() {
           alt="A public tweet on Twitter routed into the LiveEngage agent workspace, with the full private thread and social profile alongside it"
           width={1800}
           height={739}
-          maxWidth={1680}
-          maxHeightClass="max-h-[86vh]"
+          maxWidth={1920}
+          maxHeightClass="max-h-[90vh]"
           unoptimized
           rounded={false}
+          panelClassName="items-center lg:!px-3"
         />
 
         {/* ── SINGLE PLATFORM ───────────────────────────────────────────── */}
