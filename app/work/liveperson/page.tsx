@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
-import { Panel, TextPanel, Heading, Body, VIEW, MEASURE, MEDIA, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, Heading, Body, VIEW, MEASURE, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 /**
  * Bespoke horizontal-scroll case study for LivePerson/SocialConnect,
@@ -91,6 +91,9 @@ function BigImagePanel({
   height,
   caption,
   maxWidth = 950,
+  maxHeightClass = "max-h-[70vh]",
+  unoptimized = false,
+  rounded = true,
 }: {
   src: string;
   alt: string;
@@ -98,17 +101,24 @@ function BigImagePanel({
   height: number;
   caption?: string;
   maxWidth?: number;
+  maxHeightClass?: string;
+  unoptimized?: boolean;
+  rounded?: boolean;
 }) {
   return (
     <Panel width={VIEW} pad="center" className="items-center">
-      <SlideIn className={`mx-auto flex w-full flex-col items-center ${MEDIA}`} style={{ maxWidth: `${maxWidth}px` }}>
+      <SlideIn
+        className="mx-auto flex w-full flex-col items-center"
+        style={{ maxWidth: `min(${maxWidth}px, 94vw)` }}
+      >
         <Image
           src={src}
           alt={alt}
           width={width}
           height={height}
-          sizes={`(max-width: 1024px) 92vw, min(90vw, ${maxWidth}px)`}
-          className="h-auto max-h-[70vh] w-full rounded-md object-contain"
+          sizes={`(max-width: 1024px) 94vw, min(94vw, ${maxWidth}px)`}
+          unoptimized={unoptimized}
+          className={`h-auto ${maxHeightClass} w-full object-contain ${rounded ? "rounded-md" : ""}`}
         />
         {caption && <p className="mt-4 max-w-[70ch] text-[clamp(0.9rem,1.1vw,1.05rem)] opacity-80">{caption}</p>}
       </SlideIn>
@@ -225,12 +235,18 @@ export default function LivePersonCaseStudy() {
         </TextPanel>
 
         {/* ── PUBLIC TWEET / PRIVATE THREAD ────────────────────────────── */}
+        {/* Wide RGBA PNG — keep unoptimized so the orange page shows through
+            the transparent field, and skip rounded-md / the 950px MEDIA cap
+            so the flanking tweet cards are not cropped. */}
         <BigImagePanel
           src="/work/liveperson/public-tweet-private-thread.png"
           alt="A public tweet on Twitter routed into the LiveEngage agent workspace, with the full private thread and social profile alongside it"
-          width={1024}
-          height={415}
-          maxWidth={950}
+          width={1800}
+          height={739}
+          maxWidth={1680}
+          maxHeightClass="max-h-[86vh]"
+          unoptimized
+          rounded={false}
         />
 
         {/* ── SINGLE PLATFORM ───────────────────────────────────────────── */}
