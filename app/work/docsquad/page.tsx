@@ -13,7 +13,7 @@ import { NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKi
 /**
  * DocSquad — Figma deck (Portfolio › 4553:21862), left to right:
  * Title → Problem → Research → board → Patient Queue → 4 phones →
- * icons → interview+dashboard → 950px portrait → Outcome.
+ * icons → interview+dashboard → Outcome → 950px portrait.
  * 1440×1000 panels on #dd00e2. Large wordmark on the title panel; small
  * 200×27 wordmark parks at 100,100 via StickyNav.
  */
@@ -37,33 +37,36 @@ const H_DISPLAY =
 const BODY =
   "text-[clamp(1.05rem,2.22vw,2rem)] font-normal leading-normal text-white [text-wrap:pretty]";
 
-/** Visit-mix circles from the Outcome stats frame. */
+/** Figma 4672:15482 — Helvetica Bold/Regular metric stack. */
+const STAT_FACE = "font-[Helvetica,Arial,sans-serif]";
+const STAT_HERO = `${STAT_FACE} text-[clamp(2.75rem,6.25vw,5.625rem)] font-bold uppercase leading-[1.06] text-white`;
+const STAT_KICKER = `${STAT_FACE} text-[clamp(1.1rem,2.08vw,1.875rem)] font-bold uppercase leading-[50px] text-white`;
+const STAT_DELTA = `${STAT_FACE} text-[clamp(1.75rem,3.75vw,3.375rem)] font-bold leading-[50px] text-white whitespace-nowrap`;
+const STAT_DETAIL = `${STAT_FACE} text-[clamp(1.1rem,2.08vw,1.875rem)] font-normal leading-[50px] text-white`;
+
 const OUTCOME_STATS = [
   {
     hero: "29%",
     kicker: "Synchronous",
     delta: "2.5min",
     detail: "12 to 9.5 minutes",
+    col: "sm:w-[248px]",
   },
   {
     hero: "71%",
-    kicker: "Asynchronous",
+    kicker: "aSynchronous",
     delta: "1.5min",
     detail: "8 to 6.5 minutes",
+    col: "sm:w-[273px]",
+  },
+  {
+    hero: "$",
+    kicker: "Projected",
+    delta: "$1.2m",
+    detail: "Savings at 1 Year",
+    col: "sm:w-[273px]",
   },
 ] as const;
-
-function OutcomeQuoteMark({ close = false, className = "" }: { close?: boolean; className?: string }) {
-  return (
-    <img
-      src={`${ASSET}/quote.svg`}
-      alt=""
-      width={100}
-      height={79}
-      className={`pointer-events-none absolute max-w-none ${close ? "rotate-180" : ""} ${className}`}
-    />
-  );
-}
 
 /** Figma crops of the 4-phone sprite (node 4553:21876). */
 const PHONE_CROPS = [
@@ -193,12 +196,9 @@ export default function DocSquadCaseStudy() {
             </SlideIn>
             <SlideIn delay={80}>
               <p className={BODY}>
-                Healthcare providers are overwhelmed—juggling back-to-back appointments,
-                redundant data entry, and clunky telehealth tools that add friction instead
-                of removing it. Meanwhile, patients face long wait times for issues that
-                could be resolved in minutes. The core challenge: How might we reduce the
-                clinical burden of virtual visits so providers can diagnose and treat
-                patients in under two minutes—without sacrificing quality of care?
+                How might we reduce the clinical burden of virtual visits so providers
+                can diagnose and treat patients in minutes—without redundant data entry
+                or clunky telehealth tools?
               </p>
             </SlideIn>
           </div>
@@ -212,15 +212,14 @@ export default function DocSquadCaseStudy() {
             </SlideIn>
             <SlideIn delay={80}>
               <p className={BODY}>
-                Providers are already stretched thin with packed schedules and tedious EHR
-                entries. They don&apos;t need another platform that adds to their workload —
-                they need technology that lightens it.
+                Providers are overwhelmed — packed schedules, tedious EHR entries, and
+                little time for each patient. They don&apos;t need another platform. They
+                need one that works faster.
               </p>
               <p className={`mt-8 ${BODY}`}>
-                By collecting symptoms upfront through asynchronous intelligent interviews,
-                providers can diagnose and recommend treatment in as little as two minutes —
-                no video call, no extra data entry. It&apos;s a faster, smarter model of care
-                that reduces burden without compromising quality.
+                By collecting symptoms upfront via async interviews, providers can diagnose
+                and treat a patient in as little as two minutes — no video call, no extra
+                data entry.
               </p>
             </SlideIn>
           </div>
@@ -313,7 +312,47 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 9 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at center, top 50%+20 */}
+        {/* 9 — OUTCOME. Figma 4672:15331: 950×616 centered, y=228 / bottom 156 */}
+        <ScreenPanel>
+          <div className="flex w-full max-w-[950px] flex-col gap-[70px] lg:absolute lg:left-1/2 lg:bottom-[15.6vh] lg:w-[65.97vw] lg:max-w-none lg:-translate-x-1/2">
+            <div className="flex flex-col gap-4">
+              <SlideIn>
+                <h2 className={H_DISPLAY}>Outcome</h2>
+              </SlideIn>
+              <SlideIn delay={80}>
+                <p className={BODY}>{project.outcome}</p>
+              </SlideIn>
+            </div>
+            <SlideIn delay={160}>
+              <div className="flex flex-col gap-10 sm:flex-row sm:gap-[70px]">
+                {OUTCOME_STATS.map((stat) => (
+                  <div
+                    key={stat.kicker}
+                    className={`flex min-w-0 flex-col gap-[5px] sm:shrink-0 ${stat.col}`}
+                  >
+                    <div className="flex flex-col">
+                      <p className={`${STAT_HERO} -mb-1`}>{stat.hero}</p>
+                      <p className={STAT_KICKER}>{stat.kicker}</p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <p className={STAT_DELTA}>{stat.delta}</p>
+                      <img
+                        src={`${ASSET}/down-triangle.svg`}
+                        alt=""
+                        width={40}
+                        height={40}
+                        className="size-10 shrink-0 rotate-180"
+                      />
+                    </div>
+                    <p className={STAT_DETAIL}>{stat.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </SlideIn>
+          </div>
+        </ScreenPanel>
+
+        {/* 10 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at center, top 50%+20 */}
         <ScreenPanel width="lg:w-[min(100vw,59.375rem)]">
           <div className="relative aspect-square w-[min(600px,78vw)] overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:top-[calc(50%+20px)] lg:size-[min(39.37vw,600px)] lg:-translate-x-1/2 lg:-translate-y-1/2">
             <Image
@@ -324,70 +363,6 @@ export default function DocSquadCaseStudy() {
               className="object-cover"
               unoptimized
             />
-          </div>
-        </ScreenPanel>
-
-        {/* 10 — OUTCOME. Heading + copy, then two visit-mix circles and Time = Money. */}
-        <ScreenPanel>
-          <div className="flex w-full max-w-[950px] flex-col gap-6 pt-4 lg:absolute lg:left-1/2 lg:top-[128px] lg:w-[65.97vw] lg:max-w-none lg:-translate-x-1/2 lg:gap-7 lg:pt-0">
-            <div className="flex flex-col gap-4">
-              <SlideIn>
-                <h2 className={H_DISPLAY}>Outcome</h2>
-              </SlideIn>
-              <SlideIn delay={80}>
-                <div className="flex flex-col gap-4">
-                  {project.outcome.split("\n\n").map((para) => (
-                    <p key={para.slice(0, 24)} className="text-[clamp(1rem,1.85vw,1.5rem)] font-normal leading-snug text-white [text-wrap:pretty]">
-                      {para}
-                    </p>
-                  ))}
-                </div>
-              </SlideIn>
-            </div>
-
-            <SlideIn delay={160}>
-              <div className="flex flex-col items-center gap-6 sm:gap-7">
-                <div className="flex w-full flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
-                  {OUTCOME_STATS.map((stat) => (
-                    <div
-                      key={stat.kicker}
-                      className="flex aspect-square w-[min(100%,250px)] flex-col items-center justify-center rounded-full bg-[#E6EAF8] px-6 text-center text-[#1A2744]"
-                    >
-                      <p className="text-[clamp(2.1rem,4.2vw,3.25rem)] font-semibold leading-none tracking-[-0.03em]">
-                        {stat.hero}
-                      </p>
-                      <p className="mt-1.5 text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-[#5A6578] sm:text-[0.9rem]">
-                        {stat.kicker}
-                      </p>
-                      <p className="mt-3 flex items-center gap-2 text-[clamp(1.2rem,2.1vw,1.6rem)] font-semibold leading-none">
-                        {stat.delta}
-                        <img
-                          src={`${ASSET}/down-triangle-green.svg`}
-                          alt=""
-                          width={20}
-                          height={20}
-                          className="size-5 shrink-0 rotate-180"
-                        />
-                      </p>
-                      <p className="mt-1.5 text-[0.9rem] font-normal text-[#6B7385]">
-                        {stat.detail}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="relative mx-auto w-fit max-w-full px-[1.7em] text-center">
-                  <p className="relative text-[clamp(1.5rem,3.1vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white">
-                    <OutcomeQuoteMark className="-left-[1.55em] top-0 h-[0.85em] w-[1.08em]" />
-                    Time = Money
-                    <OutcomeQuoteMark close className="left-[calc(100%+0.08em)] top-0 h-[0.85em] w-[1.08em]" />
-                  </p>
-                  <p className="mt-3 text-[clamp(1.05rem,1.7vw,1.45rem)] font-semibold leading-snug text-white">
-                    Projected $1.2m Savings at 1 Year
-                  </p>
-                </div>
-              </div>
-            </SlideIn>
           </div>
         </ScreenPanel>
 
