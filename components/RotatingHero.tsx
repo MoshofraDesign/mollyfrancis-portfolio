@@ -92,10 +92,10 @@ export default function RotatingHero() {
     return () => clearInterval(id);
   }, []);
 
+  // Fill the first screen (nav is pt-28 / 7rem) so work-tile images
+  // don't peek as a sliced strip at the fold — Figma Home 4388:9645
+  // is a 1440×1000 hero with the full portrait and no grid.
   return (
-    {/* Fill the first screen (nav is pt-28 / 7rem) so work-tile images
-        don't peek as a sliced strip at the fold — Figma Home 4388:9645
-        is a 1440×1000 hero with the full portrait and no grid. */}
     <section className="flex min-h-[calc(100dvh-7rem)] items-center px-6 py-16 sm:py-0 lg:px-10">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,340px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,570px)_1fr] lg:gap-16">
         <div
