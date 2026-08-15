@@ -2,8 +2,16 @@
 
 import { useEffect, useRef } from "react";
 
-type Props = {
+type Source = {
   src: string;
+  type?: string;
+};
+
+type Props = {
+  /** Primary / fallback src when `sources` is omitted. */
+  src?: string;
+  /** Prefer this when you want browser-picked formats (e.g. mp4 + mov). */
+  sources?: Source[];
   className?: string;
   /** Show native controls. Off by default for ambient, looping demo clips. */
   controls?: boolean;
@@ -21,6 +29,7 @@ type Props = {
  */
 export default function AutoplayVideo({
   src,
+  sources,
   className = "",
   controls = false,
 }: Props) {
@@ -57,13 +66,17 @@ export default function AutoplayVideo({
   return (
     <video
       ref={ref}
-      src={src}
+      src={sources?.length ? undefined : src}
       className={className}
       muted
       loop
       playsInline
       preload="metadata"
       controls={controls}
-    />
+    >
+      {sources?.map((s) => (
+        <source key={s.src} src={s.src} type={s.type} />
+      ))}
+    </video>
   );
 }

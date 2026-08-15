@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, CSSProperties } from "react";
+import { useEffect, useRef, useState, CSSProperties } from "react";
 
 interface Hotspot {
   id: string;
@@ -15,7 +15,7 @@ interface Hotspot {
 const HOTSPOTS: Hotspot[] = [
   {
     id: "brain",
-    label: "🧠 Currently running 12 browser tabs and one very good idea.",
+    label: "🧠 Currently running 123 browser tabs and one very good idea.",
     style: { top: "10%", left: "36%", width: "28%", height: "12%", position: "absolute" },
     bubbleStyle: { top: "-80px", left: "30%", transformOrigin: "bottom left" },
     dotAStyle: { bottom: "-10px", left: "38%", width: 10, height: 10 },
@@ -57,7 +57,7 @@ const HOTSPOTS: Hotspot[] = [
 
 const headlines = [
   "I'm a UI/UX product designer, artist & collector of many things.",
-  "I turn complex healthcare and fintech problems into simple experiences.",
+  "I turn complex problems into simple experiences across mobile and web.",
   "20+ years designing — now augmented with a working AI stack.",
 ];
 
@@ -67,6 +67,19 @@ export default function RotatingHero() {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
+  const portraitRef = useRef<HTMLDivElement>(null);
+  const [spot, setSpot] = useState({ x: 50, y: 50, on: false });
+
+  const onPortraitMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = portraitRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    setSpot({
+      x: ((e.clientX - r.left) / r.width) * 100,
+      y: ((e.clientY - r.top) / r.height) * 100,
+      on: true,
+    });
+  };
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -82,15 +95,48 @@ export default function RotatingHero() {
   return (
     <section className="flex min-h-[70vh] items-center px-6 py-16 sm:min-h-[75vh] sm:py-0 lg:min-h-[80vh] lg:px-10">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,340px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,570px)_1fr] lg:gap-16">
-        <div className="relative mx-auto aspect-square w-full max-w-[210px] sm:max-w-[300px] md:mx-0 md:max-w-none lg:max-w-[570px]">
-          <Image
-            src="/hero-halftone.svg"
-            alt="Halftone portrait of Molly Francis"
-            fill
-            unoptimized
-            priority
-            className="object-contain"
-          />
+        <div
+          ref={portraitRef}
+          onMouseMove={onPortraitMove}
+          onMouseEnter={onPortraitMove}
+          onMouseLeave={() => setSpot((s) => ({ ...s, on: false }))}
+          className="group relative mx-auto aspect-square w-full max-w-[210px] sm:max-w-[300px] md:mx-0 md:max-w-none lg:max-w-[570px]"
+        >
+          {/* Color photo full-bleed (the circular headshot). Soft spotlight
+              follows the cursor; gray dots sit inset on top, same as Figma. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-full"
+            style={{
+              WebkitMaskImage: spot.on
+                ? `radial-gradient(circle 6.5rem at ${spot.x}% ${spot.y}%, #000 38%, transparent 72%)`
+                : "radial-gradient(circle 0px at 50% 50%, #000, transparent)",
+              maskImage: spot.on
+                ? `radial-gradient(circle 6.5rem at ${spot.x}% ${spot.y}%, #000 38%, transparent 72%)`
+                : "radial-gradient(circle 0px at 50% 50%, #000, transparent)",
+            }}
+          >
+            <Image
+              src="/hero-color.png"
+              alt=""
+              fill
+              unoptimized
+              sizes="(max-width: 640px) 210px, (max-width: 768px) 300px, 570px"
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="pointer-events-none absolute left-[10.4%] top-[8.4%] z-[1] h-[83.2%] w-[82.3%]">
+            <Image
+              src="/hero-halftone.svg"
+              alt="Halftone portrait of Molly Francis"
+              fill
+              unoptimized
+              priority
+              className="object-contain [filter:brightness(0)_invert(0.28)]"
+            />
+          </div>
+          <div className="absolute left-[10.4%] top-[8.4%] z-[3] h-[83.2%] w-[82.3%]">
 
           {/* Thought bubble hotspots */}
           {HOTSPOTS.map((h) => {
@@ -149,6 +195,7 @@ export default function RotatingHero() {
               </div>
             );
           })}
+          </div>
         </div>
 
         <div className="text-left">

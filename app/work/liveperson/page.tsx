@@ -1,12 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Jost } from "next/font/google";
-import { projects, getProject } from "@/lib/projects";
+import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
+import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
-import { Panel, TextPanel, Heading, Body } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, Heading, Body, VIEW, MEASURE, MEDIA, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 /**
  * Bespoke horizontal-scroll case study for LivePerson/SocialConnect,
@@ -56,8 +56,8 @@ function TwoImagePanel({
   b: { src: string; alt: string; width: number; height: number };
 }) {
   return (
-    <Panel width="lg:w-[96vw]" className="items-center">
-      <div className="grid w-full max-w-[1400px] grid-cols-1 items-center gap-8 sm:grid-cols-2">
+    <Panel width={VIEW} pad="center" className="items-center">
+      <div className={`mx-auto grid w-full max-w-[min(1400px,94vw)] grid-cols-1 items-center gap-8 sm:grid-cols-2`}>
         <SlideIn className="flex justify-center">
           <Image
             src={a.src}
@@ -90,29 +90,27 @@ function BigImagePanel({
   width,
   height,
   caption,
-  maxWidth = 1200,
+  maxWidth = 950,
 }: {
   src: string;
   alt: string;
   width: number;
   height: number;
   caption?: string;
-  /** Caps how wide the image can render at its largest breakpoint, in px —
-   *  still scales down responsively below that on smaller viewports. */
   maxWidth?: number;
 }) {
   return (
-    <Panel width="lg:w-[80vw]" className="items-center">
-      <SlideIn className="flex w-full flex-col items-center" style={{ maxWidth: `${maxWidth}px` }}>
+    <Panel width={VIEW} pad="center" className="items-center">
+      <SlideIn className={`mx-auto flex w-full flex-col items-center ${MEDIA}`} style={{ maxWidth: `${maxWidth}px` }}>
         <Image
           src={src}
           alt={alt}
           width={width}
           height={height}
-          sizes={`(max-width: 1024px) 92vw, min(76vw, ${maxWidth}px)`}
+          sizes={`(max-width: 1024px) 92vw, min(90vw, ${maxWidth}px)`}
           className="h-auto max-h-[70vh] w-full rounded-md object-contain"
         />
-        {caption && <p className="mt-4 max-w-[70ch] text-sm opacity-80 sm:text-base">{caption}</p>}
+        {caption && <p className="mt-4 max-w-[70ch] text-[clamp(0.9rem,1.1vw,1.05rem)] opacity-80">{caption}</p>}
       </SlideIn>
     </Panel>
   );
@@ -123,6 +121,7 @@ export default function LivePersonCaseStudy() {
   const idx = projects.findIndex((p) => p.slug === "liveperson");
   const next = projects[(idx + 1) % projects.length];
   const fg = contrastColor(ACCENT);
+  if (!project) return null;
 
   return (
     <main
@@ -136,15 +135,7 @@ export default function LivePersonCaseStudy() {
             <Image src={LOGO} alt="LivePerson" fill unoptimized className="object-contain object-left" />
           </div>
         }
-        action={
-          <Link
-            href="/"
-            aria-label="Back to home"
-            className="pointer-events-auto -m-3 flex min-h-11 min-w-11 items-center justify-center p-3 text-[11px] font-semibold uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60"
-          >
-            Close
-          </Link>
-        }
+        action={<CloseLink large />}
       />
 
       <HorizontalScroll>
@@ -237,9 +228,9 @@ export default function LivePersonCaseStudy() {
         <BigImagePanel
           src="/work/liveperson/public-tweet-private-thread.png"
           alt="A public tweet on Twitter routed into the LiveEngage agent workspace, with the full private thread and social profile alongside it"
-          width={1100}
-          height={446}
-          maxWidth={1100}
+          width={1024}
+          height={415}
+          maxWidth={950}
         />
 
         {/* ── SINGLE PLATFORM ───────────────────────────────────────────── */}
@@ -304,32 +295,33 @@ export default function LivePersonCaseStudy() {
         />
 
         {/* ── IMPACT ────────────────────────────────────────────────────── */}
-        <Panel width="lg:w-[62vw]">
-          <Heading>Impact</Heading>
-          <div className="mt-10 w-full max-w-[750px] space-y-8">
-            {metrics.map((m, i) => (
-              <SlideIn key={m.label} delay={120 + i * 90}>
-                <p className="text-sm font-medium opacity-80 sm:text-base">{m.label}</p>
-                <p className="mt-1 text-[clamp(1.75rem,5vw,2.75rem)] font-semibold leading-tight">
-                  {m.value}
-                </p>
-              </SlideIn>
-            ))}
+        <Panel width={VIEW} pad="center">
+          <div className={`${MEASURE} mx-auto`}>
+            <Heading>Impact</Heading>
+            <div className="mt-10 w-full space-y-8">
+              {metrics.map((m, i) => (
+                <SlideIn key={m.label} delay={120 + i * 90}>
+                  <p className="text-[clamp(0.9rem,1.1vw,1rem)] font-medium opacity-80">{m.label}</p>
+                  <p className="mt-1 text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight">
+                    {m.value}
+                  </p>
+                </SlideIn>
+              ))}
+            </div>
           </div>
         </Panel>
 
-        {/* ── NEXT PROJECT ──────────────────────────────────────────────── */}
-        <Link
+        <CaseStudyMetaPanel
+          meta={getCaseStudyMeta(project)}
+          lightText={fg === "#f5f5f5"}
+        />
+
+        <NextProjectLink
           href={`/work/${next.slug}`}
-          className="group relative flex w-full flex-col justify-center bg-[#141414] px-6 py-20 text-[#f5f5f5] sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[56vw] lg:shrink-0 lg:snap-start lg:px-[7%] lg:py-0"
-        >
-          <p className="text-[clamp(0.95rem,2.2vw,1.1rem)] font-normal text-white/50 sm:text-[1vw]">
-            Up next — {next.client}
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,7vw,3.5rem)] font-semibold leading-[1.1] transition-transform group-hover:translate-x-3 sm:text-[4vw]">
-            {next.title} →
-          </h2>
-        </Link>
+          client={next.client}
+          title={next.title}
+          accent={next.accent}
+        />
       </HorizontalScroll>
     </main>
   );

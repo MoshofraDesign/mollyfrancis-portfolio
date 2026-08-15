@@ -63,6 +63,7 @@ export const projects: Project[] = [
     logo: "/logos/netspend.svg",
     accent: "#313131",
     featured: true,
+    prototype: "/work/netspend/ucm/index.html",
     aiSummary:
       "Led design on Netspend's app Rewards program and Unified Commerce Media (UCM) — the internal tool that builds and manages the rewards surfaced on the consumer app. Reworked the consumer rewards layout and information architecture around new features shipped in UCM, using Claude, Gemini, and Figma Make throughout research synthesis and prototyping.",
     overview:
@@ -204,13 +205,13 @@ export const projects: Project[] = [
     title: "Prior Authorization Portal",
     subtitle: "Replacing fax with a live, validated authorization workflow",
     client: "Bright HealthCare",
-    year: "2021–2022",
+    year: "2021",
     role: "Principal Product Designer",
     tags: ["Healthcare", "Provider tools", "Design system", "0→1"],
     thumbnail: "/work-thumbnails/bright-healthcare-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489640575-FE1X3BSOCUHJVV45MVW0/Landing.jpg",
     logo: "/logos/bright-healthcare-vert-2.svg",
-    logoScale: 1.4,
+    logoScale: 1.7,
     accent: "#FFAF00",
     featured: true,
     aiSummary:
@@ -224,19 +225,14 @@ export const projects: Project[] = [
     outcome:
       "Within weeks of go-live in new markets, 15%+ of authorizations shifted to the portal — climbing rapidly afterward. Providers consistently rated it the best tool they had used; one team estimated the workflow saved them four hours per provider per day.",
     metrics: [
-      { label: "Monthly active users", value: "100 → 10K" },
+      { label: "Monthly usage", value: "9–10K" },
       { label: "Operational savings", value: "$1.9M" },
-      { label: "Intake time reduction", value: "50%" },
-      { label: "2022 forecasted savings", value: "$2.5M" },
+      { label: "Hours saved / provider / day", value: "4" },
+      { label: "Authorization submissions", value: "50K" },
     ],
     prototype:
-      "https://www.figma.com/proto/cxXiQ6LQOpNNjWi4Auf2DC/Bright-Provider-PreAuthPortal",
+      "https://www.figma.com/proto/cxXiQ6LQOpNNjWi4Auf2DC/Bright-Provider-PreAuthPortal?node-id=892-27971&viewport=4575%2C-2862%2C0.5&t=0OJuceJUKOSH6o1m-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=892%3A31473&page-id=892%3A27941",
     images: [
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/6a83a6f4-3382-4474-a3d6-85c0bad4e6df/BH-PortFax.png",
-        caption:
-          "The prior authorization fax form providers used before the Portal existed.",
-      },
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489521988-W8AEB4S7N95NOK3EGATT/01.jpg",
         caption: "Authorization dashboard with status filtering",
@@ -253,6 +249,11 @@ export const projects: Project[] = [
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489524593-1VI6DO5CFVOIJXS8BCS2/Submit.jpg",
         caption: "Submission confirmation and provider next steps",
       },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/6a83a6f4-3382-4474-a3d6-85c0bad4e6df/BH-PortFax.png",
+        caption:
+          "The prior authorization fax form providers used before the Portal existed.",
+      },
     ],
   },
   {
@@ -264,9 +265,9 @@ export const projects: Project[] = [
     role: "Principal Designer · Design system lead",
     tags: ["Telehealth", "Design system", "iOS/Android", "Research"],
     thumbnail: "/work-thumbnails/docsquad-figma.webp",
-    hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/9049760a-bc08-470b-a819-28ee75091d8a/Provider-Native-Group.png",
+    hero: "/work/docsquad/hero.png",
     logo: "/logos/docsquad.svg",
-    accent: "#DA28DE",
+    accent: "#dd00e2",
     featured: true,
     aiSummary:
       "Rebuilt a desktop-only telehealth tool into a unified provider experience across desktop and native mobile (Flutter). Generative research with 'virtual moonlighter' clinicians shaped a workflow that can diagnose a routine visit in under two minutes — without a second video call.",
@@ -277,7 +278,7 @@ export const projects: Project[] = [
     approach:
       "Led discovery with 'Virtual Moonlighters' — clinicians picking up shifts on the side — to understand what would actually fit into their week. From there I shaped a new design system, refactored the diagnosis flow to support both async and sync modalities, and partnered with engineering on a Flutter implementation that shipped the same UI to web and native.",
     outcome:
-      "A single design system spans the patient and provider apps. Providers can complete routine async visits (urgent care, prescription refills) in as little as two minutes. Custom illustration and a calmer visual language replaced a clinical, dated UI.",
+      "Rebuilt the desktop only Zipnosis app into a desktop and native mobile app using Flutter, creating a better User Experience and building a design system with updated UI and flows.\n\nThe current target audience is urgent care visits and prescription refills. We conducted a lot of user testing around individual providers who are wanting to work remote and easily pick up visits on the side (Virtual Moonlighters).",
     research: [
       "5 generative interviews with practicing virtual clinicians",
       "Power-user comparison with Patient IO veterans",
@@ -285,31 +286,27 @@ export const projects: Project[] = [
       "Resonance testing of the Digital Diagnosis workflow",
     ],
     prototype:
-      "https://www.figma.com/proto/Bx8fqdyIcTj47ecKAdRGXg/DST_DES_Provider_Desktop",
+      "https://www.figma.com/design/OZvS6ltydnegvXtVxD1yEH/Portfolio?node-id=4553-21862&t=UalCBBDmPBjqhPwk-1",
     images: [
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/4b2ec0d1-89e3-4c05-8a23-053303f95c99/Screenshot+2023-01-15+at+2.35.png",
+        src: "/work/docsquad/research-board.png",
         caption: "Virtual moonlighter research, methods and findings",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/3fd58c3c-6a14-476c-a087-596685afc660/Page-Visit-MASTER-wDrawer.png",
-        caption: "Provider visit view with collaborative drawer",
+        src: "/work/docsquad/desktop-app.png",
+        caption: "Provider desktop — Patient queue",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/6d59c7f7-3cea-4a82-b055-737ce5010839/DS-GetCare.jpg",
-        caption: "Patient — Get Care modality selection",
+        src: "/work/docsquad/phones.png",
+        caption: "Provider native app — Intake, Video, Assessment, Review",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/f9c3cb73-9cb5-47d5-8a3d-fc4c84bbacc5/GetCare-Interview-FollowUpCare.jpg",
-        caption: "Async intelligent interview and follow-up care",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0459224a-b153-4792-a831-b71431df373f/DS-LoggedIn.jpg",
-        caption: "Patient dashboard — logged in",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/3ae628cf-bbed-4581-878d-f6b77fe14fb0/icons+3.25.22+PM.jpg",
+        src: "/work/docsquad/icons.png",
         caption: "Custom illustration set for the new design system",
+      },
+      {
+        src: "/work/docsquad/interview-dashboard.png",
+        caption: "Patient interview and logged-in dashboard",
       },
     ],
   },
@@ -773,7 +770,7 @@ export const projects: Project[] = [
     aiSummary:
       "A collection of logo and identity work spanning clients across consumer, lifestyle, food, and personal branding. Marks range from playful illustrative to clean wordmarks, depending on the audience and how the brand needed to feel in use.",
     overview:
-      "Logo and identity work for a mix of paying clients and personal projects — wordmarks, illustrative marks, and full identity systems.",
+      "Logo and identity work for a mix of paying clients and personal projects — wordmarks, illustrative marks, and full identity systems. Every mark here was drawn in Illustrator in the early years: no AI, no prompt, just the Pen tool, a graveyard of extra anchor points, and the wild hope that this time the curve would actually land.",
     images: [
       {
         src: "/work/bohemian-hair-bows-card.jpg",
@@ -883,7 +880,7 @@ export const projects: Project[] = [
   },
   {
     slug: "print",
-    title: "Print",
+    title: "Print Over the Years",
     subtitle: "Print design across holiday cards, invites, and editorial",
     client: "Various",
     year: "2010–2022",
@@ -983,3 +980,260 @@ export const getProject = (slug: string) =>
   projects.find((p) => p.slug === slug);
 
 export const featuredProjects = projects.filter((p) => p.featured);
+
+/** Shared tool icon filenames under /public/icons/tools. */
+export type ToolName =
+  | "Figma"
+  | "Sketch"
+  | "InVision"
+  | "Zeplin"
+  | "Abstract"
+  | "Claude"
+  | "Gemini"
+  | "Cursor"
+  | "UserTesting"
+  | "Miro"
+  | "Jira"
+  | "Confluence"
+  | "Pendo"
+  | "Amplitude"
+  | "Validic"
+  | "Dovetail"
+  | "Adobe"
+  | "Apple Health Kit";
+
+export const TOOL_ICONS: Record<ToolName, string> = {
+  Figma: "/icons/tools/figma.png",
+  Sketch: "/icons/tools/sketch.png",
+  InVision: "/icons/tools/invision.png",
+  Zeplin: "/icons/tools/zeplin.png",
+  Abstract: "/icons/tools/abstract.png",
+  Claude: "/icons/tools/claude.png",
+  Gemini: "/icons/tools/gemini.png",
+  Cursor: "/icons/tools/cursor.svg",
+  UserTesting: "/icons/tools/usertesting.png",
+  Miro: "/icons/tools/miro.png",
+  Jira: "/icons/tools/jira.png",
+  Confluence: "/icons/tools/confluence.png",
+  Pendo: "/icons/tools/pendo.png",
+  Amplitude: "/icons/tools/amplitude.png",
+  Validic: "/icons/tools/validic.png",
+  Dovetail: "/icons/tools/dovetail.png",
+  Adobe: "/icons/tools/adobe.png",
+  "Apple Health Kit": "/icons/tools/apple-health.png",
+};
+
+export function toolIconSrc(name: ToolName, base?: string) {
+  const shared = TOOL_ICONS[name];
+  if (!base) return shared;
+  return `${base}/${shared.slice(shared.lastIndexOf("/") + 1)}`;
+}
+
+export type CaseStudyMeta = {
+  team: string[];
+  timing: { value: string; label: string }[];
+  tools: ToolName[];
+  projected: { value: string; label: string }[];
+  /** Optional directory of per-project tool marks (same filenames as TOOL_ICONS). */
+  toolIconBase?: string;
+};
+
+const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
+  netspend: {
+    team: [
+      "1 Lead UX Designer",
+      "1 Product Manager",
+      "4 Engineers",
+      "Merchandising & ops partners",
+    ],
+    timing: [
+      { value: "5 months", label: "0→1 design to handoff-ready" },
+      { value: "June 2026", label: "Development kickoff" },
+      { value: "Year End 2026", label: "Target launch" },
+    ],
+    tools: ["Figma", "Claude", "Gemini", "Cursor", "UserTesting", "Miro", "Jira"],
+    projected: [
+      { value: "$500K → $10M", label: "Rewards revenue target" },
+      { value: "0 → 1", label: "UCM platform in 5 months" },
+    ],
+  },
+  "govos-esubmission": {
+    team: [
+      "1 Lead Product Designer",
+      "1 Product Manager",
+      "Engineering partners",
+      "County & title stakeholders",
+    ],
+    timing: [
+      { value: "2023–2024", label: "Discovery through launch" },
+      { value: "Live", label: "Self-serve product shipped" },
+    ],
+    tools: ["Figma", "Gemini", "UserTesting", "Miro", "Jira", "Claude"],
+    projected: [
+      { value: "Direct channel", label: "Submitter → county, no middleman" },
+      { value: "1 ACH report", label: "Per submitter per period" },
+    ],
+  },
+  "bright-healthcare": {
+    team: [
+      "Worked with 5–7 engineers, 1 Product Manager, Director of Product, and 1 Content",
+      "Hired and managed 1 designer midway",
+      "Worked with clinical teams to understand their workflows and competitors they have used",
+    ],
+    timing: [
+      { value: "March – July 2021", label: "6 months" },
+      { value: "Weeks", label: "15%+ shift to portal after go-live" },
+    ],
+    tools: ["Figma", "Jira", "Confluence", "Miro", "Pendo", "Dovetail"],
+    projected: [
+      { value: "$1.9M", label: "Savings at 9–10K monthly usage" },
+      { value: "$800K", label: "Clinician review savings (7 min/case)" },
+      { value: "4 hrs/day", label: "Saved per provider" },
+      { value: "50K", label: "Authorization submissions" },
+    ],
+  },
+  docsquad: {
+    team: [
+      "1 Principal Designer",
+      "Design system lead",
+      "Flutter engineering partners",
+    ],
+    timing: [
+      { value: "2022–2023", label: "Rebuild across desktop + native" },
+      { value: "< 2 min", label: "Routine visit diagnosis target" },
+    ],
+    tools: [
+      "Figma",
+      "Jira",
+      "Confluence",
+      "Miro",
+      "Pendo",
+      "Amplitude",
+      "UserTesting",
+    ],
+    toolIconBase: "/work/docsquad/tools",
+    projected: [
+      { value: "Desktop + native", label: "One Flutter UI surface" },
+      { value: "Async + sync", label: "Visit modalities in one flow" },
+    ],
+  },
+  liveperson: {
+    team: [
+      "1 Lead Product Designer",
+      "Platform product partners",
+      "Engineering across 3 teams",
+    ],
+    timing: [
+      { value: "2019–2020", label: "SocialConnect design & vision" },
+      { value: "Self-serve", label: "Brand onboarding unblocked" },
+    ],
+    tools: ["Figma", "Miro", "Jira"],
+    projected: [
+      { value: "1 surface", label: "Every social channel in LiveEngage" },
+      { value: "3 teams", label: "Roadmap aligned on end-state vision" },
+    ],
+  },
+  "care-homepay": {
+    team: [
+      "1 Principal Product Designer",
+      "Brand design partners",
+      "Mobile engineering",
+    ],
+    timing: [
+      { value: "2020–2021", label: "Paired employee + employer apps" },
+      { value: "Phone-first", label: "Hours, approvals, payroll" },
+    ],
+    tools: ["Figma", "Miro", "Jira", "UserTesting"],
+    projected: [
+      { value: "2 apps", label: "Shared system, two mental models" },
+      { value: "Auto roll-up", label: "Default that cuts payroll edits" },
+    ],
+  },
+  "consumer-health": {
+    team: [
+      "1 Senior Product Designer",
+      "IA lead",
+      "Cross-functional athena partners",
+    ],
+    timing: [
+      { value: "Engagement", label: "Marketplace + care apps" },
+    ],
+    tools: ["Figma", "Miro", "Jira"],
+    projected: [
+      { value: "IA-led", label: "Partner + product discovery" },
+    ],
+  },
+  "volusion-admin": {
+    team: ["1 Senior Product Designer", "Product & engineering partners"],
+    timing: [{ value: "Multi-year", label: "Admin patterns & modules" }],
+    tools: ["Figma", "Miro", "Jira"],
+    projected: [
+      { value: "Scalable admin", label: "Tables, bulk actions, nav" },
+    ],
+  },
+  onboarding: {
+    team: ["1 Senior Product Designer", "PM, eng, sales & support"],
+    timing: [{ value: "Sprint cycle", label: "Research → prototype → test" }],
+    tools: ["Figma", "Miro", "Jira", "UserTesting"],
+    projected: [
+      { value: "Trial → paid", label: "Faster path to a live store" },
+    ],
+  },
+  "storefront-editor": {
+    team: ["1 Senior Product Designer", "Product & engineering partners"],
+    timing: [{ value: "Feature cycle", label: "Style editor redesign" }],
+    tools: ["Figma", "Miro", "Jira"],
+    projected: [
+      { value: "Merchant control", label: "Look & feel without code" },
+    ],
+  },
+  ecommerce: {
+    team: ["1 Senior Product Designer", "Client services partners"],
+    timing: [{ value: "Ongoing", label: "Client storefronts & templates" }],
+    tools: ["Figma", "Miro"],
+    projected: [
+      { value: "Flexible themes", label: "Merchant-ready ecommerce" },
+    ],
+  },
+  "volusion-gallery": {
+    team: ["1 Senior Product Designer", "Internal marketing"],
+    timing: [{ value: "Campaign work", label: "Brand & promo surfaces" }],
+    tools: ["Figma"],
+    projected: [
+      { value: "Brand system", label: "Swag, landing, promo" },
+    ],
+  },
+  logos: {
+    team: ["1 Designer"],
+    timing: [{ value: "Project-based", label: "Identity & brand kits" }],
+    tools: ["Figma"],
+    projected: [
+      { value: "Logo + kit", label: "Wordmark through guidelines" },
+    ],
+  },
+  print: {
+    team: ["1 Designer"],
+    timing: [{ value: "Project-based", label: "Print & collateral" }],
+    tools: ["Figma"],
+    projected: [
+      { value: "Print-ready", label: "Collateral & special editions" },
+    ],
+  },
+};
+
+/** Meta panel content for a case study — explicit override or sensible defaults. */
+export function getCaseStudyMeta(project: Project): CaseStudyMeta {
+  const override = CASE_STUDY_META[project.slug];
+  if (override) return override;
+
+  return {
+    team: [project.role, "Cross-functional partners"],
+    timing: [{ value: project.year, label: "Engagement" }],
+    tools: ["Figma", "Miro", "Jira"],
+    projected:
+      project.metrics?.slice(0, 2).map((m) => ({
+        value: m.value,
+        label: m.label,
+      })) ?? [{ value: project.client, label: project.subtitle }],
+  };
+}

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { projects } from "@/lib/projects";
-import CareGrid from "@/components/CareGrid";
+import CareGrid, { WORK_THUMB_SECTION } from "@/components/CareGrid";
 import RotatingHero from "@/components/RotatingHero";
 import Reveal from "@/components/Reveal";
 import ScrollToWork from "@/components/ScrollToWork";
@@ -20,7 +20,7 @@ export default function Home() {
           Anchor for the "Work" nav item — jumps here instead of a separate
           /work route. Tiles are capped at 375px with gutters between them,
           so this shares the page's padded container like every other section. */}
-      <section id="work" className="mx-auto max-w-7xl scroll-mt-24 px-6 py-16 lg:px-10">
+      <section id="work" className={`${WORK_THUMB_SECTION} scroll-mt-24 py-16`}>
         <CareGrid projects={projects} />
       </section>
 
