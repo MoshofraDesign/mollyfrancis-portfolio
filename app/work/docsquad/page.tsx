@@ -205,7 +205,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 3 — RESEARCH. Figma 4553:21883: 100,237 / 950×525, gap 16 */}
+        {/* 3 — RESEARCH. Figma 4553:21883: 100,329 / 950×433, gap 16, bottom 238 */}
         <ScreenPanel>
           <div className="flex w-full max-w-[950px] flex-col gap-4 lg:absolute lg:bottom-[23.8vh] lg:left-[6.94vw] lg:w-[65.97vw] lg:max-w-none lg:justify-end">
             <SlideIn>
