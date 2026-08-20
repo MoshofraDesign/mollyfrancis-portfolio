@@ -139,6 +139,7 @@ export default function ConsumerHealthCaseStudy() {
           alt="Legacy My Health page — Test Results only"
           aspect="aspect-[950/659]"
           caption="This was home."
+          contain
         />
 
         {/* So I made a real landing */}
