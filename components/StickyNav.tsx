@@ -89,7 +89,7 @@ export default function StickyNav({
   const logoStyle: React.CSSProperties = isLg
     ? {
         paddingLeft: parkLeft,
-        paddingTop: parkTop ?? 28,
+        paddingTop: parkTop ?? 76,
         transform: `translateX(${offset ?? 0}px)`,
         visibility: offset === null ? "hidden" : "visible",
       }

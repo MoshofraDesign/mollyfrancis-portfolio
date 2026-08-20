@@ -53,7 +53,7 @@ export const projects: Project[] = [
     slug: "netspend",
     title: "Netspend Rewards",
     subtitle:
-      "Redesigning the app rewards experience and the internal tool that powers it",
+      "The cardholder Rewards tab, and the 0→1 tool that powers it",
     client: "Netspend",
     year: "2024–2026",
     role: "Lead UX Designer",
@@ -65,13 +65,13 @@ export const projects: Project[] = [
     featured: true,
     prototype: "/work/netspend/ucm/index.html",
     aiSummary:
-      "Led design on Netspend's app Rewards program and Unified Commerce Media (UCM) — the internal tool that builds and manages the rewards surfaced on the consumer app. Reworked the consumer rewards layout and information architecture around new features shipped in UCM, using Claude, Gemini, and Figma Make throughout research synthesis and prototyping.",
+      "Led UX for Netspend's app Rewards program and UCM, the internal tool that builds every reward shown to cardholders. Used generative research and AI-assisted prototyping (Claude, Gemini, Figma Make) to scale the IA as new reward types shipped.",
     overview:
-      "Netspend's app Rewards program needed a consumer layout that could keep pace with what the internal Unified Commerce Media tool made possible — new reward types, new merchant partnerships, more configuration — without the experience turning into a junk drawer. UCM is the system of record: it's where the team builds and manages every reward that eventually surfaces to cardholders.",
+      "Rewards needed a consumer layout that could keep pace with UCM — new reward types, new merchants, more configuration — without turning into a junk drawer.",
     approach:
-      "I owned design across both sides of this: the UCM internal tool merchandising/ops teams use to build and manage rewards, and the consumer-facing rewards layout and IA that had to scale with it. Heavy use of generative and moderated user testing shaped both. AI tools — Claude, Gemini, and Figma Make — assisted research synthesis and rapid prototyping, letting me test more layout directions per round than a fully manual process would allow.",
+      "Owned both sides: the internal UCM tool ops teams use to build rewards, and the consumer IA that has to scale with it. Generative and moderated testing drove both, with AI tools speeding up synthesis and prototyping.",
     outcome:
-      "A consumer rewards experience with an IA that scales as UCM ships new reward types, and an internal tool that lets non-technical teams configure rewards without engineering tickets.",
+      "A consumer rewards IA that scales as UCM ships new reward types, and an internal tool that lets non-technical teams configure rewards without engineering tickets.",
   },
   {
     slug: "govos-esubmission",
@@ -89,11 +89,11 @@ export const projects: Project[] = [
     accent: "#70ACF4",
     featured: true,
     aiSummary:
-      "Designed an electronic-recording portal that lets title companies submit deeds and recordings directly to county offices — replacing the third-party submitters that traditionally sit between them. AI tooling sped up the research synthesis: Dovetail clustered interview transcripts, and an in-house GPT prompt converted Userbit usability findings into prioritized Jira tickets the day after each session.",
+      "Designed a direct-to-county eRecording portal so title companies could submit deeds electronically — cutting out the third-party submitters that sat between them. AI-assisted synthesis (Dovetail transcript clustering, GPT-generated Jira tickets) kept research turnaround fast.",
     overview:
-      "Recording a deed used to mean handing paper (or fax) to a third-party submitter who relayed it to the county. GovOS eSubmission gave title companies a direct channel: upload documents, validate compliance, and settle payments by ACH — all without leaving the portal. The county side gets clean structured data, drops manual scanning, and serves submitters directly.",
+      "Recording a deed meant faxing a third-party submitter who relayed it to the county. eSubmission gave title companies a direct channel — upload, validate, and pay by ACH — with clean structured data flowing straight to the county.",
     problem:
-      "Electronic recording was indirect and expensive. Title companies paid intermediaries to relay documents, county recorders re-scanned everything by hand, and payment reconciliation was a per-document mess. Submitters had no visibility into status until the recording cleared.",
+      "Electronic recording ran through paid intermediaries. Counties re-scanned every fax by hand, reconciliation was a per-document mess, and submitters had zero status visibility.",
     problemImages: [
       {
         src: "/work/govos/problem-before.jpg",
@@ -117,9 +117,9 @@ export const projects: Project[] = [
       "Streamline payment into a bulk wire transfer (ACH) for each Submitter",
     ],
     approach:
-      "I led design across discovery, prototyping, validation, and rollout. Generative interviews with title-company submitters and county recorders shaped a step-by-step submission flow with a persistent progress bar, a built-in document-compliance review assistant, and a checkout that consolidated dozens of recordings into a single ACH transfer. Round-the-loop usability testing in Userbit surfaced 12+ issues per session — synthesized in Dovetail, prioritized with the PM in an AI-assisted impact/effort sort, and queued into Jira ahead of development.",
+      "Led discovery through rollout. Generative interviews with submitters and county recorders shaped a step-by-step flow with a progress bar, an inline compliance-review assistant, and consolidated ACH checkout. Usability testing in Userbit surfaced 12+ issues per round, synthesized in Dovetail and triaged into Jira with the PM.",
     outcome:
-      "eSubmission shipped as a self-serve product. The Cuyahoga County recorder called it \"a fantastic opportunity to more directly and better serve our title companies,\" and one Berks County title abstractor said they could \"pull someone off the street and show them how to do this in about 20 minutes.\" Counties run a single ACH report per submitter per period; the old reconciliation queue disappeared.",
+      "Shipped as a self-serve product. Cuyahoga County called it \"a fantastic opportunity to more directly and better serve our title companies\"; a Berks County abstractor said they could \"pull someone off the street and show them how to do this in about 20 minutes.\" The old per-document reconciliation queue disappeared, replaced by one ACH report per submitter per period.",
     research: [
       "Generative interviews with title-company submitters and county recording offices",
       "Live usability testing in Userbit with 5 Business/Company users in a QA environment",
@@ -272,13 +272,13 @@ export const projects: Project[] = [
     aiSummary:
       "Rebuilt a desktop-only telehealth tool into a unified provider experience across desktop and native mobile (Flutter). Generative research with 'virtual moonlighter' clinicians shaped a workflow that can diagnose a routine visit in under two minutes — without a second video call.",
     overview:
-      "Providers already carry heavy clinical schedules and tedious EHR work. DocSquad's old desktop tool added another platform without easing the load. We rebuilt the experience end-to-end — desktop and native mobile in Flutter — around the modern reality of telemedicine: asynchronous intelligent interviews collect symptoms, and providers diagnose, prescribe, or escalate quickly.",
+      "DocSquad's desktop-only tool added another platform to an already heavy clinical workload. I rebuilt it end-to-end — desktop and native mobile in Flutter — around async intake that collects symptoms so providers can diagnose, prescribe, or escalate fast.",
     problem:
-      "The legacy product assumed synchronous video for every visit and required heavy data entry. Providers wanted to treat patients in minutes, not maintain a parallel EHR.",
+      "The legacy product assumed synchronous video for every visit and heavy data entry. Providers wanted to treat patients in minutes, not run a parallel EHR.",
     approach:
-      "Led discovery with 'Virtual Moonlighters' — clinicians picking up shifts on the side — to understand what would actually fit into their week. From there I shaped a new design system, refactored the diagnosis flow to support both async and sync modalities, and partnered with engineering on a Flutter implementation that shipped the same UI to web and native.",
+      "Led discovery with \"Virtual Moonlighters\" — clinicians picking up shifts on the side — then rebuilt the design system and diagnosis flow to support async and sync visits, partnering with engineering on a Flutter build that shipped one UI to web and native.",
     outcome:
-      "Rebuilt the desktop only Zipnosis app into a desktop and native mobile app using Flutter, creating a better User Experience and building a design system with updated UI and flows.\n\nThe current target audience is urgent care visits and prescription refills. We conducted a lot of user testing around individual providers who are wanting to work remote and easily pick up visits on the side (Virtual Moonlighters).",
+      "Rebuilt the desktop-only Zipnosis app as a unified desktop + native (Flutter) product with a new design system. Now serves urgent-care visits and prescription refills for remote \"Virtual Moonlighter\" providers.",
     research: [
       "5 generative interviews with practicing virtual clinicians",
       "Power-user comparison with Patient IO veterans",
@@ -393,9 +393,9 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "consumer-health",
+    slug: "athenahealth",
     title: "athenahealth",
-    subtitle: "Re-architecting a 25M-patient portal around what people actually do",
+    subtitle: "25 million patients landed on Test Results. I rebuilt the portal around what they actually do.",
     client: "athenahealth",
     year: "2018–2019",
     role: "Senior Product Designer · IA lead",
@@ -410,6 +410,8 @@ export const projects: Project[] = [
       "The legacy portal landed users on Test Results — a single sub-category — and obscured everything else. With 92% of healthcare consumers saying customer experience is a top strategic priority for providers, the structure was costing athena's clients renewals. We rebuilt the IA, dashboard, and navigation for responsive web and laid groundwork for native iOS/Android apps.",
     approach:
       "Card sorts in Optimal Workshop, unmoderated remote testing, and content audits drove a new taxonomy. Designed a consolidated My Health dashboard, mobile-first navigation, and a system that could degrade gracefully across athena's many client deployments.",
+    outcome:
+      "Shipped a consolidated My Health dashboard and mobile-first navigation for 25M registered patients — replacing a structure that landed everyone on 'Test Results' and buried appointments, messages, and prescriptions.",
     metrics: [
       { label: "Registered patients", value: "25M" },
       { label: "Will switch providers without good digital exp.", value: "90%" },
@@ -435,6 +437,110 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "athenawell",
+    title: "athenaWell",
+    subtitle: "A patient hub for care plans, daily progress, and education",
+    client: "athenahealth",
+    year: "2017–2018",
+    role: "Senior Product Designer",
+    tags: ["Healthcare", "Care management", "Research"],
+    thumbnail: "/work-thumbnails/athenawell.webp",
+    logo: "/logos/athenawell.png",
+    accent: "#0055CC",
+    aiSummary:
+      "Designed athenaWell, a care management platform giving patients and care teams one shared source of truth for a care plan. Built around three patient personas and validated with resonance testing, it shipped daily patient tasks, 200+ wearable integrations, and content partnerships with Mayo Clinic and NIH.",
+    overview:
+      "athenaWell is a care management platform that gives patients and care teams a single, shared source of truth for a care plan — conditions, goals, and day-to-day tasks — that works whether care is happening inside or outside the athenahealth network.",
+    problem:
+      "Care coordination was scattered across phone calls, paper folders, and disconnected systems — hardest on patients managing chronic or high-risk conditions across multiple specialists. Care teams needed one place to create, assign, and track a plan; patients needed a simple daily view of what to do and a direct line to their team.",
+    approach:
+      "Designed around three patient personas — Healthy, Rising Risk, High-Risk — then validated with resonance testing: 5 interviews walking through a working Care Plan prototype. One assumption didn't survive testing: I expected tabbed care plans to confuse patients; testers preferred them, so they shipped as designed.",
+    outcome:
+      "Shipped a daily task view (check-ins, surveys, education) with a progress indicator testers called out as motivating, plus 200+ wearable integrations via Validic and content partnerships with Mayo Clinic, NIH, and epocrates.",
+    metrics: [
+      { label: "Patient personas designed for", value: "3 risk tiers" },
+      { label: "Resonance-testing interviews", value: "5" },
+      { label: "Wearable device integrations", value: "200+" },
+    ],
+    research: [
+      "Resonance testing: 5 interviews across a range of backgrounds, including a power user of a comparable product, walking through a working Care Plan prototype",
+      "Persona-driven design across Healthy, Rising Risk, and High-Risk patients — each with distinct values, goals, and pain points",
+      "An early IA assumption (tabbed care plans would confuse patients) was tested and overturned — patients preferred the separation",
+      "Designed care-team apps for reaching patients beyond the clinic (virtual, phone, flexible scheduling), plus an Apollo chatbot for event-driven patient messaging",
+    ],
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1558469800892-B0L920CQQ1NRG9FD0HAL/Patient-CarePlans-Landing+Copy+2.png",
+        caption: "Care Plan landing page — the shared source of truth for patients and care teams",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513349531314-89U1IJ39DE46WB88QYI0/Screen+Shot+2017-12-15+at+8.51.43+AM.png",
+        caption: "Care Team section — testers were especially drawn to the video chat option",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513349151416-RF4TP9N5LWQVAAVQGQB7/Screen+Shot+2017-12-15+at+8.44.23+AM.png",
+        caption: "Education content mapped to each patient's specific health concerns",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513348975246-YKX6GH1QTGSD7AYQAJJ2/Screen+Shot+2017-12-15+at+8.37.37+AM.png",
+        caption: "Daily patient tasks with a progress indicator testers found motivating",
+      },
+    ],
+  },
+  {
+    slug: "athenaconnect",
+    title: "athenaConnect",
+    subtitle: "The marketplace for apps that plug into athenahealth",
+    client: "athenahealth",
+    year: "TBD",
+    role: "Senior Product Designer",
+    tags: ["Healthcare", "Marketplace", "UX"],
+    thumbnail: "/work-thumbnails/athenaconnect.webp",
+    logo: "/logos/athenaconnect.png",
+    accent: "#0E7C86",
+    aiSummary: "Redesigned athenahealth's partner Marketplace discovery experience -- improving search, filtering, and content structure -- contributing to 71%+ customer adoption of partner solutions across 370+ integrations and 60+ specialties.",
+    overview: "athenaConnect is athenahealth's partner Marketplace, where clinicians and customers find and evaluate third-party health-tech products.",
+    problem: "Weak search and flat filtering made it hard for customers to find the right partner solution among hundreds of options.",
+    approach: "Redesigned search, filtering, and content structure so listings surfaced the right partners faster, for both public visitors and athenaNet users evaluating tools mid-workflow.",
+    outcome: "Contributed to 71%+ customer adoption of partner solutions across 370+ integrations and 60+ specialties.",
+  },
+  {
+    slug: "patient-io",
+    title: "Patient IO",
+    subtitle: "Desktop and native apps for at-risk patients and their care managers",
+    client: "athenahealth (acquired)",
+    year: "2016–2017",
+    role: "Solo Product Designer",
+    tags: ["Healthcare", "Mobile", "Behavior change"],
+    thumbnail: "/work-thumbnails/athenahealth-figma.webp",
+    logo: "/logos/athenahealth.svg",
+    accent: "#4717B7",
+    aiSummary:
+      "Patient IO helped patients stick to complex treatment regimens and gave health professionals visibility between visits. As solo designer on a 14-person team, I owned the end-to-end experience -- work that led athenahealth to acquire the company in 2016 and adopt the framework as the design foundation for athenaWell.",
+    overview:
+      "Patient IO tracked medications, vitals, and care-plan adherence between office visits, pushing data back to clinicians. The medication module had to scale to thousands of drugs, so I built a component system that rendered each pill correctly from structured Epocrates data.",
+    outcome:
+      "athenahealth acquired Patient IO in 2016 and adopted its adherence-tracking and pill-rendering patterns as the design foundation for athenaWell.",
+    images: [
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965854643-56K9O8S9XMT6ZK4P38J8/Devices.png",
+        caption: "Patient IO across devices",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511967913957-U3LHYLLHH507187LL8WZ/image-asset.png",
+        caption: "Tracking medications, vitals, and adherence",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511968056680-OYW7HQTA481IA0KX2EV3/image-asset.png",
+        caption: "Medications module",
+      },
+      {
+        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0a7d94ff-64a3-4bb9-9202-85911eb02bbc/Screen+Shot+2022-11-02+at+8.03.55+PM.png",
+        caption: "Pill-shape design system, generated from Epocrates data",
+      },
+    ],
+  },
+  {
     slug: "volusion-admin",
     title: "Volusion Ecommerce Admin",
     subtitle: "A modern admin for tens of thousands of independent merchants",
@@ -449,6 +555,8 @@ export const projects: Project[] = [
       "Redesigned the admin used by Volusion's merchant base — order management, catalog, marketing, and storefront tools. Defined patterns for data-heavy tables, bulk actions, and a navigation that scaled as the product added modules.",
     overview:
       "Volusion's ecommerce admin gave small businesses everything they needed to run an online store. I worked across order management, catalog, storefront, and onboarding — defining patterns that could outlive any one feature.",
+    outcome:
+      "Shipped new patterns for products, orders, and admin navigation across Volusion's full merchant base, replacing a legacy admin that hadn't kept pace with the product's growing feature set.",
     images: [
       {
         src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462542831010-IXQ56XR6374O1BYZQ6LK/image-asset.png",
@@ -538,95 +646,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "onboarding",
-    title: "Ecommerce Admin Onboarding",
-    subtitle: "Helping new Volusion free-trial users sign up and start selling",
-    client: "Volusion",
-    year: "2015–2016",
-    role: "Senior Product Designer",
-    tags: ["Ecommerce", "Onboarding", "SaaS"],
-    thumbnail: "/work-thumbnails/onboarding-figma.webp",
-    logo: "/logos/onboarding.svg",
-    logoScale: 0.75,
-    accent: "#173CB7",
-    aiSummary:
-      "Designed the onboarding flow new Volusion free-trial customers walked through on their way to a live store — competitive research, sketches, three workflow options, prototypes, and user testing. Goal was to bump trial-to-paid conversion by getting merchants past setup faster.",
-    overview:
-      "An e-commerce software solution for a wide range of businesses needed to convert more free-trial users into paying customers. The team ran competitive research, sketched flows, narrowed to three workflow candidates, and prototyped the winner in InVision for testing.",
-    approach:
-      "Lots of whiteboarding and collaborative sketching narrowed the flows to three iterations. Product managers, engineers, designers, sales, and support all fed into the process — sales and customer support brought feature requests and reported pain points throughout.",
-    images: [
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511977251623-DJMYF373QEVG1DTUATTQ/sketch.png",
-        caption: "Early whiteboarding and sketches",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511977264098-MEX3I9CMNZMGMBLE6H7V/image-asset.png",
-        caption: "Three workflow options after iteration",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1460488316766-9X4EFRWXZ9K56SJVWT4E/image-asset.gif",
-        caption: "Prototyped onboarding flow",
-      },
-    ],
-  },
-  {
-    slug: "storefront-editor",
-    title: "Storefront Editor",
-    subtitle: "Inline editing so new merchants could customize their store immediately",
-    client: "Volusion",
-    year: "2015–2016",
-    role: "Senior Product Designer",
-    tags: ["Ecommerce", "Front-end editor", "SaaS"],
-    thumbnail: "/work-thumbnails/volusion-figma.webp",
-    logo: "/logos/volusion.svg",
-    accent: "#173CB7",
-    aiSummary:
-      "Built an inline storefront editor so Volusion's free-trial customers could upload a logo, edit navigation, swap content blocks, and manage themes without leaving the front end. 75% of new customers wanted to start customizing immediately — this took the friction out.",
-    overview:
-      "Volusion's storefront editor let merchants edit their store from the front end with a clear path back into the admin. Research with sales and customer support confirmed the demand. The biggest constraint was the legacy .asp codebase — every interaction had to thread that needle without overwhelming new customers.",
-    approach:
-      "Competitor research, interviews with sales and customer support, content builder modules for hero, colors, navigation, and logos. Iterated on the editor's open and closed states across many states (theme picker, color options, hero select, logo placement) to keep the UI calm during edit mode.",
-    images: [
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965376270-XA8FL44C6KYTMIED72QD/00%2BEdit%2BClosed.jpg",
-        caption: "Storefront with editor closed",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965372460-FIJQLLVYWY0R6IUBX66U/Content%2BBuilder%2B-%2BColor%2BOptions%2B-%2BComplete.jpg",
-        caption: "Content Builder — color options applied",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965373705-04E6JNWMB1UXKU3OZIGA/Content%2BBuilder%2B-%2BHero%2BSelect%2B2.jpg",
-        caption: "Content Builder — hero select",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965377412-9YJMP2DFVQXIBU81BB7I/Content%2BBuilder%2B-%2BColor%2BOptions%2B-%2BDropdown.jpg",
-        caption: "Content Builder — color options dropdown",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965373140-NU7FOUSCHOLN56Z78MGE/Content%2BBuilder%2B-%2BColor%2BOptions.jpg",
-        caption: "Content Builder — color picker",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965373660-QUQ7UOAT2N5W52G6224O/Content%2BBuilder%2B-%2BHero%2BSelect.jpg",
-        caption: "Content Builder — hero select state",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965372758-OVBJO6P6YEG4YCYZO7XQ/05-1%2BCB%2B-%2BCB%2BStructure%2BCopy.jpg",
-        caption: "Content Builder structure",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965377418-E754Z42RC0AGOBRZ6LK4/Logo-ImageEmpty.jpg",
-        caption: "Logo placement — empty state",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965378501-X7HX7OP5Q8B163ZF142F/Logo-ImageAdded.jpg",
-        caption: "Logo placement — uploaded",
-      },
-    ],
-  },
-  {
     slug: "ecommerce",
     title: "Ecommerce Designs",
     subtitle: "Custom Volusion storefronts and paid templates for independent merchants",
@@ -709,52 +728,7 @@ export const projects: Project[] = [
       },
     ],
   },
-  {
-    slug: "volusion-gallery",
-    title: "Volusion",
-    subtitle: "Marketing visual design — site, swag, ads, banners, promos",
-    client: "Volusion",
-    year: "2013–2016",
-    role: "Senior Product Designer",
-    tags: ["Brand", "Marketing", "Visual design"],
-    thumbnail: "/work-thumbnails/volusion-figma.webp",
-    logo: "/logos/volusion.svg",
-    accent: "#8759F2",
-    aiSummary:
-      "A wide gallery of work from Volusion's internal marketing department — Volusion.com pages, the employee swag site, landing pages, advertising, banners, and promos. The swag store was a fully responsive ecommerce experience with photography of products and the people wearing them.",
-    overview:
-      "Visual design across Volusion's marketing surfaces, including the employee swag store (responsive ecommerce with custom product photography), Volusion.com landing pages, the India landing site, and a range of marketing campaigns.",
-    images: [
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1446124598217-SMHUMTEN8T4GU22LT4O2/vnext-homepage.jpg",
-        caption: "vNext homepage concept",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1446124664197-6C1Q183C10QT00A0Q569/volusion-imac.png",
-        caption: "Volusion Swag — responsive employee store",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423153710411-QZJO0C1V58VTCHTN9KYV/Volusion-Services-Landing.jpg",
-        caption: "Volusion services landing",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423153632703-DLAKRATJFJOAP1RLJWHQ/Volusion-StoreShowcase.png",
-        caption: "Store showcase",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422911303704-3MV613XLG2Q7PN953GIT/web-spotify.jpg",
-        caption: "Spotify-inspired marketing page",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423153632110-JN8U1JFWS20POST6ICUK/Blog_ResponsiveThemeImprovement.jpg",
-        caption: "Blog — responsive theme improvement",
-      },
-      {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423493717026-GEAKBYS3JNSJ587CGK4M/volusion-indialanding.png",
-        caption: "Volusion India landing page",
-      },
-    ],
-  },
+  
   {
     slug: "logos",
     title: "Logos",
@@ -1117,6 +1091,38 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
       { value: "Async + sync", label: "Visit modalities in one flow" },
     ],
   },
+  athenahealth: {
+    team: [
+      "1 Senior Product Designer \u00b7 IA lead",
+      "2 Product Managers",
+      "3 Engineers",
+    ],
+    timing: [
+      { value: "2018\u20132019", label: "IA, dashboard, and responsive nav" },
+      { value: "6 weeks", label: "Unmoderated tests + card sort" },
+    ],
+    tools: ["Figma", "Gemini", "Jira", "Miro", "Pendo", "UserTesting", "Cursor"],
+    projected: [
+      { value: "25M", label: "Registered patients" },
+      { value: "90%", label: "Will switch providers without good digital exp." },
+    ],
+  },
+  athenawell: {
+    team: [
+      "1 Senior Product Designer",
+      "Care team engineering",
+      "Clinical content partners",
+    ],
+    timing: [
+      { value: "2017–2018", label: "Care Plan design & validation" },
+      { value: "5 interviews", label: "Resonance-testing round" },
+    ],
+    tools: ["Figma", "Miro", "Jira"],
+    projected: [
+      { value: "3 personas", label: "Healthy, Rising Risk, High-Risk" },
+      { value: "200+ integrations", label: "Wearable partners via Validic" },
+    ],
+  },
   liveperson: {
     team: [
       "1 Lead Product Designer",
@@ -1149,20 +1155,6 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
       { value: "Auto roll-up", label: "Default that cuts payroll edits" },
     ],
   },
-  "consumer-health": {
-    team: [
-      "1 Senior Product Designer",
-      "IA lead",
-      "Cross-functional athena partners",
-    ],
-    timing: [
-      { value: "Engagement", label: "Marketplace + care apps" },
-    ],
-    tools: ["Figma", "Miro", "Jira"],
-    projected: [
-      { value: "IA-led", label: "Partner + product discovery" },
-    ],
-  },
   "volusion-admin": {
     team: ["1 Senior Product Designer", "Product & engineering partners"],
     timing: [{ value: "Multi-year", label: "Admin patterns & modules" }],
@@ -1171,36 +1163,12 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
       { value: "Scalable admin", label: "Tables, bulk actions, nav" },
     ],
   },
-  onboarding: {
-    team: ["1 Senior Product Designer", "PM, eng, sales & support"],
-    timing: [{ value: "Sprint cycle", label: "Research → prototype → test" }],
-    tools: ["Figma", "Miro", "Jira", "UserTesting"],
-    projected: [
-      { value: "Trial → paid", label: "Faster path to a live store" },
-    ],
-  },
-  "storefront-editor": {
-    team: ["1 Senior Product Designer", "Product & engineering partners"],
-    timing: [{ value: "Feature cycle", label: "Style editor redesign" }],
-    tools: ["Figma", "Miro", "Jira"],
-    projected: [
-      { value: "Merchant control", label: "Look & feel without code" },
-    ],
-  },
   ecommerce: {
     team: ["1 Senior Product Designer", "Client services partners"],
     timing: [{ value: "Ongoing", label: "Client storefronts & templates" }],
     tools: ["Figma", "Miro"],
     projected: [
       { value: "Flexible themes", label: "Merchant-ready ecommerce" },
-    ],
-  },
-  "volusion-gallery": {
-    team: ["1 Senior Product Designer", "Internal marketing"],
-    timing: [{ value: "Campaign work", label: "Brand & promo surfaces" }],
-    tools: ["Figma"],
-    projected: [
-      { value: "Brand system", label: "Swag, landing, promo" },
     ],
   },
   logos: {

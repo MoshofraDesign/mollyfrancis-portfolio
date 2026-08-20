@@ -15,7 +15,7 @@ import { NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKi
  * Title → Problem → Research → board → Patient Queue → 4 phones →
  * icons → interview+dashboard → 950px portrait → Outcome.
  * 1440×1000 panels on #dd00e2. Large wordmark on the title panel; small
- * 200×27 wordmark parks at 100,100 via StickyNav.
+ * 200×27 wordmark parks at StickyNav's default inset, matching other pages.
  */
 
 const jost = Jost({
@@ -37,7 +37,9 @@ const H_DISPLAY =
 const BODY =
   "text-[clamp(1.05rem,2.22vw,2rem)] font-normal leading-normal text-white [text-wrap:pretty]";
 
-/** Visit-mix circles from the Outcome stats frame. */
+/** Outcome stat columns — Figma node 4672:15331: 29% / 71% / $1.2m,
+ *  each with a big hero number, uppercase kicker, delta + down triangle,
+ *  and a detail line. */
 const OUTCOME_STATS = [
   {
     hero: "29%",
@@ -51,19 +53,13 @@ const OUTCOME_STATS = [
     delta: "1.5min",
     detail: "8 to 6.5 minutes",
   },
+  {
+    hero: "$",
+    kicker: "Projected",
+    delta: "$1.2m",
+    detail: "Savings at 1 Year",
+  },
 ] as const;
-
-function OutcomeQuoteMark({ close = false, className = "" }: { close?: boolean; className?: string }) {
-  return (
-    <img
-      src={`${ASSET}/quote.svg`}
-      alt=""
-      width={100}
-      height={79}
-      className={`pointer-events-none absolute max-w-none ${close ? "rotate-180" : ""} ${className}`}
-    />
-  );
-}
 
 /** Figma crops of the 4-phone sprite (node 4553:21876). */
 const PHONE_CROPS = [
@@ -130,8 +126,6 @@ export default function DocSquadCaseStudy() {
     >
       <StickyNav
         watch="docsquad-title"
-        parkLeft={100}
-        parkTop={100}
         logo={
           <Image
             src={LOGO}
@@ -259,29 +253,38 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 6 — FOUR PHONES. Figma 4553:21876: centered, 40px gaps, sprite crops */}
+        {/* 6 — FOUR PHONES — same treatment as the Netspend "user-test
+            phones" panel: grid of individually framed screens (border +
+            drop shadow), bottom-aligned, with an uppercase caption below,
+            instead of one flat cropped sprite. */}
         <ScreenPanel>
-          <div className="flex w-full max-w-[986px] flex-wrap items-center justify-center gap-4 sm:flex-nowrap sm:gap-6 lg:absolute lg:left-1/2 lg:top-[28.5vh] lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:gap-10">
-            {PHONE_CROPS.map((phone) => (
-              <div
-                key={phone.alt}
-                className="relative overflow-hidden rounded-[10px]"
-                style={{ width: phone.width, height: 470, maxWidth: "42vw", maxHeight: "70vw" }}
-              >
-                {/* Sprite crop matches Figma 4553:21877–21880 (not next/image fill). */}
-                <img
-                  src={`${ASSET}/phones.png`}
-                  alt={`DocSquad provider native app — ${phone.alt}`}
-                  className="pointer-events-none absolute max-w-none"
-                  style={{
-                    height: "107.9%",
-                    width: "454.69%",
-                    left: phone.left,
-                    top: "-4.69%",
-                  }}
-                />
-              </div>
-            ))}
+          <div className="mx-auto w-full max-w-[min(1100px,94vw)] lg:absolute lg:left-1/2 lg:top-1/2 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2">
+            <div className="grid grid-cols-2 items-end justify-items-center gap-4 sm:gap-6 lg:flex lg:flex-nowrap lg:gap-8">
+              {PHONE_CROPS.map((phone) => (
+                <SlideIn key={phone.alt}>
+                  <div
+                    className="relative overflow-hidden rounded-xl border border-white/10 shadow-[0_12px_48px_rgba(0,0,0,0.35)]"
+                    style={{ width: phone.width, height: 470, maxWidth: "42vw", maxHeight: "70vw" }}
+                  >
+                    {/* Sprite crop matches Figma 4553:21877–21880 (not next/image fill). */}
+                    <img
+                      src={`${ASSET}/phones.png`}
+                      alt={`DocSquad provider native app — ${phone.alt}`}
+                      className="pointer-events-none absolute max-w-none"
+                      style={{
+                        height: "107.9%",
+                        width: "454.69%",
+                        left: phone.left,
+                        top: "-4.69%",
+                      }}
+                    />
+                  </div>
+                </SlideIn>
+              ))}
+            </div>
+            <p className="mt-5 text-center text-[11px] font-medium uppercase tracking-[0.16em] text-white/45">
+              Provider App
+            </p>
           </div>
         </ScreenPanel>
 
@@ -327,17 +330,21 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 10 — OUTCOME. Heading + copy, then two visit-mix circles and Time = Money. */}
+        {/* 10 — OUTCOME. Figma node 4672:15331 — left-aligned heading + copy,
+            then three stacked stat columns (hero number, uppercase kicker,
+            delta + down triangle, detail line), all in white on the brand
+            magenta. Replaces the earlier circle-badge treatment, which
+            didn't match the Figma reference. */}
         <ScreenPanel>
-          <div className="flex w-full max-w-[950px] flex-col gap-6 pt-4 lg:absolute lg:left-1/2 lg:top-[128px] lg:w-[65.97vw] lg:max-w-none lg:-translate-x-1/2 lg:gap-7 lg:pt-0">
+          <div className="flex w-full max-w-[950px] flex-col items-start gap-10 pt-4 lg:absolute lg:left-[6.94vw] lg:top-1/2 lg:w-[65.97vw] lg:max-w-none lg:-translate-y-1/2 lg:gap-14 lg:pt-0">
             <div className="flex flex-col gap-4">
               <SlideIn>
                 <h2 className={H_DISPLAY}>Outcome</h2>
               </SlideIn>
               <SlideIn delay={80}>
                 <div className="flex flex-col gap-4">
-                  {project.outcome.split("\n\n").map((para) => (
-                    <p key={para.slice(0, 24)} className="text-[clamp(1rem,1.85vw,1.5rem)] font-normal leading-snug text-white [text-wrap:pretty]">
+                  {(project.outcome ?? "").split("\n\n").map((para) => (
+                    <p key={para.slice(0, 24)} className={BODY}>
                       {para}
                     </p>
                   ))}
@@ -346,46 +353,30 @@ export default function DocSquadCaseStudy() {
             </div>
 
             <SlideIn delay={160}>
-              <div className="flex flex-col items-center gap-6 sm:gap-7">
-                <div className="flex w-full flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
-                  {OUTCOME_STATS.map((stat) => (
-                    <div
-                      key={stat.kicker}
-                      className="flex aspect-square w-[min(100%,250px)] flex-col items-center justify-center rounded-full bg-[#E6EAF8] px-6 text-center text-[#1A2744]"
-                    >
-                      <p className="text-[clamp(2.1rem,4.2vw,3.25rem)] font-semibold leading-none tracking-[-0.03em]">
-                        {stat.hero}
-                      </p>
-                      <p className="mt-1.5 text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-[#5A6578] sm:text-[0.9rem]">
-                        {stat.kicker}
-                      </p>
-                      <p className="mt-3 flex items-center gap-2 text-[clamp(1.2rem,2.1vw,1.6rem)] font-semibold leading-none">
-                        {stat.delta}
-                        <img
-                          src={`${ASSET}/down-triangle-green.svg`}
-                          alt=""
-                          width={20}
-                          height={20}
-                          className="size-5 shrink-0 rotate-180"
-                        />
-                      </p>
-                      <p className="mt-1.5 text-[0.9rem] font-normal text-[#6B7385]">
-                        {stat.detail}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="relative mx-auto w-fit max-w-full px-[1.7em] text-center">
-                  <p className="relative text-[clamp(1.5rem,3.1vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white">
-                    <OutcomeQuoteMark className="-left-[1.55em] top-0 h-[0.85em] w-[1.08em]" />
-                    Time = Money
-                    <OutcomeQuoteMark close className="left-[calc(100%+0.08em)] top-0 h-[0.85em] w-[1.08em]" />
-                  </p>
-                  <p className="mt-3 text-[clamp(1.05rem,1.7vw,1.45rem)] font-semibold leading-snug text-white">
-                    Projected $1.2m Savings at 1 Year
-                  </p>
-                </div>
+              <div className="flex w-full flex-col gap-10 sm:flex-row sm:flex-wrap sm:gap-x-14 sm:gap-y-10">
+                {OUTCOME_STATS.map((stat) => (
+                  <div key={stat.kicker} className="flex flex-col items-start gap-1 text-white">
+                    <p className="text-[clamp(2.75rem,5.5vw,5.0625rem)] font-semibold uppercase leading-[0.95] tracking-[-0.02em]">
+                      {stat.hero}
+                    </p>
+                    <p className="text-[clamp(0.95rem,1.4vw,1.25rem)] font-semibold uppercase tracking-[0.06em]">
+                      {stat.kicker}
+                    </p>
+                    <p className="mt-3 flex items-center gap-2 text-[clamp(1.5rem,2.6vw,2.25rem)] font-semibold leading-none">
+                      {stat.delta}
+                      <img
+                        src={`${ASSET}/down-triangle-green.svg`}
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="size-5 shrink-0 rotate-180 brightness-0 invert"
+                      />
+                    </p>
+                    <p className="text-[clamp(0.95rem,1.4vw,1.25rem)] font-normal">
+                      {stat.detail}
+                    </p>
+                  </div>
+                ))}
               </div>
             </SlideIn>
           </div>

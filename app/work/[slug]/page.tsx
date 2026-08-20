@@ -42,7 +42,7 @@ import {
  * components/v2/CaseStudyKit so app/about/page.tsx can reuse them too.
  */
 
-const customSlugs = new Set(["govos-esubmission", "liveperson", "care-homepay", "netspend", "bright-healthcare", "docsquad"]);
+const customSlugs = new Set(["govos-esubmission", "liveperson", "care-homepay", "netspend", "bright-healthcare", "docsquad", "athenawell", "athenahealth"]);
 
 export function generateStaticParams() {
   return projects
@@ -159,41 +159,13 @@ function TitlePanel({
   project: NonNullable<ReturnType<typeof getProject>>;
 }) {
   const heroSrc = project.hero || project.thumbnail;
-  const isPrint = project.slug === "print";
-
-  if (isPrint) {
-    return (
-      <section
-        id="title"
-        className="relative flex w-full flex-col justify-center gap-10 px-6 py-20 sm:px-12 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-0"
-      >
-        {project.logo ? (
-          <div className="relative h-20 w-full max-w-[480px] sm:h-24 md:h-32">
-            <Image
-              src={project.logo}
-              alt="Print"
-              fill
-              unoptimized
-              priority
-              className="object-contain object-left"
-            />
-          </div>
-        ) : null}
-        {project.overview ? (
-          <p className="max-w-[36rem] text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] [text-wrap:pretty]">
-            {project.overview}
-          </p>
-        ) : null}
-      </section>
-    );
-  }
 
   return (
     <section
       id="title"
       className="relative flex w-full flex-col md:flex-row md:items-center lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:overflow-y-auto lg:overscroll-contain"
     >
-      <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[40%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-12">
+      <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[40%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-12 lg:pt-11">
         {project.logo ? (
           <div
             className={
@@ -262,6 +234,104 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   const isBright = project.slug === "bright-healthcare";
   const fg = isBright ? "#ffffff" : contrastColor(project.accent);
   const isLogos = project.slug === "logos";
+  const isPrint = project.slug === "print";
+
+  if (isPrint) {
+    const PRINT_BLURB =
+      "Made entirely in the pre-AI days: Illustrator, a scanner, and a client who wanted the logo \u201cjust a little bigger.\u201d No prompts, no generations \u2014 just a lot of Cmd+Z.";
+    return (
+      <main
+        className={`${jost.variable} relative min-h-screen bg-white text-[#141414]`}
+        style={{ fontFamily: "var(--font-jost), system-ui, sans-serif" }}
+      >
+        <StickyNav
+          watch="title"
+          logo={
+            project.logo ? (
+              <div className="relative h-6 w-[90px] sm:h-7 sm:w-[110px]">
+                <Image
+                  src={project.logo}
+                  alt={project.client}
+                  fill
+                  unoptimized
+                  className="object-contain object-left [filter:brightness(0)_invert(8%)]"
+                />
+              </div>
+            ) : (
+              <span className="text-sm font-semibold">{project.title}</span>
+            )
+          }
+          action={<CloseLink large className="text-[#141414]" />}
+        />
+
+        <section
+          id="title"
+          className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-8 pb-10 pt-16 sm:px-12 lg:px-20 lg:pt-20"
+        >
+          {project.logo ? (
+            <div className="relative h-20 w-full max-w-[480px] sm:h-24 md:h-32">
+              <Image
+                src={project.logo}
+                alt="Print"
+                fill
+                unoptimized
+                priority
+                className="object-contain object-left [filter:brightness(0)_invert(8%)]"
+              />
+            </div>
+          ) : null}
+          {project.subtitle ? (
+            <p className="max-w-[46rem] text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] [text-wrap:pretty]">
+              {project.subtitle}
+            </p>
+          ) : null}
+          <p className="max-w-[46rem] text-[clamp(0.9rem,1.1vw,1.05rem)] leading-[1.4] text-[#141414]/60 [text-wrap:pretty]">
+            {PRINT_BLURB}
+          </p>
+        </section>
+
+        {project.images && project.images.length > 0 && (
+          <section className="mx-auto w-full max-w-7xl px-8 pb-24 sm:px-12 lg:px-20">
+            {/* CSS multi-column masonry — each piece keeps its own natural
+                aspect ratio (no forced crop), and columns balance heights
+                automatically the way a real print portfolio wall would. */}
+            <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
+              {project.images.map((img, i) => (
+                <figure key={img.src + i} className="mb-6 break-inside-avoid">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- true
+                      source dimensions aren't available (CDN not reachable from
+                      the build environment), so a plain <img> lets the browser
+                      size each gallery piece by its own natural aspect ratio
+                      instead of forcing every print piece into one guessed box. */}
+                  <img
+                    src={img.src}
+                    alt={img.caption || "Print piece"}
+                    loading="lazy"
+                    className="w-full rounded-sm object-contain"
+                  />
+                  {img.caption && (
+                    <figcaption className="mt-3 text-center text-xs text-[#141414]/60">
+                      {img.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText={false} />
+
+        <NextProjectLink
+          href={`/work/${next.slug}`}
+          client={next.client}
+          title={next.title}
+          accent={next.accent}
+        />
+      </main>
+    );
+  }
+
 
   if (isLogos) {
     return (

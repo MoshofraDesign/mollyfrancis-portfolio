@@ -85,7 +85,7 @@ export default function BrightHealthcareCaseStudy() {
           </div>
 
           {/* Title — Figma 4553:22297: 253,237 / 466 wide */}
-          <SlideIn className="relative z-10 max-w-[466px] text-white lg:absolute lg:left-[17.57vw] lg:top-[23.7vh] lg:max-w-[32.36vw]">
+          <SlideIn className="relative z-10 max-w-[466px] text-white lg:absolute lg:left-[calc(6.94vw+0.212*min(50vw,720px))] lg:top-[23.7vh] lg:max-w-[32.36vw]">
             <p className="text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-[1.28]">
               Prior Authorization Portal
             </p>

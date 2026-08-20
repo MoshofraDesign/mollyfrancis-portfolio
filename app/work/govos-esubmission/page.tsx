@@ -284,19 +284,30 @@ function ChallengeBlock({
  * vertical scroll. Skips silently like CardPanel used to until the photo is
  * exported into /public.
  */
-function PortraitPanel({ src, alt }: { src: string; alt: string }) {
-  if (!hasImage(src)) return null;
+function PortraitPanel({
+  src,
+  alt,
+  children,
+}: {
+  src: string;
+  alt: string;
+  children: React.ReactNode;
+}) {
+  const hasPhoto = hasImage(src);
   return (
-    <section className="relative flex w-full items-center justify-center px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]">
-      <div className="relative aspect-square w-[60vw] max-w-[280px] sm:w-[46vw] sm:max-w-[360px] lg:w-[min(42vw,420px)]">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes="(max-width: 1023px) 55vw, 30vw"
-          className="rounded-full object-cover"
-        />
-      </div>
+    <section className="relative flex w-full flex-col items-center justify-center gap-10 px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:flex-row lg:justify-center lg:gap-[5vw] lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]">
+      {hasPhoto && (
+        <div className="relative aspect-square w-[60vw] max-w-[260px] shrink-0 sm:w-[46vw] sm:max-w-[300px] lg:w-[min(28vw,300px)]">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="(max-width: 1023px) 55vw, 22vw"
+            className="rounded-full object-cover"
+          />
+        </div>
+      )}
+      <div className="w-full lg:w-auto lg:max-w-[38vw] lg:shrink-0">{children}</div>
     </section>
   );
 }
@@ -360,7 +371,7 @@ export default function GovOSCaseStudy() {
               section itself has a definite height, i.e. lg+ — below that
               it's a normal auto-height column and the two just stack with
               their own gap. */}
-          <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[38%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-12">
+          <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[38%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-12 lg:pt-11">
             <Image
               src="/work/govos/govos-logo-white.svg"
               alt="GovOS"
@@ -395,53 +406,28 @@ export default function GovOSCaseStudy() {
           </div>
         </section>
 
-        {/* ── 2 — PROBLEM: what county offices and submitters each run into
-               under the old paper/vendor-heavy process ────────────────────── */}
-        <TextPanel>
-          <Heading>Problem</Heading>
-          <div className="mt-[26px] flex flex-col gap-[40px]">
-            <ChallengeBlock title="Challenges for the Counties" delay={0}>
-              County offices still rely on fragmented, paper-heavy workflows for
-              document submissions and vendor payments—causing delays, errors, and
-              frustration for submitters.
-            </ChallengeBlock>
-            <ChallengeBlock title="Challenges for the Submitters" delay={180}>
-              County document recording is plagued by expensive third-party vendors,
-              limited document support, and disconnected workflows—resulting in tedious,
-              error-prone payment reconciliation.
-            </ChallengeBlock>
-          </div>
-        </TextPanel>
+        {/* ── 2 — PROBLEM ──────────────────────────────────────────────── */}
+        <Panel>
+          <Heading>Recording a deed meant a vendor in the middle.</Heading>
+          <Body>
+            Counties scanned paper. Submitters paid a go-between. Nobody saw status
+            until it cleared.
+          </Body>
+        </Panel>
 
-        {/* ── 3 — SOLUTION: the direct-to-county portal that replaces the
-               vendor in the middle ───────────────────────────────────────── */}
-        <TextPanel>
-          <Heading>Solution</Heading>
-          <div className="mt-[26px]">
-            <SlideIn>
-              <h3 className="text-[clamp(1.15rem,4.4vw,1.5rem)] font-semibold leading-tight text-white sm:text-[clamp(1.25rem,2.2vw,2.25rem)] [text-wrap:pretty]">
-                A direct-to-county recording portal that cuts out the middleman.
-              </h3>
-            </SlideIn>
-            <Bullets
-              items={
-                project.objectiveBullets || [
-                  "Obviating the need for Submitters to physically present the documents in a county office",
-                  "Enhancing the productivity of the Recorder's office by not having to scan the recording",
-                  "Streamline payment into a bulk wire transfer (ACH) for each Submitter",
-                ]
-              }
-            />
-          </div>
-        </TextPanel>
+        {/* ── 3 — SOLUTION ─────────────────────────────────────────────── */}
+        <Panel>
+          <Heading>I designed a direct-to-county portal.</Heading>
+          <Body>
+            Upload. Validate. Pay by ACH. The county gets clean data. The vendor is
+            gone.
+          </Body>
+        </Panel>
 
         {/* 4 — REMEMBER THE USER */}
         <Panel>
-          <Heading>Remember the user to help with quick and compliant submissions.</Heading>
-          <Body>
-            Gives users a sense of place upon login by surfacing remembered submission
-            types, recent history, and the ability to start where they left off.
-          </Body>
+          <Heading>Remember the user.</Heading>
+          <Body>Submission types, recent history, pick up where they left off.</Body>
         </Panel>
         <VideoPanel
           src={findVideo("GovOS-MainScreens")}
@@ -450,11 +436,8 @@ export default function GovOSCaseStudy() {
 
         {/* 5 — SUBMISSION FLOW */}
         <Panel>
-          <Heading>A flow that helps business and government work efficiently.</Heading>
-          <Body>
-            Track your progress with a clear step-by-step flow that keeps you focused on
-            one task at a time. Navigate between steps freely or save and return later.
-          </Body>
+          <Heading>One task at a time.</Heading>
+          <Body>A step-by-step package. Jump around, or save and come back.</Body>
         </Panel>
         <VideoPanel
           src={findVideo("GovOS-CreatePackage")}
@@ -463,12 +446,8 @@ export default function GovOSCaseStudy() {
 
         {/* 6 — USER INVITATIONS */}
         <Panel>
-          <Heading>Simplified User Invitations</Heading>
-          <Body>
-            A single, intuitive modal replaced complex security loops, letting admins
-            enter an email, assign a role, and send an invite in seconds. This cut
-            onboarding friction and drastically reduced support tickets.
-          </Body>
+          <Heading>Invite a teammate in one modal.</Heading>
+          <Body>Email, role, send. The old security loop is gone.</Body>
         </Panel>
         <VideoPanel
           src={findVideo("GovOS-InviteTeamMember")}
@@ -477,52 +456,69 @@ export default function GovOSCaseStudy() {
 
         {/* 7 — PAYMENT FULFILLMENT */}
         <Panel>
-          <Heading>Payment Fulfillment and Reporting</Heading>
-          <Body>
-            Payments are processed via ACH. The county generates an ACH report by time
-            period and title company, showing the total amount owed, then authorizes the
-            transaction.
-          </Body>
+          <Heading>One ACH report. Per company. Per period.</Heading>
+          <Body>The county authorizes the transfer. Reconciliation is a line, not a pile.</Body>
         </Panel>
         <VideoPanel
           src={findVideo("GovOS-Payments")}
           caption="Running and authorizing an ACH report"
         />
 
-        {/* 8 — SUBMITTER BENEFITS */}
+        {/* 8 — SUBMITTER BENEFITS — portrait + copy now share one panel, side by side */}
         <PortraitPanel
           src="/work/govos/submitter-portrait-2.png"
           alt="A title company submitter filing documents from her desk"
-        />
-        <TextPanel>
-          <Heading>Submitter benefits</Heading>
-          <Body>
-            Submitters get a lighter, more direct process end to end: no vendor fee
-            stacked on top of the recording fee, one bulk ACH transfer to track instead
-            of many, and direct status updates and communication with the county — no
-            go-between required.
-          </Body>
-        </TextPanel>
+        >
+          <Heading>Submitters drop the vendor fee.</Heading>
+          <Body>One bulk ACH. Direct status. No go-between.</Body>
+        </PortraitPanel>
 
-        {/* 9 — COUNTY BENEFITS */}
+        {/* 9 — COUNTY BENEFITS — portrait + copy now share one panel, side by side */}
         <PortraitPanel
           src="/work/govos/county-official-portrait.png"
           alt="A county recording official working at his desk"
-        />
-        <TextPanel>
-          <Heading>County benefits</Heading>
-          <Body>
-            Reconciliation gets simpler with one clean report per submitter, per period,
-            and paper submissions drop as manual printing and scanning steps fall away.
-            With the vendor gone, the county can serve submitters directly.
-          </Body>
-        </TextPanel>
+        >
+          <Heading>Counties stop scanning paper.</Heading>
+          <Body>One clean report. Serve submitters directly.</Body>
+        </PortraitPanel>
+
+        {/* Outcome — before/after metrics */}
+        <Panel width="lg:w-screen">
+          <div className="flex w-full max-w-[950px] flex-col gap-[70px] text-white">
+            {[
+              ["Citizen Completion Rate", "42% to 86%"],
+              ["Validation Errors", "34% to 8%"],
+              ["Time Saved", "14.5min to 4.2 min"],
+            ].map(([label, value], i) => (
+              <SlideIn key={label} delay={i * 90}>
+                <div className="flex flex-col gap-[5px]">
+                  <p className="font-[Helvetica,Arial,sans-serif] text-white text-[clamp(1.1rem,2.08vw,1.875rem)] font-normal leading-[1.25] lg:leading-[50px]">
+                    {label}
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <p className="font-[Helvetica,Arial,sans-serif] text-white text-[clamp(1.75rem,3.75vw,3.375rem)] font-bold leading-[1.15] lg:leading-[50px] whitespace-nowrap">
+                      {value}
+                    </p>
+                    <Image
+                      src="/work/docsquad/down-triangle-green.svg"
+                      alt=""
+                      width={40}
+                      height={40}
+                      unoptimized
+                      className="size-10 shrink-0 rotate-180"
+                    />
+                  </div>
+                </div>
+              </SlideIn>
+            ))}
+          </div>
+        </Panel>
 
         {/* 10 — PROTOTYPE */}
         {project.prototype && (
           <Panel width="lg:w-screen">
             <div className={TEXT_W}>
-              <Heading>Live Figma prototype</Heading>
+              <Heading>The Figma file.</Heading>
               <a
                 href={project.prototype}
                 target="_blank"
@@ -544,7 +540,7 @@ export default function GovOSCaseStudy() {
           </Panel>
         )}
 
-        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} />
+        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} showProjected={false} />
 
         {/* 11 — NEXT */}
         <NextProjectLink

@@ -8,7 +8,7 @@ type Props = {
   projects: Project[];
 };
 
-export const WORK_THUMB_SECTION = "mx-auto max-w-7xl px-6 lg:px-10";
+export const WORK_THUMB_SECTION = "mx-auto w-full max-w-[2200px] px-6 sm:px-8 lg:px-12 xl:px-16";
 export const WORK_THUMB_GRID_CLASS = "grid w-full justify-center gap-6 sm:gap-8";
 export const WORK_THUMB_GRID_STYLE = {
   gridTemplateColumns: "repeat(auto-fill, minmax(240px, 375px))",

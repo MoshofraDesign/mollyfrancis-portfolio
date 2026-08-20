@@ -6,8 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import UcmScreensCarousel from "@/components/UcmScreensCarousel";
-import { Panel, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Netspend Rewards & UCM — Molly Francis",
@@ -87,7 +86,7 @@ export default function NetspendCaseStudy() {
           {/* Debit cards — sit in the open area right of the logo/copy, fully inside
               the frame (Figma 498,226 / 791×638). Insets + object-contain keep the
               orange tip from getting cropped. */}
-          <div className="pointer-events-none relative z-0 mx-auto flex aspect-[791/638] w-full max-w-[min(90vw,26rem)] items-center justify-center lg:absolute lg:left-[24%] lg:right-[6%] lg:top-[14%] lg:bottom-[24%] lg:aspect-auto lg:w-auto lg:max-w-none lg:p-6">
+          <div className="pointer-events-none relative z-0 mx-auto flex aspect-[791/638] w-full max-w-[min(90vw,26rem)] items-center justify-center lg:absolute lg:left-[22%] lg:right-[5%] lg:top-[12%] lg:bottom-[22%] lg:aspect-auto lg:w-auto lg:max-w-none lg:p-6 xl:left-[18%] xl:right-[4%] xl:top-[10%] xl:bottom-[18%] 2xl:left-[14%] 2xl:right-[3%] 2xl:top-[8%] 2xl:bottom-[14%]">
             <Image
               src={`${ASSET}/debit-cards.png`}
               alt="Netspend debit cards"
@@ -131,184 +130,155 @@ export default function NetspendCaseStudy() {
           </div>
         </section>
 
-        {/* ── PANEL 3: CONTEXT BODY ──────────────────────────────────── */}
-        <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto space-y-6`}>
-            <SlideIn>
-              <h2 className={H_DISPLAY}>Context / The Setup</h2>
-            </SlideIn>
-            <SlideIn delay={100}>
-              <p className={`mt-5 ${BODY_MUTED}`}>From Spreadsheets to a Single Platform</p>
-            </SlideIn>
-            <SlideIn delay={140}>
-              <p className={`mt-6 ${BODY}`}>
-                Netspend&rsquo;s Rewards program powered cashback and partner offers for
-                millions of cardholders — but it ran on Meridian, a legacy stack that
-                couldn&rsquo;t keep up. Internally there was no dedicated tool: campaigns
-                lived in Excel, with no single view of what was live or performing.
-              </p>
-            </SlideIn>
-            <SlideIn delay={220}>
-              <p className={BODY}>
-                I designed both sides:{" "}
-                <span className="font-semibold">Unified Commerce Management (UCM)</span>
-                {" "}for the rewards team to run advertisers, campaigns, and offer flights —
-                and the{" "}
-                <span className="font-semibold">consumer Rewards Tab</span>
-                {" "}cardholders see in the Netspend app.
-              </p>
-            </SlideIn>
-          </div>
-        </Panel>
+        {/* Rewards ran on spreadsheets... — matches production narrative */}
+        <TextPanel width={VIEW}>
+          <SlideIn>
+            <h2 className={H_DISPLAY}>Rewards ran on spreadsheets. No one could see what was live — or what was working.</h2>
+          </SlideIn>
+          <SlideIn delay={100}>
+            <p className={`mt-3 ${BODY_MUTED}`}>I designed both sides of the fix: the internal tool that manages the program, and the app experience it powers.</p>
+          </SlideIn>
+        </TextPanel>
 
-        {/* ── PANEL 4: GOAL ──────────────────────────────────────────── */}
+        {/* So I built the thing that didn't exist — its own beat, three lines */}
+        <TextPanel width={VIEW}>
+          <SlideIn>
+            <h2 className={H_DISPLAY}>
+              So I built the thing that didn&apos;t exist:
+              <br />
+              a single platform
+              <br />
+              to run the whole program.
+            </h2>
+          </SlideIn>
+        </TextPanel>
+
+        {/* Create Flight wizard — walkthrough video the previous beat leads into.
+            TODO: campaign-setup.mov/.mp4 need to be dropped into
+            public/work/netspend/videos/ — placeholder src until then. */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
+          <div className={`${MEDIA} mx-auto`}>
             <SlideIn>
-              <h2 className={H_DISPLAY}>Goal</h2>
-            </SlideIn>
-            <SlideIn delay={100}>
-              <div className="mt-8 grid gap-8 text-white md:grid-cols-3 md:gap-x-8">
-                {[
-                  ["UCM internal tool", "Design a 0→1 internal platform — wizard-based campaign setup, live revenue dashboard, direct-access nav, external media library, and Transaction Engine — built in 5 months."],
-                  ["Consumer Rewards Tab", "Redesign the cardholder experience around personalization, category browsing, earnings transparency, and a validated search — scaled to match what UCM makes possible."],
-                  ["Both sides, one data model", "What's configured in UCM surfaces directly in the consumer tab. Category, offer type, reward amount, and eligibility logic all flow through the same system."],
-                ].map(([h, b], i) => (
-                  <SlideIn key={h} delay={i * 60}>
-                    <div className="border-t border-white/15 pt-5">
-                      <p className="mb-2 text-[clamp(1.15rem,1.6vw,1.35rem)] font-semibold">{h}</p>
-                      <p className={BODY_MUTED}>{b}</p>
-                    </div>
-                  </SlideIn>
-                ))}
+              <div className="relative aspect-[1600/1000] w-full overflow-hidden rounded-xl">
+                <AutoplayVideo
+                  sources={[
+                    { src: `${ASSET}/videos/campaign-setup.mov`, type: "video/quicktime" },
+                    { src: `${ASSET}/videos/campaign-setup.mp4`, type: "video/mp4" },
+                  ]}
+                  className="h-full w-full object-cover"
+                />
               </div>
             </SlideIn>
+            <SlideIn delay={100}>
+              <p className="story-caption-in mt-4 text-center text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white/55 [text-wrap:pretty]">
+                Campaign setup — a wizard, not a spreadsheet
+              </p>
+            </SlideIn>
           </div>
         </Panel>
 
-        {/* ── PANEL 5: UCM SCREENSHOTS — single carousel section ───── */}
-        <Panel width={VIEW} pad="center" className="items-center">
-          <SlideIn className="w-full">
-            <UcmScreensCarousel
-              headingClassName={H_SECTION}
-              bodyClassName={BODY_MUTED}
-              caption="Internal Rewards Tool"
-              frameClassName="overflow-hidden rounded-xl border border-white/10 shadow-[0_12px_48px_rgba(0,0,0,0.35)]"
-              screens={[
-                {
-                  title: "Live revenue dashboard",
-                  body: "Real-time performance across stacked offers, redemptions, and retention — the single view Meridian never had.",
-                  src: `${ASSET}/ucm/screens/01-dashboard.png`,
-                },
-                {
-                  title: "Advertiser onboarding",
-                  body: "Partner accounts that fund offers, campaigns, and flights — with budget, status, and domain in one table.",
-                  src: `${ASSET}/ucm/screens/02-advertisers.png`,
-                },
-                {
-                  title: "Campaign management",
-                  body: "Advertiser-funded programs grouped into flights, with spend pacing and offer type at a glance.",
-                  src: `${ASSET}/ucm/screens/03-campaigns.png`,
-                },
-                {
-                  title: "Wizard-based flight setup",
-                  body: "Four-step Create Flight flow — basic info, incentive config, ad setup, review — without leaving the tool.",
-                  src: `${ASSET}/ucm/screens/08-flight-wizard.png`,
-                },
-                {
-                  title: "Media library",
-                  body: "Upload and manage creatives for offer flights — logos, banners, and campaign assets in one place.",
-                  src: `${ASSET}/ucm/screens/05-media.png`,
-                },
-                {
-                  title: "Reward rules engine",
-                  body: "Multi-event, stacked, and status-contingent rules — configured without code.",
-                  src: `${ASSET}/ucm/screens/06-rules.png`,
-                },
-              ]}
-            />
+        {/* Zero to one. Five months. — lone headline beat */}
+        <TextPanel width={VIEW}>
+          <SlideIn>
+            <h2 className={H_DISPLAY}>Zero to one. Five months.</h2>
           </SlideIn>
-        </Panel>
+        </TextPanel>
 
-        {/* ── PANEL 6: USER-TEST PHONES — one row at lg+, 2×2 below */}
+        {/* Then the side cardholders actually see — 4-phone grid */}
         <Panel width={VIEW} pad="center" className="items-center">
           <div className="mx-auto w-full max-w-[min(1200px,94vw)]">
+            <SlideIn>
+              <h2 className="mb-8 text-center font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[clamp(1.5rem,3.2vw,2.65rem)] [text-wrap:pretty]">
+                Then the side cardholders actually see.
+              </h2>
+            </SlideIn>
             <div className="grid grid-cols-2 items-end justify-items-center gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
               {[
-                [`${ASSET}/phone-landing.png`, "Rewards home — popular offers"],
-                [`${ASSET}/phone-hellofresh.png`, "Offer detail — Hello Fresh"],
-                [`${ASSET}/phone-transactions.png`, "Cash back transactions"],
-                [`${ASSET}/phone-groceries.png`, "Grocery category browsing"],
-              ].map(([src, alt], i) => (
-                <SlideIn key={alt} delay={i * 60} className="w-full max-w-[240px]">
+                [`${ASSET}/phone-landing.png`, "Personalized offers"],
+                [`${ASSET}/phone-hellofresh.png`, "How it works"],
+                [`${ASSET}/phone-transactions.png`, "Cash back, easy to track"],
+                [`${ASSET}/phone-groceries.png`, "Browse by category"],
+              ].map(([src, caption], i) => (
+                <SlideIn key={caption} delay={i * 60} className="w-full max-w-[240px]">
                   <Image
                     src={src}
-                    alt={alt}
+                    alt={caption}
                     width={393}
                     height={852}
+                    unoptimized
                     className="h-auto w-full object-contain"
                   />
+                  <p className="mt-2 text-center text-[clamp(0.8rem,1vw,0.95rem)] leading-snug text-white/55">
+                    {caption}
+                  </p>
                 </SlideIn>
               ))}
             </div>
-            <p className="mt-5 text-center text-[11px] font-medium uppercase tracking-[0.16em] text-white/45">
-              Consumer App
-            </p>
           </div>
         </Panel>
 
-        {/* ── PANEL: CUSTOMER APP SCREEN RECORDING ───────────────────── */}
-        <Panel width={VIEW} pad="center" className="items-center">
-          <SlideIn className={`${MEDIA} mx-auto`}>
-            <div className="relative aspect-[1416/1030] w-full overflow-hidden rounded-xl bg-black/40 shadow-[0_20px_60px_-12px_rgba(0,0,0,0.45)]">
-              <AutoplayVideo
-                sources={[
-                  { src: `${ASSET}/videos/netspend-rewards.mov`, type: "video/quicktime" },
-                  { src: `${ASSET}/videos/netspend-rewards.mp4`, type: "video/mp4" },
-                ]}
-                className="h-full w-full object-contain"
-              />
-            </div>
-            <p className="mt-3 text-center text-[11px] font-medium uppercase tracking-[0.16em] text-white/45">
-              Consumer App
-            </p>
-          </SlideIn>
-        </Panel>
-
-        {/* ── PANEL: PORTRAIT + CASH BACK (single composite) ─────────── */}
-        <Panel width={VIEW} pad="center" className="items-center">
-          <SlideIn className="mx-auto w-full max-w-[min(834px,90vw)]">
-            <Image
-              src={`${ASSET}/portrait-cashback.png`}
-              alt="Netspend cardholder with cash back offers"
-              width={834}
-              height={600}
-              className="h-auto w-full object-contain"
-            />
-            <p className="mt-3 text-center text-[11px] font-medium uppercase tracking-[0.16em] text-white/45">
-              Consumer App
-            </p>
-          </SlideIn>
-        </Panel>
-
-        {/* ── PANEL: OUTCOME — before next project ───────────────────── */}
+        {/* Search validated, not guessed at. — screen recording, matches production */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
+          <div className={`${MEDIA} mx-auto`}>
             <SlideIn>
-              <h2 className={H_DISPLAY}>Outcome</h2>
+              <div className="relative aspect-[1416/1030] w-full overflow-hidden rounded-xl bg-black/40 shadow-[0_20px_60px_-12px_rgba(0,0,0,0.45)]">
+                <AutoplayVideo
+                  sources={[
+                    { src: `${ASSET}/videos/netspend-rewards.mov`, type: "video/quicktime" },
+                    { src: `${ASSET}/videos/netspend-rewards.mp4`, type: "video/mp4" },
+                  ]}
+                  className="h-full w-full object-contain"
+                />
+              </div>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className={`mt-8 ${BODY}`}>
-                The UCM tool went from no existing product to a fully designed,
-                handoff-ready platform in five months — covering advertiser
-                onboarding, campaign management, flight configuration, revenue
-                dashboard, and media library. Bringing rewards management in-house
-                replaced a third-party vendor and saved the company from continuing
-                to pay for that stack. AI tools (Claude, Gemini, and Figma Make)
-                ran throughout: research synthesis, rapid prototyping, and more
-                layout directions per round than a manual process allows.
+              <p className="mt-4 text-center text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white/55 [text-wrap:pretty]">
+                Search validated, not guessed at.
               </p>
             </SlideIn>
+          </div>
+        </Panel>
+
+        {/* Configure it once. It shows up everywhere. */}
+        <TextPanel width={VIEW}>
+          <SlideIn>
+            <h2 className={H_DISPLAY}>Configure it once. It shows up everywhere.</h2>
+          </SlideIn>
+          <SlideIn delay={100}>
+            <p className={`mt-3 ${BODY_MUTED}`}>Category, offer type, reward amount, eligibility — set in the internal tool, live in the consumer tab. One data model, two experiences.</p>
+          </SlideIn>
+        </TextPanel>
+
+        {/* Handoff-ready in five months */}
+        <TextPanel width={VIEW}>
+          <SlideIn>
+            <h2 className={H_DISPLAY}>Handoff-ready in five months. And it replaced a vendor the company was paying for.</h2>
+          </SlideIn>
+          <SlideIn delay={100}>
+            <p className={`mt-3 ${BODY_MUTED}`}>AI ran through the whole process — Claude, Gemini, Figma Make — for research synthesis and rapid prototyping. More layout directions per round than doing it by hand allows.</p>
+          </SlideIn>
+        </TextPanel>
+
+        {/* Outcome stats — production shows "$500K → $0M" / "0 → 0" here, which reads like a
+            template bug clipping the second number. Using the real values from lib/projects.ts
+            (meta.projected) with production's new labels instead of reproducing the bug. */}
+        <Panel width={VIEW} pad="center">
+          <div className={`${MEASURE} mx-auto grid gap-10 md:grid-cols-2 md:gap-x-12`}>
+            {[
+              [meta.projected[0]?.value ?? "$500K → $10M", "projected rewards revenue"],
+              [meta.projected[1]?.value ?? "0 → 1", "a platform that didn't exist five months ago"],
+            ].map(([value, label], i) => (
+              <SlideIn key={label} delay={i * 80}>
+                <div>
+                  <p className="font-semibold leading-none tracking-[-0.04em] text-white text-[clamp(2.4rem,6vw,4.6rem)]">
+                    {value}
+                  </p>
+                  <p className="mt-3 text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white/55 [text-wrap:pretty]">
+                    {label}
+                  </p>
+                </div>
+              </SlideIn>
+            ))}
           </div>
         </Panel>
 

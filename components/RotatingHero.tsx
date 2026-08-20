@@ -133,7 +133,7 @@ export default function RotatingHero() {
               fill
               unoptimized
               priority
-              className="object-contain [filter:brightness(0)_invert(0.28)]"
+              className="object-contain [filter:brightness(0)_invert(8%)]"
             />
           </div>
           <div className="absolute left-[10.4%] top-[8.4%] z-[3] h-[83.2%] w-[82.3%]">
