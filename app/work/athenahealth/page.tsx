@@ -199,25 +199,13 @@ export default function ConsumerHealthCaseStudy() {
               </h2>
             </SlideIn>
             <SlideIn delay={80}>
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
-                <div className="relative w-full overflow-hidden rounded-[10px] bg-black/10 aspect-[810/337] sm:w-[58%]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`${ASSET}/nav-after.png`}
-                    alt="Desktop navigation — dropdown menus"
-                    className="absolute left-0 top-0 max-w-none"
-                    style={{ width: "180.5%", height: "156.1%" }}
-                  />
-                </div>
-                <div className="relative w-full overflow-hidden rounded-[10px] bg-black/10 aspect-[566/526] sm:w-[38%]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`${ASSET}/nav-after.png`}
-                    alt="Mobile navigation — drawer menus"
-                    className="absolute top-0 max-w-none"
-                    style={{ width: "258.3%", height: "100%", left: "-158.3%" }}
-                  />
-                </div>
+              <div className="relative w-full aspect-[1620/674]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`${ASSET}/nav-after.png`}
+                  alt="Redesigned navigation — desktop dropdown and mobile drawer"
+                  className="h-full w-full object-contain"
+                />
               </div>
             </SlideIn>
             <SlideIn delay={140}>
