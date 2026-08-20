@@ -199,17 +199,27 @@ export default function ConsumerHealthCaseStudy() {
               </h2>
             </SlideIn>
             <SlideIn delay={80}>
-              <div className="relative w-full aspect-[1620/674]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`${ASSET}/nav-after.png`}
-                  alt="Redesigned navigation — desktop dropdown and mobile drawer"
-                  className="h-full w-full object-contain"
-                />
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
+                <div className="relative w-full aspect-[1620/674] sm:w-[58%]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`${ASSET}/nav-after.png`}
+                    alt="Redesigned navigation — dropdown menus"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+                <div className="relative w-full aspect-[1620/674] sm:w-[38%]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`${ASSET}/nav-after.png`}
+                    alt="Redesigned navigation — dropdown menus"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
               </div>
             </SlideIn>
             <SlideIn delay={140}>
-              <p className={`${BODY_CAPTION} mt-4 text-center`}>Same structure on desktop and phone.</p>
+              <p className={`${BODY_CAPTION} mt-4 text-center`}>Every section, one dropdown away.</p>
             </SlideIn>
           </div>
         </Panel>
