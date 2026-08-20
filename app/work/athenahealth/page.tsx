@@ -23,10 +23,7 @@ const jost = Jost({
 
 const ACCENT = "#4800b5";
 const LOGO = "/logos/athenahealth.svg";
-// TODO: these five images live only on the deployed site (mollyfrancis-portfolio.vercel.app/work/consumer-health/*)
-// and were never committed to this repo. Hot-linking to production as a stopgap — download them into
-// public/work/consumer-health/ and swap ASSET back to the local path when possible.
-const ASSET = "https://mollyfrancis-portfolio.vercel.app/work/consumer-health";
+const ASSET = "/work/athenahealth";
 const VIEW = "lg:w-screen";
 const MEASURE = "w-full max-w-[min(54rem,86vw)]";
 const MEDIA = "w-full max-w-[min(950px,90vw)]";
@@ -289,7 +286,7 @@ export default function ConsumerHealthCaseStudy() {
         <Panel width={VIEW} pad="center" className="items-center">
           <div className="relative mx-auto aspect-square w-[min(600px,78vw)] overflow-hidden rounded-full">
             <Image
-              src={`${ASSET}/portrait.jpg`}
+              src={`${ASSET}/portrait.png`}
               alt="A patient using the portal from home"
               fill
               unoptimized

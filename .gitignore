@@ -9,3 +9,4 @@ next-env.d.ts
 tsconfig.tsbuildinfo
 logo-thumb.psd
 public/work/govos/submitter-esubmission-laptop.png
+.env*
