@@ -93,10 +93,12 @@ export function TextPanel({
   children,
   id,
   width = VIEW,
+  className = "",
 }: {
   children: React.ReactNode;
   id?: string;
   width?: string;
+  className?: string;
 }) {
   // items-[safe_center]: same reasoning as Panel's justify-[safe_center] —
   // centers vertically when content fits, falls back to top-alignment
@@ -104,7 +106,7 @@ export function TextPanel({
   return (
     <section
       id={id}
-      className={`relative flex w-full justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR}`}
+      className={`relative flex w-full justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR} ${className}`}
     >
       <div className={MEASURE}>{children}</div>
     </section>

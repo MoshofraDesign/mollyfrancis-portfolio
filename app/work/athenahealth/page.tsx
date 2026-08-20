@@ -101,7 +101,7 @@ export default function ConsumerHealthCaseStudy() {
         {/* Title */}
         <section
           id="title"
-          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
+          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-16 sm:px-10 sm:pt-20 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
           <div className="relative z-10 aspect-[740/104] w-[min(100%,740px)] lg:absolute lg:left-[6.94vw] lg:top-[10vh] lg:h-[10.4vh] lg:w-[51.39vw] lg:max-w-none lg:aspect-auto">
             <Image src={LOGO} alt="athenahealth" fill unoptimized priority className="object-contain object-left" />
@@ -174,7 +174,7 @@ export default function ConsumerHealthCaseStudy() {
         </Panel>
 
         {/* The nav had the same hole */}
-        <TextPanel width={VIEW}>
+        <TextPanel width={VIEW} className="!pb-6 sm:!pb-8 lg:!pb-0">
           <SlideIn>
             <h2 className={H_DISPLAY}>The nav had the same hole.</h2>
           </SlideIn>
