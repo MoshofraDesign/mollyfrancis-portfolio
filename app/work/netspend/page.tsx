@@ -31,13 +31,13 @@ const MEASURE = "w-full max-w-[min(54rem,86vw)]";
 const MEDIA = "w-full max-w-[min(950px,90vw)]";
 
 const H_DISPLAY =
-  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[clamp(2rem,4.5vw,4.05rem)] [text-wrap:pretty]";
+  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
 const H_SECTION =
-  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[clamp(1.75rem,3.6vw,3rem)] [text-wrap:pretty]";
+  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[2.304rem] xl:text-[2.88rem] 2xl:text-[3rem] [text-wrap:pretty]";
 const BODY =
-  "text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white [text-wrap:pretty]";
+  "text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white [text-wrap:pretty]";
 const BODY_MUTED =
-  "text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white/70 [text-wrap:pretty]";
+  "text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/70 [text-wrap:pretty]";
 
 export default function NetspendCaseStudy() {
   const idx = projects.findIndex((p) => p.slug === "netspend");
@@ -119,10 +119,10 @@ export default function NetspendCaseStudy() {
               />
             </div>
             <SlideIn className="flex flex-col gap-2 text-white">
-              <p className="font-semibold leading-[1.28] text-[clamp(1.25rem,2.5vw,2.25rem)]">
+              <p className="font-semibold leading-[1.28] text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem]">
                 Netspend Rewards
               </p>
-              <p className="text-[clamp(0.9rem,1.25vw,1.125rem)] leading-normal opacity-90">
+              <p className="text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[1rem] 2xl:text-[1.125rem] leading-normal opacity-90">
                 Rewards helps you earn cash back by giving you rewards for some
                 of your everyday purchases.
               </p>
@@ -131,7 +131,7 @@ export default function NetspendCaseStudy() {
         </section>
 
         {/* Rewards ran on spreadsheets... — matches production narrative */}
-        <TextPanel width={VIEW}>
+        <TextPanel width={VIEW} className="!pt-20 sm:!pt-24">
           <SlideIn>
             <h2 className={H_DISPLAY}>Rewards ran on spreadsheets. No one could see what was live — or what was working.</h2>
           </SlideIn>
@@ -170,7 +170,7 @@ export default function NetspendCaseStudy() {
               </div>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="story-caption-in mt-4 text-center text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white/55 [text-wrap:pretty]">
+              <p className="story-caption-in mt-4 text-center text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
                 Campaign setup — a wizard, not a spreadsheet
               </p>
             </SlideIn>
@@ -188,7 +188,7 @@ export default function NetspendCaseStudy() {
         <Panel width={VIEW} pad="center" className="items-center">
           <div className="mx-auto w-full max-w-[min(1200px,94vw)]">
             <SlideIn>
-              <h2 className="mb-8 text-center font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[clamp(1.5rem,3.2vw,2.65rem)] [text-wrap:pretty]">
+              <h2 className="mb-8 text-center font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[1.5rem] sm:text-[1.5rem] md:text-[1.536rem] lg:text-[2.048rem] xl:text-[2.56rem] 2xl:text-[2.65rem] [text-wrap:pretty]">
                 Then the side cardholders actually see.
               </h2>
             </SlideIn>
@@ -208,7 +208,7 @@ export default function NetspendCaseStudy() {
                     unoptimized
                     className="h-auto w-full object-contain"
                   />
-                  <p className="mt-2 text-center text-[clamp(0.8rem,1vw,0.95rem)] leading-snug text-white/55">
+                  <p className="mt-2 text-center text-[0.8rem] sm:text-[0.8rem] md:text-[0.8rem] lg:text-[0.8rem] xl:text-[0.8rem] 2xl:text-[0.95rem] leading-snug text-white/55">
                     {caption}
                   </p>
                 </SlideIn>
@@ -232,7 +232,7 @@ export default function NetspendCaseStudy() {
               </div>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="mt-4 text-center text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white/55 [text-wrap:pretty]">
+              <p className="mt-4 text-center text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
                 Search validated, not guessed at.
               </p>
             </SlideIn>
@@ -270,10 +270,10 @@ export default function NetspendCaseStudy() {
             ].map(([value, label], i) => (
               <SlideIn key={label} delay={i * 80}>
                 <div>
-                  <p className="font-semibold leading-none tracking-[-0.04em] text-white text-[clamp(2.4rem,6vw,4.6rem)]">
+                  <p className="font-semibold leading-none tracking-[-0.04em] text-white text-[2.4rem] sm:text-[2.4rem] md:text-[2.88rem] lg:text-[3.84rem] xl:text-[4.6rem] 2xl:text-[4.6rem]">
                     {value}
                   </p>
-                  <p className="mt-3 text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white/55 [text-wrap:pretty]">
+                  <p className="mt-3 text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
                     {label}
                   </p>
                 </div>
@@ -294,7 +294,7 @@ export default function NetspendCaseStudy() {
                   href={project.prototype}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] text-white transition-opacity hover:opacity-60"
+                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] text-white transition-opacity hover:opacity-60"
                 >
                   Open prototype ↗
                 </a>

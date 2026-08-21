@@ -92,7 +92,7 @@ function Panel({
   // ultra-wide screens don’t leave a long empty trail after left-rail copy.
   return (
     <section
-      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:items-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)] ${className}`}
+      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:items-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)] ${className}`}
     >
       {children}
     </section>
@@ -128,7 +128,7 @@ function noOrphan(text: string) {
 function Heading({ children }: { children: React.ReactNode }) {
   return (
     <SlideIn className={TEXT_W}>
-      <h2 className="text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white [text-wrap:pretty]">
+      <h2 className="text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] font-semibold leading-[1.15] tracking-[-0.02em] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </h2>
     </SlideIn>
@@ -139,7 +139,7 @@ function Heading({ children }: { children: React.ReactNode }) {
 function Body({ children }: { children: React.ReactNode }) {
   return (
     <SlideIn delay={120} className={TEXT_W}>
-      <p className="mt-6 text-[clamp(1.05rem,1.4vw,1.35rem)] font-normal leading-[1.35] text-white [text-wrap:pretty]">
+      <p className="mt-6 text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] font-normal leading-[1.35] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </p>
     </SlideIn>
@@ -155,7 +155,7 @@ function Bullets({ items }: { items: string[] }) {
           key={b}
           as="li"
           delay={120 + i * 90}
-          className="text-[clamp(1.05rem,1.4vw,1.35rem)] font-normal leading-[1.35] text-white [text-wrap:pretty]"
+          className="text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] font-normal leading-[1.35] text-white [text-wrap:pretty]"
         >
           {noOrphan(b)}
         </SlideIn>
@@ -214,7 +214,7 @@ function VideoPanel({ src, caption }: { src: string | null; caption?: string }) 
         <AutoplayVideo src={src} className="aspect-[950/592] w-full bg-black" />
       </BrowserFrame>
       {caption && (
-        <p className="mt-5 text-center text-[clamp(0.9rem,1.1vw,1.1rem)] text-white/75">
+        <p className="mt-5 text-center text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1.056rem] text-white/75">
           {caption}
         </p>
       )}
@@ -235,7 +235,7 @@ function TextPanel({
   return (
     <section
       id={id}
-      className="relative flex w-full justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]"
+      className="relative flex w-full justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]"
     >
       <div className={TEXT_W}>{children}</div>
     </section>
@@ -259,12 +259,12 @@ function ChallengeBlock({
   return (
     <div>
       <SlideIn delay={delay}>
-        <h3 className="text-[clamp(1.15rem,4.4vw,1.5rem)] font-semibold leading-tight text-white sm:text-[clamp(1.25rem,2.2vw,2.25rem)] [text-wrap:pretty]">
+        <h3 className="text-[1.15rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.5rem] xl:text-[1.5rem] 2xl:text-[1.5rem] font-semibold leading-tight text-white sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2.112rem] [text-wrap:pretty]">
           {title}
         </h3>
       </SlideIn>
       <SlideIn delay={delay + 90}>
-        <p className="mt-2 text-[clamp(1rem,3.4vw,1.375rem)] font-normal leading-[1.45] text-white sm:text-[clamp(1rem,1.7vw,1.375rem)] [text-wrap:pretty]">
+        <p className="mt-2 text-[1rem] sm:text-[1.36rem] md:text-[1.375rem] lg:text-[1.375rem] xl:text-[1.375rem] 2xl:text-[1.375rem] font-normal leading-[1.45] text-white sm:text-[1rem] md:text-[1rem] lg:text-[1.088rem] xl:text-[1.36rem] 2xl:text-[1.375rem] [text-wrap:pretty]">
           {noOrphan(children)}
         </p>
       </SlideIn>
@@ -277,7 +277,7 @@ function ChallengeBlock({
  * benefits panel. Figma's canvas has this frame at the full 1440 width with
  * the 600px circle dead-centered — but as a horizontal-scroll beat between
  * two full-bleed text panels, a full-width slide read as too wide. Narrowed
- * to lg:w-[46vw], matching the other non-full-bleed panels (Panel), with
+ * to lg:w-[471px] xl:w-[589px] 2xl:w-[707px], matching the other non-full-bleed panels (Panel), with
  * the circle right-justified at lg+ so it sits toward the panel it's
  * leading into, rather than centered. Below lg it stays centered — there's
  * no adjacent panel bleeding into view there since the page is a normal
@@ -295,9 +295,9 @@ function PortraitPanel({
 }) {
   const hasPhoto = hasImage(src);
   return (
-    <section className="relative flex w-full flex-col items-center justify-center gap-10 px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:flex-row lg:justify-center lg:gap-[5vw] lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]">
+    <section className="relative flex w-full flex-col items-center justify-center gap-10 px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:flex-row lg:justify-center lg:gap-[51px] xl:gap-[64px] 2xl:gap-[77px] lg:overflow-y-auto lg:overscroll-contain lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]">
       {hasPhoto && (
-        <div className="relative aspect-square w-[60vw] max-w-[260px] shrink-0 sm:w-[46vw] sm:max-w-[300px] lg:w-[min(28vw,300px)]">
+        <div className="relative aspect-square w-[234px] sm:w-[384px] md:w-[461px] lg:w-[614px] xl:w-[768px] 2xl:w-[922px] max-w-[260px] shrink-0 sm:w-[294px] md:w-[353px] lg:w-[471px] xl:w-[589px] 2xl:w-[707px] sm:max-w-[300px] lg:w-[min(28vw,300px)]">
           <Image
             src={src}
             alt={alt}
@@ -307,7 +307,7 @@ function PortraitPanel({
           />
         </div>
       )}
-      <div className="w-full lg:w-auto lg:max-w-[38vw] lg:shrink-0">{children}</div>
+      <div className="w-full lg:w-auto lg:max-w-[389px] xl:max-w-[486px] 2xl:max-w-[584px] lg:shrink-0">{children}</div>
     </section>
   );
 }
@@ -384,10 +384,10 @@ export default function GovOSCaseStudy() {
             {/* No reveal here — the title panel is what you land on, so its
                 copy is simply present rather than animating in. */}
             <div>
-              <p className="text-[clamp(1.1rem,5.5vw,1.75rem)] font-semibold leading-tight text-white sm:text-[clamp(1.1rem,3vw,1.75rem)] md:text-[1.5vw]">
+              <p className="text-[1.341rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] font-semibold leading-tight text-white sm:text-[1.2rem] md:text-[1.44rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] md:text-[12px] lg:text-[15px] xl:text-[19px] 2xl:text-[23px]">
                 GovOS eSubmission
               </p>
-              <p className="mt-4 max-w-[60ch] text-[clamp(0.95rem,4vw,1.2rem)] font-normal leading-[1.4] text-white sm:text-[clamp(0.95rem,2.2vw,1.2rem)] md:text-[1.05vw]">
+              <p className="mt-4 max-w-[60ch] text-[0.975rem] sm:text-[1.2rem] md:text-[1.2rem] lg:text-[1.2rem] xl:text-[1.2rem] 2xl:text-[1.2rem] font-normal leading-[1.4] text-white sm:text-[0.95rem] md:text-[1.056rem] lg:text-[1.2rem] xl:text-[1.2rem] 2xl:text-[1.2rem] md:text-[8px] lg:text-[11px] xl:text-[13px] 2xl:text-[16px]">
                 A cloud-based digital portal that allows external organizations, title
                 companies, law firms, and individuals to securely submit official
                 documents and records (such as land deeds or legal filings) directly to
@@ -407,7 +407,7 @@ export default function GovOSCaseStudy() {
         </section>
 
         {/* ── 2 — PROBLEM ──────────────────────────────────────────────── */}
-        <Panel>
+        <Panel className="!pt-20 sm:!pt-24">
           <Heading>Recording a deed meant a vendor in the middle.</Heading>
           <Body>
             Counties scanned paper. Submitters paid a go-between. Nobody saw status
@@ -492,11 +492,11 @@ export default function GovOSCaseStudy() {
             ].map(([label, value], i) => (
               <SlideIn key={label} delay={i * 90}>
                 <div className="flex flex-col gap-[5px]">
-                  <p className="font-[Helvetica,Arial,sans-serif] text-white text-[clamp(1.1rem,2.08vw,1.875rem)] font-normal leading-[1.25] lg:leading-[50px]">
+                  <p className="font-[Helvetica,Arial,sans-serif] text-white text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.331rem] xl:text-[1.664rem] 2xl:text-[1.875rem] font-normal leading-[1.25] lg:leading-[50px]">
                     {label}
                   </p>
                   <div className="flex items-center gap-4">
-                    <p className="font-[Helvetica,Arial,sans-serif] text-white text-[clamp(1.75rem,3.75vw,3.375rem)] font-bold leading-[1.15] lg:leading-[50px] whitespace-nowrap">
+                    <p className="font-[Helvetica,Arial,sans-serif] text-white text-[1.75rem] sm:text-[1.75rem] md:text-[1.8rem] lg:text-[2.4rem] xl:text-[3rem] 2xl:text-[3.375rem] font-bold leading-[1.15] lg:leading-[50px] whitespace-nowrap">
                       {value}
                     </p>
                     <Image
@@ -523,7 +523,7 @@ export default function GovOSCaseStudy() {
                 href={project.prototype}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] text-white transition-opacity hover:opacity-60"
+                className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] text-white transition-opacity hover:opacity-60"
               >
                 Open prototype ↗
               </a>

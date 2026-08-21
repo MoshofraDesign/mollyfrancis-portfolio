@@ -65,7 +65,7 @@ function TwoImagePanel({
             width={a.width}
             height={a.height}
             sizes="(max-width: 640px) 92vw, 46vw"
-            className="h-auto max-h-[60vh] w-full rounded-md object-contain"
+            className="h-auto max-h-[506px] sm:max-h-[540px] md:max-h-[614px] lg:max-h-[432px] xl:max-h-[480px] 2xl:max-h-[540px] w-full rounded-md object-contain"
           />
         </SlideIn>
         <SlideIn delay={100} className="flex justify-center">
@@ -75,7 +75,7 @@ function TwoImagePanel({
             width={b.width}
             height={b.height}
             sizes="(max-width: 640px) 92vw, 46vw"
-            className="h-auto max-h-[60vh] w-full rounded-md object-contain"
+            className="h-auto max-h-[506px] sm:max-h-[540px] md:max-h-[614px] lg:max-h-[432px] xl:max-h-[480px] 2xl:max-h-[540px] w-full rounded-md object-contain"
           />
         </SlideIn>
       </div>
@@ -108,9 +108,9 @@ function BigImagePanel({
           width={width}
           height={height}
           sizes={`(max-width: 1024px) 92vw, min(90vw, ${maxWidth}px)`}
-          className="h-auto max-h-[70vh] w-full rounded-md object-contain"
+          className="h-auto max-h-[591px] sm:max-h-[630px] md:max-h-[717px] lg:max-h-[504px] xl:max-h-[560px] 2xl:max-h-[630px] w-full rounded-md object-contain"
         />
-        {caption && <p className="mt-4 max-w-[70ch] text-[clamp(0.9rem,1.1vw,1.05rem)] opacity-80">{caption}</p>}
+        {caption && <p className="mt-4 max-w-[70ch] text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1.05rem] opacity-80">{caption}</p>}
       </SlideIn>
     </Panel>
   );
@@ -154,19 +154,19 @@ export default function LivePersonCaseStudy() {
           className="relative flex w-full flex-col gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pt-0"
         >
           {/* Logo — Figma: 100,100, 668×106 */}
-          <div className="relative h-10 w-[220px] sm:h-14 sm:w-[300px] lg:absolute lg:left-[6.94vw] lg:top-[6.94vw] lg:h-[7.36vw] lg:w-[46.4vw] lg:max-w-[668px]">
+          <div className="relative h-10 w-[220px] sm:h-14 sm:w-[300px] lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-[71px] xl:top-[89px] 2xl:top-[107px] lg:h-[75px] xl:h-[94px] 2xl:h-[113px] lg:w-[475px] xl:w-[594px] 2xl:w-[713px] lg:max-w-[668px]">
             <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
           </div>
 
           {/* Heading — Figma: 890,107, 417 wide, top-right */}
-          <p className="max-w-[300px] text-lg font-semibold sm:text-xl lg:absolute lg:right-[6.94vw] lg:top-[7.4vw] lg:max-w-[29vw] lg:text-[2.3vw] lg:leading-[1.25]">
+          <p className="max-w-[300px] text-lg font-semibold sm:text-xl lg:absolute lg:right-[71px] xl:right-[89px] 2xl:right-[107px] lg:top-[76px] xl:top-[95px] 2xl:top-[114px] lg:max-w-[297px] xl:max-w-[371px] 2xl:max-w-[445px] lg:text-[24px] xl:text-[29px] 2xl:text-[35px] lg:leading-[1.25]">
             Social Media Management Product
           </p>
 
           <div className="mt-8 flex flex-1 items-end gap-4 sm:gap-8 lg:mt-0 lg:block lg:h-full">
             {/* Phone mock — Figma: 100,360, 640×640, flush to the frame's
                 bottom edge (no gap below it at all). */}
-            <SlideIn className="w-[48%] max-w-[380px] shrink-0 self-end lg:absolute lg:bottom-0 lg:left-[6.94vw] lg:w-[44.4vw] lg:max-w-[640px]">
+            <SlideIn className="w-[48%] max-w-[380px] shrink-0 self-end lg:absolute lg:bottom-0 lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[455px] xl:w-[568px] 2xl:w-[682px] lg:max-w-[640px]">
               <Image
                 src="/work/liveperson/homeco-conversational-commerce.png"
                 alt="Conversational commerce example inside LiveEngage"
@@ -184,7 +184,7 @@ export default function LivePersonCaseStudy() {
             <div className="flex flex-1 flex-col items-start gap-5 self-end pb-6 sm:gap-7 lg:block lg:pb-0">
               <SlideIn
                 delay={100}
-                className="w-full max-w-[440px] lg:absolute lg:left-[51.4vw] lg:top-[30vh] lg:w-[38.5vw] lg:max-w-[554px]"
+                className="w-full max-w-[440px] lg:absolute lg:left-[526px] xl:left-[658px] 2xl:left-[790px] lg:top-[216px] xl:top-[240px] 2xl:top-[270px] lg:w-[394px] xl:w-[493px] 2xl:w-[591px] lg:max-w-[554px]"
               >
                 <Image
                   src="/work/liveperson/bb-mobile-social-dm.png"
@@ -198,9 +198,9 @@ export default function LivePersonCaseStudy() {
               {/* Body copy — Figma: 752,782, 630 wide */}
               <SlideIn
                 delay={200}
-                className="max-w-[46ch] lg:absolute lg:left-[52.2vw] lg:top-[86vh] lg:max-w-[43.75vw]"
+                className="max-w-[46ch] lg:absolute lg:left-[535px] xl:left-[668px] 2xl:left-[802px] lg:top-[619px] xl:top-[688px] 2xl:top-[774px] lg:max-w-[448px] xl:max-w-[560px] 2xl:max-w-[672px]"
               >
-                <p className="text-base leading-relaxed opacity-95 sm:text-xl lg:text-[1.6vw] lg:leading-[1.4]">
+                <p className="text-base leading-relaxed opacity-95 sm:text-xl lg:text-[16px] xl:text-[20px] 2xl:text-[25px] lg:leading-[1.4]">
                   Enables brands to interact with consumers over email and
                   social media platforms through the LiveEngage messaging
                   product.
@@ -211,7 +211,7 @@ export default function LivePersonCaseStudy() {
         </section>
 
         {/* ── SOCIAL MEDIA MANAGEMENT ──────────────────────────────────── */}
-        <TextPanel>
+        <TextPanel className="!pt-20 sm:!pt-24">
           <Heading>Social Media Management</Heading>
           <Body>
             To streamline LivePerson&rsquo;s omnichannel support, I redesigned
@@ -301,8 +301,8 @@ export default function LivePersonCaseStudy() {
             <div className="mt-10 w-full space-y-8">
               {metrics.map((m, i) => (
                 <SlideIn key={m.label} delay={120 + i * 90}>
-                  <p className="text-[clamp(0.9rem,1.1vw,1rem)] font-medium opacity-80">{m.label}</p>
-                  <p className="mt-1 text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight">
+                  <p className="text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1rem] font-medium opacity-80">{m.label}</p>
+                  <p className="mt-1 text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[2.75rem] 2xl:text-[2.75rem] font-semibold leading-tight">
                     {m.value}
                   </p>
                 </SlideIn>

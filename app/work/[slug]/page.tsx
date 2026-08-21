@@ -80,10 +80,10 @@ function MetricsPanel({
         <div className="mt-10 grid w-full grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
           {metrics.map((m, i) => (
             <SlideIn key={m.label} delay={120 + i * 90}>
-              <div className="text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-none">
+              <div className="text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[3rem] 2xl:text-[3rem] font-semibold leading-none">
                 {m.value}
               </div>
-              <p className="mt-3 text-[clamp(0.85rem,1.1vw,1rem)] opacity-70">{m.label}</p>
+              <p className="mt-3 text-[0.85rem] sm:text-[0.85rem] md:text-[0.85rem] lg:text-[0.85rem] xl:text-[0.88rem] 2xl:text-[1rem] opacity-70">{m.label}</p>
             </SlideIn>
           ))}
         </div>
@@ -189,7 +189,7 @@ function TitlePanel({
             />
           </div>
         ) : (
-          <p className="text-[clamp(1.75rem,5vw,2.5rem)] font-semibold">
+          <p className="text-[1.75rem] sm:text-[2rem] md:text-[2.4rem] lg:text-[2.5rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-semibold">
             {project.title}
           </p>
         )}
@@ -197,10 +197,10 @@ function TitlePanel({
           <Eyebrow>
             {project.client} · {project.year}
           </Eyebrow>
-          <p className="mt-3 text-[clamp(1.1rem,5.5vw,1.75rem)] font-semibold leading-tight sm:text-[clamp(1.1rem,3vw,1.75rem)] md:text-[1.5vw]">
+          <p className="mt-3 text-[1.341rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] font-semibold leading-tight sm:text-[1.2rem] md:text-[1.44rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] md:text-[12px] lg:text-[15px] xl:text-[19px] 2xl:text-[23px]">
             {project.title}
           </p>
-          <p className="mt-4 max-w-[60ch] text-[clamp(0.95rem,4vw,1.2rem)] font-normal leading-[1.4] opacity-90 sm:text-[clamp(0.95rem,2.2vw,1.2rem)] md:text-[1.05vw]">
+          <p className="mt-4 max-w-[60ch] text-[0.975rem] sm:text-[1.2rem] md:text-[1.2rem] lg:text-[1.2rem] xl:text-[1.2rem] 2xl:text-[1.2rem] font-normal leading-[1.4] opacity-90 sm:text-[0.95rem] md:text-[1.056rem] lg:text-[1.2rem] xl:text-[1.2rem] 2xl:text-[1.2rem] md:text-[8px] lg:text-[11px] xl:text-[13px] 2xl:text-[16px]">
             {project.subtitle}
           </p>
         </div>
@@ -281,11 +281,11 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             </div>
           ) : null}
           {project.subtitle ? (
-            <p className="max-w-[46rem] text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] [text-wrap:pretty]">
+            <p className="max-w-[46rem] text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] [text-wrap:pretty]">
               {project.subtitle}
             </p>
           ) : null}
-          <p className="max-w-[46rem] text-[clamp(0.9rem,1.1vw,1.05rem)] leading-[1.4] text-[#141414]/60 [text-wrap:pretty]">
+          <p className="max-w-[46rem] text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1.05rem] leading-[1.4] text-[#141414]/60 [text-wrap:pretty]">
             {PRINT_BLURB}
           </p>
         </section>
@@ -376,7 +376,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             </div>
           ) : null}
           {project.overview ? (
-            <p className="max-w-[36rem] text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] [text-wrap:pretty]">
+            <p className="max-w-[36rem] text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] [text-wrap:pretty]">
               {project.overview}
             </p>
           ) : null}
@@ -489,7 +489,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
                   href={project.prototype}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border px-8 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] transition-opacity hover:opacity-60"
+                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border px-8 py-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] transition-opacity hover:opacity-60"
                   style={{ borderColor: `${fg}99` }}
                 >
                   {isFigmaFile ? "Open in Figma ↗" : "Open prototype ↗"}

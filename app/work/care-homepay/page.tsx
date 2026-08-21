@@ -47,7 +47,7 @@ function Panel({
 }) {
   return (
     <section
-      className={`relative flex w-full shrink-0 flex-col overflow-hidden px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:snap-start lg:items-center lg:justify-center lg:overflow-y-auto lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)] ${width} ${className}`}
+      className={`relative flex w-full shrink-0 flex-col overflow-hidden px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:snap-start lg:items-center lg:justify-center lg:overflow-y-auto lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)] ${width} ${className}`}
     >
       {children}
     </section>
@@ -97,7 +97,7 @@ export default function CareHomepayCaseStudy() {
           className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
         >
           {/* Large logo — top left (pre-Figma-tweak size/placement) */}
-          <div className="relative h-[60px] w-[280px] sm:h-[80px] sm:w-[380px] lg:absolute lg:left-[6.94vw] lg:top-[10vh] lg:h-[7.78vw] lg:w-[32.9vw] lg:max-w-[474px]">
+          <div className="relative h-[60px] w-[280px] sm:h-[80px] sm:w-[380px] lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-[72px] xl:top-[80px] 2xl:top-[90px] lg:h-[80px] xl:h-[100px] 2xl:h-[120px] lg:w-[337px] xl:w-[421px] 2xl:w-[505px] lg:max-w-[474px]">
             <Image
               src={LOGO}
               alt="Care.com Homepay"
@@ -109,8 +109,8 @@ export default function CareHomepayCaseStudy() {
           </div>
 
           {/* Headline — top right */}
-          <SlideIn className="self-end max-w-[340px] text-right lg:absolute lg:right-[6.94vw] lg:top-[10vh] lg:max-w-[30vw]">
-            <p className="text-xl font-semibold leading-snug text-white sm:text-2xl lg:text-[2.5vw] lg:leading-[1.28]">
+          <SlideIn className="self-end max-w-[340px] text-right lg:absolute lg:right-[71px] xl:right-[89px] 2xl:right-[107px] lg:top-[72px] xl:top-[80px] 2xl:top-[90px] lg:max-w-[307px] xl:max-w-[384px] 2xl:max-w-[461px]">
+            <p className="text-xl font-semibold leading-snug text-white sm:text-2xl lg:text-[26px] xl:text-[32px] 2xl:text-[38px] lg:leading-[1.28]">
               Homepay Employee &amp; Employer Payroll App
             </p>
           </SlideIn>
@@ -167,18 +167,18 @@ export default function CareHomepayCaseStudy() {
         </section>
 
         {/* ── PANEL 2: STATEMENT ─────────────────────────────────────── */}
-        <Panel width="lg:w-screen">
+        <Panel width="lg:w-screen" className="!pt-20 sm:!pt-24">
           <div className={`mx-auto ${MEASURE}`}>
             <div className="mb-8 lg:mb-10">
               <SmallLogo />
             </div>
             <SlideIn>
-              <h1 className="font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[clamp(2rem,4.5vw,4.05rem)]">
+              <h1 className="font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem]">
                 HomePay Time Tracker app by Care.com
               </h1>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="mt-6 text-white leading-[1.35] text-[clamp(1.05rem,1.4vw,1.35rem)]">
+              <p className="mt-6 text-white leading-[1.35] text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem]">
                 HomePay lets household employees like nannies and caregivers
                 track daily hours, calculate overtime, and submit timesheets
                 directly to employers. Employers review and approve submitted
@@ -187,7 +187,7 @@ export default function CareHomepayCaseStudy() {
               </p>
             </SlideIn>
             <SlideIn delay={200} className="mt-6">
-              <span className="inline-flex items-center rounded-full border-2 border-white/50 px-6 py-1 font-semibold text-white text-[clamp(1rem,1.4vw,1.35rem)]">
+              <span className="inline-flex items-center rounded-full border-2 border-white/50 px-6 py-1 font-semibold text-white text-[1rem] sm:text-[1rem] md:text-[1rem] lg:text-[1rem] xl:text-[1.12rem] 2xl:text-[1.344rem]">
                 0 &gt; 1
               </span>
             </SlideIn>
@@ -235,10 +235,10 @@ export default function CareHomepayCaseStudy() {
                 </div>
               </SlideIn>
               <SlideIn delay={120} className="flex flex-col gap-4">
-                <p className="font-semibold leading-[1.2] text-[clamp(1.5rem,2.5vw,2.25rem)]">
+                <p className="font-semibold leading-[1.2] text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem]">
                   Secure Messaging
                 </p>
-                <p className="text-[clamp(1.05rem,1.4vw,1.25rem)] leading-[1.35]">
+                <p className="text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.25rem] leading-[1.35]">
                   Messaging between employee and employer apps, to easily
                   respond and keep track of important dates and communications.
                 </p>
@@ -272,10 +272,10 @@ export default function CareHomepayCaseStudy() {
                 </div>
               </SlideIn>
               <SlideIn delay={120} className="flex flex-col gap-4">
-                <p className="font-semibold leading-[1.2] text-[clamp(1.5rem,2.5vw,2.25rem)]">
+                <p className="font-semibold leading-[1.2] text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem]">
                   Clock In and Out
                 </p>
-                <p className="text-[clamp(1.05rem,1.4vw,1.25rem)] leading-[1.35]">
+                <p className="text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.25rem] leading-[1.35]">
                   Easily clock in and out to accurately track hours worked, so
                   your pay is always correct and on time.
                 </p>

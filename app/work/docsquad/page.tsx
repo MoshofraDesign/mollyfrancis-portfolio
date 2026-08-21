@@ -32,10 +32,10 @@ const ASSET = "/work/docsquad";
 
 /** Figma Header Large: Jost SemiBold 81/95. */
 const H_DISPLAY =
-  "font-semibold leading-[1.17] text-white text-[clamp(2rem,5.625vw,5.0625rem)] lg:leading-[95px] [text-wrap:pretty]";
+  "font-semibold leading-[1.17] text-white text-[2rem] sm:text-[2.25rem] md:text-[2.7rem] lg:text-[3.6rem] xl:text-[4.5rem] 2xl:text-[5.062rem] lg:leading-[95px] [text-wrap:pretty]";
 /** Figma Paragraph: Jost Regular 32, 16px under the heading. */
 const BODY =
-  "text-[clamp(1.05rem,2.22vw,2rem)] font-normal leading-normal text-white [text-wrap:pretty]";
+  "text-[1.05rem] sm:text-[1.05rem] md:text-[1.066rem] lg:text-[1.421rem] xl:text-[1.776rem] 2xl:text-[2rem] font-normal leading-normal text-white [text-wrap:pretty]";
 
 /** Outcome stat columns — Figma node 4672:15331: 29% / 71% / $1.2m,
  *  each with a big hero number, uppercase kicker, delta + down triangle,
@@ -104,7 +104,7 @@ function ScreenPanel({
 }) {
   return (
     <section
-      className={`relative flex w-full flex-col items-center justify-center gap-8 px-6 py-16 sm:px-10 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:overflow-hidden lg:px-0 lg:py-0 ${className}`}
+      className={`relative flex w-full flex-col items-center justify-center gap-8 px-6 py-8 sm:px-10 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:overflow-hidden lg:px-0 lg:py-0 ${className}`}
     >
       {children}
     </section>
@@ -133,7 +133,7 @@ export default function DocSquadCaseStudy() {
             width={200}
             height={27}
             unoptimized
-            className="h-[27px] w-[200px] max-w-[28vw] object-contain object-left"
+            className="h-[27px] w-[200px] max-w-[109px] sm:max-w-[179px] md:max-w-[215px] lg:max-w-[287px] xl:max-w-[358px] 2xl:max-w-[430px] object-contain object-left"
           />
         }
         action={<CloseLink large className="text-white" />}
@@ -147,7 +147,7 @@ export default function DocSquadCaseStudy() {
           id="docsquad-title"
           className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
-          <div className="relative z-10 aspect-[842/112] w-[min(100%,842px)] lg:absolute lg:left-[6.94vw] lg:top-[10vh] lg:h-[11.18vh] lg:w-[58.47vw] lg:max-w-none lg:aspect-auto">
+          <div className="relative z-10 aspect-[842/112] w-[min(100%,842px)] lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-[72px] xl:top-[80px] 2xl:top-[90px] lg:h-[80px] xl:h-[89px] 2xl:h-[101px] lg:w-[599px] xl:w-[748px] 2xl:w-[898px] lg:max-w-none lg:aspect-auto">
             <Image
               src={LOGO}
               alt="DocSquad"
@@ -158,16 +158,16 @@ export default function DocSquadCaseStudy() {
             />
           </div>
 
-          <SlideIn className="relative z-10 flex max-w-[308px] flex-col gap-4 text-white lg:absolute lg:bottom-[10.3vh] lg:left-[6.94vw] lg:h-[20.8vh] lg:max-w-[21.39vw] lg:justify-end">
-            <p className="text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-[1.28]">
+          <SlideIn className="relative z-10 flex max-w-[308px] flex-col gap-4 text-white lg:absolute lg:bottom-[74px] xl:bottom-[82px] 2xl:bottom-[93px] lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:h-[150px] xl:h-[166px] 2xl:h-[187px] lg:max-w-[219px] xl:max-w-[274px] 2xl:max-w-[329px] lg:justify-end">
+            <p className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.28]">
               Virtual Care Telehealth App
             </p>
-            <p className="text-[clamp(0.95rem,1.25vw,1.125rem)] font-normal leading-normal">
+            <p className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.125rem] font-normal leading-normal">
               Provider Desktop And Native Apps For Doctors, Nurses And Staff To Diagnosis Patients With Asynchronous And Synchronous Visits.
             </p>
           </SlideIn>
 
-          <div className="relative z-0 mx-auto aspect-[891/529] w-full max-w-[min(92vw,891px)] lg:absolute lg:left-[33.26vw] lg:top-[34.9vh] lg:mx-0 lg:h-[52.9vh] lg:w-[61.88vw] lg:max-w-none lg:aspect-auto">
+          <div className="relative z-0 mx-auto aspect-[891/529] w-full max-w-[min(92vw,891px)] lg:absolute lg:left-[341px] xl:left-[426px] 2xl:left-[511px] lg:top-[251px] xl:top-[279px] 2xl:top-[314px] lg:mx-0 lg:h-[381px] xl:h-[423px] 2xl:h-[476px] lg:w-[634px] xl:w-[792px] 2xl:w-[950px] lg:max-w-none lg:aspect-auto">
             <Image
               src={`${ASSET}/hero.png`}
               alt="DocSquad provider desktop, native app, and watch"
@@ -180,8 +180,8 @@ export default function DocSquadCaseStudy() {
         </section>
 
         {/* 2 — PROBLEM. Figma 4553:21871: 100,296 / 999×409, gap 16 */}
-        <ScreenPanel>
-          <div className="flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[6.94vw] lg:top-1/2 lg:h-[40.9vh] lg:w-[69.375vw] lg:max-w-none lg:-translate-y-1/2 lg:justify-end">
+        <ScreenPanel className="!pt-16">
+          <div className="flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-1/2 lg:h-[294px] xl:h-[327px] 2xl:h-[368px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none lg:-translate-y-1/2 lg:justify-end">
             <SlideIn>
               <h2 className={H_DISPLAY}>Problem</h2>
             </SlideIn>
@@ -200,7 +200,7 @@ export default function DocSquadCaseStudy() {
 
         {/* 3 — RESEARCH. Figma 4553:21883: 100,237 / 950×525, gap 16 */}
         <ScreenPanel>
-          <div className="flex w-full max-w-[950px] flex-col gap-4 lg:absolute lg:bottom-[23.8vh] lg:left-[6.94vw] lg:w-[65.97vw] lg:max-w-none lg:justify-end">
+          <div className="flex w-full max-w-[950px] flex-col gap-4 lg:absolute lg:bottom-[171px] xl:bottom-[190px] 2xl:bottom-[214px] lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[676px] xl:w-[844px] 2xl:w-[1013px] lg:max-w-none lg:justify-end">
             <SlideIn>
               <h2 className={H_DISPLAY}>Research</h2>
             </SlideIn>
@@ -222,7 +222,7 @@ export default function DocSquadCaseStudy() {
 
         {/* 4 — RESEARCH BOARD. Figma 4553:21888: 403,234 / 633×593 r10 */}
         <ScreenPanel>
-          <div className="relative aspect-[633/593] w-full max-w-[633px] overflow-hidden rounded-[10px] lg:absolute lg:left-[27.99vw] lg:top-[23.4vh] lg:h-[59.3vh] lg:w-[43.96vw] lg:max-w-none lg:aspect-auto">
+          <div className="relative aspect-[633/593] w-full max-w-[633px] overflow-hidden rounded-[10px] lg:absolute lg:left-[287px] xl:left-[358px] 2xl:left-[430px] lg:top-[168px] xl:top-[187px] 2xl:top-[211px] lg:h-[427px] xl:h-[474px] 2xl:h-[534px] lg:w-[450px] xl:w-[563px] 2xl:w-[675px] lg:max-w-none lg:aspect-auto">
             <Image
               src={`${ASSET}/research-board.png`}
               alt="Virtual moonlighter research — methods and findings board"
@@ -237,7 +237,7 @@ export default function DocSquadCaseStudy() {
 
         {/* 5 — DESKTOP. Figma 4669:14416: centered, 232≈, 183 / 977×681 */}
         <ScreenPanel>
-          <div className="relative aspect-[977/681] w-full max-w-[977px] lg:absolute lg:left-1/2 lg:top-[18.3vh] lg:w-[67.85vw] lg:max-w-none lg:-translate-x-1/2 lg:aspect-auto lg:h-[68.1vh]">
+          <div className="relative aspect-[977/681] w-full max-w-[977px] lg:absolute lg:left-1/2 lg:top-[132px] xl:top-[146px] 2xl:top-[165px] lg:w-[695px] xl:w-[868px] 2xl:w-[1042px] lg:max-w-none lg:-translate-x-1/2 lg:aspect-auto lg:h-[490px] xl:h-[545px] 2xl:h-[613px]">
             {desktopVideo ? (
               <AutoplayVideo src={desktopVideo} className="h-full w-full rounded-[10px] bg-black" />
             ) : (
@@ -290,7 +290,7 @@ export default function DocSquadCaseStudy() {
 
         {/* 7 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
         <ScreenPanel>
-          <div className="relative aspect-[720/519] w-full max-w-[720px] overflow-hidden rounded-[10px] lg:absolute lg:left-[25vw] lg:top-[24vh] lg:h-[51.9vh] lg:w-[50vw] lg:max-w-none lg:aspect-auto">
+          <div className="relative aspect-[720/519] w-full max-w-[720px] overflow-hidden rounded-[10px] lg:absolute lg:left-[256px] xl:left-[320px] 2xl:left-[384px] lg:top-[173px] xl:top-[192px] 2xl:top-[216px] lg:h-[374px] xl:h-[415px] 2xl:h-[467px] lg:w-[512px] xl:w-[640px] 2xl:w-[768px] lg:max-w-none lg:aspect-auto">
             <Image
               src={`${ASSET}/icons.png`}
               alt="Custom illustration and icon set for the DocSquad design system"
@@ -304,7 +304,7 @@ export default function DocSquadCaseStudy() {
 
         {/* 8 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
         <ScreenPanel>
-          <div className="relative mx-auto aspect-[920/683] w-full max-w-[920px] lg:absolute lg:left-[18.06vw] lg:top-[18vh] lg:mx-0 lg:h-[68.3vh] lg:w-[63.89vw] lg:max-w-none lg:aspect-auto">
+          <div className="relative mx-auto aspect-[920/683] w-full max-w-[920px] lg:absolute lg:left-[185px] xl:left-[231px] 2xl:left-[277px] lg:top-[130px] xl:top-[144px] 2xl:top-[162px] lg:mx-0 lg:h-[492px] xl:h-[546px] 2xl:h-[615px] lg:w-[654px] xl:w-[818px] 2xl:w-[981px] lg:max-w-none lg:aspect-auto">
             <Image
               src={`${ASSET}/interview-dashboard.png`}
               alt="Patient interview overlapping the logged-in DocSquad dashboard"
@@ -336,7 +336,7 @@ export default function DocSquadCaseStudy() {
             magenta. Replaces the earlier circle-badge treatment, which
             didn't match the Figma reference. */}
         <ScreenPanel>
-          <div className="flex w-full max-w-[950px] flex-col items-start gap-10 pt-4 lg:absolute lg:left-[6.94vw] lg:top-1/2 lg:w-[65.97vw] lg:max-w-none lg:-translate-y-1/2 lg:gap-14 lg:pt-0">
+          <div className="flex w-full max-w-[950px] flex-col items-start gap-10 pt-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-1/2 lg:w-[676px] xl:w-[844px] 2xl:w-[1013px] lg:max-w-none lg:-translate-y-1/2 lg:gap-14 lg:pt-0">
             <div className="flex flex-col gap-4">
               <SlideIn>
                 <h2 className={H_DISPLAY}>Outcome</h2>
@@ -356,13 +356,13 @@ export default function DocSquadCaseStudy() {
               <div className="flex w-full flex-col gap-10 sm:flex-row sm:flex-wrap sm:gap-x-14 sm:gap-y-10">
                 {OUTCOME_STATS.map((stat) => (
                   <div key={stat.kicker} className="flex flex-col items-start gap-1 text-white">
-                    <p className="text-[clamp(2.75rem,5.5vw,5.0625rem)] font-semibold uppercase leading-[0.95] tracking-[-0.02em]">
+                    <p className="text-[2.75rem] sm:text-[2.75rem] md:text-[2.75rem] lg:text-[3.52rem] xl:text-[4.4rem] 2xl:text-[5.062rem] font-semibold uppercase leading-[0.95] tracking-[-0.02em]">
                       {stat.hero}
                     </p>
-                    <p className="text-[clamp(0.95rem,1.4vw,1.25rem)] font-semibold uppercase tracking-[0.06em]">
+                    <p className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1.12rem] 2xl:text-[1.25rem] font-semibold uppercase tracking-[0.06em]">
                       {stat.kicker}
                     </p>
-                    <p className="mt-3 flex items-center gap-2 text-[clamp(1.5rem,2.6vw,2.25rem)] font-semibold leading-none">
+                    <p className="mt-3 flex items-center gap-2 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.664rem] xl:text-[2.08rem] 2xl:text-[2.25rem] font-semibold leading-none">
                       {stat.delta}
                       <img
                         src={`${ASSET}/down-triangle-green.svg`}
@@ -372,7 +372,7 @@ export default function DocSquadCaseStudy() {
                         className="size-5 shrink-0 rotate-180 brightness-0 invert"
                       />
                     </p>
-                    <p className="text-[clamp(0.95rem,1.4vw,1.25rem)] font-normal">
+                    <p className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1.12rem] 2xl:text-[1.25rem] font-normal">
                       {stat.detail}
                     </p>
                   </div>

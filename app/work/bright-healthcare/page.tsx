@@ -28,9 +28,9 @@ const VIEW = "lg:w-screen";
 const MEASURE = "w-full max-w-[min(54rem,86vw)]";
 
 const H_DISPLAY =
-  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[clamp(2rem,4.5vw,4.05rem)] [text-wrap:pretty]";
+  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
 const BODY =
-  "text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white [text-wrap:pretty]";
+  "text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white [text-wrap:pretty]";
 
 function QuoteMark({ close = false, className = "" }: { close?: boolean; className?: string }) {
   return (
@@ -73,7 +73,7 @@ export default function BrightHealthcareCaseStudy() {
           className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
           {/* Logo — Figma 4553:22296: 100,100 / 720×117 on a 1440×1000 frame */}
-          <div className="relative z-10 w-[min(100%,720px)] aspect-[720/117] lg:absolute lg:left-[6.94vw] lg:top-[10vh] lg:w-[min(50vw,720px)]">
+          <div className="relative z-10 w-[min(100%,720px)] aspect-[720/117] lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-[72px] xl:top-[80px] 2xl:top-[90px] lg:w-[min(50vw,720px)]">
             <Image
               src={LOGO}
               alt="Bright HealthCare"
@@ -85,17 +85,17 @@ export default function BrightHealthcareCaseStudy() {
           </div>
 
           {/* Title — Figma 4553:22297: 253,237 / 466 wide */}
-          <SlideIn className="relative z-10 max-w-[466px] text-white lg:absolute lg:left-[calc(6.94vw+0.212*min(50vw,720px))] lg:top-[23.7vh] lg:max-w-[32.36vw]">
-            <p className="text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-[1.28]">
+          <SlideIn className="relative z-10 max-w-[466px] text-white lg:absolute lg:left-[180px] xl:left-[225px] 2xl:left-[259px] lg:top-[171px] xl:top-[190px] 2xl:top-[213px] lg:max-w-[331px] xl:max-w-[414px] 2xl:max-w-[497px]">
+            <p className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.28]">
               Prior Authorization Portal
             </p>
-            <p className="mt-2 text-[clamp(0.95rem,1.25vw,1.125rem)] font-normal leading-normal">
+            <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.125rem] font-normal leading-normal">
               Enables providers to electronically submit prior authorization requests and view all requests and their statuses
             </p>
           </SlideIn>
 
           {/* Screens — Figma 4622:11847: 1174×668, centered, top 435, bleeds off the bottom */}
-          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,73.4rem)] lg:absolute lg:left-1/2 lg:top-[43.5vh] lg:mx-0 lg:w-[81.53vw] lg:max-w-none lg:-translate-x-1/2">
+          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,73.4rem)] lg:absolute lg:left-1/2 lg:top-[313px] xl:top-[348px] 2xl:top-[392px] lg:mx-0 lg:w-[835px] xl:w-[1044px] 2xl:w-[1252px] lg:max-w-none lg:-translate-x-1/2">
             <Image
               src={`${ASSET}/hero.png`}
               alt="Member search and authorizations dashboard in the Authorization Portal"
@@ -108,7 +108,7 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </section>
 
-        <Panel width={VIEW} pad="center">
+        <Panel width={VIEW} pad="center" className="!pt-20 sm:!pt-24">
           <div className={`${MEASURE} mx-auto space-y-6`}>
             <SlideIn>
               <h2 className={H_DISPLAY}>Problem</h2>
@@ -137,8 +137,8 @@ export default function BrightHealthcareCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className="relative mx-auto w-full max-w-[min(52rem,86vw)]">
             <SlideIn>
-              <div className="relative px-[clamp(5rem,11vw,8.5rem)]">
-                <p className="text-[clamp(1.25rem,2.2vw,2rem)] font-normal leading-[1.2] text-white [text-wrap:pretty]">
+              <div className="relative px-[5rem] sm:px-[5rem] md:px-[5.28rem] lg:px-[7.04rem] xl:px-[8.5rem] 2xl:px-[8.5rem]">
+                <p className="text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
                   <span className="relative">
                     <QuoteMark className="right-full bottom-0 mr-[0.8em] h-[2.47em] w-[3.125em]" />
                     Faxing
@@ -245,14 +245,14 @@ export default function BrightHealthcareCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className="mx-auto flex w-full max-w-[min(92vw,80rem)] flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
             <SlideIn className="w-full max-w-[748px] lg:w-[min(52%,748px)]">
-              <h2 className="text-[clamp(1.5rem,2.8vw,2.35rem)] font-semibold leading-[1.15] tracking-[-0.02em]">😟 Pains</h2>
+              <h2 className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.15] tracking-[-0.02em]">😟 Pains</h2>
               <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
                 <li>Burnout from repetitive admin tasks.</li>
                 <li>No visibility into status or timelines.</li>
                 <li>Endless back-and-forth with payers.</li>
                 <li>Delays hurting patient satisfaction and care.</li>
               </ul>
-              <h2 className="mt-8 text-[clamp(1.5rem,2.8vw,2.35rem)] font-semibold leading-[1.15] tracking-[-0.02em]">🌟 Gains</h2>
+              <h2 className="mt-8 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.15] tracking-[-0.02em]">🌟 Gains</h2>
               <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
                 <li>One system, fully integrated with their EHR.</li>
                 <li>Clear approval requirements—less rework.</li>
@@ -276,7 +276,7 @@ export default function BrightHealthcareCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className="relative mx-auto w-full max-w-[min(72rem,92vw)]">
             <SlideIn>
-              <div className="relative mx-auto w-fit max-w-full pl-[1.9em] pr-[1.6em] text-[clamp(1.85rem,3.8vw,4.05rem)]">
+              <div className="relative mx-auto w-fit max-w-full pl-[1.9em] pr-[1.6em] text-[1.85rem] sm:text-[1.85rem] md:text-[1.85rem] lg:text-[2.432rem] xl:text-[3.04rem] 2xl:text-[3.648rem]">
                 <p className="font-semibold leading-[1.17] tracking-[-0.02em] text-white">
                   <span className="relative block w-fit sm:whitespace-nowrap">
                     <QuoteMark className="-left-[1.85em] top-0 h-[0.97em] w-[1.23em]" />
@@ -287,7 +287,7 @@ export default function BrightHealthcareCaseStudy() {
                     <QuoteMark close className="left-[calc(100%+0.12em)] bottom-0 h-[0.97em] w-[1.23em]" />
                   </span>
                 </p>
-                <p className="mt-6 text-[clamp(1.05rem,1.4vw,1.35rem)] italic leading-snug text-white">
+                <p className="mt-6 text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] italic leading-snug text-white">
                   Rebecca Schweitz
                   <br />
                   VP, Clinical Performance
@@ -309,16 +309,16 @@ export default function BrightHealthcareCaseStudy() {
             </div>
             <SlideIn delay={160}>
               <div>
-                <h3 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-white/45">
+                <h3 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
                   Projected Numbers
                 </h3>
                 <ul className="mt-5 grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-x-10 lg:gap-x-12">
                   {meta.projected.map((row) => (
                     <li key={`${row.value}-${row.label}`}>
-                      <p className="text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                      <p className="text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
                         {row.value}
                       </p>
-                      <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                      <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
                         {row.label}
                       </p>
                     </li>
@@ -348,47 +348,47 @@ export default function BrightHealthcareCaseStudy() {
           <div className={`${MEASURE} mx-auto`}>
             <div className="grid gap-10 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
               <SlideIn>
-                <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-white/45">
+                <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
                   Usage
                 </h2>
-                <p className="mt-5 text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
                   $1.9m in savings
                 </p>
-                <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
                   Scaled monthly usage to 9-10K a month
                 </p>
               </SlideIn>
               <SlideIn delay={80}>
-                <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-white/45">
+                <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
                   Time saved
                 </h2>
-                <p className="mt-5 text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
                   $800K in savings
                 </p>
-                <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
                   7 minutes per case for clinicians reviewing cases
                 </p>
-                <p className="mt-8 text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                <p className="mt-8 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
                   4 Hours per day saved
                 </p>
-                <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
                   Went down 4 minutes per authorization, per provider
                 </p>
               </SlideIn>
               <SlideIn delay={160}>
-                <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-white/45">
+                <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
                   Users
                 </h2>
-                <p className="mt-5 text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
                   50K authorization submissions
                 </p>
-                <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
                   22K providers logged in
                 </p>
-                <p className="mt-8 text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                <p className="mt-8 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
                   16.6k unique visitors
                 </p>
-                <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
                   Since go-live
                 </p>
               </SlideIn>
@@ -405,7 +405,7 @@ export default function BrightHealthcareCaseStudy() {
                   href={project.prototype}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[clamp(0.95rem,1.2vw,1.1rem)] text-white transition-opacity hover:opacity-60"
+                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] text-white transition-opacity hover:opacity-60"
                 >
                   Open prototype ↗
                 </a>

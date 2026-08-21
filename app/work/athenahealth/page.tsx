@@ -29,9 +29,9 @@ const MEASURE = "w-full max-w-[min(54rem,86vw)]";
 const MEDIA = "w-full max-w-[min(950px,90vw)]";
 
 const H_DISPLAY =
-  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[clamp(2rem,4.5vw,4.05rem)] [text-wrap:pretty]";
+  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
 const BODY_CAPTION =
-  "mt-3 text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white/55 [text-wrap:pretty]";
+  "mt-3 text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/55 [text-wrap:pretty]";
 
 function StoryImage({
   src,
@@ -103,15 +103,15 @@ export default function ConsumerHealthCaseStudy() {
           id="title"
           className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-16 sm:px-10 sm:pt-20 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
-          <div className="relative z-10 aspect-[740/104] w-[min(100%,740px)] lg:absolute lg:left-[6.94vw] lg:top-[10vh] lg:h-[10.4vh] lg:w-[51.39vw] lg:max-w-none lg:aspect-auto">
+          <div className="relative z-10 aspect-[740/104] w-[min(100%,740px)] lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-[72px] xl:top-[80px] 2xl:top-[90px] lg:h-[75px] xl:h-[83px] 2xl:h-[94px] lg:w-[526px] xl:w-[658px] 2xl:w-[789px] lg:max-w-none lg:aspect-auto">
             <Image src={LOGO} alt="athenahealth" fill unoptimized priority className="object-contain object-left" />
           </div>
 
-          <p className="relative z-10 text-[clamp(1.5rem,2.5vw,2.25rem)] font-semibold leading-[1.28] text-white lg:absolute lg:left-[62.7vw] lg:top-[15.2vh]">
+          <p className="relative z-10 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.28] text-white lg:absolute lg:left-[642px] xl:left-[803px] 2xl:left-[963px] lg:top-[109px] xl:top-[122px] 2xl:top-[137px]">
             Patient Portal
           </p>
 
-          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,1186px)] lg:absolute lg:left-[6.94vw] lg:top-[35vh] lg:mx-0 lg:w-[82.36vw] lg:max-w-none">
+          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,1186px)] lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-[252px] xl:top-[280px] 2xl:top-[315px] lg:mx-0 lg:w-[843px] xl:w-[1054px] 2xl:w-[1265px] lg:max-w-none">
             <Image
               src={`${ASSET}/hero.png`}
               alt="Redesigned patient portal dashboard on desktop and mobile"
@@ -125,7 +125,7 @@ export default function ConsumerHealthCaseStudy() {
         </section>
 
         {/* 25 million patients... */}
-        <TextPanel width={VIEW}>
+        <TextPanel width={VIEW} className="!pt-20 sm:!pt-24">
           <SlideIn>
             <h2 className={H_DISPLAY}>25 million patients opened the portal and landed on Test Results.</h2>
           </SlideIn>
@@ -166,7 +166,7 @@ export default function ConsumerHealthCaseStudy() {
               </div>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="mt-4 text-center text-[clamp(1.05rem,1.4vw,1.35rem)] leading-[1.35] text-white/55 [text-wrap:pretty]">
+              <p className="mt-4 text-center text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
                 My Health, as a place — not a subcategory.
               </p>
             </SlideIn>
@@ -194,7 +194,7 @@ export default function ConsumerHealthCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className="w-full max-w-[min(72rem,92vw)] mx-auto">
             <SlideIn>
-              <h2 className={`mb-6 ${H_DISPLAY.replace("text-[clamp(2rem,4.5vw,4.05rem)]", "text-[clamp(1.5rem,3.2vw,2.65rem)]")}`}>
+              <h2 className={`mb-6 ${H_DISPLAY.replace("text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem]", "text-[1.5rem] sm:text-[1.5rem] md:text-[1.536rem] lg:text-[2.048rem] xl:text-[2.56rem] 2xl:text-[2.65rem]")}`}>
                 Cut the repeats. Make it respond.
               </h2>
             </SlideIn>
@@ -230,49 +230,49 @@ export default function ConsumerHealthCaseStudy() {
             <SlideIn>
               <div className="grid gap-10 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
                 <div>
-                  <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-white/45">
+                  <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
                     Usage
                   </h2>
-                  <p className="mt-5 text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
                     25M patients
                   </p>
-                  <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
                     Registered on the portal
                   </p>
                 </div>
 
                 <div>
-                  <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-white/45">
+                  <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
                     Time saved
                   </h2>
-                  <p className="mt-5 text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
                     40% faster
                   </p>
-                  <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
                     Time to find appointments, meds, and billing
                   </p>
-                  <p className="mt-8 text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                  <p className="mt-8 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
                     2 taps
                   </p>
-                  <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
                     From landing to the next action on a phone
                   </p>
                 </div>
 
                 <div>
-                  <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-white/45">
+                  <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
                     Users
                   </h2>
-                  <p className="mt-5 text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
                     2.1× completion
                   </p>
-                  <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
                     Mobile tasks vs the old Test Results dump
                   </p>
-                  <p className="mt-8 text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                  <p className="mt-8 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
                     28% fewer tickets
                   </p>
-                  <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-white/55">
+                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
                     &ldquo;Where is my...&rdquo; support contacts
                   </p>
                 </div>

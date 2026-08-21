@@ -86,7 +86,7 @@ export function Panel({
 
   return (
     <section
-      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:[justify-content:safe_center] lg:gap-0 lg:overflow-y-auto lg:overscroll-contain ${padLg} ${className}`}
+      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-10 sm:px-12 sm:py-14 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:[justify-content:safe_center] lg:gap-0 lg:overflow-y-auto lg:overscroll-contain ${padLg} ${className}`}
     >
       {children}
     </section>
@@ -111,7 +111,7 @@ export function TextPanel({
   return (
     <section
       id={id}
-      className={`relative flex w-full justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR} ${className}`}
+      className={`relative flex w-full justify-center px-6 py-10 sm:px-12 sm:py-14 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR} ${className}`}
     >
       <div className={MEASURE}>{children}</div>
     </section>
@@ -172,7 +172,7 @@ export function NextProjectLink({
   return (
     <Link
       href={href}
-      className="group relative flex w-full flex-col justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-[min(100vw,600px)] lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,2.5rem)] lg:py-0"
+      className="group relative flex w-full flex-col justify-center px-6 py-10 sm:px-12 sm:py-14 lg:h-[100dvh] lg:w-[min(100vw,600px)] lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,2.5rem)] lg:py-0"
       style={{ background: accent, color: fg }}
     >
       <div className="w-full max-w-[min(32rem,86vw)]">

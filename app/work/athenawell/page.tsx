@@ -95,7 +95,7 @@ function BigImagePanel({
           />
         </div>
         {caption && (
-          <p className="mt-4 max-w-[70ch] text-center text-[clamp(0.9rem,1.1vw,1.05rem)] opacity-80">
+          <p className="mt-4 max-w-[70ch] text-center text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1.05rem] opacity-80">
             {caption}
           </p>
         )}
@@ -130,22 +130,22 @@ export default function AthenaWellCaseStudy() {
         {/* ── TITLE ─────────────────────────────────────────────────── */}
         <section
           id="title"
-          className="relative flex w-full flex-col justify-center gap-8 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-10 lg:px-[6.94vw] lg:pt-11"
+          className="relative flex w-full flex-col justify-center gap-8 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-10 lg:px-[71px] xl:px-[89px] 2xl:px-[107px] lg:pt-11"
         >
           <div className="relative h-8 w-[190px] sm:h-9 sm:w-[220px]">
             <Image src={LOGO} alt="athenaWell" fill unoptimized priority className="object-contain object-left" />
           </div>
 
-          <div className="flex flex-col gap-6 lg:max-w-[38vw]">
-            <p className="text-[clamp(1.75rem,4.5vw,3.5rem)] font-semibold leading-[1.1]">
+          <div className="flex flex-col gap-6 lg:max-w-[389px] xl:max-w-[486px] 2xl:max-w-[584px]">
+            <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.5rem] 2xl:text-[3.5rem] font-semibold leading-[1.1]">
               Standalone apps for patients and care teams
             </p>
-            <p className="max-w-[46ch] text-base leading-relaxed opacity-90 sm:text-lg lg:text-[1.3vw]">
+            <p className="max-w-[46ch] text-base leading-relaxed opacity-90 sm:text-lg lg:text-[13px] xl:text-[17px] 2xl:text-[20px]">
               {project.subtitle}
             </p>
           </div>
 
-          <div className="relative aspect-[5/3] w-full lg:absolute lg:bottom-0 lg:right-0 lg:h-[70vh] lg:w-[54vw] lg:max-w-none">
+          <div className="relative aspect-[5/3] w-full lg:absolute lg:bottom-0 lg:right-0 lg:h-[504px] xl:h-[560px] 2xl:h-[630px] lg:w-[553px] xl:w-[691px] 2xl:w-[829px] lg:max-w-none">
             <Image
               src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1558469800892-B0L920CQQ1NRG9FD0HAL/Patient-CarePlans-Landing+Copy+2.png"
               alt="athenaWell Care Plan landing page"
@@ -158,7 +158,7 @@ export default function AthenaWellCaseStudy() {
         </section>
 
         {/* ── WHAT IS ATHENAWELL ───────────────────────────────────────── */}
-        <TextPanel>
+        <TextPanel className="!pt-20 sm:!pt-24">
           <Heading>What is athenaWell?</Heading>
           <Body>{project.overview}</Body>
         </TextPanel>
@@ -169,15 +169,15 @@ export default function AthenaWellCaseStudy() {
             <Heading>User Types</Heading>
             <div className="mt-10 grid w-full gap-10 sm:grid-cols-2 sm:gap-14">
               <SlideIn>
-                <p className="text-[clamp(1.15rem,1.6vw,1.5rem)] font-semibold">Public User</p>
-                <p className="mt-3 text-[clamp(0.95rem,1.2vw,1.1rem)] leading-relaxed opacity-90">
+                <p className="text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.15rem] xl:text-[1.28rem] 2xl:text-[1.5rem] font-semibold">Public User</p>
+                <p className="mt-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] leading-relaxed opacity-90">
                   Prospective customers browsing the Marketplace evaluate athenahealth&rsquo;s partner
                   ecosystem, so the experience has to stand on its own.
                 </p>
               </SlideIn>
               <SlideIn delay={100}>
-                <p className="text-[clamp(1.15rem,1.6vw,1.5rem)] font-semibold">athenaNet User</p>
-                <p className="mt-3 text-[clamp(0.95rem,1.2vw,1.1rem)] leading-relaxed opacity-90">
+                <p className="text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.15rem] xl:text-[1.28rem] 2xl:text-[1.5rem] font-semibold">athenaNet User</p>
+                <p className="mt-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] leading-relaxed opacity-90">
                   Self-service tools let existing athenahealth customers evaluate partner products right
                   inside their daily workflow.
                 </p>
@@ -212,8 +212,8 @@ export default function AthenaWellCaseStudy() {
             <div className="mt-10 grid w-full gap-10 sm:grid-cols-3 sm:gap-8">
               {personas.map((p, i) => (
                 <SlideIn key={p.name} delay={100 + i * 90}>
-                  <p className="text-[clamp(1.1rem,1.4vw,1.3rem)] font-semibold">{p.name}</p>
-                  <p className="mt-3 text-[clamp(0.9rem,1.05vw,1rem)] leading-relaxed opacity-90">
+                  <p className="text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.1rem] xl:text-[1.12rem] 2xl:text-[1.3rem] font-semibold">{p.name}</p>
+                  <p className="mt-3 text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1rem] leading-relaxed opacity-90">
                     {p.body}
                   </p>
                 </SlideIn>
@@ -267,8 +267,8 @@ export default function AthenaWellCaseStudy() {
             <div className="mt-10 w-full space-y-8">
               {metrics.map((m, i) => (
                 <SlideIn key={m.label} delay={120 + i * 90}>
-                  <p className="text-[clamp(0.9rem,1.1vw,1rem)] font-medium opacity-80">{m.label}</p>
-                  <p className="mt-1 text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight">
+                  <p className="text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1rem] font-medium opacity-80">{m.label}</p>
+                  <p className="mt-1 text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[2.75rem] 2xl:text-[2.75rem] font-semibold leading-tight">
                     {m.value}
                   </p>
                 </SlideIn>
