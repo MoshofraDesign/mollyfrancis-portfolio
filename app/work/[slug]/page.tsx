@@ -239,6 +239,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   const fg = isBright ? "#ffffff" : contrastColor(project.accent);
   const isLogos = project.slug === "logos";
   const isPrint = project.slug === "print";
+  const isEcommerce = project.slug === "ecommerce";
 
   if (isPrint) {
     const PRINT_BLURB =
@@ -394,6 +395,111 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           meta={getCaseStudyMeta(project)}
           lightText={false}
         />
+
+        <NextProjectLink
+          href={`/work/${next.slug}`}
+          client={next.client}
+          title={next.title}
+          accent={next.accent}
+        />
+      </main>
+    );
+  }
+
+  if (isEcommerce) {
+    return (
+      <main
+        className={`${jost.variable} relative min-h-screen bg-[#F5F5F4] text-[#141414]`}
+        style={{ fontFamily: "var(--font-jost), system-ui, sans-serif" }}
+      >
+        <StickyNav
+          watch="title"
+          logo={
+            project.logo ? (
+              <div className="relative h-6 w-[90px] sm:h-7 sm:w-[110px]">
+                <Image
+                  src={project.logo}
+                  alt={project.client}
+                  fill
+                  unoptimized
+                  className="object-contain object-left [filter:brightness(0)_invert(8%)]"
+                />
+              </div>
+            ) : (
+              <span className="text-sm font-semibold">{project.title}</span>
+            )
+          }
+          action={<CloseLink large className="text-[#141414]" />}
+        />
+
+        <section
+          id="title"
+          className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-8 pb-10 pt-16 sm:px-12 lg:px-20 lg:pt-20"
+        >
+          {project.logo ? (
+            <div className="relative h-20 w-full max-w-[420px] sm:h-24 md:h-28">
+              <Image
+                src={project.logo}
+                alt={project.client}
+                fill
+                unoptimized
+                priority
+                className="object-contain object-left [filter:brightness(0)_invert(8%)]"
+                style={{ transform: `scale(${project.logoScale ?? 1})`, transformOrigin: "left center" }}
+              />
+            </div>
+          ) : (
+            <p className="text-[1.75rem] sm:text-[2rem] md:text-[2.4rem] font-semibold">
+              {project.title}
+            </p>
+          )}
+          {project.subtitle ? (
+            <p className="max-w-[46rem] text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] [text-wrap:pretty]">
+              {project.subtitle}
+            </p>
+          ) : null}
+          {project.overview ? (
+            <p className="max-w-[46rem] text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1.05rem] leading-[1.4] text-[#141414]/60 [text-wrap:pretty]">
+              {project.overview}
+            </p>
+          ) : null}
+        </section>
+
+        {project.images && project.images.length > 0 && (
+          <section className="w-full pb-24">
+            {/* Horizontal filmstrip — each design keeps its own natural
+                aspect ratio (no forced crop). Scroll horizontally to move
+                through the gallery instead of stacking vertically. */}
+            <div className="flex w-full snap-x snap-mandatory gap-6 overflow-x-auto px-8 pb-6 sm:px-12 lg:px-20 [-webkit-overflow-scrolling:touch]">
+              {project.images.map((img, i) => (
+                <figure
+                  key={img.src + i}
+                  className="flex shrink-0 snap-center flex-col gap-3"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element -- true
+                      source dimensions aren't available (CDN not reachable
+                      from the build environment), so a plain <img> lets the
+                      browser size each design by its own natural aspect
+                      ratio instead of forcing every screenshot into one
+                      guessed box. */}
+                  <img
+                    src={img.src}
+                    alt={img.caption || "Ecommerce storefront design"}
+                    loading="lazy"
+                    className="h-[52vh] w-auto max-w-[85vw] rounded-sm object-contain sm:h-[60vh] lg:h-[70vh]"
+                  />
+                  {img.caption && (
+                    <figcaption className="text-center text-xs text-[#141414]/60">
+                      {img.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText={false} />
 
         <NextProjectLink
           href={`/work/${next.slug}`}
