@@ -318,7 +318,7 @@ export default function DocSquadCaseStudy() {
 
         {/* 9 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at center, top 50%+20 */}
         <ScreenPanel width="lg:w-[min(100vw,59.375rem)]">
-          <div className="relative aspect-square w-[min(600px,78vw)] overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:top-[calc(50%+20px)] lg:size-[min(39.37vw,600px)] lg:-translate-x-1/2 lg:-translate-y-1/2">
+          <div className="relative aspect-square w-[304px] sm:w-[499px] md:w-[599px] lg:w-[600px] overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:top-[calc(50%+20px)] lg:size-[min(39.37vw,600px)] lg:-translate-x-1/2 lg:-translate-y-1/2">
             <Image
               src={`${ASSET}/portrait.png`}
               alt="A virtual moonlighter clinician"

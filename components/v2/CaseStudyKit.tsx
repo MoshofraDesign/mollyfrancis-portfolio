@@ -28,9 +28,14 @@ export const TEXT_W = MEASURE;
 
 export const VIEW = "lg:w-screen";
 
-/** Top inset so media never runs under the fixed logo + Close control. */
+/**
+ * Top inset so media never runs under the fixed Close control (always
+ * visible, pt-5/sm:pt-7 in StickyNav) or the parked logo at lg+. Stepped per
+ * breakpoint rather than fluid — was lg-only, so a centered panel narrower
+ * than 1024px had zero clearance and could sit right under Close.
+ */
 export const NAV_CLEAR =
-  "lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]";
+  "pt-16 sm:pt-20 lg:pt-[5.75rem] pb-10 sm:pb-12 lg:pb-10";
 
 /** Keeps the last two words together so a line never ends on a lone orphan. */
 export function noOrphan(text: string) {

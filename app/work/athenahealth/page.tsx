@@ -283,7 +283,7 @@ export default function ConsumerHealthCaseStudy() {
 
         {/* Portrait breather */}
         <Panel width={VIEW} pad="center" className="items-center">
-          <div className="relative mx-auto aspect-square w-[min(600px,78vw)] overflow-hidden rounded-full">
+          <div className="relative mx-auto aspect-square w-[304px] sm:w-[499px] md:w-[599px] lg:w-[600px] overflow-hidden rounded-full">
             <Image
               src={`${ASSET}/portrait.png`}
               alt="A patient using the portal from home"
