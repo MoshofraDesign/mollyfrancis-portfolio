@@ -204,22 +204,22 @@ export default function ConsumerHealthCaseStudy() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`${ASSET}/nav-after.png`}
-                    alt="Redesigned navigation — dropdown menus"
+                    alt="Desktop navigation — dropdown menus"
                     className="h-full w-full object-contain"
                   />
                 </div>
-                <div className="relative w-full aspect-[1620/674] sm:w-[38%]">
+                <div className="relative w-full aspect-[1132/1000] sm:w-[38%]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={`${ASSET}/nav-after.png`}
-                    alt="Redesigned navigation — dropdown menus"
+                    src={`${ASSET}/nav-after-mobile.png`}
+                    alt="Mobile navigation drawer — account panel and main menu"
                     className="h-full w-full object-contain"
                   />
                 </div>
               </div>
             </SlideIn>
             <SlideIn delay={140}>
-              <p className={`${BODY_CAPTION} mt-4 text-center`}>Every section, one dropdown away.</p>
+              <p className={`${BODY_CAPTION} mt-4 text-center`}>Same structure on desktop and phone.</p>
             </SlideIn>
           </div>
         </Panel>
