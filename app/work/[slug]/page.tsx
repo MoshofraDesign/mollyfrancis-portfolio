@@ -70,11 +70,13 @@ const jost = Jost({
 
 function MetricsPanel({
   metrics,
+  className,
 }: {
   metrics: { label: string; value: string }[];
+  className?: string;
 }) {
   return (
-    <Panel width={VIEW} pad="center">
+    <Panel width={VIEW} pad="center" className={className}>
       <div className={`${MEASURE} mx-auto`}>
         <Heading>Impact</Heading>
         <div className="mt-10 grid w-full grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
@@ -95,11 +97,13 @@ function MetricsPanel({
 /** A handful of screens/photos in a grid, one panel per chunk of 4. */
 function ImageGridPanel({
   images,
+  className = "",
 }: {
   images: { src: string; caption?: string }[];
+  className?: string;
 }) {
   return (
-    <Panel width={VIEW} pad="center" className="items-center">
+    <Panel width={VIEW} pad="center" className={`items-center ${className}`}>
       <div className={`mx-auto grid ${MEDIA} grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6`}>
         {images.map((img, i) => (
           <figure key={img.src + i} className="space-y-2">
@@ -401,6 +405,29 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
     );
   }
 
+  // Whichever section renders first right after the title keeps the
+  // original (larger) top gap; every section after that uses the
+  // site-wide tightened spacing.
+  const firstSectionKey =
+    project.overview && project.slug !== "print"
+      ? "overview"
+      : project.problem
+      ? "problem"
+      : project.approach
+      ? "approach"
+      : project.outcome
+      ? "outcome"
+      : project.metrics && project.metrics.length > 0
+      ? "metrics"
+      : project.research && project.research.length > 0
+      ? "research"
+      : project.images && project.images.length > 0
+      ? "images"
+      : project.prototype
+      ? "prototype"
+      : null;
+  const FIRST_GAP = "!pt-20 sm:!pt-24";
+
   return (
     <main
       className={`${jost.variable} relative`}
@@ -436,39 +463,42 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         <TitlePanel project={project} />
 
         {project.overview && project.slug !== "print" && (
-          <TextPanel>
+          <TextPanel className={firstSectionKey === "overview" ? FIRST_GAP : undefined}>
             <Heading>Overview</Heading>
             <Body>{project.overview}</Body>
           </TextPanel>
         )}
 
         {project.problem && (
-          <TextPanel>
+          <TextPanel className={firstSectionKey === "problem" ? FIRST_GAP : undefined}>
             <Heading>Problem</Heading>
             <Body>{project.problem}</Body>
           </TextPanel>
         )}
 
         {project.approach && (
-          <TextPanel>
+          <TextPanel className={firstSectionKey === "approach" ? FIRST_GAP : undefined}>
             <Heading>Approach</Heading>
             <Body>{project.approach}</Body>
           </TextPanel>
         )}
 
         {project.outcome && (
-          <TextPanel>
+          <TextPanel className={firstSectionKey === "outcome" ? FIRST_GAP : undefined}>
             <Heading>Outcome</Heading>
             <Body>{project.outcome}</Body>
           </TextPanel>
         )}
 
         {project.metrics && project.metrics.length > 0 && (
-          <MetricsPanel metrics={project.metrics} />
+          <MetricsPanel
+            metrics={project.metrics}
+            className={firstSectionKey === "metrics" ? FIRST_GAP : undefined}
+          />
         )}
 
         {project.research && project.research.length > 0 && (
-          <TextPanel>
+          <TextPanel className={firstSectionKey === "research" ? FIRST_GAP : undefined}>
             <Heading>Research methods</Heading>
             <Bullets items={project.research} />
           </TextPanel>
@@ -476,13 +506,17 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
 
         {project.images && project.images.length > 0 &&
           chunk(project.images, 4).map((group, i) => (
-            <ImageGridPanel key={i} images={group} />
+            <ImageGridPanel
+              key={i}
+              images={group}
+              className={i === 0 && firstSectionKey === "images" ? FIRST_GAP : ""}
+            />
           ))}
 
         {project.prototype && (() => {
           const isFigmaFile = /figma\.com\/(design|file)\//.test(project.prototype);
           return (
-            <Panel width={VIEW} pad="center">
+            <Panel width={VIEW} pad="center" className={firstSectionKey === "prototype" ? FIRST_GAP : undefined}>
               <div className={`${MEASURE} mx-auto`}>
                 <Heading>{isFigmaFile ? "Explore the Figma file" : "Live Figma prototype"}</Heading>
                 <a
