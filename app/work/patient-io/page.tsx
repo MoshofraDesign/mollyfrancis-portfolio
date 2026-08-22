@@ -61,23 +61,14 @@ const SCREENS = [
   {
     src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511967913957-U3LHYLLHH507187LL8WZ/image-asset.png",
     alt: "Tracking medications, vitals, and adherence",
-    caption: "Tracking medications, vitals, and adherence",
-    width: 280,
-    height: 460,
   },
   {
     src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511968056680-OYW7HQTA481IA0KX2EV3/image-asset.png",
     alt: "Medications module",
-    caption: "One tablet's dose times, notes, and reminders",
-    width: 280,
-    height: 460,
   },
   {
     src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0a7d94ff-64a3-4bb9-9202-85911eb02bbc/Screen+Shot+2022-11-02+at+8.03.55+PM.png",
     alt: "Pill-shape design system, generated from Epocrates data",
-    caption: "Pill-shape design system, generated from Epocrates data",
-    width: 340,
-    height: 460,
   },
 ] as const;
 
@@ -96,7 +87,7 @@ export default function PatientIoCaseStudy() {
       <StickyNav
         watch="title"
         logo={
-          <div className="relative h-7 w-[105px] sm:h-8 sm:w-[125px]">
+          <div className="relative h-8 w-[125px] sm:h-9 sm:w-[145px]">
             <Image src={LOGO} alt="Patient IO" fill unoptimized className="object-contain object-left" />
           </div>
         }
@@ -162,31 +153,32 @@ export default function PatientIoCaseStudy() {
         </TextPanel>
 
         {/* ── PRODUCT SCREENS ROW ──────────────────────────────────────── *
-         * Same treatment as the docsquad/Netspend phone rows (Figma
-         * 4732:9524): individually framed screens sitting side by side
-         * instead of stacked full panels, each with its own staggered
-         * SlideIn as it scrolls into view. */}
+         * Flat, unframed screens sitting side by side (Figma 4732:9524) —
+         * no border/shadow, each keeping its own natural aspect ratio, with
+         * a staggered SlideIn per screen as the row scrolls into view. */}
         <Panel width={VIEW} pad="center" className="items-center">
-          <div className="mx-auto flex w-full max-w-[1100px] flex-col items-center gap-10 sm:gap-12">
-            <div className="flex w-full flex-col items-center gap-8 sm:flex-row sm:items-end sm:justify-center sm:gap-6 lg:gap-8">
+          <div className="mx-auto flex w-full max-w-[1100px] flex-col items-center gap-8">
+            <div className="flex w-full flex-col items-center gap-6 sm:flex-row sm:items-end sm:justify-center sm:gap-4 lg:gap-6">
               {SCREENS.map((screen, i) => (
-                <SlideIn key={screen.src} delay={i * 90} className="flex flex-col items-center gap-3">
-                  <div
-                    className="relative overflow-hidden rounded-xl border border-white/15 bg-white/5 shadow-[0_12px_48px_rgba(0,0,0,0.25)]"
-                    style={{ width: screen.width, height: screen.height, maxWidth: "80vw", maxHeight: "60vh" }}
-                  >
-                    <Image
-                      src={screen.src}
-                      alt={screen.alt}
-                      fill
-                      sizes="(max-width: 640px) 80vw, 30vw"
-                      className="object-contain"
-                    />
-                  </div>
-                  <p className="max-w-[26ch] text-center text-[0.85rem] opacity-80">{screen.caption}</p>
+                <SlideIn key={screen.src} delay={i * 90}>
+                  {/* eslint-disable-next-line @next/next/no-img-element -- true
+                      source dimensions aren't available (CDN not reachable
+                      from the build environment), so a plain <img> lets each
+                      screen keep its own natural aspect ratio instead of
+                      being forced into a uniform box. */}
+                  <img
+                    src={screen.src}
+                    alt={screen.alt}
+                    loading="lazy"
+                    className="h-[280px] w-auto max-w-[70vw] rounded-md object-contain sm:h-[340px] lg:h-[400px]"
+                  />
                 </SlideIn>
               ))}
             </div>
+            <p className="max-w-[46ch] text-center text-[0.85rem] opacity-80">
+              Tracking medications and vitals, managing prescriptions, and the pill-shape design system
+              behind it all.
+            </p>
           </div>
         </Panel>
 
