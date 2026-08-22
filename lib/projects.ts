@@ -512,9 +512,12 @@ export const projects: Project[] = [
     year: "2016–2017",
     role: "Solo Product Designer",
     tags: ["Healthcare", "Mobile", "Behavior change"],
-    thumbnail: "/work-thumbnails/athenahealth-figma.webp",
-    logo: "/logos/athenahealth.svg",
-    accent: "#4717B7",
+    thumbnail: "/work-thumbnails/patient-io-photo.jpg",
+    // TODO(molly): swap in the real Patient IO logo SVG once you resend it
+    // -- left unset rather than pointing at athenahealth's logo, since that
+    // was actively wrong on this tile. CareGrid just skips the logo overlay
+    // and shows the photo + accent color until this is set.
+    accent: "#00CCB7",
     aiSummary:
       "Patient IO helped patients stick to complex treatment regimens and gave health professionals visibility between visits. As solo designer on a 14-person team, I owned the end-to-end experience -- work that led athenahealth to acquire the company in 2016 and adopt the framework as the design foundation for athenaWell.",
     overview:
