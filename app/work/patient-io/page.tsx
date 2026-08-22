@@ -5,7 +5,6 @@ import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
-import { contrastColor } from "@/lib/contrastColor";
 import {
   Panel,
   TextPanel,
@@ -56,6 +55,7 @@ const metrics = [
   { label: "Person team, one solo product designer", value: "14" },
   { label: "Acquired by athenahealth", value: "2016" },
   { label: "Drugs rendered correctly via structured Epocrates data", value: "Thousands" },
+  { label: "Wearable integrations carried into athenaWell", value: "200+" },
 ];
 
 /** One large image, centered, fill-based since exact source dimensions
@@ -100,7 +100,7 @@ export default function PatientIoCaseStudy() {
   const project = getProject("patient-io");
   const idx = projects.findIndex((p) => p.slug === "patient-io");
   const next = projects[(idx + 1) % projects.length];
-  const fg = contrastColor(ACCENT);
+  const fg = "#ffffff";
   if (!project) return null;
 
   return (
@@ -111,7 +111,7 @@ export default function PatientIoCaseStudy() {
       <StickyNav
         watch="title"
         logo={
-          <div className="relative h-6 w-[90px] sm:h-7 sm:w-[110px]">
+          <div className="relative h-7 w-[105px] sm:h-8 sm:w-[125px]">
             <Image src={LOGO} alt="Patient IO" fill unoptimized className="object-contain object-left" />
           </div>
         }
@@ -122,28 +122,33 @@ export default function PatientIoCaseStudy() {
         {/* ── TITLE ─────────────────────────────────────────────────── */}
         <section
           id="title"
-          className="relative flex w-full flex-col justify-center gap-8 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-10 lg:px-[71px] xl:px-[89px] 2xl:px-[107px] lg:pt-11"
+          className="relative flex w-full flex-col gap-8 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-12 lg:px-[71px] xl:px-[89px] 2xl:px-[107px] lg:pt-16"
         >
-          <div className="relative h-10 w-[140px] sm:h-12 sm:w-[165px]">
-            <Image src={LOGO} alt="Patient IO" fill unoptimized priority className="object-contain object-left" />
-          </div>
-
-          <div className="flex flex-col gap-6 lg:max-w-[389px] xl:max-w-[486px] 2xl:max-w-[584px]">
-            <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.5rem] 2xl:text-[3.5rem] font-semibold leading-[1.1]">
+          {/* Logo + headline sit on one row on desktop, matching the Figma
+              hero (node 4732:9502) — stacked on mobile/tablet since there's
+              no room for them side by side below lg. */}
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-16">
+            <div className="relative h-12 w-[168px] shrink-0 sm:h-14 sm:w-[196px] md:h-16 md:w-[224px] lg:h-20 lg:w-[280px] xl:h-24 xl:w-[336px] 2xl:h-28 2xl:w-[392px]">
+              <Image src={LOGO} alt="Patient IO" fill unoptimized priority className="object-contain object-left" />
+            </div>
+            <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.75rem] font-semibold leading-[1.1] lg:max-w-[26ch]">
               A patient engagement platform
             </p>
-            <p className="max-w-[46ch] text-base leading-relaxed opacity-90 sm:text-lg lg:text-[13px] xl:text-[17px] 2xl:text-[20px]">
-              {project.subtitle}
-            </p>
           </div>
 
-          <div className="relative aspect-[5/3] w-full lg:absolute lg:bottom-0 lg:right-0 lg:h-[504px] xl:h-[560px] 2xl:h-[630px] lg:w-[553px] xl:w-[691px] 2xl:w-[829px] lg:max-w-none">
+          <p className="max-w-[46ch] text-base leading-relaxed opacity-90 sm:text-lg lg:text-[13px] xl:text-[17px] 2xl:text-[20px]">
+            {project.subtitle}
+          </p>
+
+          {/* Laptop + phone + watch mockup, large and centered — matches
+              the Figma composition instead of being corner-anchored. */}
+          <div className="relative mx-auto aspect-[5/3] w-full max-w-[900px] flex-1 lg:mt-4">
             <Image
               src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965854643-56K9O8S9XMT6ZK4P38J8/Devices.png"
               alt="Patient IO across devices"
               fill
-              sizes="(max-width: 1024px) 92vw, 54vw"
-              className="object-contain object-bottom"
+              sizes="(max-width: 1024px) 92vw, 62vw"
+              className="object-contain"
               priority
             />
           </div>
@@ -216,9 +221,20 @@ export default function PatientIoCaseStudy() {
           <Heading>The Team</Heading>
           <Body>
             As the solo designer in a nimble 14-person team, I owned the end-to-end user experience for
-            Patient IO&rsquo;s mobile and desktop care platform. Our success led to an acquisition by
-            athenahealth in August 2016, where the framework we built became the design foundation for
-            their flagship patient app, athenaWell.
+            Patient IO&rsquo;s mobile and desktop care platform &mdash; medication tracking, vitals,
+            care-plan adherence, and the pill-rendering system, from early concept through shipping
+            product.
+          </Body>
+        </TextPanel>
+
+        {/* ── ACQUIRED BY ATHENAHEALTH ─────────────────────────────────── */}
+        <TextPanel>
+          <Heading>Acquired by athenahealth</Heading>
+          <Body>
+            Our success led athenahealth to acquire Patient IO in August 2016. The adherence-tracking
+            and pill-rendering patterns we built became the design foundation for their flagship patient
+            app, athenaWell &mdash; carried forward into a platform built around three patient personas
+            and 200+ wearable integrations, with content partnerships spanning Mayo Clinic and NIH.
           </Body>
         </TextPanel>
 
@@ -247,7 +263,7 @@ export default function PatientIoCaseStudy() {
           </div>
         </Panel>
 
-        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText={fg === "#f5f5f5"} />
+        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText />
 
         <NextProjectLink
           href={`/work/${next.slug}`}
