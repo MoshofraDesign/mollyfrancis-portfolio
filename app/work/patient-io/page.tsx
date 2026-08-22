@@ -131,14 +131,10 @@ export default function PatientIoCaseStudy() {
             <div className="relative h-12 w-[168px] shrink-0 sm:h-14 sm:w-[196px] md:h-16 md:w-[224px] lg:h-20 lg:w-[280px] xl:h-24 xl:w-[336px] 2xl:h-28 2xl:w-[392px]">
               <Image src={LOGO} alt="Patient IO" fill unoptimized priority className="object-contain object-left" />
             </div>
-            <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.75rem] font-semibold leading-[1.1] lg:max-w-[26ch]">
-              A patient engagement platform
+            <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.75rem] font-semibold leading-[1.1] lg:max-w-[32ch]">
+              A patient engagement platform for patients and their care managers
             </p>
           </div>
-
-          <p className="max-w-[46ch] text-base leading-relaxed opacity-90 sm:text-lg lg:text-[13px] xl:text-[17px] 2xl:text-[20px]">
-            {project.subtitle}
-          </p>
 
           {/* Laptop + phone + watch mockup, large and centered — matches
               the Figma composition instead of being corner-anchored. */}
