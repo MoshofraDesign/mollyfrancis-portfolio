@@ -60,15 +60,21 @@ const metrics = [
 const SCREENS = [
   {
     src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511967913957-U3LHYLLHH507187LL8WZ/image-asset.png",
-    alt: "Tracking medications, vitals, and adherence",
+    alt: "Public User — Care Plan, Drink Water, Heart Rate, Select Date, Complete Task, Sleep Log",
+    caption: "Public User",
+    maxHeight: 620,
   },
   {
     src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511968056680-OYW7HQTA481IA0KX2EV3/image-asset.png",
     alt: "Medications module",
+    caption: "A system for patients and caregivers to manage medications",
+    maxHeight: 640,
   },
   {
     src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0a7d94ff-64a3-4bb9-9202-85911eb02bbc/Screen+Shot+2022-11-02+at+8.03.55+PM.png",
     alt: "Pill-shape design system, generated from Epocrates data",
+    caption: "Medication Design System Components",
+    maxHeight: 480,
   },
 ] as const;
 
@@ -152,35 +158,31 @@ export default function PatientIoCaseStudy() {
           </Body>
         </TextPanel>
 
-        {/* ── PRODUCT SCREENS ROW ──────────────────────────────────────── *
-         * Flat, unframed screens sitting side by side (Figma 4732:9524) —
-         * no border/shadow, each keeping its own natural aspect ratio, with
-         * a staggered SlideIn per screen as the row scrolls into view. */}
-        <Panel width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
-          <div className="mx-auto flex w-full max-w-[1100px] flex-col items-center gap-8">
-            <div className="flex w-full flex-col items-center gap-6 sm:flex-row sm:items-end sm:justify-center sm:gap-4 lg:gap-6">
-              {SCREENS.map((screen, i) => (
-                <SlideIn key={screen.src} delay={i * 90}>
-                  {/* eslint-disable-next-line @next/next/no-img-element -- true
-                      source dimensions aren't available (CDN not reachable
-                      from the build environment), so a plain <img> lets each
-                      screen keep its own natural aspect ratio instead of
-                      being forced into a uniform box. */}
-                  <img
-                    src={screen.src}
-                    alt={screen.alt}
-                    loading="lazy"
-                    className="h-[280px] w-auto max-w-[70vw] rounded-md object-contain sm:h-[340px] lg:h-[400px]"
-                  />
-                </SlideIn>
-              ))}
-            </div>
-            <p className="max-w-[46ch] text-center text-[0.85rem] opacity-80">
-              Tracking medications and vitals, managing prescriptions, and the pill-shape design system
-              behind it all.
-            </p>
-          </div>
-        </Panel>
+        {/* ── PRODUCT SCREENS ── one panel per Figma frame ─────────────── *
+         * 4732:9524 (Public User screens), 4732:9527 (medications), and
+         * 4732:9530 (pill design system) are each their own frame in
+         * Figma, not one combined row — kept as separate full panels here
+         * too, flat and unframed (no border/shadow), each with its own
+         * subtle SlideIn as it scrolls into view. */}
+        {SCREENS.map((screen) => (
+          <Panel key={screen.src} width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
+            <SlideIn className="mx-auto flex w-full flex-col items-center gap-5">
+              {/* eslint-disable-next-line @next/next/no-img-element -- true
+                  source dimensions aren't available (CDN not reachable from
+                  the build environment), so a plain <img> lets each screen
+                  keep its own natural aspect ratio instead of being forced
+                  into a guessed box. */}
+              <img
+                src={screen.src}
+                alt={screen.alt}
+                loading="lazy"
+                className="w-auto max-w-[92vw] rounded-md object-contain"
+                style={{ maxHeight: `min(${screen.maxHeight}px, 55vh)` }}
+              />
+              <p className="text-center text-[0.85rem] opacity-80">{screen.caption}</p>
+            </SlideIn>
+          </Panel>
+        ))}
 
         {/* ── PORTRAIT ──────────────────────────────────────────────────── */}
         <Panel width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
