@@ -12,7 +12,6 @@ import {
   Body,
   VIEW,
   MEASURE,
-  MEDIA,
   NextProjectLink,
   CaseStudyMetaPanel,
 } from "@/components/v2/CaseStudyKit";
@@ -58,43 +57,29 @@ const metrics = [
   { label: "Wearable integrations carried into athenaWell", value: "200+" },
 ];
 
-/** One large image, centered, fill-based since exact source dimensions
- *  aren't available — object-contain keeps every screenshot uncropped. */
-function BigImagePanel({
-  src,
-  alt,
-  caption,
-  maxWidth = 950,
-}: {
-  src: string;
-  alt: string;
-  caption?: string;
-  maxWidth?: number;
-}) {
-  return (
-    <Panel width={VIEW} pad="center" className="items-center">
-      <SlideIn
-        className={`mx-auto flex w-full flex-col items-center ${MEDIA}`}
-        style={{ maxWidth: `${maxWidth}px` }}
-      >
-        <div className="relative aspect-[16/10] w-full">
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            sizes={`(max-width: 1024px) 92vw, min(90vw, ${maxWidth}px)`}
-            className="object-contain"
-          />
-        </div>
-        {caption && (
-          <p className="mt-4 max-w-[70ch] text-center text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1.05rem] opacity-80">
-            {caption}
-          </p>
-        )}
-      </SlideIn>
-    </Panel>
-  );
-}
+const SCREENS = [
+  {
+    src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511967913957-U3LHYLLHH507187LL8WZ/image-asset.png",
+    alt: "Tracking medications, vitals, and adherence",
+    caption: "Tracking medications, vitals, and adherence",
+    width: 280,
+    height: 460,
+  },
+  {
+    src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511968056680-OYW7HQTA481IA0KX2EV3/image-asset.png",
+    alt: "Medications module",
+    caption: "One tablet's dose times, notes, and reminders",
+    width: 280,
+    height: 460,
+  },
+  {
+    src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0a7d94ff-64a3-4bb9-9202-85911eb02bbc/Screen+Shot+2022-11-02+at+8.03.55+PM.png",
+    alt: "Pill-shape design system, generated from Epocrates data",
+    caption: "Pill-shape design system, generated from Epocrates data",
+    width: 340,
+    height: 460,
+  },
+] as const;
 
 export default function PatientIoCaseStudy() {
   const project = getProject("patient-io");
@@ -176,27 +161,34 @@ export default function PatientIoCaseStudy() {
           </Body>
         </TextPanel>
 
-        {/* ── MEDICATIONS TRACKING SCREENSHOT ──────────────────────────── */}
-        <BigImagePanel
-          src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511967913957-U3LHYLLHH507187LL8WZ/image-asset.png"
-          alt="Tracking medications, vitals, and adherence"
-          caption="Tracking medications, vitals, and adherence"
-        />
-
-        {/* ── MEDICATIONS MODULE SCREENSHOT ────────────────────────────── */}
-        <BigImagePanel
-          src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511968056680-OYW7HQTA481IA0KX2EV3/image-asset.png"
-          alt="Medications module"
-          caption="Medications module — one tablet's dose times, notes, and reminders"
-        />
-
-        {/* ── PILL DESIGN SYSTEM ───────────────────────────────────────── */}
-        <BigImagePanel
-          src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0a7d94ff-64a3-4bb9-9202-85911eb02bbc/Screen+Shot+2022-11-02+at+8.03.55+PM.png"
-          alt="Pill-shape design system, generated from Epocrates data"
-          caption="Pill-shape design system, generated from structured Epocrates data"
-          maxWidth={800}
-        />
+        {/* ── PRODUCT SCREENS ROW ──────────────────────────────────────── *
+         * Same treatment as the docsquad/Netspend phone rows (Figma
+         * 4732:9524): individually framed screens sitting side by side
+         * instead of stacked full panels, each with its own staggered
+         * SlideIn as it scrolls into view. */}
+        <Panel width={VIEW} pad="center" className="items-center">
+          <div className="mx-auto flex w-full max-w-[1100px] flex-col items-center gap-10 sm:gap-12">
+            <div className="flex w-full flex-col items-center gap-8 sm:flex-row sm:items-end sm:justify-center sm:gap-6 lg:gap-8">
+              {SCREENS.map((screen, i) => (
+                <SlideIn key={screen.src} delay={i * 90} className="flex flex-col items-center gap-3">
+                  <div
+                    className="relative overflow-hidden rounded-xl border border-white/15 bg-white/5 shadow-[0_12px_48px_rgba(0,0,0,0.25)]"
+                    style={{ width: screen.width, height: screen.height, maxWidth: "80vw", maxHeight: "60vh" }}
+                  >
+                    <Image
+                      src={screen.src}
+                      alt={screen.alt}
+                      fill
+                      sizes="(max-width: 640px) 80vw, 30vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <p className="max-w-[26ch] text-center text-[0.85rem] opacity-80">{screen.caption}</p>
+                </SlideIn>
+              ))}
+            </div>
+          </div>
+        </Panel>
 
         {/* ── PORTRAIT ──────────────────────────────────────────────────── */}
         <Panel width={VIEW} pad="center" className="items-center">
