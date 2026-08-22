@@ -57,24 +57,32 @@ const metrics = [
   { label: "Wearable integrations carried into athenaWell", value: "200+" },
 ];
 
-const SCREENS = [
+/** The 6 "Public User" screens from Figma frame 4732:9524, in the exact
+ *  left-to-right order of that frame's layers (nodes 4736:9979–9984). */
+const PUBLIC_SCREENS = [
   {
-    src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511967913957-U3LHYLLHH507187LL8WZ/image-asset.png",
-    alt: "Public User — Care Plan, Drink Water, Heart Rate, Select Date, Complete Task, Sleep Log",
-    caption: "Public User",
-    maxHeight: 620,
+    src: "/work-thumbnails/patient-io/screens/care-plan.png",
+    alt: "Care Plan — daily task list with medication, education, and refill counts",
   },
   {
-    src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511968056680-OYW7HQTA481IA0KX2EV3/image-asset.png",
-    alt: "Medications module",
-    caption: "A system for patients and caregivers to manage medications",
-    maxHeight: 640,
+    src: "/work-thumbnails/patient-io/screens/heart-rate.png",
+    alt: "Heart Rate — camera-based reading",
   },
   {
-    src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0a7d94ff-64a3-4bb9-9202-85911eb02bbc/Screen+Shot+2022-11-02+at+8.03.55+PM.png",
-    alt: "Pill-shape design system, generated from Epocrates data",
-    caption: "Medication Design System Components",
-    maxHeight: 480,
+    src: "/work-thumbnails/patient-io/screens/drink-water.png",
+    alt: "Drink Water — hydration task",
+  },
+  {
+    src: "/work-thumbnails/patient-io/screens/select-date.png",
+    alt: "Select Date — last doctor visit",
+  },
+  {
+    src: "/work-thumbnails/patient-io/screens/complete-task.png",
+    alt: "Complete Task — caregiver confirmation",
+  },
+  {
+    src: "/work-thumbnails/patient-io/screens/sleep-log.png",
+    alt: "Sleep Log — nightly sleep tracking",
   },
 ] as const;
 
@@ -158,31 +166,66 @@ export default function PatientIoCaseStudy() {
           </Body>
         </TextPanel>
 
-        {/* ── PRODUCT SCREENS ── one panel per Figma frame ─────────────── *
-         * 4732:9524 (Public User screens), 4732:9527 (medications), and
-         * 4732:9530 (pill design system) are each their own frame in
-         * Figma, not one combined row — kept as separate full panels here
-         * too, flat and unframed (no border/shadow), each with its own
-         * subtle SlideIn as it scrolls into view. */}
-        {SCREENS.map((screen) => (
-          <Panel key={screen.src} width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
-            <SlideIn className="mx-auto flex w-full flex-col items-center gap-5">
+        {/* ── PUBLIC USER SCREENS ── Figma frame 4732:9524 ─────────────── *
+         * 6 individual screens (not one flat composite), laid out in a row
+         * bottom-aligned and unframed — same "phones row" mechanic as the
+         * DocSquad case study's mobile panel, but without the border/
+         * shadow treatment and at each screen's own natural aspect ratio.
+         * Each animates in on its own, staggered, as it scrolls into
+         * view. Order matches the frame's layers left to right. */}
+        <Panel width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
+          <div className="mx-auto flex w-full max-w-[min(1400px,94vw)] flex-col items-center gap-5">
+            <div className="grid grid-cols-3 items-end justify-items-center gap-3 sm:gap-4 lg:flex lg:flex-nowrap lg:justify-center lg:gap-4 xl:gap-5">
+              {PUBLIC_SCREENS.map((screen, i) => (
+                <SlideIn key={screen.src} delay={i * 70}>
+                  {/* eslint-disable-next-line @next/next/no-img-element -- true
+                      source dimensions vary slightly per screen; a plain <img>
+                      keeps each one at its own natural aspect ratio. */}
+                  <img
+                    src={screen.src}
+                    alt={screen.alt}
+                    loading="lazy"
+                    className="h-[26vh] w-auto rounded-md object-contain sm:h-[32vh] lg:h-[42vh] xl:h-[46vh]"
+                  />
+                </SlideIn>
+              ))}
+            </div>
+            <p className="text-center text-[0.85rem] opacity-80">Public User</p>
+          </div>
+        </Panel>
+
+        {/* ── MEDICATIONS MODULE + DESIGN SYSTEM ───────────────────────── *
+         * Figma frames 4732:9527 and 4732:9530, placed side by side in one
+         * panel per Molly's call — the design-system components sit next
+         * to the medications module they're generated for. */}
+        <Panel width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
+          <div className="mx-auto flex w-full max-w-[min(1400px,94vw)] flex-col items-center gap-10 lg:flex-row lg:items-end lg:justify-center lg:gap-10">
+            <SlideIn className="flex flex-col items-center gap-4">
               {/* eslint-disable-next-line @next/next/no-img-element -- true
                   source dimensions aren't available (CDN not reachable from
-                  the build environment), so a plain <img> lets each screen
-                  keep its own natural aspect ratio instead of being forced
-                  into a guessed box. */}
+                  the build environment), so a plain <img> keeps its natural
+                  aspect ratio instead of being forced into a guessed box. */}
               <img
-                src={screen.src}
-                alt={screen.alt}
+                src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511968056680-OYW7HQTA481IA0KX2EV3/image-asset.png"
+                alt="Medications module"
                 loading="lazy"
-                className="w-auto max-w-[92vw] rounded-md object-contain"
-                style={{ maxHeight: `min(${screen.maxHeight}px, 55vh)` }}
+                className="h-auto max-h-[55vh] w-auto max-w-[92vw] rounded-md object-contain lg:max-w-[46vw]"
               />
-              <p className="text-center text-[0.85rem] opacity-80">{screen.caption}</p>
+              <p className="text-center text-[0.85rem] opacity-80">
+                A system for patients and caregivers to manage medications
+              </p>
             </SlideIn>
-          </Panel>
-        ))}
+            <SlideIn delay={90} className="flex flex-col items-center gap-4">
+              <img
+                src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0a7d94ff-64a3-4bb9-9202-85911eb02bbc/Screen+Shot+2022-11-02+at+8.03.55+PM.png"
+                alt="Pill-shape design system, generated from Epocrates data"
+                loading="lazy"
+                className="h-auto max-h-[40vh] w-auto max-w-[92vw] rounded-md object-contain lg:max-w-[46vw]"
+              />
+              <p className="text-center text-[0.85rem] opacity-80">Medication Design System Components</p>
+            </SlideIn>
+          </div>
+        </Panel>
 
         {/* ── PORTRAIT ──────────────────────────────────────────────────── */}
         <Panel width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
