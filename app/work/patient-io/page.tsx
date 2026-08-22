@@ -133,7 +133,7 @@ export default function PatientIoCaseStudy() {
         </TextPanel>
 
         {/* ── PROBLEM ───────────────────────────────────────────────────── */}
-        <TextPanel>
+        <TextPanel className="!py-6 sm:!py-8">
           <Heading>The Problem</Heading>
           <Body>
             Patients managing complex treatment regimens had no easy way to track medications and
@@ -143,7 +143,7 @@ export default function PatientIoCaseStudy() {
         </TextPanel>
 
         {/* ── APPROACH ──────────────────────────────────────────────────── */}
-        <TextPanel>
+        <TextPanel className="!py-6 sm:!py-8">
           <Heading>Approach</Heading>
           <Body>
             I designed the medications, vitals, and care-plan adherence experience end to end, then
@@ -156,7 +156,7 @@ export default function PatientIoCaseStudy() {
          * Flat, unframed screens sitting side by side (Figma 4732:9524) —
          * no border/shadow, each keeping its own natural aspect ratio, with
          * a staggered SlideIn per screen as the row scrolls into view. */}
-        <Panel width={VIEW} pad="center" className="items-center">
+        <Panel width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
           <div className="mx-auto flex w-full max-w-[1100px] flex-col items-center gap-8">
             <div className="flex w-full flex-col items-center gap-6 sm:flex-row sm:items-end sm:justify-center sm:gap-4 lg:gap-6">
               {SCREENS.map((screen, i) => (
@@ -183,7 +183,7 @@ export default function PatientIoCaseStudy() {
         </Panel>
 
         {/* ── PORTRAIT ──────────────────────────────────────────────────── */}
-        <Panel width={VIEW} pad="center" className="items-center">
+        <Panel width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
           <div className="relative aspect-square w-[304px] overflow-hidden rounded-full sm:w-[499px] md:w-[599px] lg:w-[600px]">
             <Image
               src="/work-thumbnails/patient-io-photo.jpg"
@@ -197,7 +197,7 @@ export default function PatientIoCaseStudy() {
         </Panel>
 
         {/* ── THE TEAM ──────────────────────────────────────────────────── */}
-        <TextPanel>
+        <TextPanel className="!py-6 sm:!py-8">
           <Heading>The Team</Heading>
           <Body>
             As the solo designer in a nimble 14-person team, I owned the end-to-end user experience for
@@ -208,7 +208,7 @@ export default function PatientIoCaseStudy() {
         </TextPanel>
 
         {/* ── ACQUIRED BY ATHENAHEALTH ─────────────────────────────────── */}
-        <TextPanel>
+        <TextPanel className="!py-6 sm:!py-8">
           <Heading>Acquired by athenahealth</Heading>
           <Body>
             Our success led athenahealth to acquire Patient IO in August 2016. The adherence-tracking
@@ -219,13 +219,13 @@ export default function PatientIoCaseStudy() {
         </TextPanel>
 
         {/* ── OUTCOME ───────────────────────────────────────────────────── */}
-        <TextPanel>
+        <TextPanel className="!py-6 sm:!py-8">
           <Heading>Outcome</Heading>
           <Body>{project.outcome}</Body>
         </TextPanel>
 
         {/* ── IMPACT ────────────────────────────────────────────────────── */}
-        <Panel width={VIEW} pad="center">
+        <Panel width={VIEW} pad="center" className="!py-6 sm:!py-8">
           <div className={`${MEASURE} mx-auto`}>
             <Heading>Impact</Heading>
             <div className="mt-10 w-full space-y-8">
