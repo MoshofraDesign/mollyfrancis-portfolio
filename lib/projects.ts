@@ -513,10 +513,7 @@ export const projects: Project[] = [
     role: "Solo Product Designer",
     tags: ["Healthcare", "Mobile", "Behavior change"],
     thumbnail: "/work-thumbnails/patient-io-photo.jpg",
-    // TODO(molly): swap in the real Patient IO logo SVG once you resend it
-    // -- left unset rather than pointing at athenahealth's logo, since that
-    // was actively wrong on this tile. CareGrid just skips the logo overlay
-    // and shows the photo + accent color until this is set.
+    logo: "/logos/patient-io.svg",
     accent: "#00CCB7",
     aiSummary:
       "Patient IO helped patients stick to complex treatment regimens and gave health professionals visibility between visits. As solo designer on a 14-person team, I owned the end-to-end experience -- work that led athenahealth to acquire the company in 2016 and adopt the framework as the design foundation for athenaWell.",
@@ -1092,6 +1089,21 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
     projected: [
       { value: "Desktop + native", label: "One Flutter UI surface" },
       { value: "Async + sync", label: "Visit modalities in one flow" },
+    ],
+  },
+  "patient-io": {
+    team: [
+      "1 Solo Product Designer",
+      "14-person company team",
+    ],
+    timing: [
+      { value: "2016\u20132017", label: "End-to-end mobile + desktop care platform" },
+      { value: "2016", label: "Acquired by athenahealth" },
+    ],
+    tools: ["Sketch", "InVision", "Zeplin", "UserTesting"],
+    projected: [
+      { value: "Thousands", label: "Drugs rendered via structured Epocrates data" },
+      { value: "1", label: "Framework adopted as athenaWell's design foundation" },
     ],
   },
   athenahealth: {
