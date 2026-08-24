@@ -264,9 +264,9 @@ export default function ResumePage() {
                 aria-hidden="true"
                 className="h-4 w-4 shrink-0 fill-ochre lg:h-5 lg:w-5"
               >
-                <path d="M20 2h46v20h19v33l-11 10 2 15-13 15-6 15-11 10-9-16-11-5-9-15-16-5-9-10 9-15-9-15Z" />
+                <path d="M25 5 L55 5 L55 25 L80 25 L85 45 L78 55 L85 65 L65 90 L45 80 L30 70 L15 50 L25 35 Z" />
               </svg>
-              Austin, Texas
+              Building cool products in Austin, Texas
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
