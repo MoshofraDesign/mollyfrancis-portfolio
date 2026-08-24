@@ -341,19 +341,18 @@ export default function ResumePage() {
               delay={i * 30}
               className="grid grid-cols-12 gap-4 lg:gap-8 py-10 border-t border-ink/10"
             >
-              <div className="col-span-12 lg:col-span-3">
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60">
-                  {job.period}
-                </p>
-              </div>
+              <div className="col-span-12 lg:col-span-3" />
               <div className="col-span-12 lg:col-span-9">
                 <div className="flex items-center gap-3 mb-1">
                   <Favicon domain={job.domain} alt={`${job.company} logo`} />
                   <p className="font-medium text-ink/80">{job.company}</p>
                 </div>
-                <h3 className="font-serif text-2xl lg:text-3xl leading-tight mb-5">
+                <h3 className="font-serif text-2xl lg:text-3xl leading-tight mb-1">
                   {job.role}
                 </h3>
+                <p className="font-mono text-xs tracking-[0.08em] text-ink/60 mb-5">
+                  {job.period}
+                </p>
                 <ul className="space-y-2 max-w-3xl">
                   {job.bullets.map((b) => (
                     <li key={b} className="text-ink/75 leading-relaxed flex gap-3">
