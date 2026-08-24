@@ -61,7 +61,6 @@ const headlines = [
   "A player-coach who bridges strategy and hands-on execution every day.",
   "I translate complex workflows and compliance data into seamless products.",
   "I lead from the front, mentoring designers while shipping high-impact work.",
-  "At Netspend, I built their rewards platform 0 to 1 in just five months.",
 ];
 
 const ROTATE_MS = 3400;
