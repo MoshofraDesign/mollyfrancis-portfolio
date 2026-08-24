@@ -241,10 +241,10 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-8 pb-12 lg:pb-16">
         <Reveal as="div" className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div>
-            <h1 className="font-serif text-hero leading-[0.98]">
+            <h1 className="font-serif text-hero leading-[0.98] text-ink/70">
               Molly Francis&rsquo; Résumé
             </h1>
-            <p className="mt-4 flex items-center gap-3 text-lg lg:text-xl text-ink/75">
+            <p className="mt-4 flex items-center gap-3 text-lg lg:text-xl text-ink/70">
               <svg
                 viewBox="0 0 100 100"
                 aria-hidden="true"
@@ -287,7 +287,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
         <div className="mb-8">
           <Reveal as="div">
-            <h2 className="font-serif text-h2">Experience.</h2>
+            <h2 className="font-serif text-h2 text-ink/70">Experience.</h2>
           </Reveal>
         </div>
 
@@ -303,17 +303,17 @@ export default function ResumePage() {
               <div className="col-span-12 lg:col-span-9">
                 <div className="flex items-center gap-3 mb-1">
                   <Favicon domain={job.domain} alt={`${job.company} logo`} />
-                  <p className="font-medium text-ink/80">{job.company}</p>
+                  <p className="font-medium text-ink/70">{job.company}</p>
                 </div>
-                <h3 className="font-serif text-2xl lg:text-3xl leading-tight mb-1">
+                <h3 className="font-serif text-2xl lg:text-3xl leading-tight mb-1 text-ink/70">
                   {job.role}
                 </h3>
-                <p className="text-base tracking-normal text-ink/60 mb-5">
+                <p className="text-base tracking-normal text-ink/70 mb-5">
                   {job.period}
                 </p>
                 <ul className="space-y-2 max-w-3xl">
                   {job.bullets.map((b) => (
-                    <li key={b} className="text-ink/75 text-[1.05rem] leading-relaxed flex gap-3">
+                    <li key={b} className="text-ink/70 text-[1.05rem] leading-relaxed flex gap-3">
                       <span aria-hidden="true" className="text-ochre mt-1.5 select-none">·</span>
                       <span>{b}</span>
                     </li>
@@ -324,7 +324,7 @@ export default function ResumePage() {
           ))}
         </div>
 
-        <p className="mt-10 text-base text-ink/60">
+        <p className="mt-10 text-base text-ink/70">
           See more experiences on{" "}
           <a
             href="https://www.linkedin.com/in/mollyfrancisdesign"
@@ -342,17 +342,17 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
-            <h2 className="font-serif text-h2">Skills.</h2>
+            <h2 className="font-serif text-h2 text-ink/70">Skills.</h2>
           </Reveal>
           <Reveal as="div" className="lg:col-span-9 space-y-8">
             {skillGroups.map((group) => (
               <div key={group.label}>
-                <p className="text-base tracking-normal text-ink/60 mb-2">
+                <p className="text-base tracking-normal text-ink/70 mb-2">
                   {group.label}
                 </p>
                 <ul className="space-y-1.5">
                   {group.items.map((s) => (
-                    <li key={s} className="text-ink/80 break-inside-avoid">
+                    <li key={s} className="text-ink/70 break-inside-avoid">
                       {s}
                     </li>
                   ))}
@@ -367,7 +367,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
-            <h2 className="font-serif text-h2">Programs.</h2>
+            <h2 className="font-serif text-h2 text-ink/70">Programs.</h2>
           </Reveal>
           <Reveal as="div" className="lg:col-span-9">
             <div className="flex flex-wrap gap-2">
@@ -385,22 +385,22 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
-            <h2 className="font-serif text-h2">School & recognition.</h2>
+            <h2 className="font-serif text-h2 text-ink/70">School & recognition.</h2>
           </Reveal>
           <div className="lg:col-span-9 space-y-8">
             {education.map((e) => (
               <Reveal key={e.school} as="div" className="grid grid-cols-12 gap-4">
-                <p className="col-span-12 lg:col-span-4 text-base tracking-normal text-ink/60">
+                <p className="col-span-12 lg:col-span-4 text-base tracking-normal text-ink/70">
                   University
                 </p>
                 <div className="col-span-12 lg:col-span-8">
-                  <h3 className="font-serif text-xl">{e.school}</h3>
+                  <h3 className="font-serif text-xl text-ink/70">{e.school}</h3>
                   <p className="text-ink/70">{e.degree}</p>
                 </div>
               </Reveal>
             ))}
             <Reveal as="div" className="grid grid-cols-12 gap-4 pt-8 border-t border-ink/10">
-              <p className="col-span-12 lg:col-span-4 text-base tracking-normal text-ink/60">
+              <p className="col-span-12 lg:col-span-4 text-base tracking-normal text-ink/70">
                 Recognition
               </p>
               <ul className="col-span-12 lg:col-span-8 space-y-3">
@@ -416,10 +416,10 @@ export default function ResumePage() {
                         {r.label} ↗
                       </a>
                     ) : (
-                      <span className="text-ink/80">{r.label}</span>
+                      <span className="text-ink/70">{r.label}</span>
                     )}
                     {r.location && (
-                      <span className="text-ink/60 text-sm ml-2">
+                      <span className="text-ink/70 text-sm ml-2">
                         · {r.location}
                       </span>
                     )}
