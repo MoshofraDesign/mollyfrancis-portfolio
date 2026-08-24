@@ -242,7 +242,7 @@ export default function ResumePage() {
         <Reveal as="div" className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div>
             <h1 className="font-serif text-hero leading-[0.98]">
-              Molly Francis&rsquo;s Résumé
+              Molly Francis&rsquo; Résumé
             </h1>
             <p className="mt-4 flex items-center gap-3 text-lg lg:text-xl text-ink/75">
               <svg
