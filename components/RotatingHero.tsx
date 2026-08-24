@@ -56,11 +56,12 @@ const HOTSPOTS: Hotspot[] = [
 ];
 
 const headlines = [
-  "Principal product designer thriving in complex spaces by unraveling ambiguity.",
-  "12+ years turning ambiguous problems into elegant, systemic solutions for teams.",
-  "I lead the pre-award space at Instrumentl, helping nonprofits win more grants.",
-  "I led design at Honor, making home healthcare more coordinated and personal.",
-  "At the heart of it: solutions for good-hearted people doing meaningful work.",
+  "UX leader and hands-on designer solving complex problems across industries.",
+  "I have shaped products from startups like Patient IO to athenahealth, Care.com.",
+  "A player-coach who bridges strategy and hands-on execution every day.",
+  "I translate complex workflows and compliance data into seamless products.",
+  "I lead from the front, mentoring designers while shipping high-impact work.",
+  "At Instrumentl, I shape how AI helps nonprofits discover and win grants.",
 ];
 
 const ROTATE_MS = 3400;
