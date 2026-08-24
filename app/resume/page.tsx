@@ -312,7 +312,7 @@ export default function ResumePage() {
       </section>
 
       {/* EXPERIENCE */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
+      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
         <div className="mb-8">
           <Reveal as="div">
             <p className="text-xs uppercase tracking-[0.25em] text-ink/60">
