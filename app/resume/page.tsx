@@ -347,7 +347,7 @@ export default function ResumePage() {
           <Reveal as="div" className="lg:col-span-9 space-y-8">
             {skillGroups.map((group) => (
               <div key={group.label}>
-                <p className="font-mono text-sm tracking-normal text-ink/60 mb-2">
+                <p className="text-base tracking-normal text-ink/60 mb-2">
                   {group.label}
                 </p>
                 <ul className="space-y-1.5">
@@ -390,7 +390,7 @@ export default function ResumePage() {
           <div className="lg:col-span-9 space-y-8">
             {education.map((e) => (
               <Reveal key={e.school} as="div" className="grid grid-cols-12 gap-4">
-                <p className="col-span-12 lg:col-span-4 font-mono text-xs tracking-normal text-ink/60">
+                <p className="col-span-12 lg:col-span-4 text-base tracking-normal text-ink/60">
                   University
                 </p>
                 <div className="col-span-12 lg:col-span-8">
@@ -400,7 +400,7 @@ export default function ResumePage() {
               </Reveal>
             ))}
             <Reveal as="div" className="grid grid-cols-12 gap-4 pt-8 border-t border-ink/10">
-              <p className="col-span-12 lg:col-span-4 font-mono text-xs tracking-normal text-ink/60">
+              <p className="col-span-12 lg:col-span-4 text-base tracking-normal text-ink/60">
                 Recognition
               </p>
               <ul className="col-span-12 lg:col-span-8 space-y-3">
