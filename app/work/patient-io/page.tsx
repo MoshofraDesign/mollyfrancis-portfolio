@@ -190,7 +190,7 @@ export default function PatientIoCaseStudy() {
                 </SlideIn>
               ))}
             </div>
-            <p className="text-center text-[0.85rem] opacity-80">Public User</p>
+            <p className="text-center text-[0.85rem] opacity-80">The patient-facing app — daily tasks, vitals, and reminders that keep the care plan on track</p>
           </div>
         </Panel>
 
