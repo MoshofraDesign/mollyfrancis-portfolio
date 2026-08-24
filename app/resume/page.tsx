@@ -315,7 +315,7 @@ export default function ResumePage() {
                 <h3 className="font-serif text-2xl lg:text-3xl leading-tight mb-1">
                   {job.role}
                 </h3>
-                <p className="font-mono text-sm tracking-normal text-ink/60 mb-5">
+                <p className="text-sm tracking-normal text-ink/60 mb-5">
                   {job.period}
                 </p>
                 <ul className="space-y-2 max-w-3xl">
