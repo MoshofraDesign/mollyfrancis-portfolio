@@ -247,13 +247,22 @@ export default function ResumePage() {
             <h1 className="font-serif text-hero leading-[0.98]">
               Molly Francis
             </h1>
-            <p className="mt-4 flex items-center gap-2 text-lg lg:text-xl text-ink/75">
+            <p className="mt-4 flex items-center gap-3 text-lg lg:text-xl text-ink/75">
               <svg
                 viewBox="0 0 100 100"
                 aria-hidden="true"
-                className="h-4 w-4 shrink-0 fill-ochre lg:h-5 lg:w-5"
+                className="h-8 w-8 shrink-0 lg:h-10 lg:w-10"
               >
-                <path d="M25 5 L55 5 L55 25 L80 25 L85 45 L78 55 L85 65 L65 90 L45 80 L30 70 L15 50 L25 35 Z" />
+                <path
+                  d="M25 5 L55 5 L55 25 L80 25 L85 45 L78 55 L85 65 L65 90 L45 80 L30 70 L15 50 L25 35 Z"
+                  className="fill-ochre"
+                />
+                <g transform="translate(45,51) scale(0.583)">
+                  <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    fill="white"
+                  />
+                </g>
               </svg>
               Building cool products in Austin, Texas
             </p>
