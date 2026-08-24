@@ -338,9 +338,6 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
-            <p className="text-xs tracking-normal text-ink/60 mb-3">
-              Capabilities
-            </p>
             <h2 className="font-serif text-h2">Skills.</h2>
           </Reveal>
           <Reveal as="div" className="lg:col-span-9 space-y-8">
