@@ -258,8 +258,15 @@ export default function ResumePage() {
             <h1 className="font-serif text-hero leading-[0.98]">
               Molly Francis
             </h1>
-            <p className="mt-4 text-lg lg:text-xl text-ink/75 max-w-2xl leading-relaxed">
-              Lead Product Designer · Austin, Texas
+            <p className="mt-4 flex items-center gap-2 text-lg lg:text-xl text-ink/75">
+              <svg
+                viewBox="0 0 100 100"
+                aria-hidden="true"
+                className="h-4 w-4 shrink-0 fill-ochre lg:h-5 lg:w-5"
+              >
+                <path d="M20 2h46v20h19v33l-11 10 2 15-13 15-6 15-11 10-9-16-11-5-9-15-16-5-9-10 9-15-9-15Z" />
+              </svg>
+              Austin, Texas
             </p>
             <p className="mt-5 font-mono text-sm text-ink/60 flex flex-wrap gap-x-4 gap-y-1">
               <a

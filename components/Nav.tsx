@@ -50,7 +50,7 @@ export default function Nav() {
     >
       <div className="w-full px-6 lg:px-10 h-24 flex items-center justify-between">
         <Link href="/" className="group">
-          <Logo variant="lockup" />
+          <Logo variant="lockup" size={64} />
         </Link>
 
         {/* Menu, CTA, and mobile trigger travel together as one right-justified
@@ -66,7 +66,7 @@ export default function Nav() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className={`relative px-4 py-2 text-sm rounded-full transition-colors ${
+                  className={`relative px-4 py-2 text-base rounded-full transition-colors ${
                     active
                       ? "text-cream bg-ink"
                       : "text-ink/70 hover:text-ink"
