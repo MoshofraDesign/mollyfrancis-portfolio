@@ -255,7 +255,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-8 pb-12 lg:pb-16">
         <Reveal as="div" className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
+            <p className="text-xs uppercase tracking-[0.25em] text-ink/60 mb-4">
               Résumé · 2025
             </p>
             <h1 className="font-serif text-hero leading-[0.98]">
@@ -311,7 +311,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-10 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50">
+            <p className="text-xs uppercase tracking-[0.25em] text-ink/60">
               Hello
             </p>
           </Reveal>
@@ -327,7 +327,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
         <div className="mb-8">
           <Reveal as="div">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50">
+            <p className="text-xs uppercase tracking-[0.25em] text-ink/60">
               Experience
             </p>
           </Reveal>
@@ -350,13 +350,13 @@ export default function ResumePage() {
                 <h3 className="font-serif text-2xl lg:text-3xl leading-tight mb-1">
                   {job.role}
                 </h3>
-                <p className="font-mono text-xs tracking-[0.08em] text-ink/60 mb-5">
+                <p className="font-mono text-sm tracking-[0.08em] text-ink/60 mb-5">
                   {job.period}
                 </p>
                 <ul className="space-y-2 max-w-3xl">
                   {job.bullets.map((b) => (
-                    <li key={b} className="text-ink/75 leading-relaxed flex gap-3">
-                      <span className="text-ochre mt-1.5 select-none">·</span>
+                    <li key={b} className="text-ink/75 text-[1.05rem] leading-relaxed flex gap-3">
+                      <span aria-hidden="true" className="text-ochre mt-1.5 select-none">·</span>
                       <span>{b}</span>
                     </li>
                   ))}
@@ -366,7 +366,7 @@ export default function ResumePage() {
           ))}
         </div>
 
-        <p className="mt-10 text-sm text-ink/50">
+        <p className="mt-10 text-base text-ink/60">
           See more experiences on{" "}
           <a
             href="https://www.linkedin.com/in/mollyfrancisdesign"
@@ -384,7 +384,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
+            <p className="text-xs uppercase tracking-[0.25em] text-ink/60 mb-3">
               Capabilities
             </p>
             <h2 className="font-serif text-h2">Skills.</h2>
@@ -392,7 +392,7 @@ export default function ResumePage() {
           <Reveal as="div" className="lg:col-span-9 space-y-8">
             {skillGroups.map((group) => (
               <div key={group.label}>
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/50 mb-2">
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60 mb-2">
                   {group.label}
                 </p>
                 <ul className="columns-1 sm:columns-2 gap-x-10 space-y-1.5">
@@ -412,7 +412,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
+            <p className="text-xs uppercase tracking-[0.25em] text-ink/60 mb-3">
               Tooling
             </p>
             <h2 className="font-serif text-h2">Programs.</h2>
@@ -433,7 +433,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
+            <p className="text-xs uppercase tracking-[0.25em] text-ink/60 mb-3">
               Education
             </p>
             <h2 className="font-serif text-h2">School & recognition.</h2>
@@ -470,7 +470,7 @@ export default function ResumePage() {
                       <span className="text-ink/80">{r.label}</span>
                     )}
                     {r.location && (
-                      <span className="text-ink/50 text-sm ml-2">
+                      <span className="text-ink/60 text-sm ml-2">
                         · {r.location}
                       </span>
                     )}
