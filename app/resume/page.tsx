@@ -281,9 +281,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
         <div className="mb-8">
           <Reveal as="div">
-            <p className="text-xs tracking-normal text-ink/60">
-              Experience
-            </p>
+            <h2 className="font-serif text-h2">Experience.</h2>
           </Reveal>
         </div>
 
