@@ -1,18 +1,14 @@
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
 
 export const metadata = {
   title: "Résumé — Molly Francis",
   description:
-    "UI/UX product designer, researcher, and leader based in Austin, Texas. Over 20 years across UI/UX design, user research, design systems, and design strategy — integrating emerging AI tools to streamline workflows and uncover deeper insights.",
+    "Principal Product Designer and design leader based in Austin, Texas. Over 20 years across design strategy, design systems governance, DesignOps, and cross-functional leadership — integrating emerging AI tools to streamline workflows and uncover deeper insights.",
 };
 
 const summary =
-  "I'm a UI/UX product designer, researcher and leader based in Austin, Texas. I am focused on creating simple, clean, and smart user experiences while exploring the ever-changing interactive world. With over 20 years of experience across UI/UX design, user research, design systems, and design strategy, I integrate emerging AI tools to streamline workflows, uncover deeper insights, and enhance the design process.";
-
-const aside =
-  "In my free time, I thrift and collect vintage art and eclectic objects. When it comes to having cats, the bigger and fluffier the better.";
+  "I'm a Principal Product Designer and design leader based in Austin, Texas, focused on product vision, design strategy, and cross-functional execution at scale. With over 20 years across UX design, user research, design systems governance, and DesignOps, I partner with executive stakeholders to align design with business goals — mentoring teams and integrating emerging AI tools to streamline workflows, uncover deeper insights, and accelerate the design process.";
 
 type Job = {
   role: string;
@@ -29,10 +25,10 @@ const experience: Job[] = [
     domain: "netspend.com",
     period: "November 2025 — Current",
     bullets: [
-      "Lead UX for Netspend's Rewards program: consumer app and the internal UCM tool that powers it.",
+      "Own design strategy and end-to-end UX for Netspend's Rewards program — the consumer-facing app and the internal Unified Commerce Management (UCM) tool that powers it.",
       "Reworked the rewards layout and Information Architecture around new UCM capabilities.",
-      "Run user testing to guide iteration.",
-      "Use Claude, Gemini, and Figma Make to speed up design and prototyping.",
+      "Run qualitative and quantitative user testing to validate decisions and guide iteration.",
+      "Use AI-assisted workflows (Claude, Gemini, Figma Make) to accelerate design exploration, prototyping, and iteration speed.",
     ],
   },
   {
@@ -43,8 +39,9 @@ const experience: Job[] = [
     bullets: [
       "Drive UX strategy and design execution across core GovOS products, including eSubmission, Business Licensing & Tax, Cloud Search, and Cloud Records.",
       "Conduct and synthesize user research to uncover insights, validate solutions, and guide product decisions.",
-      "Partner with cross-functional teams to align user needs with business goals and deliver end-to-end experiences that simplify complex government workflows.",
-      "Lead initiatives in accessibility, design systems, and scalable solutions to ensure long-term product growth and meaningful public impact.",
+      "Partner with cross-functional teams and executive stakeholders to align user needs with business goals, driving go-to-market decisions for complex government workflows.",
+      "Lead design systems governance, accessibility, and DesignOps initiatives to ensure long-term product growth and meaningful public impact.",
+      "Piloted AI-assisted design and prototyping workflows (Claude, Figma Make) to accelerate iteration and validate solutions faster across GovOS products.",
     ],
   },
   {
@@ -55,7 +52,7 @@ const experience: Job[] = [
     bullets: [
       "Established a 0 to 1 provider portal for Prior Authorizations, reducing manual paperwork and enabling providers to electronically submit and track authorization status in real time.",
       "Conducted user research and usability testing to validate workflows, uncover pain points, and ensure solutions met provider and patient needs.",
-      "Provided design leadership and mentorship, managing two designers and co-created a design system at a WCAG 2.2 AA accessibility standard that improved consistency and accelerated delivery across multiple products.",
+      "Provided design leadership and mentorship, managing two designers and co-creating and governing a design system at a WCAG 2.2 AA accessibility standard that improved consistency and accelerated delivery across multiple products.",
       "Designed a telehealth app (desktop + native mobile) that expanded patient access to care by supporting asynchronous / synchronous urgent visits and prescription refills.",
     ],
   },
@@ -66,8 +63,8 @@ const experience: Job[] = [
     period: "April 2020 — February 2021",
     bullets: [
       "Led the HomePay design team for a payroll, tax, and HR solution serving families with household employees (nannies, senior caregivers, etc.).",
-      "Partnered with leadership to integrate UX into agile workflows, aligning design with product strategy and business goals.",
-      "Managed and scaled the UX team, mentoring designers and improving processes to elevate quality and collaboration.",
+      "Partnered with executive leadership to integrate UX into agile workflows, aligning design with product strategy and business goals.",
+      "Managed and scaled the UX team — mentoring designers, facilitating critique, and building a stronger design culture to elevate quality and collaboration.",
       "Designed and enhanced internal Sales tools and client / employee-facing HomePay products, improving efficiency and user experience.",
     ],
   },
@@ -77,8 +74,8 @@ const experience: Job[] = [
     domain: "liveperson.com",
     period: "July 2019 — February 2020",
     bullets: [
-      "Served as lead designer on a new social media management product, enabling brands to interact with consumers over social platforms through the LiveEngage messaging product.",
-      "Collaborated with the global UX team to update and scale the company's design system, improving accessibility and consistency across AI / chatbot products.",
+      "Served as lead designer on a new social media management product, enabling brands to interact with consumers over social platforms through the LiveEngage AI-powered messaging product.",
+      "Collaborated with the global UX team to update and scale the company's design system for AI and chatbot products, improving accessibility and consistency company-wide.",
     ],
   },
   {
@@ -127,29 +124,68 @@ const experience: Job[] = [
   },
 ];
 
-const skills = [
-  "Product Strategy",
-  "Design Vision",
-  "User Experience (UX)",
-  "AI Patterns",
-  "Information Architecture",
-  "Accessibility (WCAG)",
-  "Design Systems",
-  "User Research",
-  "Qualitative Research",
-  "Quantitative Research",
-  "Usability Testing",
-  "Stakeholder Management",
-  "Cross-Functional Collaboration",
-  "Leadership & Mentorship",
-  "Systems Thinking",
-  "Problem Solving",
-  "Prototyping",
-  "UX Metrics",
-  "Business KPIs",
-  "Inclusive Design",
-  "Storytelling",
-  "Workshop Facilitation",
+/** Grouped for scanability — leadership/strategy keywords lead (what a
+ *  principal-level hiring manager scans for first), then execution and
+ *  data/validation. Matches the "Skills." column layout below. */
+const skillGroups = [
+  {
+    label: "Leadership & Strategy",
+    items: [
+      "Product Vision",
+      "Design Strategy & Roadmap",
+      "Design Operations (DesignOps)",
+      "Design Systems Governance",
+      "ROI of Design",
+    ],
+  },
+  {
+    label: "Stakeholder & Business Alignment",
+    items: [
+      "Cross-Functional Leadership",
+      "Executive Stakeholder Management",
+      "Go-to-Market Strategy",
+      "Change Management",
+      "Business Metrics Alignment",
+    ],
+  },
+  {
+    label: "Mentorship & Team Growth",
+    items: [
+      "Design Mentorship",
+      "Talent Development",
+      "Team Building",
+      "Critique Facilitation",
+      "Design Culture",
+    ],
+  },
+  {
+    label: "Execution & Craft",
+    items: [
+      "User Research",
+      "Complex Problem Solving",
+      "Service Design",
+      "Information Architecture",
+      "Interaction Design",
+      "Accessibility (WCAG 2.2 AA)",
+      "Design Tokens & Component Libraries",
+      "Agile / Scrum Workflows",
+      "Prototyping",
+      "Storytelling",
+      "Workshop Facilitation",
+    ],
+  },
+  {
+    label: "Data & Validation",
+    items: [
+      "Product Analytics",
+      "A/B Testing",
+      "Quantitative Research",
+      "Qualitative Validation",
+      "Cohort Analysis",
+      "KPIs & Business Metrics",
+      "Usability Testing",
+    ],
+  },
 ];
 
 const programs = [
@@ -283,32 +319,16 @@ export default function ResumePage() {
             <p className="font-serif text-2xl lg:text-3xl leading-snug">
               {summary}
             </p>
-            <blockquote className="pl-6 border-l-2 border-ochre max-w-2xl">
-              <p className="font-serif italic text-lg lg:text-xl text-ink/80 leading-snug">
-                &ldquo;{aside}&rdquo;
-              </p>
-            </blockquote>
           </Reveal>
         </div>
       </section>
 
       {/* EXPERIENCE */}
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
-        <div className="grid lg:grid-cols-12 gap-12 mb-8">
-          <Reveal as="div" className="lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-3">
+        <div className="mb-8">
+          <Reveal as="div">
+            <p className="text-xs uppercase tracking-[0.25em] text-ink/50">
               Experience
-            </p>
-            <h2 className="font-serif text-h2">2011 — Present.</h2>
-          </Reveal>
-          <Reveal as="div" className="lg:col-span-9 self-end">
-            <p className="text-ink/70 leading-relaxed max-w-2xl">
-              See the{" "}
-              <Link href="/#work" className="link-underline">
-                case studies
-              </Link>{" "}
-              for the work in detail, or grab the PDF above for the print
-              version.
             </p>
           </Reveal>
         </div>
@@ -373,14 +393,21 @@ export default function ResumePage() {
             </p>
             <h2 className="font-serif text-h2">Skills.</h2>
           </Reveal>
-          <Reveal as="div" className="lg:col-span-9">
-            <ul className="columns-1 sm:columns-2 lg:columns-3 gap-x-10 space-y-1.5">
-              {skills.map((s) => (
-                <li key={s} className="text-ink/80 break-inside-avoid">
-                  {s}
-                </li>
-              ))}
-            </ul>
+          <Reveal as="div" className="lg:col-span-9 space-y-8">
+            {skillGroups.map((group) => (
+              <div key={group.label}>
+                <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/50 mb-2">
+                  {group.label}
+                </p>
+                <ul className="columns-1 sm:columns-2 gap-x-10 space-y-1.5">
+                  {group.items.map((s) => (
+                    <li key={s} className="text-ink/80 break-inside-avoid">
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </Reveal>
         </div>
       </section>
@@ -457,29 +484,6 @@ export default function ResumePage() {
             </Reveal>
           </div>
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-24 border-t border-ink/10">
-        <Reveal as="div" className="max-w-3xl">
-          <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
-            What&rsquo;s next
-          </p>
-          <h2 className="font-serif text-hero leading-[1.02]">
-            Open to <em className="not-italic font-light text-ochre">Lead</em>,{" "}
-            <em className="not-italic font-light text-ochre">Principal</em>, and{" "}
-            <em className="not-italic font-light text-ochre">Staff</em> design
-            roles.
-          </h2>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a href="mailto:mfrancis7@mac.com" className="magnetic">
-              mfrancis7@mac.com →
-            </a>
-            <Link href="/contact" className="magnetic ghost">
-              Project inquiry
-            </Link>
-          </div>
-        </Reveal>
       </section>
     </div>
   );

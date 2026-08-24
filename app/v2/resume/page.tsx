@@ -1,4 +1,3 @@
-import Link from "next/link";
 import V2Chrome from "@/components/v2/V2Chrome";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 
@@ -187,20 +186,6 @@ export default function V2Resume() {
           </p>
         </section>
 
-        {/* CTA */}
-        <section className="flex h-[100dvh] w-[86vw] sm:w-[42vw] shrink-0 flex-col items-start justify-center gap-8 border-l border-[#141414]/10 px-8 sm:px-16">
-          <h2 className="font-display uppercase leading-[0.88] text-[10vw] sm:text-[4vw]">
-            Open to Lead
-            <br />
-            & Principal roles.
-          </h2>
-          <Link
-            href="/v2/contact"
-            className="rounded-full border border-[#141414]/30 px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] transition-colors hover:bg-[#141414] hover:text-[#f2f1ec]"
-          >
-            Get in touch
-          </Link>
-        </section>
       </HorizontalScroll>
     </main>
   );
