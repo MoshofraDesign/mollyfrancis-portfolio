@@ -304,7 +304,7 @@ export default function ResumePage() {
                 <h3 className="font-serif text-2xl lg:text-3xl leading-tight mb-1">
                   {job.role}
                 </h3>
-                <p className="text-sm tracking-normal text-ink/60 mb-5">
+                <p className="text-base tracking-normal text-ink/60 mb-5">
                   {job.period}
                 </p>
                 <ul className="space-y-2 max-w-3xl">
@@ -346,7 +346,7 @@ export default function ResumePage() {
           <Reveal as="div" className="lg:col-span-9 space-y-8">
             {skillGroups.map((group) => (
               <div key={group.label}>
-                <p className="font-mono text-xs tracking-normal text-ink/60 mb-2">
+                <p className="font-mono text-sm tracking-normal text-ink/60 mb-2">
                   {group.label}
                 </p>
                 <ul className="space-y-1.5">
