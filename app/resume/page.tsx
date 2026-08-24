@@ -241,7 +241,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-8 pb-12 lg:pb-16">
         <Reveal as="div" className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/60 mb-4">
+            <p className="text-xs tracking-normal text-ink/60 mb-4">
               Résumé · 2025
             </p>
             <h1 className="font-serif text-hero leading-[0.98]">
@@ -281,7 +281,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
         <div className="mb-8">
           <Reveal as="div">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/60">
+            <p className="text-xs tracking-normal text-ink/60">
               Experience
             </p>
           </Reveal>
@@ -338,7 +338,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/60 mb-3">
+            <p className="text-xs tracking-normal text-ink/60 mb-3">
               Capabilities
             </p>
             <h2 className="font-serif text-h2">Skills.</h2>
@@ -346,10 +346,10 @@ export default function ResumePage() {
           <Reveal as="div" className="lg:col-span-9 space-y-8">
             {skillGroups.map((group) => (
               <div key={group.label}>
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60 mb-2">
+                <p className="font-mono text-xs tracking-normal text-ink/60 mb-2">
                   {group.label}
                 </p>
-                <ul className="columns-1 sm:columns-2 gap-x-10 space-y-1.5">
+                <ul className="space-y-1.5">
                   {group.items.map((s) => (
                     <li key={s} className="text-ink/80 break-inside-avoid">
                       {s}
@@ -366,7 +366,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/60 mb-3">
+            <p className="text-xs tracking-normal text-ink/60 mb-3">
               Tooling
             </p>
             <h2 className="font-serif text-h2">Programs.</h2>
@@ -387,7 +387,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/60 mb-3">
+            <p className="text-xs tracking-normal text-ink/60 mb-3">
               Education
             </p>
             <h2 className="font-serif text-h2">School & recognition.</h2>
@@ -395,7 +395,7 @@ export default function ResumePage() {
           <div className="lg:col-span-9 space-y-8">
             {education.map((e) => (
               <Reveal key={e.school} as="div" className="grid grid-cols-12 gap-4">
-                <p className="col-span-12 lg:col-span-4 font-mono text-xs uppercase tracking-[0.18em] text-ink/60">
+                <p className="col-span-12 lg:col-span-4 font-mono text-xs tracking-normal text-ink/60">
                   University
                 </p>
                 <div className="col-span-12 lg:col-span-8">
@@ -405,7 +405,7 @@ export default function ResumePage() {
               </Reveal>
             ))}
             <Reveal as="div" className="grid grid-cols-12 gap-4 pt-8 border-t border-ink/10">
-              <p className="col-span-12 lg:col-span-4 font-mono text-xs uppercase tracking-[0.18em] text-ink/60">
+              <p className="col-span-12 lg:col-span-4 font-mono text-xs tracking-normal text-ink/60">
                 Recognition
               </p>
               <ul className="col-span-12 lg:col-span-8 space-y-3">
