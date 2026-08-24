@@ -56,9 +56,11 @@ const HOTSPOTS: Hotspot[] = [
 ];
 
 const headlines = [
-  "I'm a UI/UX product designer, artist & collector of many things.",
-  "I turn complex problems into simple experiences across mobile and web.",
-  "20+ years designing — now augmented with a working AI stack.",
+  "Principal product designer thriving in complex spaces by unraveling ambiguity.",
+  "12+ years turning ambiguous problems into elegant, systemic solutions for teams.",
+  "I lead the pre-award space at Instrumentl, helping nonprofits win more grants.",
+  "I led design at Honor, making home healthcare more coordinated and personal.",
+  "At the heart of it: solutions for good-hearted people doing meaningful work.",
 ];
 
 const ROTATE_MS = 3400;
