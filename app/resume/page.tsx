@@ -41,7 +41,7 @@ const experience: Job[] = [
       "Conduct and synthesize user research to uncover insights, validate solutions, and guide product decisions.",
       "Partner with cross-functional teams and executive stakeholders to align user needs with business goals, driving go-to-market decisions for complex government workflows.",
       "Lead design systems governance, accessibility, and DesignOps initiatives to ensure long-term product growth and meaningful public impact.",
-      "Piloted AI-assisted design and prototyping workflows (Claude, Figma Make) to accelerate iteration and validate solutions faster across GovOS products.",
+      "Piloted AI-assisted design and prototyping workflows (ChatGPT) to accelerate iteration and validate solutions faster across GovOS products.",
     ],
   },
   {
