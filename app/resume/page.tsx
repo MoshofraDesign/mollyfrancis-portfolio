@@ -108,17 +108,6 @@ const experience: Job[] = [
       "Improved usability and engagement by refining UX flows and ensuring consistent visual design across the platforms.",
     ],
   },
-  {
-    role: "Design Team Lead",
-    company: "Volusion",
-    domain: "volusion.com",
-    period: "August 2011 — June 2013",
-    bullets: [
-      "Managed a team of 5–9 designers in the Volusion Client Services group, providing mentorship and guidance to improve productivity, design quality and team performance.",
-      "Continued hands-on design and coding (HTML & CSS), delivering 10+ websites and branding projects per week.",
-      "Ensured the team produced user-friendly designs that met client goals and deadlines.",
-    ],
-  },
 ];
 
 /** Grouped for scanability — leadership/strategy keywords lead (what a
