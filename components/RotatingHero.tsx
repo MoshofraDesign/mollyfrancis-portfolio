@@ -97,13 +97,13 @@ export default function RotatingHero() {
 
   return (
     <section className="flex min-h-[70vh] items-center px-6 py-16 sm:min-h-[75vh] sm:py-0 lg:min-h-[80vh] lg:px-10">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,380px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,640px)_1fr] lg:gap-16">
+      <div className="mx-auto grid w-full max-w-[96rem] grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,380px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,640px)_1fr] lg:gap-16">
         <div
           ref={portraitRef}
           onMouseMove={onPortraitMove}
           onMouseEnter={onPortraitMove}
           onMouseLeave={() => setSpot((s) => ({ ...s, on: false }))}
-          className="group relative mx-auto aspect-square w-full max-w-[240px] sm:max-w-[340px] md:mx-0 md:max-w-none lg:max-w-[640px]"
+          className="group relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[400px] md:mx-0 md:max-w-none lg:max-w-[640px]"
         >
           {/* Color photo full-bleed (the circular headshot). Soft spotlight
               follows the cursor; gray dots sit inset on top, same as Figma. */}
@@ -124,7 +124,7 @@ export default function RotatingHero() {
               alt=""
               fill
               unoptimized
-              sizes="(max-width: 640px) 240px, (max-width: 768px) 340px, 640px"
+              sizes="(max-width: 640px) 320px, (max-width: 768px) 400px, 640px"
               className="object-cover"
               priority
             />
@@ -207,7 +207,7 @@ export default function RotatingHero() {
             <span aria-hidden="true">🖐️</span>
           </p>
           <h1
-            className="max-w-3xl font-jost text-2xl font-medium leading-snug text-ink transition-opacity duration-[400ms] ease-out sm:text-3xl md:max-w-4xl md:text-4xl lg:max-w-5xl lg:text-[55px] lg:leading-[65px]"
+            className="max-w-3xl font-jost text-2xl font-medium leading-snug text-ink transition-opacity duration-[400ms] ease-out sm:text-3xl md:max-w-none md:text-4xl lg:text-[55px] lg:leading-[65px]"
             style={{ opacity: visible ? 1 : 0 }}
           >
             {headlines[index]}
