@@ -61,6 +61,7 @@ const headlines = [
   "A player-coach who bridges strategy and hands-on execution every day.",
   "I translate complex workflows and compliance data into seamless products.",
   "I lead from the front, mentoring designers while shipping high-impact work.",
+  "At my core, I love this work — building products that help real people.",
 ];
 
 const ROTATE_MS = 3400;
