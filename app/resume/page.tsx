@@ -7,9 +7,6 @@ export const metadata = {
     "Principal Product Designer and design leader based in Austin, Texas. Over 20 years across design strategy, design systems governance, DesignOps, and cross-functional leadership — integrating emerging AI tools to streamline workflows and uncover deeper insights.",
 };
 
-const summary =
-  "I'm a Principal Product Designer and design leader based in Austin, Texas, focused on product vision, design strategy, and cross-functional execution at scale. With over 20 years across UX design, user research, design systems governance, and DesignOps, I partner with executive stakeholders to align design with business goals — mentoring teams and integrating emerging AI tools to streamline workflows, uncover deeper insights, and accelerate the design process.";
-
 type Job = {
   role: string;
   company: string;
@@ -305,22 +302,6 @@ export default function ResumePage() {
             </a>
           </div>
         </Reveal>
-      </section>
-
-      {/* SUMMARY */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-10 border-t border-ink/10">
-        <div className="grid lg:grid-cols-12 gap-12">
-          <Reveal as="div" className="lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.25em] text-ink/60">
-              Hello
-            </p>
-          </Reveal>
-          <Reveal as="div" className="lg:col-span-9 space-y-6">
-            <p className="font-serif text-2xl lg:text-3xl leading-snug">
-              {summary}
-            </p>
-          </Reveal>
-        </div>
       </section>
 
       {/* EXPERIENCE */}
