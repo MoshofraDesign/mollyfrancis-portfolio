@@ -268,29 +268,6 @@ export default function ResumePage() {
               </svg>
               Austin, Texas
             </p>
-            <p className="mt-5 font-mono text-sm text-ink/60 flex flex-wrap gap-x-4 gap-y-1">
-              <a
-                href="mailto:mfrancis7@mac.com"
-                className="link-underline"
-              >
-                mfrancis7@mac.com
-              </a>
-              <span className="text-ink/30">·</span>
-              <span>512.632.2364</span>
-              <span className="text-ink/30">·</span>
-              <a
-                href="https://www.linkedin.com/in/mollyfrancisdesign"
-                target="_blank"
-                rel="noreferrer"
-                className="link-underline"
-              >
-                linkedin.com/mollyfrancisdesign
-              </a>
-              <span className="text-ink/30">·</span>
-              <a href="https://www.mollyfrancis.com" className="link-underline">
-                www.mollyfrancis.com
-              </a>
-            </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <MagneticButton
