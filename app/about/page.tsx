@@ -22,10 +22,26 @@ const jost = Jost({
 });
 
 const traits = [
-  { letter: "E", word: "Extraverted" },
-  { letter: "N", word: "Intuitive" },
-  { letter: "F", word: "Feeling" },
-  { letter: "P", word: "Prospecting" },
+  {
+    letter: "E",
+    word: "Extraverted",
+    href: "https://www.16personalities.com/articles/energy-introverted-vs-extraverted",
+  },
+  {
+    letter: "N",
+    word: "Intuitive",
+    href: "https://www.16personalities.com/articles/mind-intuitive-vs-observant",
+  },
+  {
+    letter: "F",
+    word: "Feeling",
+    href: "https://www.16personalities.com/articles/nature-thinking-vs-feeling",
+  },
+  {
+    letter: "P",
+    word: "Prospecting",
+    href: "https://www.16personalities.com/articles/tactics-judging-vs-prospecting",
+  },
 ];
 
 const principles = [
@@ -184,7 +200,14 @@ export default function AboutPage() {
                 <span className="font-semibold">ENFP (Campaigner)</span>{" "}
                 {traits.map((t, i) => (
                   <span key={t.word}>
-                    <em className="not-italic underline">{t.word}</em>
+                    <a
+                      href={t.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline underline-offset-2 hover:opacity-70"
+                    >
+                      {t.word}
+                    </a>
                     {i < traits.length - 1 ? ", " : ""}
                     {i === traits.length - 2 ? "and " : ""}
                   </span>
@@ -192,15 +215,18 @@ export default function AboutPage() {
                 {" "}traits
               </p>
               <p className="mt-5 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
-                I tend to embrace big ideas and actions that reflect a sense of
-                hope and goodwill toward others. I have a vibrant energy and
-                can flow in many directions.
-              </p>
-              <p className="mt-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
-                These traits allow me to be an empathetic designer who thrives
-                on understanding and connecting with the end users, always
-                keeping their needs and experiences at the forefront of my
-                work.
+                I am a UX leader and hands-on designer with a proven track
+                record of solving complex problems across Healthcare,
+                Conversational AI Platforms, Fintech, GovTech, and E-commerce.
+                Having shaped products for companies ranging from early-stage
+                startups like Patient IO to industry giants like athenahealth,
+                LivePerson, and Care.com, I thrive as a player-coach who
+                bridges strategy and execution. My expertise lies in
+                translating intricate workflows, high-stakes compliance data,
+                and diverse user needs into seamless digital products. I
+                excel at leading from the front and managing and mentoring
+                individual designers to elevate their craft while
+                continuously shipping high-impact individual work.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <a
@@ -269,26 +295,6 @@ export default function AboutPage() {
           <p>I have two cats and a dog. They love to crash a good meeting :)</p>
         </StoryPanel>
 
-        {/* ── WHEN I WAS LITTLE ─────────────────────────────────────── */}
-        <StoryPanel
-          heading="👣 When I was little…"
-          photos={[
-            { src: "/about/little-jeep.jpg", alt: "Fisher Price Jeep adventurer" },
-            { src: "/about/little-dad.jpg", alt: "Molly with dad" },
-            { src: "/about/little-bigfoot.jpg", alt: "BigFoot photo" },
-          ]}
-          reverse
-        >
-          <p>
-            My dad asked me what I wanted to be when I grew up. I told him I
-            wanted to find BigFoot.
-          </p>
-          <p>
-            I&rsquo;m pretty sure my imagination was sparked with the Fisher
-            Price Jeep adventurer collection :)
-          </p>
-        </StoryPanel>
-
         {/* ── COLLECTIONS ───────────────────────────────────────────── */}
         <StoryPanel
           heading="I collect a LOT of things"
@@ -318,6 +324,26 @@ export default function AboutPage() {
           reverse
         >
           <p>I will always buy something if the packaging is cool.</p>
+        </StoryPanel>
+
+        {/* ── WHEN I WAS LITTLE ─────────────────────────────────────── */}
+        <StoryPanel
+          heading="👣 When I was little…"
+          photos={[
+            { src: "/about/little-jeep.jpg", alt: "Fisher Price Jeep adventurer" },
+            { src: "/about/little-dad.jpg", alt: "Molly with dad" },
+            { src: "/about/little-bigfoot.jpg", alt: "BigFoot photo" },
+          ]}
+          reverse
+        >
+          <p>
+            My dad asked me what I wanted to be when I grew up. I told him I
+            wanted to find BigFoot.
+          </p>
+          <p>
+            I&rsquo;m pretty sure my imagination was sparked with the Fisher
+            Price Jeep adventurer collection :)
+          </p>
         </StoryPanel>
 
         {/* ── BRIDGE TO THE WORK — stats ────────────────────────────── */}
