@@ -342,9 +342,6 @@ export default function ResumePage() {
               className="grid grid-cols-12 gap-4 lg:gap-8 py-10 border-t border-ink/10"
             >
               <div className="col-span-12 lg:col-span-3">
-                <p className="font-mono text-[18px] text-ink/40 leading-none mb-3">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60">
                   {job.period}
                 </p>
