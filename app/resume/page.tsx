@@ -11,6 +11,7 @@ type Job = {
   role: string;
   company: string;
   domain: string;
+  icon: string;
   period: string;
   bullets: string[];
 };
@@ -20,6 +21,7 @@ const experience: Job[] = [
     role: "Lead Product Designer",
     company: "Netspend",
     domain: "netspend.com",
+    icon: "netspend",
     period: "November 2025 — Current",
     bullets: [
       "Own design strategy and end-to-end UX for Netspend's Rewards program — the consumer-facing app and the internal Unified Commerce Management (UCM) tool that powers it.",
@@ -32,6 +34,7 @@ const experience: Job[] = [
     role: "Lead Product Designer",
     company: "GovOS (Neumo)",
     domain: "govos.com",
+    icon: "govos",
     period: "October 2023 — October 2025",
     bullets: [
       "Drive UX strategy and design execution across core GovOS products, including eSubmission, Business Licensing & Tax, Cloud Search, and Cloud Records.",
@@ -45,6 +48,7 @@ const experience: Job[] = [
     role: "Principal Product Designer",
     company: "Bright Health",
     domain: "brighthealthcare.com",
+    icon: "brighthealth",
     period: "March 2021 — April 2023",
     bullets: [
       "Established a 0 to 1 provider portal for Prior Authorizations, reducing manual paperwork and enabling providers to electronically submit and track authorization status in real time.",
@@ -57,6 +61,7 @@ const experience: Job[] = [
     role: "Principal Product Designer",
     company: "Care.com (HomePay)",
     domain: "care.com",
+    icon: "care",
     period: "April 2020 — February 2021",
     bullets: [
       "Led the HomePay design team for a payroll, tax, and HR solution serving families with household employees (nannies, senior caregivers, etc.).",
@@ -69,6 +74,7 @@ const experience: Job[] = [
     role: "Lead UX Designer",
     company: "Liveperson",
     domain: "liveperson.com",
+    icon: "liveperson",
     period: "July 2019 — February 2020",
     bullets: [
       "Served as lead designer on a new social media management product, enabling brands to interact with consumers over social platforms through the LiveEngage AI-powered messaging product.",
@@ -79,6 +85,7 @@ const experience: Job[] = [
     role: "Principal Product Designer",
     company: "athenahealth",
     domain: "athenahealth.com",
+    icon: "athenahealth",
     period: "September 2016 — June 2019",
     bullets: [
       "Conducted research and design for desktop and native mobile electronic health record (EHR) and patient portal products, improving usability and adoption for clinicians and patients.",
@@ -90,6 +97,7 @@ const experience: Job[] = [
     role: "Lead Product Designer",
     company: "Patient IO",
     domain: "patientio.com",
+    icon: "patientio",
     period: "July 2016 — August 2016",
     bullets: [
       "Served as Head of Product Design for desktop and native mobile apps supporting at-risk patients, designing for both patient-facing users and care managers.",
@@ -102,6 +110,7 @@ const experience: Job[] = [
     role: "Senior UX Designer",
     company: "Volusion / Mozu",
     domain: "volusion.com",
+    icon: "volusion",
     period: "September 2014 — June 2016",
     bullets: [
       "Designed interaction flows, visual design, and user experiences for the Volusion and Mozu e-commerce platforms.",
@@ -218,18 +227,19 @@ const recognition = [
   },
 ];
 
-// Small inline component for company favicon — uses DuckDuckGo's free favicon
-// service. Returns a small ICO for any domain, no auth required.
-function Favicon({ domain, alt }: { domain: string; alt: string }) {
+// Small inline component for company favicon — served locally from
+// public/company-icons so the résumé page and PDF always render the exact
+// same icon (no dependency on an external favicon service).
+function Favicon({ icon, alt }: { icon: string; alt: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
+      src={`/company-icons/${icon}.png`}
       alt={alt}
-      width={28}
-      height={28}
+      width={24}
+      height={24}
       loading="lazy"
-      className="inline-block w-7 h-7 object-contain align-middle"
+      className="inline-block w-6 h-6 object-contain align-middle"
     />
   );
 }
@@ -302,7 +312,7 @@ export default function ResumePage() {
               <div className="col-span-12 lg:col-span-3" />
               <div className="col-span-12 lg:col-span-9">
                 <div className="flex items-center gap-3 mb-1">
-                  <Favicon domain={job.domain} alt={`${job.company} logo`} />
+                  <Favicon icon={job.icon} alt={`${job.company} logo`} />
                   <p className="font-medium text-ink">{job.company}</p>
                 </div>
                 <h3 className="font-serif text-2xl lg:text-3xl leading-tight mb-1 text-ink">
