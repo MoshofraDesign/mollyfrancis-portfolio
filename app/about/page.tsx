@@ -69,40 +69,47 @@ const stats = [
   { v: "100+", l: "products in market" },
 ];
 
-// ── small reusable photo card (white border, like a print) ────────────────
+// ── circular photo (plain crop, no border) — matches the Figma "About Me"
+//    frames, which use plain rounded-full photo crops with no card border.
 function Photo({
   src,
   alt,
-  aspect = "1 / 1",
+  size = 240,
 }: {
   src: string;
   alt: string;
-  aspect?: string;
+  size?: number;
 }) {
   return (
     <div
-      className="relative w-full max-w-[220px] overflow-hidden border-[8px] border-white bg-white shadow-[0_2px_12px_-4px_rgba(20,20,20,0.18)]"
-      style={{ aspectRatio: aspect }}
+      className="relative mx-auto aspect-square w-full overflow-hidden rounded-full bg-black/5"
+      style={{ maxWidth: size }}
     >
-      <Image src={src} alt={alt} fill sizes="220px" className="object-cover" />
+      <Image src={src} alt={alt} fill sizes={`${size}px`} className="object-cover" />
     </div>
   );
 }
 
-/** A heading + copy + small photo grid, side by side — the shape most of
- *  the personal-facts panels share. */
+/** A heading + copy + small photo cluster, side by side — the shape most of
+ *  the personal-facts panels share. Photos render as plain circle crops
+ *  (photoShape="circle", the default) to match Figma, except Sixbees which
+ *  uses a single wide rectangular photo (photoShape="rect"), also per Figma. */
 function StoryPanel({
   heading,
   eyebrow,
   children,
   photos,
   reverse = false,
+  photoShape = "circle",
+  photoSize = 240,
 }: {
   heading: string;
   eyebrow?: string;
   children: React.ReactNode;
   photos: { src: string; alt: string }[];
   reverse?: boolean;
+  photoShape?: "circle" | "rect";
+  photoSize?: number;
 }) {
   return (
     <Panel width={VIEW} pad="center" className="items-center">
@@ -112,11 +119,23 @@ function StoryPanel({
         }`}
       >
         <SlideIn>
-          <div className={`grid gap-4 ${photos.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
-            {photos.map((p) => (
-              <Photo key={p.src} src={p.src} alt={p.alt} />
-            ))}
-          </div>
+          {photoShape === "rect" ? (
+            <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <Image
+                src={photos[0].src}
+                alt={photos[0].alt}
+                fill
+                sizes="(max-width: 1023px) 90vw, 45vw"
+                className="object-cover"
+              />
+            </div>
+          ) : (
+            <div className={`grid gap-4 ${photos.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
+              {photos.map((p) => (
+                <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} />
+              ))}
+            </div>
+          )}
         </SlideIn>
         <SlideIn delay={100}>
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
@@ -271,6 +290,7 @@ export default function AboutPage() {
           heading="The Sixbees"
           photos={[{ src: "/about/sixbees.jpg", alt: "The Sixbees — design friends" }]}
           reverse
+          photoShape="rect"
         >
           <p>
             My design friends and I started a blog years ago. It was a blast!
