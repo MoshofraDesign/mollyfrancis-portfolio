@@ -255,7 +255,7 @@ export default function NetspendCaseStudy() {
             <h2 className={H_DISPLAY}>Handoff-ready in five months. And it replaced a vendor the company was paying for.</h2>
           </SlideIn>
           <SlideIn delay={100}>
-            <p className={`mt-3 ${BODY_MUTED}`}>AI ran through the whole process — Claude, Gemini, Figma Make — for research synthesis and rapid prototyping. More layout directions per round than doing it by hand allows.</p>
+            <p className={`mt-3 ${BODY_MUTED}`}>AI ran through the whole process — Claude and Gemini turned Jira tickets into clear requirements, Cursor and Figma Make spun up quick HTML mockups to compare directions, and the strongest ones became the real designs. More directions tested per round than doing it by hand allows.</p>
           </SlideIn>
         </TextPanel>
 
