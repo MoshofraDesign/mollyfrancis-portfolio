@@ -153,18 +153,18 @@ export default function NetspendCaseStudy() {
           </SlideIn>
         </TextPanel>
 
-        {/* Create Flight wizard — screenshot pulled from the UCM prototype's
+        {/* Create Flight wizard — walkthrough recorded from the UCM prototype's
             4-step flow (Basic Info / Incentive Config / Ad Setup / Review). */}
         <Panel width={VIEW} pad="center">
           <div className={`${MEDIA} mx-auto`}>
             <SlideIn>
-              <div className="relative aspect-[1600/1000] w-full overflow-hidden rounded-xl shadow-[0_20px_60px_-12px_rgba(0,0,0,0.45)]">
-                <Image
-                  src={`${ASSET}/screen-flight-wizard.png`}
-                  alt="Create Flight wizard — Basic Info step"
-                  fill
-                  unoptimized
-                  className="h-full w-full object-cover object-top"
+              <div className="relative aspect-[1600/1000] w-full overflow-hidden rounded-xl">
+                <AutoplayVideo
+                  sources={[
+                    { src: `${ASSET}/videos/campaign-setup.mov`, type: "video/quicktime" },
+                    { src: `${ASSET}/videos/campaign-setup.mp4`, type: "video/mp4" },
+                  ]}
+                  className="h-full w-full object-cover"
                 />
               </div>
             </SlideIn>
