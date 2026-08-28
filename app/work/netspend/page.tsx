@@ -154,16 +154,17 @@ export default function NetspendCaseStudy() {
         </TextPanel>
 
         {/* Create Flight wizard — walkthrough video the previous beat leads into.
-            TODO: campaign-setup.mov/.mp4 need to be dropped into
-            public/work/netspend/videos/ — placeholder src until then. */}
+            TODO: swap back to the real campaign-setup.mov/.mp4 once that recording
+            is dropped into public/work/netspend/videos/ — reusing netspend-rewards
+            as a stand-in for now so the panel isn't broken. */}
         <Panel width={VIEW} pad="center">
           <div className={`${MEDIA} mx-auto`}>
             <SlideIn>
               <div className="relative aspect-[1600/1000] w-full overflow-hidden rounded-xl">
                 <AutoplayVideo
                   sources={[
-                    { src: `${ASSET}/videos/campaign-setup.mov`, type: "video/quicktime" },
-                    { src: `${ASSET}/videos/campaign-setup.mp4`, type: "video/mp4" },
+                    { src: `${ASSET}/videos/netspend-rewards.mov`, type: "video/quicktime" },
+                    { src: `${ASSET}/videos/netspend-rewards.mp4`, type: "video/mp4" },
                   ]}
                   className="h-full w-full object-cover"
                 />
