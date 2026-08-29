@@ -216,6 +216,16 @@ export default function NetspendCaseStudy() {
           </div>
         </Panel>
 
+        {/* Configure it once. It shows up everywhere. */}
+        <TextPanel width={VIEW}>
+          <SlideIn>
+            <h2 className={H_DISPLAY}>Configure it once. It shows up everywhere.</h2>
+          </SlideIn>
+          <SlideIn delay={100}>
+            <p className={`mt-3 ${BODY_MUTED}`}>Category, offer type, reward amount, eligibility — set in the internal tool, live in the consumer tab. One data model, two experiences.</p>
+          </SlideIn>
+        </TextPanel>
+
         {/* Search validated, not guessed at. — screen recording, matches production */}
         <Panel width={VIEW} pad="center">
           <div className={`${MEDIA} mx-auto`}>
@@ -237,16 +247,6 @@ export default function NetspendCaseStudy() {
             </SlideIn>
           </div>
         </Panel>
-
-        {/* Configure it once. It shows up everywhere. */}
-        <TextPanel width={VIEW}>
-          <SlideIn>
-            <h2 className={H_DISPLAY}>Configure it once. It shows up everywhere.</h2>
-          </SlideIn>
-          <SlideIn delay={100}>
-            <p className={`mt-3 ${BODY_MUTED}`}>Category, offer type, reward amount, eligibility — set in the internal tool, live in the consumer tab. One data model, two experiences.</p>
-          </SlideIn>
-        </TextPanel>
 
         {/* Handoff-ready in five months */}
         <TextPanel width={VIEW}>
