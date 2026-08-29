@@ -324,7 +324,7 @@ export default function GovOSCaseStudy() {
   return (
     <main
       className={`${jost.variable} relative`}
-      style={{ background: BRAND, fontFamily: "var(--font-jost), system-ui, sans-serif" }}
+      style={{ background: BRAND, color: "#ffffff", fontFamily: "var(--font-jost), system-ui, sans-serif" }}
     >
       {/* Nav — small wordmark at the reference's scale. Hidden while the title
           panel's large logo is on screen, then rolls in and sticks. This route
@@ -424,11 +424,7 @@ export default function GovOSCaseStudy() {
           </Body>
         </Panel>
 
-        {/* 4 — REMEMBER THE USER */}
-        <Panel>
-          <Heading>Remember the user.</Heading>
-          <Body>Submission types, recent history, pick up where they left off.</Body>
-        </Panel>
+        {/* 4 — REMEMBER THE USER — text removed, letting the recording carry it */}
         <VideoPanel
           src={findVideo("GovOS-MainScreens")}
           caption="Signing in and picking up a recent submission"
@@ -484,7 +480,7 @@ export default function GovOSCaseStudy() {
 
         {/* Outcome — before/after metrics */}
         <Panel width="lg:w-screen">
-          <div className="flex w-full max-w-[950px] flex-col gap-[70px] text-white">
+          <div className="flex w-full max-w-[950px] flex-col gap-[40px] text-white">
             {[
               ["Citizen Completion Rate", "42% to 86%"],
               ["Validation Errors", "34% to 8%"],
@@ -500,12 +496,12 @@ export default function GovOSCaseStudy() {
                       {value}
                     </p>
                     <Image
-                      src="/work/docsquad/down-triangle-green.svg"
+                      src="/work/docsquad/down-triangle.svg"
                       alt=""
                       width={40}
                       height={40}
                       unoptimized
-                      className="size-10 shrink-0 rotate-180"
+                      className="size-6 shrink-0 rotate-180"
                     />
                   </div>
                 </div>
