@@ -86,7 +86,7 @@ export default function NetspendCaseStudy() {
           {/* Debit cards — sit in the open area right of the logo/copy, fully inside
               the frame (Figma 498,226 / 791×638). Insets + object-contain keep the
               orange tip from getting cropped. */}
-          <div className="pointer-events-none relative z-0 mx-auto flex aspect-[791/638] w-full max-w-[min(90vw,26rem)] items-center justify-center lg:absolute lg:left-[22%] lg:right-[5%] lg:top-[12%] lg:bottom-[22%] lg:aspect-auto lg:w-auto lg:max-w-none lg:p-6 xl:left-[18%] xl:right-[4%] xl:top-[10%] xl:bottom-[18%] 2xl:left-[14%] 2xl:right-[3%] 2xl:top-[8%] 2xl:bottom-[14%]">
+          <div className="pointer-events-none relative z-0 mx-auto flex aspect-[791/638] w-full max-w-[min(90vw,26rem)] items-center justify-center lg:absolute lg:left-[25%] lg:right-[2%] lg:top-[15%] lg:bottom-[19%] lg:aspect-auto lg:w-auto lg:max-w-none lg:p-6 xl:left-[21%] xl:right-[1%] xl:top-[13%] xl:bottom-[15%] 2xl:left-[17%] 2xl:right-0 2xl:top-[11%] 2xl:bottom-[11%]">
             <Image
               src={`${ASSET}/debit-cards.png`}
               alt="Netspend debit cards"
