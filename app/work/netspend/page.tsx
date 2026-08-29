@@ -281,7 +281,7 @@ export default function NetspendCaseStudy() {
           </div>
         </Panel>
 
-        <CaseStudyMetaPanel meta={meta} />
+        <CaseStudyMetaPanel meta={meta} showProjected={false} />
 
         {/* ── PANEL: LIVE PROTOTYPE — title + link (GovOS pattern) ─── */}
         {project.prototype && (
