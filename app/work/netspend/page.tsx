@@ -258,26 +258,37 @@ export default function NetspendCaseStudy() {
           </SlideIn>
         </TextPanel>
 
-        {/* Outcome stats — production shows "$500K → $0M" / "0 → 0" here, which reads like a
-            template bug clipping the second number. Using the real values from lib/projects.ts
-            (meta.projected) with production's new labels instead of reproducing the bug. */}
+        {/* Outcome stats — Figma 4553:22220 layout: stacked stats left, the
+            cashback portrait (circular photo + floating offer card) right. */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto grid gap-10 md:grid-cols-2 md:gap-x-12`}>
-            {[
-              [meta.projected[0]?.value ?? "$500K → $10M", "projected rewards revenue"],
-              [meta.projected[1]?.value ?? "0 → 1", "a platform that didn't exist five months ago"],
-            ].map(([value, label], i) => (
-              <SlideIn key={label} delay={i * 80}>
-                <div>
-                  <p className="font-semibold leading-none tracking-[-0.04em] text-white text-[2.4rem] sm:text-[2.4rem] md:text-[2.88rem] lg:text-[3.84rem] xl:text-[4.6rem] 2xl:text-[4.6rem]">
-                    {value}
-                  </p>
-                  <p className="mt-3 text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
-                    {label}
-                  </p>
-                </div>
-              </SlideIn>
-            ))}
+          <div className="mx-auto grid w-full max-w-[min(1150px,94vw)] items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="flex flex-col gap-10">
+              {[
+                [meta.projected[0]?.value ?? "$500K → $10M", "projected rewards revenue"],
+                [meta.projected[1]?.value ?? "0 → 1", "a platform that didn't exist five months ago"],
+              ].map(([value, label], i) => (
+                <SlideIn key={label} delay={i * 80}>
+                  <div>
+                    <p className="font-semibold leading-none tracking-[-0.04em] text-white text-[2.4rem] sm:text-[2.4rem] md:text-[2.88rem] lg:text-[3.36rem] xl:text-[3.84rem] 2xl:text-[4.05rem]">
+                      {value}
+                    </p>
+                    <p className="mt-3 text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
+                      {label}
+                    </p>
+                  </div>
+                </SlideIn>
+              ))}
+            </div>
+            <SlideIn delay={160} className="flex justify-center lg:justify-end">
+              <Image
+                src={`${ASSET}/portrait-cashback.png`}
+                alt="Cardholder with cashback offers — 7-Eleven, Finish Line, Doordash"
+                width={834}
+                height={600}
+                unoptimized
+                className="h-auto w-full max-w-[480px] object-contain"
+              />
+            </SlideIn>
           </div>
         </Panel>
 
