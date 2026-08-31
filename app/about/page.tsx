@@ -151,6 +151,139 @@ function StoryPanel({
   );
 }
 
+
+/** Left-anchored stack: a row of circle photos plus a heading/body block,
+ *  one above the other (order set by `photosPosition`) — matches the Figma
+ *  frames for Family / Animals / When I was little, which sit ~100px off
+ *  the left edge rather than centered in a two-column grid. */
+function StackPanel({
+  heading,
+  children,
+  photos,
+  photosPosition = "top",
+  photoSize = 220,
+}: {
+  heading: string;
+  children?: React.ReactNode;
+  photos: { src: string; alt: string }[];
+  photosPosition?: "top" | "bottom";
+  photoSize?: number;
+}) {
+  const photoRow = (
+    <SlideIn className="flex flex-wrap gap-4 sm:gap-6">
+      {photos.map((p) => (
+        <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} />
+      ))}
+    </SlideIn>
+  );
+  const text = (
+    <SlideIn delay={100} className="max-w-xl">
+      <h2 className="text-[clamp(1.75rem,5vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
+        {heading}
+      </h2>
+      {children && (
+        <div className="mt-4 space-y-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
+          {children}
+        </div>
+      )}
+    </SlideIn>
+  );
+  return (
+    <Panel width={VIEW} pad="rail">
+      <div className="flex w-full max-w-[min(1000px,90vw)] flex-col gap-8">
+        {photosPosition === "top" ? (
+          <>
+            {photoRow}
+            {text}
+          </>
+        ) : (
+          <>
+            {text}
+            {photoRow}
+          </>
+        )}
+      </div>
+    </Panel>
+  );
+}
+
+/** Collections — a loosely staggered two-row grid of circle photos with the
+ *  heading tucked in above and the "I blame McDonald's..." aside sitting
+ *  beside the second row, per the Figma frame's offset layout. */
+function CollectionsPanel({
+  heading,
+  aside,
+  rowOne,
+  rowTwo,
+}: {
+  heading: string;
+  aside: React.ReactNode;
+  rowOne: { src: string; alt: string }[];
+  rowTwo: { src: string; alt: string }[];
+}) {
+  return (
+    <Panel width={VIEW} pad="rail">
+      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-10">
+        <SlideIn>
+          <h2 className="max-w-xs text-[clamp(1.5rem,4vw,2rem)] font-semibold leading-[1.2] tracking-[-0.01em]">
+            {heading}
+          </h2>
+        </SlideIn>
+        <div className="flex flex-col gap-6">
+          <SlideIn delay={80} className="flex flex-wrap gap-4 sm:gap-6 sm:pl-[16%]">
+            {rowOne.map((p) => (
+              <Photo key={p.src} src={p.src} alt={p.alt} size={190} />
+            ))}
+          </SlideIn>
+          <div className="flex flex-wrap items-center gap-6 sm:gap-10">
+            <SlideIn delay={140} className="flex flex-wrap gap-4 sm:gap-6">
+              {rowTwo.map((p) => (
+                <Photo key={p.src} src={p.src} alt={p.alt} size={190} />
+              ))}
+            </SlideIn>
+            <SlideIn delay={200} className="max-w-xs text-sm leading-relaxed opacity-70">
+              {aside}
+            </SlideIn>
+          </div>
+        </div>
+      </div>
+    </Panel>
+  );
+}
+
+/** Packaging — heading and photos share a bottom-aligned row so the block
+ *  reads like the Figma frame's offset pairing, scaled to the three photos
+ *  actually on hand. */
+function PackagingPanel({
+  heading,
+  children,
+  photos,
+}: {
+  heading: string;
+  children: React.ReactNode;
+  photos: { src: string; alt: string }[];
+}) {
+  return (
+    <Panel width={VIEW} pad="rail">
+      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-8 sm:flex-row sm:items-end sm:justify-between sm:gap-12">
+        <SlideIn delay={100} className="max-w-xs">
+          <h2 className="text-[clamp(1.75rem,4.5vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
+            {heading}
+          </h2>
+          <div className="mt-3 space-y-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
+            {children}
+          </div>
+        </SlideIn>
+        <SlideIn className="flex flex-wrap gap-4 sm:gap-6">
+          {photos.map((p) => (
+            <Photo key={p.src} src={p.src} alt={p.alt} size={220} />
+          ))}
+        </SlideIn>
+      </div>
+    </Panel>
+  );
+}
+
 export default function AboutPage() {
   return (
     <main
@@ -164,40 +297,8 @@ export default function AboutPage() {
       />
 
       <HorizontalScroll>
-        {/* ── TITLE — I love what I do ─────────────────────────────── */}
-        <section
-          id="title"
-          className="relative flex w-full flex-col md:flex-row md:items-center lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:overflow-y-auto lg:overscroll-contain"
-        >
-          <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[42%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-12">
-            <Logo variant="lockup" size={56} />
-            <div>
-              <Eyebrow>Hi, I&rsquo;m Molly</Eyebrow>
-              <p className="mt-3 font-serif italic text-[clamp(1.75rem,6vw,3rem)] leading-[1.08]">
-                &ldquo;I love what I do.&rdquo;
-              </p>
-              <p className="mt-4 max-w-[60ch] text-[clamp(0.95rem,4vw,1.2rem)] leading-[1.4] opacity-85 sm:text-[clamp(0.95rem,2.2vw,1.2rem)] md:text-[1.05vw]">
-                I would never want to change career paths, and strive to learn
-                and evolve with changes that come in the tech world.
-              </p>
-            </div>
-          </div>
-          <div className="w-full px-5 pb-10 sm:px-8 md:mr-[5%] md:w-[58%] md:px-0 md:pb-0">
-            <div className="relative aspect-[4/3] w-full">
-              <Image
-                src="/about/love-coffee.jpg"
-                alt="Coffee cup and 'welcome to your life' sketch"
-                fill
-                sizes="(max-width: 767px) 92vw, (max-width: 1023px) 80vw, 55vw"
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ── INTRO — Molly Francis ────────────────────────────────── */}
-        <Panel width={VIEW} pad="center" className="items-center">
+        {/* ── 1 — INTRO — Molly Francis (now the opening panel, per Figma) ── */}
+        <Panel id="title" width={VIEW} pad="center" className="items-center !pt-20 sm:!pt-24">
           <div className="mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 sm:grid-cols-2 sm:gap-14">
             <SlideIn>
               <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-full bg-black/5">
@@ -207,6 +308,7 @@ export default function AboutPage() {
                   fill
                   sizes="(max-width: 1024px) 60vw, 24vw"
                   className="object-cover"
+                  priority
                 />
               </div>
             </SlideIn>
@@ -267,29 +369,20 @@ export default function AboutPage() {
           </div>
         </Panel>
 
-        {/* ── FAMILY ────────────────────────────────────────────────── */}
-        <StoryPanel
+        {/* ── 2 — FAMILY — photos on top, heading below, left-anchored ──── */}
+        <StackPanel
           heading="I have a wonderful family"
           photos={[
             { src: "/about/family-1.jpg", alt: "Family group photo" },
             { src: "/about/family-2.jpg", alt: "Daughter with pink blanket" },
             { src: "/about/family-3.jpg", alt: "Molly and daughter" },
           ]}
-        >
-          <p>
-            My dad is a retired Architect and my mother was an early-childhood
-            Preschool Director. I think having a mix of a very meticulous,
-            detailed father and an empathetic mother who was a helper of
-            children created a combo of the skills I possess as Product
-            Designer I am today.
-          </p>
-        </StoryPanel>
+        />
 
-        {/* ── THE SIXBEES ───────────────────────────────────────────── */}
+        {/* ── 3 — THE SIXBEES — photo left, text right (not reversed) ──── */}
         <StoryPanel
           heading="The Sixbees"
           photos={[{ src: "/about/sixbees.jpg", alt: "The Sixbees — design friends" }]}
-          reverse
           photoShape="rect"
         >
           <p>
@@ -303,8 +396,8 @@ export default function AboutPage() {
           </p>
         </StoryPanel>
 
-        {/* ── ANIMALS ───────────────────────────────────────────────── */}
-        <StoryPanel
+        {/* ── 4 — ANIMALS — photos on top, heading + body below ─────────── */}
+        <StackPanel
           heading="I love animals"
           photos={[
             { src: "/about/pet-1.jpg", alt: "Henry on chair" },
@@ -313,48 +406,38 @@ export default function AboutPage() {
           ]}
         >
           <p>I have two cats and a dog. They love to crash a good meeting :)</p>
-        </StoryPanel>
+        </StackPanel>
 
-        {/* ── COLLECTIONS ───────────────────────────────────────────── */}
-        <StoryPanel
+        {/* ── 5 — COLLECTIONS — staggered two-row grid ───────────────────── */}
+        <CollectionsPanel
           heading="I collect a LOT of things"
-          photos={[
+          aside={
+            <p>
+              I blame McDonald&rsquo;s and Hardies happy meal toys (the
+              California Raisins) and the scholastic book fair when I was a
+              kid :)
+            </p>
+          }
+          rowOne={[
             { src: "/about/collect-1.jpg", alt: "LEGO succulents" },
             { src: "/about/collect-2.jpg", alt: "Mini Brands collectibles" },
             { src: "/about/collect-3.jpg", alt: "Terracotta sculpture" },
+          ]}
+          rowTwo={[
             { src: "/about/collect-4.jpg", alt: "Doll heads shelf" },
             { src: "/about/collect-pens.jpg", alt: "Pen cup with globes" },
           ]}
-        >
-          <p>
-            I blame McDonald&rsquo;s and Hardies happy meal toys (the
-            California Raisins) and the scholastic book fair when I was a kid
-            :)
-          </p>
-        </StoryPanel>
+        />
 
-        {/* ── PACKAGING ─────────────────────────────────────────────── */}
-        <StoryPanel
-          heading="I Love Packaging"
-          photos={[
-            { src: "/about/packaging-1.jpg", alt: "Dolly Parton coconut flakes" },
-            { src: "/about/packaging-2.jpg", alt: "Pickle beer" },
-            { src: "/about/packaging-3.jpg", alt: "Cheetos Mac n Cheese" },
-          ]}
-          reverse
-        >
-          <p>I will always buy something if the packaging is cool.</p>
-        </StoryPanel>
-
-        {/* ── WHEN I WAS LITTLE ─────────────────────────────────────── */}
-        <StoryPanel
+        {/* ── 6 — WHEN I WAS LITTLE — heading + body on top, photos below ── */}
+        <StackPanel
           heading="👣 When I was little…"
+          photosPosition="bottom"
           photos={[
             { src: "/about/little-jeep.jpg", alt: "Fisher Price Jeep adventurer" },
             { src: "/about/little-dad.jpg", alt: "Molly with dad" },
             { src: "/about/little-bigfoot.jpg", alt: "BigFoot photo" },
           ]}
-          reverse
         >
           <p>
             My dad asked me what I wanted to be when I grew up. I told him I
@@ -363,6 +446,31 @@ export default function AboutPage() {
           <p>
             I&rsquo;m pretty sure my imagination was sparked with the Fisher
             Price Jeep adventurer collection :)
+          </p>
+        </StackPanel>
+
+        {/* ── 7 — PACKAGING — heading and photos bottom-aligned ──────────── */}
+        <PackagingPanel
+          heading="I Love Packaging"
+          photos={[
+            { src: "/about/packaging-1.jpg", alt: "Dolly Parton coconut flakes" },
+            { src: "/about/packaging-2.jpg", alt: "Pickle beer" },
+            { src: "/about/packaging-3.jpg", alt: "Cheetos Mac n Cheese" },
+          ]}
+        >
+          <p>I will always buy something if the packaging is cool.</p>
+        </PackagingPanel>
+
+        {/* ── 8 — I LOVE WHAT I DO — closes the story sequence, per Figma ── */}
+        <StoryPanel
+          heading="I love what I do"
+          photos={[
+            { src: "/about/love-coffee.jpg", alt: "Coffee cup and 'welcome to your life' sketch" },
+          ]}
+        >
+          <p>
+            I would never want to change career paths, and strive to learn
+            and evolve with changes that come in the tech world.
           </p>
         </StoryPanel>
 

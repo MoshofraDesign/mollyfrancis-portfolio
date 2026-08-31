@@ -68,11 +68,13 @@ export function Panel({
   className = "",
   width = VIEW,
   pad = "center",
+  id,
 }: {
   children: React.ReactNode;
   className?: string;
   width?: string;
   pad?: "rail" | "center";
+  id?: string;
 }) {
   // justify-[safe_center]: centers content when it fits, but falls back to
   // start-alignment (scrollable) once it overflows the fixed 100dvh height —
@@ -86,6 +88,7 @@ export function Panel({
 
   return (
     <section
+      id={id}
       className={`relative flex w-full flex-col justify-center gap-2 px-6 py-10 sm:px-12 sm:py-14 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:[justify-content:safe_center] lg:gap-0 lg:overflow-y-auto lg:overscroll-contain ${padLg} ${className}`}
     >
       {children}
