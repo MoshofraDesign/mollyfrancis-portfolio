@@ -299,8 +299,6 @@ export default function AboutPage() {
         watch="title"
         logo={<Logo variant="mark" size={64} />}
         action={<CloseLink />}
-        parkLeft={100}
-        parkTop={100}
       />
 
       <HorizontalScroll>
@@ -426,13 +424,14 @@ export default function AboutPage() {
             </p>
           }
           rowOne={[
-            { src: "/about/collect-1.jpg", alt: "LEGO succulents" },
-            { src: "/about/collect-2.jpg", alt: "Mini Brands collectibles" },
+            { src: "/about/collect-4.jpg", alt: "Doll heads shelf" },
             { src: "/about/collect-3.jpg", alt: "Terracotta sculpture" },
+            { src: "/about/collect-1.jpg", alt: "LEGO succulents" },
           ]}
           rowTwo={[
-            { src: "/about/collect-4.jpg", alt: "Doll heads shelf" },
+            { src: "/about/collect-desk.png", alt: "Reading nook with bookshelves" },
             { src: "/about/collect-pens.jpg", alt: "Pen cup with globes" },
+            { src: "/about/collect-candy.png", alt: "Hand reaching into a candy jar" },
           ]}
         />
 
