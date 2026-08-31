@@ -297,7 +297,7 @@ export default function AboutPage() {
     >
       <StickyNav
         watch="title"
-        logo={<Logo variant="mark" size={100} />}
+        logo={<Logo variant="mark" size={64} />}
         action={<CloseLink />}
         parkLeft={100}
         parkTop={100}
