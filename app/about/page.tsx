@@ -114,7 +114,7 @@ function StoryPanel({
   return (
     <Panel width={VIEW} pad="center" className="items-center">
       <div
-        className={`mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 sm:grid-cols-2 sm:gap-14 ${
+        className={`mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 sm:grid-cols-2 sm:gap-20 ${
           reverse ? "sm:[&>*:first-child]:order-2" : ""
         }`}
       >
@@ -139,7 +139,7 @@ function StoryPanel({
         </SlideIn>
         <SlideIn delay={100}>
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-          <h2 className="mt-2 text-[clamp(1.5rem,4.5vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
+          <h2 className="mt-2 text-[clamp(1.75rem,4.8vw,3.8rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
             {heading}
           </h2>
           <div className="mt-4 space-y-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
@@ -178,7 +178,7 @@ function StackPanel({
   );
   const text = (
     <SlideIn delay={100} className="max-w-xl">
-      <h2 className="text-[clamp(1.75rem,5vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
+      <h2 className="text-[clamp(1.75rem,5vw,3.8rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
         {heading}
       </h2>
       {children && (
@@ -190,7 +190,7 @@ function StackPanel({
   );
   return (
     <Panel width={VIEW} pad="rail">
-      <div className="flex w-full max-w-[min(1000px,90vw)] flex-col gap-8">
+      <div className="flex w-full max-w-[min(1000px,90vw)] flex-col gap-12 sm:gap-16">
         {photosPosition === "top" ? (
           <>
             {photoRow}
@@ -225,12 +225,12 @@ function CollectionsPanel({
     <Panel width={VIEW} pad="rail">
       <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-10">
         <SlideIn>
-          <h2 className="max-w-xs text-[clamp(1.5rem,4vw,2rem)] font-semibold leading-[1.2] tracking-[-0.01em]">
+          <h2 className="max-w-xs text-[clamp(1.5rem,4vw,3.15rem)] font-semibold leading-[1.2] tracking-[-0.01em]">
             {heading}
           </h2>
         </SlideIn>
         <div className="flex flex-col gap-6">
-          <SlideIn delay={80} className="flex flex-wrap gap-4 sm:gap-6 sm:pl-[16%]">
+          <SlideIn delay={80} className="flex flex-wrap gap-4 sm:gap-6 sm:pl-[20%]">
             {rowOne.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={190} />
             ))}
@@ -267,7 +267,7 @@ function PackagingPanel({
     <Panel width={VIEW} pad="rail">
       <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-8 sm:flex-row sm:items-end sm:justify-between sm:gap-12">
         <SlideIn delay={100} className="max-w-xs">
-          <h2 className="text-[clamp(1.75rem,4.5vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
+          <h2 className="text-[clamp(1.75rem,4.5vw,3.15rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
             {heading}
           </h2>
           <div className="mt-3 space-y-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
