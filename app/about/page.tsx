@@ -82,8 +82,8 @@ function Photo({
 }) {
   return (
     <div
-      className="relative mx-auto aspect-square w-full overflow-hidden rounded-full bg-black/5"
-      style={{ maxWidth: size }}
+      className="relative aspect-square shrink-0 overflow-hidden rounded-full bg-black/5"
+      style={{ width: size, maxWidth: size }}
     >
       <Image src={src} alt={alt} fill sizes={`${size}px`} className="object-cover" />
     </div>
@@ -130,7 +130,7 @@ function StoryPanel({
               />
             </div>
           ) : (
-            <div className={`grid gap-[40px] ${photos.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
+            <div className={`grid justify-items-center gap-[40px] ${photos.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
               {photos.map((p) => (
                 <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} />
               ))}
