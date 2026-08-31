@@ -130,7 +130,7 @@ function StoryPanel({
               />
             </div>
           ) : (
-            <div className={`grid gap-4 ${photos.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
+            <div className={`grid gap-[40px] ${photos.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
               {photos.map((p) => (
                 <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} />
               ))}
@@ -170,7 +170,7 @@ function StackPanel({
   photoSize?: number;
 }) {
   const photoRow = (
-    <SlideIn className="flex flex-wrap gap-4 sm:gap-6">
+    <SlideIn className="flex flex-wrap gap-[40px]">
       {photos.map((p) => (
         <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} />
       ))}
@@ -230,13 +230,13 @@ function CollectionsPanel({
           </h2>
         </SlideIn>
         <div className="flex flex-col gap-6">
-          <SlideIn delay={80} className="flex flex-wrap gap-4 sm:gap-6 sm:pl-[20%]">
+          <SlideIn delay={80} className="flex flex-wrap gap-[40px] sm:pl-[20%]">
             {rowOne.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={190} />
             ))}
           </SlideIn>
           <div className="flex flex-wrap items-center gap-6 sm:gap-10">
-            <SlideIn delay={140} className="flex flex-wrap gap-4 sm:gap-6">
+            <SlideIn delay={140} className="flex flex-wrap gap-[40px]">
               {rowTwo.map((p) => (
                 <Photo key={p.src} src={p.src} alt={p.alt} size={190} />
               ))}
@@ -274,7 +274,7 @@ function PackagingPanel({
             {children}
           </div>
         </SlideIn>
-        <SlideIn className="flex flex-wrap gap-4 sm:gap-6">
+        <SlideIn className="flex flex-wrap gap-[40px]">
           {photos.map((p) => (
             <Photo key={p.src} src={p.src} alt={p.alt} size={220} />
           ))}
