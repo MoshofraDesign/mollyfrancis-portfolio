@@ -287,7 +287,7 @@ function PackagingPanel({
 export default function AboutPage() {
   return (
     <main
-      className={`${jost.variable} relative bg-[#f5f5f5] text-[#141414]`}
+      className={`${jost.variable} relative bg-white text-[#141414]`}
       style={{ fontFamily: "var(--font-jost), system-ui, sans-serif" }}
     >
       <StickyNav
