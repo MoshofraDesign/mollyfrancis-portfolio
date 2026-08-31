@@ -161,16 +161,18 @@ function StackPanel({
   children,
   photos,
   photosPosition = "top",
-  photoSize = 220,
+  photoSize = 300,
+  photoGap = 40,
 }: {
   heading: string;
   children?: React.ReactNode;
   photos: { src: string; alt: string }[];
   photosPosition?: "top" | "bottom";
   photoSize?: number;
+  photoGap?: number;
 }) {
   const photoRow = (
-    <SlideIn className="flex flex-wrap gap-[40px]">
+    <SlideIn className="flex flex-wrap" style={{ gap: photoGap }}>
       {photos.map((p) => (
         <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} />
       ))}
@@ -207,9 +209,10 @@ function StackPanel({
   );
 }
 
-/** Collections — a loosely staggered two-row grid of circle photos with the
- *  heading tucked in above and the "I blame McDonald's..." aside sitting
- *  beside the second row, per the Figma frame's offset layout. */
+/** Collections — two side-by-side rows, matching the Figma frame exactly:
+ *  heading sits beside row one (vertically centered together), and row two
+ *  sits beside the "I blame McDonald's..." aside (also vertically centered
+ *  together) — not a heading stacked above everything. */
 function CollectionsPanel({
   heading,
   aside,
@@ -223,63 +226,65 @@ function CollectionsPanel({
 }) {
   return (
     <Panel width={VIEW} pad="rail">
-      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-10">
-        <SlideIn>
-          <h2 className="max-w-xs text-[clamp(1.5rem,4vw,3.15rem)] font-semibold leading-[1.2] tracking-[-0.01em]">
-            {heading}
-          </h2>
-        </SlideIn>
-        <div className="flex flex-col gap-6">
-          <SlideIn delay={80} className="flex flex-wrap gap-[40px] sm:pl-[20%]">
+      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-[52px]">
+        <div className="flex flex-wrap items-center gap-x-[30px] gap-y-6">
+          <SlideIn className="w-[260px] max-w-full">
+            <h2 className="text-[clamp(1.75rem,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em]">
+              {heading}
+            </h2>
+          </SlideIn>
+          <SlideIn delay={80} className="flex flex-wrap gap-[40px]">
             {rowOne.map((p) => (
-              <Photo key={p.src} src={p.src} alt={p.alt} size={190} />
+              <Photo key={p.src} src={p.src} alt={p.alt} size={250} />
             ))}
           </SlideIn>
-          <div className="flex flex-wrap items-center gap-6 sm:gap-10">
-            <SlideIn delay={140} className="flex flex-wrap gap-[40px]">
-              {rowTwo.map((p) => (
-                <Photo key={p.src} src={p.src} alt={p.alt} size={190} />
-              ))}
-            </SlideIn>
-            <SlideIn delay={200} className="max-w-xs text-sm leading-relaxed opacity-70">
-              {aside}
-            </SlideIn>
-          </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-x-16 gap-y-6">
+          <SlideIn delay={140} className="flex flex-wrap gap-[40px]">
+            {rowTwo.map((p) => (
+              <Photo key={p.src} src={p.src} alt={p.alt} size={250} />
+            ))}
+          </SlideIn>
+          <SlideIn delay={200} className="w-[226px] max-w-full text-[clamp(0.9rem,1.4vw,20px)] leading-relaxed opacity-70">
+            {aside}
+          </SlideIn>
         </div>
       </div>
     </Panel>
   );
 }
 
-/** Packaging — heading and photos share a bottom-aligned row so the block
- *  reads like the Figma frame's offset pairing, scaled to the three photos
- *  actually on hand. */
+/** Packaging — heading and photos are one flat row (heading occupies a
+ *  fixed 250px slot, same as a photo would), matching the Figma frame's
+ *  "I Love Packaging" row exactly. Figma also has a second row above this
+ *  one (3 more photos + the collections aside, reusing that copy) that
+ *  isn't built here — no source photos for it yet. */
 function PackagingPanel({
   heading,
   children,
   photos,
 }: {
   heading: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   photos: { src: string; alt: string }[];
 }) {
   return (
     <Panel width={VIEW} pad="rail">
-      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-8 sm:flex-row sm:items-end sm:justify-between sm:gap-12">
-        <SlideIn delay={100} className="max-w-xs">
-          <h2 className="text-[clamp(1.75rem,4.5vw,3.15rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
+      <SlideIn className="flex w-full max-w-[min(1150px,94vw)] flex-wrap items-center gap-[40px]">
+        <div className="w-[250px] max-w-full">
+          <h2 className="text-[clamp(1.75rem,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em]">
             {heading}
           </h2>
-          <div className="mt-3 space-y-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
-            {children}
-          </div>
-        </SlideIn>
-        <SlideIn className="flex flex-wrap gap-[40px]">
-          {photos.map((p) => (
-            <Photo key={p.src} src={p.src} alt={p.alt} size={220} />
-          ))}
-        </SlideIn>
-      </div>
+          {children && (
+            <div className="mt-3 space-y-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
+              {children}
+            </div>
+          )}
+        </div>
+        {photos.map((p) => (
+          <Photo key={p.src} src={p.src} alt={p.alt} size={250} />
+        ))}
+      </SlideIn>
     </Panel>
   );
 }
@@ -287,13 +292,15 @@ function PackagingPanel({
 export default function AboutPage() {
   return (
     <main
-      className={`${jost.variable} relative bg-white text-[#141414]`}
+      className={`${jost.variable} relative bg-white text-[#2f2f2f]`}
       style={{ fontFamily: "var(--font-jost), system-ui, sans-serif" }}
     >
       <StickyNav
         watch="title"
-        logo={<Logo variant="mark" size={26} />}
+        logo={<Logo variant="mark" size={100} />}
         action={<CloseLink />}
+        parkLeft={100}
+        parkTop={100}
       />
 
       <HorizontalScroll>
@@ -301,7 +308,7 @@ export default function AboutPage() {
         <Panel id="title" width={VIEW} pad="center" className="items-center !pt-20 sm:!pt-24">
           <div className="mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 sm:grid-cols-2 sm:gap-14">
             <SlideIn>
-              <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-full bg-black/5">
+              <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-full bg-black/5" style={{ maxWidth: 400 }}>
                 <Image
                   src="/about/molly-headshot.jpg"
                   alt="Molly Francis"
@@ -433,6 +440,7 @@ export default function AboutPage() {
         <StackPanel
           heading="👣 When I was little…"
           photosPosition="bottom"
+          photoGap={30}
           photos={[
             { src: "/about/little-jeep.jpg", alt: "Fisher Price Jeep adventurer" },
             { src: "/about/little-dad.jpg", alt: "Molly with dad" },
@@ -464,6 +472,7 @@ export default function AboutPage() {
         {/* ── 8 — I LOVE WHAT I DO — closes the story sequence, per Figma ── */}
         <StoryPanel
           heading="I love what I do"
+          photoSize={400}
           photos={[
             { src: "/about/love-coffee.jpg", alt: "Coffee cup and 'welcome to your life' sketch" },
           ]}
