@@ -189,6 +189,7 @@ function StackPanel({
   photosPosition = "top",
   photoSize = 300,
   photoGap = 40,
+  textWidth = "max-w-xl",
 }: {
   heading: string;
   children?: React.ReactNode;
@@ -196,6 +197,8 @@ function StackPanel({
   photosPosition?: "top" | "bottom";
   photoSize?: number;
   photoGap?: number;
+  /** Tailwind max-width class for the heading/body block. */
+  textWidth?: string;
 }) {
   const photoRow = (
     <SlideIn className="flex flex-wrap" style={{ gap: photoGap }}>
@@ -205,7 +208,7 @@ function StackPanel({
     </SlideIn>
   );
   const text = (
-    <SlideIn delay={100} className="max-w-xl">
+    <SlideIn delay={100} className={textWidth}>
       <h2 className="text-[clamp(1.75rem,5vw,3.8rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
         {heading}
       </h2>
@@ -346,6 +349,7 @@ export default function AboutPage() {
         watch="title"
         logo={<Logo variant="mark" size={64} />}
         action={<CloseLink />}
+        parkImmediately
       />
 
       <HorizontalScroll>
@@ -496,6 +500,7 @@ export default function AboutPage() {
           heading="👣 When I was little…"
           photosPosition="bottom"
           photoGap={30}
+          textWidth="max-w-3xl"
           photos={[
             {
               src: "/about/little-bigfoot.jpg",

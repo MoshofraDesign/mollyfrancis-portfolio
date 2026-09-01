@@ -19,6 +19,12 @@ type Props = {
    * (~20 / 28). Pass 100 to match Figma panel logo guides.
    */
   parkTop?: number;
+  /**
+   * Show the logo parked from the very first panel instead of riding in
+   * with the second — for a page whose own mark should just be present
+   * throughout, not "arrive" as a reveal.
+   */
+  parkImmediately?: boolean;
 };
 
 /**
@@ -36,6 +42,7 @@ export default function StickyNav({
   action,
   parkLeft = 48,
   parkTop,
+  parkImmediately = false,
 }: Props) {
   const [offset, setOffset] = useState<number | null>(null);
   const [pastTitle, setPastTitle] = useState(false);
@@ -66,6 +73,10 @@ export default function StickyNav({
     }
 
     const update = () => {
+      if (parkImmediately) {
+        setOffset(0);
+        return;
+      }
       const pad = window.innerWidth >= 1024 ? parkLeft : window.innerWidth >= 640 ? 32 : 20;
       setOffset(Math.max(0, window.innerWidth - pad - scroller.scrollLeft));
     };
@@ -84,7 +95,7 @@ export default function StickyNav({
       io.disconnect();
       if (raf.current) cancelAnimationFrame(raf.current);
     };
-  }, [watch, parkLeft]);
+  }, [watch, parkLeft, parkImmediately]);
 
   const logoStyle: React.CSSProperties = isLg
     ? {
@@ -94,7 +105,7 @@ export default function StickyNav({
         visibility: offset === null ? "hidden" : "visible",
       }
     : {
-        opacity: pastTitle ? 1 : 0,
+        opacity: parkImmediately || pastTitle ? 1 : 0,
         transition: "opacity 400ms ease",
       };
 
