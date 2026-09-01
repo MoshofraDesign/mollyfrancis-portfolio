@@ -212,6 +212,7 @@ const education = [
   {
     school: "Oklahoma State University",
     degree: "Bachelor of Fine Arts in Graphic Design",
+    icon: "oklahoma-state",
   },
 ];
 
@@ -404,7 +405,10 @@ export default function ResumePage() {
                   University
                 </p>
                 <div className="col-span-12 lg:col-span-8">
-                  <h3 className="font-serif text-xl text-ink">{e.school}</h3>
+                  <div className="flex items-center gap-3 mb-1">
+                    <Favicon icon={e.icon} alt={`${e.school} logo`} />
+                    <h3 className="font-serif text-xl text-ink">{e.school}</h3>
+                  </div>
                   <p className="text-ink">{e.degree}</p>
                 </div>
               </Reveal>
