@@ -71,21 +71,39 @@ const stats = [
 
 // ── circular photo (plain crop, no border) — matches the Figma "About Me"
 //    frames, which use plain rounded-full photo crops with no card border.
+type PhotoCrop = { top: string; left: string; width: string; height: string };
+
+type PhotoSpec = { src: string; alt: string; crop?: PhotoCrop; flip?: boolean };
+
 function Photo({
   src,
   alt,
   size = 240,
+  crop,
+  flip = false,
 }: {
   src: string;
   alt: string;
   size?: number;
+  /** Exact Figma pan/zoom offset (percent, from the node's own absolute
+   *  image transform) for photos framed off-center rather than centered. */
+  crop?: PhotoCrop;
+  /** Mirrors the photo horizontally — matches a couple of Figma photos
+   *  that were flipped for composition. */
+  flip?: boolean;
 }) {
   return (
     <div
       className="relative aspect-square shrink-0 overflow-hidden rounded-full bg-black/5"
-      style={{ width: size, maxWidth: size }}
+      style={{ width: size, maxWidth: size, transform: flip ? "scaleX(-1)" : undefined }}
     >
-      <Image src={src} alt={alt} fill sizes={`${size}px`} className="object-cover" />
+      {crop ? (
+        // eslint-disable-next-line @next/next/no-img-element -- exact Figma
+        // pan/zoom crop needs a plain absolutely-positioned img, not fill.
+        <img src={src} alt={alt} className="absolute max-w-none" style={crop} />
+      ) : (
+        <Image src={src} alt={alt} fill sizes={`${size}px`} className="object-cover" />
+      )}
     </div>
   );
 }
@@ -102,14 +120,17 @@ function StoryPanel({
   reverse = false,
   photoShape = "circle",
   photoSize = 240,
+  photoCrop,
 }: {
   heading: string;
   eyebrow?: string;
   children: React.ReactNode;
-  photos: { src: string; alt: string }[];
+  photos: PhotoSpec[];
   reverse?: boolean;
   photoShape?: "circle" | "rect";
   photoSize?: number;
+  /** Exact Figma pan/zoom offset for the rect photo (percent). */
+  photoCrop?: PhotoCrop;
 }) {
   return (
     <Panel width={VIEW} pad="center" className="items-center">
@@ -120,19 +141,24 @@ function StoryPanel({
       >
         <SlideIn>
           {photoShape === "rect" ? (
-            <div className="relative aspect-[4/3] w-full overflow-hidden">
-              <Image
-                src={photos[0].src}
-                alt={photos[0].alt}
-                fill
-                sizes="(max-width: 1023px) 90vw, 45vw"
-                className="object-cover"
-              />
+            <div className="relative aspect-[698/456] w-full overflow-hidden">
+              {photoCrop ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={photos[0].src} alt={photos[0].alt} className="absolute max-w-none" style={photoCrop} />
+              ) : (
+                <Image
+                  src={photos[0].src}
+                  alt={photos[0].alt}
+                  fill
+                  sizes="(max-width: 1023px) 90vw, 45vw"
+                  className="object-cover"
+                />
+              )}
             </div>
           ) : (
             <div className={`grid justify-items-center gap-[40px] ${photos.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
               {photos.map((p) => (
-                <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} />
+                <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} crop={p.crop} flip={p.flip} />
               ))}
             </div>
           )}
@@ -166,7 +192,7 @@ function StackPanel({
 }: {
   heading: string;
   children?: React.ReactNode;
-  photos: { src: string; alt: string }[];
+  photos: PhotoSpec[];
   photosPosition?: "top" | "bottom";
   photoSize?: number;
   photoGap?: number;
@@ -174,7 +200,7 @@ function StackPanel({
   const photoRow = (
     <SlideIn className="flex flex-wrap" style={{ gap: photoGap }}>
       {photos.map((p) => (
-        <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} />
+        <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} crop={p.crop} flip={p.flip} />
       ))}
     </SlideIn>
   );
@@ -221,8 +247,8 @@ function CollectionsPanel({
 }: {
   heading: string;
   aside: React.ReactNode;
-  rowOne: { src: string; alt: string }[];
-  rowTwo: { src: string; alt: string }[];
+  rowOne: PhotoSpec[];
+  rowTwo: PhotoSpec[];
 }) {
   return (
     <Panel width={VIEW} pad="rail">
@@ -235,14 +261,14 @@ function CollectionsPanel({
           </SlideIn>
           <SlideIn delay={80} className="flex flex-wrap gap-[40px]">
             {rowOne.map((p) => (
-              <Photo key={p.src} src={p.src} alt={p.alt} size={250} />
+              <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
         </div>
         <div className="flex flex-wrap items-center gap-x-16 gap-y-6">
           <SlideIn delay={140} className="flex flex-wrap gap-[40px]">
             {rowTwo.map((p) => (
-              <Photo key={p.src} src={p.src} alt={p.alt} size={250} />
+              <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
           <SlideIn delay={200} className="w-[226px] max-w-full text-[clamp(0.9rem,1.4vw,20px)] leading-relaxed opacity-70">
@@ -266,7 +292,7 @@ function PackagingPanel({
 }: {
   heading: string;
   children?: React.ReactNode;
-  photos: { src: string; alt: string }[];
+  photos: PhotoSpec[];
 }) {
   return (
     <Panel width={VIEW} pad="rail">
@@ -282,7 +308,7 @@ function PackagingPanel({
           )}
         </div>
         {photos.map((p) => (
-          <Photo key={p.src} src={p.src} alt={p.alt} size={250} />
+          <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
         ))}
       </SlideIn>
     </Panel>
@@ -378,9 +404,17 @@ export default function AboutPage() {
         <StackPanel
           heading="I have a wonderful family"
           photos={[
-            { src: "/about/family-1.jpg", alt: "Family group photo" },
+            {
+              src: "/about/family-1.jpg",
+              alt: "Family group photo",
+              crop: { left: "-4.98%", top: "0%", width: "126.8%", height: "100%" },
+            },
             { src: "/about/family-2.jpg", alt: "Daughter with pink blanket" },
-            { src: "/about/family-3.jpg", alt: "Molly and daughter" },
+            {
+              src: "/about/family-3.jpg",
+              alt: "Molly and daughter",
+              crop: { left: "-47.33%", top: "-37.67%", width: "212.75%", height: "283.67%" },
+            },
           ]}
         />
 
@@ -389,6 +423,7 @@ export default function AboutPage() {
           heading="The Sixbees"
           photos={[{ src: "/about/sixbees.jpg", alt: "The Sixbees — design friends" }]}
           photoShape="rect"
+          photoCrop={{ left: "-0.03%", top: "-35.53%", width: "100.06%", height: "135.53%" }}
         >
           <p>
             My design friends and I started a blog years ago. It was a blast!
@@ -426,7 +461,12 @@ export default function AboutPage() {
           rowOne={[
             { src: "/about/collect-4.jpg", alt: "Doll heads shelf" },
             { src: "/about/collect-3.jpg", alt: "Terracotta sculpture" },
-            { src: "/about/collect-1.jpg", alt: "LEGO succulents" },
+            {
+              src: "/about/collect-1.jpg",
+              alt: "LEGO succulents",
+              flip: true,
+              crop: { left: "-0.04%", top: "-20.18%", width: "100.07%", height: "138.09%" },
+            },
           ]}
           rowTwo={[
             { src: "/about/collect-desk.png", alt: "Reading nook with bookshelves" },
@@ -441,9 +481,17 @@ export default function AboutPage() {
           photosPosition="bottom"
           photoGap={30}
           photos={[
-            { src: "/about/little-jeep.jpg", alt: "Fisher Price Jeep adventurer" },
+            {
+              src: "/about/little-bigfoot.jpg",
+              alt: "BigFoot photo",
+              crop: { left: "-19.42%", top: "-2.47%", width: "130.67%", height: "104.98%" },
+            },
             { src: "/about/little-dad.jpg", alt: "Molly with dad" },
-            { src: "/about/little-bigfoot.jpg", alt: "BigFoot photo" },
+            {
+              src: "/about/little-jeep.jpg",
+              alt: "Fisher Price Jeep adventurer",
+              crop: { left: "-7.48%", top: "-21.26%", width: "130.56%", height: "171.55%" },
+            },
           ]}
         >
           <p>
@@ -460,7 +508,7 @@ export default function AboutPage() {
         <PackagingPanel
           heading="I Love Packaging"
           photos={[
-            { src: "/about/packaging-1.jpg", alt: "Dolly Parton coconut flakes" },
+            { src: "/about/packaging-dolly.png", alt: "Dolly Parton coconut flakes" },
             { src: "/about/packaging-2.jpg", alt: "Pickle beer" },
             { src: "/about/packaging-3.jpg", alt: "Cheetos Mac n Cheese" },
           ]}
@@ -473,7 +521,11 @@ export default function AboutPage() {
           heading="I love what I do"
           photoSize={400}
           photos={[
-            { src: "/about/love-coffee.jpg", alt: "Coffee cup and 'welcome to your life' sketch" },
+            {
+              src: "/about/love-coffee.jpg",
+              alt: "Coffee cup and 'welcome to your life' sketch",
+              crop: { left: "-101.12%", top: "-69.96%", width: "201.12%", height: "222.64%" },
+            },
           ]}
         >
           <p>
