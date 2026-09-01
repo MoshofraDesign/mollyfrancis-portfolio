@@ -431,11 +431,7 @@ export default function AboutPage() {
               crop: { left: "-4.98%", top: "0%", width: "126.8%", height: "100%" },
             },
             { src: "/about/family-2.jpg", alt: "Daughter with pink blanket" },
-            {
-              src: "/about/family-3.jpg",
-              alt: "Molly and daughter",
-              crop: { left: "-47.33%", top: "-37.67%", width: "212.75%", height: "283.67%" },
-            },
+            { src: "/about/family-3.jpg", alt: "Molly and daughter" },
           ]}
         />
 
@@ -444,7 +440,6 @@ export default function AboutPage() {
           heading="The Sixbees"
           photos={[{ src: "/about/sixbees.jpg", alt: "The Sixbees — design friends" }]}
           photoShape="rect"
-          photoCrop={{ left: "-0.03%", top: "-35.53%", width: "100.06%", height: "135.53%" }}
         >
           <p>
             My design friends and I started a blog years ago. It was a blast!
