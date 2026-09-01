@@ -280,37 +280,58 @@ function CollectionsPanel({
   );
 }
 
-/** Packaging — heading and photos are one flat row (heading occupies a
- *  fixed 250px slot, same as a photo would), matching the Figma frame's
- *  "I Love Packaging" row exactly. Figma also has a second row above this
- *  one (3 more photos + the collections aside, reusing that copy) that
- *  isn't built here — no source photos for it yet. */
+/** Packaging — two rows, matching the Figma frame exactly: a top row of
+ *  3 photos beside the reused "I blame McDonald's..." aside, and below it
+ *  the "I Love Packaging" row (heading in a fixed 250px slot, same as a
+ *  photo would, plus 3 more photos). */
 function PackagingPanel({
   heading,
   children,
   photos,
+  topRow,
+  topAside,
 }: {
   heading: string;
   children?: React.ReactNode;
   photos: PhotoSpec[];
+  /** Figma's second row above the heading row — 3 more photos sitting
+   *  beside the reused Collections aside caption. */
+  topRow?: PhotoSpec[];
+  topAside?: React.ReactNode;
 }) {
   return (
     <Panel width={VIEW} pad="rail">
-      <SlideIn className="flex w-full max-w-[min(1150px,94vw)] flex-wrap items-center gap-[40px]">
-        <div className="w-[250px] max-w-full">
-          <h2 className="text-[clamp(1.75rem,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em]">
-            {heading}
-          </h2>
-          {children && (
-            <div className="mt-3 space-y-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
-              {children}
-            </div>
-          )}
-        </div>
-        {photos.map((p) => (
-          <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
-        ))}
-      </SlideIn>
+      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-[52px]">
+        {topRow && (
+          <div className="flex flex-wrap items-center gap-x-16 gap-y-6">
+            <SlideIn className="flex flex-wrap gap-[40px]">
+              {topRow.map((p) => (
+                <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
+              ))}
+            </SlideIn>
+            {topAside && (
+              <SlideIn delay={80} className="w-[226px] max-w-full text-[clamp(0.9rem,1.4vw,20px)] leading-relaxed opacity-70">
+                {topAside}
+              </SlideIn>
+            )}
+          </div>
+        )}
+        <SlideIn delay={topRow ? 140 : 0} className="flex flex-wrap items-center gap-[40px]">
+          <div className="w-[250px] max-w-full">
+            <h2 className="text-[clamp(1.75rem,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em]">
+              {heading}
+            </h2>
+            {children && (
+              <div className="mt-3 space-y-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
+                {children}
+              </div>
+            )}
+          </div>
+          {photos.map((p) => (
+            <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
+          ))}
+        </SlideIn>
+      </div>
     </Panel>
   );
 }
@@ -507,6 +528,18 @@ export default function AboutPage() {
         {/* ── 7 — PACKAGING — heading and photos bottom-aligned ──────────── */}
         <PackagingPanel
           heading="I Love Packaging"
+          topRow={[
+            { src: "/about/packaging-cheetos-popcorn.png", alt: "Cheetos Popcorn bag" },
+            { src: "/about/packaging-bloodymary.png", alt: "Bloody Mary on a Dude Perfect placemat" },
+            { src: "/about/packaging-coors.png", alt: "Coors Banquet can with a thumbs up" },
+          ]}
+          topAside={
+            <p>
+              I blame McDonald&rsquo;s and Hardies happy meal toys (the
+              California Raisins) and the scholastic book fair when I was a
+              kid :)
+            </p>
+          }
           photos={[
             { src: "/about/packaging-dolly.png", alt: "Dolly Parton coconut flakes" },
             { src: "/about/packaging-2.jpg", alt: "Pickle beer" },
