@@ -75,6 +75,17 @@ type PhotoCrop = { top: string; left: string; width: string; height: string };
 
 type PhotoSpec = { src: string; alt: string; crop?: PhotoCrop; flip?: boolean };
 
+/** Tighter top/bottom clearance than the shared CaseStudyKit default — this
+ *  page's sections read as noticeably more padded/loose than the rest of the
+ *  site, so About-local panels pull it in instead of touching the shared
+ *  NAV_CLEAR every case study page also uses. */
+const TIGHT_CLEAR = "!pt-10 sm:!pt-12 lg:!pt-14 !pb-6 sm:!pb-8 lg:!pb-6";
+/** Same tightened clearance, plus a mobile-sane left/right inset for the
+ *  pad="rail" panels — their desktop 100px/16% rail padding is no longer
+ *  lg-only (HorizontalScroll runs the same at every breakpoint now), and
+ *  100px+ of fixed side padding eats too much of a phone's width. */
+const TIGHT_CLEAR_RAIL = `${TIGHT_CLEAR} !px-6 sm:!px-12 lg:!pl-[100px] lg:!pr-[min(16%,120px)]`;
+
 function Photo({
   src,
   alt,
@@ -133,7 +144,7 @@ function StoryPanel({
   photoCrop?: PhotoCrop;
 }) {
   return (
-    <Panel width={VIEW} pad="center" className="items-center">
+    <Panel width={VIEW} pad="center" className={`items-center ${TIGHT_CLEAR}`}>
       <div
         className={`mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 sm:grid-cols-2 sm:gap-20 ${
           reverse ? "sm:[&>*:first-child]:order-2" : ""
@@ -201,7 +212,7 @@ function StackPanel({
   textWidth?: string;
 }) {
   const photoRow = (
-    <SlideIn className="flex flex-wrap" style={{ gap: photoGap }}>
+    <SlideIn className="flex flex-col items-center sm:flex-row sm:flex-wrap" style={{ gap: photoGap }}>
       {photos.map((p) => (
         <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} crop={p.crop} flip={p.flip} />
       ))}
@@ -220,8 +231,8 @@ function StackPanel({
     </SlideIn>
   );
   return (
-    <Panel width={VIEW} pad="rail">
-      <div className="flex w-full max-w-[min(1000px,90vw)] flex-col gap-12 sm:gap-16">
+    <Panel width={VIEW} pad="rail" className={TIGHT_CLEAR_RAIL}>
+      <div className="flex w-full max-w-[min(1000px,90vw)] flex-col gap-8 sm:gap-10">
         {photosPosition === "top" ? (
           <>
             {photoRow}
@@ -254,22 +265,22 @@ function CollectionsPanel({
   rowTwo: PhotoSpec[];
 }) {
   return (
-    <Panel width={VIEW} pad="rail">
-      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-[52px]">
-        <div className="flex flex-wrap items-center gap-x-[30px] gap-y-6">
+    <Panel width={VIEW} pad="rail" className={TIGHT_CLEAR_RAIL}>
+      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-8">
+        <div className="flex flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-[30px]">
           <SlideIn className="w-[260px] max-w-full">
             <h2 className="text-[clamp(1.75rem,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em]">
               {heading}
             </h2>
           </SlideIn>
-          <SlideIn delay={80} className="flex flex-wrap gap-[40px]">
+          <SlideIn delay={80} className="flex flex-col items-center gap-[40px] sm:flex-row sm:flex-wrap">
             {rowOne.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
         </div>
-        <div className="flex flex-wrap items-center gap-x-16 gap-y-6">
-          <SlideIn delay={140} className="flex flex-wrap gap-[40px]">
+        <div className="flex flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-16">
+          <SlideIn delay={140} className="flex flex-col items-center gap-[40px] sm:flex-row sm:flex-wrap">
             {rowTwo.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
             ))}
@@ -303,11 +314,11 @@ function PackagingPanel({
   topAside?: React.ReactNode;
 }) {
   return (
-    <Panel width={VIEW} pad="rail">
-      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-[52px]">
+    <Panel width={VIEW} pad="rail" className={TIGHT_CLEAR_RAIL}>
+      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-8">
         {topRow && (
-          <div className="flex flex-wrap items-center gap-x-16 gap-y-6">
-            <SlideIn className="flex flex-wrap gap-[40px]">
+          <div className="flex flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-16">
+            <SlideIn className="flex flex-col items-center gap-[40px] sm:flex-row sm:flex-wrap">
               {topRow.map((p) => (
                 <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
               ))}
@@ -319,7 +330,7 @@ function PackagingPanel({
             )}
           </div>
         )}
-        <SlideIn delay={topRow ? 140 : 0} className="flex flex-wrap items-center gap-[40px]">
+        <SlideIn delay={topRow ? 140 : 0} className="flex flex-col items-center gap-[40px] sm:flex-row sm:flex-wrap">
           <div className="w-[250px] max-w-full">
             <h2 className="text-[clamp(1.75rem,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em]">
               {heading}
