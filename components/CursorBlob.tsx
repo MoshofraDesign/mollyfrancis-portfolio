@@ -18,6 +18,13 @@ export default function CursorBlob() {
     const onMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      // First real cursor position wins — until then the blob stays
+      // invisible instead of sitting at its viewport-center default (was
+      // showing as a stray dot on any device that never fires mousemove,
+      // e.g. a resized desktop window under trackpad-only test).
+      if (blob.style.opacity === "0") {
+        blob.style.opacity = "1";
+      }
     };
 
     const onEnterInteractive = () => {
@@ -54,5 +61,5 @@ export default function CursorBlob() {
     };
   }, []);
 
-  return <div ref={blobRef} className="cursor-blob" aria-hidden />;
+  return <div ref={blobRef} className="cursor-blob" style={{ opacity: 0 }} aria-hidden />;
 }

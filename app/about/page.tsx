@@ -103,10 +103,18 @@ function Photo({
    *  that were flipped for composition. */
   flip?: boolean;
 }) {
+  // Fluid width instead of a flat pixel size: `size` is still the intended
+  // desktop diameter, but a fixed px value on three circles in a row was
+  // what forced tablet/mobile widths to either wrap unevenly or, worse,
+  // force a CSS grid track wider than its column (the "I Love What I Do"
+  // panel's 400px photo pushing its text off the right edge at tablet
+  // widths). clamp() shrinks it smoothly down to a sane floor instead.
+  const width = `clamp(${Math.round(size * 0.37)}px, ${(size * 0.087).toFixed(1)}vw, ${size}px)`;
+
   return (
     <div
-      className="relative aspect-square shrink-0 overflow-hidden rounded-full bg-black/5"
-      style={{ width: size, maxWidth: size, transform: flip ? "scaleX(-1)" : undefined }}
+      className="relative aspect-square shrink-0 overflow-hidden rounded-full bg-black/5 min-w-0"
+      style={{ width, maxWidth: width, transform: flip ? "scaleX(-1)" : undefined }}
     >
       {crop ? (
         // eslint-disable-next-line @next/next/no-img-element -- exact Figma
@@ -150,7 +158,7 @@ function StoryPanel({
           reverse ? "sm:[&>*:first-child]:order-2" : ""
         }`}
       >
-        <SlideIn>
+        <SlideIn className="min-w-0">
           {photoShape === "rect" ? (
             <div className="relative aspect-[698/456] w-full overflow-hidden">
               {photoCrop ? (
@@ -174,7 +182,7 @@ function StoryPanel({
             </div>
           )}
         </SlideIn>
-        <SlideIn delay={100}>
+        <SlideIn delay={100} className="min-w-0">
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
           <h2 className="mt-2 text-[clamp(1.75rem,4.8vw,3.8rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
             {heading}
@@ -367,7 +375,7 @@ export default function AboutPage() {
         {/* ── 1 — INTRO — Molly Francis (now the opening panel, per Figma) ── */}
         <Panel id="title" width={VIEW} pad="center" className="items-center !pt-20 sm:!pt-24">
           <div className="mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 sm:grid-cols-2 sm:gap-14">
-            <SlideIn>
+            <SlideIn className="min-w-0">
               <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-full bg-black/5" style={{ maxWidth: 400 }}>
                 <Image
                   src="/about/molly-headshot.jpg"
@@ -379,7 +387,7 @@ export default function AboutPage() {
                 />
               </div>
             </SlideIn>
-            <SlideIn delay={100}>
+            <SlideIn delay={100} className="min-w-0">
               <h2 className="text-[clamp(2rem,5vw,3rem)] font-semibold leading-[1.05] tracking-[-0.01em]">
                 Molly Francis
               </h2>
