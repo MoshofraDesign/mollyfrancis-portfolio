@@ -620,7 +620,7 @@ export default function AboutPage() {
         </Panel>
 
         {/* ── CTA — Let's talk ──────────────────────────────────────── */}
-        <section className="relative flex w-full flex-col justify-center bg-[#141414] px-6 py-20 text-[#f5f5f5] sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,4rem)] lg:py-0">
+        <section className="relative flex h-[100dvh] w-screen flex-col justify-center gap-2 shrink-0 snap-start overflow-y-auto overscroll-contain bg-[#141414] px-[clamp(1.25rem,4.5vw,4rem)] py-0 text-[#f5f5f5]">
           <div className={MEASURE}>
           <SlideIn>
             <p className="text-xs uppercase tracking-[0.25em] text-white/60">
