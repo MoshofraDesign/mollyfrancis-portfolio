@@ -30,11 +30,9 @@ type Props = {
 /**
  * Fixed top bar for horizontal case studies.
  *
- * At lg+ the logo slides 1:1 with `[data-hscroll]` scrollLeft, then parks.
- * Below lg it fades in once the title panel leaves the viewport.
- *
- * Renders the logo node once — dual mobile/desktop copies caused a visible
- * double mark when both wrappers briefly painted.
+ * The logo slides 1:1 with `[data-hscroll]` scrollLeft, then parks — the
+ * same behavior at every breakpoint, since the horizontal scroller is now
+ * the same behavior at every breakpoint too (see HorizontalScroll).
  */
 export default function StickyNav({
   watch,
@@ -45,32 +43,12 @@ export default function StickyNav({
   parkImmediately = false,
 }: Props) {
   const [offset, setOffset] = useState<number | null>(null);
-  const [pastTitle, setPastTitle] = useState(false);
-  const [isLg, setIsLg] = useState(false);
   const raf = useRef<number | null>(null);
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const sync = () => setIsLg(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
-
-  useEffect(() => {
     const scroller = document.querySelector<HTMLElement>("[data-hscroll]");
-    const title = document.getElementById(watch);
 
-    if (!title) return;
-
-    const io = new IntersectionObserver(([entry]) => setPastTitle(!entry.isIntersecting), {
-      threshold: 0,
-    });
-    io.observe(title);
-
-    if (!scroller) {
-      return () => io.disconnect();
-    }
+    if (!scroller) return;
 
     const update = () => {
       if (parkImmediately) {
@@ -92,28 +70,20 @@ export default function StickyNav({
     return () => {
       scroller.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      io.disconnect();
       if (raf.current) cancelAnimationFrame(raf.current);
     };
   }, [watch, parkLeft, parkImmediately]);
 
-  const logoStyle: React.CSSProperties = isLg
-    ? {
-        paddingLeft: parkLeft,
-        paddingTop: parkTop ?? 76,
-        transform: `translateX(${offset ?? 0}px)`,
-        visibility: offset === null ? "hidden" : "visible",
-      }
-    : {
-        opacity: parkImmediately || pastTitle ? 1 : 0,
-        transition: "opacity 400ms ease",
-      };
+  const logoStyle: React.CSSProperties = {
+    paddingLeft: parkLeft,
+    paddingTop: parkTop ?? 76,
+    transform: `translateX(${offset ?? 0}px)`,
+    visibility: offset === null ? "hidden" : "visible",
+  };
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex items-start justify-between pr-5 sm:pr-8">
-      <div className={isLg ? undefined : "pl-5 pt-5 sm:pl-8 sm:pt-7"} style={logoStyle}>
-        {logo}
-      </div>
+      <div style={logoStyle}>{logo}</div>
       <div className="pt-5 sm:pt-7">{action}</div>
     </header>
   );

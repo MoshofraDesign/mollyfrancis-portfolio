@@ -26,7 +26,7 @@ export const MEDIA = "w-full max-w-[min(950px,90vw)]";
 /** @deprecated Prefer MEASURE — kept for existing imports. */
 export const TEXT_W = MEASURE;
 
-export const VIEW = "lg:w-screen";
+export const VIEW = "w-screen";
 
 /**
  * Top inset so media never runs under the fixed Close control (always
@@ -83,13 +83,13 @@ export function Panel({
   // can't scroll to a negative offset. Bit us on LivePerson's image panels.
   const padLg =
     pad === "center"
-      ? `lg:items-center lg:px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR}`
-      : `lg:px-0 ${NAV_CLEAR} lg:pl-[100px] lg:pr-[min(16%,120px)]`;
+      ? `items-center px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR}`
+      : `px-0 ${NAV_CLEAR} pl-[100px] pr-[min(16%,120px)]`;
 
   return (
     <section
       id={id}
-      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-10 sm:px-12 sm:py-14 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:[justify-content:safe_center] lg:gap-0 lg:overflow-y-auto lg:overscroll-contain ${padLg} ${className}`}
+      className={`relative flex w-full flex-col justify-center gap-2 h-[100dvh] ${width} shrink-0 snap-center [justify-content:safe_center] overflow-y-auto overscroll-contain ${padLg} ${className}`}
     >
       {children}
     </section>
@@ -114,7 +114,7 @@ export function TextPanel({
   return (
     <section
       id={id}
-      className={`relative flex w-full justify-center px-6 py-10 sm:px-12 sm:py-14 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] lg:overflow-y-auto lg:overscroll-contain lg:px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR} ${className}`}
+      className={`relative flex w-full justify-center h-[100dvh] ${width} shrink-0 snap-start [align-items:safe_center] overflow-y-auto overscroll-contain px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR} ${className}`}
     >
       <div className={MEASURE}>{children}</div>
     </section>
@@ -175,7 +175,7 @@ export function NextProjectLink({
   return (
     <Link
       href={href}
-      className="group relative flex w-full flex-col justify-center px-6 py-10 sm:px-12 sm:py-14 lg:h-[100dvh] lg:w-[min(100vw,600px)] lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,2.5rem)] lg:py-0"
+      className="group relative flex w-full flex-col justify-center h-[100dvh] w-[min(100vw,600px)] shrink-0 snap-start px-[clamp(1.25rem,4.5vw,2.5rem)] py-0"
       style={{ background: accent, color: fg }}
     >
       <div className="w-full max-w-[min(32rem,86vw)]">
