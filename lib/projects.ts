@@ -364,7 +364,7 @@ export const projects: Project[] = [
     tags: ["FinTech", "Mobile", "Two-sided product"],
     thumbnail: "/work-thumbnails/care-homepay-figma.webp",
     logo: "/logos/care-homepay.svg",
-    accent: "#F05844",
+    accent: "#025747",
     aiSummary:
       "Designed paired employee and employer mobile apps so caregivers could log hours and household employers could review, approve, and pay payroll — all on a phone. The two products share a design system but speak two very different mental models, one trust-driven, one operational.",
     overview:

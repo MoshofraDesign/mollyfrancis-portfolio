@@ -22,7 +22,7 @@ const jost = Jost({
   display: "swap",
 });
 
-const ACCENT = "#F05844";
+const ACCENT = "#025747";
 const LOGO = "/logos/care-homepay.svg";
 const ASSET = "/work/care-homepay";
 
