@@ -124,8 +124,8 @@ export default function CareHomepayCaseStudy() {
               <Image
                 src={`${ASSET}/phone-hero-left.png`}
                 alt="HomePay splash — Time tracking has never been easier"
-                width={814}
-                height={1435}
+                width={397}
+                height={695}
                 priority
                 className="h-auto w-full"
               />
@@ -137,8 +137,8 @@ export default function CareHomepayCaseStudy() {
               <Image
                 src={`${ASSET}/phone-hero-right.png`}
                 alt="HomePay splash — Easy time tracking with your employer"
-                width={814}
-                height={1217}
+                width={407}
+                height={611}
                 priority
                 className="h-auto w-full"
               />
@@ -248,8 +248,8 @@ export default function CareHomepayCaseStudy() {
               <Image
                 src={`${ASSET}/screens-messaging.png`}
                 alt="Secure messaging — inbox and conversation"
-                width={1203}
-                height={1200}
+                width={634}
+                height={632}
                 className="h-auto w-full max-w-[560px] object-contain"
               />
             </SlideIn>
@@ -285,8 +285,8 @@ export default function CareHomepayCaseStudy() {
               <Image
                 src={`${ASSET}/screens-clock.png`}
                 alt="Clock in and out — map and start shift"
-                width={1203}
-                height={1200}
+                width={634}
+                height={632}
                 className="h-auto w-full max-w-[560px] object-contain"
               />
             </SlideIn>
