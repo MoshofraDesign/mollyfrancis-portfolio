@@ -249,7 +249,7 @@ export default function ResumePage() {
   return (
     <div className="page-shell">
       {/* HEADER */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-8 pb-12 lg:pb-16">
+      <section className="site-rail pt-8 pb-12 lg:pb-16">
         <Reveal as="div" className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div>
             <h1 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] tracking-[-0.03em] leading-[0.98] text-ink">
@@ -295,7 +295,7 @@ export default function ResumePage() {
       </section>
 
       {/* EXPERIENCE */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-4 pb-16">
+      <section className="site-rail pt-4 pb-16">
         <div className="mb-8">
           <Reveal as="div">
             <h2 className="font-serif text-h2 text-ink">Experience</h2>
@@ -350,7 +350,7 @@ export default function ResumePage() {
       </section>
 
       {/* SKILLS */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
+      <section className="site-rail py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
             <h2 className="font-serif text-h2 text-ink">Skills</h2>
@@ -375,7 +375,7 @@ export default function ResumePage() {
       </section>
 
       {/* PROGRAMS */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
+      <section className="site-rail py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
             <h2 className="font-serif text-h2 text-ink">Programs</h2>
@@ -393,7 +393,7 @@ export default function ResumePage() {
       </section>
 
       {/* EDUCATION + RECOGNITION */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16 border-t border-ink/10">
+      <section className="site-rail py-16 border-t border-ink/10">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal as="div" className="lg:col-span-3">
             <h2 className="font-serif text-h2 text-ink">School & recognition</h2>

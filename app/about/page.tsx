@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import Logo from "@/components/Logo";
-import { TEXT_W, MEASURE, VIEW, Eyebrow, Panel, TextPanel, Heading, Body } from "@/components/v2/CaseStudyKit";
+import { TEXT_W, MEASURE, VIEW, GUTTER, Eyebrow, Panel, TextPanel, Heading, Body } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "About — Molly Francis",
@@ -639,7 +639,7 @@ export default function AboutPage() {
         </Panel>
 
         {/* ── CTA — Let's talk ──────────────────────────────────────── */}
-        <section className="relative flex h-[100dvh] w-screen flex-col justify-center gap-2 shrink-0 snap-start overflow-y-auto overscroll-contain bg-[#141414] px-[clamp(1.25rem,4.5vw,4rem)] py-0 text-[#f5f5f5]">
+        <section className={`relative flex h-[100dvh] w-screen flex-col justify-center gap-2 shrink-0 snap-start overflow-y-auto overscroll-contain bg-[#141414] ${GUTTER} py-0 text-[#f5f5f5]`}>
           <div className={MEASURE}>
           <SlideIn>
             <p className="text-xs uppercase tracking-[0.25em] text-white/60">

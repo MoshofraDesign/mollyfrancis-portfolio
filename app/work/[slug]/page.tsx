@@ -130,7 +130,7 @@ function ImageGridPanel({
 
 /**
  * Logos project only — square tiles matching the homepage work grid
- * (375px cap, same gutters), no accent overlay and no hover copy.
+ * (same rail and gutters), no accent overlay and no hover copy.
  */
 function LogosGridPanel({
   images,
@@ -138,7 +138,7 @@ function LogosGridPanel({
   images: { src: string; caption?: string }[];
 }) {
   return (
-    <section className={`${WORK_THUMB_SECTION} pb-16 pt-4`}>
+    <section className={`${WORK_THUMB_SECTION} pb-16 pt-[var(--nav-clear)]`}>
       <div className={WORK_THUMB_GRID_CLASS} style={WORK_THUMB_GRID_STYLE}>
         {images.map((img, i) => (
           <figure key={img.src + i} className={WORK_THUMB_TILE}>

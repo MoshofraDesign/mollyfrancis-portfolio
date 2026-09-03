@@ -8,13 +8,21 @@ type Props = {
   projects: Project[];
 };
 
-export const WORK_THUMB_SECTION = "mx-auto w-full max-w-[2200px] px-6 sm:px-8 lg:px-12 xl:px-16";
-export const WORK_THUMB_GRID_CLASS = "grid w-full justify-center gap-6 sm:gap-8";
+/* The grid sits on the shared .site-rail (globals.css) rather than its own
+ * 2200px shell, so tiles line up with the page content above and below them.
+ *
+ * Columns are minmax(..., 1fr) so they always divide the rail exactly —
+ * the old minmax(240px, 375px) capped each column at 375px and then had to
+ * justify-center the remainder, which left the row hanging off the rail by
+ * a different amount at every width. min() on the lower bound keeps a
+ * single column from overflowing a narrow phone. */
+export const WORK_THUMB_SECTION = "site-rail";
+export const WORK_THUMB_GRID_CLASS = "grid w-full gap-6 sm:gap-8";
 export const WORK_THUMB_GRID_STYLE = {
-  gridTemplateColumns: "repeat(auto-fill, minmax(240px, 375px))",
+  gridTemplateColumns: "repeat(auto-fill, minmax(min(240px, 100%), 1fr))",
 } as const;
 export const WORK_THUMB_TILE =
-  "relative aspect-square w-full max-w-[375px] overflow-hidden";
+  "relative aspect-square w-full overflow-hidden";
 
 /**
  * Grid of square project tiles, modeled on Figma's "Care" / "Care - Hover"
@@ -24,8 +32,8 @@ export const WORK_THUMB_TILE =
  * logo is replaced by the project title + subtitle. No rounded corners
  * anywhere, by design.
  *
- * Tiles are capped at 375px and separated by gutters (auto-fill/minmax +
- * gap), like mollyfrancis.com's work grid — not edge-to-edge.
+ * Tiles are separated by gutters (auto-fill/minmax + gap), like
+ * mollyfrancis.com's work grid — not edge-to-edge.
  */
 export default function CareGrid({ projects }: Props) {
   return (

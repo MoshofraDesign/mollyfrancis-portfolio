@@ -18,7 +18,7 @@ export default function ContactPage() {
 
   return (
     <div className="page-shell">
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-8 pb-12">
+      <section className="site-rail pt-8 pb-12">
         <Reveal as="div">
           <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">
             Get in touch
@@ -33,7 +33,7 @@ export default function ContactPage() {
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-10">
+      <section className="site-rail py-10">
         <div className="grid lg:grid-cols-12 gap-12">
           {/* FORM */}
           <Reveal as="div" className="lg:col-span-7">

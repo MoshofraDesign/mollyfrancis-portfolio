@@ -19,10 +19,28 @@ import {
  * empty trail after left-rail copy.
  */
 
+/**
+ * Side gutter for every case-study panel — 24px at the small end, 72px at
+ * the cap, scaling continuously so it resizes across breakpoints instead of
+ * stepping. This is the one inset panels should use: the pages had grown
+ * five competing systems (a 4.5vw clamp here, 46/58/64px on GovOS and
+ * Care.com, 71/89/107px on the hero rails, plus a spread of px-5/6/8 on
+ * mobile), which is what made the grid read as misaligned page to page.
+ *
+ * Hero sections are the deliberate exception: their content is absolutely
+ * positioned against Figma's 71/89/107px rail, so their inset is paired
+ * with those left offsets and is left alone.
+ */
+export const GUTTER = "px-[clamp(1.5rem,4vw,4.5rem)]";
+
+/* Content width scale — three steps, nothing in between. Each is capped in
+ * vw as well as px so it still breathes inside the gutter on small screens. */
 /** Readable text measure — ~860px at typical desktop, scales with vw. */
 export const MEASURE = "w-full max-w-[min(54rem,86vw)]";
 /** Media / screenshot cap. */
 export const MEDIA = "w-full max-w-[min(950px,90vw)]";
+/** Wide multi-item rows — screen line-ups, component grids. */
+export const WIDE = "w-full max-w-[min(1400px,92vw)]";
 /** @deprecated Prefer MEASURE — kept for existing imports. */
 export const TEXT_W = MEASURE;
 
@@ -88,7 +106,7 @@ export function Panel({
   // can't scroll to a negative offset. Bit us on LivePerson's image panels.
   const padLg =
     pad === "center"
-      ? `items-center px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR}`
+      ? `items-center ${GUTTER} ${NAV_CLEAR}`
       : `px-0 ${NAV_CLEAR} pl-[100px] pr-[min(16%,120px)]`;
 
   return (
@@ -119,7 +137,7 @@ export function TextPanel({
   return (
     <section
       id={id}
-      className={`relative flex w-full justify-center h-[100dvh] ${width} shrink-0 snap-start [align-items:safe_center] overflow-y-auto overscroll-contain px-[clamp(1.25rem,4.5vw,4rem)] ${NAV_CLEAR} ${className}`}
+      className={`relative flex w-full justify-center h-[100dvh] ${width} shrink-0 snap-start [align-items:safe_center] overflow-y-auto overscroll-contain ${GUTTER} ${NAV_CLEAR} ${className}`}
     >
       <div className={MEASURE}>{children}</div>
     </section>
