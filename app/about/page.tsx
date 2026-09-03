@@ -79,7 +79,7 @@ type PhotoSpec = { src: string; alt: string; crop?: PhotoCrop; flip?: boolean };
  *  page's sections read as noticeably more padded/loose than the rest of the
  *  site, so About-local panels pull it in instead of touching the shared
  *  NAV_CLEAR every case study page also uses. */
-const TIGHT_CLEAR = "!pt-10 sm:!pt-12 lg:!pt-14 !pb-6 sm:!pb-8 lg:!pb-6";
+const TIGHT_CLEAR = "!pt-10 sm:!pt-12 lg:!pt-[var(--nav-clear)] !pb-6 sm:!pb-8 lg:!pb-6";
 /** Same tightened clearance, plus a mobile-sane left/right inset for the
  *  pad="rail" panels — their desktop 100px/16% rail padding is no longer
  *  lg-only (HorizontalScroll runs the same at every breakpoint now), and

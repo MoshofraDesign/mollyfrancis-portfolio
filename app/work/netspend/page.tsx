@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL} from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Netspend Rewards & UCM — Molly Francis",
@@ -296,7 +296,7 @@ export default function NetspendCaseStudy() {
 
         {/* ── PANEL: LIVE PROTOTYPE — title + link (GovOS pattern) ─── */}
         {project.prototype && (
-          <Panel width="lg:w-[min(100vw,36rem)]" pad="center">
+          <Panel width={END_PANEL} pad="center">
             <div className={`${MEASURE} mx-auto`}>
               <SlideIn>
                 <h2 className={H_DISPLAY}>Live UCM prototype</h2>

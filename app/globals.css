@@ -28,6 +28,10 @@
   --nav-park-top: clamp(1.25rem, 5vh, 4.75rem);
   --nav-logo-h: 2.25rem;
   --nav-clear: calc(var(--nav-park-top) + var(--nav-logo-h) + 1rem);
+
+  /* Room left inside a 100dvh panel once the nav band and the panel's own
+   * bottom padding are taken out — the ceiling for panel media at lg+. */
+  --panel-media-max-h: calc(100dvh - var(--nav-clear) - 3rem);
 }
 
 html {
@@ -180,6 +184,34 @@ body::before {
   border-radius: 999px;
   border: 1px solid rgba(20, 20, 20, 0.18);
   color: #3a3833;
+}
+
+/* Media inside a full-viewport panel (see MEDIA in CaseStudyKit).
+ *
+ * At lg+ a panel is exactly 100dvh, so a screenshot sized only by width
+ * will happily grow taller than the room left under the nav band and
+ * overflow the panel — on a short laptop the Care.com panels were running
+ * over by up to 127px. Cap the images themselves to what's actually left
+ * and let them scale down with the viewport instead.
+ *
+ * Only plain images are touched: next/image `fill` sets width/height
+ * inline, which outranks this rule, so aspect-ratio wrappers and grid
+ * tiles keep their own sizing.
+ *
+ * Below lg the page is a vertical stack with no height to run out of, so
+ * images just take their natural size and stay centered. */
+.panel-media {
+  margin-inline: auto;
+}
+@media (min-width: 1024px) {
+  .panel-media img,
+  .panel-media video {
+    max-height: var(--panel-media-max-h);
+    width: auto;
+    max-width: 100%;
+    margin-inline: auto;
+    object-fit: contain;
+  }
 }
 
 /* The site's horizontal rail. One definition for the homepage, resume,

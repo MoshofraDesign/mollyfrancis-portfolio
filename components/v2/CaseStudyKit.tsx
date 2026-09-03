@@ -37,14 +37,28 @@ export const GUTTER = "px-[clamp(1.5rem,4vw,4.5rem)]";
  * vw as well as px so it still breathes inside the gutter on small screens. */
 /** Readable text measure — ~860px at typical desktop, scales with vw. */
 export const MEASURE = "w-full max-w-[min(54rem,86vw)]";
-/** Media / screenshot cap. */
-export const MEDIA = "w-full max-w-[min(950px,90vw)]";
+/**
+ * Media / screenshot cap. `panel-media` (globals.css) centers it and, at
+ * lg+, caps the images inside to the room left between the nav band and the
+ * panel's bottom padding — so a short viewport scales the media down
+ * instead of letting it overflow the panel.
+ */
+export const MEDIA = "panel-media mx-auto w-full max-w-[min(950px,90vw)]";
 /** Wide multi-item rows — screen line-ups, component grids. */
 export const WIDE = "w-full max-w-[min(1400px,92vw)]";
 /** @deprecated Prefer MEASURE — kept for existing imports. */
 export const TEXT_W = MEASURE;
 
-export const VIEW = "w-screen";
+export const VIEW = "lg:w-screen";
+
+/**
+ * Closing panel width — the prototype / Figma-file call to action that ends
+ * each case study. These had drifted apart (full-viewport on GovOS and the
+ * generic template, 36rem on Bright and Netspend), so the end of a project
+ * landed differently depending on which one you were reading. One value now,
+ * for all of them.
+ */
+export const END_PANEL = "lg:w-[min(100vw,800px)]";
 
 /**
  * Top inset so media never runs under the parked logo or the fixed Close
@@ -58,7 +72,7 @@ export const VIEW = "w-screen";
  * underneath it.
  */
 export const NAV_CLEAR =
-  "pt-[var(--nav-clear)] pb-6 sm:pb-8 lg:pb-6";
+  "pt-10 pb-10 sm:pt-14 sm:pb-14 lg:pt-[var(--nav-clear)] lg:pb-6";
 
 /** Keeps the last two words together so a line never ends on a lone orphan. */
 export function noOrphan(text: string) {
@@ -104,15 +118,17 @@ export function Panel({
   // plain `justify-center` combined with `overflow-y-auto` silently clips
   // whatever overflows above the centered midpoint, since a scroll container
   // can't scroll to a negative offset. Bit us on LivePerson's image panels.
+  // items-center is deliberately unprefixed: in the vertical stack below lg
+  // it's what centers section media on tablet and phone.
   const padLg =
     pad === "center"
       ? `items-center ${GUTTER} ${NAV_CLEAR}`
-      : `px-0 ${NAV_CLEAR} pl-[100px] pr-[min(16%,120px)]`;
+      : `items-center ${GUTTER} ${NAV_CLEAR} lg:items-stretch lg:px-0 lg:pl-[100px] lg:pr-[min(16%,120px)]`;
 
   return (
     <section
       id={id}
-      className={`relative flex w-full flex-col justify-center gap-2 h-[100dvh] ${width} shrink-0 snap-center [justify-content:safe_center] overflow-y-auto overscroll-contain ${padLg} ${className}`}
+      className={`relative flex w-full flex-col justify-center gap-2 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:[justify-content:safe_center] lg:gap-0 lg:overflow-y-auto lg:overscroll-contain ${padLg} ${className}`}
     >
       {children}
     </section>
@@ -137,7 +153,7 @@ export function TextPanel({
   return (
     <section
       id={id}
-      className={`relative flex w-full justify-center h-[100dvh] ${width} shrink-0 snap-start [align-items:safe_center] overflow-y-auto overscroll-contain ${GUTTER} ${NAV_CLEAR} ${className}`}
+      className={`relative flex w-full justify-center lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] lg:overflow-y-auto lg:overscroll-contain ${GUTTER} ${NAV_CLEAR} ${className}`}
     >
       <div className={MEASURE}>{children}</div>
     </section>
@@ -198,7 +214,7 @@ export function NextProjectLink({
   return (
     <Link
       href={href}
-      className="group relative flex w-full flex-col justify-center h-[100dvh] w-[min(100vw,600px)] shrink-0 snap-start px-[clamp(1.25rem,4.5vw,2.5rem)] py-0"
+      className="group relative flex w-full flex-col justify-center px-6 py-14 sm:px-12 sm:py-20 lg:h-[100dvh] lg:w-[min(100vw,600px)] lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,2.5rem)] lg:py-0"
       style={{ background: accent, color: fg }}
     >
       <div className="w-full max-w-[min(32rem,86vw)]">

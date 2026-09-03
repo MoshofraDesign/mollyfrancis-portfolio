@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { GUTTER, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, NextProjectLink, CaseStudyMetaPanel, END_PANEL} from "@/components/v2/CaseStudyKit";
 
 /**
  * GovOS eSubmission — horizontal case study built to match the Figma deck
@@ -92,7 +92,7 @@ function Panel({
   // ultra-wide screens don’t leave a long empty trail after left-rail copy.
   return (
     <section
-      className={`relative flex w-full flex-col justify-center gap-2 ${GUTTER} pt-[var(--nav-clear)] pb-6 sm:pb-8 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:items-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:pb-6 ${className}`}
+      className={`relative flex w-full flex-col items-center justify-center gap-2 ${GUTTER} ${NAV_CLEAR} lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain ${className}`}
     >
       {children}
     </section>
@@ -235,7 +235,7 @@ function TextPanel({
   return (
     <section
       id={id}
-      className={`relative flex w-full justify-center ${GUTTER} pt-[var(--nav-clear)] pb-6 sm:pb-8 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain lg:pb-6`}
+      className={`relative flex w-full justify-center ${GUTTER} ${NAV_CLEAR} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain`}
     >
       <div className={TEXT_W}>{children}</div>
     </section>
@@ -295,7 +295,7 @@ function PortraitPanel({
 }) {
   const hasPhoto = hasImage(src);
   return (
-    <section className={`relative flex w-full flex-col items-center justify-center gap-10 ${GUTTER} pt-[var(--nav-clear)] pb-6 sm:pb-8 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:flex-row lg:justify-center lg:gap-[51px] xl:gap-[64px] 2xl:gap-[77px] lg:overflow-y-auto lg:overscroll-contain lg:pb-6`}>
+    <section className={`relative flex w-full flex-col items-center justify-center gap-10 ${GUTTER} ${NAV_CLEAR} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:flex-row lg:justify-center lg:gap-[51px] xl:gap-[64px] 2xl:gap-[77px] lg:overflow-y-auto lg:overscroll-contain`}>
       {hasPhoto && (
         <div className="relative aspect-square w-[234px] sm:w-[384px] md:w-[461px] lg:w-[614px] xl:w-[768px] 2xl:w-[922px] max-w-[260px] shrink-0 sm:w-[294px] md:w-[353px] lg:w-[471px] xl:w-[589px] 2xl:w-[707px] sm:max-w-[300px] lg:w-[min(28vw,300px)]">
           <Image
@@ -512,7 +512,7 @@ export default function GovOSCaseStudy() {
 
         {/* 10 — PROTOTYPE */}
         {project.prototype && (
-          <Panel width="lg:w-screen">
+          <Panel width={END_PANEL}>
             <div className={TEXT_W}>
               <Heading>The Figma file.</Heading>
               <a

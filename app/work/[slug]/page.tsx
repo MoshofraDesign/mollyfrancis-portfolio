@@ -26,6 +26,7 @@ import {
   Bullets,
   NextProjectLink,
   CaseStudyMetaPanel,
+  END_PANEL,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -138,7 +139,7 @@ function LogosGridPanel({
   images: { src: string; caption?: string }[];
 }) {
   return (
-    <section className={`${WORK_THUMB_SECTION} pb-16 pt-[var(--nav-clear)]`}>
+    <section className={`${WORK_THUMB_SECTION} pb-16 pt-10 sm:pt-14 lg:pt-[var(--nav-clear)]`}>
       <div className={WORK_THUMB_GRID_CLASS} style={WORK_THUMB_GRID_STYLE}>
         {images.map((img, i) => (
           <figure key={img.src + i} className={WORK_THUMB_TILE}>
@@ -622,7 +623,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         {project.prototype && (() => {
           const isFigmaFile = /figma\.com\/(design|file)\//.test(project.prototype);
           return (
-            <Panel width={VIEW} pad="center" className={firstSectionKey === "prototype" ? FIRST_GAP : undefined}>
+            <Panel width={END_PANEL} pad="center" className={firstSectionKey === "prototype" ? FIRST_GAP : undefined}>
               <div className={`${MEASURE} mx-auto`}>
                 <Heading>{isFigmaFile ? "Explore the Figma file" : "Live Figma prototype"}</Heading>
                 <a

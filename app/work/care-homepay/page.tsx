@@ -7,7 +7,7 @@ import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
 import { contrastColor } from "@/lib/contrastColor";
-import { GUTTER, NextProjectLink, MEASURE, MEDIA, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, NextProjectLink, MEASURE, MEDIA, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Homepay Payroll — Care.com — Molly Francis",
@@ -47,7 +47,7 @@ function Panel({
 }) {
   return (
     <section
-      className={`relative flex w-full shrink-0 flex-col overflow-hidden ${GUTTER} pt-[var(--nav-clear)] pb-6 sm:pb-8 lg:h-[100dvh] lg:snap-start lg:items-center lg:justify-center lg:overflow-y-auto lg:pb-6 ${width} ${className}`}
+      className={`relative flex w-full flex-col items-center overflow-hidden ${GUTTER} ${NAV_CLEAR} lg:h-[100dvh] lg:shrink-0 lg:snap-start lg:justify-center lg:overflow-y-auto ${width} ${className}`}
     >
       {children}
     </section>

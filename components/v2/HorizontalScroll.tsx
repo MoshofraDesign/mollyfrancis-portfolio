@@ -8,14 +8,21 @@ type Props = {
 };
 
 /**
- * Full-viewport horizontal scroller, the same at every breakpoint: it
+ * At lg (1024px) and up this is the full-viewport horizontal scroller: it
  * converts vertical wheel / trackpad input into horizontal movement so the
  * case study can be navigated the way karinasirqueira.com does — mouse
  * wheel down = scroll right. Native horizontal trackpad swipes and
- * drag-scrolling / touch-swipe still work as-is. Snap is additionally
- * gated on `(pointer: coarse)` so touch devices (phone, tablet) snap
- * panel-to-panel on swipe, matching the mouse/trackpad experience at
- * desktop rather than free-scrolling.
+ * drag-scrolling still work as-is. Snap is additionally gated on
+ * `(pointer: coarse)` for the rare large touch device that lands at
+ * desktop width.
+ *
+ * Below lg — tablets and phones — it renders as a normal vertical stack:
+ * no overflow-x, no snap, no wheel handling, and the page scrolls top to
+ * bottom like any other site. Horizontal scroll-jacking fights the OS's
+ * own vertical gesture on touch, and a fixed 100dvh panel has nowhere to
+ * put media once the viewport gets short. Each panel mirrors the split
+ * (see Panel/TextPanel in CaseStudyKit): full-width, natural-height blocks
+ * below lg; fixed-height viewport panels at lg+.
  */
 export default function HorizontalScroll({ children, className = "" }: Props) {
   const ref = useRef<HTMLDivElement>(null);
@@ -24,7 +31,12 @@ export default function HorizontalScroll({ children, className = "" }: Props) {
     const el = ref.current;
     if (!el) return;
 
+    const isDesktop = () => window.matchMedia("(min-width: 1024px)").matches;
+
     const onWheel = (e: WheelEvent) => {
+      // Below lg the container is a normal vertical stack — let the wheel
+      // event drive native vertical scroll instead of hijacking it.
+      if (!isDesktop()) return;
       // Let native horizontal gestures (shift+wheel, trackpad swipe) pass through.
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
       if (e.deltaY === 0) return;
@@ -34,17 +46,20 @@ export default function HorizontalScroll({ children, className = "" }: Props) {
 
     el.addEventListener("wheel", onWheel, { passive: false });
 
-    // Panels are exactly one viewport wide at every breakpoint (see VIEW in
-    // CaseStudyKit) — horizontal scroll is now the same behavior at every
-    // size, not just lg+. If the window is resized while scrolled past the
-    // first panel (rotating a phone, dragging a desktop window narrower),
-    // the old pixel scrollLeft no longer lines up with a panel boundary and
-    // two panels render half on screen at once. Track the panel index
-    // instead of the raw pixel offset and re-snap to it on resize.
+    // At lg+ panels are exactly one viewport wide (see VIEW in CaseStudyKit).
+    // Resizing while scrolled past the first panel — dragging a desktop
+    // window narrower, rotating a tablet — leaves the old pixel scrollLeft
+    // pointing between two panel boundaries, so two panels render half on
+    // screen at once. Track the panel index rather than the raw offset and
+    // re-snap to it. Below lg there is no horizontal overflow, so park it
+    // back at 0 instead: that's also what makes crossing the breakpoint
+    // land cleanly on the top of the vertical stack.
     let prevWidth = window.innerWidth;
     const onResize = () => {
       const newWidth = window.innerWidth;
-      if (prevWidth > 0 && newWidth !== prevWidth) {
+      if (!isDesktop()) {
+        el.scrollLeft = 0;
+      } else if (prevWidth > 0 && newWidth !== prevWidth) {
         const index = Math.round(el.scrollLeft / prevWidth);
         el.scrollLeft = index * newWidth;
       }
@@ -69,7 +84,7 @@ export default function HorizontalScroll({ children, className = "" }: Props) {
       // utilities. Left unconditional instead: -webkit-overflow-scrolling
       // has no effect on an element that isn't actually overflow-scrolling,
       // which is only true at lg+ anyway, so it's inert below lg.
-      className={`no-scrollbar momentum-scroll flex h-[100dvh] w-[100dvw] flex-row overflow-x-auto overflow-y-hidden overscroll-x-contain [@media(pointer:coarse)]:snap-x [@media(pointer:coarse)]:snap-mandatory ${className}`}
+      className={`no-scrollbar momentum-scroll flex w-full flex-col lg:h-[100dvh] lg:w-[100dvw] lg:flex-row lg:overflow-x-auto lg:overflow-y-hidden lg:overscroll-x-contain lg:[@media(pointer:coarse)]:snap-x lg:[@media(pointer:coarse)]:snap-mandatory ${className}`}
     >
       {children}
     </div>
