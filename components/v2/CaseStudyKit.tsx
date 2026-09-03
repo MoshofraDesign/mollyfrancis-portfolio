@@ -35,7 +35,7 @@ export const VIEW = "w-screen";
  * than 1024px had zero clearance and could sit right under Close.
  */
 export const NAV_CLEAR =
-  "pt-16 sm:pt-20 lg:pt-[5.75rem] pb-10 sm:pb-12 lg:pb-10";
+  "pt-10 sm:pt-12 lg:pt-14 pb-6 sm:pb-8 lg:pb-6";
 
 /** Keeps the last two words together so a line never ends on a lone orphan. */
 export function noOrphan(text: string) {

@@ -108,7 +108,7 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </section>
 
-        <Panel width={VIEW} pad="center" className="!pt-20 sm:!pt-24">
+        <Panel width={VIEW} pad="center">
           <div className={`${MEASURE} mx-auto space-y-6`}>
             <SlideIn>
               <h2 className={H_DISPLAY}>Problem</h2>

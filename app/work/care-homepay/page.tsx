@@ -47,7 +47,7 @@ function Panel({
 }) {
   return (
     <section
-      className={`relative flex w-full shrink-0 flex-col overflow-hidden px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:snap-start lg:items-center lg:justify-center lg:overflow-y-auto lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)] ${width} ${className}`}
+      className={`relative flex w-full shrink-0 flex-col overflow-hidden px-6 pt-10 pb-6 sm:px-10 sm:pt-12 sm:pb-8 lg:h-[100dvh] lg:snap-start lg:items-center lg:justify-center lg:overflow-y-auto lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-14 lg:pb-6 ${width} ${className}`}
     >
       {children}
     </section>
@@ -167,7 +167,7 @@ export default function CareHomepayCaseStudy() {
         </section>
 
         {/* ── PANEL 2: STATEMENT ─────────────────────────────────────── */}
-        <Panel width="lg:w-screen" className="!pt-20 sm:!pt-24">
+        <Panel width="lg:w-screen">
           <div className={`mx-auto ${MEASURE}`}>
             <div className="mb-8 lg:mb-10">
               <SmallLogo />

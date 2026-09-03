@@ -92,7 +92,7 @@ function Panel({
   // ultra-wide screens don’t leave a long empty trail after left-rail copy.
   return (
     <section
-      className={`relative flex w-full flex-col justify-center gap-2 px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:items-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)] ${className}`}
+      className={`relative flex w-full flex-col justify-center gap-2 px-6 pt-10 pb-6 sm:px-12 sm:pt-12 sm:pb-8 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:items-center lg:gap-0 lg:overflow-y-auto lg:overscroll-contain lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-14 lg:pb-6 ${className}`}
     >
       {children}
     </section>
@@ -235,7 +235,7 @@ function TextPanel({
   return (
     <section
       id={id}
-      className="relative flex w-full justify-center px-6 py-20 sm:px-12 sm:py-24 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]"
+      className="relative flex w-full justify-center px-6 pt-10 pb-6 sm:px-12 sm:pt-12 sm:pb-8 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-14 lg:pb-6"
     >
       <div className={TEXT_W}>{children}</div>
     </section>
@@ -295,7 +295,7 @@ function PortraitPanel({
 }) {
   const hasPhoto = hasImage(src);
   return (
-    <section className="relative flex w-full flex-col items-center justify-center gap-10 px-6 py-14 sm:px-10 sm:py-16 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:flex-row lg:justify-center lg:gap-[51px] xl:gap-[64px] 2xl:gap-[77px] lg:overflow-y-auto lg:overscroll-contain lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-[5.75rem] lg:pb-[clamp(1.25rem,3vh,2.5rem)]">
+    <section className="relative flex w-full flex-col items-center justify-center gap-10 px-6 pt-10 pb-6 sm:px-10 sm:pt-12 sm:pb-8 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:flex-row lg:justify-center lg:gap-[51px] xl:gap-[64px] 2xl:gap-[77px] lg:overflow-y-auto lg:overscroll-contain lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-14 lg:pb-6">
       {hasPhoto && (
         <div className="relative aspect-square w-[234px] sm:w-[384px] md:w-[461px] lg:w-[614px] xl:w-[768px] 2xl:w-[922px] max-w-[260px] shrink-0 sm:w-[294px] md:w-[353px] lg:w-[471px] xl:w-[589px] 2xl:w-[707px] sm:max-w-[300px] lg:w-[min(28vw,300px)]">
           <Image
@@ -407,7 +407,7 @@ export default function GovOSCaseStudy() {
         </section>
 
         {/* ── 2 — PROBLEM ──────────────────────────────────────────────── */}
-        <Panel className="!pt-20 sm:!pt-24">
+        <Panel>
           <Heading>Recording a deed meant a vendor in the middle.</Heading>
           <Body>
             Counties scanned paper. Submitters paid a go-between. Nobody saw status

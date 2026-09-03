@@ -158,7 +158,7 @@ export default function AthenaWellCaseStudy() {
         </section>
 
         {/* ── WHAT IS ATHENAWELL ───────────────────────────────────────── */}
-        <TextPanel className="!pt-20 sm:!pt-24">
+        <TextPanel>
           <Heading>What is athenaWell?</Heading>
           <Body>{project.overview}</Body>
         </TextPanel>

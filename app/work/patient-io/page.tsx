@@ -141,13 +141,13 @@ export default function PatientIoCaseStudy() {
         </section>
 
         {/* ── WHAT IS PATIENT IO ───────────────────────────────────────── */}
-        <TextPanel className="!pt-20 sm:!pt-24">
+        <TextPanel>
           <Heading>What is Patient IO?</Heading>
           <Body>{project.overview}</Body>
         </TextPanel>
 
         {/* ── PROBLEM ───────────────────────────────────────────────────── */}
-        <TextPanel className="!py-6 sm:!py-8">
+        <TextPanel>
           <Heading>The Problem</Heading>
           <Body>
             Patients managing complex treatment regimens had no easy way to track medications and
@@ -157,7 +157,7 @@ export default function PatientIoCaseStudy() {
         </TextPanel>
 
         {/* ── APPROACH ──────────────────────────────────────────────────── */}
-        <TextPanel className="!py-6 sm:!py-8">
+        <TextPanel>
           <Heading>Approach</Heading>
           <Body>
             I designed the medications, vitals, and care-plan adherence experience end to end, then
@@ -173,7 +173,7 @@ export default function PatientIoCaseStudy() {
          * shadow treatment and at each screen's own natural aspect ratio.
          * Each animates in on its own, staggered, as it scrolls into
          * view. Order matches the frame's layers left to right. */}
-        <Panel width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
+        <Panel width={VIEW} pad="center" className="items-center">
           <div className="mx-auto flex w-full max-w-[min(1400px,94vw)] flex-col items-center gap-5">
             <div className="grid grid-cols-3 items-end justify-items-center gap-3 sm:gap-4 lg:flex lg:flex-nowrap lg:justify-center lg:gap-4 xl:gap-5">
               {PUBLIC_SCREENS.map((screen, i) => (
@@ -198,7 +198,7 @@ export default function PatientIoCaseStudy() {
          * Figma frames 4732:9527 and 4732:9530, placed side by side in one
          * panel per Molly's call — the design-system components sit next
          * to the medications module they're generated for. */}
-        <Panel width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
+        <Panel width={VIEW} pad="center" className="items-center">
           <div className="mx-auto flex w-full max-w-[min(1400px,94vw)] flex-col items-center gap-10 lg:flex-row lg:items-end lg:justify-center lg:gap-10">
             <SlideIn className="flex flex-col items-center gap-4">
               {/* eslint-disable-next-line @next/next/no-img-element -- true
@@ -228,7 +228,7 @@ export default function PatientIoCaseStudy() {
         </Panel>
 
         {/* ── PORTRAIT ──────────────────────────────────────────────────── */}
-        <Panel width={VIEW} pad="center" className="items-center !py-6 sm:!py-8">
+        <Panel width={VIEW} pad="center" className="items-center">
           <div className="relative aspect-square w-[304px] overflow-hidden rounded-full sm:w-[499px] md:w-[599px] lg:w-[600px]">
             <Image
               src="/work-thumbnails/patient-io-photo.jpg"
@@ -242,7 +242,7 @@ export default function PatientIoCaseStudy() {
         </Panel>
 
         {/* ── THE TEAM ──────────────────────────────────────────────────── */}
-        <TextPanel className="!py-6 sm:!py-8">
+        <TextPanel>
           <Heading>The Team</Heading>
           <Body>
             As the solo designer in a nimble 14-person team, I owned the end-to-end user experience for
@@ -253,7 +253,7 @@ export default function PatientIoCaseStudy() {
         </TextPanel>
 
         {/* ── ACQUIRED BY ATHENAHEALTH ─────────────────────────────────── */}
-        <TextPanel className="!py-6 sm:!py-8">
+        <TextPanel>
           <Heading>Acquired by athenahealth</Heading>
           <Body>
             Our success led athenahealth to acquire Patient IO in August 2016. The adherence-tracking
@@ -264,13 +264,13 @@ export default function PatientIoCaseStudy() {
         </TextPanel>
 
         {/* ── OUTCOME ───────────────────────────────────────────────────── */}
-        <TextPanel className="!py-6 sm:!py-8">
+        <TextPanel>
           <Heading>Outcome</Heading>
           <Body>{project.outcome}</Body>
         </TextPanel>
 
         {/* ── IMPACT ────────────────────────────────────────────────────── */}
-        <Panel width={VIEW} pad="center" className="!py-6 sm:!py-8">
+        <Panel width={VIEW} pad="center">
           <div className={`${MEASURE} mx-auto`}>
             <Heading>Impact</Heading>
             <div className="mt-10 w-full space-y-8">

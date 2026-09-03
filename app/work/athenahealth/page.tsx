@@ -125,7 +125,7 @@ export default function ConsumerHealthCaseStudy() {
         </section>
 
         {/* 25 million patients... */}
-        <TextPanel width={VIEW} className="!pt-20 sm:!pt-24">
+        <TextPanel width={VIEW}>
           <SlideIn>
             <h2 className={H_DISPLAY}>25 million patients opened the portal and landed on Test Results.</h2>
           </SlideIn>

@@ -131,7 +131,7 @@ export default function NetspendCaseStudy() {
         </section>
 
         {/* Rewards ran on spreadsheets... — matches production narrative */}
-        <TextPanel width={VIEW} className="!pt-20 sm:!pt-24">
+        <TextPanel width={VIEW}>
           <SlideIn>
             <h2 className={H_DISPLAY}>Rewards ran on spreadsheets. No one could see what was live — or what was working.</h2>
           </SlideIn>

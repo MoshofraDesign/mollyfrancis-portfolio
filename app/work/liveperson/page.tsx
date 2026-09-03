@@ -211,7 +211,7 @@ export default function LivePersonCaseStudy() {
         </section>
 
         {/* ── SOCIAL MEDIA MANAGEMENT ──────────────────────────────────── */}
-        <TextPanel className="!pt-20 sm:!pt-24">
+        <TextPanel>
           <Heading>Social Media Management</Heading>
           <Body>
             To streamline LivePerson&rsquo;s omnichannel support, I redesigned

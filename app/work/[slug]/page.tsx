@@ -532,7 +532,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
       : project.prototype
       ? "prototype"
       : null;
-  const FIRST_GAP = "!pt-20 sm:!pt-24";
+  const FIRST_GAP = "";
 
   return (
     <main
