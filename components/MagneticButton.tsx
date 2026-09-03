@@ -9,6 +9,9 @@ type Props = {
   variant?: "solid" | "ghost";
   className?: string;
   external?: boolean;
+  /** Save the file instead of handing it to the browser's PDF viewer.
+   *  Pass a string to name the saved file. Same-origin only, per the spec. */
+  download?: boolean | string;
 };
 
 export default function MagneticButton({
@@ -17,6 +20,7 @@ export default function MagneticButton({
   variant = "solid",
   className = "",
   external = false,
+  download,
 }: Props) {
   const wrapRef = useRef<HTMLSpanElement | null>(null);
 
@@ -50,6 +54,15 @@ export default function MagneticButton({
       <span className={klass}>{children}</span>
     </span>
   );
+
+  if (download) {
+    // No target="_blank": a download shouldn't leave an empty tab behind.
+    return (
+      <a href={href} download={download} className="inline-block">
+        {inner}
+      </a>
+    );
+  }
 
   if (external) {
     return (

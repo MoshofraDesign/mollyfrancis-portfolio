@@ -113,11 +113,10 @@ export default function V2Resume() {
           <div className="flex flex-wrap gap-3">
             <a
               href="/molly-francis-resume.pdf"
-              target="_blank"
-              rel="noreferrer"
+              download="Molly-Francis-Resume.pdf"
               className="rounded-full bg-[#141414] px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] text-[#f2f1ec] transition-opacity hover:opacity-70"
             >
-              Download PDF ↗
+              Download PDF ↓
             </a>
             <a
               href="mailto:mfrancis7@mac.com"

@@ -278,17 +278,16 @@ export default function ResumePage() {
           <div className="flex flex-wrap gap-3">
             <MagneticButton
               href="/molly-francis-resume.pdf"
-              external
+              download="Molly-Francis-Resume.pdf"
             >
-              Download PDF ↗
+              Download PDF ↓
             </MagneticButton>
             <a
               href="/molly-francis-resume-ats.pdf"
-              target="_blank"
-              rel="noreferrer"
+              download="Molly-Francis-Resume-ATS.pdf"
               className="magnetic ghost"
             >
-              ATS version ↗
+              ATS version ↓
             </a>
           </div>
         </Reveal>
