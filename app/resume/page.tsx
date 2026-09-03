@@ -252,7 +252,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-8 pb-12 lg:pb-16">
         <Reveal as="div" className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div>
-            <h1 className="font-serif text-hero leading-[0.98] text-ink">
+            <h1 className="font-serif text-[clamp(2.25rem,5vw,4.5rem)] tracking-[-0.03em] leading-[0.98] text-ink">
               Molly Francis&rsquo; Résumé
             </h1>
             <p className="mt-4 flex items-center gap-3 text-lg lg:text-xl text-ink">
@@ -295,7 +295,7 @@ export default function ResumePage() {
       </section>
 
       {/* EXPERIENCE */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
+      <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-4 pb-16">
         <div className="mb-8">
           <Reveal as="div">
             <h2 className="font-serif text-h2 text-ink">Experience</h2>
