@@ -15,8 +15,11 @@ type Props = {
    */
   parkLeft?: number;
   /**
-   * Parked top inset at lg+ (px). Default follows the header padding
-   * (~20 / 28). Pass 100 to match Figma panel logo guides.
+   * Parked top inset (px). Defaults to the --nav-park-top token, which
+   * is height-aware (clamp(1.25rem, 5vh, 4.75rem)) so the band shrinks on
+   * short viewports. Overriding this with a raw number opts out of that,
+   * and out of the --nav-clear inset panels size themselves against —
+   * so keep any override at or below the token's 76px ceiling.
    */
   parkTop?: number;
   /**
@@ -76,7 +79,7 @@ export default function StickyNav({
 
   const logoStyle: React.CSSProperties = {
     paddingLeft: parkLeft,
-    paddingTop: parkTop ?? 76,
+    paddingTop: parkTop ?? "var(--nav-park-top)",
     transform: `translateX(${offset ?? 0}px)`,
     visibility: offset === null ? "hidden" : "visible",
   };

@@ -29,13 +29,18 @@ export const TEXT_W = MEASURE;
 export const VIEW = "w-screen";
 
 /**
- * Top inset so media never runs under the fixed Close control (always
- * visible, pt-5/sm:pt-7 in StickyNav) or the parked logo at lg+. Stepped per
- * breakpoint rather than fluid — was lg-only, so a centered panel narrower
- * than 1024px had zero clearance and could sit right under Close.
+ * Top inset so media never runs under the parked logo or the fixed Close
+ * control. Both live in the --nav-clear band defined in globals.css, which
+ * is the single source of truth — the logo is the deeper of the two, so
+ * clearing it clears Close as well. The band is height-aware, so this inset
+ * shrinks on short viewports instead of eating the content's room.
+ *
+ * Don't hardcode a stepped pt- here again: the parked logo sits 76px down on
+ * a tall screen, so any fixed value smaller than that lets media scroll
+ * underneath it.
  */
 export const NAV_CLEAR =
-  "pt-10 sm:pt-12 lg:pt-14 pb-6 sm:pb-8 lg:pb-6";
+  "pt-[var(--nav-clear)] pb-6 sm:pb-8 lg:pb-6";
 
 /** Keeps the last two words together so a line never ends on a lone orphan. */
 export function noOrphan(text: string) {

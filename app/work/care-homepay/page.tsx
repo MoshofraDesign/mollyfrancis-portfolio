@@ -47,7 +47,7 @@ function Panel({
 }) {
   return (
     <section
-      className={`relative flex w-full shrink-0 flex-col overflow-hidden px-6 pt-10 pb-6 sm:px-10 sm:pt-12 sm:pb-8 lg:h-[100dvh] lg:snap-start lg:items-center lg:justify-center lg:overflow-y-auto lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pt-14 lg:pb-6 ${width} ${className}`}
+      className={`relative flex w-full shrink-0 flex-col overflow-hidden px-6 pt-[var(--nav-clear)] pb-6 sm:px-10 sm:pb-8 lg:h-[100dvh] lg:snap-start lg:items-center lg:justify-center lg:overflow-y-auto lg:px-[2.88rem] xl:px-[3.6rem] 2xl:px-[4rem] lg:pb-6 ${width} ${className}`}
     >
       {children}
     </section>

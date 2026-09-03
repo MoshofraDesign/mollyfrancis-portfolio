@@ -8,6 +8,26 @@
   --color-muted: #6e6a62;
   --color-accent: #3DC185;
   --grain-opacity: 0.025;
+
+  /* Fixed-nav band on the horizontal case studies.
+   *
+   * The parked logo sits --nav-park-top from the top of the viewport
+   * (StickyNav), so the band it occupies runs to
+   * --nav-park-top + --nav-logo-h. --nav-clear adds a gap on top of that
+   * and is the ONLY top inset panels should use — that way media can
+   * never slide underneath the logo as it scrolls past.
+   *
+   * Height-aware on purpose: on a short viewport the band rides up and
+   * hands the space back to the content instead of squeezing it, which
+   * is what makes the panels resize across breakpoints rather than
+   * overflow. Tops out at the 4.75rem/76px Figma inset on tall screens,
+   * where the parked logo lines up with each hero's large logo.
+   *
+   * --nav-logo-h is the tallest sticky logo on any case study (h-9), so
+   * one value clears them all. */
+  --nav-park-top: clamp(1.25rem, 5vh, 4.75rem);
+  --nav-logo-h: 2.25rem;
+  --nav-clear: calc(var(--nav-park-top) + var(--nav-logo-h) + 1rem);
 }
 
 html {
