@@ -90,7 +90,7 @@ export default function Nav() {
                 aria-label={label}
                 className="grid h-10 w-10 place-items-center rounded-full text-ink transition-colors hover:bg-ink hover:text-cream"
               >
-                <Icon size={20} />
+                <Icon size={24} />
               </a>
             ))}
           </div>
@@ -124,7 +124,7 @@ export default function Nav() {
                     aria-label={label}
                     className="grid h-10 w-10 place-items-center rounded-full text-ink hover:bg-ink hover:text-cream"
                   >
-                    <Icon size={20} />
+                    <Icon size={24} />
                   </a>
                 ))}
               </div>
