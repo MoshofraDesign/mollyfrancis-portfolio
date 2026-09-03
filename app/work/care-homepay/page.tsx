@@ -73,7 +73,7 @@ export default function CareHomepayCaseStudy() {
       <StickyNav
         watch="title"
         logo={
-          <div className="relative h-6 w-[100px] sm:h-7 sm:w-[120px]">
+          <div className="relative h-7 w-[115px] sm:h-8 sm:w-[135px]">
             <Image
               src={LOGO}
               alt="Care.com Homepay"
