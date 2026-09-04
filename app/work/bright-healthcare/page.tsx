@@ -123,23 +123,28 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </Panel>
 
-        <Panel width={VIEW} pad="center" className="items-center">
-          <div className="relative mx-auto aspect-square w-[304px] sm:w-[499px] md:w-[599px] lg:w-[600px] overflow-hidden rounded-full">
-            <Image
-              src={`${ASSET}/submitter.png`}
-              alt="Provider overwhelmed by fax paperwork"
-              fill
-              unoptimized
-              sizes="600px"
-              className="object-cover"
-            />
-          </div>
-        </Panel>
-
+        {/* 3 — the portrait and the fax quote in one beat. They were two
+            panels; the circle was 600px on its own, which read as an
+            interstitial rather than as evidence for the line beside it. */}
         <Panel width={VIEW} pad="center">
-          <div className="relative mx-auto w-full max-w-[min(52rem,86vw)]">
-            <SlideIn>
-              <div className="relative px-[5rem] sm:px-[5rem] md:px-[5.28rem] lg:px-[7.04rem] xl:px-[8.5rem] 2xl:px-[8.5rem]">
+          <div className="mx-auto flex w-full max-w-[min(84rem,92vw)] flex-col items-center gap-10 lg:flex-row lg:gap-14">
+            <SlideIn className="shrink-0">
+              <div className="relative aspect-square w-[220px] overflow-hidden rounded-full sm:w-[300px] lg:w-[min(26vw,360px)]">
+                <Image
+                  src={`${ASSET}/submitter.png`}
+                  alt="Provider overwhelmed by fax paperwork"
+                  fill
+                  unoptimized
+                  sizes="(min-width: 1024px) 360px, 300px"
+                  className="object-cover"
+                />
+              </div>
+            </SlideIn>
+            {/* The horizontal padding is what the decorative quote marks hang
+                in — they sit outside the text box with right-full/left-full,
+                so trimming it clips them. */}
+            <SlideIn delay={80} className="relative w-full max-w-[min(44rem,86vw)]">
+              <div className="relative px-[4.5rem] sm:px-[5rem] lg:px-[5.5rem]">
                 <p className="text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
                   <span className="relative">
                     <QuoteMark className="right-full bottom-0 mr-[0.8em] h-[2.47em] w-[3.125em]" />
