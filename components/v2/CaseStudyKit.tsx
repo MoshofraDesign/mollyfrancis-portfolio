@@ -73,8 +73,14 @@ export const END_PANEL = "lg:w-[min(100vw,530px)]";
  * "Live Figma prototype" on one line at the closing title's 36px; below lg,
  * where the panel is full-bleed, it's what keeps the block from stretching
  * across a tablet.
+ *
+ * text-center centres the title and the button on one axis. They were
+ * left-aligned inside a centred block, so the pair sat off to one side of a
+ * panel that is otherwise empty field. The button is inline-flex, so
+ * text-align carries it too.
  */
-export const END_MEASURE = "mx-auto w-full max-w-[min(24rem,86vw)]";
+export const END_MEASURE =
+  "mx-auto w-full max-w-[min(24rem,86vw)] text-center";
 
 /**
  * Closing-panel title. Deliberately well below the intro scale — this is a
