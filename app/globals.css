@@ -17,15 +17,20 @@
    * and is the ONLY top inset panels should use — that way media can
    * never slide underneath the logo as it scrolls past.
    *
-   * Height-aware on purpose: on a short viewport the band rides up and
-   * hands the space back to the content instead of squeezing it, which
-   * is what makes the panels resize across breakpoints rather than
-   * overflow. Tops out at the 4.75rem/76px Figma inset on tall screens,
-   * where the parked logo lines up with each hero's large logo.
+   * Flat, not height-aware. It was clamp(1.25rem, 5vh, 4.75rem) for a
+   * while so short viewports could hand the space back to the content,
+   * but the Close control sits at a fixed offset (pt-5/sm:pt-7 plus a
+   * 48px hit area, so it runs to roughly 64px down) — and any park inset
+   * below ~76px puts the logo level with it. On a 1440x900 window the
+   * clamp resolved to 45px and the logo overlapped Close outright.
+   *
+   * 4.75rem/76px is the Figma inset: it leaves a little padding under
+   * Close, and lines the parked logo up with each hero's large logo
+   * (lg:top-[72px]) so the small mark arrives where the big one was.
    *
    * --nav-logo-h is the tallest sticky logo on any case study (h-9), so
    * one value clears them all. */
-  --nav-park-top: clamp(1.25rem, 5vh, 4.75rem);
+  --nav-park-top: 4.75rem;
   --nav-logo-h: 2.25rem;
   --nav-clear: calc(var(--nav-park-top) + var(--nav-logo-h) + 1rem);
 
