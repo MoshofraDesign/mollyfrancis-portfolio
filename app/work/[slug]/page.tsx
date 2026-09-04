@@ -132,7 +132,12 @@ function ImageGridPanel({
 
 /**
  * Logos project only — square tiles matching the homepage work grid
- * (same rail and gutters), no accent overlay and no hover copy.
+ * (same rail, gutters and 4px radius), no accent overlay and no hover copy.
+ *
+ * No --nav-clear inset on top: this grid follows the title section in an
+ * ordinary vertical page, so the 142px was buying nothing (the nav is fixed
+ * — a section inset only clears it at the very top of the page) and left a
+ * 166px hole under the paragraph.
  */
 function LogosGridPanel({
   images,
@@ -140,7 +145,7 @@ function LogosGridPanel({
   images: { src: string; caption?: string }[];
 }) {
   return (
-    <section className={`${WORK_THUMB_SECTION} pb-16 pt-10 sm:pt-14 lg:pt-[var(--nav-clear)]`}>
+    <section className={`${WORK_THUMB_SECTION} pb-16 pt-6 sm:pt-8`}>
       <div className={WORK_THUMB_GRID_CLASS}>
         {images.map((img, i) => (
           <figure key={img.src + i} className={WORK_THUMB_TILE}>
