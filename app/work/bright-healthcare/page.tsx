@@ -5,7 +5,7 @@ import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
-import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL, END_MEASURE } from "@/components/v2/CaseStudyKit";
+import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL, END_MEASURE, HERO_TITLE, HERO_SUBTEXT } from "@/components/v2/CaseStudyKit";
 import UcmScreensCarousel from "@/components/UcmScreensCarousel";
 
 export const metadata = {
@@ -85,18 +85,22 @@ export default function BrightHealthcareCaseStudy() {
             />
           </div>
 
-          {/* Title — Figma 4553:22297: 253,237 / 466 wide */}
-          <SlideIn className="relative z-10 max-w-[466px] text-white lg:absolute lg:left-[180px] xl:left-[225px] 2xl:left-[259px] lg:top-[171px] xl:top-[190px] 2xl:top-[213px] lg:max-w-[331px] xl:max-w-[414px] 2xl:max-w-[497px]">
-            <p className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.28]">
-              Prior Authorization Portal
-            </p>
-            <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.125rem] font-normal leading-normal">
+          {/* Title — on the 100px rail with the mark, and below it rather
+              than beside it: the block was at left 180/225/259 with a fixed
+              top of 171/190/213, which put it inside the mark's own box (the
+              mark is min(50vw,720) wide over a 6.14 aspect, so it runs to
+              217 at 1440) and the two overlapped. The top is derived from the
+              mark's height now, so the 28px gap holds at every width, and the
+              pair is on the shared HERO scale the other projects use. */}
+          <SlideIn className="relative z-10 max-w-[466px] text-white lg:absolute lg:left-[100px] lg:top-[calc(128px_+_min(50vw,720px)/6.1428)] lg:max-w-[640px]">
+            <p className={HERO_TITLE}>Prior Authorization Portal</p>
+            <p className={`mt-3 max-w-[46ch] ${HERO_SUBTEXT}`}>
               Enables providers to electronically submit prior authorization requests and view all requests and their statuses
             </p>
           </SlideIn>
 
           {/* Screens — Figma 4622:11847: 1174×668, centered, top 435, bleeds off the bottom */}
-          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,73.4rem)] lg:absolute lg:left-1/2 lg:top-[313px] xl:top-[348px] 2xl:top-[392px] lg:mx-0 lg:w-[835px] xl:w-[1044px] 2xl:w-[1252px] lg:max-w-none lg:-translate-x-1/2">
+          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,73.4rem)] lg:absolute lg:left-1/2 lg:top-[340px] xl:top-[372px] 2xl:top-[416px] lg:mx-0 lg:w-[835px] xl:w-[1044px] 2xl:w-[1252px] lg:max-w-none lg:-translate-x-1/2">
             <Image
               src={`${ASSET}/hero.png`}
               alt="Member search and authorizations dashboard in the Authorization Portal"
