@@ -538,7 +538,7 @@ export default function GovOSCaseStudy() {
                   alt="Tools used: Figma, Lovable, Gemini, Jira, Miro, Pendo, UserTesting"
                   width={576}
                   height={48}
-                  className="mt-10 h-8 w-auto sm:h-10"
+                  className="mt-10 h-8 w-auto max-w-full object-contain sm:h-10"
                 />
               )}
             </div>

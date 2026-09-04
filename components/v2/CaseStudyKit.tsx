@@ -56,28 +56,29 @@ export const VIEW = "lg:w-screen";
  * each case study. These had drifted apart (full-viewport on GovOS and the
  * generic template, 36rem on Bright and Netspend), so the end of a project
  * landed differently depending on which one you were reading. One value now,
- * for all of them.
+ * for all of them — 500px, per Molly.
  */
-export const END_PANEL = "lg:w-[min(100vw,800px)]";
+export const END_PANEL = "lg:w-[min(100vw,500px)]";
+
+/**
+ * The content block on the closing prototype panel. These sections were
+ * laying their copy out in the standard 54rem measure — wider than the panel
+ * itself — so the title and button filled it edge to edge and the panel's own
+ * width never read. 20rem sits inside the 500px panel's padding at every
+ * width; below lg, where the panel is full-bleed, it's what keeps the block
+ * from stretching across a tablet.
+ */
+export const END_MEASURE = "mx-auto w-full max-w-[min(20rem,86vw)]";
 
 /**
  * Closing-panel title. Deliberately well below the intro scale — this is a
  * call to action at the end of the case study, not a section opener, and at
- * the Heading scale it filled an 800px panel on its own. 2.5vw lands on 36px
- * at a 1440 frame, the same size the Care.com hero title uses.
+ * the Heading scale it filled the panel on its own. 2.5vw lands on 36px at a
+ * 1440 frame, the same size the Care.com hero title uses.
  *
  * GovOS and the generic template were on Heading, Bright and Netspend on
  * their own H_DISPLAY step scale; all four share this now.
  */
-/**
- * The content block on the closing prototype panel. The panel is capped at
- * 800px (END_PANEL), but these sections were putting their copy in the
- * standard 54rem measure — wider than the panel itself — so the title and
- * button filled it edge to edge and the 800 cap was invisible. 30rem sits
- * comfortably inside the panel's own padding at every width.
- */
-export const END_MEASURE = "mx-auto w-full max-w-[min(30rem,86vw)]";
-
 export const END_TITLE =
   "font-semibold leading-[1.278] tracking-[-0.02em] text-[1.5rem] sm:text-[1.75rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
 
