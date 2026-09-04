@@ -210,8 +210,13 @@ export default function BrightHealthcareCaseStudy() {
         </Panel>
 
         <Panel width={VIEW} pad="center">
-          <div className="mx-auto flex w-full max-w-[min(92vw,80rem)] flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-            <SlideIn className="w-full max-w-[748px] lg:w-[min(52%,748px)]">
+          {/* Not justify-between: that pinned the two columns to the
+              container's edges, and since the longest line of copy is well
+              short of its 52% column the pair ended up ~295px apart. The copy
+              column sizes to its content and the map follows one gap later,
+              so the space between them is the gap and nothing else. */}
+          <div className="mx-auto flex w-full max-w-[min(92vw,80rem)] flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-start lg:gap-12">
+            <SlideIn className="w-full max-w-[748px] lg:w-auto lg:max-w-[600px] lg:shrink-0">
               <h2 className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.15] tracking-[-0.02em]">😟 Pains</h2>
               <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
                 <li>Burnout from repetitive admin tasks.</li>
