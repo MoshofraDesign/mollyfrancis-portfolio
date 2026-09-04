@@ -308,9 +308,14 @@ export function NextProjectLink({
             : "w-full max-w-[min(32rem,86vw)]"
         }
       >
+        {/* Full strength, not the 0.55 it was: on the nine dark accents fg is
+            the same cream as the title below, so dropping the tint is what
+            makes this read white rather than grey. On the five light accents
+            (GovOS, Bright, Patient.io, Ecommerce, Logos) fg is ink — white
+            would be unreadable on #00EADA or #A3CC00 — so those stay dark. */}
         <p
-          className="text-[clamp(0.95rem,1.2vw,1.1rem)] font-normal"
-          style={{ color: fg, opacity: 0.55 }}
+          className="text-[clamp(1.05rem,1.4vw,1.35rem)] font-normal"
+          style={{ color: fg }}
         >
           Up next — {client}
         </p>
