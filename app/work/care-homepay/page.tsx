@@ -194,7 +194,7 @@ export default function CareHomepayCaseStudy() {
               </h1>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className={`mt-4 text-white ${INTRO_SUBTEXT}`}>
+              <p className={`mt-3 text-white ${INTRO_SUBTEXT}`}>
                 HomePay lets household employees like nannies and caregivers
                 track daily hours, calculate overtime, and submit timesheets
                 directly to employers. Employers review and approve submitted

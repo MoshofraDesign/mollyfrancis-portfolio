@@ -35,9 +35,9 @@ const H_DISPLAY =
 const H_SECTION =
   "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[2.304rem] xl:text-[2.88rem] 2xl:text-[3rem] [text-wrap:pretty]";
 const BODY =
-  "text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white [text-wrap:pretty]";
+  "text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] leading-[1.35] text-white [text-wrap:pretty]";
 const BODY_MUTED =
-  "text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/70 [text-wrap:pretty]";
+  "text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] leading-[1.35] text-white/70 [text-wrap:pretty]";
 
 export default function NetspendCaseStudy() {
   const idx = projects.findIndex((p) => p.slug === "netspend");
@@ -168,7 +168,7 @@ export default function NetspendCaseStudy() {
               </div>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="story-caption-in mt-4 text-center text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
+              <p className="story-caption-in mt-4 text-center text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
                 Campaign setup — a wizard, not a spreadsheet
               </p>
             </SlideIn>
@@ -240,7 +240,7 @@ export default function NetspendCaseStudy() {
               </div>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="mt-4 text-center text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
+              <p className="mt-4 text-center text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
                 Search validated, not guessed at.
               </p>
             </SlideIn>
@@ -271,7 +271,7 @@ export default function NetspendCaseStudy() {
                     <p className="font-semibold leading-none tracking-[-0.04em] text-white text-[2.4rem] sm:text-[2.4rem] md:text-[2.88rem] lg:text-[3.36rem] xl:text-[3.84rem] 2xl:text-[4.05rem]">
                       {value}
                     </p>
-                    <p className="mt-3 text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
+                    <p className="mt-3 text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
                       {label}
                     </p>
                   </div>

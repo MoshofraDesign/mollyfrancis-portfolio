@@ -139,7 +139,7 @@ function Heading({ children }: { children: React.ReactNode }) {
 function Body({ children }: { children: React.ReactNode }) {
   return (
     <SlideIn delay={120} className={TEXT_W}>
-      <p className="mt-6 text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] font-normal leading-[1.35] text-white [text-wrap:pretty]">
+      <p className="mt-6 text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] font-normal leading-[1.35] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </p>
     </SlideIn>
@@ -155,7 +155,7 @@ function Bullets({ items }: { items: string[] }) {
           key={b}
           as="li"
           delay={120 + i * 90}
-          className="text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] font-normal leading-[1.35] text-white [text-wrap:pretty]"
+          className="text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] font-normal leading-[1.35] text-white [text-wrap:pretty]"
         >
           {noOrphan(b)}
         </SlideIn>
@@ -393,7 +393,7 @@ export default function GovOSCaseStudy() {
               <p className={`text-white ${HERO_TITLE}`}>
                 GovOS eSubmission
               </p>
-              <p className={`mt-4 max-w-[46ch] text-white ${HERO_SUBTEXT}`}>
+              <p className={`mt-3 max-w-[46ch] text-white ${HERO_SUBTEXT}`}>
                 A cloud-based digital portal that allows external organizations, title
                 companies, law firms, and individuals to securely submit official
                 documents and records (such as land deeds or legal filings) directly to

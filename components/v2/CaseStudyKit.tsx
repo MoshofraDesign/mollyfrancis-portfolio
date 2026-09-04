@@ -247,8 +247,8 @@ export function Body({ children, intro = false }: { children: React.ReactNode; i
       <p
         className={
           intro
-            ? `mt-6 ${INTRO_SUBTEXT}`
-            : "mt-6 text-[clamp(1.05rem,1.4vw,1.35rem)] font-normal leading-[1.35] opacity-90 [text-wrap:pretty]"
+            ? `mt-3 ${INTRO_SUBTEXT}`
+            : "mt-3 text-[clamp(1.15rem,1.5vw,1.5rem)] font-normal leading-[1.4] opacity-90 [text-wrap:pretty]"
         }
       >
         {typeof children === "string" ? noOrphan(children) : children}

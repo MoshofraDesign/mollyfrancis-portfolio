@@ -30,7 +30,7 @@ const MEASURE = "w-full max-w-[min(54rem,86vw)]";
 const H_DISPLAY =
   "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
 const BODY =
-  "text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] text-white [text-wrap:pretty]";
+  "text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] leading-[1.35] text-white [text-wrap:pretty]";
 
 function QuoteMark({ close = false, className = "" }: { close?: boolean; className?: string }) {
   return (
@@ -286,7 +286,7 @@ export default function BrightHealthcareCaseStudy() {
                     <QuoteMark close className="left-[calc(100%+0.12em)] bottom-0 h-[0.97em] w-[1.23em]" />
                   </span>
                 </p>
-                <p className="mt-6 text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] italic leading-snug text-white">
+                <p className="mt-6 text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] italic leading-snug text-white">
                   Rebecca Schweitz
                   <br />
                   VP, Clinical Performance
