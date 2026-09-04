@@ -256,12 +256,12 @@ export default function CareHomepayCaseStudy() {
           <Panel key={s.key} width={VIEW} pad="center">
             <div className="mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-8 lg:grid-cols-[minmax(0,368fr)_minmax(0,634fr)] lg:gap-[3.33%]">
               <SlideIn className="flex flex-col items-center gap-6 text-white">
-                <div className="relative size-[160px] shrink-0 overflow-hidden rounded-full sm:size-[220px] lg:size-[min(320px,22vw)]">
+                <div className="relative size-[160px] shrink-0 overflow-hidden rounded-full sm:size-[220px] lg:aspect-square lg:h-auto lg:w-[min(320px,87%)]">
                   <Image
                     src={s.portrait}
                     alt={s.portraitAlt}
                     fill
-                    sizes="(min-width: 1024px) 22vw, 220px"
+                    sizes="(min-width: 1024px) 320px, 220px"
                     className="object-cover"
                   />
                 </div>
