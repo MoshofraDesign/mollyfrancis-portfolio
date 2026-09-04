@@ -4,6 +4,10 @@ const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    // lib/ holds shared class strings (lib/workGrid.ts). Without it Tailwind
+    // never sees them, so the utilities are simply never generated — the
+    // markup ships the class name and nothing styles it.
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {

@@ -334,18 +334,15 @@ export default function ResumePage() {
           ))}
         </div>
 
-        <p className="mt-10 text-base text-ink">
-          See more experiences on{" "}
-          <a
+        <div className="mt-10">
+          <MagneticButton
             href="https://www.linkedin.com/in/mollyfrancisdesign"
-            target="_blank"
-            rel="noreferrer"
-            className="link-underline"
+            variant="ghost"
+            external
           >
-            linkedin.com/mollyfrancisdesign
-          </a>
-          .
-        </p>
+            See more experiences on LinkedIn ↗
+          </MagneticButton>
+        </div>
       </section>
 
       {/* SKILLS */}

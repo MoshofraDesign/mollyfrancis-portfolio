@@ -15,18 +15,23 @@
 export const WORK_THUMB_SECTION = "site-rail";
 
 /**
- * Three columns at lg, stepping down to two and then one. A fixed count per
- * breakpoint, rather than the auto-fill this used to be: auto-fill worked the
- * count out from whatever happened to fit, which is why the row came out four
- * up on a desktop and changed size on its own between breakpoints.
+ * Three columns is the layout. It holds from md (768px) up, so any laptop
+ * window — not just a maximised one — gets three across; below that it steps
+ * to two, then one on a phone. Three only started at lg (1024px) at first,
+ * which meant a window a little under full width quietly dropped to two.
+ *
+ * A fixed count per breakpoint, rather than the auto-fill this used to be:
+ * auto-fill worked the count out from whatever happened to fit, which is why
+ * the row came out four up on a desktop and changed size on its own between
+ * breakpoints.
  *
  * The columns are 1fr, so inside a breakpoint they divide the rail exactly and
- * scale with it — no capped column width leaving a remainder to centre. At the
- * 1280px rail, three columns land at ~379px, about the 375px the tiles were
- * originally drawn at.
+ * scale with it — no capped column width leaving a remainder to centre. Three
+ * columns run ~219px at 768px, ~296px at 1000px, and ~379px once the rail caps
+ * at 1280px, about the 375px the tiles were originally drawn at.
  */
 export const WORK_THUMB_GRID_CLASS =
-  "grid w-full grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3";
+  "grid w-full grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3";
 
 /** Square tile that fills its column. */
 export const WORK_THUMB_TILE = "relative aspect-square w-full overflow-hidden";
