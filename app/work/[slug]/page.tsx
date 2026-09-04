@@ -382,10 +382,9 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           <LogosGridPanel images={project.images} />
         )}
 
-        <CaseStudyMetaPanel
-          meta={getCaseStudyMeta(project)}
-          lightText={false}
-        />
+        {/* No meta panel here — same as Print: the marks are the whole
+            story, and a team/timing/projected block under them was generic
+            filler. */}
 
         <NextProjectLink
           href={`/work/${next.slug}`}
