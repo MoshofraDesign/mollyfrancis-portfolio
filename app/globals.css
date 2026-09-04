@@ -256,9 +256,19 @@ body::before {
     margin: 0;
     max-width: none;
   }
+
+  /* The logo and the store badges hang off the panel, not the stage.
+   *
+   * The stage is centred, so on a window wider than the frame's 1.44 aspect
+   * it letterboxes — at 1390x660 it's only 950 wide, which left 220px of dead
+   * space each side and pushed the logo 286px in from the window edge instead
+   * of the ~66px the frame intends. These two are the frame's left-edge
+   * furniture, so they keep the scaled 100-unit inset measured from the
+   * panel edge. Their vertical position still tracks the stage:
+   * 50% - 500u puts us at the stage's top, then the frame's own y. */
   .care-hero-logo {
     left: calc(100 * var(--figma-u));
-    top: calc(100 * var(--figma-u));
+    top: calc(50% - 400 * var(--figma-u));
     width: calc(672 * var(--figma-u));
     height: calc(120 * var(--figma-u));
   }
@@ -294,7 +304,7 @@ body::before {
   }
   .care-hero-badges {
     left: calc(100 * var(--figma-u));
-    top: calc(877 * var(--figma-u));
+    top: calc(50% + 377 * var(--figma-u));
     gap: calc(16 * var(--figma-u));
   }
   .care-hero-badges img {

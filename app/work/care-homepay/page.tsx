@@ -97,9 +97,8 @@ export default function CareHomepayCaseStudy() {
               the frame's own gap between the mark and the artwork holds, so
               nothing can cross the logo or Close. `contents` below lg drops
               the wrapper so the panel stays an ordinary stacked block. */}
-          <div className="contents lg:block figma-stage">
           {/* Large logo — Figma 4555:22725, 672x120 at 100,100 */}
-          <div className="care-hero-logo relative h-[60px] w-[280px] sm:h-[80px] sm:w-[380px]">
+          <div className="care-hero-logo order-1 relative h-[60px] w-[280px] sm:h-[80px] sm:w-[380px]">
             <Image
               src={LOGO}
               alt="Care.com Homepay"
@@ -110,12 +109,32 @@ export default function CareHomepayCaseStudy() {
             />
           </div>
 
+          {/* App store badges — Figma 4555:22844, 50px each at 100,877 */}
+          <div className="care-hero-badges order-4 mt-6 flex items-center gap-4">
+            <Image
+              src={`${ASSET}/google-play.svg`}
+              alt="Google Play"
+              width={50}
+              height={50}
+              unoptimized
+              className="size-[50px]"
+            />
+            <Image
+              src={`${ASSET}/app-store.svg`}
+              alt="App Store"
+              width={50}
+              height={50}
+              unoptimized
+              className="size-[50px]"
+            />
+          </div>
+          <div className="contents lg:block figma-stage">
           {/* Headline. Figma 4555:22842 — left:831 (57.7%), 455 wide (31.6%),
               left-aligned, Jost SemiBold 36/46. It sits just right of the
               logo, not pinned to the far edge: it had been right-anchored and
               right-aligned at roughly two thirds the size. 2.5vw is the 36px
               read at the 1440 frame width. */}
-          <SlideIn className="care-hero-title self-end max-w-[340px] text-right">
+          <SlideIn className="care-hero-title order-2 self-end max-w-[340px] text-right">
             <p className="text-xl font-semibold leading-snug text-white sm:text-2xl">
               Homepay Employee &amp; Employer Payroll App
             </p>
@@ -128,7 +147,7 @@ export default function CareHomepayCaseStudy() {
               of it, with a strip of background showing underneath. Anchoring
               the bottom also keeps the stagger for free — the two images have
               different heights, so the left one still rides higher. */}
-          <div className="mt-4 flex flex-1 items-end justify-center gap-4 sm:gap-8 lg:mt-0 lg:contents">
+          <div className="order-3 mt-4 flex flex-1 items-end justify-center gap-4 sm:gap-8 lg:mt-0 lg:contents">
             <SlideIn
               delay={80}
               className="care-hero-phone-l w-[46%] max-w-[240px]"
@@ -157,25 +176,6 @@ export default function CareHomepayCaseStudy() {
             </SlideIn>
           </div>
 
-          {/* App store badges — Figma 4555:22844, 50px each at 100,877 */}
-          <div className="care-hero-badges mt-6 flex items-center gap-4">
-            <Image
-              src={`${ASSET}/google-play.svg`}
-              alt="Google Play"
-              width={50}
-              height={50}
-              unoptimized
-              className="size-[50px]"
-            />
-            <Image
-              src={`${ASSET}/app-store.svg`}
-              alt="App Store"
-              width={50}
-              height={50}
-              unoptimized
-              className="size-[50px]"
-            />
-          </div>
           </div>
         </section>
 
