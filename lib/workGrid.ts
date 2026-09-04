@@ -33,5 +33,6 @@ export const WORK_THUMB_SECTION = "site-rail";
 export const WORK_THUMB_GRID_CLASS =
   "grid w-full grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3";
 
-/** Square tile that fills its column. */
-export const WORK_THUMB_TILE = "relative aspect-square w-full overflow-hidden";
+/** Square tile that fills its column, with a 4px radius. */
+export const WORK_THUMB_TILE =
+  "relative aspect-square w-full overflow-hidden rounded-[4px]";
