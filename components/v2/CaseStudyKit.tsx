@@ -186,6 +186,23 @@ export const INTRO_TITLE =
 export const INTRO_SUBTEXT =
   "font-normal leading-[1.35] [text-wrap:pretty] text-[1.05rem] sm:text-[1.05rem] lg:text-[clamp(1.05rem,2.22vw,2.25rem)]";
 
+/**
+ * Hero type — the client's name and the one-line description on a project's
+ * landing panel. Deliberately smaller than the INTRO pair: that one is sized
+ * against a full-width measure on the statement panel, while a hero puts its
+ * copy in a narrow column beside the artwork, so 5.625vw of the whole
+ * viewport lands enormous there (67px in GovOS's 372px column).
+ *
+ * Netspend's hero is the reference — 1.6/2/2.25rem title over
+ * 0.9/1/1.125rem body — expressed as a clamp so it scales between those
+ * steps instead of jumping at each breakpoint. Care.com's hero title is the
+ * same 2.25rem ceiling, taken from its frame's 36px.
+ */
+export const HERO_TITLE =
+  "font-semibold leading-[1.28] tracking-[-0.01em] [text-wrap:pretty] text-[1.375rem] sm:text-[1.5rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
+export const HERO_SUBTEXT =
+  "font-normal leading-[1.45] [text-wrap:pretty] text-[0.95rem] sm:text-[1rem] lg:text-[clamp(0.95rem,1.25vw,1.125rem)]";
+
 export function Heading({ children, intro = false }: { children: React.ReactNode; intro?: boolean }) {
   return (
     <SlideIn className={MEASURE}>

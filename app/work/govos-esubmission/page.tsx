@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { GUTTER, NAV_CLEAR, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, NextProjectLink, CaseStudyMetaPanel, END_PANEL } from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, NextProjectLink, CaseStudyMetaPanel, END_PANEL } from "@/components/v2/CaseStudyKit";
 
 /**
  * GovOS eSubmission — horizontal case study built to match the Figma deck
@@ -386,12 +386,15 @@ export default function GovOSCaseStudy() {
             <div>
               {/* Had three stacked generations of size utilities. Tailwind
                   emits each once and the last set won, so the title rendered
-                  at 15px and the paragraph below at 11px — which is why they
-                  looked tiny. Both use the shared intro pair now. */}
-              <p className={`text-white ${INTRO_TITLE}`}>
+                  at 15px and the paragraph below at 11px. Fixing that put
+                  them on the INTRO pair, which overcorrected — those sizes
+                  assume a full-width measure, and 5.625vw came out at 67px
+                  inside this 38% column. The shared HERO pair is the one
+                  every project's landing panel uses. */}
+              <p className={`text-white ${HERO_TITLE}`}>
                 GovOS eSubmission
               </p>
-              <p className={`mt-4 max-w-[60ch] text-white ${INTRO_SUBTEXT}`}>
+              <p className={`mt-4 max-w-[46ch] text-white ${HERO_SUBTEXT}`}>
                 A cloud-based digital portal that allows external organizations, title
                 companies, law firms, and individuals to securely submit official
                 documents and records (such as land deeds or legal filings) directly to
