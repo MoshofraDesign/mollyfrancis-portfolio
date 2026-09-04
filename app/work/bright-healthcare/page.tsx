@@ -5,7 +5,7 @@ import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
-import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE} from "@/components/v2/CaseStudyKit";
+import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL } from "@/components/v2/CaseStudyKit";
 import UcmScreensCarousel from "@/components/UcmScreensCarousel";
 
 export const metadata = {
@@ -309,7 +309,7 @@ export default function BrightHealthcareCaseStudy() {
             </div>
             <SlideIn delay={160}>
               <div>
-                <h3 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
+                <h3 className={META_LABEL}>
                   Projected Numbers
                 </h3>
                 <ul className="mt-5 grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-x-10 lg:gap-x-12">
@@ -348,7 +348,7 @@ export default function BrightHealthcareCaseStudy() {
           <div className={`${MEASURE} mx-auto`}>
             <div className="grid gap-10 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
               <SlideIn>
-                <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
+                <h2 className={META_LABEL}>
                   Usage
                 </h2>
                 <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
@@ -359,7 +359,7 @@ export default function BrightHealthcareCaseStudy() {
                 </p>
               </SlideIn>
               <SlideIn delay={80}>
-                <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
+                <h2 className={META_LABEL}>
                   Time saved
                 </h2>
                 <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
@@ -376,7 +376,7 @@ export default function BrightHealthcareCaseStudy() {
                 </p>
               </SlideIn>
               <SlideIn delay={160}>
-                <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
+                <h2 className={META_LABEL}>
                   Users
                 </h2>
                 <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">

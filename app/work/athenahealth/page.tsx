@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT} from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, META_LABEL } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Patient Portal — athenahealth — Molly Francis",
@@ -230,7 +230,7 @@ export default function ConsumerHealthCaseStudy() {
             <SlideIn>
               <div className="grid gap-10 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
                 <div>
-                  <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
+                  <h2 className={META_LABEL}>
                     Usage
                   </h2>
                   <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
@@ -242,7 +242,7 @@ export default function ConsumerHealthCaseStudy() {
                 </div>
 
                 <div>
-                  <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
+                  <h2 className={META_LABEL}>
                     Time saved
                   </h2>
                   <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
@@ -260,7 +260,7 @@ export default function ConsumerHealthCaseStudy() {
                 </div>
 
                 <div>
-                  <h2 className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.05rem] font-medium uppercase tracking-[0.14em] text-white/45">
+                  <h2 className={META_LABEL}>
                     Users
                   </h2>
                   <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">

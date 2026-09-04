@@ -293,6 +293,17 @@ export function NextProjectLink({
  * Pass lightText when the page uses cream/white type on a dark or saturated field
  * so the mono Cursor mark inverts to white.
  */
+/**
+ * The section labels on the closing meta panel — "The Team", "Timing",
+ * "Projected Numbers", "Tools Used". Sentence case rather than the small
+ * letterspaced caps they used to be, one step larger, and semibold (600 is
+ * the heaviest Jost weight every project loads, so font-bold would be
+ * synthesised on some pages). One token, so all four stay identical on
+ * every project.
+ */
+export const META_LABEL =
+  "text-[clamp(1.15rem,1.5vw,1.35rem)] font-semibold leading-snug text-current/60";
+
 export function CaseStudyMetaPanel({
   meta,
   lightText = true,
@@ -309,7 +320,7 @@ export function CaseStudyMetaPanel({
           <div className="flex flex-col gap-14 sm:gap-16">
             <div className={`grid gap-10 ${showProjected ? "sm:grid-cols-3" : "sm:grid-cols-2"} sm:gap-x-14 lg:gap-x-20`}>
               <div>
-                <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-current/45">
+                <h2 className={META_LABEL}>
                   The Team
                 </h2>
                 <ul className="mt-5 space-y-3 text-[clamp(1.05rem,1.35vw,1.25rem)] leading-snug">
@@ -320,7 +331,7 @@ export function CaseStudyMetaPanel({
               </div>
 
               <div>
-                <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-current/45">
+                <h2 className={META_LABEL}>
                   Timing
                 </h2>
                 <ul className="mt-5 space-y-4">
@@ -339,7 +350,7 @@ export function CaseStudyMetaPanel({
 
               {showProjected && (
                 <div>
-                  <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-current/45">
+                  <h2 className={META_LABEL}>
                     Projected Numbers
                   </h2>
                   <ul className="mt-5 space-y-5">
@@ -359,7 +370,7 @@ export function CaseStudyMetaPanel({
             </div>
 
             <div>
-              <h2 className="text-[clamp(0.95rem,1.2vw,1.05rem)] font-medium uppercase tracking-[0.14em] text-current/45">
+              <h2 className={META_LABEL}>
                 Tools Used
               </h2>
               <ul
