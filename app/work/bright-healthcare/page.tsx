@@ -55,10 +55,12 @@ export default function BrightHealthcareCaseStudy() {
       className={`${jost.variable} relative`}
       style={{ background: ACCENT, color: "#ffffff", fontFamily: "var(--font-jost), system-ui, sans-serif" }}
     >
+      {/* The mark is 731x119, so height is what binds the box below: at
+          lg:h-12 the drawn wordmark comes out 295x48, up from 221x36. */}
       <StickyNav
         watch="title"
         logo={
-          <div className="relative h-8 w-[200px] sm:h-9 sm:w-[240px]">
+          <div className="relative h-9 w-[230px] sm:h-10 sm:w-[270px] lg:h-12 lg:w-[320px]">
             <Image src={LOGO} alt="Bright HealthCare" fill unoptimized className="object-contain object-left" />
           </div>
         }
