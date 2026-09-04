@@ -144,19 +144,20 @@ export default function BrightHealthcareCaseStudy() {
                 in — they sit outside the text box with right-full/left-full,
                 so trimming it clips them. */}
             <SlideIn delay={80} className="relative w-full max-w-[min(44rem,86vw)]">
-              <div className="relative px-[4.5rem] sm:px-[5rem] lg:px-[5.5rem]">
-                <p className="text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
-                  <span className="relative">
-                    <QuoteMark className="right-full bottom-0 mr-[0.8em] h-[2.47em] w-[3.125em]" />
-                    Faxing
-                  </span>{" "}
-                  in the world of digital experiences can cause providers and their staff added work, frustration, loss of trust in the company, and more importantly time away from caring for{" "}
-                  <span className="relative">
-                    members.
-                    <QuoteMark close className="left-full bottom-0 ml-[0.4em] h-[2.47em] w-[3.125em]" />
-                  </span>
-                </p>
-              </div>
+              {/* Both marks hang off the paragraph itself rather than off the
+                  first and last words. That way they land on lines, not on
+                  wherever the text happens to break: top-0 puts the opening
+                  mark on line one and top-[2.4em] puts the closing mark on
+                  line three (two lines at leading-[1.2]). em units resolve
+                  against the paragraph's own font size, so the pair scales
+                  with the type, and the 3.9em side padding is the gutter they
+                  sit in — an absolute child is placed against the padding
+                  box, so the 3.125em mark clears the text by 0.775em. */}
+              <p className="relative px-[3.9em] text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
+                <QuoteMark className="left-0 top-0 h-[2.47em] w-[3.125em]" />
+                <QuoteMark close className="right-0 top-[2.4em] h-[2.47em] w-[3.125em]" />
+                Faxing in the world of digital experiences can cause providers and their staff added work, frustration, loss of trust in the company, and more importantly time away from caring for members.
+              </p>
             </SlideIn>
           </div>
         </Panel>
