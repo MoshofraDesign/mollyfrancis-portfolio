@@ -337,15 +337,33 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </Panel>
 
+        {/* The closing beat: the clinician portrait, the line, the copy and
+            the numbers as one section. The portrait was its own panel at
+            600px, which put a full screen of photo between the outcome and
+            the numbers that prove it. */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto space-y-10`}>
-            <div className="space-y-6">
-              <SlideIn>
-                <h2 className={H_DISPLAY}>It replaced the fax machine.</h2>
+          <div className="mx-auto flex w-full max-w-[min(84rem,92vw)] flex-col gap-10">
+            <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
+              <SlideIn className="shrink-0">
+                <div className="relative aspect-square w-[200px] overflow-hidden rounded-full sm:w-[260px] lg:w-[min(22vw,300px)]">
+                  <Image
+                    src={`${ASSET}/outcome.png`}
+                    alt="Clinician using the authorization portal on a laptop"
+                    fill
+                    unoptimized
+                    sizes="(min-width: 1024px) 300px, 260px"
+                    className="object-cover"
+                  />
+                </div>
               </SlideIn>
-              <SlideIn delay={80}>
-                <p className={BODY}>{project.outcome}</p>
-              </SlideIn>
+              <div className="min-w-0">
+                <SlideIn>
+                  <h2 className={H_DISPLAY}>It replaced the fax machine.</h2>
+                </SlideIn>
+                <SlideIn delay={80}>
+                  <p className={`mt-3 ${BODY}`}>{project.outcome}</p>
+                </SlideIn>
+              </div>
             </div>
             <SlideIn delay={160}>
               <div>
@@ -366,19 +384,6 @@ export default function BrightHealthcareCaseStudy() {
                 </ul>
               </div>
             </SlideIn>
-          </div>
-        </Panel>
-
-        <Panel width={VIEW} pad="center" className="items-center">
-          <div className="relative mx-auto aspect-square w-[304px] sm:w-[499px] md:w-[599px] lg:w-[600px] overflow-hidden rounded-full">
-            <Image
-              src={`${ASSET}/outcome.png`}
-              alt="Clinician using the authorization portal on a laptop"
-              fill
-              unoptimized
-              sizes="600px"
-              className="object-cover"
-            />
           </div>
         </Panel>
 
