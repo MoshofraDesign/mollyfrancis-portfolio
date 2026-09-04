@@ -231,6 +231,18 @@ body::before {
   }
 }
 
+/* NOTE on the `main ` prefix used by the frame-placed rules below (both the
+   Care.com hero and the Ecommerce frames): these declarations compete with
+   Tailwind utility classes on the same elements — sm:h-[80px], sm:w-[380px],
+   max-w-[240px] and so on, which is how the elements are sized in the
+   stacked layout below lg. Class-vs-class is equal specificity, so the
+   winner comes down to source order, and in the production bundle the
+   breakpoint-prefixed utilities landed after this file's own blocks: the
+   Care wordmark was rendering at its sm: size of 380x80 instead of the
+   frame's 555x99, and the Ecommerce marks at 380x90 and 230x64 instead of
+   455x141 and 237x74. Adding the `main` ancestor makes these 0,1,1 against
+   a utility's 0,1,0, so they win by specificity and not by luck. */
+
 /* Care.com hero — Figma 4555:22608, laid out the way the Netspend hero is:
    every child absolutely placed at the frame's own fraction of the panel
    (100/1440 = 6.944%), with its SIZE scaled by --figma-u so nothing can
@@ -245,18 +257,18 @@ body::before {
    window shape — and because the sizes still come from --figma-u, the phones
    shrink with the viewport rather than climbing into the logo or Close. */
 @media (min-width: 1024px) {
-  .care-hero-logo,
-  .care-hero-title,
-  .care-hero-badges,
-  .care-hero-phone-l,
-  .care-hero-phone-r {
+  main .care-hero-logo,
+  main .care-hero-title,
+  main .care-hero-badges,
+  main .care-hero-phone-l,
+  main .care-hero-phone-r {
     position: absolute;
     margin: 0;
     max-width: none;
   }
 
   /* 100,100 on the frame. */
-  .care-hero-logo {
+  main .care-hero-logo {
     left: 6.944%;
     top: 10%;
     width: calc(672 * var(--figma-u));
@@ -267,14 +279,14 @@ body::before {
      max() is the belt: below roughly 660px of viewport height 11.4% would
      ride up into the Close control, which ends about 64px down, so the
      headline stops at 76px rather than touching it. */
-  .care-hero-title {
+  main .care-hero-title {
     left: 57.708%;
     top: max(11.4%, 76px);
     width: 31.597%;
     text-align: left;
     align-self: auto;
   }
-  .care-hero-title p {
+  main .care-hero-title p {
     font-size: calc(36 * var(--figma-u));
     line-height: calc(46 * var(--figma-u));
   }
@@ -282,24 +294,24 @@ body::before {
   /* 410,305 and 744,389. Full-length exports, so they run past the frame's
      bottom edge exactly as Figma draws them and the panel's overflow-hidden
      does the clipping. */
-  .care-hero-phone-l {
+  main .care-hero-phone-l {
     left: 28.472%;
     top: 30.5%;
     width: calc(396.5 * var(--figma-u));
   }
-  .care-hero-phone-r {
+  main .care-hero-phone-r {
     left: 51.667%;
     top: 38.9%;
     width: calc(407 * var(--figma-u));
   }
 
   /* 100,877. */
-  .care-hero-badges {
+  main .care-hero-badges {
     left: 6.944%;
     top: 87.7%;
     gap: calc(16 * var(--figma-u));
   }
-  .care-hero-badges img {
+  main .care-hero-badges img {
     width: calc(50 * var(--figma-u));
     height: calc(50 * var(--figma-u));
   }
@@ -363,11 +375,11 @@ body::before {
    nothing outgrows a short viewport. Only at lg+, where a panel is a fixed
    viewport; below that each panel is an ordinary stacked block. */
 @media (min-width: 1024px) {
-  .ecom-mark,
-  .ecom-mark-2,
-  .ecom-shot,
-  .ecom-wide,
-  .ecom-copy {
+  main .ecom-mark,
+  main .ecom-mark-2,
+  main .ecom-shot,
+  main .ecom-wide,
+  main .ecom-copy {
     position: absolute;
     margin: 0;
     max-width: none;
@@ -375,20 +387,20 @@ body::before {
 
   /* Frame 1 — mark 455x141.365 at 100,112; shot 660x506 at 533,306 with a
      10 radius; copy 308 wide at 102,741, Jost Regular 18/26. */
-  .ecom-mark {
+  main .ecom-mark {
     left: 6.944%;
     top: 11.2%;
     width: calc(455 * var(--figma-u));
     height: calc(141.365 * var(--figma-u));
   }
-  .ecom-shot {
+  main .ecom-shot {
     left: 37.014%;
     top: 30.6%;
     width: calc(660 * var(--figma-u));
     height: calc(506 * var(--figma-u));
     border-radius: calc(10 * var(--figma-u));
   }
-  .ecom-copy {
+  main .ecom-copy {
     left: 7.083%;
     top: 74.1%;
     width: calc(308 * var(--figma-u));
@@ -397,13 +409,13 @@ body::before {
   }
 
   /* Frame 2 — mark 237x74 at 100,100; shot 950x493 at 100,306. */
-  .ecom-mark-2 {
+  main .ecom-mark-2 {
     left: 6.944%;
     top: 10%;
     width: calc(237 * var(--figma-u));
     height: calc(74 * var(--figma-u));
   }
-  .ecom-wide {
+  main .ecom-wide {
     left: 6.944%;
     top: 30.6%;
     width: calc(950 * var(--figma-u));
