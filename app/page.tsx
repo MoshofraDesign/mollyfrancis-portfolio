@@ -19,7 +19,7 @@ export default function Home() {
           Anchor for the "Work" nav item — jumps here instead of a separate
           /work route. Tiles are capped at 375px with gutters between them,
           so this shares the page's padded container like every other section. */}
-      <section id="work" className={`${WORK_THUMB_SECTION} scroll-mt-28 py-16`}>
+      <section id="work" className={`${WORK_THUMB_SECTION} scroll-mt-32 py-16`}>
         <CareGrid projects={projects} />
       </section>
 

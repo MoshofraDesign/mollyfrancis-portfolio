@@ -48,7 +48,7 @@ export default function Nav() {
           : "bg-white"
       }`}
     >
-      <div className="w-full px-6 lg:px-10 h-28 flex items-center justify-between">
+      <div className="w-full px-6 lg:px-10 h-32 flex items-center justify-between">
         <Link href="/" className="group">
           <Logo variant="lockup" size={64} />
         </Link>
