@@ -455,7 +455,10 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         <StickyNav
           watch="title"
           logo={
-            <div className="relative h-7 w-[110px] sm:h-8 sm:w-[130px] lg:h-9 lg:w-[150px]">
+            /* Height is what binds this box: the mark is 455x142, so at
+               lg:w-[160px] it would need 50px to fill the width — h-11 is
+               the size you actually see (141x44 drawn, was 115x36). */
+            <div className="relative h-8 w-[130px] sm:h-9 sm:w-[150px] lg:h-11 lg:w-[160px]">
               <Image
                 src={MARK}
                 alt={project.client}
