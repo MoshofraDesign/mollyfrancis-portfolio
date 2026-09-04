@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import SlideIn from "@/components/SlideIn";
-import { contrastColor } from "@/lib/contrastColor";
 import {
   type CaseStudyMeta,
   toolIconSrc,
@@ -289,7 +288,13 @@ export function NextProjectLink({
   /** band only: the host page's own rail, so the copy lines up with it. */
   rail?: string;
 }) {
-  const fg = contrastColor(accent);
+  // White type, always. `accent` is now each project's own page background
+  // (the two that had drifted — GovOS #70ACF4 vs its page's #0091CF, and
+  // athenahealth #1A17B7 vs #4800b5 — were corrected in lib/projects.ts), and
+  // the accented case-study pages already set white on their own field, Bright
+  // included: white on #FFAF00 is Molly's own call there, so matching it here
+  // is the consistent choice rather than letting contrastColor flip to ink.
+  const fg = "#ffffff";
   const band = variant === "band";
   return (
     <Link

@@ -86,7 +86,7 @@ export const projects: Project[] = [
     hero: "/work/govos/hero-laptop.webp",
     logo: "/logos/govos-esubmission-figma.svg",
     logoScale: 0.75,
-    accent: "#70ACF4",
+    accent: "#0091CF",
     featured: true,
     aiSummary:
       "Designed a direct-to-county eRecording portal so title companies could submit deeds electronically — cutting out the third-party submitters that sat between them. AI-assisted synthesis (Dovetail transcript clustering, GPT-generated Jira tickets) kept research turnaround fast.",
@@ -403,7 +403,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/consumer-health-2-raw.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462027297-GRU05DN2D33B2JIOLPDP/CH-Dashboard.png",
     logo: "/logos/athenahealth.svg",
-    accent: "#1A17B7",
+    accent: "#4800b5",
     aiSummary:
       "Led the IA and navigation redesign of athenahealth's patient portal — used by 25M registered patients. Cards, scrolls, and category labels were tested with hundreds of users to surface a structure that didn't bury appointments under 'Test Results' and that finally worked on mobile.",
     overview:
