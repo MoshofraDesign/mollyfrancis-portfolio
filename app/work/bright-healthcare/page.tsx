@@ -337,52 +337,52 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </Panel>
 
-        {/* The closing beat: the clinician portrait, the line, the copy and
-            the numbers as one section. The portrait was its own panel at
-            600px, which put a full screen of photo between the outcome and
-            the numbers that prove it. */}
+        {/* The outcome beat: portrait, line, copy. The numbers that back it
+            are the panel after this one. */}
         <Panel width={VIEW} pad="center">
-          <div className="mx-auto flex w-full max-w-[min(84rem,92vw)] flex-col gap-10">
-            <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
-              <SlideIn className="shrink-0">
-                <div className="relative aspect-square w-[200px] overflow-hidden rounded-full sm:w-[260px] lg:w-[min(22vw,300px)]">
-                  <Image
-                    src={`${ASSET}/outcome.png`}
-                    alt="Clinician using the authorization portal on a laptop"
-                    fill
-                    unoptimized
-                    sizes="(min-width: 1024px) 300px, 260px"
-                    className="object-cover"
-                  />
-                </div>
+          <div className="mx-auto flex w-full max-w-[min(84rem,92vw)] flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
+            <SlideIn className="shrink-0">
+              <div className="relative aspect-square w-[200px] overflow-hidden rounded-full sm:w-[260px] lg:w-[min(22vw,300px)]">
+                <Image
+                  src={`${ASSET}/outcome.png`}
+                  alt="Clinician using the authorization portal on a laptop"
+                  fill
+                  unoptimized
+                  sizes="(min-width: 1024px) 300px, 260px"
+                  className="object-cover"
+                />
+              </div>
+            </SlideIn>
+            <div className="min-w-0">
+              <SlideIn>
+                <h2 className={H_DISPLAY}>It replaced the fax machine.</h2>
               </SlideIn>
-              <div className="min-w-0">
-                <SlideIn>
-                  <h2 className={H_DISPLAY}>It replaced the fax machine.</h2>
-                </SlideIn>
-                <SlideIn delay={80}>
-                  <p className={`mt-3 ${BODY}`}>{project.outcome}</p>
-                </SlideIn>
-              </div>
+              <SlideIn delay={80}>
+                <p className={`mt-3 ${BODY}`}>{project.outcome}</p>
+              </SlideIn>
             </div>
-            <SlideIn delay={160}>
-              <div>
-                <h3 className={META_LABEL}>
-                  Projected Numbers
-                </h3>
-                <ul className="mt-5 grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-x-10 lg:gap-x-12">
-                  {meta.projected.map((row) => (
-                    <li key={`${row.value}-${row.label}`}>
-                      <p className="text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
-                        {row.value}
-                      </p>
-                      <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
-                        {row.label}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          </div>
+        </Panel>
+
+        {/* The projected numbers, on their own. */}
+        <Panel width={VIEW} pad="center">
+          <div className={`${MEASURE} mx-auto`}>
+            <SlideIn>
+              <h3 className={META_LABEL}>
+                Projected Numbers
+              </h3>
+              <ul className="mt-5 grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-x-10 lg:gap-x-12">
+                {meta.projected.map((row) => (
+                  <li key={`${row.value}-${row.label}`}>
+                    <p className="text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
+                      {row.value}
+                    </p>
+                    <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
+                      {row.label}
+                    </p>
+                  </li>
+                ))}
+              </ul>
             </SlideIn>
           </div>
         </Panel>
