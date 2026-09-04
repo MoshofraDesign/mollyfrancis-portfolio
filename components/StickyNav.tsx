@@ -10,10 +10,10 @@ type Props = {
   /** Always visible, so there's a way out from the very first panel. */
   action?: React.ReactNode;
   /**
-   * Parked left inset at lg+ (px). Default 100, the same inset every
-   * project's hero mark uses, so the small mark slides in exactly where the
-   * large one was. It was 48 (32 on Netspend) while the heroes were on the
-   * 71/89/107 ladder; once those went flat 100 the two no longer lined up.
+   * Parked left inset at lg+ (px). Default 50 — deliberately tighter than
+   * the 100px the hero marks sit at, so the parked mark reads as chrome
+   * rather than as the hero mark left behind. (It was briefly 100 to match
+   * them exactly; Molly preferred the tighter inset.)
    */
   parkLeft?: number;
   /**
@@ -46,7 +46,7 @@ export default function StickyNav({
   watch,
   logo,
   action,
-  parkLeft = 100,
+  parkLeft = 50,
   parkTop,
   parkImmediately = false,
 }: Props) {
