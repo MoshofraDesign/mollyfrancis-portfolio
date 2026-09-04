@@ -404,6 +404,10 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
     // vertical filmstrip it was. Placement lives in .ecom-* in globals.css.
     const BG = "#F5F5F7";
     const FG = "#1d1d1f";
+    // project.logo is the white wordmark, which is what the work tile needs
+    // over the accent. On this light field use the black cut Molly exported
+    // alongside it, rather than inverting the white one with a filter.
+    const MARK = "/logos/ecommerce-websites-color.svg";
     const imgs = project.images ?? [];
     // The frame's own two shots. Frame 1 uses vnext-homepage-1.jpg, which
     // isn't in the repo and can't be pulled from Figma's asset CDN from here,
@@ -421,14 +425,12 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
       project.logo ? (
         <div className={className}>
           <Image
-            src={project.logo}
+            src={MARK}
             alt={project.client}
             fill
             unoptimized
             priority
-            /* The asset is a white wordmark, so it needs inverting to sit on
-               this light field. */
-            className="object-contain object-left [filter:brightness(0)_invert(8%)]"
+            className="object-contain object-left"
           />
         </div>
       ) : null;
@@ -448,11 +450,11 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             project.logo ? (
               <div className="relative h-7 w-[110px] sm:h-8 sm:w-[130px] lg:h-9 lg:w-[150px]">
                 <Image
-                  src={project.logo}
+                  src={MARK}
                   alt={project.client}
                   fill
                   unoptimized
-                  className="object-contain object-left [filter:brightness(0)_invert(8%)]"
+                  className="object-contain object-left"
                 />
               </div>
             ) : (
