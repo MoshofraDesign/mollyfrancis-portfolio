@@ -399,9 +399,9 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   }
 
   if (isEcommerce) {
-    // Figma 4926:14914 — two 1440x1000 frames on #F5F5F7, so this page is a
-    // horizontal scroller like the other case studies rather than the
-    // vertical filmstrip it was. Placement lives in .ecom-* in globals.css.
+    // Figma 4926:14914. Frame 1 is a title panel; frame 2 is one long strip
+    // of storefronts that the horizontal scroller carries you through.
+    // Placement lives in .ecom-* in globals.css.
     const BG = "#F5F5F7";
     const FG = "#1d1d1f";
     // project.logo is the white wordmark, which is what the work tile needs
@@ -409,31 +409,50 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
     // alongside it, rather than inverting the white one with a filter.
     const MARK = "/logos/ecommerce-websites-color.svg";
     const imgs = project.images ?? [];
-    // The frame's own two shots. Frame 1 uses vnext-homepage-1.jpg, which
-    // isn't in the repo and can't be pulled from Figma's asset CDN from here,
-    // so the nearest of Molly's own device composites stands in until she
-    // drops that export in.
-    const shot = imgs.find((i) => /Definition-Device-Home/.test(i.src));
-    const wide = imgs.find((i) => /StFrancis-Device-Category/.test(i.src));
-    const rest = imgs.filter((i) => i !== shot && i !== wide);
-    // Three up per panel, the same rhythm the other case studies use for a
-    // set of screens.
-    const groups: typeof rest[] = [];
-    for (let i = 0; i < rest.length; i += 3) groups.push(rest.slice(i, i + 3));
+    const find = (fragment: string) =>
+      imgs.find((i) => i.src.includes(fragment));
 
-    const Mark = ({ className }: { className: string }) =>
-      project.logo ? (
-        <div className={className}>
-          <Image
-            src={MARK}
-            alt={project.client}
-            fill
-            unoptimized
-            priority
-            className="object-contain object-left"
-          />
-        </div>
-      ) : null;
+    // The strip, in the frame's order, each piece at its drawn size.
+    // `fit` follows how Figma crops the source inside that box: the pieces
+    // whose inner image is scaled well past 100% show their top, the rest
+    // sit centred.
+    const STRIP: { frag: string; w: number; h: number; top?: boolean }[] = [
+      { frag: "web-bombshell", w: 950, h: 633 },
+      { frag: "modernliving2", w: 950, h: 612 },
+      { frag: "web-vestidos", w: 950, h: 633 },
+      { frag: "StFrancis-Device-Home", w: 1241, h: 612 },
+      { frag: "StFrancis-Device-Category", w: 1241, h: 616 },
+      { frag: "web-express", w: 950, h: 633 },
+      { frag: "temptaion", w: 950, h: 597 },
+      { frag: "venetian", w: 1086, h: 643 },
+      { frag: "combi", w: 950, h: 658, top: true },
+      { frag: "52f2bf9d604c0", w: 648, h: 613, top: true },
+      { frag: "web-hillbillystills", w: 950, h: 633 },
+      { frag: "web-pewter", w: 950, h: 633 },
+      // Volusion-StoreShowcase.png sits here in the frame; it isn't in the
+      // project's images yet, so it drops out until its source lands.
+      { frag: "Volusion-StoreShowcase", w: 950, h: 633, top: true },
+      { frag: "web-sweetgrass", w: 950, h: 507 },
+    ];
+    const strip = STRIP.map((piece) => ({
+      ...piece,
+      img: find(piece.frag),
+    })).filter((piece) => piece.img);
+
+    const shot = find("Definition-Device-Home");
+
+    const Mark = ({ className }: { className: string }) => (
+      <div className={className}>
+        <Image
+          src={MARK}
+          alt={project.client}
+          fill
+          unoptimized
+          priority
+          className="object-contain object-left"
+        />
+      </div>
+    );
 
     return (
       <main
@@ -447,86 +466,73 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         <StickyNav
           watch="title"
           logo={
-            project.logo ? (
-              <div className="relative h-7 w-[110px] sm:h-8 sm:w-[130px] lg:h-9 lg:w-[150px]">
-                <Image
-                  src={MARK}
-                  alt={project.client}
-                  fill
-                  unoptimized
-                  className="object-contain object-left"
-                />
-              </div>
-            ) : (
-              <span className="text-sm font-semibold">{project.title}</span>
-            )
+            <div className="relative h-7 w-[110px] sm:h-8 sm:w-[130px] lg:h-9 lg:w-[150px]">
+              <Image
+                src={MARK}
+                alt={project.client}
+                fill
+                unoptimized
+                className="object-contain object-left"
+              />
+            </div>
           }
           action={<CloseLink large className="text-[#1d1d1f]" />}
         />
 
         <HorizontalScroll>
-          {/* ── FRAME 1 — mark, 660x506 shot, 308-wide copy ─────────── */}
+          {/* ── FRAME 1 — mark, 950x609 shot, 265-wide copy ──────────── */}
           <section
             id="title"
             className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
           >
             <Mark className="ecom-mark relative h-[70px] w-full max-w-[300px] sm:h-[90px] sm:max-w-[380px]" />
             {shot && (
-              <SlideIn className="ecom-shot order-2 w-full overflow-hidden rounded-[10px]">
+              <SlideIn className="ecom-shot order-2 w-full">
                 {/* eslint-disable-next-line @next/next/no-img-element -- true
                     source dimensions aren't available (CDN not reachable from
                     the build environment) */}
                 <img
                   src={shot.src}
                   alt={shot.caption || "Ecommerce storefront across devices"}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-center"
                 />
               </SlideIn>
             )}
-            <p className="ecom-copy order-3 max-w-[22rem] text-[1.05rem] leading-[1.45]">
+            <p className="ecom-copy order-3 max-w-[20rem] text-[1.05rem] leading-[1.45]">
               Designing and coding ecommerce websites that seamlessly blend
               beautiful interfaces with robust, scalable functionality.
             </p>
           </section>
 
-          {/* ── FRAME 2 — mark and the 950x493 device spread ─────────── */}
-          <section className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0">
+          {/* ── FRAME 2 — the storefronts as one long strip ───────────── */}
+          <section className="relative flex w-full flex-col gap-10 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-auto lg:shrink-0 lg:snap-start lg:items-center lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0">
             <Mark className="ecom-mark-2 relative h-[54px] w-full max-w-[190px] sm:h-[64px] sm:max-w-[230px]" />
-            {wide && (
-              <SlideIn className="ecom-wide w-full overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element -- see above */}
-                <img
-                  src={wide.src}
-                  alt={wide.caption || "Category page across devices"}
-                  className="h-full w-full object-cover"
-                />
-              </SlideIn>
-            )}
+            <div className="ecom-strip flex w-full flex-col gap-10 lg:w-auto lg:flex-row">
+              {strip.map((piece, i) => (
+                <SlideIn
+                  key={piece.frag}
+                  delay={i % 3 === 0 ? 0 : (i % 3) * 70}
+                  className="ecom-strip-item w-full"
+                  style={
+                    {
+                      "--ew": piece.w,
+                      "--eh": piece.h,
+                    } as React.CSSProperties
+                  }
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element -- see above */}
+                  <img
+                    src={piece.img!.src}
+                    alt={piece.img!.caption || "Ecommerce storefront design"}
+                    loading={i < 2 ? "eager" : "lazy"}
+                    className={`h-full w-full object-cover ${
+                      piece.top ? "object-top" : "object-center"
+                    }`}
+                  />
+                </SlideIn>
+              ))}
+            </div>
           </section>
-
-          {/* ── The rest of the storefronts, three to a panel ────────── */}
-          {groups.map((group, gi) => (
-            <Panel key={`ecom-group-${gi}`} width={VIEW} pad="center">
-              <div className="mx-auto grid w-full max-w-[min(1200px,94vw)] grid-cols-1 items-end gap-8 sm:grid-cols-3 sm:gap-6 lg:gap-8">
-                {group.map((img, i) => (
-                  <SlideIn key={img.src + i} delay={i * 70} className="flex flex-col gap-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element -- see above */}
-                    <img
-                      src={img.src}
-                      alt={img.caption || "Ecommerce storefront design"}
-                      loading="lazy"
-                      className="mx-auto h-auto w-full max-w-[min(360px,calc(var(--panel-media-max-h)*0.62))] object-contain"
-                    />
-                    {img.caption && (
-                      <p className="text-center text-xs text-[#1d1d1f]/60">
-                        {img.caption}
-                      </p>
-                    )}
-                  </SlideIn>
-                ))}
-              </div>
-            </Panel>
-          ))}
 
           {/* No meta panel — same call as Print and Logos. */}
           <NextProjectLink

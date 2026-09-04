@@ -368,25 +368,25 @@ body::before {
   }
 }
 
-/* Ecommerce Websites — Figma 4926:14914, two 1440x1000 frames on #F5F5F7.
+/* Ecommerce Websites — Figma 4926:14914, two frames on #F5F5F7.
    Same construction as the Care.com hero: each child is placed at the
    frame's own fraction of the panel, with its SIZE scaled by --figma-u, so
    the left-edge furniture stays on the left edge at any window shape and
    nothing outgrows a short viewport. Only at lg+, where a panel is a fixed
-   viewport; below that each panel is an ordinary stacked block. */
+   viewport height; below that each panel is an ordinary stacked block.
+   See the note above for why every selector carries `main`. */
 @media (min-width: 1024px) {
   main .ecom-mark,
   main .ecom-mark-2,
   main .ecom-shot,
-  main .ecom-wide,
   main .ecom-copy {
     position: absolute;
     margin: 0;
     max-width: none;
   }
 
-  /* Frame 1 — mark 455x141.365 at 100,112; shot 660x506 at 533,306 with a
-     10 radius; copy 308 wide at 102,741, Jost Regular 18/26. */
+  /* Frame 1 — mark 455x141.365 at 100,112; the Definition device shot
+     950x609 at 435,314; copy 265 wide at 102,741, Jost Regular 18/26. */
   main .ecom-mark {
     left: 6.944%;
     top: 11.2%;
@@ -394,31 +394,51 @@ body::before {
     height: calc(141.365 * var(--figma-u));
   }
   main .ecom-shot {
-    left: 37.014%;
-    top: 30.6%;
-    width: calc(660 * var(--figma-u));
-    height: calc(506 * var(--figma-u));
-    border-radius: calc(10 * var(--figma-u));
+    left: 30.208%;
+    top: 31.4%;
+    width: calc(950 * var(--figma-u));
+    height: calc(609 * var(--figma-u));
   }
   main .ecom-copy {
     left: 7.083%;
     top: 74.1%;
-    width: calc(308 * var(--figma-u));
+    width: calc(265 * var(--figma-u));
     font-size: calc(18 * var(--figma-u));
     line-height: calc(26 * var(--figma-u));
   }
 
-  /* Frame 2 — mark 237x74 at 100,100; shot 950x493 at 100,306. */
+  /* Frame 2 — the mark parks at 100,100 and the storefronts run off to the
+     right as one long strip: the frame's row starts at left 165, sits on the
+     centre line nudged 57 down, and puts 300 between each piece. Each piece
+     keeps its own drawn size, passed in as --ew/--eh, so the strip's rhythm
+     is Figma's rather than one uniform box.
+
+     The strip is in normal flow, not absolutely positioned, because this
+     panel sizes itself to its content — an absolute child would contribute
+     no width and the panel would collapse. */
   main .ecom-mark-2 {
-    left: 6.944%;
+    position: absolute;
+    margin: 0;
+    max-width: none;
+    left: calc(100 * var(--figma-u));
     top: 10%;
     width: calc(237 * var(--figma-u));
     height: calc(74 * var(--figma-u));
   }
-  main .ecom-wide {
-    left: 6.944%;
-    top: 30.6%;
-    width: calc(950 * var(--figma-u));
-    height: calc(493 * var(--figma-u));
+  main .ecom-strip {
+    position: relative;
+    top: calc(57 * var(--figma-u));
+    display: flex;
+    align-items: center;
+    gap: calc(300 * var(--figma-u));
+    padding-inline: calc(165 * var(--figma-u));
+  }
+  main .ecom-strip-item {
+    position: relative;
+    flex: none;
+    width: calc(var(--ew) * var(--figma-u));
+    height: calc(var(--eh) * var(--figma-u));
+    max-width: none;
+    margin: 0;
   }
 }
