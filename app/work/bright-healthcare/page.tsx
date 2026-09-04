@@ -364,31 +364,6 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </Panel>
 
-        {/* The projected numbers, on their own. */}
-        <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
-            <SlideIn>
-              <h3 className={META_LABEL}>
-                Projected Numbers
-              </h3>
-              <ul className="mt-5 grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-x-10 lg:gap-x-12">
-                {meta.projected.map((row) => (
-                  <li key={`${row.value}-${row.label}`}>
-                    <p className="text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
-                      {row.value}
-                    </p>
-                    <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
-                      {row.label}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </SlideIn>
-          </div>
-        </Panel>
-
-        <CaseStudyMetaPanel meta={meta} lightText showProjected={false} />
-
         <Panel width={VIEW} pad="center">
           <div className={`${MEASURE} mx-auto`}>
             <div className="grid gap-10 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
@@ -440,6 +415,10 @@ export default function BrightHealthcareCaseStudy() {
             </div>
           </div>
         </Panel>
+
+        {/* Team / Timing / Tools last, after the numbers — the credits
+            at the end rather than a detour before them. */}
+        <CaseStudyMetaPanel meta={meta} lightText showProjected={false} />
 
         {project.prototype && (
           <Panel width={END_PANEL} pad="center">

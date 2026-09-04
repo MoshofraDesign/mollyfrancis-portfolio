@@ -74,13 +74,12 @@ export const END_PANEL = "lg:w-[min(100vw,530px)]";
  * where the panel is full-bleed, it's what keeps the block from stretching
  * across a tablet.
  *
- * text-center centres the title and the button on one axis. They were
- * left-aligned inside a centred block, so the pair sat off to one side of a
- * panel that is otherwise empty field. The button is inline-flex, so
- * text-align carries it too.
+ * The block is centred in the panel; its contents are not. The title and the
+ * button share a left edge, which is what makes them read as one unit — a
+ * centred title with a centred button under it left the two on different
+ * left edges at every width the title happened to wrap to.
  */
-export const END_MEASURE =
-  "mx-auto w-full max-w-[min(24rem,86vw)] text-center";
+export const END_MEASURE = "mx-auto w-full max-w-[min(24rem,86vw)]";
 
 /**
  * Closing-panel title. Deliberately well below the intro scale — this is a
