@@ -302,9 +302,9 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
               />
             </div>
           ) : null}
-          {project.subtitle ? (
-            <p className={`max-w-[46rem] ${LEDE}`}>{project.subtitle}</p>
-          ) : null}
+          {/* The subtitle isn't rendered here — the blurb below says it
+              better, and the two stacked read as the same sentence twice.
+              It still feeds the work grid tile and the page metadata. */}
           <p className={`max-w-[46rem] text-[#141414]/60 ${LEDE}`}>
             {PRINT_BLURB}
           </p>
