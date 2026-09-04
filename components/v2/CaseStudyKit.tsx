@@ -56,19 +56,21 @@ export const VIEW = "lg:w-screen";
  * each case study. These had drifted apart (full-viewport on GovOS and the
  * generic template, 36rem on Bright and Netspend), so the end of a project
  * landed differently depending on which one you were reading. One value now,
- * for all of them — 500px, per Molly.
+ * for all of them — 600px, per Molly.
  */
-export const END_PANEL = "lg:w-[min(100vw,500px)]";
+export const END_PANEL = "lg:w-[min(100vw,600px)]";
 
 /**
  * The content block on the closing prototype panel. These sections were
  * laying their copy out in the standard 54rem measure — wider than the panel
  * itself — so the title and button filled it edge to edge and the panel's own
- * width never read. 20rem sits inside the 500px panel's padding at every
- * width; below lg, where the panel is full-bleed, it's what keeps the block
- * from stretching across a tablet.
+ * width never read. 24rem sits inside the 600px panel's padding at every
+ * width (600 less the 72px gutters leaves 456) and is wide enough to hold
+ * "Live Figma prototype" on one line at the closing title's 36px; below lg,
+ * where the panel is full-bleed, it's what keeps the block from stretching
+ * across a tablet.
  */
-export const END_MEASURE = "mx-auto w-full max-w-[min(20rem,86vw)]";
+export const END_MEASURE = "mx-auto w-full max-w-[min(24rem,86vw)]";
 
 /**
  * Closing-panel title. Deliberately well below the intro scale — this is a
