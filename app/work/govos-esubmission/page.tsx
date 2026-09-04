@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, NextProjectLink, CaseStudyMetaPanel, END_PANEL } from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, END_MEASURE, NextProjectLink, CaseStudyMetaPanel, END_PANEL } from "@/components/v2/CaseStudyKit";
 
 /**
  * GovOS eSubmission — horizontal case study built to match the Figma deck
@@ -520,7 +520,7 @@ export default function GovOSCaseStudy() {
         {/* 10 — PROTOTYPE */}
         {project.prototype && (
           <Panel width={END_PANEL}>
-            <div className={TEXT_W}>
+            <div className={END_MEASURE}>
               <SlideIn>
                 <h2 className={`text-white ${END_TITLE}`}>The Figma file.</h2>
               </SlideIn>

@@ -27,6 +27,7 @@ import {
   CaseStudyMetaPanel,
   END_PANEL,
   END_TITLE,
+  END_MEASURE,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -624,7 +625,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           const isFigmaFile = /figma\.com\/(design|file)\//.test(project.prototype);
           return (
             <Panel width={END_PANEL} pad="center" className={firstSectionKey === "prototype" ? FIRST_GAP : undefined}>
-              <div className={`${MEASURE} mx-auto`}>
+              <div className={END_MEASURE}>
                 <SlideIn>
                   <h2 className={END_TITLE}>{isFigmaFile ? "Explore the Figma file" : "Live Figma prototype"}</h2>
                 </SlideIn>

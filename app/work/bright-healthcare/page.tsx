@@ -5,7 +5,7 @@ import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
-import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL } from "@/components/v2/CaseStudyKit";
+import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL, END_MEASURE } from "@/components/v2/CaseStudyKit";
 import UcmScreensCarousel from "@/components/UcmScreensCarousel";
 
 export const metadata = {
@@ -398,7 +398,7 @@ export default function BrightHealthcareCaseStudy() {
 
         {project.prototype && (
           <Panel width={END_PANEL} pad="center">
-            <div className={`${MEASURE} mx-auto`}>
+            <div className={END_MEASURE}>
               <SlideIn>
                 <h2 className={`text-white ${END_TITLE}`}>Live Figma prototype</h2>
                 <a

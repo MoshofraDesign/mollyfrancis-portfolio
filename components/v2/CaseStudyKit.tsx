@@ -69,6 +69,15 @@ export const END_PANEL = "lg:w-[min(100vw,800px)]";
  * GovOS and the generic template were on Heading, Bright and Netspend on
  * their own H_DISPLAY step scale; all four share this now.
  */
+/**
+ * The content block on the closing prototype panel. The panel is capped at
+ * 800px (END_PANEL), but these sections were putting their copy in the
+ * standard 54rem measure — wider than the panel itself — so the title and
+ * button filled it edge to edge and the 800 cap was invisible. 30rem sits
+ * comfortably inside the panel's own padding at every width.
+ */
+export const END_MEASURE = "mx-auto w-full max-w-[min(30rem,86vw)]";
+
 export const END_TITLE =
   "font-semibold leading-[1.278] tracking-[-0.02em] text-[1.5rem] sm:text-[1.75rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
 
