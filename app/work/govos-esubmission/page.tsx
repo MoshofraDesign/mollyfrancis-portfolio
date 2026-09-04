@@ -486,8 +486,12 @@ export default function GovOSCaseStudy() {
         </PortraitPanel>
 
         {/* Outcome — before/after metrics */}
-        <Panel width="lg:w-screen">
-          <div className="flex w-full max-w-[950px] flex-col gap-[40px] text-white">
+        {/* Not lg:w-screen — the three stats are a narrow left-aligned stack,
+            so a full-viewport panel left most of the field empty and the
+            section read as far wider than its content. 585 = the 440 the
+            longest value needs plus the panel's own 72 gutters. */}
+        <Panel width="lg:w-[min(100vw,585px)]">
+          <div className="flex w-full max-w-[440px] flex-col gap-[40px] text-white">
             {[
               ["Citizen Completion Rate", "42% to 86%"],
               ["Validation Errors", "34% to 8%"],

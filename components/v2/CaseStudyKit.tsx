@@ -56,9 +56,13 @@ export const VIEW = "lg:w-screen";
  * each case study. These had drifted apart (full-viewport on GovOS and the
  * generic template, 36rem on Bright and Netspend), so the end of a project
  * landed differently depending on which one you were reading. One value now,
- * for all of them — 600px, per Molly.
+ * for all of them. 530px: the copy block is 24rem and the panel's gutters are
+ * 72 a side, so 384 + 144 is the width at which the panel is exactly its
+ * content and nothing reads as empty field. Went 800 -> 500 -> 600 -> 530 as
+ * Molly narrowed it; the last step came from her seeing it still too wide
+ * beside the GovOS numbers panel.
  */
-export const END_PANEL = "lg:w-[min(100vw,600px)]";
+export const END_PANEL = "lg:w-[min(100vw,530px)]";
 
 /**
  * The content block on the closing prototype panel. These sections were
