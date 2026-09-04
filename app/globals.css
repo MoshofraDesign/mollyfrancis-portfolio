@@ -37,6 +37,18 @@
   /* Room left inside a 100dvh panel once the nav band and the panel's own
    * bottom padding are taken out — the ceiling for panel media at lg+. */
   --panel-media-max-h: calc(100dvh - var(--nav-clear) - 3rem);
+
+  /* One unit of the 1440x1000 canvas the case-study frames are drawn on,
+   * scaled by whichever axis is tighter.
+   *
+   * Laying a frame out in percentages of width alone looks right only at
+   * Figma's own 1.44 aspect. On a short wide window — 1390x660, say — a
+   * phone sized at 27.53% of the width computes to 383px across and 670px
+   * tall, taller than the viewport, so it overflowed the panel and painted
+   * straight over the logo and the headline. Scaling by min() instead means
+   * everything shrinks together and the frame's own spacing between the logo
+   * and the artwork is preserved, so they can't collide. */
+  --figma-u: min(100vw / 1440, 100dvh / 1000);
 }
 
 html {
@@ -216,6 +228,73 @@ body::before {
     max-width: 100%;
     margin-inline: auto;
     object-fit: contain;
+  }
+}
+
+/* A panel laid out in Figma's own numbers: a 1440x1000 stage scaled by
+   --figma-u and centred, so the frame keeps its proportions at any window
+   shape. Children are positioned in frame units, e.g.
+   left: calc(410 * var(--figma-u)). Only at lg+, where a panel is a fixed
+   viewport; below that each panel is an ordinary stacked block. */
+@media (min-width: 1024px) {
+  .figma-stage {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    display: block;
+    width: calc(1440 * var(--figma-u));
+    height: calc(1000 * var(--figma-u));
+  }
+
+  /* Care.com hero — Figma 4555:22608 */
+  .care-hero-logo,
+  .care-hero-title,
+  .care-hero-badges,
+  .care-hero-phone-l,
+  .care-hero-phone-r {
+    position: absolute;
+    margin: 0;
+    max-width: none;
+  }
+  .care-hero-logo {
+    left: calc(100 * var(--figma-u));
+    top: calc(100 * var(--figma-u));
+    width: calc(672 * var(--figma-u));
+    height: calc(120 * var(--figma-u));
+  }
+  .care-hero-title {
+    left: calc(831 * var(--figma-u));
+    /* The frame puts it at y=114, which clears the Close control at every
+       ordinary window shape (it ends ~64px down). max() is the belt: below
+       about 560px of viewport height 114 units would ride up into Close, so
+       the headline stops there rather than touching it. */
+    top: max(calc(114 * var(--figma-u)), 76px);
+    width: calc(455 * var(--figma-u));
+    text-align: left;
+    align-self: auto;
+  }
+  .care-hero-title p {
+    font-size: calc(36 * var(--figma-u));
+    line-height: calc(46 * var(--figma-u));
+  }
+  .care-hero-phone-l {
+    left: calc(410 * var(--figma-u));
+    bottom: 0;
+    width: calc(396.5 * var(--figma-u));
+  }
+  .care-hero-phone-r {
+    left: calc(744 * var(--figma-u));
+    bottom: 0;
+    width: calc(407 * var(--figma-u));
+  }
+  .care-hero-badges {
+    left: calc(100 * var(--figma-u));
+    top: calc(877 * var(--figma-u));
+    gap: calc(16 * var(--figma-u));
+  }
+  .care-hero-badges img {
+    width: calc(50 * var(--figma-u));
+    height: calc(50 * var(--figma-u));
   }
 }
 

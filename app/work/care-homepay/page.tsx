@@ -88,11 +88,18 @@ export default function CareHomepayCaseStudy() {
           id="title"
           className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
         >
-          {/* Large logo. Figma 4555:22725 — 672x120 at left:100 top:100 on a
-              1440x1000 frame, i.e. 46.67% wide at 6.94%/10%. It had been
-              sitting at roughly 0.7x that. Width plus the mark's own 672:120
-              ratio gives the height, so it holds at any viewport. */}
-          <div className="relative h-[60px] w-[280px] sm:h-[80px] sm:w-[380px] lg:absolute lg:left-[6.94%] lg:top-[10%] lg:h-auto lg:aspect-[672/120] lg:w-[46.67%] lg:max-w-none">
+          {/* At lg the frame is reproduced on a fitted 1440x1000 stage (see
+              .figma-stage / --figma-u in globals.css) and every child is
+              placed in the frame's own units. Sizing off width alone held
+              only at Figma's 1.44 aspect: on a short wide window the phones
+              computed taller than the viewport and painted over the logo and
+              headline. Scaling the whole stage means they shrink together and
+              the frame's own gap between the mark and the artwork holds, so
+              nothing can cross the logo or Close. `contents` below lg drops
+              the wrapper so the panel stays an ordinary stacked block. */}
+          <div className="contents lg:block figma-stage">
+          {/* Large logo — Figma 4555:22725, 672x120 at 100,100 */}
+          <div className="care-hero-logo relative h-[60px] w-[280px] sm:h-[80px] sm:w-[380px]">
             <Image
               src={LOGO}
               alt="Care.com Homepay"
@@ -108,8 +115,8 @@ export default function CareHomepayCaseStudy() {
               logo, not pinned to the far edge: it had been right-anchored and
               right-aligned at roughly two thirds the size. 2.5vw is the 36px
               read at the 1440 frame width. */}
-          <SlideIn className="self-end max-w-[340px] text-right lg:absolute lg:left-[57.7%] lg:right-auto lg:top-[11.4%] lg:w-[31.6%] lg:max-w-none lg:text-left">
-            <p className="text-xl font-semibold leading-snug text-white sm:text-2xl lg:text-[clamp(1.375rem,2.5vw,3rem)] lg:leading-[1.278]">
+          <SlideIn className="care-hero-title self-end max-w-[340px] text-right">
+            <p className="text-xl font-semibold leading-snug text-white sm:text-2xl">
               Homepay Employee &amp; Employer Payroll App
             </p>
           </SlideIn>
@@ -124,7 +131,7 @@ export default function CareHomepayCaseStudy() {
           <div className="mt-4 flex flex-1 items-end justify-center gap-4 sm:gap-8 lg:mt-0 lg:contents">
             <SlideIn
               delay={80}
-              className="w-[46%] max-w-[280px] lg:absolute lg:bottom-0 lg:left-[28.47%] lg:w-[27.53%] lg:max-w-none"
+              className="care-hero-phone-l w-[46%] max-w-[280px]"
             >
               <Image
                 src={`${ASSET}/phone-hero-left.png`}
@@ -137,7 +144,7 @@ export default function CareHomepayCaseStudy() {
             </SlideIn>
             <SlideIn
               delay={180}
-              className="mt-10 w-[46%] max-w-[280px] sm:mt-16 lg:absolute lg:bottom-0 lg:left-[51.67%] lg:mt-0 lg:w-[28.26%] lg:max-w-none"
+              className="care-hero-phone-r mt-10 w-[46%] max-w-[280px] sm:mt-16"
             >
               <Image
                 src={`${ASSET}/phone-hero-right.png`}
@@ -150,8 +157,8 @@ export default function CareHomepayCaseStudy() {
             </SlideIn>
           </div>
 
-          {/* App store badges — Figma left:100 top:877 */}
-          <div className="mt-6 flex items-center gap-4 lg:absolute lg:bottom-[7.3%] lg:left-[6.94%] lg:mt-0">
+          {/* App store badges — Figma 4555:22844, 50px each at 100,877 */}
+          <div className="care-hero-badges mt-6 flex items-center gap-4">
             <Image
               src={`${ASSET}/google-play.svg`}
               alt="Google Play"
@@ -168,6 +175,7 @@ export default function CareHomepayCaseStudy() {
               unoptimized
               className="size-[50px]"
             />
+          </div>
           </div>
         </section>
 

@@ -11,3 +11,6 @@ logo-thumb.psd
 public/work/govos/submitter-esubmission-laptop.png
 .env*
 _to_delete/
+
+# scratch renders used while checking layout against Figma
+.tmp_preview/
