@@ -277,14 +277,19 @@ body::before {
     font-size: calc(36 * var(--figma-u));
     line-height: calc(46 * var(--figma-u));
   }
+  /* Full-length phones now, so these sit at the frame's own y and run past
+     its bottom edge exactly as Figma draws them (image 39 is 835.5 tall from
+     y=305, so it ends at 1140 on a 1000-tall frame). The panel's
+     overflow-hidden does the clipping. Anchoring the bottom instead was only
+     needed while the exports were pre-cropped. */
   .care-hero-phone-l {
     left: calc(410 * var(--figma-u));
-    bottom: 0;
+    top: calc(305 * var(--figma-u));
     width: calc(396.5 * var(--figma-u));
   }
   .care-hero-phone-r {
     left: calc(744 * var(--figma-u));
-    bottom: 0;
+    top: calc(389 * var(--figma-u));
     width: calc(407 * var(--figma-u));
   }
   .care-hero-badges {
@@ -296,6 +301,100 @@ body::before {
     width: calc(50 * var(--figma-u));
     height: calc(50 * var(--figma-u));
   }
+
+  /* Care.com statement — Figma 4555:22849. Copy at left:100, 950 wide,
+     centred with the frame's +43 nudge. Jost SemiBold 81/95, Regular 32,
+     pill 24. */
+  .care-stmt {
+    position: absolute;
+    left: calc(100 * var(--figma-u));
+    top: calc(50% + 43 * var(--figma-u));
+    transform: translateY(-50%);
+    width: calc(950 * var(--figma-u));
+  }
+  .care-stmt-title {
+    font-size: calc(81 * var(--figma-u));
+    line-height: calc(95 * var(--figma-u));
+  }
+  .care-stmt-body {
+    font-size: calc(32 * var(--figma-u));
+    margin-top: calc(16 * var(--figma-u));
+  }
+  .care-stmt-pill {
+    margin-top: calc(16 * var(--figma-u));
+  }
+  .care-stmt-pill > span {
+    font-size: calc(24 * var(--figma-u));
+    padding: calc(4 * var(--figma-u)) calc(24 * var(--figma-u));
+  }
+
+  /* Care.com video — Figma 4555:22858, 868x688 at 286,211 */
+  .care-video {
+    position: absolute;
+    left: calc(286 * var(--figma-u));
+    top: calc(211 * var(--figma-u));
+    width: calc(868 * var(--figma-u));
+    max-width: none;
+    margin: 0;
+  }
+
+  /* Care.com timesheet screens — Figma 4555:22859, 928x600 at 258,230,
+     three 276-wide screens 50 apart */
+  .care-screens-3 {
+    position: absolute;
+    left: calc(258 * var(--figma-u));
+    top: calc(230 * var(--figma-u));
+    width: calc(928 * var(--figma-u));
+    max-width: none;
+    margin: 0;
+    gap: calc(50 * var(--figma-u));
+  }
+  .care-screens-3 img {
+    max-width: none;
+  }
+
+  /* Care.com messaging + clock — Figma 4555:22862 / 4555:22870. Copy column
+     sits 170 up from the bottom; the screen pair is centred on its own
+     offset from the middle of the frame. The pair is one export 634 wide
+     holding two 277 screens, so it's placed at 634 units. */
+  .care-split-copy {
+    position: absolute;
+    bottom: calc(170 * var(--figma-u));
+    align-items: flex-start;
+    gap: calc(32 * var(--figma-u));
+    max-width: none;
+    margin: 0;
+  }
+  .care-split-copy .care-split-portrait {
+    width: calc(320 * var(--figma-u));
+    height: calc(320 * var(--figma-u));
+  }
+  .care-split-copy .care-split-text {
+    gap: calc(16 * var(--figma-u));
+    text-align: left;
+  }
+  .care-split-copy .care-split-title {
+    font-size: calc(36 * var(--figma-u));
+    line-height: calc(46 * var(--figma-u));
+  }
+  .care-split-copy .care-split-body {
+    font-size: calc(18 * var(--figma-u));
+  }
+  .care-split-screens {
+    position: absolute;
+    top: calc(50% + 30 * var(--figma-u));
+    transform: translate(-50%, -50%);
+    width: calc(634 * var(--figma-u));
+    max-width: none;
+    margin: 0;
+  }
+  .care-split-screens img {
+    max-width: none;
+  }
+  .care-msg-copy   { left: calc(165 * var(--figma-u)); width: calc(368 * var(--figma-u)); }
+  .care-msg-screens{ left: calc(50% + 162.74 * var(--figma-u)); }
+  .care-clock-copy { left: calc(207 * var(--figma-u)); width: calc(320 * var(--figma-u)); }
+  .care-clock-screens { left: calc(50% + 218 * var(--figma-u)); }
 }
 
 /* The site's horizontal rail. One definition for the homepage, resume,
