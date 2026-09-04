@@ -42,48 +42,6 @@ const metrics = [
 ];
 
 /** Two images side by side, full-bleed panel — matches the Figma pairings. */
-/**
- * Two images side by side, each rendered at its own natural aspect ratio
- * (no forced crop box) — width/height should match the source file's real
- * dimensions so Next/Image can reserve the right proportions and the image
- * scales down via w-full/h-auto without ever cropping content.
- */
-function TwoImagePanel({
-  a,
-  b,
-}: {
-  a: { src: string; alt: string; width: number; height: number };
-  b: { src: string; alt: string; width: number; height: number };
-}) {
-  return (
-    <Panel width={VIEW} pad="center" className="items-center">
-      <div className={`mx-auto grid w-full max-w-[min(1400px,94vw)] grid-cols-1 items-center gap-8 sm:grid-cols-2`}>
-        <SlideIn className="flex justify-center">
-          <Image
-            src={a.src}
-            alt={a.alt}
-            width={a.width}
-            height={a.height}
-            sizes="(max-width: 640px) 92vw, 46vw"
-            className="h-auto max-h-[506px] sm:max-h-[540px] md:max-h-[614px] lg:max-h-[432px] xl:max-h-[480px] 2xl:max-h-[540px] w-full rounded-md object-contain"
-          />
-        </SlideIn>
-        <SlideIn delay={100} className="flex justify-center">
-          <Image
-            src={b.src}
-            alt={b.alt}
-            width={b.width}
-            height={b.height}
-            sizes="(max-width: 640px) 92vw, 46vw"
-            className="h-auto max-h-[506px] sm:max-h-[540px] md:max-h-[614px] lg:max-h-[432px] xl:max-h-[480px] 2xl:max-h-[540px] w-full rounded-md object-contain"
-          />
-        </SlideIn>
-      </div>
-    </Panel>
-  );
-}
-
-/** One large image, centered, at its natural aspect ratio — no cropping. */
 function BigImagePanel({
   src,
   alt,
@@ -250,19 +208,15 @@ export default function LivePersonCaseStudy() {
         </TextPanel>
 
         {/* ── AGENT WORKSPACE + ALL CHANNELS ───────────────────────────── */}
-        <TwoImagePanel
-          a={{
-            src: "/work/liveperson/agent-workspace-social-queue.png",
-            alt: "Agent workspace — every social thread lands in one queue, alongside the profile behind it",
-            width: 1280,
-            height: 1125,
-          }}
-          b={{
-            src: "/work/liveperson/all-channels-unified.png",
-            alt: "One surface for every channel — Facebook, Instagram, X, WhatsApp, SMS, and more",
-            width: 1206,
-            height: 915,
-          }}
+        {/* One image, not two: the agent-workspace composite that sat on the
+            left repeats what the public-tweet/private-thread panel above
+            already shows. */}
+        <BigImagePanel
+          src="/work/liveperson/all-channels-unified.png"
+          alt="One surface for every channel — Facebook, Instagram, X, WhatsApp, SMS, and more"
+          width={1206}
+          height={915}
+          maxWidth={1040}
         />
 
         {/* ── SOCIALCONNECT — SELF-SERVICE SETUP ───────────────────────── */}
@@ -298,11 +252,14 @@ export default function LivePersonCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className={`${MEASURE} mx-auto`}>
             <Heading>Impact</Heading>
-            <div className="mt-10 w-full space-y-8">
+            {/* Across, not down — the same shape as every other project's
+                stat row, and it stops four figures needing a full screen of
+                height. */}
+            <div className="mt-10 grid w-full grid-cols-2 gap-8 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-12">
               {metrics.map((m, i) => (
                 <SlideIn key={m.label} delay={120 + i * 90}>
-                  <p className="text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1rem] font-medium opacity-80">{m.label}</p>
-                  <p className="mt-1 text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[2.75rem] 2xl:text-[2.75rem] font-semibold leading-tight">
+                  <p className="text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug opacity-80">{m.label}</p>
+                  <p className="mt-2 text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.1rem] xl:text-[2.3rem] 2xl:text-[2.3rem] font-semibold leading-tight tracking-[-0.03em]">
                     {m.value}
                   </p>
                 </SlideIn>

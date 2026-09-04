@@ -298,7 +298,11 @@ export default function DocSquadCaseStudy() {
 
         {/* 7 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
         <ScreenPanel>
-          <div className="relative aspect-[720/519] w-full max-w-[720px] overflow-hidden rounded-[10px] lg:absolute lg:left-[256px] xl:left-[320px] 2xl:left-[384px] lg:top-[173px] xl:top-[192px] 2xl:top-[216px] lg:h-[374px] xl:h-[415px] 2xl:h-[467px] lg:w-[512px] xl:w-[640px] 2xl:w-[768px] lg:max-w-none lg:aspect-auto">
+          <div /* Centred in the space below the parked mark rather than pinned to a
+                 fixed top: at 1440 the old top of 192 left it 3px under the
+                 mark with 293px of empty field beneath. top-1/2 plus half the
+                 nav band splits that space evenly. A step larger too. */
+              className="relative aspect-[720/519] w-full max-w-[720px] overflow-hidden rounded-[10px] lg:absolute lg:left-[256px] xl:left-[320px] 2xl:left-[384px] lg:top-[calc(50%_+_var(--nav-clear)/2)] lg:h-[437px] xl:h-[484px] 2xl:h-[545px] lg:w-[598px] xl:w-[746px] 2xl:w-[896px] lg:max-w-none lg:aspect-auto lg:-translate-y-1/2">
             <Image
               src={`${ASSET}/icons.png`}
               alt="Custom illustration and icon set for the DocSquad design system"
@@ -326,7 +330,11 @@ export default function DocSquadCaseStudy() {
 
         {/* 9 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at center, top 50%+20 */}
         <ScreenPanel width="lg:w-[min(100vw,59.375rem)]">
-          <div className="relative aspect-square w-[304px] sm:w-[499px] md:w-[599px] lg:w-[600px] overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:top-[calc(50%+20px)] lg:size-[min(39.37vw,600px)] lg:-translate-x-1/2 lg:-translate-y-1/2">
+          <div /* No lg:w-[600px] alongside lg:size-[...]: both are lg utilities of
+                 equal specificity, and w-* won in the bundle, so the box came
+                 out 600 wide by 567 tall — an ellipse under rounded-full.
+                 size-* alone keeps it square. */
+              className="relative aspect-square w-[304px] sm:w-[499px] md:w-[599px] overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:top-[calc(50%+20px)] lg:size-[min(39.37vw,600px)] lg:-translate-x-1/2 lg:-translate-y-1/2">
             <Image
               src={`${ASSET}/portrait.png`}
               alt="A virtual moonlighter clinician"
