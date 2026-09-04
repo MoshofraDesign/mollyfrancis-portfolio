@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { contrastColor } from "@/lib/contrastColor";
 import Image from "next/image";
 import SlideIn from "@/components/SlideIn";
 import {
@@ -288,13 +289,15 @@ export function NextProjectLink({
   /** band only: the host page's own rail, so the copy lines up with it. */
   rail?: string;
 }) {
-  // White type, always. `accent` is now each project's own page background
-  // (the two that had drifted — GovOS #70ACF4 vs its page's #0091CF, and
-  // athenahealth #1A17B7 vs #4800b5 — were corrected in lib/projects.ts), and
-  // the accented case-study pages already set white on their own field, Bright
-  // included: white on #FFAF00 is Molly's own call there, so matching it here
-  // is the consistent choice rather than letting contrastColor flip to ink.
-  const fg = "#ffffff";
+  // Type colour follows the accent rather than being forced white. `accent`
+  // is each project's own page background (the two that had drifted — GovOS
+  // #70ACF4 vs its page's #0091CF, and athenahealth #1A17B7 vs #4800b5 — were
+  // corrected in lib/projects.ts), so nine of the fourteen bands come out
+  // white. The five bright ones — Logos #00EADA, Bright #FFAF00, Ecommerce
+  // #A3CC00, Patient.io #00CCB7, Print #1EB571 — take ink instead: white sits
+  // between 1.5:1 and 2.7:1 on those, and Molly chose to keep the colours
+  // vivid rather than darken them to carry white.
+  const fg = contrastColor(accent);
   const band = variant === "band";
   return (
     <Link
