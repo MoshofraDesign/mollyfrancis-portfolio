@@ -1,5 +1,6 @@
 import { projects } from "@/lib/projects";
-import CareGrid, { WORK_THUMB_SECTION } from "@/components/CareGrid";
+import CareGrid from "@/components/CareGrid";
+import { WORK_THUMB_SECTION } from "@/lib/workGrid";
 import RotatingHero from "@/components/RotatingHero";
 import ScrollToWork from "@/components/ScrollToWork";
 

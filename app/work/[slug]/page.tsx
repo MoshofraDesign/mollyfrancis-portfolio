@@ -9,10 +9,9 @@ import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
 import {
   WORK_THUMB_GRID_CLASS,
-  WORK_THUMB_GRID_STYLE,
   WORK_THUMB_SECTION,
   WORK_THUMB_TILE,
-} from "@/components/CareGrid";
+} from "@/lib/workGrid";
 import {
   MEASURE,
   MEDIA,
@@ -140,7 +139,7 @@ function LogosGridPanel({
 }) {
   return (
     <section className={`${WORK_THUMB_SECTION} pb-16 pt-10 sm:pt-14 lg:pt-[var(--nav-clear)]`}>
-      <div className={WORK_THUMB_GRID_CLASS} style={WORK_THUMB_GRID_STYLE}>
+      <div className={WORK_THUMB_GRID_CLASS}>
         {images.map((img, i) => (
           <figure key={img.src + i} className={WORK_THUMB_TILE}>
             <Image
