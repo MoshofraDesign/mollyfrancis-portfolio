@@ -390,10 +390,18 @@ body::before {
   .care-split-copy .care-split-body {
     font-size: calc(18 * var(--figma-u));
   }
+  /* Positioned by its own edges, deliberately not by 50% + a centring
+   * transform: this sits on a SlideIn, which sets an inline transform to
+   * animate, and an inline transform beats a stylesheet one. The centring
+   * silently never applied — the pair landed 276px from the copy instead of
+   * the frame's 38px and hung 184px past the panel's bottom.
+   *
+   * The export is 634x632 holding the frame's 604x600 pair, so it carries a
+   * 15/16 margin: the frame puts the pair at 580.74,230, which is 565.74,214
+   * for the export. */
   .care-split-screens {
     position: absolute;
-    top: calc(50% + 30 * var(--figma-u));
-    transform: translate(-50%, -50%);
+    top: calc(214 * var(--figma-u));
     width: calc(634 * var(--figma-u));
     max-width: none;
     margin: 0;
@@ -402,9 +410,9 @@ body::before {
     max-width: none;
   }
   .care-msg-copy   { left: calc(165 * var(--figma-u)); width: calc(368 * var(--figma-u)); }
-  .care-msg-screens{ left: calc(50% + 162.74 * var(--figma-u)); }
+  .care-msg-screens{ left: calc(565.74 * var(--figma-u)); }
   .care-clock-copy { left: calc(207 * var(--figma-u)); width: calc(320 * var(--figma-u)); }
-  .care-clock-screens { left: calc(50% + 218 * var(--figma-u)); }
+  .care-clock-screens { left: calc(621 * var(--figma-u)); }
 }
 
 /* The site's horizontal rail. One definition for the homepage, resume,
