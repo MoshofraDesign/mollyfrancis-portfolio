@@ -408,38 +408,27 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
     // over the accent. On this light field use the black cut Molly exported
     // alongside it, rather than inverting the white one with a filter.
     const MARK = "/logos/ecommerce-websites-color.svg";
-    const imgs = project.images ?? [];
-    const find = (fragment: string) =>
-      imgs.find((i) => i.src.includes(fragment));
+    const ASSET = "/work/ecommerce";
 
-    // The strip, in the frame's order, each piece at its drawn size.
-    // `fit` follows how Figma crops the source inside that box: the pieces
-    // whose inner image is scaled well past 100% show their top, the rest
-    // sit centred.
-    const STRIP: { frag: string; w: number; h: number; top?: boolean }[] = [
-      { frag: "web-bombshell", w: 950, h: 633 },
-      { frag: "modernliving2", w: 950, h: 612 },
-      { frag: "web-vestidos", w: 950, h: 633 },
-      { frag: "StFrancis-Device-Home", w: 1241, h: 612 },
-      { frag: "StFrancis-Device-Category", w: 1241, h: 616 },
-      { frag: "web-express", w: 950, h: 633 },
-      { frag: "temptaion", w: 950, h: 597 },
-      { frag: "venetian", w: 1086, h: 643 },
-      { frag: "combi", w: 950, h: 658, top: true },
-      { frag: "52f2bf9d604c0", w: 648, h: 613, top: true },
-      { frag: "web-hillbillystills", w: 950, h: 633 },
-      { frag: "web-pewter", w: 950, h: 633 },
-      // Volusion-StoreShowcase.png sits here in the frame; it isn't in the
-      // project's images yet, so it drops out until its source lands.
-      { frag: "Volusion-StoreShowcase", w: 950, h: 633, top: true },
-      { frag: "web-sweetgrass", w: 950, h: 507 },
+    // Molly exported every piece at the size the frame draws it, so these
+    // dimensions are both the box and the file — no cropping, no guessed
+    // aspect. In the frame's own order.
+    const STRIP: { file: string; alt: string; w: number; h: number }[] = [
+      { file: "bombshell", alt: "Bombshell Bath & Beauty", w: 950, h: 633 },
+      { file: "danish-modern", alt: "Danish Modern Decor & Furniture", w: 950, h: 612 },
+      { file: "vestidos", alt: "Vestidos Clothing", w: 950, h: 633 },
+      { file: "stfrancis-home", alt: "St. Francis — homepage", w: 1241, h: 612 },
+      { file: "stfrancis-category", alt: "St. Francis — dresses category", w: 1241, h: 616 },
+      { file: "artistic-express", alt: "Artistic Express Art Supplies", w: 950, h: 633 },
+      { file: "temptation", alt: "Temptation Bridal Shop", w: 950, h: 597 },
+      { file: "venetian", alt: "The Venetian Point Loma", w: 1086, h: 643 },
+      { file: "combi", alt: "Combi travel systems", w: 950, h: 658 },
+      { file: "real-wasabi", alt: "Real Wasabi", w: 648, h: 613 },
+      { file: "hillbilly-stills", alt: "Hillbilly Stills", w: 950, h: 633 },
+      { file: "pewter", alt: "Pewter home essentials", w: 950, h: 633 },
+      { file: "volusion-showcase", alt: "Volusion Store Showcase", w: 950, h: 633 },
+      { file: "sweetgrass", alt: "Sweet Grass Farm", w: 950, h: 507 },
     ];
-    const strip = STRIP.map((piece) => ({
-      ...piece,
-      img: find(piece.frag),
-    })).filter((piece) => piece.img);
-
-    const shot = find("Definition-Device-Home");
 
     const Mark = ({ className }: { className: string }) => (
       <div className={className}>
@@ -486,18 +475,17 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
           >
             <Mark className="ecom-mark relative h-[70px] w-full max-w-[300px] sm:h-[90px] sm:max-w-[380px]" />
-            {shot && (
-              <SlideIn className="ecom-shot order-2 w-full">
-                {/* eslint-disable-next-line @next/next/no-img-element -- true
-                    source dimensions aren't available (CDN not reachable from
-                    the build environment) */}
-                <img
-                  src={shot.src}
-                  alt={shot.caption || "Ecommerce storefront across devices"}
-                  className="h-full w-full object-cover object-center"
-                />
-              </SlideIn>
-            )}
+            <SlideIn className="ecom-shot order-2 w-full">
+              <Image
+                src={`${ASSET}/definition-home.webp`}
+                alt="Definition — 2014 summer collection across devices"
+                width={950}
+                height={609}
+                priority
+                sizes="(min-width: 1024px) 950px, 100vw"
+                className="h-auto w-full lg:h-full lg:object-cover"
+              />
+            </SlideIn>
             <p className="ecom-copy order-3 max-w-[20rem] text-[1.05rem] leading-[1.45]">
               Designing and coding ecommerce websites that seamlessly blend
               beautiful interfaces with robust, scalable functionality.
@@ -508,26 +496,23 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           <section className="relative flex w-full flex-col gap-10 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-auto lg:shrink-0 lg:snap-start lg:items-center lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0">
             <Mark className="ecom-mark-2 relative h-[54px] w-full max-w-[190px] sm:h-[64px] sm:max-w-[230px]" />
             <div className="ecom-strip flex w-full flex-col gap-10 lg:w-auto lg:flex-row">
-              {strip.map((piece, i) => (
+              {STRIP.map((piece, i) => (
                 <SlideIn
-                  key={piece.frag}
-                  delay={i % 3 === 0 ? 0 : (i % 3) * 70}
+                  key={piece.file}
+                  delay={i < 2 ? i * 80 : 0}
                   className="ecom-strip-item w-full"
                   style={
-                    {
-                      "--ew": piece.w,
-                      "--eh": piece.h,
-                    } as React.CSSProperties
+                    { "--ew": piece.w, "--eh": piece.h } as React.CSSProperties
                   }
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element -- see above */}
-                  <img
-                    src={piece.img!.src}
-                    alt={piece.img!.caption || "Ecommerce storefront design"}
-                    loading={i < 2 ? "eager" : "lazy"}
-                    className={`h-full w-full object-cover ${
-                      piece.top ? "object-top" : "object-center"
-                    }`}
+                  <Image
+                    src={`${ASSET}/${piece.file}.webp`}
+                    alt={piece.alt}
+                    width={piece.w}
+                    height={piece.h}
+                    priority={i === 0}
+                    sizes="(min-width: 1024px) 1000px, 100vw"
+                    className="h-auto w-full lg:h-full lg:object-cover"
                   />
                 </SlideIn>
               ))}
