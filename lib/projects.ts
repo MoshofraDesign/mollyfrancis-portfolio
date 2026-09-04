@@ -656,7 +656,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/ecommerce-websites-raw.webp",
     logo: "/logos/ecommerce-websites.svg",
     logoScale: 0.75,
-    accent: "#A3CC00",
+    accent: "#F05844",
     aiSummary:
       "A gallery of Volusion ecommerce designs — each started with a client phone call to align on look, feel, and merchandising goals, plus a set of paid templates flexible enough that clients could swap their own imagery and brand colors without breaking the design.",
     overview:
