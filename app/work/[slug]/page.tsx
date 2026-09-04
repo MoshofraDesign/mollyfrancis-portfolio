@@ -133,12 +133,20 @@ function ImageGridPanel({
 
 /**
  * The lede paragraph on the two gallery-style pages — the Logos overview and
- * the Print blurb. Two steps up from the 1.05rem body ladder they were on
- * (16.8px, which read small under those big marks), so 21.6px at a laptop
- * width and 28px once there's room. Both pages share it, which is what keeps
- * the two openings the same size.
+ * the Print blurb. Up from the 1.05rem body ladder they were on (16.8px,
+ * which read small under those big marks) but back a step from the 1.35/1.75
+ * it briefly carried: 19.2px at a laptop width, 24px once there's room.
+ * Leading opens slightly as the size comes down. Both pages share the token,
+ * which is what keeps the two openings the same size.
  */
-const LEDE = "text-[clamp(1.35rem,1.8vw,1.75rem)] leading-[1.4] [text-wrap:pretty]";
+const LEDE = "text-[clamp(1.2rem,1.6vw,1.5rem)] leading-[1.45] [text-wrap:pretty]";
+/**
+ * ...and the column it sits in. One width for both pages: Logos was on
+ * 36rem and Print on 46rem, so the two openings didn't line up, and at
+ * 36rem the Logos paragraph ran about 48 characters a line — under the 45-75
+ * a measure wants. 50rem puts both at roughly 66.
+ */
+const LEDE_W = "max-w-[50rem]";
 
 /**
  * Logos project only — square tiles matching the homepage work grid
@@ -305,7 +313,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           {/* The subtitle isn't rendered here — the blurb below says it
               better, and the two stacked read as the same sentence twice.
               It still feeds the work grid tile and the page metadata. */}
-          <p className={`max-w-[46rem] ${LEDE}`}>
+          <p className={`${LEDE_W} ${LEDE}`}>
             {PRINT_BLURB}
           </p>
         </section>
@@ -374,7 +382,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             </div>
           ) : null}
           {project.overview ? (
-            <p className={`max-w-[36rem] ${LEDE}`}>{project.overview}</p>
+            <p className={`${LEDE_W} ${LEDE}`}>{project.overview}</p>
           ) : null}
         </section>
 
