@@ -186,7 +186,7 @@ function TitlePanel({
       id="title"
       className="relative flex w-full flex-col md:flex-row md:items-center lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:overflow-y-auto lg:overscroll-contain"
     >
-      <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[40%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-12 lg:pt-11">
+      <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[40%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-[100px] lg:pt-11">
         {project.logo ? (
           <div
             className={
@@ -493,8 +493,10 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           </section>
 
           {/* ── FRAME 2 — the storefronts as one long strip ───────────── */}
-          <section className="relative flex w-full flex-col gap-10 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-auto lg:shrink-0 lg:snap-start lg:items-center lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0">
-            <Mark className="ecom-mark-2 relative h-[54px] w-full max-w-[190px] sm:h-[64px] sm:max-w-[230px]" />
+          <section className="relative flex w-full flex-col gap-10 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-auto lg:shrink-0 lg:snap-start lg:items-center lg:justify-center lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0">
+            {/* No wordmark repeated here — the sticky nav carries it once
+                you're past the title panel, and two marks read as a
+                duplicate rather than as a second frame. */}
             <div className="ecom-strip flex w-full flex-col gap-10 lg:w-auto lg:flex-row">
               {STRIP.map((piece, i) => (
                 <SlideIn

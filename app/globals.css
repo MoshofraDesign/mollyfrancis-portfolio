@@ -269,7 +269,7 @@ body::before {
 
   /* 100,100 on the frame. */
   main .care-hero-logo {
-    left: 6.944%;
+    left: 100px;
     top: 10%;
     width: calc(672 * var(--figma-u));
     height: calc(120 * var(--figma-u));
@@ -307,7 +307,7 @@ body::before {
 
   /* 100,877. */
   main .care-hero-badges {
-    left: 6.944%;
+    left: 100px;
     top: 87.7%;
     gap: calc(16 * var(--figma-u));
   }
@@ -377,7 +377,6 @@ body::before {
    See the note above for why every selector carries `main`. */
 @media (min-width: 1024px) {
   main .ecom-mark,
-  main .ecom-mark-2,
   main .ecom-shot,
   main .ecom-copy {
     position: absolute;
@@ -388,7 +387,7 @@ body::before {
   /* Frame 1 — mark 455x141.365 at 100,112; the Definition device shot
      950x609 at 435,314; copy 265 wide at 102,741, Jost Regular 18/26. */
   main .ecom-mark {
-    left: 6.944%;
+    left: 100px;
     top: 11.2%;
     width: calc(455 * var(--figma-u));
     height: calc(141.365 * var(--figma-u));
@@ -400,7 +399,7 @@ body::before {
     height: calc(609 * var(--figma-u));
   }
   main .ecom-copy {
-    left: 7.083%;
+    left: 100px;
     top: 74.1%;
     width: calc(265 * var(--figma-u));
     font-size: calc(18 * var(--figma-u));
@@ -416,15 +415,6 @@ body::before {
      The strip is in normal flow, not absolutely positioned, because this
      panel sizes itself to its content — an absolute child would contribute
      no width and the panel would collapse. */
-  main .ecom-mark-2 {
-    position: absolute;
-    margin: 0;
-    max-width: none;
-    left: calc(100 * var(--figma-u));
-    top: 10%;
-    width: calc(237 * var(--figma-u));
-    height: calc(74 * var(--figma-u));
-  }
   main .ecom-strip {
     position: relative;
     top: calc(57 * var(--figma-u));

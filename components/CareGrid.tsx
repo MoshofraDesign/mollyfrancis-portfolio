@@ -68,12 +68,15 @@ export default function CareGrid({ projects }: Props) {
 
           {/* Hover state: title + subtitle, left-aligned and vertically
               centered in the tile, with sizes that step down at each
-              breakpoint rather than scaling continuously. */}
+              breakpoint rather than scaling continuously. Leading is set
+              per line rather than left on `leading-relaxed`: at the 20px
+              subtitle that was 32.5px of line height, which read as a gap
+              between lines rather than a paragraph. */}
           <div className="absolute inset-0 flex flex-col justify-center p-6 text-left opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 sm:p-8">
             <p className="font-jost text-lg font-bold leading-[1.15] text-white sm:text-xl md:text-2xl lg:text-[28px]">
               {project.title}
             </p>
-            <p className="mt-2 max-w-[36ch] font-jost text-sm leading-relaxed text-white/85 sm:mt-3 sm:text-base md:text-lg lg:text-[20px]">
+            <p className="mt-2 max-w-[36ch] font-jost text-sm leading-[1.3] text-white/85 sm:mt-3 sm:text-base md:text-lg lg:text-[20px]">
               {project.subtitle}
             </p>
           </div>

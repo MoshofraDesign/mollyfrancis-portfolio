@@ -154,7 +154,7 @@ export default function LivePersonCaseStudy() {
           className="relative flex w-full flex-col gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pt-0"
         >
           {/* Logo — Figma: 100,100, 668×106 */}
-          <div className="relative h-10 w-[220px] sm:h-14 sm:w-[300px] lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-[71px] xl:top-[89px] 2xl:top-[107px] lg:h-[75px] xl:h-[94px] 2xl:h-[113px] lg:w-[475px] xl:w-[594px] 2xl:w-[713px] lg:max-w-[668px]">
+          <div className="relative h-10 w-[220px] sm:h-14 sm:w-[300px] lg:absolute lg:left-[100px] lg:top-[71px] xl:top-[89px] 2xl:top-[107px] lg:h-[75px] xl:h-[94px] 2xl:h-[113px] lg:w-[475px] xl:w-[594px] 2xl:w-[713px] lg:max-w-[668px]">
             <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
           </div>
 
@@ -166,7 +166,7 @@ export default function LivePersonCaseStudy() {
           <div className="mt-8 flex flex-1 items-end gap-4 sm:gap-8 lg:mt-0 lg:block lg:h-full">
             {/* Phone mock — Figma: 100,360, 640×640, flush to the frame's
                 bottom edge (no gap below it at all). */}
-            <SlideIn className="w-[48%] max-w-[380px] shrink-0 self-end lg:absolute lg:bottom-0 lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[455px] xl:w-[568px] 2xl:w-[682px] lg:max-w-[640px]">
+            <SlideIn className="w-[48%] max-w-[380px] shrink-0 self-end lg:absolute lg:bottom-0 lg:left-[100px] lg:w-[455px] xl:w-[568px] 2xl:w-[682px] lg:max-w-[640px]">
               <Image
                 src="/work/liveperson/homeco-conversational-commerce.png"
                 alt="Conversational commerce example inside LiveEngage"

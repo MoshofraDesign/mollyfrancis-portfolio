@@ -73,7 +73,7 @@ export default function BrightHealthcareCaseStudy() {
           className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
           {/* Logo — Figma 4553:22296: 100,100 / 720×117 on a 1440×1000 frame */}
-          <div className="relative z-10 w-[min(100%,720px)] aspect-[720/117] lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-[72px] xl:top-[80px] 2xl:top-[90px] lg:w-[min(50vw,720px)]">
+          <div className="relative z-10 w-[min(100%,720px)] aspect-[720/117] lg:absolute lg:left-[100px] lg:top-[72px] xl:top-[80px] 2xl:top-[90px] lg:w-[min(50vw,720px)]">
             <Image
               src={LOGO}
               alt="Bright HealthCare"

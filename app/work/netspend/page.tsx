@@ -72,7 +72,7 @@ export default function NetspendCaseStudy() {
           className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-6 sm:px-10 lg:h-[100dvh] lg:w-[100dvw] lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
           {/* Large logo — same left/top anchor; height-driven so the wordmark never clips */}
-          <div className="relative z-10 h-[52px] w-[min(100%,20rem)] sm:h-[60px] sm:w-[22.5rem] lg:absolute lg:left-[6.94%] lg:top-[10%] lg:h-[72px] lg:w-[min(680px,47vw)]">
+          <div className="relative z-10 h-[52px] w-[min(100%,20rem)] sm:h-[60px] sm:w-[22.5rem] lg:absolute lg:left-[100px] lg:top-[10%] lg:h-[72px] lg:w-[min(680px,47vw)]">
             <Image
               src={LOGO}
               alt="Netspend"
@@ -99,7 +99,7 @@ export default function NetspendCaseStudy() {
           </div>
 
           {/* Badges + copy — one block on mobile so they can’t overlap */}
-          <div className="relative z-10 flex flex-col gap-5 lg:absolute lg:bottom-[10.3%] lg:left-[6.94%] lg:z-10 lg:w-[308px] lg:gap-8">
+          <div className="relative z-10 flex flex-col gap-5 lg:absolute lg:bottom-[10.3%] lg:left-[100px] lg:z-10 lg:w-[308px] lg:gap-8">
             <div className="flex items-center gap-4">
               <Image
                 src={`${ASSET}/google-play.svg`}

@@ -363,15 +363,14 @@ export default function GovOSCaseStudy() {
           className="relative flex w-full flex-col md:flex-row md:items-center lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:overflow-y-auto lg:overscroll-contain"
         >
           {/* Padding matches the fixed nav's logo inset (pl-5/sm:pl-8/
-              lg:pl-12, py-5/sm:py-7) so the large logo sits exactly where
-              the small one fades/slides in — intentionally tighter than the
-              other sections' text columns (pl-[100px]), same as the small
-              logo once parked. h-full + justify-between (pinning the logo
+              py-5/sm:py-7). The left inset is 100px at lg now, matching
+              every other project's hero mark — which means it no longer
+              lines up with the small logo's parked 48px as it fades in. h-full + justify-between (pinning the logo
               to the top and copy to the bottom) only makes sense once the
               section itself has a definite height, i.e. lg+ — below that
               it's a normal auto-height column and the two just stack with
               their own gap. */}
-          <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[38%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-12 lg:pt-11">
+          <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[38%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-[100px] lg:pt-11">
             <Image
               src="/work/govos/govos-logo-white.svg"
               alt="GovOS"
