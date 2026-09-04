@@ -12,6 +12,9 @@ export type Project = {
   // the homepage grid tile — see CareGrid. Falls back to no mark at all
   // (never rendered HTML text) if unset.
   logo?: string;
+  /** A wider cut of the mark, for the Up next band where a stacked lockup
+   *  reads too small next to the wordmarks. Falls back to `logo`. */
+  logoWide?: string;
   // Per-project size multiplier for the thumbnail logo (CareGrid), since
   // logo aspect ratios vary a lot — defaults to 1 when unset.
   logoScale?: number;
@@ -550,6 +553,7 @@ export const projects: Project[] = [
     tags: ["Ecommerce", "Dashboard", "SaaS"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
     logo: "/logos/volusion.svg",
+    logoWide: "/logos/volusion-horizontal.svg",
     accent: "#8759F2",
     aiSummary:
       "Redesigned the admin used by Volusion's merchant base — order management, catalog, marketing, and storefront tools. Defined patterns for data-heavy tables, bulk actions, and a navigation that scaled as the product added modules.",

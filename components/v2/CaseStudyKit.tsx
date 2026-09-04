@@ -340,16 +340,22 @@ export function NextProjectLink({
           Up next — {client}
         </p>
         {logo && (
-          /* The marks in /logos are white cuts, so on the five light accents
-             — where contrastColor picks ink for the type — the mark needs
-             inverting to near-black or it disappears into the field. */
+          /* Sized so the width cap governs, not the height. The marks range
+             from 1.9 to 9.4 in aspect, so a height cap made the stacked
+             lockups (Logos, Print, Volusion, eCommerce) come out half the
+             size of the wordmarks, which were hitting the width cap. At
+             lg:h-14 every mark lands between 108 and 200px wide.
+
+             They're white cuts, so on the light accents — where
+             contrastColor picks ink for the type — the mark is inverted to
+             near-black or it disappears into the field. */
           <Image
             src={logo}
             alt={client}
             width={320}
             height={80}
             unoptimized
-            className={`mt-4 h-6 w-auto max-w-[150px] object-contain object-left lg:mt-5 lg:h-7 lg:max-w-[180px] ${
+            className={`mt-4 h-10 w-auto max-w-[170px] object-contain object-left lg:mt-5 lg:h-14 lg:max-w-[200px] ${
               fg === "#141414" ? "[filter:brightness(0)_invert(8%)]" : ""
             }`}
           />

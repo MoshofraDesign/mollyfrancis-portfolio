@@ -389,7 +389,7 @@ export default function DocSquadCaseStudy() {
           client={next.client}
           title={next.title}
           accent={next.accent}
-          logo={next.logo}
+          logo={next.logoWide ?? next.logo}
         />
       </HorizontalScroll>
     </main>
