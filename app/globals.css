@@ -231,22 +231,20 @@ body::before {
   }
 }
 
-/* A panel laid out in Figma's own numbers: a 1440x1000 stage scaled by
-   --figma-u and centred, so the frame keeps its proportions at any window
-   shape. Children are positioned in frame units, e.g.
-   left: calc(410 * var(--figma-u)). Only at lg+, where a panel is a fixed
-   viewport; below that each panel is an ordinary stacked block. */
-@media (min-width: 1024px) {
-  .figma-stage {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    display: block;
-    width: calc(1440 * var(--figma-u));
-    height: calc(1000 * var(--figma-u));
-  }
+/* Care.com hero — Figma 4555:22608, laid out the way the Netspend hero is:
+   every child absolutely placed at the frame's own fraction of the panel
+   (100/1440 = 6.944%), with its SIZE scaled by --figma-u so nothing can
+   outgrow a short window.
 
-  /* Care.com hero — Figma 4555:22608 */
+   It used to sit on a centred 1440x1000 stage. That held the frame's
+   proportions, but a panel wider than 1.44:1 letterboxed it: at 1950x790 the
+   stage was only 1138 wide, so 406px of dead space each side pushed the
+   wordmark and the store badges inward and left the whole frame floating in
+   the middle of the window. Positioning by fraction stretches the frame to
+   the panel instead, so the left-edge furniture stays on the left edge at any
+   window shape — and because the sizes still come from --figma-u, the phones
+   shrink with the viewport rather than climbing into the logo or Close. */
+@media (min-width: 1024px) {
   .care-hero-logo,
   .care-hero-title,
   .care-hero-badges,
@@ -257,29 +255,22 @@ body::before {
     max-width: none;
   }
 
-  /* The logo and the store badges hang off the panel, not the stage.
-   *
-   * The stage is centred, so on a window wider than the frame's 1.44 aspect
-   * it letterboxes — at 1390x660 it's only 950 wide, which left 220px of dead
-   * space each side and pushed the logo 286px in from the window edge instead
-   * of the ~66px the frame intends. These two are the frame's left-edge
-   * furniture, so they keep the scaled 100-unit inset measured from the
-   * panel edge. Their vertical position still tracks the stage:
-   * 50% - 500u puts us at the stage's top, then the frame's own y. */
+  /* 100,100 on the frame. */
   .care-hero-logo {
-    left: calc(100 * var(--figma-u));
-    top: calc(50% - 400 * var(--figma-u));
+    left: 6.944%;
+    top: 10%;
     width: calc(672 * var(--figma-u));
     height: calc(120 * var(--figma-u));
   }
+
+  /* 831,114 — just right of the wordmark, left-aligned, 455 wide.
+     max() is the belt: below roughly 660px of viewport height 11.4% would
+     ride up into the Close control, which ends about 64px down, so the
+     headline stops at 76px rather than touching it. */
   .care-hero-title {
-    left: calc(831 * var(--figma-u));
-    /* The frame puts it at y=114, which clears the Close control at every
-       ordinary window shape (it ends ~64px down). max() is the belt: below
-       about 560px of viewport height 114 units would ride up into Close, so
-       the headline stops there rather than touching it. */
-    top: max(calc(114 * var(--figma-u)), 76px);
-    width: calc(455 * var(--figma-u));
+    left: 57.708%;
+    top: max(11.4%, 76px);
+    width: 31.597%;
     text-align: left;
     align-self: auto;
   }
@@ -287,132 +278,31 @@ body::before {
     font-size: calc(36 * var(--figma-u));
     line-height: calc(46 * var(--figma-u));
   }
-  /* Full-length phones now, so these sit at the frame's own y and run past
-     its bottom edge exactly as Figma draws them (image 39 is 835.5 tall from
-     y=305, so it ends at 1140 on a 1000-tall frame). The panel's
-     overflow-hidden does the clipping. Anchoring the bottom instead was only
-     needed while the exports were pre-cropped. */
+
+  /* 410,305 and 744,389. Full-length exports, so they run past the frame's
+     bottom edge exactly as Figma draws them and the panel's overflow-hidden
+     does the clipping. */
   .care-hero-phone-l {
-    left: calc(410 * var(--figma-u));
-    top: calc(305 * var(--figma-u));
+    left: 28.472%;
+    top: 30.5%;
     width: calc(396.5 * var(--figma-u));
   }
   .care-hero-phone-r {
-    left: calc(744 * var(--figma-u));
-    top: calc(389 * var(--figma-u));
+    left: 51.667%;
+    top: 38.9%;
     width: calc(407 * var(--figma-u));
   }
+
+  /* 100,877. */
   .care-hero-badges {
-    left: calc(100 * var(--figma-u));
-    top: calc(50% + 377 * var(--figma-u));
+    left: 6.944%;
+    top: 87.7%;
     gap: calc(16 * var(--figma-u));
   }
   .care-hero-badges img {
     width: calc(50 * var(--figma-u));
     height: calc(50 * var(--figma-u));
   }
-
-  /* Care.com statement — Figma 4555:22849. Copy at left:100, 950 wide,
-     centred with the frame's +43 nudge. Jost SemiBold 81/95, Regular 32,
-     pill 24. */
-  .care-stmt {
-    position: absolute;
-    left: calc(100 * var(--figma-u));
-    top: calc(50% + 43 * var(--figma-u));
-    transform: translateY(-50%);
-    width: calc(950 * var(--figma-u));
-  }
-  .care-stmt-title {
-    font-size: calc(81 * var(--figma-u));
-    line-height: calc(95 * var(--figma-u));
-  }
-  .care-stmt-body {
-    font-size: calc(32 * var(--figma-u));
-    margin-top: calc(16 * var(--figma-u));
-  }
-  .care-stmt-pill {
-    margin-top: calc(16 * var(--figma-u));
-  }
-  .care-stmt-pill > span {
-    font-size: calc(24 * var(--figma-u));
-    padding: calc(4 * var(--figma-u)) calc(24 * var(--figma-u));
-  }
-
-  /* Care.com video — Figma 4555:22858, 868x688 at 286,211 */
-  .care-video {
-    position: absolute;
-    left: calc(286 * var(--figma-u));
-    top: calc(211 * var(--figma-u));
-    width: calc(868 * var(--figma-u));
-    max-width: none;
-    margin: 0;
-  }
-
-  /* Care.com timesheet screens — Figma 4555:22859, 928x600 at 258,230,
-     three 276-wide screens 50 apart */
-  .care-screens-3 {
-    position: absolute;
-    left: calc(258 * var(--figma-u));
-    top: calc(230 * var(--figma-u));
-    width: calc(928 * var(--figma-u));
-    max-width: none;
-    margin: 0;
-    gap: calc(50 * var(--figma-u));
-  }
-  .care-screens-3 img {
-    max-width: none;
-  }
-
-  /* Care.com messaging + clock — Figma 4555:22862 / 4555:22870. Copy column
-     sits 170 up from the bottom; the screen pair is centred on its own
-     offset from the middle of the frame. The pair is one export 634 wide
-     holding two 277 screens, so it's placed at 634 units. */
-  .care-split-copy {
-    position: absolute;
-    bottom: calc(170 * var(--figma-u));
-    align-items: flex-start;
-    gap: calc(32 * var(--figma-u));
-    max-width: none;
-    margin: 0;
-  }
-  .care-split-copy .care-split-portrait {
-    width: calc(320 * var(--figma-u));
-    height: calc(320 * var(--figma-u));
-  }
-  .care-split-copy .care-split-text {
-    gap: calc(16 * var(--figma-u));
-    text-align: left;
-  }
-  .care-split-copy .care-split-title {
-    font-size: calc(36 * var(--figma-u));
-    line-height: calc(46 * var(--figma-u));
-  }
-  .care-split-copy .care-split-body {
-    font-size: calc(18 * var(--figma-u));
-  }
-  /* Positioned by its own edges, deliberately not by 50% + a centring
-   * transform: this sits on a SlideIn, which sets an inline transform to
-   * animate, and an inline transform beats a stylesheet one. The centring
-   * silently never applied — the pair landed 276px from the copy instead of
-   * the frame's 38px and hung 184px past the panel's bottom.
-   *
-   * The export is 634x632 holding the frame's 604x600 pair, so it carries a
-   * 15/16 margin: the frame puts the pair at 580.74,230, which is 565.74,214
-   * for the export. */
-  .care-split-screens {
-    position: absolute;
-    top: calc(214 * var(--figma-u));
-    width: calc(634 * var(--figma-u));
-    max-width: none;
-    margin: 0;
-  }
-  .care-split-screens img {
-    max-width: none;
-  }
-  .care-msg-copy   { left: calc(165 * var(--figma-u)); width: calc(368 * var(--figma-u)); }
-  .care-msg-screens{ left: calc(565.74 * var(--figma-u)); }
-  .care-clock-copy { left: calc(207 * var(--figma-u)); width: calc(320 * var(--figma-u)); }
-  .care-clock-screens { left: calc(621 * var(--figma-u)); }
 }
 
 /* The site's horizontal rail. One definition for the homepage, resume,

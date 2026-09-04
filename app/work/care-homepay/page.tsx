@@ -7,7 +7,14 @@ import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
 import { contrastColor } from "@/lib/contrastColor";
-import { GUTTER, NAV_CLEAR, INTRO_TITLE, INTRO_SUBTEXT, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import {
+  Panel,
+  INTRO_TITLE,
+  INTRO_SUBTEXT,
+  NextProjectLink,
+  CaseStudyMetaPanel,
+  VIEW,
+} from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Homepay Payroll — Care.com — Molly Francis",
@@ -25,26 +32,11 @@ const jost = Jost({
 const ACCENT = "#025747";
 const LOGO = "/logos/care-homepay.svg";
 const ASSET = "/work/care-homepay";
-
-
-/** Shared outer wrapper — full viewport, equal fluid padding, centered content */
-function Panel({
-  children,
-  width = "lg:w-screen",
-  className = "",
-}: {
-  children: React.ReactNode;
-  width?: string;
-  className?: string;
-}) {
-  return (
-    <section
-      className={`relative flex w-full flex-col items-center overflow-hidden ${GUTTER} ${NAV_CLEAR} lg:h-[100dvh] lg:shrink-0 lg:snap-start lg:justify-center lg:overflow-y-auto ${width} ${className}`}
-    >
-      {children}
-    </section>
-  );
-}
+/** Section heading on the two split panels — Figma's 36/46, one scale. */
+const SPLIT_TITLE =
+  "font-semibold leading-[1.278] text-[1.5rem] sm:text-[1.75rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
+const SPLIT_BODY =
+  "leading-[1.35] text-[1.05rem] lg:text-[clamp(1.05rem,1.25vw,1.125rem)]";
 
 export default function CareHomepayCaseStudy() {
   const project = getProject("care-homepay");
@@ -52,6 +44,27 @@ export default function CareHomepayCaseStudy() {
   const next = projects[(idx + 1) % projects.length];
   const fg = contrastColor(ACCENT);
   if (!project) return null;
+
+  const splits = [
+    {
+      key: "messaging",
+      title: "Secure Messaging",
+      body: "Messaging between employee and employer apps, to easily respond and keep track of important dates and communications.",
+      portrait: `${ASSET}/portrait-messaging.png`,
+      portraitAlt: "Caregiver using secure messaging",
+      screens: `${ASSET}/screens-messaging.png`,
+      screensAlt: "Secure messaging — inbox and conversation",
+    },
+    {
+      key: "clock",
+      title: "Clock In and Out",
+      body: "Easily clock in and out to accurately track hours worked, so your pay is always correct and on time.",
+      portrait: `${ASSET}/portrait-clock.png`,
+      portraitAlt: "Employee clocking in",
+      screens: `${ASSET}/screens-clock.png`,
+      screensAlt: "Clock in and out — map and start shift",
+    },
+  ];
 
   return (
     <main
@@ -81,22 +94,17 @@ export default function CareHomepayCaseStudy() {
       <HorizontalScroll>
 
         {/* ── PANEL 1: HERO — Figma 4555:22608
-            Logo 100×100 → 474×112, headline at left:636,
-            left phone inset 28.3%/30.28%, right phone 39.2%/54.31%,
-            store badges at left:100 top:877. */}
+            Built like the Netspend hero: each child is absolutely placed at
+            the frame's own fraction of the panel (see .care-hero-* in
+            globals.css), so the wordmark and the store badges stay on the
+            panel's left edge instead of drifting inward with a centred stage.
+            Sizes still scale by --figma-u, which is what keeps the phones
+            from ever climbing into the logo or the Close control. Below lg
+            the order-* classes stack it: logo, headline, phones, badges. */}
         <section
           id="title"
           className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
         >
-          {/* At lg the frame is reproduced on a fitted 1440x1000 stage (see
-              .figma-stage / --figma-u in globals.css) and every child is
-              placed in the frame's own units. Sizing off width alone held
-              only at Figma's 1.44 aspect: on a short wide window the phones
-              computed taller than the viewport and painted over the logo and
-              headline. Scaling the whole stage means they shrink together and
-              the frame's own gap between the mark and the artwork holds, so
-              nothing can cross the logo or Close. `contents` below lg drops
-              the wrapper so the panel stays an ordinary stacked block. */}
           {/* Large logo — Figma 4555:22725, 672x120 at 100,100 */}
           <div className="care-hero-logo order-1 relative h-[60px] w-[280px] sm:h-[80px] sm:w-[380px]">
             <Image
@@ -128,25 +136,18 @@ export default function CareHomepayCaseStudy() {
               className="size-[50px]"
             />
           </div>
-          <div className="contents lg:block figma-stage">
-          {/* Headline. Figma 4555:22842 — left:831 (57.7%), 455 wide (31.6%),
-              left-aligned, Jost SemiBold 36/46. It sits just right of the
-              logo, not pinned to the far edge: it had been right-anchored and
-              right-aligned at roughly two thirds the size. 2.5vw is the 36px
-              read at the 1440 frame width. */}
+
+          {/* Headline — Figma 4555:22842, 455 wide at 831,114: just right of
+              the wordmark, left-aligned. */}
           <SlideIn className="care-hero-title order-2 self-end max-w-[340px] text-right">
             <p className="text-xl font-semibold leading-snug text-white sm:text-2xl">
               Homepay Employee &amp; Employer Payroll App
             </p>
           </SlideIn>
 
-          {/* Two phones — mobile stack; at lg they're absolute and anchored to
-              the panel's bottom edge rather than placed by a top %. The
-              exports are cropped at the phone's midpoint, so they're meant to
-              run into the bottom of the panel; a top % left them ending short
-              of it, with a strip of background showing underneath. Anchoring
-              the bottom also keeps the stagger for free — the two images have
-              different heights, so the left one still rides higher. */}
+          {/* Two phones — a stacked pair below lg, absolutely placed at lg.
+              The exports are full-length, so they run off the frame's bottom
+              edge the way Figma draws them; the panel clips them. */}
           <div className="order-3 mt-4 flex flex-1 items-end justify-center gap-4 sm:gap-8 lg:mt-0 lg:contents">
             <SlideIn
               delay={80}
@@ -175,47 +176,44 @@ export default function CareHomepayCaseStudy() {
               />
             </SlideIn>
           </div>
-
-          </div>
         </section>
 
-        {/* ── PANEL 2: STATEMENT — Figma 4555:22849 ──────────────────────
-            On the fitted stage, so the copy block keeps the frame's position
-            (left:100, 950 wide, centred with a +43 nudge) and its 81/95 and
-            32 type at any window shape. lg:!p-0 because the stage is
-            positioned against the panel's padding box — the frame's own
-            margins are what hold the content clear of the nav. */}
-        <Panel width="lg:w-screen" className="lg:!p-0">
-          <div className="contents lg:block figma-stage">
-            <div className="care-stmt w-full">
-              <SlideIn>
-                <h1 className={`care-stmt-title text-white ${INTRO_TITLE}`}>
-                  HomePay Time Tracker app by Care.com
-                </h1>
-              </SlideIn>
-              <SlideIn delay={100}>
-                <p className={`care-stmt-body mt-4 text-white ${INTRO_SUBTEXT}`}>
-                  HomePay lets household employees like nannies and caregivers
-                  track daily hours, calculate overtime, and submit timesheets
-                  directly to employers. Employers review and approve submitted
-                  hours through their online portal for direct deposit payroll
-                  processing.
-                </p>
-              </SlideIn>
-              <SlideIn delay={200} className="care-stmt-pill mt-4">
-                <span className="inline-flex items-center rounded-full border-2 border-white/50 px-6 py-1 font-semibold text-white text-[1rem] sm:text-[1rem] lg:text-[clamp(0.95rem,1.667vw,1.75rem)]">
-                  0 &gt; 1
-                </span>
-              </SlideIn>
-            </div>
+        {/* ── PANEL 2: STATEMENT — Figma 4555:22849
+            The shared intro treatment: INTRO_TITLE / INTRO_SUBTEXT and the
+            kit's spacing, so this opens the way every other project does. */}
+        <Panel width={VIEW} pad="center">
+          {/* A wider measure than the kit's default 54rem: the frame gives the
+              copy 950 of 1440 (66%), and at the shared INTRO scale the
+              narrower measure ran this longer paragraph past the panel's
+              bottom. Same type sizes as every other project's opening — only
+              the column is Figma's. */}
+          <div className="mx-auto w-full max-w-[min(66rem,92vw)]">
+            <SlideIn>
+              <h1 className={`text-white ${INTRO_TITLE}`}>
+                HomePay Time Tracker app by Care.com
+              </h1>
+            </SlideIn>
+            <SlideIn delay={100}>
+              <p className={`mt-4 text-white ${INTRO_SUBTEXT}`}>
+                HomePay lets household employees like nannies and caregivers
+                track daily hours, calculate overtime, and submit timesheets
+                directly to employers. Employers review and approve submitted
+                hours through their online portal for direct deposit payroll
+                processing.
+              </p>
+            </SlideIn>
+            <SlideIn delay={200} className="mt-6">
+              <span className="inline-flex items-center rounded-full border-2 border-white/50 px-6 py-1 font-semibold text-white text-[1rem] lg:text-[clamp(0.95rem,1.2vw,1.5rem)]">
+                0 &gt; 1
+              </span>
+            </SlideIn>
           </div>
         </Panel>
 
-        {/* ── PANEL 3: VIDEO — Figma 4555:22858 ─────────────────────────
-            868x688 at 286,211 on the frame. */}
-        <Panel width="lg:w-screen" className="items-center lg:!p-0">
-          <div className="contents lg:block figma-stage">
-            <SlideIn className="care-video mx-auto w-full max-w-[min(950px,90vw)]">
+        {/* ── PANEL 3: VIDEO — Figma 4555:22858 */}
+        <Panel width={VIEW} pad="center">
+          <div className="mx-auto w-full max-w-[min(950px,90vw,calc(var(--panel-media-max-h)*1.2616))]">
+            <SlideIn>
               <div className="relative aspect-[868/688] w-full overflow-hidden">
                 <AutoplayVideo
                   src={`${ASSET}/videos/care-employee.mp4`}
@@ -226,108 +224,65 @@ export default function CareHomepayCaseStudy() {
           </div>
         </Panel>
 
-        {/* ── PANEL 4: TIMESHEET SCREENS — Figma 4555:22859 ─────────────
-            Three 276x600 screens 50 apart, 928 wide at 258,230. Molly's
-            transparent exports, so the panel colour shows between them —
-            the old composite had a coral background baked into the gaps. */}
-        <Panel width="lg:w-screen" className="items-center lg:!p-0">
-          <div className="contents lg:block figma-stage">
-            <SlideIn className="care-screens-3 mx-auto grid w-full max-w-[min(950px,90vw)] grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-[5.39%]">
-              {[
-                { n: 1, alt: "Add time — day picker" },
-                { n: 2, alt: "Hours worked — weekly view" },
-                { n: 3, alt: "Timesheet — totals and submit" },
-              ].map(({ n, alt }) => (
-                <Image
-                  key={n}
-                  src={`${ASSET}/screens-timesheet-${n}.png`}
-                  alt={alt}
-                  width={276}
-                  height={600}
-                  className="mx-auto h-auto w-full max-w-[276px] sm:max-w-none"
-                />
-              ))}
-            </SlideIn>
-          </div>
+        {/* ── PANEL 4: TIMESHEET SCREENS — Figma 4555:22859
+            Three 276x600 screens. Molly's transparent exports, so the panel
+            colour shows between them — the old composite had a coral
+            background baked into the gaps. */}
+        <Panel width={VIEW} pad="center">
+          <SlideIn className="mx-auto grid w-full max-w-[min(950px,90vw)] grid-cols-1 items-end gap-8 sm:grid-cols-3 sm:gap-[5.39%]">
+            {[
+              { n: 1, alt: "Add time — day picker" },
+              { n: 2, alt: "Hours worked — weekly view" },
+              { n: 3, alt: "Timesheet — totals and submit" },
+            ].map(({ n, alt }) => (
+              <Image
+                key={n}
+                src={`${ASSET}/screens-timesheet-${n}.png`}
+                alt={alt}
+                width={276}
+                height={600}
+                className="mx-auto h-auto w-full max-w-[min(276px,calc(var(--panel-media-max-h)*0.46))]"
+              />
+            ))}
+          </SlideIn>
         </Panel>
 
-        {/* ── PANEL 5: SECURE MESSAGING — Figma 4555:22862 ──────────────
-            Copy at left:165, 368 wide, 170 up from the bottom; portrait 320
-            square; the screen pair centred 162.74 right of the middle. Title
-            36/46, body 18. The wide frame margins are what keep this clear of
-            the neighbouring panel while scrolling between them. */}
-        <Panel width="lg:w-screen" className="lg:!p-0">
-          <div className="contents lg:block figma-stage">
-            <div className="mx-auto flex w-full max-w-[min(1100px,94vw)] flex-col items-center gap-10 lg:contents">
-              <SlideIn className="care-split-copy care-msg-copy flex flex-col items-center gap-6 text-white">
-                <div className="care-split-portrait relative size-[160px] shrink-0 overflow-hidden rounded-full sm:size-[220px]">
+        {/* ── PANELS 5-6: SECURE MESSAGING, CLOCK IN AND OUT
+            Figma 4555:22862 / 4555:22870 — portrait and copy on the left, the
+            screen pair on the right. A two-column grid rather than absolute
+            frame coordinates, so the pair sits one gap away from the circle
+            at every window shape instead of drifting across the panel. */}
+        {splits.map((s, i) => (
+          <Panel key={s.key} width={VIEW} pad="center">
+            <div className="mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-8 lg:grid-cols-[minmax(0,368fr)_minmax(0,634fr)] lg:gap-[3.33%]">
+              <SlideIn className="flex flex-col items-center gap-6 text-white">
+                <div className="relative size-[160px] shrink-0 overflow-hidden rounded-full sm:size-[220px] lg:size-[min(320px,22vw)]">
                   <Image
-                    src={`${ASSET}/portrait-messaging.png`}
-                    alt="Caregiver using secure messaging"
+                    src={s.portrait}
+                    alt={s.portraitAlt}
                     fill
-                    sizes="(min-width: 1024px) 23vw, 220px"
+                    sizes="(min-width: 1024px) 22vw, 220px"
                     className="object-cover"
                   />
                 </div>
-                <div className="care-split-text flex flex-col gap-4 text-center">
-                  <p className="care-split-title font-semibold leading-[1.278] text-[1.5rem] sm:text-[1.75rem]">
-                    Secure Messaging
-                  </p>
-                  <p className="care-split-body leading-[1.35] text-[1.05rem]">
-                    Messaging between employee and employer apps, to easily respond and keep track of important dates and communications.
-                  </p>
+                <div className="flex flex-col gap-4 text-center">
+                  <p className={SPLIT_TITLE}>{s.title}</p>
+                  <p className={SPLIT_BODY}>{s.body}</p>
                 </div>
               </SlideIn>
-              <SlideIn delay={100} className="care-split-screens care-msg-screens flex w-full justify-center">
+              <SlideIn delay={100} className="flex w-full justify-center lg:justify-start">
                 <Image
-                  src={`${ASSET}/screens-messaging.png`}
-                  alt="Secure messaging — inbox and conversation"
+                  src={s.screens}
+                  alt={s.screensAlt}
                   width={634}
                   height={632}
-                  className="h-auto w-full max-w-[560px] object-contain lg:max-w-none"
+                  priority={i === 0}
+                  className="h-auto w-full max-w-[min(560px,calc(var(--panel-media-max-h)*1.0032))] lg:max-w-[min(634px,calc(var(--panel-media-max-h)*1.0032))] object-contain"
                 />
               </SlideIn>
             </div>
-          </div>
-        </Panel>
-
-        {/* ── PANEL 6: CLOCK IN AND OUT — Figma 4555:22870 ───────────────
-            Same construction; copy at left:207, 320 wide, screens centred
-            218 right of the middle. */}
-        <Panel width="lg:w-screen" className="lg:!p-0">
-          <div className="contents lg:block figma-stage">
-            <div className="mx-auto flex w-full max-w-[min(1100px,94vw)] flex-col items-center gap-10 lg:contents">
-              <SlideIn className="care-split-copy care-clock-copy flex flex-col items-center gap-6 text-white">
-                <div className="care-split-portrait relative size-[160px] shrink-0 overflow-hidden rounded-full sm:size-[220px]">
-                  <Image
-                    src={`${ASSET}/portrait-clock.png`}
-                    alt="Employee clocking in"
-                    fill
-                    sizes="(min-width: 1024px) 23vw, 220px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="care-split-text flex flex-col gap-4 text-center">
-                  <p className="care-split-title font-semibold leading-[1.278] text-[1.5rem] sm:text-[1.75rem]">
-                    Clock In and Out
-                  </p>
-                  <p className="care-split-body leading-[1.35] text-[1.05rem]">
-                    Easily clock in and out to accurately track hours worked, so your pay is always correct and on time.
-                  </p>
-                </div>
-              </SlideIn>
-              <SlideIn delay={100} className="care-split-screens care-clock-screens flex w-full justify-center">
-                <Image
-                  src={`${ASSET}/screens-clock.png`}
-                  alt="Clock in and out — map and start shift"
-                  width={634}
-                  height={632}
-                  className="h-auto w-full max-w-[560px] object-contain lg:max-w-none"
-                />
-              </SlideIn>
-            </div>
-          </div>
-        </Panel>
+          </Panel>
+        ))}
 
         <CaseStudyMetaPanel
           meta={getCaseStudyMeta(project)}

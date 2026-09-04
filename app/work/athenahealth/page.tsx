@@ -174,7 +174,7 @@ export default function ConsumerHealthCaseStudy() {
         </Panel>
 
         {/* The nav had the same hole */}
-        <TextPanel width={VIEW} className="!pb-6 sm:!pb-8 lg:!pb-0">
+        <TextPanel width={VIEW}>
           <SlideIn>
             <h2 className={H_DISPLAY}>The nav had the same hole.</h2>
           </SlideIn>
