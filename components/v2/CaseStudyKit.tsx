@@ -61,6 +61,18 @@ export const VIEW = "lg:w-screen";
 export const END_PANEL = "lg:w-[min(100vw,800px)]";
 
 /**
+ * Closing-panel title. Deliberately well below the intro scale — this is a
+ * call to action at the end of the case study, not a section opener, and at
+ * the Heading scale it filled an 800px panel on its own. 2.5vw lands on 36px
+ * at a 1440 frame, the same size the Care.com hero title uses.
+ *
+ * GovOS and the generic template were on Heading, Bright and Netspend on
+ * their own H_DISPLAY step scale; all four share this now.
+ */
+export const END_TITLE =
+  "font-semibold leading-[1.278] tracking-[-0.02em] text-[1.5rem] sm:text-[1.75rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
+
+/**
  * Top inset so media never runs under the parked logo or the fixed Close
  * control. Both live in the --nav-clear band defined in globals.css, which
  * is the single source of truth — the logo is the deeper of the two, so
