@@ -96,8 +96,11 @@ export default function CareHomepayCaseStudy() {
           id="title"
           className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
         >
-          {/* Large logo — top left (pre-Figma-tweak size/placement) */}
-          <div className="relative h-[60px] w-[280px] sm:h-[80px] sm:w-[380px] lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-[72px] xl:top-[80px] 2xl:top-[90px] lg:h-[80px] xl:h-[100px] 2xl:h-[120px] lg:w-[337px] xl:w-[421px] 2xl:w-[505px] lg:max-w-[474px]">
+          {/* Large logo. Figma 4555:22725 — 672x120 at left:100 top:100 on a
+              1440x1000 frame, i.e. 46.67% wide at 6.94%/10%. It had been
+              sitting at roughly 0.7x that. Width plus the mark's own 672:120
+              ratio gives the height, so it holds at any viewport. */}
+          <div className="relative h-[60px] w-[280px] sm:h-[80px] sm:w-[380px] lg:absolute lg:left-[6.94%] lg:top-[10%] lg:h-auto lg:aspect-[672/120] lg:w-[46.67%] lg:max-w-none">
             <Image
               src={LOGO}
               alt="Care.com Homepay"
@@ -108,9 +111,13 @@ export default function CareHomepayCaseStudy() {
             />
           </div>
 
-          {/* Headline — top right */}
-          <SlideIn className="self-end max-w-[340px] text-right lg:absolute lg:right-[71px] xl:right-[89px] 2xl:right-[107px] lg:top-[72px] xl:top-[80px] 2xl:top-[90px] lg:max-w-[307px] xl:max-w-[384px] 2xl:max-w-[461px]">
-            <p className="text-xl font-semibold leading-snug text-white sm:text-2xl lg:text-[26px] xl:text-[32px] 2xl:text-[38px] lg:leading-[1.28]">
+          {/* Headline. Figma 4555:22842 — left:831 (57.7%), 455 wide (31.6%),
+              left-aligned, Jost SemiBold 36/46. It sits just right of the
+              logo, not pinned to the far edge: it had been right-anchored and
+              right-aligned at roughly two thirds the size. 2.5vw is the 36px
+              read at the 1440 frame width. */}
+          <SlideIn className="self-end max-w-[340px] text-right lg:absolute lg:left-[57.7%] lg:right-auto lg:top-[11.4%] lg:w-[31.6%] lg:max-w-none lg:text-left">
+            <p className="text-xl font-semibold leading-snug text-white sm:text-2xl lg:text-[clamp(1.375rem,2.5vw,3rem)] lg:leading-[1.278]">
               Homepay Employee &amp; Employer Payroll App
             </p>
           </SlideIn>
@@ -125,7 +132,7 @@ export default function CareHomepayCaseStudy() {
           <div className="mt-4 flex flex-1 items-end justify-center gap-4 sm:gap-8 lg:mt-0 lg:contents">
             <SlideIn
               delay={80}
-              className="w-[46%] max-w-[280px] lg:absolute lg:bottom-0 lg:left-[30.28%] lg:w-[27.7%] lg:max-w-none"
+              className="w-[46%] max-w-[280px] lg:absolute lg:bottom-0 lg:left-[28.47%] lg:w-[27.53%] lg:max-w-none"
             >
               <Image
                 src={`${ASSET}/phone-hero-left.png`}
@@ -138,7 +145,7 @@ export default function CareHomepayCaseStudy() {
             </SlideIn>
             <SlideIn
               delay={180}
-              className="mt-10 w-[46%] max-w-[280px] sm:mt-16 lg:absolute lg:bottom-0 lg:left-[54.31%] lg:mt-0 lg:w-[27.7%] lg:max-w-none"
+              className="mt-10 w-[46%] max-w-[280px] sm:mt-16 lg:absolute lg:bottom-0 lg:left-[51.67%] lg:mt-0 lg:w-[28.26%] lg:max-w-none"
             >
               <Image
                 src={`${ASSET}/phone-hero-right.png`}
