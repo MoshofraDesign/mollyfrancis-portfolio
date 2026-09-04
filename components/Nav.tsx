@@ -88,6 +88,10 @@ export default function Nav() {
                 target={href.startsWith("mailto:") ? undefined : "_blank"}
                 rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
                 aria-label={label}
+                /* Shows the address on hover. A mailto only opens a client
+                   when the visitor's machine has one registered, so this is
+                   the fallback: they can still read and copy it. */
+                title={href.startsWith("mailto:") ? href.slice(7) : label}
                 className="grid h-10 w-10 place-items-center rounded-full text-ink transition-colors hover:bg-ink hover:text-cream"
               >
                 <Icon size={24} />
