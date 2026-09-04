@@ -5,6 +5,7 @@ import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
+import PrintGallery from "@/components/PrintGallery";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
 import {
@@ -129,6 +130,15 @@ function ImageGridPanel({
     </Panel>
   );
 }
+
+/**
+ * The lede paragraph on the two gallery-style pages — the Logos overview and
+ * the Print subtitle and blurb. One size for all three, a step up from the
+ * 1.05rem body ladder they were on (16.8px, which read small under those
+ * big marks). The Print blurb keeps its muted colour; only the size is
+ * shared.
+ */
+const LEDE = "text-[clamp(1.15rem,1.5vw,1.5rem)] leading-[1.4] [text-wrap:pretty]";
 
 /**
  * Logos project only — square tiles matching the homepage work grid
@@ -293,52 +303,28 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             </div>
           ) : null}
           {project.subtitle ? (
-            <p className="max-w-[46rem] text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] [text-wrap:pretty]">
-              {project.subtitle}
-            </p>
+            <p className={`max-w-[46rem] ${LEDE}`}>{project.subtitle}</p>
           ) : null}
-          <p className="max-w-[46rem] text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1.05rem] leading-[1.4] text-[#141414]/60 [text-wrap:pretty]">
+          <p className={`max-w-[46rem] text-[#141414]/60 ${LEDE}`}>
             {PRINT_BLURB}
           </p>
         </section>
 
         {project.images && project.images.length > 0 && (
           <section className="mx-auto w-full max-w-7xl px-8 pb-24 sm:px-12 lg:px-20">
-            {/* CSS multi-column masonry — each piece keeps its own natural
-                aspect ratio (no forced crop), and columns balance heights
-                automatically the way a real print portfolio wall would. */}
-            <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
-              {project.images.map((img, i) => (
-                <figure key={img.src + i} className="mb-6 break-inside-avoid">
-                  {/* eslint-disable-next-line @next/next/no-img-element -- true
-                      source dimensions aren't available (CDN not reachable from
-                      the build environment), so a plain <img> lets the browser
-                      size each gallery piece by its own natural aspect ratio
-                      instead of forcing every print piece into one guessed box. */}
-                  <img
-                    src={img.src}
-                    alt={img.caption || "Print piece"}
-                    loading="lazy"
-                    className="w-full rounded-sm object-contain"
-                  />
-                  {img.caption && (
-                    <figcaption className="mt-3 text-center text-xs text-[#141414]/60">
-                      {img.caption}
-                    </figcaption>
-                  )}
-                </figure>
-              ))}
-            </div>
+            <PrintGallery images={project.images} />
           </section>
         )}
 
-        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText={false} />
-
+        {/* No meta panel here — the print pieces are the whole story, and a
+            team/timing/projected block under them was generic filler. */}
         <NextProjectLink
           href={`/work/${next.slug}`}
           client={next.client}
           title={next.title}
           accent={next.accent}
+          variant="band"
+          rail="mx-auto w-full max-w-7xl px-8 sm:px-12 lg:px-20"
         />
       </main>
     );
@@ -388,9 +374,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             </div>
           ) : null}
           {project.overview ? (
-            <p className="max-w-[36rem] text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] [text-wrap:pretty]">
-              {project.overview}
-            </p>
+            <p className={`max-w-[36rem] ${LEDE}`}>{project.overview}</p>
           ) : null}
         </section>
 
@@ -408,6 +392,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           client={next.client}
           title={next.title}
           accent={next.accent}
+          variant="band"
+          rail={WORK_THUMB_SECTION}
         />
       </main>
     );

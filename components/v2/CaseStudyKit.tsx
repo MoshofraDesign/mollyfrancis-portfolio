@@ -270,21 +270,44 @@ export function NextProjectLink({
   client,
   title,
   accent = "#141414",
+  variant = "panel",
+  rail,
 }: {
   href: string;
   client: string;
   title: string;
   /** Next project accent — same solid color as homepage thumb hover. */
   accent?: string;
+  /**
+   * "panel" is a scroller stop: a 600px-wide, full-height column that sits
+   * alongside the case study's other panels. "band" is for the pages that
+   * scroll vertically instead (Print, Logos) — full-bleed and only as tall
+   * as its copy, since a 100dvh column 600px wide at the bottom of an
+   * ordinary page is just a hole.
+   */
+  variant?: "panel" | "band";
+  /** band only: the host page's own rail, so the copy lines up with it. */
+  rail?: string;
 }) {
   const fg = contrastColor(accent);
+  const band = variant === "band";
   return (
     <Link
       href={href}
-      className="group relative flex w-full flex-col justify-center px-6 py-14 sm:px-12 sm:py-20 lg:h-[100dvh] lg:w-[min(100vw,600px)] lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,2.5rem)] lg:py-0"
+      className={
+        band
+          ? "group relative flex w-full flex-col justify-center py-12 sm:py-14 lg:py-16"
+          : "group relative flex w-full flex-col justify-center px-6 py-14 sm:px-12 sm:py-20 lg:h-[100dvh] lg:w-[min(100vw,600px)] lg:shrink-0 lg:snap-start lg:px-[clamp(1.25rem,4.5vw,2.5rem)] lg:py-0"
+      }
       style={{ background: accent, color: fg }}
     >
-      <div className="w-full max-w-[min(32rem,86vw)]">
+      <div
+        className={
+          band
+            ? rail || "mx-auto w-full max-w-7xl px-6 sm:px-12 lg:px-20"
+            : "w-full max-w-[min(32rem,86vw)]"
+        }
+      >
         <p
           className="text-[clamp(0.95rem,1.2vw,1.1rem)] font-normal"
           style={{ color: fg, opacity: 0.55 }}
