@@ -85,7 +85,7 @@ export default function NetspendCaseStudy() {
           {/* Debit cards — sit in the open area right of the logo/copy, fully inside
               the frame (Figma 498,226 / 791×638). Insets + object-contain keep the
               orange tip from getting cropped. */}
-          <div className="pointer-events-none relative z-0 mx-auto flex aspect-[791/638] w-full max-w-[min(90vw,26rem)] items-center justify-center lg:absolute lg:left-[25%] lg:right-[2%] lg:top-[15%] lg:bottom-[19%] lg:aspect-auto lg:w-auto lg:max-w-none lg:p-6 xl:left-[21%] xl:right-[1%] xl:top-[13%] xl:bottom-[15%] 2xl:left-[17%] 2xl:right-0 2xl:top-[11%] 2xl:bottom-[11%]">
+          <div className="pointer-events-none relative z-0 mx-auto flex aspect-[791/638] w-full max-w-[min(90vw,26rem)] items-center justify-center lg:absolute lg:left-[25%] lg:right-[2%] lg:top-[19%] lg:bottom-[15%] lg:aspect-auto lg:w-auto lg:max-w-none lg:p-6 xl:left-[21%] xl:right-[1%] xl:top-[17%] xl:bottom-[11%] 2xl:left-[17%] 2xl:right-0 2xl:top-[15%] 2xl:bottom-[7%]">
             <Image
               src={`${ASSET}/debit-cards.png`}
               alt="Netspend debit cards"
@@ -318,6 +318,7 @@ export default function NetspendCaseStudy() {
           title={next.title}
           accent={next.accent}
           logo={next.logoWide ?? next.logo}
+          logoScale={next.logoBandScale}
         />
 
       </HorizontalScroll>

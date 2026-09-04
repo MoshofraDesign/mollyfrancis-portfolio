@@ -332,6 +332,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           title={next.title}
           accent={next.accent}
           logo={next.logoWide ?? next.logo}
+          logoScale={next.logoBandScale}
           variant="band"
           rail="mx-auto w-full max-w-7xl px-8 sm:px-12 lg:px-20"
         />
@@ -401,6 +402,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           title={next.title}
           accent={next.accent}
           logo={next.logoWide ?? next.logo}
+          logoScale={next.logoBandScale}
           variant="band"
           rail={WORK_THUMB_SECTION}
         />
@@ -541,6 +543,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             title={next.title}
             accent={next.accent}
             logo={next.logoWide ?? next.logo}
+          logoScale={next.logoBandScale}
           />
         </HorizontalScroll>
       </main>
@@ -688,6 +691,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           title={next.title}
           accent={next.accent}
           logo={next.logoWide ?? next.logo}
+          logoScale={next.logoBandScale}
         />
       </HorizontalScroll>
     </main>

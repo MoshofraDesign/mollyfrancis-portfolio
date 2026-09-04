@@ -280,6 +280,7 @@ export function NextProjectLink({
   title,
   accent = "#141414",
   logo,
+  logoScale,
   variant = "panel",
   rail,
 }: {
@@ -288,6 +289,8 @@ export function NextProjectLink({
   title: string;
   /** The destination project's mark, shown under the label. */
   logo?: string;
+  /** Multiplier on that mark — see logoBandScale in lib/projects.ts. */
+  logoScale?: number;
   /** Next project accent — same solid color as homepage thumb hover. */
   accent?: string;
   /**
@@ -340,11 +343,14 @@ export function NextProjectLink({
           Up next — {client}
         </p>
         {logo && (
-          /* Sized so the width cap governs, not the height. The marks range
-             from 1.9 to 9.4 in aspect, so a height cap made the stacked
-             lockups (Logos, Print, Volusion, eCommerce) come out half the
-             size of the wordmarks, which were hitting the width cap. At
-             lg:h-14 every mark lands between 108 and 200px wide.
+          /* Equal height, with width only as a ceiling. The marks run from
+             1.9 to 9.4 in aspect, and neither cap alone works: capping width
+             left the stacked lockups half the size of the wordmarks, capping
+             height made the same lockups tower over the title. 34px of
+             height puts every mark on one optical scale — the wide wordmarks
+             hit the 200px ceiling and sit shorter, which is what a row of
+             logos wants — and logoBandScale nudges the few that still read
+             off, via the --band-mark variable.
 
              They're white cuts, so on the light accents — where
              contrastColor picks ink for the type — the mark is inverted to
@@ -355,12 +361,13 @@ export function NextProjectLink({
             width={320}
             height={80}
             unoptimized
-            className={`mt-4 h-10 w-auto max-w-[170px] object-contain object-left lg:mt-5 lg:h-14 lg:max-w-[200px] ${
+            style={{ "--band-mark": String(logoScale ?? 1) } as React.CSSProperties}
+            className={`mt-4 h-[calc(2rem_*_var(--band-mark))] w-auto max-w-[calc(160px_*_var(--band-mark))] object-contain object-left lg:mt-5 lg:h-[calc(34px_*_var(--band-mark))] lg:max-w-[calc(200px_*_var(--band-mark))] ${
               fg === "#141414" ? "[filter:brightness(0)_invert(8%)]" : ""
             }`}
           />
         )}
-        <h2 className="mt-4 text-[clamp(1.75rem,4.5vw,3rem)] font-semibold leading-[1.1] transition-transform group-hover:translate-x-3">
+        <h2 className="mt-2 text-[clamp(1.75rem,4.5vw,3rem)] font-semibold leading-[1.1] transition-transform group-hover:translate-x-3">
           {title} →
         </h2>
       </div>

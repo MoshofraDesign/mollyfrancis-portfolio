@@ -15,6 +15,9 @@ export type Project = {
   /** A wider cut of the mark, for the Up next band where a stacked lockup
    *  reads too small next to the wordmarks. Falls back to `logo`. */
   logoWide?: string;
+  /** Multiplier on the Up next band mark, for the few whose lockup reads
+   *  large or small at the shared cap. 1 when unset. */
+  logoBandScale?: number;
   // Per-project size multiplier for the thumbnail logo (CareGrid), since
   // logo aspect ratios vary a lot — defaults to 1 when unset.
   logoScale?: number;
@@ -214,6 +217,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/bright-healthcare-figma.webp",
     hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489640575-FE1X3BSOCUHJVV45MVW0/Landing.jpg",
     logo: "/logos/bright-healthcare-vert-2.svg",
+    logoWide: "/logos/bright-healthcare.svg",
     logoScale: 1.7,
     accent: "#FFAF00",
     featured: true,
@@ -743,6 +747,7 @@ export const projects: Project[] = [
     tags: ["Brand", "Logo", "Identity"],
     thumbnail: "/work-thumbnails/logos-figma.webp",
     logo: "/logos/logos-project.svg",
+    logoBandScale: 1.25,
     logoScale: 0.75,
     accent: "#00EADA",
     aiSummary:

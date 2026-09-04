@@ -78,7 +78,7 @@ export default function CareHomepayCaseStudy() {
       <StickyNav
         watch="title"
         logo={
-          <div className="relative h-8 w-[180px] sm:h-9 sm:w-[200px] lg:h-[50px] lg:w-[280px]">
+          <div className="relative h-8 w-[180px] sm:h-9 sm:w-[200px] lg:h-[42px] lg:w-[240px]">
             <Image
               src={LOGO}
               alt="Care.com Homepay"
@@ -295,6 +295,7 @@ export default function CareHomepayCaseStudy() {
           title={next.title}
           accent={next.accent}
           logo={next.logoWide ?? next.logo}
+          logoScale={next.logoBandScale}
         />
 
       </HorizontalScroll>
