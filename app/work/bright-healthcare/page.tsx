@@ -357,12 +357,19 @@ export default function BrightHealthcareCaseStudy() {
                 />
               </div>
             </SlideIn>
-            <div className="min-w-0">
+            <div className="min-w-0 lg:max-w-[40rem]">
               <SlideIn>
                 <h2 className={H_DISPLAY}>It replaced the fax machine.</h2>
               </SlideIn>
               <SlideIn delay={80}>
-                <p className={`mt-3 ${BODY}`}>{project.outcome}</p>
+                {/* Tighter than project.outcome, which runs three lines at
+                    nearly 950px beside the portrait. Same facts. */}
+                <p className={`mt-3 ${BODY}`}>
+                  Within weeks of go-live in a new market, 15%+ of
+                  authorizations had moved to the portal. Providers rated it
+                  the best tool they&apos;d used — one team put the saving at
+                  four hours per provider, per day.
+                </p>
               </SlideIn>
             </div>
           </div>
