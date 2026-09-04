@@ -355,3 +355,58 @@ body::before {
     border-radius: 2rem;
   }
 }
+
+/* Ecommerce Websites — Figma 4926:14914, two 1440x1000 frames on #F5F5F7.
+   Same construction as the Care.com hero: each child is placed at the
+   frame's own fraction of the panel, with its SIZE scaled by --figma-u, so
+   the left-edge furniture stays on the left edge at any window shape and
+   nothing outgrows a short viewport. Only at lg+, where a panel is a fixed
+   viewport; below that each panel is an ordinary stacked block. */
+@media (min-width: 1024px) {
+  .ecom-mark,
+  .ecom-mark-2,
+  .ecom-shot,
+  .ecom-wide,
+  .ecom-copy {
+    position: absolute;
+    margin: 0;
+    max-width: none;
+  }
+
+  /* Frame 1 — mark 455x141.365 at 100,112; shot 660x506 at 533,306 with a
+     10 radius; copy 308 wide at 102,741, Jost Regular 18/26. */
+  .ecom-mark {
+    left: 6.944%;
+    top: 11.2%;
+    width: calc(455 * var(--figma-u));
+    height: calc(141.365 * var(--figma-u));
+  }
+  .ecom-shot {
+    left: 37.014%;
+    top: 30.6%;
+    width: calc(660 * var(--figma-u));
+    height: calc(506 * var(--figma-u));
+    border-radius: calc(10 * var(--figma-u));
+  }
+  .ecom-copy {
+    left: 7.083%;
+    top: 74.1%;
+    width: calc(308 * var(--figma-u));
+    font-size: calc(18 * var(--figma-u));
+    line-height: calc(26 * var(--figma-u));
+  }
+
+  /* Frame 2 — mark 237x74 at 100,100; shot 950x493 at 100,306. */
+  .ecom-mark-2 {
+    left: 6.944%;
+    top: 10%;
+    width: calc(237 * var(--figma-u));
+    height: calc(74 * var(--figma-u));
+  }
+  .ecom-wide {
+    left: 6.944%;
+    top: 30.6%;
+    width: calc(950 * var(--figma-u));
+    height: calc(493 * var(--figma-u));
+  }
+}

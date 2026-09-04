@@ -399,16 +399,54 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   }
 
   if (isEcommerce) {
+    // Figma 4926:14914 — two 1440x1000 frames on #F5F5F7, so this page is a
+    // horizontal scroller like the other case studies rather than the
+    // vertical filmstrip it was. Placement lives in .ecom-* in globals.css.
+    const BG = "#F5F5F7";
+    const FG = "#1d1d1f";
+    const imgs = project.images ?? [];
+    // The frame's own two shots. Frame 1 uses vnext-homepage-1.jpg, which
+    // isn't in the repo and can't be pulled from Figma's asset CDN from here,
+    // so the nearest of Molly's own device composites stands in until she
+    // drops that export in.
+    const shot = imgs.find((i) => /Definition-Device-Home/.test(i.src));
+    const wide = imgs.find((i) => /StFrancis-Device-Category/.test(i.src));
+    const rest = imgs.filter((i) => i !== shot && i !== wide);
+    // Three up per panel, the same rhythm the other case studies use for a
+    // set of screens.
+    const groups: typeof rest[] = [];
+    for (let i = 0; i < rest.length; i += 3) groups.push(rest.slice(i, i + 3));
+
+    const Mark = ({ className }: { className: string }) =>
+      project.logo ? (
+        <div className={className}>
+          <Image
+            src={project.logo}
+            alt={project.client}
+            fill
+            unoptimized
+            priority
+            /* The asset is a white wordmark, so it needs inverting to sit on
+               this light field. */
+            className="object-contain object-left [filter:brightness(0)_invert(8%)]"
+          />
+        </div>
+      ) : null;
+
     return (
       <main
-        className={`${jost.variable} relative min-h-screen bg-[#F5F5F4] text-[#141414]`}
-        style={{ fontFamily: "var(--font-jost), system-ui, sans-serif" }}
+        className={`${jost.variable} relative`}
+        style={{
+          background: BG,
+          color: FG,
+          fontFamily: "var(--font-jost), system-ui, sans-serif",
+        }}
       >
         <StickyNav
           watch="title"
           logo={
             project.logo ? (
-              <div className="relative h-6 w-[90px] sm:h-7 sm:w-[110px]">
+              <div className="relative h-7 w-[110px] sm:h-8 sm:w-[130px] lg:h-9 lg:w-[150px]">
                 <Image
                   src={project.logo}
                   alt={project.client}
@@ -421,84 +459,81 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
               <span className="text-sm font-semibold">{project.title}</span>
             )
           }
-          action={<CloseLink large className="text-[#141414]" />}
+          action={<CloseLink large className="text-[#1d1d1f]" />}
         />
 
-        <section
-          id="title"
-          className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-8 pb-10 pt-16 sm:px-12 lg:px-20 lg:pt-20"
-        >
-          {project.logo ? (
-            <div className="relative h-20 w-full max-w-[420px] sm:h-24 md:h-28">
-              <Image
-                src={project.logo}
-                alt={project.client}
-                fill
-                unoptimized
-                priority
-                className="object-contain object-left [filter:brightness(0)_invert(8%)]"
-                style={{ transform: `scale(${project.logoScale ?? 1})`, transformOrigin: "left center" }}
-              />
-            </div>
-          ) : (
-            <p className="text-[1.75rem] sm:text-[2rem] md:text-[2.4rem] font-semibold">
-              {project.title}
+        <HorizontalScroll>
+          {/* ── FRAME 1 — mark, 660x506 shot, 308-wide copy ─────────── */}
+          <section
+            id="title"
+            className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
+          >
+            <Mark className="ecom-mark relative h-[70px] w-full max-w-[300px] sm:h-[90px] sm:max-w-[380px]" />
+            {shot && (
+              <SlideIn className="ecom-shot order-2 w-full overflow-hidden rounded-[10px]">
+                {/* eslint-disable-next-line @next/next/no-img-element -- true
+                    source dimensions aren't available (CDN not reachable from
+                    the build environment) */}
+                <img
+                  src={shot.src}
+                  alt={shot.caption || "Ecommerce storefront across devices"}
+                  className="h-full w-full object-cover"
+                />
+              </SlideIn>
+            )}
+            <p className="ecom-copy order-3 max-w-[22rem] text-[1.05rem] leading-[1.45]">
+              Designing and coding ecommerce websites that seamlessly blend
+              beautiful interfaces with robust, scalable functionality.
             </p>
-          )}
-          {project.subtitle ? (
-            <p className="max-w-[46rem] text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem] leading-[1.35] [text-wrap:pretty]">
-              {project.subtitle}
-            </p>
-          ) : null}
-          {project.overview ? (
-            <p className="max-w-[46rem] text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1.05rem] leading-[1.4] text-[#141414]/60 [text-wrap:pretty]">
-              {project.overview}
-            </p>
-          ) : null}
-        </section>
-
-        {project.images && project.images.length > 0 && (
-          <section className="w-full pb-24">
-            {/* Horizontal filmstrip — each design keeps its own natural
-                aspect ratio (no forced crop). Scroll horizontally to move
-                through the gallery instead of stacking vertically. */}
-            <div className="flex w-full snap-x snap-mandatory gap-6 overflow-x-auto px-8 pb-6 sm:px-12 lg:px-20 [-webkit-overflow-scrolling:touch]">
-              {project.images.map((img, i) => (
-                <figure
-                  key={img.src + i}
-                  className="flex shrink-0 snap-center flex-col gap-3"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element -- true
-                      source dimensions aren't available (CDN not reachable
-                      from the build environment), so a plain <img> lets the
-                      browser size each design by its own natural aspect
-                      ratio instead of forcing every screenshot into one
-                      guessed box. */}
-                  <img
-                    src={img.src}
-                    alt={img.caption || "Ecommerce storefront design"}
-                    loading="lazy"
-                    className="h-[52vh] w-auto max-w-[85vw] rounded-sm object-contain sm:h-[60vh] lg:h-[70vh]"
-                  />
-                  {img.caption && (
-                    <figcaption className="text-center text-xs text-[#141414]/60">
-                      {img.caption}
-                    </figcaption>
-                  )}
-                </figure>
-              ))}
-            </div>
           </section>
-        )}
 
-        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText={false} />
+          {/* ── FRAME 2 — mark and the 950x493 device spread ─────────── */}
+          <section className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0">
+            <Mark className="ecom-mark-2 relative h-[54px] w-full max-w-[190px] sm:h-[64px] sm:max-w-[230px]" />
+            {wide && (
+              <SlideIn className="ecom-wide w-full overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element -- see above */}
+                <img
+                  src={wide.src}
+                  alt={wide.caption || "Category page across devices"}
+                  className="h-full w-full object-cover"
+                />
+              </SlideIn>
+            )}
+          </section>
 
-        <NextProjectLink
-          href={`/work/${next.slug}`}
-          client={next.client}
-          title={next.title}
-          accent={next.accent}
-        />
+          {/* ── The rest of the storefronts, three to a panel ────────── */}
+          {groups.map((group, gi) => (
+            <Panel key={`ecom-group-${gi}`} width={VIEW} pad="center">
+              <div className="mx-auto grid w-full max-w-[min(1200px,94vw)] grid-cols-1 items-end gap-8 sm:grid-cols-3 sm:gap-6 lg:gap-8">
+                {group.map((img, i) => (
+                  <SlideIn key={img.src + i} delay={i * 70} className="flex flex-col gap-3">
+                    {/* eslint-disable-next-line @next/next/no-img-element -- see above */}
+                    <img
+                      src={img.src}
+                      alt={img.caption || "Ecommerce storefront design"}
+                      loading="lazy"
+                      className="mx-auto h-auto w-full max-w-[min(360px,calc(var(--panel-media-max-h)*0.62))] object-contain"
+                    />
+                    {img.caption && (
+                      <p className="text-center text-xs text-[#1d1d1f]/60">
+                        {img.caption}
+                      </p>
+                    )}
+                  </SlideIn>
+                ))}
+              </div>
+            </Panel>
+          ))}
+
+          {/* No meta panel — same call as Print and Logos. */}
+          <NextProjectLink
+            href={`/work/${next.slug}`}
+            client={next.client}
+            title={next.title}
+            accent={next.accent}
+          />
+        </HorizontalScroll>
       </main>
     );
   }

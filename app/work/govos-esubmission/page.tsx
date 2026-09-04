@@ -340,7 +340,7 @@ export default function GovOSCaseStudy() {
             width={125}
             height={32}
             unoptimized
-            className="h-auto w-[86px] sm:w-[110px]"
+            className="h-auto w-[104px] sm:w-[132px] lg:w-[148px]"
           />
         }
         action={<CloseLink large className="text-white" />}
