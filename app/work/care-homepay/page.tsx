@@ -115,11 +115,17 @@ export default function CareHomepayCaseStudy() {
             </p>
           </SlideIn>
 
-          {/* Two phones — mobile stack; desktop absolute + clipped at bottom */}
+          {/* Two phones — mobile stack; at lg they're absolute and anchored to
+              the panel's bottom edge rather than placed by a top %. The
+              exports are cropped at the phone's midpoint, so they're meant to
+              run into the bottom of the panel; a top % left them ending short
+              of it, with a strip of background showing underneath. Anchoring
+              the bottom also keeps the stagger for free — the two images have
+              different heights, so the left one still rides higher. */}
           <div className="mt-4 flex flex-1 items-end justify-center gap-4 sm:gap-8 lg:mt-0 lg:contents">
             <SlideIn
               delay={80}
-              className="w-[46%] max-w-[280px] lg:absolute lg:left-[30.28%] lg:top-[28.3%] lg:w-[27.7%] lg:max-w-none"
+              className="w-[46%] max-w-[280px] lg:absolute lg:bottom-0 lg:left-[30.28%] lg:w-[27.7%] lg:max-w-none"
             >
               <Image
                 src={`${ASSET}/phone-hero-left.png`}
@@ -132,7 +138,7 @@ export default function CareHomepayCaseStudy() {
             </SlideIn>
             <SlideIn
               delay={180}
-              className="mt-10 w-[46%] max-w-[280px] sm:mt-16 lg:absolute lg:left-[54.31%] lg:top-[39.2%] lg:mt-0 lg:w-[27.7%] lg:max-w-none"
+              className="mt-10 w-[46%] max-w-[280px] sm:mt-16 lg:absolute lg:bottom-0 lg:left-[54.31%] lg:mt-0 lg:w-[27.7%] lg:max-w-none"
             >
               <Image
                 src={`${ASSET}/phone-hero-right.png`}
