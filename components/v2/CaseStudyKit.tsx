@@ -160,20 +160,46 @@ export function TextPanel({
   );
 }
 
-export function Heading({ children }: { children: React.ReactNode }) {
+/**
+ * Intro type — the title and subtext on a project's first section. One pair
+ * for every case study, so the openings read the same from project to
+ * project. Sizes come from Figma (Care.com 4555:22849): Jost SemiBold 81/95
+ * and Regular 32 on a 1440 frame, hence 5.625vw and 2.22vw.
+ *
+ * Section headings further down the page stay on the smaller Heading/Body
+ * scale — the intro is deliberately the largest type on the page.
+ */
+export const INTRO_TITLE =
+  "font-semibold leading-[1.173] tracking-[-0.02em] [text-wrap:pretty] text-[2rem] sm:text-[2.5rem] lg:text-[clamp(2rem,5.625vw,6.5rem)]";
+export const INTRO_SUBTEXT =
+  "font-normal leading-[1.35] [text-wrap:pretty] text-[1.05rem] sm:text-[1.05rem] lg:text-[clamp(1.05rem,2.22vw,2.25rem)]";
+
+export function Heading({ children, intro = false }: { children: React.ReactNode; intro?: boolean }) {
   return (
     <SlideIn className={MEASURE}>
-      <h2 className="text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.15] tracking-[-0.02em] [text-wrap:pretty]">
+      <h2
+        className={
+          intro
+            ? INTRO_TITLE
+            : "text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.15] tracking-[-0.02em] [text-wrap:pretty]"
+        }
+      >
         {typeof children === "string" ? noOrphan(children) : children}
       </h2>
     </SlideIn>
   );
 }
 
-export function Body({ children }: { children: React.ReactNode }) {
+export function Body({ children, intro = false }: { children: React.ReactNode; intro?: boolean }) {
   return (
     <SlideIn delay={120} className={MEASURE}>
-      <p className="mt-6 text-[clamp(1.05rem,1.4vw,1.35rem)] font-normal leading-[1.35] opacity-90 [text-wrap:pretty]">
+      <p
+        className={
+          intro
+            ? `mt-6 ${INTRO_SUBTEXT}`
+            : "mt-6 text-[clamp(1.05rem,1.4vw,1.35rem)] font-normal leading-[1.35] opacity-90 [text-wrap:pretty]"
+        }
+      >
         {typeof children === "string" ? noOrphan(children) : children}
       </p>
     </SlideIn>

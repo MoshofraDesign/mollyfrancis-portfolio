@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { GUTTER, NAV_CLEAR, NextProjectLink, CaseStudyMetaPanel, END_PANEL} from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, INTRO_TITLE, INTRO_SUBTEXT, NextProjectLink, CaseStudyMetaPanel, END_PANEL } from "@/components/v2/CaseStudyKit";
 
 /**
  * GovOS eSubmission — horizontal case study built to match the Figma deck
@@ -384,10 +384,14 @@ export default function GovOSCaseStudy() {
             {/* No reveal here — the title panel is what you land on, so its
                 copy is simply present rather than animating in. */}
             <div>
-              <p className="text-[1.341rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] font-semibold leading-tight text-white sm:text-[1.2rem] md:text-[1.44rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] md:text-[12px] lg:text-[15px] xl:text-[19px] 2xl:text-[23px]">
+              {/* Had three stacked generations of size utilities. Tailwind
+                  emits each once and the last set won, so the title rendered
+                  at 15px and the paragraph below at 11px — which is why they
+                  looked tiny. Both use the shared intro pair now. */}
+              <p className={`text-white ${INTRO_TITLE}`}>
                 GovOS eSubmission
               </p>
-              <p className="mt-4 max-w-[60ch] text-[0.975rem] sm:text-[1.2rem] md:text-[1.2rem] lg:text-[1.2rem] xl:text-[1.2rem] 2xl:text-[1.2rem] font-normal leading-[1.4] text-white sm:text-[0.95rem] md:text-[1.056rem] lg:text-[1.2rem] xl:text-[1.2rem] 2xl:text-[1.2rem] md:text-[8px] lg:text-[11px] xl:text-[13px] 2xl:text-[16px]">
+              <p className={`mt-4 max-w-[60ch] text-white ${INTRO_SUBTEXT}`}>
                 A cloud-based digital portal that allows external organizations, title
                 companies, law firms, and individuals to securely submit official
                 documents and records (such as land deeds or legal filings) directly to

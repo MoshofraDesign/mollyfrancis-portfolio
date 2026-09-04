@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT} from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Patient Portal — athenahealth — Molly Francis",
@@ -127,10 +127,10 @@ export default function ConsumerHealthCaseStudy() {
         {/* 25 million patients... */}
         <TextPanel width={VIEW}>
           <SlideIn>
-            <h2 className={H_DISPLAY}>25 million patients opened the portal and landed on Test Results.</h2>
+            <h2 className={`text-white ${INTRO_TITLE}`}>25 million patients opened the portal and landed on Test Results.</h2>
           </SlideIn>
           <SlideIn delay={100}>
-            <p className={BODY_CAPTION}>Appointments, meds, billing — all there, none of it findable. Especially on a phone.</p>
+            <p className={`text-white/90 ${INTRO_SUBTEXT}`}>Appointments, meds, billing — all there, none of it findable. Especially on a phone.</p>
           </SlideIn>
         </TextPanel>
 

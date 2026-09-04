@@ -570,8 +570,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
 
         {project.overview && project.slug !== "print" && (
           <TextPanel className={firstSectionKey === "overview" ? FIRST_GAP : undefined}>
-            <Heading>Overview</Heading>
-            <Body>{project.overview}</Body>
+            <Heading intro>Overview</Heading>
+            <Body intro>{project.overview}</Body>
           </TextPanel>
         )}
 

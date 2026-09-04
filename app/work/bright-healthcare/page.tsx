@@ -5,7 +5,7 @@ import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
-import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL} from "@/components/v2/CaseStudyKit";
+import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT} from "@/components/v2/CaseStudyKit";
 import UcmScreensCarousel from "@/components/UcmScreensCarousel";
 
 export const metadata = {
@@ -111,10 +111,10 @@ export default function BrightHealthcareCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className={`${MEASURE} mx-auto space-y-6`}>
             <SlideIn>
-              <h2 className={H_DISPLAY}>Problem</h2>
+              <h2 className={`text-white ${INTRO_TITLE}`}>Problem</h2>
             </SlideIn>
             <SlideIn delay={80}>
-              <p className={BODY}>
+              <p className={`text-white/90 ${INTRO_SUBTEXT}`}>
                 Bright HealthCare&apos;s providers across Texas, Georgia, Utah, California, and Virginia relied on fax as their sole method for submitting prior authorizations—a process plagued by unexpected errors, back-and-forth communication, and processing times stretching up to a month. Without validation, real-time data, or status visibility, every party involved was left frustrated.
               </p>
             </SlideIn>

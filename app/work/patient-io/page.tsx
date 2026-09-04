@@ -142,7 +142,7 @@ export default function PatientIoCaseStudy() {
 
         {/* ── WHAT IS PATIENT IO ───────────────────────────────────────── */}
         <TextPanel>
-          <Heading>What is Patient IO?</Heading>
+          <Heading intro>What is Patient IO?</Heading>
           <Body>{project.overview}</Body>
         </TextPanel>
 

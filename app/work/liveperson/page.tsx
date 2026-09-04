@@ -212,7 +212,7 @@ export default function LivePersonCaseStudy() {
 
         {/* ── SOCIAL MEDIA MANAGEMENT ──────────────────────────────────── */}
         <TextPanel>
-          <Heading>Social Media Management</Heading>
+          <Heading intro>Social Media Management</Heading>
           <Body>
             To streamline LivePerson&rsquo;s omnichannel support, I redesigned
             the LivePerson SocialConnect agent workspace to unify disparate

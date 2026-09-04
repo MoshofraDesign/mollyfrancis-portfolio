@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL} from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT} from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Netspend Rewards & UCM — Molly Francis",
@@ -133,10 +133,10 @@ export default function NetspendCaseStudy() {
         {/* Rewards ran on spreadsheets... — matches production narrative */}
         <TextPanel width={VIEW}>
           <SlideIn>
-            <h2 className={H_DISPLAY}>Rewards ran on spreadsheets. No one could see what was live — or what was working.</h2>
+            <h2 className={`text-white ${INTRO_TITLE}`}>Rewards ran on spreadsheets. No one could see what was live — or what was working.</h2>
           </SlideIn>
           <SlideIn delay={100}>
-            <p className={`mt-3 ${BODY_MUTED}`}>I designed both sides of the fix: the internal tool that manages the program, and the app experience it powers.</p>
+            <p className={`mt-3 text-white/90 ${INTRO_SUBTEXT}`}>I designed both sides of the fix: the internal tool that manages the program, and the app experience it powers.</p>
           </SlideIn>
         </TextPanel>
 

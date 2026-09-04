@@ -159,8 +159,8 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── WHAT IS ATHENAWELL ───────────────────────────────────────── */}
         <TextPanel>
-          <Heading>What is athenaWell?</Heading>
-          <Body>{project.overview}</Body>
+          <Heading intro>What is athenaWell?</Heading>
+          <Body intro>{project.overview}</Body>
         </TextPanel>
 
         {/* ── USER TYPES ───────────────────────────────────────────────── */}

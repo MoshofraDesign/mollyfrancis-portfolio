@@ -7,7 +7,7 @@ import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
 import { contrastColor } from "@/lib/contrastColor";
-import { GUTTER, NAV_CLEAR, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, INTRO_TITLE, INTRO_SUBTEXT, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Homepay Payroll — Care.com — Molly Francis",
@@ -180,12 +180,12 @@ export default function CareHomepayCaseStudy() {
         <Panel width="lg:w-screen">
           <div className="w-full lg:absolute lg:left-[6.94%] lg:top-[calc(50%+43px)] lg:w-[66%] lg:-translate-y-1/2">
             <SlideIn>
-              <h1 className="font-semibold leading-[1.173] tracking-[-0.02em] text-white text-[2rem] sm:text-[2.5rem] lg:text-[clamp(2rem,5.625vw,6.5rem)]">
+              <h1 className={`text-white ${INTRO_TITLE}`}>
                 HomePay Time Tracker app by Care.com
               </h1>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="mt-4 text-white leading-[1.35] text-[1.05rem] sm:text-[1.05rem] lg:text-[clamp(1.05rem,2.22vw,2.25rem)]">
+              <p className={`mt-4 text-white ${INTRO_SUBTEXT}`}>
                 HomePay lets household employees like nannies and caregivers
                 track daily hours, calculate overtime, and submit timesheets
                 directly to employers. Employers review and approve submitted

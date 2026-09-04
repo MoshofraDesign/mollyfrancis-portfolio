@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT} from "@/components/v2/CaseStudyKit";
 
 /**
  * DocSquad — Figma deck (Portfolio › 4553:21862), left to right:
@@ -183,10 +183,10 @@ export default function DocSquadCaseStudy() {
         <ScreenPanel className="!pt-16">
           <div className="flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-1/2 lg:h-[294px] xl:h-[327px] 2xl:h-[368px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none lg:-translate-y-1/2 lg:justify-end">
             <SlideIn>
-              <h2 className={H_DISPLAY}>Problem</h2>
+              <h2 className={`text-white ${INTRO_TITLE}`}>Problem</h2>
             </SlideIn>
             <SlideIn delay={80}>
-              <p className={BODY}>
+              <p className={`text-white/90 ${INTRO_SUBTEXT}`}>
                 Healthcare providers are overwhelmed—juggling back-to-back appointments,
                 redundant data entry, and clunky telehealth tools that add friction instead
                 of removing it. Meanwhile, patients face long wait times for issues that
