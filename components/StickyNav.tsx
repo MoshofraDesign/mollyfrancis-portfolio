@@ -10,8 +10,10 @@ type Props = {
   /** Always visible, so there's a way out from the very first panel. */
   action?: React.ReactNode;
   /**
-   * Parked left inset at lg+ (px). Default 48 — tighter than content
-   * columns. Pass 100 to match Figma marks that sit on the content grid.
+   * Parked left inset at lg+ (px). Default 100, the same inset every
+   * project's hero mark uses, so the small mark slides in exactly where the
+   * large one was. It was 48 (32 on Netspend) while the heroes were on the
+   * 71/89/107 ladder; once those went flat 100 the two no longer lined up.
    */
   parkLeft?: number;
   /**
@@ -44,7 +46,7 @@ export default function StickyNav({
   watch,
   logo,
   action,
-  parkLeft = 48,
+  parkLeft = 100,
   parkTop,
   parkImmediately = false,
 }: Props) {

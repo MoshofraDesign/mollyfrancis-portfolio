@@ -52,7 +52,6 @@ export default function NetspendCaseStudy() {
     >
       <StickyNav
         watch="title"
-        parkLeft={32}
         logo={
           <div className="relative h-[22px] w-[200px]">
             <Image src={LOGO} alt="Netspend" fill unoptimized className="object-contain object-left" />

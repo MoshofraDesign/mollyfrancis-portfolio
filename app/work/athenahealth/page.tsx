@@ -88,7 +88,6 @@ export default function ConsumerHealthCaseStudy() {
     >
       <StickyNav
         watch="title"
-        parkLeft={48}
         logo={
           <div className="relative h-8 w-[200px] sm:h-9 sm:w-[240px]">
             <Image src={LOGO} alt="athenahealth" fill unoptimized className="object-contain object-left" />
