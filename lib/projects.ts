@@ -744,7 +744,7 @@ export const projects: Project[] = [
     aiSummary:
       "A collection of logo and identity work spanning clients across consumer, lifestyle, food, and personal branding. Marks range from playful illustrative to clean wordmarks, depending on the audience and how the brand needed to feel in use.",
     overview:
-      "Logo and identity work for a mix of paying clients and personal projects — wordmarks, illustrative marks, and full identity systems. Every mark here was drawn in Illustrator in the early years: no AI, no prompt, just the Pen tool, a graveyard of extra anchor points, and the wild hope that this time the curve would actually land.",
+      "Logo and identity work for a mix of paying clients and personal projects. Every mark here was drawn in Illustrator in the early years: no AI, no prompt, just the Pen tool, a graveyard of extra anchor points, and the wild hope that this time the curve would actually land.",
     images: [
       {
         src: "/work/bohemian-hair-bows-card.jpg",
