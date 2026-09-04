@@ -248,7 +248,7 @@ export function Body({ children, intro = false }: { children: React.ReactNode; i
         className={
           intro
             ? `mt-3 ${INTRO_SUBTEXT}`
-            : "mt-3 text-[clamp(1.15rem,1.5vw,1.5rem)] font-normal leading-[1.4] opacity-90 [text-wrap:pretty]"
+            : "mt-3 text-[clamp(1.25rem,1.6vw,1.65rem)] font-normal leading-[1.45] opacity-90 [text-wrap:pretty]"
         }
       >
         {typeof children === "string" ? noOrphan(children) : children}
@@ -395,10 +395,10 @@ export function CaseStudyMetaPanel({
                 <ul className="mt-5 space-y-4">
                   {meta.timing.map((row) => (
                     <li key={`${row.value}-${row.label}`}>
-                      <p className="text-[clamp(1.15rem,1.5vw,1.35rem)] font-semibold leading-tight">
+                      <p className="text-[clamp(1.35rem,1.8vw,1.6rem)] font-semibold leading-tight">
                         {row.value}
                       </p>
-                      <p className="mt-1.5 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-current/55">
+                      <p className="mt-1.5 text-[clamp(1.1rem,1.35vw,1.2rem)] leading-snug text-current">
                         {row.label}
                       </p>
                     </li>
@@ -414,10 +414,10 @@ export function CaseStudyMetaPanel({
                   <ul className="mt-5 space-y-5">
                     {meta.projected.map((row) => (
                       <li key={`${row.value}-${row.label}`}>
-                        <p className="text-[clamp(1.75rem,3vw,2.35rem)] font-semibold leading-tight tracking-[-0.03em]">
+                        <p className="text-[clamp(2.1rem,3.5vw,2.8rem)] font-semibold leading-tight tracking-[-0.03em]">
                           {row.value}
                         </p>
-                        <p className="mt-2 text-[clamp(0.95rem,1.15vw,1.05rem)] leading-snug text-current/55">
+                        <p className="mt-2 text-[clamp(1.1rem,1.35vw,1.2rem)] leading-snug text-current">
                           {row.label}
                         </p>
                       </li>

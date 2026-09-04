@@ -139,7 +139,7 @@ function Heading({ children }: { children: React.ReactNode }) {
 function Body({ children }: { children: React.ReactNode }) {
   return (
     <SlideIn delay={120} className={TEXT_W}>
-      <p className="mt-6 text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] font-normal leading-[1.35] text-white [text-wrap:pretty]">
+      <p className="mt-6 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] font-normal leading-[1.35] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </p>
     </SlideIn>
@@ -155,7 +155,7 @@ function Bullets({ items }: { items: string[] }) {
           key={b}
           as="li"
           delay={120 + i * 90}
-          className="text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] font-normal leading-[1.35] text-white [text-wrap:pretty]"
+          className="text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] font-normal leading-[1.35] text-white [text-wrap:pretty]"
         >
           {noOrphan(b)}
         </SlideIn>

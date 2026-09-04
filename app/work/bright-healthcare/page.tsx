@@ -30,7 +30,7 @@ const MEASURE = "w-full max-w-[min(54rem,86vw)]";
 const H_DISPLAY =
   "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
 const BODY =
-  "text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] leading-[1.35] text-white [text-wrap:pretty]";
+  "text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white [text-wrap:pretty]";
 
 function QuoteMark({ close = false, className = "" }: { close?: boolean; className?: string }) {
   return (
@@ -327,7 +327,7 @@ export default function BrightHealthcareCaseStudy() {
                     <QuoteMark close className="left-[calc(100%+0.12em)] bottom-0 h-[0.97em] w-[1.23em]" />
                   </span>
                 </p>
-                <p className="mt-6 text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] italic leading-snug text-white">
+                <p className="mt-6 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] italic leading-snug text-white">
                   Rebecca Schweitz
                   <br />
                   VP, Clinical Performance
@@ -355,10 +355,10 @@ export default function BrightHealthcareCaseStudy() {
                 <ul className="mt-5 grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-x-10 lg:gap-x-12">
                   {meta.projected.map((row) => (
                     <li key={`${row.value}-${row.label}`}>
-                      <p className="text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
+                      <p className="text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
                         {row.value}
                       </p>
-                      <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
+                      <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
                         {row.label}
                       </p>
                     </li>
@@ -391,10 +391,10 @@ export default function BrightHealthcareCaseStudy() {
                 <h2 className={META_LABEL}>
                   Usage
                 </h2>
-                <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
+                <p className="mt-5 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
                   $1.9m in savings
                 </p>
-                <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
+                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
                   Scaled monthly usage to 9-10K a month
                 </p>
               </SlideIn>
@@ -402,16 +402,16 @@ export default function BrightHealthcareCaseStudy() {
                 <h2 className={META_LABEL}>
                   Time saved
                 </h2>
-                <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
+                <p className="mt-5 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
                   $800K in savings
                 </p>
-                <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
+                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
                   7 minutes per case for clinicians reviewing cases
                 </p>
-                <p className="mt-8 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
+                <p className="mt-8 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
                   4 Hours per day saved
                 </p>
-                <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
+                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
                   Went down 4 minutes per authorization, per provider
                 </p>
               </SlideIn>
@@ -419,16 +419,16 @@ export default function BrightHealthcareCaseStudy() {
                 <h2 className={META_LABEL}>
                   Users
                 </h2>
-                <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
+                <p className="mt-5 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
                   50K authorization submissions
                 </p>
-                <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
+                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
                   22K providers logged in
                 </p>
-                <p className="mt-8 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
+                <p className="mt-8 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
                   16.6k unique visitors
                 </p>
-                <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
+                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
                   Since go-live
                 </p>
               </SlideIn>

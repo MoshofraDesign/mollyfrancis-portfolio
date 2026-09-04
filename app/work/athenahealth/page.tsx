@@ -31,7 +31,7 @@ const MEDIA = "w-full max-w-[min(950px,90vw)]";
 const H_DISPLAY =
   "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
 const BODY_CAPTION =
-  "mt-3 text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] leading-[1.35] text-white/55 [text-wrap:pretty]";
+  "mt-3 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white/55 [text-wrap:pretty]";
 
 function StoryImage({
   src,
@@ -165,7 +165,7 @@ export default function ConsumerHealthCaseStudy() {
               </div>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="mt-4 text-center text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.5rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
+              <p className="mt-4 text-center text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
                 My Health, as a place — not a subcategory.
               </p>
             </SlideIn>
