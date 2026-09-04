@@ -147,7 +147,7 @@ export default function DocSquadCaseStudy() {
           id="docsquad-title"
           className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
-          <div className="relative z-10 aspect-[842/112] w-[min(100%,842px)] lg:absolute lg:left-[100px] lg:top-[72px] xl:top-[80px] 2xl:top-[90px] lg:h-[80px] xl:h-[89px] 2xl:h-[101px] lg:w-[599px] xl:w-[748px] 2xl:w-[898px] lg:max-w-none lg:aspect-auto">
+          <div className="relative z-10 aspect-[842/112] w-[min(100%,842px)] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[80px] xl:h-[89px] 2xl:h-[101px] lg:w-[599px] xl:w-[748px] 2xl:w-[898px] lg:max-w-none lg:aspect-auto">
             <Image
               src={LOGO}
               alt="DocSquad"

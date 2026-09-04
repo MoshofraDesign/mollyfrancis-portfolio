@@ -270,7 +270,7 @@ body::before {
   /* 100,100 on the frame. */
   main .care-hero-logo {
     left: 100px;
-    top: 10%;
+    top: 100px;
     width: calc(672 * var(--figma-u));
     height: calc(120 * var(--figma-u));
   }
@@ -388,7 +388,7 @@ body::before {
      950x609 at 435,314; copy 265 wide at 102,741, Jost Regular 18/26. */
   main .ecom-mark {
     left: 100px;
-    top: 11.2%;
+    top: 100px;
     width: calc(455 * var(--figma-u));
     height: calc(141.365 * var(--figma-u));
   }
