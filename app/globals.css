@@ -28,10 +28,10 @@
    * Close, and lines the parked logo up with each hero's large logo
    * (lg:top-[72px]) so the small mark arrives where the big one was.
    *
-   * --nav-logo-h is the tallest sticky logo on any case study (h-9), so
-   * one value clears them all. */
+   * --nav-logo-h is the tallest sticky logo on any case study — Care.com's
+   * is 50px per Figma 4918:10267 — so one value clears them all. */
   --nav-park-top: 4.75rem;
-  --nav-logo-h: 2.25rem;
+  --nav-logo-h: 3.125rem;
   --nav-clear: calc(var(--nav-park-top) + var(--nav-logo-h) + 1rem);
 
   /* Room left inside a 100dvh panel once the nav band and the panel's own

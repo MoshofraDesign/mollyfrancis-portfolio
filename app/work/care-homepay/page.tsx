@@ -7,7 +7,7 @@ import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
 import { contrastColor } from "@/lib/contrastColor";
-import { GUTTER, NAV_CLEAR, NextProjectLink, MEASURE, MEDIA, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Homepay Payroll — Care.com — Molly Francis",
@@ -26,14 +26,6 @@ const ACCENT = "#025747";
 const LOGO = "/logos/care-homepay.svg";
 const ASSET = "/work/care-homepay";
 
-/** Small Care logo — sticky nav + top-left of every panel */
-function SmallLogo() {
-  return (
-    <div className="relative h-[47px] w-[200px]">
-      <Image src={LOGO} alt="Care.com Homepay" fill unoptimized className="object-contain object-left" />
-    </div>
-  );
-}
 
 /** Shared outer wrapper — full viewport, equal fluid padding, centered content */
 function Panel({
@@ -73,7 +65,7 @@ export default function CareHomepayCaseStudy() {
       <StickyNav
         watch="title"
         logo={
-          <div className="relative h-7 w-[115px] sm:h-8 sm:w-[135px]">
+          <div className="relative h-8 w-[180px] sm:h-9 sm:w-[200px] lg:h-[50px] lg:w-[280px]">
             <Image
               src={LOGO}
               alt="Care.com Homepay"
@@ -179,19 +171,21 @@ export default function CareHomepayCaseStudy() {
           </div>
         </section>
 
-        {/* ── PANEL 2: STATEMENT ─────────────────────────────────────── */}
+        {/* ── PANEL 2: STATEMENT — Figma 4555:22849 ──────────────────────
+            Copy block at left:100 (6.94%), 950 wide (66%), centred on the
+            panel with a +43px nudge. Type is Jost SemiBold 81/95 and Regular
+            32 at the 1440 frame, so 5.625vw and 2.22vw. The frame carries a
+            single Care.com mark, up in the nav slot — the second one that sat
+            above the heading isn't in the design. */}
         <Panel width="lg:w-screen">
-          <div className={`mx-auto ${MEASURE}`}>
-            <div className="mb-8 lg:mb-10">
-              <SmallLogo />
-            </div>
+          <div className="w-full lg:absolute lg:left-[6.94%] lg:top-[calc(50%+43px)] lg:w-[66%] lg:-translate-y-1/2">
             <SlideIn>
-              <h1 className="font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem]">
+              <h1 className="font-semibold leading-[1.173] tracking-[-0.02em] text-white text-[2rem] sm:text-[2.5rem] lg:text-[clamp(2rem,5.625vw,6.5rem)]">
                 HomePay Time Tracker app by Care.com
               </h1>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="mt-6 text-white leading-[1.35] text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.344rem]">
+              <p className="mt-4 text-white leading-[1.35] text-[1.05rem] sm:text-[1.05rem] lg:text-[clamp(1.05rem,2.22vw,2.25rem)]">
                 HomePay lets household employees like nannies and caregivers
                 track daily hours, calculate overtime, and submit timesheets
                 directly to employers. Employers review and approve submitted
@@ -199,8 +193,8 @@ export default function CareHomepayCaseStudy() {
                 processing.
               </p>
             </SlideIn>
-            <SlideIn delay={200} className="mt-6">
-              <span className="inline-flex items-center rounded-full border-2 border-white/50 px-6 py-1 font-semibold text-white text-[1rem] sm:text-[1rem] md:text-[1rem] lg:text-[1rem] xl:text-[1.12rem] 2xl:text-[1.344rem]">
+            <SlideIn delay={200} className="mt-4">
+              <span className="inline-flex items-center rounded-full border-2 border-white/50 px-6 py-1 font-semibold text-white text-[1rem] sm:text-[1rem] lg:text-[clamp(0.95rem,1.667vw,1.75rem)]">
                 0 &gt; 1
               </span>
             </SlideIn>
@@ -209,8 +203,12 @@ export default function CareHomepayCaseStudy() {
 
         {/* ── PANEL 3: VIDEO ─────────────────────────────────────────── */}
         <Panel width="lg:w-screen" className="items-center">
-          <SlideIn className={`mx-auto ${MEDIA}`}>
-            <div className="relative aspect-[868/688] w-full overflow-hidden rounded-xl shadow-[0_20px_60px_-12px_rgba(0,0,0,0.4)]">
+          {/* Figma 4555:22858 — 868x688 centred, i.e. 60.28% of the frame.
+              It had been running at the 950px media cap with a drop shadow
+              that read as a pale rectangle against the green; the frame has
+              neither the shadow nor the rounded corner. */}
+          <SlideIn className="mx-auto w-full max-w-[min(950px,90vw)] lg:w-[60.28%] lg:max-w-none">
+            <div className="relative aspect-[868/688] w-full overflow-hidden">
               <AutoplayVideo
                 src={`${ASSET}/videos/care-employee.mp4`}
                 className="h-full w-full object-cover"
@@ -219,88 +217,105 @@ export default function CareHomepayCaseStudy() {
           </SlideIn>
         </Panel>
 
-        {/* ── PANEL 4: TIMESHEET SCREENS ─────────────────────────────── */}
+        {/* ── PANEL 4: TIMESHEET SCREENS — Figma 4555:22859 ──────────────
+            Three 276x600 screens with 50px between them, 928 wide at x:258.
+            They were one composite export with a coral background baked into
+            the gaps; these are Molly's separate transparent exports, so the
+            panel colour shows between them as the frame intends. */}
         <Panel width="lg:w-screen" className="items-center">
-          <SlideIn className={`mx-auto ${MEDIA}`}>
-            <Image
-              src={`${ASSET}/screens-timesheets.png`}
-              alt="HomePay employee timesheet screens — add time, weekly hours, and summary"
-              width={1850}
-              height={1200}
-              className="h-auto w-full object-contain"
-            />
+          <SlideIn className="mx-auto grid w-full max-w-[min(950px,90vw)] grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-[5.39%] lg:w-[64.44%] lg:max-w-none">
+            {[
+              { n: 1, alt: "Add time — day picker" },
+              { n: 2, alt: "Hours worked — weekly view" },
+              { n: 3, alt: "Timesheet — totals and submit" },
+            ].map(({ n, alt }) => (
+              <Image
+                key={n}
+                src={`${ASSET}/screens-timesheet-${n}.png`}
+                alt={alt}
+                width={276}
+                height={600}
+                className="mx-auto h-auto w-full max-w-[276px] sm:max-w-none"
+              />
+            ))}
           </SlideIn>
         </Panel>
 
-        {/* ── PANEL 5: SECURE MESSAGING ──────────────────────────────── */}
+        {/* ── PANEL 5: SECURE MESSAGING — Figma 4555:22862 ───────────────
+            Copy column at left:165 (11.46%), 368 wide, sitting 170 up from the
+            bottom; portrait 320 square; screens 604 wide, centred 162.74px
+            right of the panel's middle. Title Jost SemiBold 36/46, body
+            Regular 18 — 2.5vw and 1.25vw at the 1440 frame.
+
+            The columns had been a centred 1100px two-up, which pushed the copy
+            and the screens out toward the panel edges — close enough to the
+            neighbouring panel that the two read as one crowded section while
+            scrolling between them. The frame's margins are much wider. */}
         <Panel width="lg:w-screen">
-          <div className="mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 lg:grid-cols-2 lg:gap-14">
-            <div className="flex flex-col gap-6 text-white">
-              <SlideIn>
-                <div className="relative size-[160px] overflow-hidden rounded-full sm:size-[220px] lg:size-[280px]">
-                  <Image
-                    src={`${ASSET}/portrait-messaging.png`}
-                    alt="Caregiver using secure messaging"
-                    fill
-                    sizes="280px"
-                    className="object-cover"
-                  />
-                </div>
-              </SlideIn>
-              <SlideIn delay={120} className="flex flex-col gap-4">
-                <p className="font-semibold leading-[1.2] text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem]">
+          <div className="mx-auto flex w-full max-w-[min(1100px,94vw)] flex-col items-center gap-10 lg:block lg:max-w-none">
+            <SlideIn className="flex flex-col items-center gap-6 text-white lg:absolute lg:bottom-[17%] lg:left-[11.46%] lg:w-[25.56%] lg:items-start lg:gap-8">
+              <div className="relative size-[160px] shrink-0 overflow-hidden rounded-full sm:size-[220px] lg:aspect-square lg:size-auto lg:w-[86.96%]">
+                <Image
+                  src={`${ASSET}/portrait-messaging.png`}
+                  alt="Caregiver using secure messaging"
+                  fill
+                  sizes="(min-width: 1024px) 23vw, 220px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex flex-col gap-4 text-center lg:text-left">
+                <p className="font-semibold leading-[1.278] text-[1.5rem] sm:text-[1.75rem] lg:text-[clamp(1.25rem,2.5vw,3rem)]">
                   Secure Messaging
                 </p>
-                <p className="text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.25rem] leading-[1.35]">
-                  Messaging between employee and employer apps, to easily
-                  respond and keep track of important dates and communications.
+                <p className="leading-[1.35] text-[1.05rem] sm:text-[1.05rem] lg:text-[clamp(0.9rem,1.25vw,1.5rem)]">
+                  Messaging between employee and employer apps, to easily respond and keep track of important dates and communications.
                 </p>
-              </SlideIn>
-            </div>
-            <SlideIn delay={100} className="flex justify-center">
+              </div>
+            </SlideIn>
+            <SlideIn delay={100} className="flex w-full justify-center lg:absolute lg:left-[calc(50%+162.74px)] lg:top-[calc(50%+30px)] lg:w-[44.03%] lg:-translate-x-1/2 lg:-translate-y-1/2">
               <Image
                 src={`${ASSET}/screens-messaging.png`}
                 alt="Secure messaging — inbox and conversation"
                 width={634}
                 height={632}
-                className="h-auto w-full max-w-[560px] object-contain"
+                className="h-auto w-full max-w-[560px] object-contain lg:max-w-none"
               />
             </SlideIn>
           </div>
         </Panel>
 
-        {/* ── PANEL 6: CLOCK IN AND OUT ──────────────────────────────── */}
+        {/* ── PANEL 6: CLOCK IN AND OUT — Figma 4555:22870 ───────────────
+            Same construction as panel 5, with the frame's own numbers: copy at
+            left:207 (14.375%), 320 wide, portrait filling it; screens centred
+            218px right of the middle. */}
         <Panel width="lg:w-screen">
-          <div className="mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 lg:grid-cols-2 lg:gap-14">
-            <div className="flex flex-col gap-6 text-white">
-              <SlideIn>
-                <div className="relative size-[160px] overflow-hidden rounded-full sm:size-[220px] lg:size-[280px]">
-                  <Image
-                    src={`${ASSET}/portrait-clock.png`}
-                    alt="Employee clocking in"
-                    fill
-                    sizes="280px"
-                    className="object-cover"
-                  />
-                </div>
-              </SlideIn>
-              <SlideIn delay={120} className="flex flex-col gap-4">
-                <p className="font-semibold leading-[1.2] text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem]">
+          <div className="mx-auto flex w-full max-w-[min(1100px,94vw)] flex-col items-center gap-10 lg:block lg:max-w-none">
+            <SlideIn className="flex flex-col items-center gap-6 text-white lg:absolute lg:bottom-[17%] lg:left-[14.375%] lg:w-[22.22%] lg:items-start lg:gap-8">
+              <div className="relative size-[160px] shrink-0 overflow-hidden rounded-full sm:size-[220px] lg:aspect-square lg:size-auto lg:w-[100%]">
+                <Image
+                  src={`${ASSET}/portrait-clock.png`}
+                  alt="Employee clocking in"
+                  fill
+                  sizes="(min-width: 1024px) 23vw, 220px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex flex-col gap-4 text-center lg:text-left">
+                <p className="font-semibold leading-[1.278] text-[1.5rem] sm:text-[1.75rem] lg:text-[clamp(1.25rem,2.5vw,3rem)]">
                   Clock In and Out
                 </p>
-                <p className="text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.25rem] leading-[1.35]">
-                  Easily clock in and out to accurately track hours worked, so
-                  your pay is always correct and on time.
+                <p className="leading-[1.35] text-[1.05rem] sm:text-[1.05rem] lg:text-[clamp(0.9rem,1.25vw,1.5rem)]">
+                  Easily clock in and out to accurately track hours worked, so your pay is always correct and on time.
                 </p>
-              </SlideIn>
-            </div>
-            <SlideIn delay={100} className="flex justify-center">
+              </div>
+            </SlideIn>
+            <SlideIn delay={100} className="flex w-full justify-center lg:absolute lg:left-[calc(50%+218px)] lg:top-[calc(50%+30px)] lg:w-[44.03%] lg:-translate-x-1/2 lg:-translate-y-1/2">
               <Image
                 src={`${ASSET}/screens-clock.png`}
                 alt="Clock in and out — map and start shift"
                 width={634}
                 height={632}
-                className="h-auto w-full max-w-[560px] object-contain"
+                className="h-auto w-full max-w-[560px] object-contain lg:max-w-none"
               />
             </SlideIn>
           </div>
