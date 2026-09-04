@@ -133,12 +133,12 @@ function ImageGridPanel({
 
 /**
  * The lede paragraph on the two gallery-style pages — the Logos overview and
- * the Print subtitle and blurb. One size for all three, a step up from the
- * 1.05rem body ladder they were on (16.8px, which read small under those
- * big marks). The Print blurb keeps its muted colour; only the size is
- * shared.
+ * the Print blurb. Two steps up from the 1.05rem body ladder they were on
+ * (16.8px, which read small under those big marks), so 21.6px at a laptop
+ * width and 28px once there's room. Both pages share it, which is what keeps
+ * the two openings the same size.
  */
-const LEDE = "text-[clamp(1.15rem,1.5vw,1.5rem)] leading-[1.4] [text-wrap:pretty]";
+const LEDE = "text-[clamp(1.35rem,1.8vw,1.75rem)] leading-[1.4] [text-wrap:pretty]";
 
 /**
  * Logos project only — square tiles matching the homepage work grid
@@ -305,7 +305,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           {/* The subtitle isn't rendered here — the blurb below says it
               better, and the two stacked read as the same sentence twice.
               It still feeds the work grid tile and the page metadata. */}
-          <p className={`max-w-[46rem] text-[#141414]/60 ${LEDE}`}>
+          <p className={`max-w-[46rem] ${LEDE}`}>
             {PRINT_BLURB}
           </p>
         </section>
