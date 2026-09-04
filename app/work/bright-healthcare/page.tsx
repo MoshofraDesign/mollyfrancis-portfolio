@@ -107,14 +107,17 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </section>
 
+        {/* 2 — the problem, as a scene */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto space-y-6`}>
+          <div className={`${MEASURE} mx-auto`}>
             <SlideIn>
-              <h2 className={`text-white ${INTRO_TITLE}`}>Problem</h2>
+              <h2 className={`text-white ${INTRO_TITLE}`}>
+                Every prior authorization started with a fax.
+              </h2>
             </SlideIn>
-            <SlideIn delay={80}>
-              <p className={`text-white/90 ${INTRO_SUBTEXT}`}>
-                Bright HealthCare&apos;s providers across Texas, Georgia, Utah, California, and Virginia relied on fax as their sole method for submitting prior authorizations—a process plagued by unexpected errors, back-and-forth communication, and processing times stretching up to a month. Without validation, real-time data, or status visibility, every party involved was left frustrated.
+            <SlideIn delay={100}>
+              <p className={`mt-3 text-white/90 ${INTRO_SUBTEXT}`}>
+                Across five markets — Texas, Georgia, Utah, California, Virginia — fax was the only way in. No validation, no real-time data, no status once a request left the desk. Processing stretched up to a month, and internal teams spent hours turning unstructured faxes into actionable records.
               </p>
             </SlideIn>
           </div>
@@ -153,14 +156,93 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </Panel>
 
+        {/* 5 — research */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto space-y-6`}>
+          <div className={`${MEASURE} mx-auto`}>
             <SlideIn>
-              <h2 className={H_DISPLAY}>Objective</h2>
+              <h2 className={H_DISPLAY}>
+                So we asked the people sending them.
+              </h2>
             </SlideIn>
-            <SlideIn delay={80}>
-              <p className={BODY}>
-                I led design end-to-end for a digital portal that lets providers submit authorizations electronically, replacing manual workflows with real-time status tracking. I mapped authorization rules into form logic with clinical operations, ran continuous prototype testing to tighten the submission flow, and helped build a scalable, white-label design system reused across Bright surfaces.
+            <SlideIn delay={100}>
+              <p className={`mt-3 ${BODY}`}>
+                Provider interviews on how authorizations actually got done, then usability testing on the digital submission flow to find where it still caught. Both synthesized into empathy maps.
+              </p>
+            </SlideIn>
+          </div>
+        </Panel>
+
+        <Panel width={VIEW} pad="center" className="items-center">
+          <div className="relative mx-auto w-full max-w-[min(92vw,76.4rem)]">
+            <Image
+              src={`${ASSET}/research.png`}
+              alt="Interview tagging highlight counts and authorization workflow mapping board"
+              width={2446}
+              height={1082}
+              unoptimized
+              className="h-auto w-full"
+            />
+          </div>
+        </Panel>
+
+        {/* 7 — what they actually wanted */}
+        <Panel width={VIEW} pad="center">
+          <div className={`${MEASURE} mx-auto`}>
+            <SlideIn>
+              <h2 className={H_DISPLAY}>
+                They weren&apos;t asking for software. They were asking for an answer.
+              </h2>
+            </SlideIn>
+            <SlideIn delay={100}>
+              <p className={`mt-3 ${BODY}`}>
+                What providers wanted was narrow and specific, and almost none of it was about a better form.
+              </p>
+            </SlideIn>
+          </div>
+        </Panel>
+
+        <Panel width={VIEW} pad="center">
+          <div className="mx-auto flex w-full max-w-[min(92vw,80rem)] flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+            <SlideIn className="w-full max-w-[748px] lg:w-[min(52%,748px)]">
+              <h2 className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.15] tracking-[-0.02em]">😟 Pains</h2>
+              <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
+                <li>Burnout from repetitive admin tasks.</li>
+                <li>No visibility into status or timelines.</li>
+                <li>Endless back-and-forth with payers.</li>
+                <li>Delays hurting patient satisfaction and care.</li>
+              </ul>
+              <h2 className="mt-8 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.15] tracking-[-0.02em]">🌟 Gains</h2>
+              <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
+                <li>One system, fully integrated with their EHR.</li>
+                <li>Clear approval requirements—less rework.</li>
+                <li>Automated status updates and notifications.</li>
+                <li>Faster turnarounds, more time for patient care.</li>
+              </ul>
+            </SlideIn>
+            <SlideIn delay={80} className="w-full max-w-[566px] overflow-hidden rounded-[10px] lg:w-[min(39%,566px)]">
+              <Image
+                src={`${ASSET}/empathy-map.png`}
+                alt="Empathy map for providers using the portal"
+                width={566}
+                height={608}
+                unoptimized
+                className="h-auto w-full"
+              />
+            </SlideIn>
+          </div>
+        </Panel>
+
+        {/* 9 — the real design problem */}
+        <Panel width={VIEW} pad="center">
+          <div className={`${MEASURE} mx-auto`}>
+            <SlideIn>
+              <h2 className={H_DISPLAY}>
+                The hard part wasn&apos;t the form. It was the rules behind it.
+              </h2>
+            </SlideIn>
+            <SlideIn delay={100}>
+              <p className={`mt-3 ${BODY}`}>
+                I mapped authorization rules into form logic with clinical operations, so the portal could tell a provider what was required before they submitted rather than after. Continuous prototype testing tightened every step of the flow, and an empty-state dashboard grew with the user.
               </p>
             </SlideIn>
           </div>
@@ -202,72 +284,18 @@ export default function BrightHealthcareCaseStudy() {
           </SlideIn>
         </Panel>
 
+        {/* 11 — scale */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto space-y-6`}>
+          <div className={`${MEASURE} mx-auto`}>
             <SlideIn>
-              <h2 className={H_DISPLAY}>Research</h2>
+              <h2 className={H_DISPLAY}>
+                One system. Five markets. White-label from the start.
+              </h2>
             </SlideIn>
-            <SlideIn delay={80}>
-              <p className={BODY}>
-                We conducted user interviews with providers to understand current authorization workflows and pain points. We followed up with usability testing to validate the digital submission flow and identify friction points. These insights were synthesized into empathy maps to guide the design of a more intuitive, efficient, and provider-centered experience.
+            <SlideIn delay={100}>
+              <p className={`mt-3 ${BODY}`}>
+                I partnered with the broader team on a scalable design system with white-labeling support, shipping patterns the team could reuse across other Bright surfaces.
               </p>
-            </SlideIn>
-          </div>
-        </Panel>
-
-        <Panel width={VIEW} pad="center" className="items-center">
-          <div className="relative mx-auto w-full max-w-[min(92vw,76.4rem)]">
-            <Image
-              src={`${ASSET}/research.png`}
-              alt="Interview tagging highlight counts and authorization workflow mapping board"
-              width={2446}
-              height={1082}
-              unoptimized
-              className="h-auto w-full"
-            />
-          </div>
-        </Panel>
-
-        <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto space-y-6`}>
-            <SlideIn>
-              <h2 className={H_DISPLAY}>Empathy Map – Providers Using Prior Authorization Portal</h2>
-            </SlideIn>
-            <SlideIn delay={80}>
-              <p className={BODY}>
-                Design a digital portal that lets providers submit authorizations electronically, eliminating manual work, reducing errors, and speeding up processing times with real-time status updates. I also partnered with the broader team to build a scalable design system with white-labeling support.
-              </p>
-            </SlideIn>
-          </div>
-        </Panel>
-
-        <Panel width={VIEW} pad="center">
-          <div className="mx-auto flex w-full max-w-[min(92vw,80rem)] flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-            <SlideIn className="w-full max-w-[748px] lg:w-[min(52%,748px)]">
-              <h2 className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.15] tracking-[-0.02em]">😟 Pains</h2>
-              <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
-                <li>Burnout from repetitive admin tasks.</li>
-                <li>No visibility into status or timelines.</li>
-                <li>Endless back-and-forth with payers.</li>
-                <li>Delays hurting patient satisfaction and care.</li>
-              </ul>
-              <h2 className="mt-8 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.15] tracking-[-0.02em]">🌟 Gains</h2>
-              <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
-                <li>One system, fully integrated with their EHR.</li>
-                <li>Clear approval requirements—less rework.</li>
-                <li>Automated status updates and notifications.</li>
-                <li>Faster turnarounds, more time for patient care.</li>
-              </ul>
-            </SlideIn>
-            <SlideIn delay={80} className="w-full max-w-[566px] overflow-hidden rounded-[10px] lg:w-[min(39%,566px)]">
-              <Image
-                src={`${ASSET}/empathy-map.png`}
-                alt="Empathy map for providers using the portal"
-                width={566}
-                height={608}
-                unoptimized
-                className="h-auto w-full"
-              />
             </SlideIn>
           </div>
         </Panel>
@@ -300,7 +328,7 @@ export default function BrightHealthcareCaseStudy() {
           <div className={`${MEASURE} mx-auto space-y-10`}>
             <div className="space-y-6">
               <SlideIn>
-                <h2 className={H_DISPLAY}>Outcome</h2>
+                <h2 className={H_DISPLAY}>It replaced the fax machine.</h2>
               </SlideIn>
               <SlideIn delay={80}>
                 <p className={BODY}>{project.outcome}</p>
