@@ -92,11 +92,19 @@ function findVideo(name: string): string | null {
   return null;
 }
 
-/** Full-bleed 1440 panel; content uses Figma % positions at lg+. */
+/**
+ * Panel for DocSquad's beats; content uses Figma % positions at lg+.
+ *
+ * Not lg:w-screen. Measured live at 1440: every one of these panels was a
+ * full viewport wide while its content ran 563 to 1005 — 38% to 61% of each
+ * panel was empty field, which is the gap between one beat and the next.
+ * 1200 keeps the widest block (1005 from a 100px inset, so 1105) inside the
+ * panel and takes roughly 240px of emptiness out of every gap.
+ */
 function ScreenPanel({
   children,
   className = "",
-  width = "lg:w-screen",
+  width = "lg:w-[min(100vw,1200px)]",
 }: {
   children: React.ReactNode;
   className?: string;
