@@ -317,6 +317,7 @@ export default function NetspendCaseStudy() {
           client={next.client}
           title={next.title}
           accent={next.accent}
+          logo={next.logo}
         />
 
       </HorizontalScroll>

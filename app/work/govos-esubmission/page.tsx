@@ -556,6 +556,7 @@ export default function GovOSCaseStudy() {
           client={next.client}
           title={next.title}
           accent={next.accent}
+          logo={next.logo}
         />
       </HorizontalScroll>
     </main>

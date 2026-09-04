@@ -279,12 +279,15 @@ export function NextProjectLink({
   client,
   title,
   accent = "#141414",
+  logo,
   variant = "panel",
   rail,
 }: {
   href: string;
   client: string;
   title: string;
+  /** The destination project's mark, shown under the label. */
+  logo?: string;
   /** Next project accent — same solid color as homepage thumb hover. */
   accent?: string;
   /**
@@ -336,6 +339,21 @@ export function NextProjectLink({
         >
           Up next — {client}
         </p>
+        {logo && (
+          /* The marks in /logos are white cuts, so on the five light accents
+             — where contrastColor picks ink for the type — the mark needs
+             inverting to near-black or it disappears into the field. */
+          <Image
+            src={logo}
+            alt={client}
+            width={320}
+            height={80}
+            unoptimized
+            className={`mt-4 h-6 w-auto max-w-[150px] object-contain object-left lg:mt-5 lg:h-7 lg:max-w-[180px] ${
+              fg === "#141414" ? "[filter:brightness(0)_invert(8%)]" : ""
+            }`}
+          />
+        )}
         <h2 className="mt-4 text-[clamp(1.75rem,4.5vw,3rem)] font-semibold leading-[1.1] transition-transform group-hover:translate-x-3">
           {title} →
         </h2>

@@ -301,6 +301,7 @@ export default function ConsumerHealthCaseStudy() {
           client={next.client}
           title={next.title}
           accent={next.accent}
+          logo={next.logo}
         />
       </HorizontalScroll>
     </main>
