@@ -144,59 +144,43 @@ export default function LivePersonCaseStudy() {
             </p>
           </div>
 
-          <div className="mt-8 flex flex-1 items-end gap-4 sm:gap-8 lg:mt-0 lg:block lg:h-full">
-            {/* Phone mock — Figma: 100,360, 640×640, flush to the frame's
-                bottom edge (no gap below it at all). */}
-            {/* Sized in --figma-u, not stepped px. The export is square
-                (1280x1280), so a 455-wide box is also 455 TALL — bottom-
-                anchored, that put its top at 100dvh-455, which on a 626-tall
-                window is 171, right where the wordmark sits at 100..175. It
-                rode straight over the logo on resize. u is pinned by
-                whichever axis is tighter, so the phone shrinks with the
-                viewport instead: 640u is 400px at that height, clearing the
-                mark by 50. */}
-            <SlideIn className="w-[48%] max-w-[380px] shrink-0 self-end lg:absolute lg:bottom-0 lg:left-[64px] lg:w-[calc(640_*_var(--figma-u))] lg:max-w-[640px]">
-              <Image
-                src="/work/liveperson/homeco-conversational-commerce.png"
-                alt="Conversational commerce example inside LiveEngage"
-                width={1280}
-                height={1280}
-                sizes="(max-width: 1024px) 48vw, 32vw"
-                className="h-auto w-full object-contain"
-                priority
-              />
-            </SlideIn>
+          {/* Hero artwork — Figma 4933:17013: 100,267 / 1200x562.5, which is
+              all-channels-unified.png exactly (1200x563). One composite now
+              instead of the phone mock plus the tweet/DM pair; the standalone
+              panels that used to show these are gone, since the hero would
+              have repeated them.
 
-            {/* Tweet/DM composite — Figma: 740,300, 554×460. Independent of
-                the phone's bottom anchor — sits higher, doesn't touch the
-                edge. */}
-            <div className="flex flex-1 flex-col items-start gap-5 self-end pb-6 sm:gap-7 lg:block lg:pb-0">
-              <SlideIn
-                delay={100}
-                className="w-full max-w-[440px] lg:absolute lg:left-[526px] xl:left-[658px] 2xl:left-[790px] lg:top-[216px] xl:top-[240px] 2xl:top-[270px] lg:w-[394px] xl:w-[493px] 2xl:w-[591px] lg:max-w-[554px]"
-              >
-                <Image
-                  src="/work/liveperson/bb-mobile-social-dm.png"
-                  alt="A public tweet routed into a private DM conversation"
-                  width={1108}
-                  height={920}
-                  sizes="(max-width: 1024px) 48vw, 39vw"
-                  className="h-auto w-full object-contain"
-                />
-              </SlideIn>
-              {/* Body copy — Figma: 752,782, 630 wide */}
-              <SlideIn
-                delay={200}
-                className="max-w-[46ch] lg:absolute lg:left-[535px] xl:left-[668px] 2xl:left-[802px] lg:top-[619px] xl:top-[688px] 2xl:top-[774px] lg:max-w-[448px] xl:max-w-[560px] 2xl:max-w-[672px]"
-              >
-                <p className="text-base leading-relaxed opacity-95 sm:text-xl lg:text-[16px] xl:text-[20px] 2xl:text-[25px] lg:leading-[1.4]">
-                  Enables brands to interact with consumers over email and
-                  social media platforms through the LiveEngage messaging
-                  product.
-                </p>
-              </SlideIn>
-            </div>
-          </div>
+              Sized in --figma-u so it scales with the tighter axis rather
+              than sliding on width alone — that's what kept the old phone
+              mock off the wordmark, and the same reasoning applies here. */}
+          <SlideIn
+            delay={100}
+            className="mt-8 w-full lg:absolute lg:left-[64px] lg:top-[26.7%] lg:mt-0 lg:w-[calc(1200_*_var(--figma-u))] lg:max-w-[1200px]"
+          >
+            <Image
+              src="/work/liveperson/all-channels-unified.png"
+              alt="The LiveEngage agent workspace with a social conversation open, and every channel — Facebook, Instagram, X, Messenger, SMS, WhatsApp — feeding into it"
+              width={1200}
+              height={563}
+              sizes="(max-width: 1023px) 92vw, 83vw"
+              className="h-auto w-full object-contain"
+              priority
+            />
+          </SlideIn>
+
+          {/* Body copy — Figma 4555:22447: 141,761 / 489 wide. Bottom-anchored
+              so it holds its distance from the panel edge while the artwork
+              above it scales; it sits over the composite's transparent
+              lower-left, which is how the frame draws it too. */}
+          <SlideIn
+            delay={200}
+            className="max-w-[46ch] lg:absolute lg:bottom-[5.5%] lg:left-[64px] lg:max-w-[min(489px,34vw)]"
+          >
+            <p className="text-base leading-relaxed opacity-95 sm:text-xl lg:text-[clamp(1rem,1.4vw,1.55rem)] lg:leading-[1.4]">
+              Enables brands to interact with consumers over email and social
+              media platforms through the LiveEngage messaging product.
+            </p>
+          </SlideIn>
         </section>
 
         {/* ── 1. THE AGENT'S DESK. Opens on the person, the way DocSquad
@@ -209,24 +193,6 @@ export default function LivePersonCaseStudy() {
             channel meant another tool to learn and another window to check.
           </Body>
         </TextPanel>
-
-        {/* ── PUBLIC TWEET / PRIVATE THREAD ────────────────────────────── */}
-        <BigImagePanel
-          /* The .webp sibling, not the .png: same transparent artwork, but
-             1800x739 against the png's 1100x446.
-             1200 display, up from 1000 — bigger, as asked. Note the
-             trade-off: 1800 native across 1200 CSS px is a 1.33x upscale on
-             a 2x screen, where 1000 was 1.11x. It's the largest version of
-             this composite in the repo, so bigger and sharper can't both come
-             from it. Dropping a larger export at this same path fixes that
-             with no code change other than the width/height props. */
-          src="/work/liveperson/public-tweet-private-thread.webp"
-          alt="A public tweet on Twitter routed into the LiveEngage agent workspace, with the full private thread and social profile alongside it"
-          width={1800}
-          height={739}
-          maxWidth={1200}
-          bare
-        />
 
         {/* ── 3. THE HARD PART. Public-to-private is the design problem the
                panel above shows, so it gets named here. */}
@@ -249,23 +215,6 @@ export default function LivePersonCaseStudy() {
             whoever the customer is and wherever they turned up.
           </Body>
         </TextPanel>
-
-        {/* ── AGENT WORKSPACE + ALL CHANNELS ───────────────────────────── */}
-        {/* One image, not two: the agent-workspace composite that sat on the
-            left repeats what the public-tweet/private-thread panel above
-            already shows. */}
-        <BigImagePanel
-          /* Molly's replacement export. 1200x563 against the old 1206x915 —
-             a 2.13 aspect, not 1.32 — so the width/height props move with it
-             or next/image reserves the wrong box and the composite gets cut
-             off at the right. Cut-out PNG, so `bare`. */
-          src="/work/liveperson/all-channels-unified.png"
-          alt="One surface for every channel — Facebook, Instagram, X, WhatsApp, SMS, and more"
-          width={1200}
-          height={563}
-          maxWidth={1040}
-          bare
-        />
 
         {/* ── SOCIALCONNECT — SELF-SERVICE SETUP ───────────────────────── */}
         <TextPanel>
