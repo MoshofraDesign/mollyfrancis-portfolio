@@ -54,6 +54,13 @@ const HERO_LOGO_BOX: Record<string, string> = {
 };
 const NAV_LOGO_BOX: Record<string, string> = {
   "bright-healthcare": "relative h-8 w-[130px] sm:h-9 sm:w-[150px]",
+  /* athenaConnect's mark is a wide lockup that read small in the default
+     box, so it gets its own — same rule as Bright's. */
+  /* athenaConnect's mark is 8.6:1, so WIDTH is what binds inside an
+     object-contain box, not height: at the default 90/110 it rendered only
+     10-13px tall. 150/180 puts it at 17-21px, still well inside the 50px
+     nav band. */
+  athenaconnect: "relative h-8 w-[150px] sm:h-9 sm:w-[180px]",
   default: "relative h-6 w-[90px] sm:h-7 sm:w-[110px]",
 };
 
