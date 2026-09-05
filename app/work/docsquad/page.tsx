@@ -219,11 +219,10 @@ export default function DocSquadCaseStudy() {
             </SlideIn>
             <SlideIn delay={80}>
               <p className={BODY}>
-                DocSquad&apos;s clinicians are Virtual Moonlighters — doctors and
-                nurses picking up telehealth shifts around a full-time job. They
-                arrive with minutes, not a shift. The legacy Zipnosis product
-                assumed the opposite: live video for every visit, and a parallel
-                EHR to fill in afterwards.
+                DocSquad&apos;s clinicians moonlight — telehealth shifts squeezed
+                around a full-time job. They arrive with minutes, not hours. The
+                old product asked for the opposite: a live video call every
+                visit, then a second system to type it all into.
               </p>
             </SlideIn>
           </div>
@@ -239,16 +238,13 @@ export default function DocSquadCaseStudy() {
             </SlideIn>
             <SlideIn delay={80}>
               <p className={BODY}>
-                Five generative interviews with practicing virtual clinicians, a
-                power-user comparison with Patient IO veterans, onboarding
-                teardowns of competing telehealth platforms, and resonance
-                testing of the diagnosis workflow.
+                Five interviews with clinicians actually working these shifts,
+                teardowns of how competing platforms onboard, and testing of the
+                diagnosis flow itself.
               </p>
               <p className={`mt-8 ${BODY}`}>
-                The finding was consistent. Providers are already stretched thin
-                with packed schedules and tedious EHR entries. They don&apos;t need
-                a tool that adds to the workload — they need one that takes work
-                off it.
+                They all said the same thing: don&apos;t hand us another tool.
+                Hand us less work.
               </p>
             </SlideIn>
           </div>
@@ -262,10 +258,9 @@ export default function DocSquadCaseStudy() {
             </SlideIn>
             <SlideIn delay={80}>
               <p className={BODY}>
-                An asynchronous intelligent interview collects symptoms and
-                history upfront. By the time a provider opens the case the intake
-                is already done — they read it, diagnose, prescribe or escalate.
-                No video call, no second round of data entry.
+                So the intake happens first, on its own. Symptoms and history
+                are collected before anyone opens the case — then it&apos;s read,
+                diagnosed, prescribed or passed on. No call, no retyping.
               </p>
             </SlideIn>
           </div>
@@ -349,10 +344,9 @@ export default function DocSquadCaseStudy() {
             </SlideIn>
             <SlideIn delay={80}>
               <p className={BODY}>
-                I rebuilt the design system alongside the flow and partnered with
-                engineering on a Flutter build, so a single UI ships to desktop
-                and to iOS and Android — the same components, the same diagnosis
-                path, wherever the shift happens.
+                I rebuilt the design system with the flow, and engineering built
+                it in Flutter. One interface now ships to desktop, iOS and
+                Android — same components, same path, wherever the shift happens.
               </p>
             </SlideIn>
           </div>

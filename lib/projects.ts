@@ -285,10 +285,9 @@ export const projects: Project[] = [
     approach:
       "Led discovery with \"Virtual Moonlighters\" — clinicians picking up shifts on the side — then rebuilt the design system and diagnosis flow to support async and sync visits, partnering with engineering on a Flutter build that shipped one UI to web and native.",
     outcome:
-      "Rebuilt the desktop-only Zipnosis app as a unified desktop + native (Flutter) product with a new design system. Now serves urgent-care visits and prescription refills for remote \"Virtual Moonlighter\" providers.",
+      "One product across desktop, iOS and Android, on a new design system \u2014 handling urgent-care visits and prescription refills for clinicians working remote shifts.",
     research: [
       "5 generative interviews with practicing virtual clinicians",
-      "Power-user comparison with Patient IO veterans",
       "Onboarding teardowns of competing telehealth platforms",
       "Resonance testing of the Digital Diagnosis workflow",
     ],
