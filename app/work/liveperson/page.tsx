@@ -120,20 +120,36 @@ export default function LivePersonCaseStudy() {
           id="title"
           className="relative flex w-full flex-col gap-10 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pt-0"
         >
-          {/* Logo — Figma: 100,100, 668×106 */}
-          <div className="relative h-10 w-[220px] sm:h-14 sm:w-[300px] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[75px] xl:h-[94px] 2xl:h-[113px] lg:w-[475px] xl:w-[594px] 2xl:w-[713px] lg:max-w-[668px]">
-            <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
-          </div>
+          {/* Logo and heading share one absolutely-placed row at lg, rather
+              than each carrying its own top inset (100 and 76/95/114). The
+              row is items-center, so the heading is vertically centred on the
+              mark by construction and stays centred as the mark steps up in
+              size — no per-breakpoint arithmetic to keep in sync. Top is 64,
+              not 100: the mark reads better higher, and it buys clearance
+              from the phone below. Below lg they unstack. */}
+          <div className="contents lg:absolute lg:left-[64px] lg:right-[71px] lg:top-[64px] xl:right-[89px] 2xl:right-[107px] lg:z-10 lg:flex lg:items-center lg:justify-between lg:gap-10">
+            <div className="relative h-10 w-[220px] shrink-0 sm:h-14 sm:w-[300px] lg:h-[94px] lg:w-[594px]">
+              <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
+            </div>
 
-          {/* Heading — Figma: 890,107, 417 wide, top-right */}
-          <p className="max-w-[300px] text-lg font-semibold sm:text-xl lg:absolute lg:right-[71px] xl:right-[89px] 2xl:right-[107px] lg:top-[76px] xl:top-[95px] 2xl:top-[114px] lg:max-w-[297px] xl:max-w-[371px] 2xl:max-w-[445px] lg:text-[24px] xl:text-[29px] 2xl:text-[35px] lg:leading-[1.25]">
-            Social Media Management Product
-          </p>
+            {/* Figma: 890,107, 417 wide */}
+            <p className="max-w-[300px] text-lg font-semibold sm:text-xl lg:max-w-[297px] xl:max-w-[371px] 2xl:max-w-[445px] lg:text-[24px] xl:text-[29px] 2xl:text-[35px] lg:leading-[1.25]">
+              Social Media Management Product
+            </p>
+          </div>
 
           <div className="mt-8 flex flex-1 items-end gap-4 sm:gap-8 lg:mt-0 lg:block lg:h-full">
             {/* Phone mock — Figma: 100,360, 640×640, flush to the frame's
                 bottom edge (no gap below it at all). */}
-            <SlideIn className="w-[48%] max-w-[380px] shrink-0 self-end lg:absolute lg:bottom-0 lg:left-[100px] lg:w-[455px] xl:w-[568px] 2xl:w-[682px] lg:max-w-[640px]">
+            {/* Sized in --figma-u, not stepped px. The export is square
+                (1280x1280), so a 455-wide box is also 455 TALL — bottom-
+                anchored, that put its top at 100dvh-455, which on a 626-tall
+                window is 171, right where the wordmark sits at 100..175. It
+                rode straight over the logo on resize. u is pinned by
+                whichever axis is tighter, so the phone shrinks with the
+                viewport instead: 640u is 400px at that height, clearing the
+                mark by 50. */}
+            <SlideIn className="w-[48%] max-w-[380px] shrink-0 self-end lg:absolute lg:bottom-0 lg:left-[64px] lg:w-[calc(640_*_var(--figma-u))] lg:max-w-[640px]">
               <Image
                 src="/work/liveperson/homeco-conversational-commerce.png"
                 alt="Conversational commerce example inside LiveEngage"

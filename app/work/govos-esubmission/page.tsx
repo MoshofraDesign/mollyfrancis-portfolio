@@ -366,7 +366,7 @@ export default function GovOSCaseStudy() {
               subtext beside it at 662,93 in a 450 column, and the laptop
               centred below at 240,329 / 961x560 (240 left, 239 right).
               Below lg it all stacks in source order. */}
-          <div className="relative z-10 aspect-[508/130] w-[min(100%,300px)] sm:w-[min(100%,380px)] lg:absolute lg:left-[100px] lg:top-[100px] lg:aspect-auto lg:h-[102px] lg:w-[395px] xl:h-[114px] xl:w-[445px] 2xl:h-[127px] 2xl:w-[494px]">
+          <div className="relative z-10 aspect-[508/130] w-[min(100%,300px)] sm:w-[min(100%,380px)] lg:absolute lg:left-[100px] lg:top-[72px] lg:aspect-auto lg:h-[114px] lg:w-[445px]">
             <Image
               src="/work/govos/govos-logo-white.svg"
               alt="GovOS"
@@ -379,7 +379,7 @@ export default function GovOSCaseStudy() {
 
           {/* No reveal here — the title panel is what you land on, so its
               copy is simply present rather than animating in. */}
-          <div className="relative z-10 flex flex-col gap-2 lg:absolute lg:left-[45.97%] lg:top-[9.3%] lg:max-w-[min(450px,32vw)]">
+          <div className="relative z-10 flex flex-col gap-2 lg:absolute lg:left-[45.97%] lg:bottom-[calc(100%_-_186px)] lg:max-w-[min(450px,32vw)]">
             <p className={`text-white ${HERO_TITLE}`}>eSubmission</p>
             <p className={`max-w-[46ch] text-white ${HERO_SUBTEXT}`}>
               A secure digital portal for submitting official documents and
@@ -395,7 +395,7 @@ export default function GovOSCaseStudy() {
               tighter — means a short window shrinks it instead of running it
               off the bottom. Centred with a negative margin (half the width
               in the same unit), not a translate. */}
-          <div className="relative z-0 mt-4 w-full lg:absolute lg:bottom-[11.1%] lg:left-1/2 lg:mt-0 lg:ml-[calc(-480.5_*_var(--figma-u))] lg:w-[calc(961_*_var(--figma-u))]">
+          <div className="relative z-0 mt-4 w-full lg:absolute lg:bottom-[4%] lg:left-1/2 lg:mt-0 lg:ml-[calc(-480.5_*_var(--figma-u))] lg:w-[calc(961_*_var(--figma-u))]">
             <Frame
               src="/work/govos/macbook-hero.png"
               alt="GovOS eSubmission dashboard — all submissions, statuses, and team at a glance"

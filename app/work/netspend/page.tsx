@@ -69,7 +69,7 @@ export default function NetspendCaseStudy() {
           className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-[100dvw] lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
           {/* Large logo — same left/top anchor; height-driven so the wordmark never clips */}
-          <div className="relative z-10 h-[52px] w-[min(100%,20rem)] sm:h-[60px] sm:w-[22.5rem] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[72px] lg:w-[min(680px,47vw)]">
+          <div className="relative z-10 h-[52px] w-[min(100%,20rem)] sm:h-[60px] sm:w-[22.5rem] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[72px] lg:w-[680px]">
             <Image
               src={LOGO}
               alt="Netspend"
@@ -132,12 +132,14 @@ export default function NetspendCaseStudy() {
           <SlideIn>
             <h2 className={`text-white ${INTRO_TITLE}`}>Rewards ran on spreadsheets. No one could see what was live — or what was working.</h2>
           </SlideIn>
-          <SlideIn delay={100}>
-            <p className={`mt-3 text-white/90 ${INTRO_SUBTEXT}`}>I designed both sides of the fix: the internal tool that manages the program, and the app experience it powers.</p>
-          </SlideIn>
         </TextPanel>
 
-        {/* So I built the thing that didn't exist — its own beat, three lines */}
+        {/* So I built the thing that didn't exist. The "both sides" line used
+            to sit under the panel before this one, where it landed before the
+            thing it describes existed; it belongs here, as the paragraph that
+            says what the single platform actually is. Body on the kit's
+            clamp scale rather than INTRO_SUBTEXT: 32px under an H_DISPLAY
+            heading crowds it. */}
         <TextPanel width={VIEW}>
           <SlideIn>
             <h2 className={H_DISPLAY}>
@@ -147,6 +149,14 @@ export default function NetspendCaseStudy() {
               <br />
               to run the whole program.
             </h2>
+          </SlideIn>
+          <SlideIn delay={100}>
+            <p className="mt-3 text-[clamp(1.25rem,1.6vw,1.65rem)] font-normal leading-[1.45] text-white/90 [text-wrap:pretty]">
+              I designed both sides of it: the internal tool where the team
+              builds and manages every reward, and the cardholder app
+              experience it powers. One system, so what gets configured is
+              exactly what customers see.
+            </p>
           </SlideIn>
         </TextPanel>
 

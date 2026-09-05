@@ -25,6 +25,17 @@ const ACCENT = "#FFAF00";
 const LOGO = "/logos/bright-healthcare.svg";
 const ASSET = "/work/bright-healthcare";
 const VIEW = "lg:w-screen";
+/**
+ * Panel width for the two portrait-and-copy beats.
+ *
+ * A 320 circle plus a 56 gap plus a 500 measure is 876 of content. In a
+ * full-viewport panel that left over 550px of empty field either side at a
+ * 1990 window — so consecutive sections sat more than a screen apart, which
+ * is the gap Molly flagged. 1040 keeps 82px a side. The wide media panels
+ * (research boards, empathy map, carousels) stay on VIEW: their content runs
+ * to 1280 and hugging would squeeze them.
+ */
+const PORTRAIT_PANEL = "lg:w-[min(100vw,1040px)]";
 /** Prose measure — 700, matching the kit. */
 const MEASURE = "w-full max-w-[min(700px,86vw)]";
 /** The numbers row lays three columns side by side, so it keeps the wider
@@ -89,7 +100,7 @@ export default function BrightHealthcareCaseStudy() {
               resized continuously with the window and the copy below it —
               whose top was derived from that width — slid with it. These three
               steps hold the 6.14 aspect (540/88, 614/100, 688/112). */}
-          <div className="relative z-10 w-[min(100%,720px)] aspect-[720/117] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[88px] lg:w-[540px] xl:h-[100px] xl:w-[614px] 2xl:h-[112px] 2xl:w-[688px]">
+          <div className="relative z-10 w-[min(100%,720px)] aspect-[720/117] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[100px] lg:w-[614px]">
             <Image
               src={LOGO}
               alt="Bright HealthCare"
@@ -107,7 +118,7 @@ export default function BrightHealthcareCaseStudy() {
               217 at 1440) and the two overlapped. The top is derived from the
               mark's height now, so the 28px gap holds at every width, and the
               pair is on the shared HERO scale the other projects use. */}
-          <SlideIn className="relative z-10 flex max-w-[466px] flex-col gap-2 text-white lg:absolute lg:left-[100px] lg:top-[216px] xl:top-[228px] 2xl:top-[240px] lg:max-w-[640px]">
+          <SlideIn className="relative z-10 flex max-w-[466px] flex-col gap-2 text-white lg:absolute lg:left-[100px] lg:top-[228px] lg:max-w-[640px]">
             <p className={HERO_TITLE}>Prior Authorization Portal</p>
             <p className={`max-w-[46ch] ${HERO_SUBTEXT}`}>
               Enables providers to electronically submit prior authorization requests and view all requests and their statuses
@@ -147,8 +158,8 @@ export default function BrightHealthcareCaseStudy() {
         {/* 3 — the portrait and the fax quote in one beat. They were two
             panels; the circle was 600px on its own, which read as an
             interstitial rather than as evidence for the line beside it. */}
-        <Panel width={VIEW} pad="center">
-          <div className="mx-auto flex w-full max-w-[min(84rem,92vw)] flex-col items-center gap-10 lg:flex-row lg:gap-14">
+        <Panel width={PORTRAIT_PANEL} pad="center">
+          <div className="mx-auto flex w-full max-w-[min(1040px,92vw)] flex-col items-center gap-10 lg:flex-row lg:gap-14">
             <SlideIn className="shrink-0">
               <div className={PORTRAIT_CIRCLE}>
                 <Image
@@ -347,8 +358,8 @@ export default function BrightHealthcareCaseStudy() {
 
         {/* The outcome beat: portrait, line, copy. The numbers that back it
             are the panel after this one. */}
-        <Panel width={VIEW} pad="center">
-          <div className="mx-auto flex w-full max-w-[min(84rem,92vw)] flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
+        <Panel width={PORTRAIT_PANEL} pad="center">
+          <div className="mx-auto flex w-full max-w-[min(1040px,92vw)] flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
             <SlideIn className="shrink-0">
               <div className={PORTRAIT_CIRCLE}>
                 <Image

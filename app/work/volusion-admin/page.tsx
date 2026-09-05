@@ -312,7 +312,7 @@ export default function VolusionCaseStudy() {
               against their ~75-100px wordmarks, so 100+187 pushed it far
               lower down the panel than theirs sit. Heights match what the
               padded asset was already drawing, widths at its 1.946 aspect. */}
-          <div className="relative z-10 aspect-[539/277] w-[min(100%,234px)] sm:w-[min(100%,292px)] lg:absolute lg:left-[64px] lg:top-[64px] lg:aspect-auto lg:h-[149px] lg:w-[290px] xl:h-[168px] xl:w-[327px] 2xl:h-[187px] 2xl:w-[364px]">
+          <div className="relative z-10 aspect-[539/277] w-[min(100%,234px)] sm:w-[min(100%,292px)] lg:absolute lg:left-[64px] lg:top-[64px] lg:aspect-auto lg:h-[149px] lg:w-[290px]">
             <Image
               src={HERO_LOGO}
               alt="Volusion"
@@ -332,7 +332,7 @@ export default function VolusionCaseStudy() {
                SlideIn writes an inline transform for its reveal, which beats
                any -translate-y utility, so a transform-based offset here
                silently does nothing. */
-            className="relative z-10 flex max-w-[46ch] flex-col gap-2 lg:absolute lg:left-[37.7%] lg:bottom-[calc(100%_-_213px)] xl:bottom-[calc(100%_-_232px)] 2xl:bottom-[calc(100%_-_251px)] lg:max-w-[min(630px,40vw)]"
+            className="relative z-10 flex max-w-[46ch] flex-col gap-2 lg:absolute lg:left-[37.7%] lg:bottom-[calc(100%_-_213px)] lg:max-w-[min(630px,40vw)]"
           >
             <p className={HERO_TITLE}>E-Commerce Software Solution</p>
             <p className={HERO_SUBTEXT}>

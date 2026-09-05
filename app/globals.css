@@ -271,12 +271,18 @@ body::before {
     max-width: none;
   }
 
-  /* 100,100 on the frame. */
+  /* 100,100 on the frame.
+     Fixed px, not --figma-u. u tracks the tighter axis, so the wordmark grew
+     and shrank continuously as the window was dragged — and the headline
+     beside it is placed at 57.708%, so the gap between them breathed too.
+     467x83 is the frame's 672x120 ratio at the size that still clears that
+     headline at the narrowest lg: 57.708% of 1024 is 591, and 100 + 467
+     stops at 567. */
   main .care-hero-logo {
     left: 100px;
     top: 100px;
-    width: calc(672 * var(--figma-u));
-    height: calc(120 * var(--figma-u));
+    width: 467px;
+    height: 83px;
   }
 
   /* 831,114 — just right of the wordmark, left-aligned, 455 wide.

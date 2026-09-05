@@ -118,7 +118,7 @@ export default function PatientIoCaseStudy() {
               hero (node 4732:9502) — stacked on mobile/tablet since there's
               no room for them side by side below lg. */}
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-16">
-            <div className="relative h-12 w-[168px] shrink-0 sm:h-14 sm:w-[196px] md:h-16 md:w-[224px] lg:h-20 lg:w-[280px] xl:h-24 xl:w-[336px] 2xl:h-28 2xl:w-[392px]">
+            <div className="relative h-12 w-[168px] shrink-0 sm:h-14 sm:w-[196px] md:h-16 md:w-[224px] lg:h-24 lg:w-[336px]">
               <Image src={LOGO} alt="Patient IO" fill unoptimized priority className="object-contain object-left" />
             </div>
             <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.75rem] font-semibold leading-[1.1] lg:max-w-[32ch]">
