@@ -358,7 +358,7 @@ export default function VolusionCaseStudy() {
                  being dropped and left-1/2 alone put the artwork's LEFT edge
                  on the panel's centre line. Half the width in the same unit
                  does the same job and survives. */
-              className="relative z-0 mt-4 w-full max-w-[560px] self-center lg:absolute lg:bottom-0 lg:left-1/2 lg:ml-[calc(-433_*_var(--figma-u))] lg:mt-0 lg:w-[calc(866_*_var(--figma-u))] lg:max-w-none"
+              className="relative z-0 mt-4 w-full max-w-[560px] self-center sm:max-w-[680px] md:max-w-[860px] lg:absolute lg:bottom-[calc(50dvh_-_106px_-_293_*_var(--figma-u))] lg:left-1/2 lg:ml-[calc(-460_*_var(--figma-u))] lg:mt-0 lg:w-[calc(920_*_var(--figma-u))] lg:max-w-none"
             >
               <Image
                 src={hero}
@@ -396,19 +396,15 @@ export default function VolusionCaseStudy() {
         <TextPanel width={VIEW}>
           <Heading>Storefront Editor</Heading>
           <Body>
-            75% of new customers wanted to start customizing their store
-            right away, so they could start selling. That set the scope: upload
-            a logo, add and edit navigation, change styles and content, manage
-            themes — all from the front end of the store itself, with an
-            obvious way back into the admin. That last part came from the sales
-            and support teams, who were the ones fielding the requests.
+            75% of new customers wanted to start their store right away. So I
+            put the editing on the storefront itself: logo, navigation, styles,
+            content, themes — changed where you can see them, with a clear way
+            back into the admin.
           </Body>
           <Body className="mt-5">
-            The constraint was the existing .asp codebase, which bounded which
-            interactions were even possible and meant each new one had to be
-            worked out around it. The harder problem was restraint — a trial
-            customer opening their storefront for the first time can&rsquo;t be
-            handed every control at once.
+            The old codebase limited what was possible. The harder call was what
+            to leave out: someone opening their store for the first time
+            can&rsquo;t be handed every control at once.
           </Body>
         </TextPanel>
 
@@ -471,7 +467,11 @@ export default function VolusionCaseStudy() {
             the row. */}
         <Panel width={VIEW} pad="center">
           <div className="mx-auto w-full max-w-[min(1204px,92vw)]">
-            <Heading>Who we were building for</Heading>
+            <SlideIn className="w-full">
+              <h2 className="text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.1] tracking-[-0.02em] [text-wrap:balance] sm:whitespace-nowrap">
+                Who we were building for
+              </h2>
+            </SlideIn>
             <div className="mt-10 grid gap-10 sm:grid-cols-3 sm:gap-x-[4.15%]">
             {PERSONAS.map((p, i) => (
               <SlideIn key={p.title} delay={100 + i * 90} className="flex flex-col">
