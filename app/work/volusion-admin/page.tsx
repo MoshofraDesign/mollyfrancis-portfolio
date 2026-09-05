@@ -385,6 +385,28 @@ export default function VolusionCaseStudy() {
           <Body intro>{project.overview}</Body>
         </TextPanel>
 
+        {/* ── STOREFRONT EDITOR — sets up the clip that follows. Written
+            from Molly's own objective / goal / process / constraints notes;
+            the 75% is her research figure, not an invented one. */}
+        <TextPanel width={VIEW}>
+          <Heading>Storefront Editor</Heading>
+          <Body>
+            75% of new customers wanted to start customizing their store
+            right away, so they could start selling. That set the scope: upload
+            a logo, add and edit navigation, change styles and content, manage
+            themes — all from the front end of the store itself, with an
+            obvious way back into the admin. That last part came from the sales
+            and support teams, who were the ones fielding the requests.
+          </Body>
+          <Body className="mt-5">
+            The constraint was the existing .asp codebase, which bounded which
+            interactions were even possible and meant each new one had to be
+            worked out around it. The harder problem was restraint — a trial
+            customer opening their storefront for the first time can&rsquo;t be
+            handed every control at once.
+          </Body>
+        </TextPanel>
+
         {/* ── EDITOR FLOW — Figma 4903:372, 800x473.
             Molly's 20-frame click-through, looping. Shipped as h.264 rather
             than the GIF: at 1600 wide it is 2.5MB against the GIF's 3.4MB at
@@ -432,10 +454,15 @@ export default function VolusionCaseStudy() {
         </Panel>
 
         {/* ── PERSONAS — Figma 4724:8409
-            Three 368-wide columns, each a 320px portrait over its name and
-            description. */}
+            Three 368-wide columns, each a portrait over its name and
+            description, under a heading that says what the section is. The
+            portraits are 240 rather than the frame's 320: with a heading
+            above them the column ran long, and three 320 circles crowded
+            the row. */}
         <Panel width={VIEW} pad="center">
-          <div className="mx-auto grid w-full max-w-[min(1204px,92vw)] gap-10 sm:grid-cols-3 sm:gap-x-[4.15%]">
+          <div className="mx-auto w-full max-w-[min(1204px,92vw)]">
+            <Heading>Who we were building for</Heading>
+            <div className="mt-10 grid gap-10 sm:grid-cols-3 sm:gap-x-[4.15%]">
             {PERSONAS.map((p, i) => (
               <SlideIn key={p.title} delay={100 + i * 90} className="flex flex-col">
                 <Image
@@ -444,8 +471,8 @@ export default function VolusionCaseStudy() {
                   width={320}
                   height={320}
                   unoptimized
-                  sizes="(max-width: 639px) 86vw, 26vw"
-                  className="h-auto w-full max-w-[320px] rounded-[6px] object-contain"
+                  sizes="(max-width: 639px) 86vw, 20vw"
+                  className="h-auto w-full max-w-[240px] rounded-[6px] object-contain"
                 />
                 <p className="mt-8 text-[clamp(1.35rem,1.9vw,2rem)] font-semibold leading-[1.2]">
                   {p.title}
@@ -455,6 +482,7 @@ export default function VolusionCaseStudy() {
                 </p>
               </SlideIn>
             ))}
+            </div>
           </div>
         </Panel>
 

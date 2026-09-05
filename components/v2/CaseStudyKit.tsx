@@ -307,9 +307,19 @@ export function Heading({ children, intro = false }: { children: React.ReactNode
   );
 }
 
-export function Body({ children, intro = false }: { children: React.ReactNode; intro?: boolean }) {
+export function Body({
+  children,
+  intro = false,
+  className = "",
+}: {
+  children: React.ReactNode;
+  intro?: boolean;
+  /** Lands on the SlideIn wrapper, not the <p> — so a second paragraph can
+   *  add space above it without fighting the p's own mt-3. */
+  className?: string;
+}) {
   return (
-    <SlideIn delay={120} className={MEASURE}>
+    <SlideIn delay={120} className={`${MEASURE} ${className}`}>
       <p
         className={
           intro
