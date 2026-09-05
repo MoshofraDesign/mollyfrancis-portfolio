@@ -71,10 +71,14 @@ export default function BrightHealthcareCaseStudy() {
         {/* Hero — Figma 4553:22295 */}
         <section
           id="title"
-          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
+          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
           {/* Logo — Figma 4553:22296: 100,100 / 720×117 on a 1440×1000 frame */}
-          <div className="relative z-10 w-[min(100%,720px)] aspect-[720/117] lg:absolute lg:left-[100px] lg:top-[100px] lg:w-[min(50vw,720px)]">
+          {/* Stepped, not vw-driven. lg:w-[min(50vw,720px)] meant the mark
+              resized continuously with the window and the copy below it —
+              whose top was derived from that width — slid with it. These three
+              steps hold the 6.14 aspect (540/88, 614/100, 688/112). */}
+          <div className="relative z-10 w-[min(100%,720px)] aspect-[720/117] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[88px] lg:w-[540px] xl:h-[100px] xl:w-[614px] 2xl:h-[112px] 2xl:w-[688px]">
             <Image
               src={LOGO}
               alt="Bright HealthCare"
@@ -92,7 +96,7 @@ export default function BrightHealthcareCaseStudy() {
               217 at 1440) and the two overlapped. The top is derived from the
               mark's height now, so the 28px gap holds at every width, and the
               pair is on the shared HERO scale the other projects use. */}
-          <SlideIn className="relative z-10 max-w-[466px] text-white lg:absolute lg:left-[100px] lg:top-[calc(128px_+_min(50vw,720px)/6.1428)] lg:max-w-[640px]">
+          <SlideIn className="relative z-10 max-w-[466px] text-white lg:absolute lg:left-[100px] lg:top-[216px] xl:top-[228px] 2xl:top-[240px] lg:max-w-[640px]">
             <p className={HERO_TITLE}>Prior Authorization Portal</p>
             <p className={`mt-3 max-w-[46ch] ${HERO_SUBTEXT}`}>
               Enables providers to electronically submit prior authorization requests and view all requests and their statuses

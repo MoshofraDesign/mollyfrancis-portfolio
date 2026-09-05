@@ -79,7 +79,8 @@ export const END_PANEL = "lg:w-[min(100vw,530px)]";
  * centred title with a centred button under it left the two on different
  * left edges at every width the title happened to wrap to.
  */
-export const END_MEASURE = "mx-auto w-full max-w-[min(24rem,86vw)]";
+export const END_MEASURE =
+  "mx-auto w-full max-w-[min(24rem,86vw)] lg:ml-auto lg:mr-0";
 
 /**
  * Closing-panel title. Deliberately well below the intro scale — this is a
