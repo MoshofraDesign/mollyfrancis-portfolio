@@ -59,7 +59,7 @@ export const projects: Project[] = [
     slug: "netspend",
     title: "Netspend Rewards",
     subtitle:
-      "The cardholder Rewards tab, and the 0→1 tool that powers it",
+      "A customer-facing rewards app, and the internal tool that builds every reward in it",
     client: "Netspend",
     year: "2024–2026",
     role: "Lead UX Designer",
