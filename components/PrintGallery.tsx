@@ -68,7 +68,7 @@ export default function PrintGallery({ images }: { images: GalleryImage[] }) {
               type="button"
               onClick={() => setOpen(i)}
               aria-label={`Enlarge ${img.caption || "print piece"}`}
-              className="group block w-full cursor-zoom-in overflow-hidden rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-[#141414]/40"
+              className="group block w-full cursor-zoom-in overflow-hidden rounded-sm bg-white outline-none focus-visible:ring-2 focus-visible:ring-[#141414]/40"
             >
               {/* eslint-disable-next-line @next/next/no-img-element -- see note above */}
               <img
@@ -137,7 +137,7 @@ export default function PrintGallery({ images }: { images: GalleryImage[] }) {
             src={current.src}
             alt={current.caption || "Print piece"}
             onClick={(e) => e.stopPropagation()}
-            className="max-h-[86vh] max-w-[92vw] cursor-default object-contain"
+            className="max-h-[86vh] max-w-[92vw] cursor-default bg-white object-contain"
           />
           {current.caption && (
             <p className="max-w-[46rem] text-center text-sm text-white/70">

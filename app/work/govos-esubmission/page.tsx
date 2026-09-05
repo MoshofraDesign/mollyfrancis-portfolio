@@ -368,7 +368,7 @@ export default function GovOSCaseStudy() {
               subtext beside it at 662,93 in a 450 column, and the laptop
               centred below at 240,329 / 961x560 (240 left, 239 right).
               Below lg it all stacks in source order. */}
-          <div className="relative z-10 aspect-[508/130] w-[min(100%,300px)] sm:w-[min(100%,380px)] lg:absolute lg:left-[100px] lg:top-[72px] lg:aspect-auto lg:h-[114px] lg:w-[445px]">
+          <div className="relative z-10 aspect-[508/130] w-[min(100%,300px)] sm:w-[min(100%,380px)] lg:absolute lg:left-[50px] lg:top-[50px] lg:aspect-auto lg:h-[114px] lg:w-[445px]">
             <Image
               src="/work/govos/govos-logo-white.svg"
               alt="GovOS"
@@ -381,7 +381,7 @@ export default function GovOSCaseStudy() {
 
           {/* No reveal here — the title panel is what you land on, so its
               copy is simply present rather than animating in. */}
-          <div className="relative z-10 flex flex-col gap-2 lg:absolute lg:left-[45.97%] lg:bottom-[calc(100%_-_186px)] lg:max-w-[min(450px,32vw)]">
+          <div className="relative z-10 flex flex-col gap-2 lg:absolute lg:left-[45.97%] lg:bottom-[calc(100%_-_164px)] lg:max-w-[min(450px,32vw)]">
             <p className={`text-white ${HERO_TITLE}`}>eSubmission</p>
             <p className={`max-w-[46ch] text-white ${HERO_SUBTEXT}`}>
               A secure digital portal for submitting official documents and

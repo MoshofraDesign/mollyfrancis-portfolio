@@ -131,7 +131,7 @@ export default function AthenaWellCaseStudy() {
         {/* ── TITLE ─────────────────────────────────────────────────── */}
         <section
           id="title"
-          className="relative flex w-full flex-col justify-center gap-8 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-10 lg:pl-[100px] lg:pr-[71px] xl:pr-[89px] 2xl:pr-[107px] lg:pt-[100px]"
+          className="relative flex w-full flex-col justify-center gap-8 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-10 lg:pl-[50px] lg:pr-[71px] xl:pr-[89px] 2xl:pr-[107px] lg:pt-[50px]"
         >
           <div className="relative h-8 w-[190px] sm:h-9 sm:w-[220px]">
             <Image src={LOGO} alt="athenaWell" fill unoptimized priority className="object-contain object-left" />

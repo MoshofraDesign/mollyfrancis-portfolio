@@ -279,8 +279,8 @@ body::before {
      headline at the narrowest lg: 57.708% of 1024 is 591, and 100 + 467
      stops at 567. */
   main .care-hero-logo {
-    left: 100px;
-    top: 100px;
+    left: 50px;
+    top: 50px;
     width: 467px;
     height: 83px;
   }
@@ -291,7 +291,7 @@ body::before {
      headline stops at 76px rather than touching it. */
   main .care-hero-title {
     left: 57.708%;
-    top: max(11.4%, 76px);
+    top: 50px;
     width: 31.597%;
     text-align: left;
     align-self: auto;
@@ -332,7 +332,7 @@ body::before {
 
   /* 100,877. */
   main .care-hero-badges {
-    left: 100px;
+    left: 50px;
     top: 87.7%;
     gap: calc(16 * var(--figma-u));
   }

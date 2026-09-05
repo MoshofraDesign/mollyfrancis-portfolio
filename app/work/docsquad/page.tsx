@@ -169,7 +169,7 @@ export default function DocSquadCaseStudy() {
           id="docsquad-title"
           className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
-          <div className="relative z-10 aspect-[842/112] w-[min(100%,842px)] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[89px] lg:w-[748px] lg:max-w-none lg:aspect-auto">
+          <div className="relative z-10 aspect-[842/112] w-[min(100%,842px)] lg:absolute lg:left-[50px] lg:top-[50px] lg:h-[89px] lg:w-[748px] lg:max-w-none lg:aspect-auto">
             <Image
               src={LOGO}
               alt="DocSquad"
@@ -187,7 +187,7 @@ export default function DocSquadCaseStudy() {
           <SlideIn
             duration={260}
             distance={24}
-            className="relative z-10 flex max-w-[308px] flex-col gap-2 text-white lg:absolute lg:bottom-[82px] lg:left-[100px] lg:h-auto lg:max-w-[274px]"
+            className="relative z-10 flex max-w-[308px] flex-col gap-2 text-white lg:absolute lg:bottom-[82px] lg:left-[50px] lg:h-auto lg:max-w-[274px]"
           >
             <p className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.1]">
               Virtual Care Telehealth App

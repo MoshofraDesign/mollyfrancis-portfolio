@@ -100,7 +100,7 @@ export default function BrightHealthcareCaseStudy() {
               resized continuously with the window and the copy below it —
               whose top was derived from that width — slid with it. These three
               steps hold the 6.14 aspect (540/88, 614/100, 688/112). */}
-          <div className="relative z-10 w-[min(100%,720px)] aspect-[720/117] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[100px] lg:w-[614px]">
+          <div className="relative z-10 w-[min(100%,720px)] aspect-[720/117] lg:absolute lg:left-[50px] lg:top-[50px] lg:h-[100px] lg:w-[614px]">
             <Image
               src={LOGO}
               alt="Bright HealthCare"
@@ -118,7 +118,7 @@ export default function BrightHealthcareCaseStudy() {
               217 at 1440) and the two overlapped. The top is derived from the
               mark's height now, so the 28px gap holds at every width, and the
               pair is on the shared HERO scale the other projects use. */}
-          <SlideIn className="relative z-10 flex max-w-[466px] flex-col gap-2 text-white lg:absolute lg:left-[100px] lg:top-[228px] lg:max-w-[640px]">
+          <SlideIn className="relative z-10 flex max-w-[466px] flex-col gap-2 text-white lg:absolute lg:left-[50px] lg:top-[178px] lg:max-w-[640px]">
             <p className={HERO_TITLE}>Prior Authorization Portal</p>
             <p className={`max-w-[46ch] ${HERO_SUBTEXT}`}>
               Enables providers to electronically submit prior authorization requests and view all requests and their statuses
