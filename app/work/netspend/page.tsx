@@ -199,6 +199,54 @@ export default function NetspendCaseStudy() {
           </SlideIn>
         </TextPanel>
 
+        {/* A NEW WAY OF WORKING — Figma 4553:22209.
+            Placed right after "Zero to one. Five months." because it answers
+            the question that headline raises. Copy stays in the page's voice:
+            two short beats, no tool-vendor pitch. The three marks are the
+            tools named in the sentence, nothing more — the meta panel at the
+            end still carries the full tool list. */}
+        <TextPanel width={VIEW}>
+          <SlideIn>
+            <h2 className={H_DISPLAY}>A new way of working.</h2>
+          </SlideIn>
+          <SlideIn delay={100}>
+            <p className={`mt-3 ${BODY_MUTED}`}>
+              AI sat inside the process, not next to it. Claude Cowork and Gemini
+              turned Jira tickets into requirements I could design from. Cursor
+              built working mockups out of our design-system components.
+            </p>
+          </SlideIn>
+          <SlideIn delay={180}>
+            <p className={`mt-4 ${BODY_MUTED}`}>
+              So one round compared three directions instead of one — and the
+              strongest one became the real&nbsp;design.
+            </p>
+          </SlideIn>
+          <SlideIn delay={260}>
+            <div className="mt-8 flex items-center gap-6 sm:gap-8">
+              {[
+                [`${ASSET}/tools/claude.png`, "Claude Cowork"],
+                [`${ASSET}/tools/cursor.svg`, "Cursor"],
+                [`${ASSET}/tools/gemini.png`, "Gemini"],
+              ].map(([src, label]) => (
+                <div key={label} className="flex items-center gap-2.5">
+                  <Image
+                    src={src}
+                    alt=""
+                    width={96}
+                    height={96}
+                    unoptimized
+                    className="size-7 shrink-0 object-contain sm:size-8"
+                  />
+                  <span className="text-[0.95rem] leading-none text-white/70 sm:text-[1rem]">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </SlideIn>
+        </TextPanel>
+
         {/* Then the side cardholders actually see — 4-phone grid */}
         <Panel width={VIEW} pad="center" className="items-center">
           <div className="mx-auto w-full max-w-[min(1200px,94vw)]">
