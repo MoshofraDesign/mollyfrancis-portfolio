@@ -28,9 +28,9 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
     <>
       <Nav />
       <PageTransition>
-        {/* Tracks the nav's h-32: 128px of bar plus the 16px gap the page
+        {/* Tracks the nav's h-24: 96px of bar plus the 16px gap the page
             has always had under it. */}
-      <main className="page-shell pt-36">{children}</main>
+      <main className="page-shell pt-28">{children}</main>
       </PageTransition>
       <Footer />
     </>
