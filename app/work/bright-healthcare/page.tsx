@@ -454,10 +454,10 @@ export default function BrightHealthcareCaseStudy() {
               ].map((stat, i) => (
                 <SlideIn key={stat.value} delay={i * 80}>
                   <h2 className={META_LABEL}>{stat.label}</h2>
-                  <p className="mt-5 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.6rem] font-semibold leading-[1.1] tracking-[-0.03em]">
+                  <p className="mt-3 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.6rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     {stat.value}
                   </p>
-                  <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-[1.45] text-white">
+                  <p className="mt-1.5 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-[1.45] text-white">
                     {stat.detail}
                   </p>
                 </SlideIn>
