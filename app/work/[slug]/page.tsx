@@ -97,7 +97,7 @@ function MetricsPanel({
         <div className="mt-10 grid w-full grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
           {metrics.map((m, i) => (
             <SlideIn key={m.label} delay={120 + i * 90}>
-              <div className="text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[3rem] 2xl:text-[3rem] font-semibold leading-none">
+              <div className="text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[3rem] 2xl:text-[3rem] font-semibold leading-[1.1]">
                 {m.value}
               </div>
               <p className="mt-3 text-[0.85rem] sm:text-[0.85rem] md:text-[0.85rem] lg:text-[0.85rem] xl:text-[0.88rem] 2xl:text-[1rem] opacity-70">{m.label}</p>
@@ -151,7 +151,7 @@ function ImageGridPanel({
  * Leading opens slightly as the size comes down. Both pages share the token,
  * which is what keeps the two openings the same size.
  */
-const LEDE = "text-[clamp(1.2rem,1.6vw,1.5rem)] leading-[1.45] [text-wrap:pretty]";
+const LEDE = "text-[clamp(1.2rem,1.6vw,1.5rem)] leading-[1.2] [text-wrap:pretty]";
 /**
  * ...and the column it sits in. One width for both pages: Logos was on
  * 36rem and Print on 46rem, so the two openings didn't line up, and at
@@ -239,7 +239,7 @@ function TitlePanel({
           <Eyebrow>
             {project.client} · {project.year}
           </Eyebrow>
-          <p className="mt-3 text-[1.341rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] font-semibold leading-tight sm:text-[1.2rem] md:text-[1.44rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] md:text-[12px] lg:text-[15px] xl:text-[19px] 2xl:text-[23px]">
+          <p className="mt-3 text-[1.341rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] font-semibold leading-[1.2] sm:text-[1.2rem] md:text-[1.44rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] md:text-[12px] lg:text-[15px] xl:text-[19px] 2xl:text-[23px]">
             {project.title}
           </p>
           <p className="mt-4 max-w-[60ch] text-[0.975rem] sm:text-[1.2rem] md:text-[1.2rem] lg:text-[1.2rem] xl:text-[1.2rem] 2xl:text-[1.2rem] font-normal leading-[1.4] opacity-90 sm:text-[0.95rem] md:text-[1.056rem] lg:text-[1.2rem] xl:text-[1.2rem] 2xl:text-[1.2rem] md:text-[8px] lg:text-[11px] xl:text-[13px] 2xl:text-[16px]">

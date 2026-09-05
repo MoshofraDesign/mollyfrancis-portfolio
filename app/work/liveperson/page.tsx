@@ -138,7 +138,7 @@ export default function LivePersonCaseStudy() {
               <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
             </div>
 
-            <p className="max-w-[300px] text-lg font-semibold sm:text-xl lg:absolute lg:left-[61.8%] lg:top-[64px] lg:z-10 lg:flex lg:h-[94px] lg:max-w-[min(417px,28vw)] lg:items-center lg:text-[24px] xl:text-[29px] 2xl:text-[35px] lg:leading-[1.25]">
+            <p className="max-w-[300px] text-lg font-semibold sm:text-xl lg:absolute lg:left-[61.8%] lg:top-[64px] lg:z-10 lg:flex lg:h-[94px] lg:max-w-[min(417px,28vw)] lg:items-center lg:text-[24px] xl:text-[29px] 2xl:text-[35px] lg:leading-[1.1]">
               Social Media Management Product
             </p>
           </div>
@@ -175,7 +175,7 @@ export default function LivePersonCaseStudy() {
             delay={200}
             className="max-w-[46ch] lg:absolute lg:bottom-[5.5%] lg:left-[64px] lg:max-w-[min(489px,34vw)]"
           >
-            <p className="text-base leading-relaxed opacity-95 sm:text-xl lg:text-[clamp(1rem,1.4vw,1.55rem)] lg:leading-[1.4]">
+            <p className="text-base leading-[1.45] opacity-95 sm:text-xl lg:text-[clamp(1rem,1.4vw,1.55rem)] lg:leading-[1.4]">
               Enables brands to interact with consumers over email and social
               media platforms through the LiveEngage messaging product.
             </p>
@@ -272,8 +272,8 @@ export default function LivePersonCaseStudy() {
             <div className="mt-10 grid w-full grid-cols-2 gap-8 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-12">
               {metrics.map((m, i) => (
                 <SlideIn key={m.label} delay={120 + i * 90}>
-                  <p className="text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug opacity-80">{m.label}</p>
-                  <p className="mt-2 text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.1rem] xl:text-[2.3rem] 2xl:text-[2.3rem] font-semibold leading-tight tracking-[-0.03em]">
+                  <p className="text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-[1.45] opacity-80">{m.label}</p>
+                  <p className="mt-2 text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.1rem] xl:text-[2.3rem] 2xl:text-[2.3rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     {m.value}
                   </p>
                 </SlideIn>

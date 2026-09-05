@@ -43,9 +43,9 @@ const MEASURE = "w-full max-w-[min(700px,86vw)]";
 const STAT_ROW = "w-full max-w-[min(54rem,86vw)]";
 
 const H_DISPLAY =
-  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
+  "font-semibold leading-[1.1] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
 const BODY =
-  "text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white [text-wrap:pretty]";
+  "text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.2] text-white [text-wrap:pretty]";
 
 /**
  * The quote marks. Both quotes place these on the quote block itself and on
@@ -176,7 +176,7 @@ export default function BrightHealthcareCaseStudy() {
                 them — it existed only as the gutter they hung in, so keeping
                 it would leave the copy inset for no reason. */}
             <SlideIn delay={80} className={`relative ${PORTRAIT_COPY}`}>
-              <p className="relative text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
+              <p className="relative text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.45] text-white [text-wrap:pretty]">
                 Faxing in the world of digital experiences can cause providers and their staff added work, frustration, loss of trust in the company, and more importantly time away from caring for members.
               </p>
             </SlideIn>
@@ -194,6 +194,37 @@ export default function BrightHealthcareCaseStudy() {
             <SlideIn delay={100}>
               <p className={`mt-3 ${BODY}`}>
                 Provider interviews on how authorizations actually got done, then usability testing on the digital submission flow to find where it still caught. Both synthesized into empathy maps.
+              </p>
+            </SlideIn>
+          </div>
+        </Panel>
+
+        {/* 5.5 — INFORMATION ARCHITECTURE. Sits between the research and the
+            research board: it's the move the interviews led to. Grounded in
+            what the project actually did (lib/projects.ts approach) — rules
+            from clinical ops became form logic, the dashboard grew with the
+            user, and status became something the product owned. */}
+        <Panel width={VIEW} pad="center">
+          <div className={`${MEASURE} mx-auto`}>
+            <SlideIn>
+              <h2 className={H_DISPLAY}>
+                A fax is one flat page. A portal needs a structure.
+              </h2>
+            </SlideIn>
+            <SlideIn delay={100}>
+              <p className={`mt-3 ${BODY}`}>
+                So I drew the shape of it: what belongs on the dashboard, what
+                belongs inside a request, and what a provider needs to see after
+                they hit submit. Authorization rules came out of clinical ops&rsquo;
+                heads and became the form&rsquo;s own logic.
+              </p>
+            </SlideIn>
+            <SlideIn delay={180}>
+              <p className={`mt-4 ${BODY}`}>
+                Status got a place of its own — the one thing a fax could never
+                give back. And the patterns that came out of it were reusable, so
+                the next Bright surface started from a structure instead of a
+                blank page.
               </p>
             </SlideIn>
           </div>
@@ -236,14 +267,14 @@ export default function BrightHealthcareCaseStudy() {
               so the space between them is the gap and nothing else. */}
           <div className="mx-auto flex w-full max-w-[min(92vw,80rem)] flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-start lg:gap-12">
             <SlideIn className="w-full max-w-[748px] lg:w-auto lg:max-w-[600px] lg:shrink-0">
-              <h2 className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.15] tracking-[-0.02em]">😟 Pains</h2>
+              <h2 className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.02em]">😟 Pains</h2>
               <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
                 <li>Burnout from repetitive admin tasks.</li>
                 <li>No visibility into status or timelines.</li>
                 <li>Endless back-and-forth with payers.</li>
                 <li>Delays hurting patient satisfaction and care.</li>
               </ul>
-              <h2 className="mt-8 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.15] tracking-[-0.02em]">🌟 Gains</h2>
+              <h2 className="mt-8 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.02em]">🌟 Gains</h2>
               <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
                 <li>One system, fully integrated with their EHR.</li>
                 <li>Clear approval requirements—less rework.</li>
@@ -336,7 +367,7 @@ export default function BrightHealthcareCaseStudy() {
           <div className="relative mx-auto w-full max-w-[min(72rem,92vw)]">
             <SlideIn>
               <div className="relative mx-auto w-fit max-w-full pl-[1.9em] pr-[1.6em] text-[1.85rem] sm:text-[1.85rem] md:text-[1.85rem] lg:text-[2.432rem] xl:text-[3.04rem] 2xl:text-[3.648rem]">
-                <p className="relative font-semibold leading-[1.17] tracking-[-0.02em] text-white">
+                <p className="relative font-semibold leading-[1.1] tracking-[-0.02em] text-white">
                   <QuoteMark className="-left-[1.85em] top-1/2 h-[0.97em] w-[1.23em] -translate-y-1/2" />
                   <QuoteMark close className="-right-[1.6em] top-1/2 h-[0.97em] w-[1.23em] -translate-y-1/2" />
                   <span className="block w-fit sm:whitespace-nowrap">
@@ -346,7 +377,7 @@ export default function BrightHealthcareCaseStudy() {
                     the authorization portal!
                   </span>
                 </p>
-                <p className="mt-6 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] italic leading-snug text-white">
+                <p className="mt-6 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] italic leading-[1.45] text-white">
                   Rebecca Schweitz
                   <br />
                   VP, Clinical Performance
@@ -390,52 +421,47 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </Panel>
 
+        {/* Outcome numbers — four columns, one figure each. They used to be
+            three columns with both dollar figures stacked under Savings,
+            which made that column twice as tall as the others and left the
+            row visually lopsided. Each figure now gets its own label, its own
+            column, and the same type. Values on the 1.1 display ratio, detail
+            lines on 1.45 — the site-wide leading scale. */}
         <Panel width={VIEW} pad="center">
           <div className={`${STAT_ROW} mx-auto`}>
-            <div className="grid gap-10 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
-              {/* Grouped by kind rather than by where the figure came
-                  from: both dollar figures under Savings, both time figures
-                  under Time saved, both counts under Users. $800K moved out
-                  of Time saved and 4 hrs/day moved into it. */}
-              <SlideIn>
-                <h2 className={META_LABEL}>
-                  Savings
-                </h2>
-                <p className="mt-5 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
-                  $1.9m in savings
-                </p>
-                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
-                  Scaled monthly usage to 9-10K a month
-                </p>
-                <p className="mt-8 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
-                  $800K in savings
-                </p>
-                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
-                  7 minutes per case for clinicians reviewing cases
-                </p>
-              </SlideIn>
-              <SlideIn delay={80}>
-                <h2 className={META_LABEL}>
-                  Time saved
-                </h2>
-                <p className="mt-5 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
-                  4 Hours per day saved
-                </p>
-                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
-                  Went down 4 minutes per authorization, per provider
-                </p>
-              </SlideIn>
-              <SlideIn delay={160}>
-                <h2 className={META_LABEL}>
-                  Users
-                </h2>
-                <p className="mt-5 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
-                  50K authorization submissions
-                </p>
-                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
-                  22K providers logged in
-                </p>
-              </SlideIn>
+            <div className="grid gap-10 sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-4 lg:gap-x-10">
+              {[
+                {
+                  label: "Savings",
+                  value: "$1.9m in savings",
+                  detail: "Scaled monthly usage to 9-10K a month",
+                },
+                {
+                  label: "Clinical review",
+                  value: "$800K in savings",
+                  detail: "7 minutes per case for clinicians reviewing cases",
+                },
+                {
+                  label: "Time saved",
+                  value: "4 Hours per day saved",
+                  detail: "Went down 4 minutes per authorization, per provider",
+                },
+                {
+                  label: "Users",
+                  value: "50K authorization submissions",
+                  detail: "22K providers logged in",
+                },
+              ].map((stat, i) => (
+                <SlideIn key={stat.value} delay={i * 80}>
+                  <h2 className={META_LABEL}>{stat.label}</h2>
+                  <p className="mt-5 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.6rem] font-semibold leading-[1.1] tracking-[-0.03em]">
+                    {stat.value}
+                  </p>
+                  <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-[1.45] text-white">
+                    {stat.detail}
+                  </p>
+                </SlideIn>
+              ))}
             </div>
           </div>
         </Panel>

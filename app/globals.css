@@ -312,7 +312,7 @@ body::before {
      183 in absolute px, not as a fraction of a short viewport. */
   main .care-hero-phone-l {
     left: 28.472%;
-    top: max(21%, 200px);
+    top: max(26%, 200px);
     width: calc(370 * var(--figma-u));
   }
   /* Anchored to the LEFT phone in --figma-u, not to its own percentage of
@@ -326,7 +326,7 @@ body::before {
      vertical stagger (389 - 305). */
   main .care-hero-phone-r {
     left: calc(28.472% + 312 * var(--figma-u));
-    top: calc(max(21%, 200px) + 78 * var(--figma-u));
+    top: calc(max(26%, 200px) + 78 * var(--figma-u));
     width: calc(380 * var(--figma-u));
   }
 
@@ -340,6 +340,29 @@ body::before {
     width: calc(50 * var(--figma-u));
     height: calc(50 * var(--figma-u));
   }
+}
+
+/* ── No hanging words, anywhere in a case study ──────────────────────────
+   Every horizontal-scroll project renders inside the [data-hscroll] rail, so
+   one rule here covers the shared kit components AND the bespoke headings and
+   paragraphs each project writes for itself — which is where the orphans kept
+   coming back.
+
+   balance evens a heading across its lines, so a heading never ends on a lone
+   word; pretty is the property whose whole job is preventing a one-word last
+   line in body copy. Both degrade to normal wrapping where unsupported, and
+   the nbsp that noOrphan() inserts still binds the last two words underneath.
+   Headings are capped by the browser at a handful of lines for balance, which
+   is exactly the range a case-study heading lives in. */
+[data-hscroll] h1,
+[data-hscroll] h2,
+[data-hscroll] h3 {
+  text-wrap: balance;
+}
+[data-hscroll] p,
+[data-hscroll] li,
+[data-hscroll] figcaption {
+  text-wrap: pretty;
 }
 
 /* The site's horizontal rail. One definition for the homepage, resume,

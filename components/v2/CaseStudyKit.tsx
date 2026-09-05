@@ -31,6 +31,20 @@ import {
  * positioned against Figma's 71/89/107px rail, so their inset is paired
  * with those left offsets and is left alone.
  */
+/* ── Leading scale ───────────────────────────────────────────────────────
+ * One ratio per role, on every project. Fixed px leadings (95px, 50px) and
+ * Tailwind's presets (tight/snug/none/relaxed) had drifted into fourteen
+ * different values, so the same size of type breathed differently depending
+ * on which page you were reading.
+ *
+ *   1.1   display and headings, anything >= 2rem, plus stat values
+ *   1.2   mid-size labels and figures, 1.25-2rem, set semibold
+ *   1.4   captions and meta lines
+ *   1.45  body copy and bullet lists, at any size
+ *
+ * Bigger type takes the tighter ratio — that's the standard part. Keep new
+ * type on these four numbers rather than adding a fifth.
+ */
 export const GUTTER = "px-[clamp(1.5rem,4vw,4.5rem)]";
 
 /* Content width scale — three steps, nothing in between. Each is capped in
@@ -109,7 +123,7 @@ export const END_MEASURE = "mx-auto w-full max-w-[min(24rem,86vw)]";
  * their own H_DISPLAY step scale; all four share this now.
  */
 export const END_TITLE =
-  "font-semibold leading-[1.278] tracking-[-0.02em] text-[1.5rem] sm:text-[1.75rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
+  "font-semibold leading-[1.1] tracking-[-0.02em] text-[1.5rem] sm:text-[1.75rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
 
 /**
  * Top inset so media never runs under the parked logo or the fixed Close
@@ -221,9 +235,9 @@ export function TextPanel({
  * scale — the intro is deliberately the largest type on the page.
  */
 export const INTRO_TITLE =
-  "font-semibold leading-[1.173] tracking-[-0.02em] [text-wrap:pretty] text-[2rem] sm:text-[2.5rem] lg:text-[clamp(2rem,5.625vw,6.5rem)]";
+  "font-semibold leading-[1.1] tracking-[-0.02em] [text-wrap:pretty] text-[2rem] sm:text-[2.5rem] lg:text-[clamp(2rem,5.625vw,6.5rem)]";
 export const INTRO_SUBTEXT =
-  "font-normal leading-[1.35] [text-wrap:pretty] text-[1.05rem] sm:text-[1.05rem] lg:text-[clamp(1.05rem,2.22vw,2.25rem)]";
+  "font-normal leading-[1.45] [text-wrap:pretty] text-[1.05rem] sm:text-[1.05rem] lg:text-[clamp(1.05rem,2.22vw,2.25rem)]";
 
 /**
  * Hero type — the client's name and the one-line description on a project's
@@ -304,12 +318,12 @@ export const PORTRAIT_COPY = "min-w-0 w-full lg:max-w-[500px]";
  * 1.05-1.25rem while Timing's detail line ran 1.1-1.2, which read as two
  * different scales sitting side by side.
  */
-export const META_BODY = "text-[clamp(1.1rem,1.35vw,1.25rem)] leading-snug";
+export const META_BODY = "text-[clamp(1.1rem,1.35vw,1.25rem)] leading-[1.45]";
 
 export const HERO_COPY_GAP = "gap-2";
 
 export const HERO_TITLE =
-  "font-semibold leading-[1.28] tracking-[-0.01em] [text-wrap:pretty] text-[1.375rem] sm:text-[1.5rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
+  "font-semibold leading-[1.1] tracking-[-0.01em] [text-wrap:pretty] text-[1.375rem] sm:text-[1.5rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
 export const HERO_SUBTEXT =
   "font-normal leading-[1.45] [text-wrap:pretty] text-[0.95rem] sm:text-[1rem] lg:text-[clamp(0.95rem,1.25vw,1.125rem)]";
 
@@ -320,7 +334,7 @@ export function Heading({ children, intro = false }: { children: React.ReactNode
         className={
           intro
             ? INTRO_TITLE
-            : "text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.15] tracking-[-0.02em] [text-wrap:pretty]"
+            : "text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.1] tracking-[-0.02em] [text-wrap:pretty]"
         }
       >
         {typeof children === "string" ? noOrphan(children) : children}
@@ -363,7 +377,7 @@ export function Bullets({ items }: { items: string[] }) {
           key={b}
           as="li"
           delay={120 + i * 90}
-          className="text-[clamp(1.05rem,1.4vw,1.35rem)] font-normal leading-[1.35] opacity-90 [text-wrap:pretty]"
+          className="text-[clamp(1.05rem,1.4vw,1.35rem)] font-normal leading-[1.45] opacity-90 [text-wrap:pretty]"
         >
           {noOrphan(b)}
         </SlideIn>
@@ -489,7 +503,7 @@ export function NextProjectLink({
  * every project.
  */
 export const META_LABEL =
-  "text-[clamp(1.15rem,1.5vw,1.35rem)] font-semibold leading-snug text-current/60";
+  "text-[clamp(1.15rem,1.5vw,1.35rem)] font-semibold leading-[1.2] text-current/60";
 
 export function CaseStudyMetaPanel({
   meta,
@@ -524,7 +538,7 @@ export function CaseStudyMetaPanel({
                 <ul className="mt-5 space-y-4">
                   {meta.timing.map((row) => (
                     <li key={`${row.value}-${row.label}`}>
-                      <p className="text-[clamp(1.35rem,1.8vw,1.6rem)] font-semibold leading-tight">
+                      <p className="text-[clamp(1.35rem,1.8vw,1.6rem)] font-semibold leading-[1.2]">
                         {row.value}
                       </p>
                       <p className={`mt-1.5 text-current ${META_BODY}`}>
@@ -543,7 +557,7 @@ export function CaseStudyMetaPanel({
                   <ul className="mt-5 space-y-5">
                     {meta.projected.map((row) => (
                       <li key={`${row.value}-${row.label}`}>
-                        <p className="text-[clamp(2.1rem,3.5vw,2.8rem)] font-semibold leading-tight tracking-[-0.03em]">
+                        <p className="text-[clamp(2.1rem,3.5vw,2.8rem)] font-semibold leading-[1.1] tracking-[-0.03em]">
                           {row.value}
                         </p>
                         <p className={`mt-2 text-current ${META_BODY}`}>

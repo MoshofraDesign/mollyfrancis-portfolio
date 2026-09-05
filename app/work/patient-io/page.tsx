@@ -282,7 +282,7 @@ export default function PatientIoCaseStudy() {
             <div className="mt-10 w-full space-y-8">
               {metrics.map((m, i) => (
                 <SlideIn key={m.label} delay={120 + i * 90}>
-                  <p className="text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[2.75rem] 2xl:text-[2.75rem] font-semibold leading-tight">
+                  <p className="text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[2.75rem] 2xl:text-[2.75rem] font-semibold leading-[1.1]">
                     {m.value}
                   </p>
                   <p className="mt-1 text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1rem] font-medium opacity-80">

@@ -38,9 +38,9 @@ const LOGO = "/logos/care-homepay.svg";
 const ASSET = "/work/care-homepay";
 /** Section heading on the two split panels — Figma's 36/46, one scale. */
 const SPLIT_TITLE =
-  "font-semibold leading-[1.278] text-[1.5rem] sm:text-[1.75rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
+  "font-semibold leading-[1.1] text-[1.5rem] sm:text-[1.75rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
 const SPLIT_BODY =
-  "leading-[1.35] text-[1.05rem] lg:text-[clamp(1.05rem,1.25vw,1.125rem)]";
+  "leading-[1.45] text-[1.05rem] lg:text-[clamp(1.05rem,1.25vw,1.125rem)]";
 
 export default function CareHomepayCaseStudy() {
   const project = getProject("care-homepay");
@@ -200,7 +200,7 @@ export default function CareHomepayCaseStudy() {
               narrower measure ran this longer paragraph past the panel's
               bottom. Same type sizes as every other project's opening — only
               the column is Figma's. */}
-          <div className="mx-auto w-full max-w-[min(60rem,86vw)]">
+          <div className="mx-auto w-full max-w-[min(700px,86vw)]">
             <SlideIn>
               <h1 className={`text-white ${INTRO_TITLE}`}>
                 Two people, one timesheet.
@@ -316,10 +316,10 @@ export default function CareHomepayCaseStudy() {
             <div className="mt-10 grid w-full grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-x-12">
               {figures.map((f, i) => (
                 <SlideIn key={f.value} delay={120 + i * 90}>
-                  <p className="text-[clamp(2rem,3vw,2.8rem)] font-semibold leading-tight tracking-[-0.03em] text-white">
+                  <p className="text-[clamp(2rem,3vw,2.8rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-white">
                     {f.value}
                   </p>
-                  <p className="mt-2 text-[clamp(1.1rem,1.35vw,1.25rem)] leading-snug text-white">
+                  <p className="mt-2 text-[clamp(1.1rem,1.35vw,1.25rem)] leading-[1.45] text-white">
                     {f.label}
                   </p>
                 </SlideIn>

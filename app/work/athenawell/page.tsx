@@ -141,7 +141,7 @@ export default function AthenaWellCaseStudy() {
             <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.5rem] 2xl:text-[3.5rem] font-semibold leading-[1.1]">
               Standalone apps for patients and care teams
             </p>
-            <p className="max-w-[46ch] text-base leading-relaxed opacity-90 sm:text-lg lg:text-[13px] xl:text-[17px] 2xl:text-[20px]">
+            <p className="max-w-[46ch] text-base leading-[1.45] opacity-90 sm:text-lg lg:text-[13px] xl:text-[17px] 2xl:text-[20px]">
               {project.subtitle}
             </p>
           </div>
@@ -176,14 +176,14 @@ export default function AthenaWellCaseStudy() {
             <div className="mt-10 grid w-full gap-10 sm:grid-cols-2 sm:gap-14">
               <SlideIn>
                 <p className="text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.15rem] xl:text-[1.28rem] 2xl:text-[1.5rem] font-semibold">Public User</p>
-                <p className="mt-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] leading-relaxed opacity-90">
+                <p className="mt-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] leading-[1.45] opacity-90">
                   Prospective customers browsing the Marketplace evaluate athenahealth&rsquo;s partner
                   ecosystem, so the experience has to stand on its own.
                 </p>
               </SlideIn>
               <SlideIn delay={100}>
                 <p className="text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.15rem] xl:text-[1.28rem] 2xl:text-[1.5rem] font-semibold">athenaNet User</p>
-                <p className="mt-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] leading-relaxed opacity-90">
+                <p className="mt-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] leading-[1.45] opacity-90">
                   Self-service tools let existing athenahealth customers evaluate partner products right
                   inside their daily workflow.
                 </p>
@@ -219,7 +219,7 @@ export default function AthenaWellCaseStudy() {
               {personas.map((p, i) => (
                 <SlideIn key={p.name} delay={100 + i * 90}>
                   <p className="text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.1rem] xl:text-[1.12rem] 2xl:text-[1.3rem] font-semibold">{p.name}</p>
-                  <p className="mt-3 text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1rem] leading-relaxed opacity-90">
+                  <p className="mt-3 text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1rem] leading-[1.45] opacity-90">
                     {p.body}
                   </p>
                 </SlideIn>
@@ -287,7 +287,7 @@ export default function AthenaWellCaseStudy() {
               {metrics.map((m, i) => (
                 <SlideIn key={m.label} delay={120 + i * 90}>
                   <p className="text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1rem] font-medium opacity-80">{m.label}</p>
-                  <p className="mt-1 text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[2.75rem] 2xl:text-[2.75rem] font-semibold leading-tight">
+                  <p className="mt-1 text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[2.75rem] 2xl:text-[2.75rem] font-semibold leading-[1.1]">
                     {m.value}
                   </p>
                 </SlideIn>

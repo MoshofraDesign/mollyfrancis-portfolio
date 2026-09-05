@@ -46,10 +46,10 @@ const ASSET = "/work/docsquad";
 
 /** Figma Header Large: Jost SemiBold 81/95. */
 const H_DISPLAY =
-  "font-semibold leading-[1.17] text-white text-[2rem] sm:text-[2.25rem] md:text-[2.7rem] lg:text-[3.6rem] xl:text-[4.5rem] 2xl:text-[5.062rem] lg:leading-[95px] [text-wrap:pretty]";
+  "font-semibold leading-[1.1] text-white text-[2rem] sm:text-[2.25rem] md:text-[2.7rem] lg:text-[3.6rem] xl:text-[4.5rem] 2xl:text-[5.062rem] lg:leading-[1.1] [text-wrap:pretty]";
 /** Figma Paragraph: Jost Regular 32, 16px under the heading. */
 const BODY =
-  "text-[1.05rem] sm:text-[1.05rem] md:text-[1.066rem] lg:text-[1.421rem] xl:text-[1.776rem] 2xl:text-[2rem] font-normal leading-normal text-white [text-wrap:pretty]";
+  "text-[1.05rem] sm:text-[1.05rem] md:text-[1.066rem] lg:text-[1.421rem] xl:text-[1.776rem] 2xl:text-[2rem] font-normal leading-[1.1] text-white [text-wrap:pretty]";
 
 /** Outcome stat columns — Figma node 4672:15331: 29% / 71% / $1.2m,
  *  each with a big hero number, uppercase kicker, delta + down triangle,
@@ -189,10 +189,10 @@ export default function DocSquadCaseStudy() {
             distance={24}
             className="relative z-10 flex max-w-[308px] flex-col gap-2 text-white lg:absolute lg:bottom-[82px] lg:left-[100px] lg:h-auto lg:max-w-[274px]"
           >
-            <p className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.28]">
+            <p className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.1]">
               Virtual Care Telehealth App
             </p>
-            <p className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.125rem] font-normal leading-normal">
+            <p className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.125rem] font-normal leading-[1.45]">
               Provider Desktop And Native Apps For Doctors, Nurses And Staff To Diagnosis Patients With Asynchronous And Synchronous Visits.
             </p>
           </SlideIn>
@@ -204,7 +204,7 @@ export default function DocSquadCaseStudy() {
               aspect sets the height now, and the width is what gets capped.
               One top inset rather than three (251/279/314), a touch higher, so
               it can't drift as the breakpoints change. */}
-          <div className="relative z-0 mx-auto aspect-[2026/1203] w-full max-w-[min(92vw,891px)] lg:absolute lg:left-[341px] xl:left-[426px] 2xl:left-[511px] lg:top-[228px] lg:mx-0 lg:w-[634px] xl:w-[792px] 2xl:w-[950px] lg:max-w-[calc(var(--panel-media-max-h)_*_1.6841)]">
+          <div className="relative z-0 mx-auto aspect-[2026/1203] w-full max-w-[min(92vw,891px)] lg:absolute lg:left-[341px] xl:left-[426px] 2xl:left-[511px] lg:top-[252px] lg:mx-0 lg:w-[686px] xl:w-[856px] 2xl:w-[1026px] lg:max-w-[calc(var(--panel-media-max-h)_*_1.6841)]">
             <Image
               src={`${ASSET}/hero.png`}
               alt="DocSquad provider desktop, native app, and watch"
@@ -219,7 +219,7 @@ export default function DocSquadCaseStudy() {
         {/* 2 — THE SECOND JOB. Opens on who the clinician actually is,
             because every constraint in this project follows from that. */}
         <ScreenPanel className="!pt-16">
-          <div className={`flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
+          <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
             <SlideIn>
               <h2 className={H_DISPLAY}>The provider was already off the clock.</h2>
             </SlideIn>
@@ -238,7 +238,7 @@ export default function DocSquadCaseStudy() {
             (lib/projects.ts research[]), stated as method rather than
             reframed as a finding. */}
         <ScreenPanel>
-          <div className={`flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
+          <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
             <SlideIn>
               <h2 className={H_DISPLAY}>They didn&apos;t want another platform.</h2>
             </SlideIn>
@@ -258,7 +258,7 @@ export default function DocSquadCaseStudy() {
 
         {/* 4 — THE TURN. The design move the rest of the page shows. */}
         <ScreenPanel>
-          <div className={`flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
+          <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
             <SlideIn>
               <h2 className={H_DISPLAY}>So the visit starts before the provider does.</h2>
             </SlideIn>
@@ -349,7 +349,7 @@ export default function DocSquadCaseStudy() {
 
         {/* 7 — ONE UI. Why the same screens appear on desktop and phone. */}
         <ScreenPanel>
-          <div className={`flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
+          <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
             <SlideIn>
               <h2 className={H_DISPLAY}>One interface, web and native.</h2>
             </SlideIn>
@@ -460,13 +460,13 @@ export default function DocSquadCaseStudy() {
               <div className="flex w-full flex-col gap-10 sm:flex-row sm:flex-wrap sm:gap-x-14 sm:gap-y-10">
                 {OUTCOME_STATS.map((stat) => (
                   <div key={stat.kicker} className="flex flex-col items-start gap-1 text-white">
-                    <p className="text-[2.75rem] sm:text-[2.75rem] md:text-[2.75rem] lg:text-[3.52rem] xl:text-[4.4rem] 2xl:text-[5.062rem] font-semibold uppercase leading-[0.95] tracking-[-0.02em]">
+                    <p className="text-[2.75rem] sm:text-[2.75rem] md:text-[2.75rem] lg:text-[3.52rem] xl:text-[4.4rem] 2xl:text-[5.062rem] font-semibold uppercase leading-[1.1] tracking-[-0.02em]">
                       {stat.hero}
                     </p>
                     <p className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1.12rem] 2xl:text-[1.25rem] font-semibold uppercase tracking-[0.06em]">
                       {stat.kicker}
                     </p>
-                    <p className="mt-3 flex items-center gap-2 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.664rem] xl:text-[2.08rem] 2xl:text-[2.25rem] font-semibold leading-none">
+                    <p className="mt-3 flex items-center gap-2 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.664rem] xl:text-[2.08rem] 2xl:text-[2.25rem] font-semibold leading-[1.1]">
                       {stat.delta}
                       <img
                         src={`${ASSET}/down-triangle-green.svg`}

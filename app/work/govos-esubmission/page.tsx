@@ -100,10 +100,12 @@ function Panel({
 }
 
 /**
- * Every text group shares one centered measure (~860px) so headings, body,
- * and bullets line up with media panels across the case study.
+ * Every text group shares one centered measure so headings, body and bullets
+ * line up with media panels across the case study. 700px, the same value the
+ * kit's MEASURE uses, so a text section is the same column on every project
+ * — this page used to set its own 864.
  */
-const TEXT_W = "w-full max-w-[min(54rem,86vw)]";
+const TEXT_W = "w-full max-w-[min(700px,86vw)]";
 const MEDIA_W = "w-full max-w-[min(950px,90vw)]";
 
 /**
@@ -128,7 +130,7 @@ function noOrphan(text: string) {
 function Heading({ children }: { children: React.ReactNode }) {
   return (
     <SlideIn className={TEXT_W}>
-      <h2 className="text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] font-semibold leading-[1.15] tracking-[-0.02em] text-white [text-wrap:pretty]">
+      <h2 className="text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] font-semibold leading-[1.1] tracking-[-0.02em] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </h2>
     </SlideIn>
@@ -139,7 +141,7 @@ function Heading({ children }: { children: React.ReactNode }) {
 function Body({ children }: { children: React.ReactNode }) {
   return (
     <SlideIn delay={120} className={TEXT_W}>
-      <p className="mt-3 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] font-normal leading-[1.35] text-white [text-wrap:pretty]">
+      <p className="mt-3 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] font-normal leading-[1.45] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </p>
     </SlideIn>
@@ -155,7 +157,7 @@ function Bullets({ items }: { items: string[] }) {
           key={b}
           as="li"
           delay={120 + i * 90}
-          className="text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] font-normal leading-[1.35] text-white [text-wrap:pretty]"
+          className="text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] font-normal leading-[1.45] text-white [text-wrap:pretty]"
         >
           {noOrphan(b)}
         </SlideIn>
@@ -259,7 +261,7 @@ function ChallengeBlock({
   return (
     <div>
       <SlideIn delay={delay}>
-        <h3 className="text-[1.15rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.5rem] xl:text-[1.5rem] 2xl:text-[1.5rem] font-semibold leading-tight text-white sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2.112rem] [text-wrap:pretty]">
+        <h3 className="text-[1.15rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.5rem] xl:text-[1.5rem] 2xl:text-[1.5rem] font-semibold leading-[1.1] text-white sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2.112rem] [text-wrap:pretty]">
           {title}
         </h3>
       </SlideIn>
@@ -508,11 +510,11 @@ export default function GovOSCaseStudy() {
             ].map(([label, value], i) => (
               <SlideIn key={label} delay={i * 90}>
                 <div className="flex flex-col gap-[5px]">
-                  <p className="font-[Helvetica,Arial,sans-serif] text-white text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.331rem] xl:text-[1.664rem] 2xl:text-[1.875rem] font-normal leading-[1.25] lg:leading-[50px]">
+                  <p className="font-[Helvetica,Arial,sans-serif] text-white text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.331rem] xl:text-[1.664rem] 2xl:text-[1.875rem] font-normal leading-[1.45] lg:leading-[1.45]">
                     {label}
                   </p>
                   <div className="flex items-center gap-4">
-                    <p className="font-[Helvetica,Arial,sans-serif] text-white text-[1.75rem] sm:text-[1.75rem] md:text-[1.8rem] lg:text-[2.4rem] xl:text-[3rem] 2xl:text-[3.375rem] font-bold leading-[1.15] lg:leading-[50px] whitespace-nowrap">
+                    <p className="font-[Helvetica,Arial,sans-serif] text-white text-[1.75rem] sm:text-[1.75rem] md:text-[1.8rem] lg:text-[2.4rem] xl:text-[3rem] 2xl:text-[3.375rem] font-bold leading-[1.1] lg:leading-[1.1] whitespace-nowrap">
                       {value}
                     </p>
                     <Image

@@ -31,7 +31,7 @@ const MEASURE = "w-full max-w-[min(54rem,86vw)]";
 const MEDIA = "w-full max-w-[min(950px,90vw)]";
 
 const H_DISPLAY =
-  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
+  "font-semibold leading-[1.1] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
 const BODY_CAPTION = `mt-3 ${CAPTION}`;
 
 function StoryImage({
@@ -107,7 +107,7 @@ export default function ConsumerHealthCaseStudy() {
             <Image src={LOGO} alt="athenahealth" fill unoptimized priority className="object-contain object-left" />
           </div>
 
-          <p className="relative z-10 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.28] text-white lg:absolute lg:left-[790px] lg:top-[100px] lg:flex lg:h-[83px] lg:items-center">
+          <p className="relative z-10 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.1] text-white lg:absolute lg:left-[790px] lg:top-[100px] lg:flex lg:h-[83px] lg:items-center">
             Patient Portal
           </p>
 
@@ -267,10 +267,10 @@ export default function ConsumerHealthCaseStudy() {
                   <h2 className={META_LABEL}>
                     Usage
                   </h2>
-                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
+                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     25M patients
                   </p>
-                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
+                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
                     Registered on the portal
                   </p>
                 </div>
@@ -279,16 +279,16 @@ export default function ConsumerHealthCaseStudy() {
                   <h2 className={META_LABEL}>
                     Time saved
                   </h2>
-                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
+                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     40% faster
                   </p>
-                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
+                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
                     Time to find appointments, meds, and billing
                   </p>
-                  <p className="mt-8 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
+                  <p className="mt-8 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     2 taps
                   </p>
-                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
+                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
                     From landing to the next action on a phone
                   </p>
                 </div>
@@ -297,16 +297,16 @@ export default function ConsumerHealthCaseStudy() {
                   <h2 className={META_LABEL}>
                     Users
                   </h2>
-                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
+                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     2.1× completion
                   </p>
-                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
+                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
                     Mobile tasks vs the old Test Results dump
                   </p>
-                  <p className="mt-8 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-tight tracking-[-0.03em]">
+                  <p className="mt-8 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     28% fewer tickets
                   </p>
-                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-snug text-white/55">
+                  <p className="mt-2 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
                     &ldquo;Where is my...&rdquo; support contacts
                   </p>
                 </div>

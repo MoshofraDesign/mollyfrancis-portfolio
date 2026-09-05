@@ -29,13 +29,13 @@ const VIEW = "lg:w-screen";
 /** ~132rem on their fluid root ≈ 860px — readable measure that scales. */
 
 const H_DISPLAY =
-  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
+  "font-semibold leading-[1.1] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
 const H_SECTION =
-  "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[2.304rem] xl:text-[2.88rem] 2xl:text-[3rem] [text-wrap:pretty]";
+  "font-semibold leading-[1.1] tracking-[-0.02em] text-white text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[2.304rem] xl:text-[2.88rem] 2xl:text-[3rem] [text-wrap:pretty]";
 const BODY =
-  "text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white [text-wrap:pretty]";
+  "text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.45] text-white [text-wrap:pretty]";
 const BODY_MUTED =
-  "text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white/70 [text-wrap:pretty]";
+  "text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.45] text-white/70 [text-wrap:pretty]";
 
 export default function NetspendCaseStudy() {
   const idx = projects.findIndex((p) => p.slug === "netspend");
@@ -116,10 +116,10 @@ export default function NetspendCaseStudy() {
               />
             </div>
             <SlideIn className={`flex flex-col text-white ${HERO_COPY_GAP}`}>
-              <p className="font-semibold leading-[1.28] text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem]">
+              <p className="font-semibold leading-[1.1] text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem]">
                 Netspend Rewards
               </p>
-              <p className="text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[1rem] 2xl:text-[1.125rem] leading-normal opacity-90">
+              <p className="text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[1rem] 2xl:text-[1.125rem] leading-[1.45] opacity-90">
                 Rewards helps you earn cash back by giving you rewards for some
                 of your everyday purchases.
               </p>
@@ -238,7 +238,7 @@ export default function NetspendCaseStudy() {
                     unoptimized
                     className="size-7 shrink-0 object-contain sm:size-8"
                   />
-                  <span className="text-[0.95rem] leading-none text-white/70 sm:text-[1rem]">
+                  <span className="text-[0.95rem] leading-[1.45] text-white/70 sm:text-[1rem]">
                     {label}
                   </span>
                 </div>
@@ -251,7 +251,7 @@ export default function NetspendCaseStudy() {
         <Panel width={VIEW} pad="center" className="items-center">
           <div className="mx-auto w-full max-w-[min(1200px,94vw)]">
             <SlideIn>
-              <h2 className="mb-8 text-center font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[1.5rem] sm:text-[1.5rem] md:text-[1.536rem] lg:text-[2.048rem] xl:text-[2.56rem] 2xl:text-[2.65rem] [text-wrap:pretty]">
+              <h2 className="mb-8 text-center font-semibold leading-[1.1] tracking-[-0.02em] text-white text-[1.5rem] sm:text-[1.5rem] md:text-[1.536rem] lg:text-[2.048rem] xl:text-[2.56rem] 2xl:text-[2.65rem] [text-wrap:pretty]">
                 Then the side cardholders actually see.
               </h2>
             </SlideIn>
@@ -271,7 +271,7 @@ export default function NetspendCaseStudy() {
                     unoptimized
                     className="h-auto w-full object-contain"
                   />
-                  <p className="mt-2 text-center text-[0.8rem] sm:text-[0.8rem] md:text-[0.8rem] lg:text-[0.8rem] xl:text-[0.8rem] 2xl:text-[0.95rem] leading-snug text-white/55">
+                  <p className="mt-2 text-center text-[0.8rem] sm:text-[0.8rem] md:text-[0.8rem] lg:text-[0.8rem] xl:text-[0.8rem] 2xl:text-[0.95rem] leading-[1.45] text-white/55">
                     {caption}
                   </p>
                 </SlideIn>
@@ -335,10 +335,10 @@ export default function NetspendCaseStudy() {
               ].map(([value, label], i) => (
                 <SlideIn key={label} delay={i * 80}>
                   <div>
-                    <p className="font-semibold leading-none tracking-[-0.04em] text-white text-[2.4rem] sm:text-[2.4rem] md:text-[2.88rem] lg:text-[3.36rem] xl:text-[3.84rem] 2xl:text-[4.05rem]">
+                    <p className="font-semibold leading-[1.1] tracking-[-0.04em] text-white text-[2.4rem] sm:text-[2.4rem] md:text-[2.88rem] lg:text-[3.36rem] xl:text-[3.84rem] 2xl:text-[4.05rem]">
                       {value}
                     </p>
-                    <p className="mt-3 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
+                    <p className="mt-3 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.45] text-white/55 [text-wrap:pretty]">
                       {label}
                     </p>
                   </div>
