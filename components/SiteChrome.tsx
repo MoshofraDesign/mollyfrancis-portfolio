@@ -28,10 +28,10 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
     <>
       <Nav />
       <PageTransition>
-        {/* Tracks the nav's h-32: 128px of bar plus the 16px gap the page
-            has always had under it. Went to 96 briefly and the 64px lockup
-            read cramped, so it is back. */}
-      <main className="page-shell pt-36">{children}</main>
+        {/* The nav sits in the flow now rather than fixed over the page, so
+            the shell no longer holds 128px of space open for it — just the
+            16px gap the page has always had under the bar. */}
+      <main className="page-shell pt-4">{children}</main>
       </PageTransition>
       <Footer />
     </>

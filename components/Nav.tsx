@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaDribbble, FaInstagram, FaEnvelope } from "react-icons/fa";
 import Logo from "./Logo";
@@ -28,25 +27,12 @@ const socials = [
 
 export default function Nav() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <motion.header
       initial={{ y: -32, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "backdrop-blur-md bg-white/90 border-b border-ink/5"
-          : "bg-white"
-      }`}
+      className="relative z-50 bg-white"
     >
       <div className="w-full px-6 lg:px-10 h-32 flex items-center justify-between">
         <Link href="/" className="group">
