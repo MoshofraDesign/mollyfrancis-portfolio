@@ -32,6 +32,13 @@ const H_DISPLAY =
 const BODY =
   "text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white [text-wrap:pretty]";
 
+/**
+ * The quote marks. Both quotes place these on the quote block itself and on
+ * its vertical centre — one outside the left edge, one outside the right —
+ * rather than pinning them to the first and last lines. Line-anchored marks
+ * meant every change to the copy or the measure moved them, which is what
+ * made them so hard to position.
+ */
 function QuoteMark({ close = false, className = "" }: { close?: boolean; className?: string }) {
   return (
     <img
@@ -164,8 +171,8 @@ export default function BrightHealthcareCaseStudy() {
                   sit in — an absolute child is placed against the padding
                   box, so the 3.125em mark clears the text by 0.775em. */}
               <p className="relative px-[3.9em] text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
-                <QuoteMark className="left-0 top-0 h-[2.47em] w-[3.125em]" />
-                <QuoteMark close className="right-0 top-[2.4em] h-[2.47em] w-[3.125em]" />
+                <QuoteMark className="left-0 top-1/2 h-[2.47em] w-[3.125em] -translate-y-1/2" />
+                <QuoteMark close className="right-0 top-1/2 h-[2.47em] w-[3.125em] -translate-y-1/2" />
                 Faxing in the world of digital experiences can cause providers and their staff added work, frustration, loss of trust in the company, and more importantly time away from caring for members.
               </p>
             </SlideIn>
@@ -325,14 +332,14 @@ export default function BrightHealthcareCaseStudy() {
           <div className="relative mx-auto w-full max-w-[min(72rem,92vw)]">
             <SlideIn>
               <div className="relative mx-auto w-fit max-w-full pl-[1.9em] pr-[1.6em] text-[1.85rem] sm:text-[1.85rem] md:text-[1.85rem] lg:text-[2.432rem] xl:text-[3.04rem] 2xl:text-[3.648rem]">
-                <p className="font-semibold leading-[1.17] tracking-[-0.02em] text-white">
-                  <span className="relative block w-fit sm:whitespace-nowrap">
-                    <QuoteMark className="-left-[1.85em] top-0 h-[0.97em] w-[1.23em]" />
+                <p className="relative font-semibold leading-[1.17] tracking-[-0.02em] text-white">
+                  <QuoteMark className="-left-[1.85em] top-1/2 h-[0.97em] w-[1.23em] -translate-y-1/2" />
+                  <QuoteMark close className="-right-[1.6em] top-1/2 h-[0.97em] w-[1.23em] -translate-y-1/2" />
+                  <span className="block w-fit sm:whitespace-nowrap">
                     You have Marie Kondo’d
                   </span>
-                  <span className="relative block w-fit sm:whitespace-nowrap">
+                  <span className="block w-fit sm:whitespace-nowrap">
                     the authorization portal!
-                    <QuoteMark close className="left-[calc(100%+0.12em)] bottom-0 h-[0.97em] w-[1.23em]" />
                   </span>
                 </p>
                 <p className="mt-6 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] italic leading-snug text-white">
