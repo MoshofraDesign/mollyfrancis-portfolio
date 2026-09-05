@@ -213,14 +213,18 @@ export default function LivePersonCaseStudy() {
         {/* ── PUBLIC TWEET / PRIVATE THREAD ────────────────────────────── */}
         <BigImagePanel
           /* The .webp sibling, not the .png: same transparent artwork, but
-             1800x739 against the png's 1100x446. Displayed at up to 1000 CSS
-             px the png was being upscaled about 1.8x on a 2x screen, which
-             is the fuzziness; the webp lands at 1.11x, so it resolves. */
+             1800x739 against the png's 1100x446.
+             1200 display, up from 1000 — bigger, as asked. Note the
+             trade-off: 1800 native across 1200 CSS px is a 1.33x upscale on
+             a 2x screen, where 1000 was 1.11x. It's the largest version of
+             this composite in the repo, so bigger and sharper can't both come
+             from it. Dropping a larger export at this same path fixes that
+             with no code change other than the width/height props. */
           src="/work/liveperson/public-tweet-private-thread.webp"
           alt="A public tweet on Twitter routed into the LiveEngage agent workspace, with the full private thread and social profile alongside it"
           width={1800}
           height={739}
-          maxWidth={1000}
+          maxWidth={1200}
           bare
         />
 
