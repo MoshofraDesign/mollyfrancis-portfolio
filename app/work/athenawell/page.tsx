@@ -13,6 +13,7 @@ import {
   Body,
   VIEW,
   STAT_ROW,
+  CAPTION,
   MEDIA,
   NextProjectLink,
   CaseStudyMetaPanel,
@@ -95,7 +96,7 @@ function BigImagePanel({
           />
         </div>
         {caption && (
-          <p className="mt-4 max-w-[70ch] text-center text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1.05rem] opacity-80">
+          <p className={`mt-4 max-w-[70ch] text-center ${CAPTION}`}>
             {caption}
           </p>
         )}

@@ -288,10 +288,13 @@ export default function VolusionCaseStudy() {
           id="title"
           className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
-          {/* Box == mark, so left/top 100px lands where every other project's
-              does. Heights match what the padded asset was already drawing
-              (149/168/187 of visible mark), widths at its 1.946 aspect. */}
-          <div className="relative z-10 aspect-[539/277] w-[min(100%,234px)] sm:w-[min(100%,292px)] lg:absolute lg:left-[100px] lg:top-[100px] lg:aspect-auto lg:h-[149px] lg:w-[290px] xl:h-[168px] xl:w-[327px] 2xl:h-[187px] 2xl:w-[364px]">
+          {/* Box == mark (volusion-tight.svg has no padding), so these insets
+              are the mark's real position. 64 rather than the 100px rail the
+              other projects use: this is a stacked lockup 149-187px tall
+              against their ~75-100px wordmarks, so 100+187 pushed it far
+              lower down the panel than theirs sit. Heights match what the
+              padded asset was already drawing, widths at its 1.946 aspect. */}
+          <div className="relative z-10 aspect-[539/277] w-[min(100%,234px)] sm:w-[min(100%,292px)] lg:absolute lg:left-[64px] lg:top-[64px] lg:aspect-auto lg:h-[149px] lg:w-[290px] xl:h-[168px] xl:w-[327px] 2xl:h-[187px] 2xl:w-[364px]">
             <Image
               src={HERO_LOGO}
               alt="Volusion"
@@ -304,7 +307,14 @@ export default function VolusionCaseStudy() {
 
           <SlideIn
             delay={80}
-            className="relative z-10 flex max-w-[46ch] flex-col gap-2 lg:absolute lg:left-[37.7%] lg:top-[14.2%] lg:max-w-[min(630px,40vw)]"
+            /* Bottom-aligned to the mark rather than top-aligned to the
+               panel: the mark runs 64 to 213/232/251, so the copy's bottom
+               edge is set there and the two line up along their baselines.
+               Expressed as bottom: calc(100% - Npx) instead of a translate —
+               SlideIn writes an inline transform for its reveal, which beats
+               any -translate-y utility, so a transform-based offset here
+               silently does nothing. */
+            className="relative z-10 flex max-w-[46ch] flex-col gap-2 lg:absolute lg:left-[37.7%] lg:bottom-[calc(100%_-_213px)] xl:bottom-[calc(100%_-_232px)] 2xl:bottom-[calc(100%_-_251px)] lg:max-w-[min(630px,40vw)]"
           >
             <p className={HERO_TITLE}>E-Commerce Software Solution</p>
             <p className={HERO_SUBTEXT}>
@@ -324,7 +334,13 @@ export default function VolusionCaseStudy() {
           {hasHero && (
             <SlideIn
               delay={160}
-              className="relative z-0 mt-4 w-full max-w-[560px] self-center lg:absolute lg:bottom-0 lg:left-1/2 lg:mt-0 lg:w-[calc(866_*_var(--figma-u))] lg:max-w-none lg:-translate-x-1/2"
+              /* Centred with a negative margin, not -translate-x-1/2:
+                 SlideIn sets transform inline for its reveal animation, and
+                 an inline style beats a utility class, so the translate was
+                 being dropped and left-1/2 alone put the artwork's LEFT edge
+                 on the panel's centre line. Half the width in the same unit
+                 does the same job and survives. */
+              className="relative z-0 mt-4 w-full max-w-[560px] self-center lg:absolute lg:bottom-0 lg:left-1/2 lg:ml-[calc(-433_*_var(--figma-u))] lg:mt-0 lg:w-[calc(866_*_var(--figma-u))] lg:max-w-none"
             >
               <Image
                 src={hero}

@@ -267,6 +267,23 @@ export const INTRO_SUBTEXT =
 export const CENTER_BELOW_MARK =
   "lg:top-[calc(50%_+_(var(--nav-park-top)_+_var(--nav-logo-h))/2)] lg:-translate-y-1/2";
 
+/**
+ * Caption / small description under a piece of media. One size and one
+ * strength on every project.
+ *
+ * These had drifted badly: athenahealth ran 1.25-1.65rem at 55% white,
+ * athenaWell and GovOS 0.9-1.05rem at 75-80%, LivePerson 1.05-1.25rem at
+ * 80% — so the same kind of line read four different ways depending on
+ * which project you opened.
+ *
+ * text-current, not text-white: Patient IO's accent (#00CCB7) is bright
+ * enough that contrastColor gives it DARK type, so a hardcoded white
+ * caption would disappear there. Full-strength inherit is white on the
+ * nine dark projects and correct on the light one.
+ */
+export const CAPTION =
+  "text-[clamp(1.05rem,1.3vw,1.25rem)] leading-[1.4] text-current [text-wrap:pretty]";
+
 export const HERO_COPY_GAP = "gap-2";
 
 export const HERO_TITLE =

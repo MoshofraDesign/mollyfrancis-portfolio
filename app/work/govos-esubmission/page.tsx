@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, END_MEASURE, NextProjectLink, CaseStudyMetaPanel, END_PANEL } from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, END_MEASURE, NextProjectLink, CaseStudyMetaPanel, END_PANEL, CAPTION } from "@/components/v2/CaseStudyKit";
 
 /**
  * GovOS eSubmission — horizontal case study built to match the Figma deck
@@ -214,7 +214,7 @@ function VideoPanel({ src, caption }: { src: string | null; caption?: string }) 
         <AutoplayVideo src={src} className="aspect-[950/592] w-full bg-black" />
       </BrowserFrame>
       {caption && (
-        <p className="mt-5 text-center text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1.056rem] text-white/75">
+        <p className={`mt-5 text-center ${CAPTION}`}>
           {caption}
         </p>
       )}

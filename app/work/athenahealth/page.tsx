@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, META_LABEL } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, META_LABEL, CAPTION } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Patient Portal — athenahealth — Molly Francis",
@@ -32,8 +32,7 @@ const MEDIA = "w-full max-w-[min(950px,90vw)]";
 
 const H_DISPLAY =
   "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
-const BODY_CAPTION =
-  "mt-3 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white/55 [text-wrap:pretty]";
+const BODY_CAPTION = `mt-3 ${CAPTION}`;
 
 function StoryImage({
   src,
@@ -112,7 +111,11 @@ export default function ConsumerHealthCaseStudy() {
             Patient Portal
           </p>
 
-          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,1186px)] lg:absolute lg:left-[100px] lg:top-[252px] xl:top-[280px] 2xl:top-[315px] lg:mx-0 lg:w-[843px] xl:w-[1054px] 2xl:w-[1265px] lg:max-w-none">
+          {/* Centred rather than pinned to the 100px rail. Left-anchored it sat
+              105px from the left edge and 215px from the right at 1400 —
+              visibly left-heavy, since the artwork is narrower than the
+              rail-to-rail span it was drawn for. */}
+          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,1186px)] lg:absolute lg:left-1/2 lg:top-[252px] xl:top-[280px] 2xl:top-[315px] lg:mx-0 lg:w-[843px] xl:w-[1054px] 2xl:w-[1265px] lg:max-w-none lg:-translate-x-1/2">
             <Image
               src={`${ASSET}/hero.png`}
               alt="Redesigned patient portal dashboard on desktop and mobile"
@@ -154,7 +157,17 @@ export default function ConsumerHealthCaseStudy() {
         </TextPanel>
 
         <Panel width={VIEW} pad="center">
-          <div className={`${MEDIA} mx-auto`}>
+          {/* Height-capped, not just aspect-boxed. The wrapper was MEDIA
+              (max 950/90vw) with the clip in a plain aspect-[1544/1096]
+              box, so on a short window the box computed taller than the
+              panel and the rounded container clipped the clip top and
+              bottom instead of scaling it. Capping the WIDTH by the room
+              available — panel-media-max-h less the caption block, times
+              the clip's own 1.4088 aspect — makes the whole thing shrink
+              together. Same pattern as Care.com's video panel. `panel-media`
+              is off this wrapper on purpose: its `video { width: auto }`
+              rule fights the fill inside an aspect box. */}
+          <div className="mx-auto w-full max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_3.5rem)_*_1.4088))]">
             <SlideIn>
               <div className="relative w-full aspect-[1544/1096] overflow-hidden rounded-[10px] bg-black/20">
                 <AutoplayVideo
@@ -167,7 +180,7 @@ export default function ConsumerHealthCaseStudy() {
               </div>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="mt-4 text-center text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
+              <p className={`mt-4 text-center ${CAPTION}`}>
                 My Health, as a place — not a subcategory.
               </p>
             </SlideIn>
@@ -225,26 +238,29 @@ export default function ConsumerHealthCaseStudy() {
           </div>
         </Panel>
 
-        {/* Portrait breather — sits ahead of the figures, so the panel that
-            lands beside the stats at a wide window is the image, not the
-            meta block that follows them. A step smaller than the old 600
-            too: at 600 it crowded the column next to it. */}
-        <Panel width={VIEW} pad="center" className="items-center">
-          <div className="relative mx-auto aspect-square w-[260px] sm:w-[400px] md:w-[472px] lg:w-[472px] overflow-hidden rounded-full">
+        {/* Portrait breather — ahead of the figures, on its own narrow panel
+            so the two read as a pair rather than a screen apart. VIEW gave
+            it a full viewport and centred a 472 circle in it, which put the
+            numbers a whole screen away; 30rem leaves 40px either side of a
+            400 circle, the same shape as DocSquad's portrait panel. */}
+        <Panel width="lg:w-[min(100vw,30rem)]" pad="center" className="items-center">
+          <div className="relative mx-auto aspect-square w-[240px] sm:w-[340px] md:w-[400px] lg:w-[min(26vw,400px)] overflow-hidden rounded-full">
             <Image
               src={`${ASSET}/portrait.png`}
               alt="A patient using the portal from home"
               fill
               unoptimized
-              sizes="472px"
+              sizes="400px"
               className="object-cover"
             />
           </div>
         </Panel>
 
-        {/* Outcome stats */}
+        {/* Outcome stats — left-railed rather than centred in the panel, so
+            the first column begins just past the portrait instead of half a
+            screen further on. */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
+          <div className={`${MEASURE} mr-auto`}>
             <SlideIn>
               <div className="grid gap-10 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
                 <div>

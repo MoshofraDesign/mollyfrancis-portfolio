@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
-import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, CAPTION, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 /**
  * Bespoke horizontal-scroll case study for LivePerson/SocialConnect,
@@ -72,7 +72,7 @@ function BigImagePanel({
           sizes={`(max-width: 1024px) 92vw, min(90vw, ${maxWidth}px)`}
           className={`h-auto max-h-[591px] sm:max-h-[630px] md:max-h-[717px] lg:max-h-[504px] xl:max-h-[560px] 2xl:max-h-[630px] w-full object-contain ${bare ? "" : "rounded-md"}`}
         />
-        {caption && <p className="mt-4 max-w-[70ch] text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.1rem] 2xl:text-[1.25rem] opacity-80">{caption}</p>}
+        {caption && <p className={`mt-4 max-w-[70ch] ${CAPTION}`}>{caption}</p>}
       </SlideIn>
     </Panel>
   );
