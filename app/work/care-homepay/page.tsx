@@ -16,6 +16,7 @@ import {
   INTRO_SUBTEXT,
   NextProjectLink,
   CaseStudyMetaPanel,
+  STAT_ROW,
   VIEW,
 } from "@/components/v2/CaseStudyKit";
 
@@ -47,6 +48,15 @@ export default function CareHomepayCaseStudy() {
   const next = projects[(idx + 1) % projects.length];
   const fg = contrastColor(ACCENT);
   if (!project) return null;
+
+  /* Scope facts from lib/projects.ts, not outcome metrics: the paired apps,
+     the 0-to-1, and the three surfaces the outcome names. Nothing here is a
+     claim about results, so there's nothing to defend in an interview. */
+  const figures = [
+    { value: "2 apps", label: "One system, two mental models" },
+    { value: "0 \u2192 1", label: "Phone-first hour tracking, new" },
+    { value: "3 surfaces", label: "Timesheets, messaging, exceptions" },
+  ];
 
   const splits = [
     {
@@ -296,6 +306,27 @@ export default function CareHomepayCaseStudy() {
             </div>
           </Panel>
         ))}
+
+        {/* ── THE FIGURES. Same shape as LivePerson's Impact and
+               athenahealth's stat row: label over value, across. !pb balances
+               NAV_CLEAR's 142/24 so the row centres on the panel. */}
+        <Panel width={VIEW} pad="center" className="lg:!pb-[var(--nav-clear)]">
+          <div className={`${STAT_ROW} mx-auto`}>
+            <Heading>What shipped</Heading>
+            <div className="mt-10 grid w-full grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-x-12">
+              {figures.map((f, i) => (
+                <SlideIn key={f.value} delay={120 + i * 90}>
+                  <p className="text-[clamp(2rem,3vw,2.8rem)] font-semibold leading-tight tracking-[-0.03em] text-white">
+                    {f.value}
+                  </p>
+                  <p className="mt-2 text-[clamp(1.1rem,1.35vw,1.25rem)] leading-snug text-white">
+                    {f.label}
+                  </p>
+                </SlideIn>
+              ))}
+            </div>
+          </div>
+        </Panel>
 
         <CaseStudyMetaPanel
           meta={getCaseStudyMeta(project)}
