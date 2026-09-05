@@ -175,14 +175,23 @@ export default function DocSquadCaseStudy() {
             </p>
           </SlideIn>
 
-          <div className="relative z-0 mx-auto aspect-[891/529] w-full max-w-[min(92vw,891px)] lg:absolute lg:left-[341px] xl:left-[426px] 2xl:left-[511px] lg:top-[251px] xl:top-[279px] 2xl:top-[314px] lg:mx-0 lg:h-[381px] xl:h-[423px] 2xl:h-[476px] lg:w-[634px] xl:w-[792px] 2xl:w-[950px] lg:max-w-none lg:aspect-auto">
+          {/* Heights are the widths at hero.png's own 1.6841 aspect (Figma's
+              891x529 is the same ratio), because the stepped pairs had
+              drifted off it: 634x381 is 1.664, but 792x423 is 1.873 and
+              950x476 is 1.996 — so at xl and 2xl the box was far wider than
+              the artwork and object-cover ate the top and bottom of the
+              laptop. object-contain as well, so any residual mismatch
+              letterboxes rather than crops, and a max-height so a short
+              window scales the whole thing down instead of letting the
+              panel's overflow-hidden clip its bottom. */}
+          <div className="relative z-0 mx-auto aspect-[891/529] w-full max-w-[min(92vw,891px)] lg:absolute lg:left-[341px] xl:left-[426px] 2xl:left-[511px] lg:top-[251px] xl:top-[279px] 2xl:top-[314px] lg:mx-0 lg:h-[376px] xl:h-[470px] 2xl:h-[564px] lg:max-h-[var(--panel-media-max-h)] lg:w-[634px] xl:w-[792px] 2xl:w-[950px] lg:max-w-none lg:aspect-auto">
             <Image
               src={`${ASSET}/hero.png`}
               alt="DocSquad provider desktop, native app, and watch"
               fill
               priority
               unoptimized
-              className="object-cover"
+              className="object-contain object-center"
             />
           </div>
         </section>
