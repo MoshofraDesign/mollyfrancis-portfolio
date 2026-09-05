@@ -181,7 +181,7 @@ export default function ConsumerHealthCaseStudy() {
             </SlideIn>
             <SlideIn delay={100}>
               <p className={`mt-4 text-center ${CAPTION}`}>
-                My Health, as a place — not a subcategory.
+                My Health Landing – After
               </p>
             </SlideIn>
           </div>
