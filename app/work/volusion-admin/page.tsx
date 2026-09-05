@@ -14,9 +14,12 @@ import {
   Heading,
   Body,
   VIEW,
+  MEASURE,
   MEDIA,
   HERO_TITLE,
   HERO_SUBTEXT,
+  INTRO_TITLE,
+  INTRO_SUBTEXT,
   NextProjectLink,
   CaseStudyMetaPanel,
 } from "@/components/v2/CaseStudyKit";
@@ -53,6 +56,19 @@ const BRAND = "#8759F2";
 const LOGO = "/logos/volusion.svg";
 const ASSET = "/work/volusion";
 
+/**
+ * Figma 4724:8426 — the closing figures, split out of the frame's single
+ * sentence into the label-over-value pairs every other project's numbers
+ * section uses (LivePerson's Impact, athenahealth's Usage/Time saved/Users).
+ * The sentence's own tail becomes the footnote under the row.
+ */
+const ANALYTICS = [
+  { label: "Support tickets", value: "Down 28%" },
+  { label: "Trial engagement", value: "Up 19%" },
+  { label: "Activation", value: "Up to 63%" },
+  { label: "Task time", value: "38 seconds" },
+] as const;
+
 /** Figma 4724:8409 — the three merchant personas, 368-wide columns. */
 const PERSONAS = [
   {
@@ -75,8 +91,82 @@ const PERSONAS = [
   },
 ] as const;
 
-const ANALYTICS_TOP_PAGES =
-  "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512053462663-OQUN662NOW47OD7YADHH/image-asset.png";
+/**
+ * Figma 4724:8405 — the Trial/Store category Venn, drawn rather than
+ * placed.
+ *
+ * The obvious move was the chart already in projects.ts (the Squarespace
+ * "image-asset.png"), but that raster has "Trial" and "Store" burned in
+ * ABOVE the circles, while the frame sets them as type BELOW — so using it
+ * printed both, at two sizes, in two places. It is also a fixed-resolution
+ * bitmap of what is really two circles and three lists.
+ *
+ * Geometry read off the frame: the 670x444 image is filled by two circles
+ * of the box's full height, so r = 222 at cy 222, with centres at x 229 and
+ * 444. They meet where x = 336.5, h = sqrt(222^2 - 107.5^2) = 194.24, hence
+ * the lens corners at y 27.76 and 416.24. The lens is painted explicitly
+ * instead of relying on a blend mode: multiplying the two fills gives
+ * #3EAF4E, and the frame's overlap samples #6ABB53.
+ *
+ * viewBox runs to 510 so the Trial/Store labels — frame y 672..718 against
+ * an image starting at 204 — scale with the diagram instead of drifting
+ * against it.
+ */
+const VENN = {
+  yellow: "#E5E353",
+  blue: "#45C5F0",
+  lens: "#6ABB53",
+  trial: ["Logos", "Nav Menu", "Display Settings", "Company", "Shipping", "Payment", "Config Variables"],
+  both: ["Products", "Categories", "Site Content", "Template", "Import/Export", "File Editor", "Options"],
+  store: ["Process Orders", "Customers", "CRM", "Abandon Carts", "Reporting", "Customer Reviews", "Coupons/Discounts"],
+} as const;
+
+/** 7 rows spanning y 138..307 on the frame, so a 28.2 pitch. */
+const VENN_ROW_0 = 138;
+const VENN_PITCH = 28.2;
+
+function CategoryVenn() {
+  return (
+    <svg
+      viewBox="0 0 670 510"
+      role="img"
+      aria-label="Most popular categories: Trial covers logos, nav menu, display settings, company, shipping, payment and config variables; Store covers process orders, customers, CRM, abandoned carts, reporting, customer reviews and coupons; both share products, categories, site content, template, import/export, file editor and options."
+      className="h-auto w-full"
+    >
+      <circle cx="229" cy="222" r="222" fill={VENN.yellow} />
+      <circle cx="444" cy="222" r="222" fill={VENN.blue} />
+      <path
+        d="M 336.5 27.76 A 222 222 0 0 1 336.5 416.24 A 222 222 0 0 1 336.5 27.76 Z"
+        fill={VENN.lens}
+      />
+      <g fill="#ffffff" fontSize="13" fontWeight="600">
+        {VENN.trial.map((t, i) => (
+          <text key={t} x="76" y={VENN_ROW_0 + i * VENN_PITCH} textAnchor="start">
+            {t}
+          </text>
+        ))}
+        {VENN.both.map((t, i) => (
+          <text key={t} x="336" y={VENN_ROW_0 + i * VENN_PITCH} textAnchor="middle">
+            {t}
+          </text>
+        ))}
+        {VENN.store.map((t, i) => (
+          <text key={t} x="605" y={VENN_ROW_0 + i * VENN_PITCH} textAnchor="end">
+            {t}
+          </text>
+        ))}
+      </g>
+      <g fill="#ffffff" fontSize="26" fontWeight="400">
+        <text x="209.5" y="500" textAnchor="middle">
+          Trial
+        </text>
+        <text x="460.5" y="500" textAnchor="middle">
+          Store
+        </text>
+      </g>
+    </svg>
+  );
+}
 
 export function generateMetadata() {
   const p = getProject(SLUG);
@@ -146,6 +236,8 @@ export default function VolusionCaseStudy() {
   const editorFlow = findVideo("editor-flow");
   const vnext = `${ASSET}/vnext-homepage.jpg`;
   const hasVnext = hasImage(vnext);
+  const hero = `${ASSET}/hero.png`;
+  const hasHero = hasImage(hero);
 
   return (
     <main
@@ -208,6 +300,30 @@ export default function VolusionCaseStudy() {
               products and inventory.
             </p>
           </SlideIn>
+
+          {/* Hero composite — the frame has only the wordmark and copy, so
+              this takes the empty lower two-thirds. Bottom-anchored and
+              right-set, and sized off --figma-u rather than a percentage of
+              the panel: the cut-out is 866x553, and at a plain vw width a
+              short wide window would have scaled it tall enough to run up
+              into the copy. u is pinned by whichever axis is tighter, so it
+              shrinks with the viewport instead. */}
+          {hasHero && (
+            <SlideIn
+              delay={160}
+              className="relative z-0 mt-4 w-full max-w-[560px] self-center lg:absolute lg:bottom-0 lg:right-[71px] xl:right-[89px] 2xl:right-[107px] lg:mt-0 lg:w-[calc(866_*_var(--figma-u))] lg:max-w-none"
+            >
+              <Image
+                src={hero}
+                alt="The Volusion admin dashboard and product catalogue"
+                width={866}
+                height={553}
+                priority
+                sizes="(max-width: 1023px) 92vw, 60vw"
+                className="h-auto w-full object-contain"
+              />
+            </SlideIn>
+          )}
         </section>
 
         {/* ── BEFORE / AFTER — Figma 4724:8383 and 4724:8387
@@ -247,38 +363,21 @@ export default function VolusionCaseStudy() {
         </TextPanel>
 
         {/* ── GOOGLE ANALYTICS — Figma 4724:8401
-            Heading, subhead, the top-pages chart at 670x444, then the
-            Trial / Store pair beneath it. */}
+            Centred column, 670 of the frame's 1440. The heading is on the
+            INTRO pair, not the smaller Heading/Body one: the frame sets it
+            at 81/95 over a 32 subhead, which is exactly INTRO_TITLE and
+            INTRO_SUBTEXT at a 1440 canvas. Trial/Store live inside the
+            diagram — see CategoryVenn. */}
         <Panel width={VIEW} pad="center">
-          <div className="mx-auto w-full max-w-[min(670px,86vw)]">
+          <div className="mx-auto w-full max-w-[min(670px,86vw)] text-center">
             <SlideIn>
-              <h2 className="text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.15] tracking-[-0.02em]">
-                Google Analytics
-              </h2>
+              <h2 className={INTRO_TITLE}>Google Analytics</h2>
             </SlideIn>
             <SlideIn delay={80}>
-              <p className="mt-4 text-[clamp(1.25rem,1.6vw,1.65rem)] font-normal opacity-90">
-                Most Popular Categories
-              </p>
+              <p className={`mt-3 ${INTRO_SUBTEXT}`}>Most Popular Categories</p>
             </SlideIn>
-            <SlideIn delay={160} className="mt-6">
-              <Image
-                src={ANALYTICS_TOP_PAGES}
-                alt="Top pages by traffic, from Google Analytics"
-                width={670}
-                height={444}
-                unoptimized
-                sizes="(max-width: 1023px) 86vw, 670px"
-                className="h-auto w-full rounded-[6px] object-contain"
-              />
-            </SlideIn>
-            <SlideIn delay={240} className="mt-6 grid grid-cols-2 gap-6">
-              <p className="text-[clamp(1.25rem,1.6vw,1.65rem)] font-semibold">
-                Trial
-              </p>
-              <p className="text-[clamp(1.25rem,1.6vw,1.65rem)] font-semibold">
-                Store
-              </p>
+            <SlideIn delay={160} className="mt-8">
+              <CategoryVenn />
             </SlideIn>
           </div>
         </Panel>
@@ -330,14 +429,32 @@ export default function VolusionCaseStudy() {
         {/* ── THE ANALYTICS — Figma 4724:8426.
             A 950-wide panel in the frame, not a full 1440 — the closing beat
             sits tighter than the sections before it. */}
-        <TextPanel width="lg:w-[min(100vw,59.375rem)]">
-          <Heading>The Analytics</Heading>
-          <Body>
-            Support tickets down 28%, trial engagement up 19%, activation up
-            to 63%, and task time cut to 38 seconds — all in the first quarter
-            post-launch.
-          </Body>
-        </TextPanel>
+        {/* A full-width panel rather than the frame's 950: four figures
+            across need the room, and this is the shape Molly settled on for
+            every other project's numbers. !pb balances NAV_CLEAR's 142/24
+            so the row centres on the panel instead of 59px below it. */}
+        <Panel width={VIEW} pad="center" className="lg:!pb-[var(--nav-clear)]">
+          <div className={`${MEASURE} mx-auto`}>
+            <Heading>The Analytics</Heading>
+            <div className="mt-10 grid w-full grid-cols-2 gap-8 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-12">
+              {ANALYTICS.map((m, i) => (
+                <SlideIn key={m.label} delay={120 + i * 90}>
+                  <p className="text-[clamp(1.1rem,1.4vw,1.2rem)] leading-snug opacity-80">
+                    {m.label}
+                  </p>
+                  <p className="mt-2 text-[clamp(1.75rem,2.4vw,2.3rem)] font-semibold leading-tight tracking-[-0.03em]">
+                    {m.value}
+                  </p>
+                </SlideIn>
+              ))}
+            </div>
+            <SlideIn delay={480}>
+              <p className="mt-10 text-[clamp(1rem,1.2vw,1.2rem)] leading-snug opacity-70">
+                All in the first quarter post-launch.
+              </p>
+            </SlideIn>
+          </div>
+        </Panel>
 
         <CaseStudyMetaPanel
           meta={getCaseStudyMeta(project)}

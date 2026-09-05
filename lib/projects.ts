@@ -1182,7 +1182,10 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
   "volusion-admin": {
     team: ["1 Senior Product Designer", "Product & engineering partners"],
     timing: [{ value: "Multi-year", label: "Admin patterns & modules" }],
-    tools: ["Figma", "Miro", "Jira"],
+    /* Figma didn't exist for most of this engagement — Molly's own marks
+       for the tools she actually used, in /work/volusion/tools. */
+    tools: ["Sketch", "Miro", "Zeplin"],
+    toolIconBase: "/work/volusion/tools",
     projected: [
       { value: "Scalable admin", label: "Tables, bulk actions, nav" },
     ],
