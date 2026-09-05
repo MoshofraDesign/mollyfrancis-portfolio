@@ -12,8 +12,11 @@ import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT} from "
 
 /**
  * DocSquad — Figma deck (Portfolio › 4553:21862), left to right:
- * Title → Problem → Research → board → Patient Queue → 4 phones →
- * icons → interview+dashboard → 950px portrait → Outcome.
+ * Title → Problem → Research → Patient Queue → 4 phones → icons →
+ * interview+dashboard → 950px portrait → Outcome.
+ * (The Figma deck also has a research board panel after Research; it's
+ * cut from the page. research-board.png is still in public/ and still
+ * listed in lib/projects.ts images, so it's a one-line restore.)
  * 1440×1000 panels on #dd00e2. Large wordmark on the title panel; small
  * 200×27 wordmark parks at StickyNav's default inset, matching other pages.
  */
@@ -247,22 +250,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 4 — RESEARCH BOARD. Figma 4553:21888: 403,234 / 633×593 r10 */}
-        <ScreenPanel>
-          <div className="relative aspect-[633/593] w-full max-w-[633px] overflow-hidden rounded-[10px] lg:absolute lg:left-[287px] xl:left-[358px] 2xl:left-[430px] lg:top-[168px] xl:top-[187px] 2xl:top-[211px] lg:h-[427px] xl:h-[474px] 2xl:h-[534px] lg:w-[450px] xl:w-[563px] 2xl:w-[675px] lg:max-w-none lg:aspect-auto">
-            <Image
-              src={`${ASSET}/research-board.png`}
-              alt="Virtual moonlighter research — methods and findings board"
-              fill
-              sizes="(max-width: 1023px) 90vw, 44vw"
-              className="object-cover"
-              unoptimized
-              style={{ objectPosition: "2.96% 3.76%" }}
-            />
-          </div>
-        </ScreenPanel>
-
-        {/* 5 — DESKTOP. Figma 4669:14416: centered, 232≈, 183 / 977×681 */}
+        {/* 4 — DESKTOP. Figma 4669:14416: centered, 232≈, 183 / 977×681 */}
         <ScreenPanel>
           <div className="relative aspect-[977/681] w-full max-w-[977px] lg:absolute lg:left-1/2 lg:top-[132px] xl:top-[146px] 2xl:top-[165px] lg:w-[695px] xl:w-[868px] 2xl:w-[1042px] lg:max-w-none lg:-translate-x-1/2 lg:aspect-auto lg:h-[490px] xl:h-[545px] 2xl:h-[613px]">
             {desktopVideo ? (
@@ -280,7 +268,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 6 — FOUR PHONES — same treatment as the Netspend "user-test
+        {/* 5 — FOUR PHONES — same treatment as the Netspend "user-test
             phones" panel: grid of individually framed screens (border +
             drop shadow), bottom-aligned, with an uppercase caption below,
             instead of one flat cropped sprite. */}
@@ -315,7 +303,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 7 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
+        {/* 6 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
         <ScreenPanel>
           <div /* Centred in the space below the parked mark rather than pinned to a
                  fixed top: at 1440 the old top of 192 left it 3px under the
@@ -333,7 +321,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 8 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
+        {/* 7 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
         <ScreenPanel>
           <div className="relative mx-auto aspect-[920/683] w-full max-w-[920px] lg:absolute lg:left-[185px] xl:left-[231px] 2xl:left-[277px] lg:top-[130px] xl:top-[144px] 2xl:top-[162px] lg:mx-0 lg:h-[492px] xl:h-[546px] 2xl:h-[615px] lg:w-[654px] xl:w-[818px] 2xl:w-[981px] lg:max-w-none lg:aspect-auto">
             <Image
@@ -347,7 +335,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 9 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at center, top 50%+20 */}
+        {/* 8 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at center, top 50%+20 */}
         <ScreenPanel width="lg:w-[min(100vw,44rem)]">
           <div /* No lg:w-[600px] alongside lg:size-[...]: both are lg utilities of
                  equal specificity, and w-* won in the bundle, so the box came
@@ -365,7 +353,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 10 — OUTCOME. Figma node 4672:15331 — left-aligned heading + copy,
+        {/* 9 — OUTCOME. Figma node 4672:15331 — left-aligned heading + copy,
             then three stacked stat columns (hero number, uppercase kicker,
             delta + down triangle, detail line), all in white on the brand
             magenta. Replaces the earlier circle-badge treatment, which
