@@ -294,16 +294,13 @@ export default function ConsumerHealthCaseStudy() {
                 </div>
 
                 <div>
+                  {/* "Support" rather than "Users": with the 2.1x completion
+                      figure gone, the one figure left in this column is a
+                      support-contact number. */}
                   <h2 className={META_LABEL}>
-                    Users
+                    Support
                   </h2>
                   <p className="mt-1.5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
-                    2.1× completion
-                  </p>
-                  <p className="mt-1 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
-                    Mobile tasks vs the old Test Results dump
-                  </p>
-                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     28% fewer tickets
                   </p>
                   <p className="mt-1 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
