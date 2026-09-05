@@ -360,51 +360,42 @@ export default function GovOSCaseStudy() {
             short/landscape viewport. */}
         <section
           id="govos-title"
-          className="relative flex w-full flex-col md:flex-row md:items-center lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:overflow-y-auto lg:overscroll-contain"
+          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
-          {/* Padding matches the fixed nav's logo inset (pl-5/sm:pl-8/
-              py-5/sm:py-7). The left inset is 100px at lg now, matching
-              every other project's hero mark — which means it no longer
-              lines up with the small logo's parked 48px as it fades in. h-full + justify-between (pinning the logo
-              to the top and copy to the bottom) only makes sense once the
-              section itself has a definite height, i.e. lg+ — below that
-              it's a normal auto-height column and the two just stack with
-              their own gap. */}
-          <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 md:w-[38%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-[100px] lg:pt-[100px]">
+          {/* Figma 4553:22013 — wordmark at 100,100 (494x127), the title and
+              subtext beside it at 662,93 in a 450 column, and the laptop
+              centred below at 240,329 / 961x560 (240 left, 239 right).
+              Below lg it all stacks in source order. */}
+          <div className="relative z-10 aspect-[508/130] w-[min(100%,300px)] sm:w-[min(100%,380px)] lg:absolute lg:left-[100px] lg:top-[100px] lg:aspect-auto lg:h-[102px] lg:w-[395px] xl:h-[114px] xl:w-[445px] 2xl:h-[127px] 2xl:w-[494px]">
             <Image
               src="/work/govos/govos-logo-white.svg"
               alt="GovOS"
-              width={508}
-              height={130}
+              fill
               priority
               unoptimized
-              className="h-auto w-[65%] max-w-[300px] sm:w-[50%] md:w-[88%] md:max-w-[508px]"
+              className="object-contain object-left"
             />
-            {/* No reveal here — the title panel is what you land on, so its
-                copy is simply present rather than animating in. */}
-            <div className="flex flex-col gap-2">
-              {/* Had three stacked generations of size utilities. Tailwind
-                  emits each once and the last set won, so the title rendered
-                  at 15px and the paragraph below at 11px. Fixing that put
-                  them on the INTRO pair, which overcorrected — those sizes
-                  assume a full-width measure, and 5.625vw came out at 67px
-                  inside this 38% column. The shared HERO pair is the one
-                  every project's landing panel uses. */}
-              <p className={`text-white ${HERO_TITLE}`}>
-                GovOS eSubmission
-              </p>
-              <p className={`max-w-[46ch] text-white ${HERO_SUBTEXT}`}>
-                A cloud-based digital portal that allows external organizations, title
-                companies, law firms, and individuals to securely submit official
-                documents and records (such as land deeds or legal filings) directly to
-                local government recording offices.
-              </p>
-            </div>
           </div>
-          {/* Sized to leave breathing room on the right so the whole machine
-              reads, rather than running off the edge — that margin only
-              applies once it's sitting beside the text column at md+. */}
-          <div className="w-full px-5 pb-10 sm:px-8 md:mr-[5%] md:w-[57%] md:px-0 md:pb-0">
+
+          {/* No reveal here — the title panel is what you land on, so its
+              copy is simply present rather than animating in. */}
+          <div className="relative z-10 flex flex-col gap-2 lg:absolute lg:left-[45.97%] lg:top-[9.3%] lg:max-w-[min(450px,32vw)]">
+            <p className={`text-white ${HERO_TITLE}`}>eSubmission</p>
+            <p className={`max-w-[46ch] text-white ${HERO_SUBTEXT}`}>
+              A secure digital portal for submitting official documents and
+              records to local government recording offices.
+            </p>
+          </div>
+
+          {/* Sized in --figma-u rather than a percentage of the panel:
+              macbook-hero.png is 2034x1344 (1.5134) against the frame box's
+              961x560 (1.716), so forcing the frame's height would crop it.
+              Taking the frame's WIDTH and letting the asset's own aspect set
+              the height keeps it whole, and u — pinned by whichever axis is
+              tighter — means a short window shrinks it instead of running it
+              off the bottom. Centred with a negative margin (half the width
+              in the same unit), not a translate. */}
+          <div className="relative z-0 mt-4 w-full lg:absolute lg:bottom-[11.1%] lg:left-1/2 lg:mt-0 lg:ml-[calc(-480.5_*_var(--figma-u))] lg:w-[calc(961_*_var(--figma-u))]">
             <Frame
               src="/work/govos/macbook-hero.png"
               alt="GovOS eSubmission dashboard — all submissions, statuses, and team at a glance"
@@ -520,6 +511,8 @@ export default function GovOSCaseStudy() {
           </div>
         </Panel>
 
+        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} showProjected={false} />
+
         {/* 10 — PROTOTYPE */}
         {project.prototype && (
           <Panel width={END_PANEL}>
@@ -548,7 +541,6 @@ export default function GovOSCaseStudy() {
           </Panel>
         )}
 
-        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} showProjected={false} />
 
         {/* 11 — NEXT */}
         <NextProjectLink

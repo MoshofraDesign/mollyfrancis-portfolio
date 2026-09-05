@@ -164,7 +164,7 @@ export default function BrightHealthcareCaseStudy() {
             {/* No decorative marks on this one. The side padding went with
                 them — it existed only as the gutter they hung in, so keeping
                 it would leave the copy inset for no reason. */}
-            <SlideIn delay={80} className="relative w-full max-w-[min(44rem,86vw)]">
+            <SlideIn delay={80} className="relative w-full max-w-[min(500px,86vw)]">
               <p className="relative text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
                 Faxing in the world of digital experiences can cause providers and their staff added work, frustration, loss of trust in the company, and more importantly time away from caring for members.
               </p>
