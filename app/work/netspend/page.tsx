@@ -142,12 +142,14 @@ export default function NetspendCaseStudy() {
             heading crowds it. */}
         <TextPanel width={VIEW}>
           <SlideIn>
+            {/* One flowing line. The two <br />s used to force "a single
+                platform / to run the whole program." onto their own lines,
+                so the break landed right after the colon and the phrase read
+                as a list. Let it wrap on its own; nbsp keeps "whole program."
+                from orphaning the last word. */}
             <h2 className={H_DISPLAY}>
-              So I built the thing that didn&apos;t exist:
-              <br />
-              a single platform
-              <br />
-              to run the whole program.
+              So I built the thing that didn&apos;t exist: a single platform to
+              run the whole&nbsp;program.
             </h2>
           </SlideIn>
           <SlideIn delay={100}>

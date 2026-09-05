@@ -54,7 +54,7 @@ export default function CareHomepayCaseStudy() {
      claim about results, so there's nothing to defend in an interview. */
   const figures = [
     { value: "2 apps", label: "One system, two mental models" },
-    { value: "0 \u2192 1", label: "Phone-first hour tracking, new" },
+    { value: "0 \u2192 1", label: "Phone-first hour tracking" },
     { value: "3 surfaces", label: "Timesheets, messaging, exceptions" },
   ];
 
@@ -153,8 +153,8 @@ export default function CareHomepayCaseStudy() {
           {/* Headline — Figma 4555:22842, 455 wide at 831,114: just right of
               the wordmark, left-aligned. */}
           <SlideIn className="care-hero-title order-2 self-start max-w-[340px] text-left">
-            <p className="text-xl font-semibold leading-snug text-white sm:text-2xl">
-              Homepay Employee &amp; Employer Payroll App
+            <p className="text-xl font-semibold leading-snug text-white [text-wrap:balance] sm:text-2xl">
+              Homepay Employee &amp; Employer Payroll&nbsp;App
             </p>
           </SlideIn>
 
@@ -331,6 +331,7 @@ export default function CareHomepayCaseStudy() {
         <CaseStudyMetaPanel
           meta={getCaseStudyMeta(project)}
           lightText={fg === "#f5f5f5"}
+          showProjected={false}
         />
 
         <NextProjectLink

@@ -475,6 +475,25 @@ export default function GovOSCaseStudy() {
           <Body>One clean report. Serve submitters directly.</Body>
         </PortraitPanel>
 
+        {/* 9.5 — ACCESSIBILITY / VPAT.
+            Sits with the county beat rather than the outcome stats: for a
+            government buyer, conformance is part of whether the product can
+            be bought at all, not a result it produced. No conformance level
+            or score is claimed here — only that the bar shaped the design. */}
+        <Panel>
+          <Heading>A county can&rsquo;t buy what its staff can&rsquo;t use.</Heading>
+          <Body>
+            Public-sector procurement asks for a VPAT — a written account of how a
+            product measures up against Section 508 and WCAG. That made
+            accessibility a design constraint, not a cleanup pass.
+          </Body>
+          <Body>
+            A keyboard path through every step of a submission. Fields and errors a
+            screen reader can announce. Contrast that survives a county monitor, and
+            focus that stays put inside a modal.
+          </Body>
+        </Panel>
+
         {/* Outcome — before/after metrics */}
         {/* Not lg:w-screen — the three stats are a narrow left-aligned stack,
             so a full-viewport panel left most of the field empty and the
