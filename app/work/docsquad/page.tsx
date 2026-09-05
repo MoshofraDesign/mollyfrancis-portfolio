@@ -187,9 +187,19 @@ export default function DocSquadCaseStudy() {
           </div>
         </section>
 
-        {/* 2 — PROBLEM. Figma 4553:21871: 100,296 / 999×409, gap 16 */}
+        {/* 2 — PROBLEM. Figma 4553:21871: 100,296 / 999×409, gap 16
+            Centred in the field below the parked mark, not on the panel.
+            This block used to pair a fixed height (294/327/368) with
+            justify-end inside a box centred at top-1/2 — so the copy hung
+            from the box's BOTTOM edge and, being taller than the box (nine
+            lines against 294px), grew upward out of it. The result sat
+            almost entirely above the panel's middle. Height and justify-end
+            are gone; the offset is half the nav band, so the block's centre
+            lands midway between the bottom of the mark and the bottom of the
+            panel. Reading it from the tokens means it follows if the park
+            inset moves again. */}
         <ScreenPanel className="!pt-16">
-          <div className="flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-1/2 lg:h-[294px] xl:h-[327px] 2xl:h-[368px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none lg:-translate-y-1/2 lg:justify-end">
+          <div className="flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-[calc(50%_+_(var(--nav-park-top)_+_var(--nav-logo-h))/2)] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none lg:-translate-y-1/2">
             <SlideIn>
               <h2 className={`text-white ${INTRO_TITLE}`}>Problem</h2>
             </SlideIn>
