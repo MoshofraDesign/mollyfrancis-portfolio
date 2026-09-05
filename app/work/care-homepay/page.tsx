@@ -9,6 +9,9 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import { contrastColor } from "@/lib/contrastColor";
 import {
   Panel,
+  TextPanel,
+  Heading,
+  Body,
   INTRO_TITLE,
   INTRO_SUBTEXT,
   NextProjectLink,
@@ -49,7 +52,7 @@ export default function CareHomepayCaseStudy() {
     {
       key: "messaging",
       title: "Secure Messaging",
-      body: "Messaging between employee and employer apps, to easily respond and keep track of important dates and communications.",
+      body: "Messages sit next to the timesheet, so a schedule change doesn't get lost in a text thread.",
       portrait: `${ASSET}/portrait-messaging.png`,
       portraitAlt: "Caregiver using secure messaging",
       screens: `${ASSET}/screens-messaging.png`,
@@ -58,7 +61,7 @@ export default function CareHomepayCaseStudy() {
     {
       key: "clock",
       title: "Clock In and Out",
-      body: "Easily clock in and out to accurately track hours worked, so your pay is always correct and on time.",
+      body: "Clock in, clock out. The hours are right, so the pay is right.",
       portrait: `${ASSET}/portrait-clock.png`,
       portraitAlt: "Employee clocking in",
       screens: `${ASSET}/screens-clock.png`,
@@ -190,16 +193,15 @@ export default function CareHomepayCaseStudy() {
           <div className="mx-auto w-full max-w-[min(60rem,86vw)]">
             <SlideIn>
               <h1 className={`text-white ${INTRO_TITLE}`}>
-                HomePay Time Tracker app by Care.com
+                Two people, one timesheet.
               </h1>
             </SlideIn>
             <SlideIn delay={100}>
               <p className={`mt-3 text-white ${INTRO_SUBTEXT}`}>
-                HomePay lets household employees like nannies and caregivers
-                track daily hours, calculate overtime, and submit timesheets
-                directly to employers. Employers review and approve submitted
-                hours through their online portal for direct deposit payroll
-                processing.
+                A caregiver and the family who employs her aren&rsquo;t a company
+                and a contractor — they see each other every day. Payday still
+                has to be exact. HomePay had to serve both sides without making
+                it awkward.
               </p>
             </SlideIn>
             <SlideIn delay={200} className="mt-6">
@@ -209,6 +211,17 @@ export default function CareHomepayCaseStudy() {
             </SlideIn>
           </div>
         </Panel>
+
+        {/* ── THE DEFAULT. The one opinionated decision in the product, and
+               the reason the rest of it stays light. */}
+        <TextPanel width={VIEW}>
+          <Heading>Hours that add themselves up.</Heading>
+          <Body>
+            Clock in, clock out, and the week rolls up on its own — a default
+            that keeps payroll edits down instead of asking either side to
+            chase them. Life still happens, so every entry stays editable.
+          </Body>
+        </TextPanel>
 
         {/* ── PANEL 3: VIDEO — Figma 4555:22858 */}
         <Panel width={VIEW} pad="center">
