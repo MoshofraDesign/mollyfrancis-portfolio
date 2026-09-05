@@ -63,12 +63,6 @@ const principles = [
   },
 ];
 
-const stats = [
-  { v: "20+", l: "years designing" },
-  { v: "9", l: "industries shipped in" },
-  { v: "100+", l: "products in market" },
-];
-
 // ── circular photo (plain crop, no border) — matches the Figma "About Me"
 //    frames, which use plain rounded-full photo crops with no card border.
 type PhotoCrop = { top: string; left: string; width: string; height: string };
@@ -91,7 +85,7 @@ const TIGHT_CLEAR_RAIL = `${TIGHT_CLEAR} !px-6 sm:!px-12 lg:!pl-[100px] lg:!pr-[
  *  the floor a circle may shrink to before a column is dropped. */
 const PHOTO_ROW = (gap: number): React.CSSProperties => ({
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))",
+  gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 150px), 1fr))",
   justifyItems: "center",
   alignItems: "center",
   gap,
@@ -123,7 +117,7 @@ function Photo({
   return (
     <div
       className="relative aspect-square w-full min-w-0 overflow-hidden rounded-full bg-black/5"
-      style={{ maxWidth: `min(${size}px, 26vh)`, transform: flip ? "scaleX(-1)" : undefined }}
+      style={{ maxWidth: `min(${size}px, 20vh)`, transform: flip ? "scaleX(-1)" : undefined }}
     >
       {crop ? (
         // eslint-disable-next-line @next/next/no-img-element -- exact Figma
@@ -579,7 +573,7 @@ export default function AboutPage() {
           </p>
         </StoryPanel>
 
-        {/* ── BRIDGE TO THE WORK — stats ────────────────────────────── */}
+        {/* ── BRIDGE TO THE WORK ─────────────────────────────────────── */}
         <TextPanel>
           <Eyebrow>And — the work</Eyebrow>
           <Heading>
@@ -590,18 +584,6 @@ export default function AboutPage() {
             places where the tool is the difference between &ldquo;I got my
             answer&rdquo; and &ldquo;I gave up.&rdquo;
           </Body>
-          <div className={`mt-10 grid grid-cols-3 gap-6 ${TEXT_W}`}>
-            {stats.map((s, i) => (
-              <SlideIn key={s.l} delay={240 + i * 90}>
-                <div className="rounded-md border border-[#141414]/10 bg-white/60 p-6">
-                  <div className="text-[clamp(1.75rem,5vw,3rem)] font-semibold leading-none">
-                    {s.v}
-                  </div>
-                  <p className="mt-2 text-xs opacity-60 sm:text-sm">{s.l}</p>
-                </div>
-              </SlideIn>
-            ))}
-          </div>
         </TextPanel>
 
         {/* ── OPERATING PRINCIPLES ──────────────────────────────────── */}
