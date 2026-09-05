@@ -119,8 +119,8 @@ export default function ConsumerHealthCaseStudy() {
             <Image
               src={`${ASSET}/hero.png`}
               alt="Redesigned patient portal dashboard on desktop and mobile"
-              width={1038}
-              height={618}
+              width={2076}
+              height={1236}
               priority
               unoptimized
               className="h-auto w-full"
