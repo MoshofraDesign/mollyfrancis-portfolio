@@ -45,6 +45,20 @@ import {
  * components/v2/CaseStudyKit so app/about/page.tsx can reuse them too.
  */
 
+/* Hero and parked mark boxes, keyed by slug. Same rule as the Up next band:
+   equal height with a width ceiling, since these marks run from wide
+   wordmarks to stacked lockups and one box can't flatter both. */
+const HERO_LOGO_BOX: Record<string, string> = {
+  "bright-healthcare": "relative h-[5.5rem] w-full max-w-[520px] sm:h-28 md:h-36",
+  "volusion-admin": "relative h-24 w-full max-w-[460px] sm:h-28 md:h-32",
+  default: "relative h-16 w-full max-w-[380px] sm:h-20 md:h-24",
+};
+const NAV_LOGO_BOX: Record<string, string> = {
+  "bright-healthcare": "relative h-8 w-[130px] sm:h-9 sm:w-[150px]",
+  "volusion-admin": "relative h-9 w-[100px] sm:h-11 sm:w-[124px]",
+  default: "relative h-6 w-[90px] sm:h-7 sm:w-[110px]",
+};
+
 const customSlugs = new Set(["govos-esubmission", "liveperson", "care-homepay", "netspend", "bright-healthcare", "docsquad", "athenawell", "athenahealth", "patient-io"]);
 
 export function generateStaticParams() {
@@ -197,11 +211,12 @@ function TitlePanel({
       <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 md:w-[40%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-[100px] lg:pt-[100px]">
         {project.logo ? (
           <div
-            className={
-              project.slug === "bright-healthcare"
-                ? "relative h-[5.5rem] w-full max-w-[520px] sm:h-28 md:h-36"
-                : "relative h-16 w-full max-w-[380px] sm:h-20 md:h-24"
-            }
+            /* Per-project boxes because the marks aren't one shape: the
+               default 380x96 fits a wide wordmark, but Volusion's lockup is
+               738x294 (aspect 2.51), so object-contain fitted it by height
+               and drew it 241 wide inside a 380 box. Its own taller box uses
+               the width that was going spare. */
+            className={HERO_LOGO_BOX[project.slug] ?? HERO_LOGO_BOX.default}
           >
             <Image
               src={project.logo}
@@ -583,11 +598,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
         logo={
           project.logo ? (
             <div
-              className={
-                isBright
-                  ? "relative h-8 w-[130px] sm:h-9 sm:w-[150px]"
-                  : "relative h-6 w-[90px] sm:h-7 sm:w-[110px]"
-              }
+              className={NAV_LOGO_BOX[project.slug] ?? NAV_LOGO_BOX.default}
             >
               <Image
                 src={project.logo}

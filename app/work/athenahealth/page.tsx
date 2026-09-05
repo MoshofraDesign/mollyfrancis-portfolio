@@ -223,6 +223,23 @@ export default function ConsumerHealthCaseStudy() {
           </div>
         </Panel>
 
+        {/* Portrait breather — sits ahead of the figures, so the panel that
+            lands beside the stats at a wide window is the image, not the
+            meta block that follows them. A step smaller than the old 600
+            too: at 600 it crowded the column next to it. */}
+        <Panel width={VIEW} pad="center" className="items-center">
+          <div className="relative mx-auto aspect-square w-[260px] sm:w-[400px] md:w-[472px] lg:w-[472px] overflow-hidden rounded-full">
+            <Image
+              src={`${ASSET}/portrait.png`}
+              alt="A patient using the portal from home"
+              fill
+              unoptimized
+              sizes="472px"
+              className="object-cover"
+            />
+          </div>
+        </Panel>
+
         {/* Outcome stats */}
         <Panel width={VIEW} pad="center">
           <div className={`${MEASURE} mx-auto`}>
@@ -277,20 +294,6 @@ export default function ConsumerHealthCaseStudy() {
                 </div>
               </div>
             </SlideIn>
-          </div>
-        </Panel>
-
-        {/* Portrait breather */}
-        <Panel width={VIEW} pad="center" className="items-center">
-          <div className="relative mx-auto aspect-square w-[304px] sm:w-[499px] md:w-[599px] lg:w-[600px] overflow-hidden rounded-full">
-            <Image
-              src={`${ASSET}/portrait.png`}
-              alt="A patient using the portal from home"
-              fill
-              unoptimized
-              sizes="600px"
-              className="object-cover"
-            />
           </div>
         </Panel>
 
