@@ -126,20 +126,19 @@ export default function LivePersonCaseStudy() {
           id="title"
           className="relative flex w-full flex-col gap-10 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pt-0"
         >
-          {/* Logo and heading share one absolutely-placed row at lg, rather
-              than each carrying its own top inset (100 and 76/95/114). The
-              row is items-center, so the heading is vertically centred on the
-              mark by construction and stays centred as the mark steps up in
-              size — no per-breakpoint arithmetic to keep in sync. Top is 64,
-              not 100: the mark reads better higher, and it buys clearance
-              from the phone below. Below lg they unstack. */}
-          <div className="contents lg:absolute lg:left-[64px] lg:right-[71px] lg:top-[64px] xl:right-[89px] 2xl:right-[107px] lg:z-10 lg:flex lg:items-center lg:justify-between lg:gap-10">
-            <div className="relative h-10 w-[220px] shrink-0 sm:h-14 sm:w-[300px] lg:h-[94px] lg:w-[594px]">
+          {/* Mark and heading are placed independently at lg, both from the
+              frame (4555:22442 at 100,100 / 4555:22443 at 890,107). The
+              heading is NOT flush right: justify-between pushed it to the
+              right inset, which at a 1490 window put it 175px further right
+              than the frame draws it. 61.8% is the frame's own x. Giving it a
+              box the mark's height and centring in that keeps the two lined
+              up without matching numbers by hand. Below lg they stack. */}
+          <div className="contents">
+            <div className="relative h-10 w-[220px] shrink-0 sm:h-14 sm:w-[300px] lg:absolute lg:left-[64px] lg:top-[64px] lg:z-10 lg:h-[94px] lg:w-[594px]">
               <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
             </div>
 
-            {/* Figma: 890,107, 417 wide */}
-            <p className="max-w-[300px] text-lg font-semibold sm:text-xl lg:max-w-[297px] xl:max-w-[371px] 2xl:max-w-[445px] lg:text-[24px] xl:text-[29px] 2xl:text-[35px] lg:leading-[1.25]">
+            <p className="max-w-[300px] text-lg font-semibold sm:text-xl lg:absolute lg:left-[61.8%] lg:top-[64px] lg:z-10 lg:flex lg:h-[94px] lg:max-w-[min(417px,28vw)] lg:items-center lg:text-[24px] xl:text-[29px] 2xl:text-[35px] lg:leading-[1.25]">
               Social Media Management Product
             </p>
           </div>
@@ -155,7 +154,7 @@ export default function LivePersonCaseStudy() {
               mock off the wordmark, and the same reasoning applies here. */}
           <SlideIn
             delay={100}
-            className="mt-8 w-full lg:absolute lg:left-[64px] lg:top-[26.7%] lg:mt-0 lg:w-[calc(1200_*_var(--figma-u))] lg:max-w-[1200px]"
+            className="mt-8 w-full lg:absolute lg:left-1/2 lg:top-[26.7%] lg:ml-[calc(-600_*_var(--figma-u))] lg:mt-0 lg:w-[calc(1200_*_var(--figma-u))] lg:max-w-[1200px]"
           >
             <Image
               src="/work/liveperson/all-channels-unified.png"
@@ -254,7 +253,7 @@ export default function LivePersonCaseStudy() {
         <BigImagePanel
           src="/work/liveperson/connections-self-service.webp"
           alt="Future vision — SocialConnect inside the agent workspace"
-          caption="Where it goes next \u2014 SocialConnect woven through the rest of LiveEngage. This vision aligned the roadmap across three product teams."
+          caption="Where it goes next — SocialConnect woven through the rest of LiveEngage."
           width={1280}
           height={760}
         />
