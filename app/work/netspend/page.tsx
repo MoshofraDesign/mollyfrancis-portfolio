@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Netspend Rewards & UCM — Molly Francis",
@@ -27,7 +27,6 @@ const ASSET = "/work/netspend";
 /** Full-viewport panels (Fresh Direct–style); content is centered inside. */
 const VIEW = "lg:w-screen";
 /** ~132rem on their fluid root ≈ 860px — readable measure that scales. */
-const MEDIA = "w-full max-w-[min(950px,90vw)]";
 
 const H_DISPLAY =
   "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
@@ -154,20 +153,27 @@ export default function NetspendCaseStudy() {
         {/* Create Flight wizard — walkthrough recorded from the UCM prototype's
             4-step flow (Basic Info / Incentive Config / Ad Setup / Review). */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEDIA} mx-auto`}>
+          {/* aspect-[1378/830], not 1600/1000. The clip is 1378x830 — 1.660 —
+              against the box's 1.600, so object-cover filled the box by
+              height and cropped the left and right edges off the wizard.
+              object-contain as the belt, and the width capped by the room
+              available (panel-media-max-h less the caption block, times the
+              clip's aspect) so a short window scales it instead of
+              overflowing the panel. */}
+          <div className="mx-auto w-full max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_3.5rem)_*_1.6602))]">
             <SlideIn>
-              <div className="relative aspect-[1600/1000] w-full overflow-hidden rounded-xl">
+              <div className="relative aspect-[1378/830] w-full overflow-hidden rounded-xl">
                 <AutoplayVideo
                   sources={[
                     { src: `${ASSET}/videos/campaign-setup.mov`, type: "video/quicktime" },
                     { src: `${ASSET}/videos/campaign-setup.mp4`, type: "video/mp4" },
                   ]}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               </div>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="story-caption-in mt-4 text-center text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
+              <p className={`mt-4 text-center ${CAPTION}`}>
                 Campaign setup — a wizard, not a spreadsheet
               </p>
             </SlideIn>
@@ -226,7 +232,9 @@ export default function NetspendCaseStudy() {
 
         {/* Search validated, not guessed at. — screen recording, matches production */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEDIA} mx-auto`}>
+          {/* Box already matches the clip (1416x1030); the width cap is what
+              keeps it inside a short panel. 1.3748 is that aspect. */}
+          <div className="mx-auto w-full max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_3.5rem)_*_1.3748))]">
             <SlideIn>
               <div className="relative aspect-[1416/1030] w-full overflow-hidden rounded-xl bg-black/40 shadow-[0_20px_60px_-12px_rgba(0,0,0,0.45)]">
                 <AutoplayVideo
@@ -239,7 +247,7 @@ export default function NetspendCaseStudy() {
               </div>
             </SlideIn>
             <SlideIn delay={100}>
-              <p className="mt-4 text-center text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.35] text-white/55 [text-wrap:pretty]">
+              <p className={`mt-4 text-center ${CAPTION}`}>
                 Search validated, not guessed at.
               </p>
             </SlideIn>
