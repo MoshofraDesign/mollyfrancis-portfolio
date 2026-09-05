@@ -61,8 +61,14 @@ export const VIEW = "lg:w-screen";
  * content and nothing reads as empty field. Went 800 -> 500 -> 600 -> 530 as
  * Molly narrowed it; the last step came from her seeing it still too wide
  * beside the GovOS numbers panel.
+ *
+ * The !pl-10 trims the left inset from the shared gutter's 58-72px to 40, so
+ * the block sits nearer the panel's left edge — at 1440 that takes the space
+ * left of the title from about 119px to 64. The copy is centred in the panel
+ * again rather than right-aligned; with only ~30px of slack either way the
+ * alignment was never the lever, the gutter was.
  */
-export const END_PANEL = "lg:w-[min(100vw,530px)]";
+export const END_PANEL = "lg:w-[min(100vw,530px)] lg:!pl-10";
 
 /**
  * The content block on the closing prototype panel. These sections were
@@ -79,8 +85,7 @@ export const END_PANEL = "lg:w-[min(100vw,530px)]";
  * centred title with a centred button under it left the two on different
  * left edges at every width the title happened to wrap to.
  */
-export const END_MEASURE =
-  "mx-auto w-full max-w-[min(24rem,86vw)] lg:ml-auto lg:mr-0";
+export const END_MEASURE = "mx-auto w-full max-w-[min(24rem,86vw)]";
 
 /**
  * Closing-panel title. Deliberately well below the intro scale — this is a
