@@ -11,9 +11,20 @@ import CloseLink from "@/components/CloseLink";
 import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, CENTER_BELOW_MARK, CAPTION } from "@/components/v2/CaseStudyKit";
 
 /**
- * DocSquad — Figma deck (Portfolio › 4553:21862), left to right:
- * Title → Problem → Research → Patient Queue → 4 phones → icons →
- * interview+dashboard → 950px portrait → Outcome.
+ * DocSquad — a moonlighter-first narrative over the Figma deck's assets
+ * (Portfolio › 4553:21862), left to right:
+ *   Title → the provider was already off the clock → they didn't want
+ *   another platform → so the visit starts before the provider does →
+ *   Provider Portal desktop → Provider Portal mobile → one interface,
+ *   web and native → the icon set → interview+dashboard → portrait →
+ *   Outcome.
+ *
+ * The beats open on who the clinician actually is — a Virtual Moonlighter
+ * picking up shifts around a full-time job — because every constraint in
+ * the project follows from that: minutes rather than a shift, and no
+ * appetite for a second EHR. The old "Problem"/"Research" labels are gone;
+ * the copy carries the same facts as sentences instead.
+ *
  * (The Figma deck also has a research board panel after Research; it's
  * cut from the page. research-board.png is still in public/ and still
  * listed in lib/projects.ts images, so it's a one-line restore.)
@@ -199,58 +210,68 @@ export default function DocSquadCaseStudy() {
           </div>
         </section>
 
-        {/* 2 — PROBLEM. Figma 4553:21871: 100,296 / 999×409, gap 16
-            Centred in the field below the parked mark, not on the panel.
-            This block used to pair a fixed height (294/327/368) with
-            justify-end inside a box centred at top-1/2 — so the copy hung
-            from the box's BOTTOM edge and, being taller than the box (nine
-            lines against 294px), grew upward out of it. The result sat
-            almost entirely above the panel's middle. Height and justify-end
-            are gone; the offset is half the nav band, so the block's centre
-            lands midway between the bottom of the mark and the bottom of the
-            panel. Reading it from the tokens means it follows if the park
-            inset moves again. */}
+        {/* 2 — THE SECOND JOB. Opens on who the clinician actually is,
+            because every constraint in this project follows from that. */}
         <ScreenPanel className="!pt-16">
           <div className={`flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
             <SlideIn>
-              <h2 className={`text-white ${INTRO_TITLE}`}>Problem</h2>
-            </SlideIn>
-            <SlideIn delay={80}>
-              <p className={`text-white/90 ${INTRO_SUBTEXT}`}>
-                Healthcare providers are overwhelmed—juggling back-to-back appointments,
-                redundant data entry, and clunky telehealth tools that add friction instead
-                of removing it. Meanwhile, patients face long wait times for issues that
-                could be resolved in minutes. The core challenge: How might we reduce the
-                clinical burden of virtual visits so providers can diagnose and treat
-                patients in under two minutes—without sacrificing quality of care?
-              </p>
-            </SlideIn>
-          </div>
-        </ScreenPanel>
-
-        {/* 3 — RESEARCH. Figma 4553:21883: 100,237 / 950×525, gap 16 */}
-        <ScreenPanel>
-          <div className={`flex w-full max-w-[950px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[676px] xl:w-[844px] 2xl:w-[1013px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
-            <SlideIn>
-              <h2 className={H_DISPLAY}>Research</h2>
+              <h2 className={H_DISPLAY}>The provider was already off the clock.</h2>
             </SlideIn>
             <SlideIn delay={80}>
               <p className={BODY}>
-                Providers are already stretched thin with packed schedules and tedious EHR
-                entries. They don&apos;t need another platform that adds to their workload —
-                they need technology that lightens it.
-              </p>
-              <p className={`mt-8 ${BODY}`}>
-                By collecting symptoms upfront through asynchronous intelligent interviews,
-                providers can diagnose and recommend treatment in as little as two minutes —
-                no video call, no extra data entry. It&apos;s a faster, smarter model of care
-                that reduces burden without compromising quality.
+                DocSquad&apos;s clinicians are Virtual Moonlighters — doctors and
+                nurses picking up telehealth shifts around a full-time job. They
+                arrive with minutes, not a shift. The legacy Zipnosis product
+                assumed the opposite: live video for every visit, and a parallel
+                EHR to fill in afterwards.
               </p>
             </SlideIn>
           </div>
         </ScreenPanel>
 
-        {/* 4 — DESKTOP. Figma 4669:14416: centered, 232≈, 183 / 977×681
+        {/* 3 — WHAT THEY SAID. The research list is Molly's own
+            (lib/projects.ts research[]), stated as method rather than
+            reframed as a finding. */}
+        <ScreenPanel>
+          <div className={`flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
+            <SlideIn>
+              <h2 className={H_DISPLAY}>They didn&apos;t want another platform.</h2>
+            </SlideIn>
+            <SlideIn delay={80}>
+              <p className={BODY}>
+                Five generative interviews with practicing virtual clinicians, a
+                power-user comparison with Patient IO veterans, onboarding
+                teardowns of competing telehealth platforms, and resonance
+                testing of the diagnosis workflow.
+              </p>
+              <p className={`mt-8 ${BODY}`}>
+                The finding was consistent. Providers are already stretched thin
+                with packed schedules and tedious EHR entries. They don&apos;t need
+                a tool that adds to the workload — they need one that takes work
+                off it.
+              </p>
+            </SlideIn>
+          </div>
+        </ScreenPanel>
+
+        {/* 4 — THE TURN. The design move the rest of the page shows. */}
+        <ScreenPanel>
+          <div className={`flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
+            <SlideIn>
+              <h2 className={H_DISPLAY}>So the visit starts before the provider does.</h2>
+            </SlideIn>
+            <SlideIn delay={80}>
+              <p className={BODY}>
+                An asynchronous intelligent interview collects symptoms and
+                history upfront. By the time a provider opens the case the intake
+                is already done — they read it, diagnose, prescribe or escalate.
+                No video call, no second round of data entry.
+              </p>
+            </SlideIn>
+          </div>
+        </ScreenPanel>
+
+        {/* 5 — DESKTOP. Figma 4669:14416: centered, 232≈, 183 / 977×681
             The clip governs the box, not the frame: provider-desktop.mp4 is
             1400x1056 (1.3258) against the frame's 977x681 (1.4346), so the
             Figma heights would have letterboxed it against bg-black. Heights
@@ -284,7 +305,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 5 — FOUR PHONES — same treatment as the Netspend "user-test
+        {/* 6 — FOUR PHONES — same treatment as the Netspend "user-test
             phones" panel: grid of individually framed screens, bottom-
             aligned, with a caption below, instead of one flat cropped
             sprite. No drop shadow: the screens are already outlined and the
@@ -320,7 +341,24 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 6 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
+        {/* 7 — ONE UI. Why the same screens appear on desktop and phone. */}
+        <ScreenPanel>
+          <div className={`flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
+            <SlideIn>
+              <h2 className={H_DISPLAY}>One interface, web and native.</h2>
+            </SlideIn>
+            <SlideIn delay={80}>
+              <p className={BODY}>
+                I rebuilt the design system alongside the flow and partnered with
+                engineering on a Flutter build, so a single UI ships to desktop
+                and to iOS and Android — the same components, the same diagnosis
+                path, wherever the shift happens.
+              </p>
+            </SlideIn>
+          </div>
+        </ScreenPanel>
+
+        {/* 8 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
         <ScreenPanel>
           {/* Wrapper carries the placement so the caption travels with the
                  grid. On CENTER_BELOW_MARK like every other block on this
@@ -344,7 +382,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 7 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
+        {/* 9 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
         <ScreenPanel>
           {/* Aspect and stepped heights both track the asset: the replacement
               export trims to 921x704 (1.308), not the old 920x683 (1.347),
@@ -362,7 +400,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 8 — PORTRAIT. Figma 4622:11969 is 950×1000.
+        {/* 10 — PORTRAIT. Figma 4622:11969 is 950×1000.
             Circle on the shared portrait size — min(24vw,320px), the same as
             Bright's and GovOS's — and centred on CENTER_BELOW_MARK, which is
             where the Outcome copy beside it centres, so the two line up
@@ -386,7 +424,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 9 — OUTCOME. Figma node 4672:15331 — left-aligned heading + copy,
+        {/* 11 — OUTCOME. Figma node 4672:15331 — left-aligned heading + copy,
             then three stacked stat columns (hero number, uppercase kicker,
             delta + down triangle, detail line), all in white on the brand
             magenta. Replaces the earlier circle-badge treatment, which
