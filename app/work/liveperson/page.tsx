@@ -38,7 +38,7 @@ const metrics = [
   { label: "Average Agent Response Time (ARTA)", value: "Dropped by 18%" },
   { label: "First Contact Resolution (FCR)", value: "Increased by 12%" },
   { label: "Meaningful Automated Conversation Score (MACS)", value: "Improved by 15%" },
-  { label: "Overall Customer Satisfaction (CSAT)", value: "4.5-point lift" },
+  { label: "Overall Customer Satisfaction (CSAT)", value: "4.5\u2011point lift" },
 ];
 
 /** Two images side by side, full-bleed panel — matches the Figma pairings. */
@@ -49,6 +49,7 @@ function BigImagePanel({
   height,
   caption,
   maxWidth = 950,
+  bare = false,
 }: {
   src: string;
   alt: string;
@@ -56,6 +57,9 @@ function BigImagePanel({
   height: number;
   caption?: string;
   maxWidth?: number;
+  /** Cut-out PNG on the panel colour — no rounding, since there's no card
+   *  edge to round and a 6px crop would nick the artwork's own corners. */
+  bare?: boolean;
 }) {
   return (
     <Panel width={VIEW} pad="center" className="items-center">
@@ -66,9 +70,9 @@ function BigImagePanel({
           width={width}
           height={height}
           sizes={`(max-width: 1024px) 92vw, min(90vw, ${maxWidth}px)`}
-          className="h-auto max-h-[591px] sm:max-h-[630px] md:max-h-[717px] lg:max-h-[504px] xl:max-h-[560px] 2xl:max-h-[630px] w-full rounded-md object-contain"
+          className={`h-auto max-h-[591px] sm:max-h-[630px] md:max-h-[717px] lg:max-h-[504px] xl:max-h-[560px] 2xl:max-h-[630px] w-full object-contain ${bare ? "" : "rounded-md"}`}
         />
-        {caption && <p className="mt-4 max-w-[70ch] text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1.05rem] opacity-80">{caption}</p>}
+        {caption && <p className="mt-4 max-w-[70ch] text-[1.05rem] sm:text-[1.05rem] md:text-[1.05rem] lg:text-[1.05rem] xl:text-[1.1rem] 2xl:text-[1.25rem] opacity-80">{caption}</p>}
       </SlideIn>
     </Panel>
   );
@@ -89,7 +93,7 @@ export default function LivePersonCaseStudy() {
       <StickyNav
         watch="title"
         logo={
-          <div className="relative h-6 w-[110px] sm:h-7 sm:w-[130px]">
+          <div className="relative h-7 w-[130px] sm:h-8 sm:w-[152px]">
             <Image src={LOGO} alt="LivePerson" fill unoptimized className="object-contain object-left" />
           </div>
         }
@@ -109,7 +113,7 @@ export default function LivePersonCaseStudy() {
             this collapses back to a plain stacked flex column. */}
         <section
           id="title"
-          className="relative flex w-full flex-col gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pt-0"
+          className="relative flex w-full flex-col gap-10 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pt-0"
         >
           {/* Logo — Figma: 100,100, 668×106 */}
           <div className="relative h-10 w-[220px] sm:h-14 sm:w-[300px] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[75px] xl:h-[94px] 2xl:h-[113px] lg:w-[475px] xl:w-[594px] 2xl:w-[713px] lg:max-w-[668px]">
@@ -186,9 +190,10 @@ export default function LivePersonCaseStudy() {
         <BigImagePanel
           src="/work/liveperson/public-tweet-private-thread.png"
           alt="A public tweet on Twitter routed into the LiveEngage agent workspace, with the full private thread and social profile alongside it"
-          width={1024}
-          height={415}
-          maxWidth={950}
+          width={1100}
+          height={446}
+          maxWidth={1000}
+          bare
         />
 
         {/* ── SINGLE PLATFORM ───────────────────────────────────────────── */}
@@ -249,7 +254,11 @@ export default function LivePersonCaseStudy() {
         />
 
         {/* ── IMPACT ────────────────────────────────────────────────────── */}
-        <Panel width={VIEW} pad="center">
+        {/* lg:!pb-[var(--nav-clear)] balances the top inset. NAV_CLEAR pairs a
+            142px top with a 24px bottom, so a centred block lands 59px below
+            the panel's true middle — fine for media that needs the headroom,
+            wrong for a short stat row. */}
+        <Panel width={VIEW} pad="center" className="lg:!pb-[var(--nav-clear)]">
           <div className={`${MEASURE} mx-auto`}>
             <Heading>Impact</Heading>
             {/* Across, not down — the same shape as every other project's
@@ -271,6 +280,7 @@ export default function LivePersonCaseStudy() {
         <CaseStudyMetaPanel
           meta={getCaseStudyMeta(project)}
           lightText={fg === "#f5f5f5"}
+          showProjected={false}
         />
 
         <NextProjectLink

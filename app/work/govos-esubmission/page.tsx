@@ -370,7 +370,7 @@ export default function GovOSCaseStudy() {
               section itself has a definite height, i.e. lg+ — below that
               it's a normal auto-height column and the two just stack with
               their own gap. */}
-          <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 md:w-[38%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-[100px] lg:pt-[100px]">
+          <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 md:w-[38%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-[100px] lg:pt-[100px]">
             <Image
               src="/work/govos/govos-logo-white.svg"
               alt="GovOS"

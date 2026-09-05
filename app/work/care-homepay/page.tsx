@@ -103,7 +103,7 @@ export default function CareHomepayCaseStudy() {
             the order-* classes stack it: logo, headline, phones, badges. */}
         <section
           id="title"
-          className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
+          className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
         >
           {/* Large logo — Figma 4555:22725, 672x120 at 100,100 */}
           <div className="care-hero-logo order-1 relative h-[60px] w-[280px] sm:h-[80px] sm:w-[380px]">
@@ -139,7 +139,7 @@ export default function CareHomepayCaseStudy() {
 
           {/* Headline — Figma 4555:22842, 455 wide at 831,114: just right of
               the wordmark, left-aligned. */}
-          <SlideIn className="care-hero-title order-2 self-end max-w-[340px] text-right">
+          <SlideIn className="care-hero-title order-2 self-start max-w-[340px] text-left">
             <p className="text-xl font-semibold leading-snug text-white sm:text-2xl">
               Homepay Employee &amp; Employer Payroll App
             </p>

@@ -112,7 +112,7 @@ export default function PatientIoCaseStudy() {
         {/* ── TITLE ─────────────────────────────────────────────────── */}
         <section
           id="title"
-          className="relative flex w-full flex-col gap-8 px-5 pb-10 pt-5 sm:px-8 sm:pt-7 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-12 lg:pl-[100px] lg:pr-[71px] xl:pr-[89px] 2xl:pr-[107px] lg:pt-[100px]"
+          className="relative flex w-full flex-col gap-8 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-12 lg:pl-[100px] lg:pr-[71px] xl:pr-[89px] 2xl:pr-[107px] lg:pt-[100px]"
         >
           {/* Logo + headline sit on one row on desktop, matching the Figma
               hero (node 4732:9502) — stacked on mobile/tablet since there's

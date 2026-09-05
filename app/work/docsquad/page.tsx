@@ -153,7 +153,7 @@ export default function DocSquadCaseStudy() {
             Hero 479,349 / 891×529 */}
         <section
           id="docsquad-title"
-          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
+          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
           <div className="relative z-10 aspect-[842/112] w-[min(100%,842px)] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[80px] xl:h-[89px] 2xl:h-[101px] lg:w-[599px] xl:w-[748px] 2xl:w-[898px] lg:max-w-none lg:aspect-auto">
             <Image
@@ -302,7 +302,7 @@ export default function DocSquadCaseStudy() {
                  fixed top: at 1440 the old top of 192 left it 3px under the
                  mark with 293px of empty field beneath. top-1/2 plus half the
                  nav band splits that space evenly. A step larger too. */
-              className="relative aspect-[720/519] w-full max-w-[720px] overflow-hidden rounded-[10px] lg:absolute lg:left-[256px] xl:left-[320px] 2xl:left-[384px] lg:top-[calc(50%_+_var(--nav-clear)/2)] lg:h-[437px] xl:h-[484px] 2xl:h-[545px] lg:w-[598px] xl:w-[746px] 2xl:w-[896px] lg:max-w-none lg:aspect-auto lg:-translate-y-1/2">
+              className="relative aspect-[720/519] w-full max-w-[720px] overflow-hidden rounded-[10px] lg:absolute lg:left-[256px] xl:left-[320px] 2xl:left-[384px] lg:top-[calc(50%_+_var(--nav-clear)/6)] lg:h-[437px] xl:h-[484px] 2xl:h-[545px] lg:w-[598px] xl:w-[746px] 2xl:w-[896px] lg:max-w-none lg:aspect-auto lg:-translate-y-1/2">
             <Image
               src={`${ASSET}/icons.png`}
               alt="Custom illustration and icon set for the DocSquad design system"
@@ -329,12 +329,12 @@ export default function DocSquadCaseStudy() {
         </ScreenPanel>
 
         {/* 9 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at center, top 50%+20 */}
-        <ScreenPanel width="lg:w-[min(100vw,59.375rem)]">
+        <ScreenPanel width="lg:w-[min(100vw,44rem)]">
           <div /* No lg:w-[600px] alongside lg:size-[...]: both are lg utilities of
                  equal specificity, and w-* won in the bundle, so the box came
                  out 600 wide by 567 tall — an ellipse under rounded-full.
                  size-* alone keeps it square. */
-              className="relative aspect-square w-[304px] sm:w-[499px] md:w-[599px] overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:top-[calc(50%+20px)] lg:size-[min(39.37vw,600px)] lg:-translate-x-1/2 lg:-translate-y-1/2">
+              className="relative aspect-square w-[260px] sm:w-[400px] md:w-[472px] overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:top-[calc(50%+20px)] lg:size-[min(31vw,472px)] lg:-translate-x-1/2 lg:-translate-y-1/2">
             <Image
               src={`${ASSET}/portrait.png`}
               alt="A virtual moonlighter clinician"

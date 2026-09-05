@@ -100,7 +100,7 @@ export default function ConsumerHealthCaseStudy() {
         {/* Title */}
         <section
           id="title"
-          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-16 sm:px-10 sm:pt-20 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
+          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
           <div className="relative z-10 aspect-[740/104] w-[min(100%,740px)] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[75px] xl:h-[83px] 2xl:h-[94px] lg:w-[526px] xl:w-[658px] 2xl:w-[789px] lg:max-w-none lg:aspect-auto">
             <Image src={LOGO} alt="athenahealth" fill unoptimized priority className="object-contain object-left" />

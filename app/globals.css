@@ -299,9 +299,18 @@ body::before {
     top: 30.5%;
     width: calc(396.5 * var(--figma-u));
   }
+  /* Anchored to the LEFT phone in --figma-u, not to its own percentage of
+     the panel. Both phones used to take a percentage left (28.472% and
+     51.667%), so the distance between them grew with the window while their
+     widths — sized in --figma-u, which is pinned by whichever axis is
+     tighter — did not. On a wide, short window the gap outran the overlap and
+     the two handsets came apart: at 1950x790 the 23.195% gap is 452px against
+     a 313px phone. Offsetting by the frame's own 334 units (744 - 410) keeps
+     Figma's overlap exactly, at any window shape. Same for the 84-unit
+     vertical stagger (389 - 305). */
   main .care-hero-phone-r {
-    left: 51.667%;
-    top: 38.9%;
+    left: calc(28.472% + 334 * var(--figma-u));
+    top: calc(30.5% + 84 * var(--figma-u));
     width: calc(407 * var(--figma-u));
   }
 

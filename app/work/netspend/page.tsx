@@ -68,7 +68,7 @@ export default function NetspendCaseStudy() {
             and the card fan isn’t clipped by the scrollbar gutter. */}
         <section
           id="title"
-          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-6 sm:px-10 lg:h-[100dvh] lg:w-[100dvw] lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
+          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-[100dvw] lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
           {/* Large logo — same left/top anchor; height-driven so the wordmark never clips */}
           <div className="relative z-10 h-[52px] w-[min(100%,20rem)] sm:h-[60px] sm:w-[22.5rem] lg:absolute lg:left-[100px] lg:top-[100px] lg:h-[72px] lg:w-[min(680px,47vw)]">
