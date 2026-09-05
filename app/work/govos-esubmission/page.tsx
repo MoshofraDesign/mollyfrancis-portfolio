@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, END_MEASURE, NextProjectLink, CaseStudyMetaPanel, END_PANEL, CAPTION } from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, END_MEASURE, NextProjectLink, CaseStudyMetaPanel, END_PANEL, CAPTION, PORTRAIT_CIRCLE, PORTRAIT_COPY } from "@/components/v2/CaseStudyKit";
 
 /**
  * GovOS eSubmission — horizontal case study built to match the Figma deck
@@ -139,7 +139,7 @@ function Heading({ children }: { children: React.ReactNode }) {
 function Body({ children }: { children: React.ReactNode }) {
   return (
     <SlideIn delay={120} className={TEXT_W}>
-      <p className="mt-6 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] font-normal leading-[1.35] text-white [text-wrap:pretty]">
+      <p className="mt-3 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] font-normal leading-[1.35] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </p>
     </SlideIn>
@@ -297,17 +297,17 @@ function PortraitPanel({
   return (
     <section className={`relative flex w-full flex-col items-center justify-center gap-10 ${GUTTER} ${NAV_CLEAR} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:flex-row lg:justify-center lg:gap-[51px] xl:gap-[64px] 2xl:gap-[77px] lg:overflow-y-auto lg:overscroll-contain`}>
       {hasPhoto && (
-        <div className="relative aspect-square w-[234px] sm:w-[384px] md:w-[461px] lg:w-[614px] xl:w-[768px] 2xl:w-[922px] max-w-[260px] shrink-0 sm:w-[294px] md:w-[353px] lg:w-[471px] xl:w-[589px] 2xl:w-[707px] sm:max-w-[300px] lg:w-[min(28vw,300px)]">
+        <div className={PORTRAIT_CIRCLE}>
           <Image
             src={src}
             alt={alt}
             fill
-            sizes="(max-width: 1023px) 55vw, 22vw"
-            className="rounded-full object-cover"
+            sizes="(min-width: 1024px) 320px, 280px"
+            className="object-cover"
           />
         </div>
       )}
-      <div className="w-full lg:w-auto lg:max-w-[389px] xl:max-w-[486px] 2xl:max-w-[584px] lg:shrink-0">{children}</div>
+      <div className={`lg:shrink-0 ${PORTRAIT_COPY}`}>{children}</div>
     </section>
   );
 }

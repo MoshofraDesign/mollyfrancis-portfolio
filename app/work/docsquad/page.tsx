@@ -331,7 +331,11 @@ export default function DocSquadCaseStudy() {
 
         {/* 7 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
         <ScreenPanel>
-          <div className="relative mx-auto aspect-[920/683] w-full max-w-[920px] lg:absolute lg:left-[185px] xl:left-[231px] 2xl:left-[277px] lg:top-[130px] xl:top-[144px] 2xl:top-[162px] lg:mx-0 lg:h-[492px] xl:h-[546px] 2xl:h-[615px] lg:w-[654px] xl:w-[818px] 2xl:w-[981px] lg:max-w-none lg:aspect-auto">
+          {/* Aspect and stepped heights both track the asset: the replacement
+              export trims to 921x704 (1.308), not the old 920x683 (1.347),
+              so the previous box would have cropped it under object-cover.
+              Heights are the widths at 1.308. */}
+          <div className="relative mx-auto aspect-[921/704] w-full max-w-[921px] lg:absolute lg:left-[185px] xl:left-[231px] 2xl:left-[277px] lg:top-[130px] xl:top-[144px] 2xl:top-[162px] lg:mx-0 lg:h-[500px] xl:h-[625px] 2xl:h-[750px] lg:w-[654px] xl:w-[818px] 2xl:w-[981px] lg:max-h-[var(--panel-media-max-h)] lg:max-w-none lg:aspect-auto">
             <Image
               src={`${ASSET}/interview-dashboard.png`}
               alt="Patient interview overlapping the logged-in DocSquad dashboard"
@@ -343,23 +347,24 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 8 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at center, top 50%+20
-            34rem, not 44: the circle caps at 472 and is centred, so a 704
-            panel left 116px of empty field either side of it — and the
-            Outcome copy that follows starts 71px into its own panel, so the
-            visible gap between the portrait and "Outcome" was 187px. At 544
-            it's 107. */}
-        <ScreenPanel width="lg:w-[min(100vw,34rem)]">
-          <div /* No lg:w-[600px] alongside lg:size-[...]: both are lg utilities of
+        {/* 8 — PORTRAIT. Figma 4622:11969 is 950×1000.
+            Circle on the shared portrait size — min(24vw,320px), the same as
+            Bright's and GovOS's — and centred on CENTER_BELOW_MARK, which is
+            where the Outcome copy beside it centres, so the two line up
+            instead of the circle sitting 30px lower. The panel narrows with
+            it: 26rem leaves 48px either side of a 320 circle, where 34rem
+            around a 472 one pushed the Outcome copy further away again. */}
+        <ScreenPanel width="lg:w-[min(100vw,26rem)]">
+          <div /* No lg:w-[...] alongside lg:size-[...]: both are lg utilities of
                  equal specificity, and w-* won in the bundle, so the box came
-                 out 600 wide by 567 tall — an ellipse under rounded-full.
+                 out wider than it was tall — an ellipse under rounded-full.
                  size-* alone keeps it square. */
-              className="relative aspect-square w-[260px] sm:w-[400px] md:w-[472px] overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:top-[calc(50%+20px)] lg:size-[min(31vw,472px)] lg:-translate-x-1/2 lg:-translate-y-1/2">
+              className={`relative aspect-square w-[220px] sm:w-[280px] overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:size-[min(24vw,320px)] lg:-translate-x-1/2 ${CENTER_BELOW_MARK}`}>
             <Image
               src={`${ASSET}/portrait.png`}
               alt="A virtual moonlighter clinician"
               fill
-              sizes="600px"
+              sizes="(min-width: 1024px) 320px, 280px"
               className="object-cover"
               unoptimized
             />

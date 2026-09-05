@@ -5,7 +5,7 @@ import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
-import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL, END_MEASURE, HERO_TITLE, HERO_SUBTEXT } from "@/components/v2/CaseStudyKit";
+import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL, END_MEASURE, HERO_TITLE, HERO_SUBTEXT, PORTRAIT_CIRCLE, PORTRAIT_COPY } from "@/components/v2/CaseStudyKit";
 import UcmScreensCarousel from "@/components/UcmScreensCarousel";
 
 export const metadata = {
@@ -150,13 +150,13 @@ export default function BrightHealthcareCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className="mx-auto flex w-full max-w-[min(84rem,92vw)] flex-col items-center gap-10 lg:flex-row lg:gap-14">
             <SlideIn className="shrink-0">
-              <div className="relative aspect-square w-[220px] overflow-hidden rounded-full sm:w-[300px] lg:w-[min(26vw,360px)]">
+              <div className={PORTRAIT_CIRCLE}>
                 <Image
                   src={`${ASSET}/submitter.png`}
                   alt="Provider overwhelmed by fax paperwork"
                   fill
                   unoptimized
-                  sizes="(min-width: 1024px) 360px, 300px"
+                  sizes="(min-width: 1024px) 320px, 280px"
                   className="object-cover"
                 />
               </div>
@@ -164,7 +164,7 @@ export default function BrightHealthcareCaseStudy() {
             {/* No decorative marks on this one. The side padding went with
                 them — it existed only as the gutter they hung in, so keeping
                 it would leave the copy inset for no reason. */}
-            <SlideIn delay={80} className="relative w-full max-w-[min(500px,86vw)]">
+            <SlideIn delay={80} className={`relative ${PORTRAIT_COPY}`}>
               <p className="relative text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
                 Faxing in the world of digital experiences can cause providers and their staff added work, frustration, loss of trust in the company, and more importantly time away from caring for members.
               </p>
@@ -350,18 +350,18 @@ export default function BrightHealthcareCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className="mx-auto flex w-full max-w-[min(84rem,92vw)] flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
             <SlideIn className="shrink-0">
-              <div className="relative aspect-square w-[200px] overflow-hidden rounded-full sm:w-[260px] lg:w-[min(22vw,300px)]">
+              <div className={PORTRAIT_CIRCLE}>
                 <Image
                   src={`${ASSET}/outcome.png`}
                   alt="Clinician using the authorization portal on a laptop"
                   fill
                   unoptimized
-                  sizes="(min-width: 1024px) 300px, 260px"
+                  sizes="(min-width: 1024px) 320px, 280px"
                   className="object-cover"
                 />
               </div>
             </SlideIn>
-            <div className="min-w-0 lg:max-w-[40rem]">
+            <div className={PORTRAIT_COPY}>
               <SlideIn>
                 <h2 className={H_DISPLAY}>It replaced the fax machine.</h2>
               </SlideIn>

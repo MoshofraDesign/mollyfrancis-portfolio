@@ -284,6 +284,28 @@ export const CENTER_BELOW_MARK =
 export const CAPTION =
   "text-[clamp(1.05rem,1.3vw,1.25rem)] leading-[1.4] text-current [text-wrap:pretty]";
 
+/**
+ * A portrait circle with a text block beside it — one size across the
+ * projects that use this beat.
+ *
+ * They had drifted to four: Bright's fax quote min(26vw,360), Bright's
+ * outcome min(22vw,300), GovOS min(28vw,300) — and GovOS's box carried
+ * three stacked generations of width utilities, so what it actually
+ * rendered was whichever Tailwind emitted last.
+ */
+export const PORTRAIT_CIRCLE =
+  "relative aspect-square w-[220px] shrink-0 overflow-hidden rounded-full sm:w-[280px] lg:w-[min(24vw,320px)]";
+/** The copy that sits beside PORTRAIT_CIRCLE. */
+export const PORTRAIT_COPY = "min-w-0 w-full lg:max-w-[500px]";
+
+/**
+ * Body text inside the closing meta panel — the team lines and the detail
+ * line under each timing / projected figure. One size, because Team ran
+ * 1.05-1.25rem while Timing's detail line ran 1.1-1.2, which read as two
+ * different scales sitting side by side.
+ */
+export const META_BODY = "text-[clamp(1.1rem,1.35vw,1.25rem)] leading-snug";
+
 export const HERO_COPY_GAP = "gap-2";
 
 export const HERO_TITLE =
@@ -488,7 +510,7 @@ export function CaseStudyMetaPanel({
                 <h2 className={META_LABEL}>
                   The Team
                 </h2>
-                <ul className="mt-5 space-y-3 text-[clamp(1.05rem,1.35vw,1.25rem)] leading-snug">
+                <ul className={`mt-5 space-y-3 ${META_BODY}`}>
                   {meta.team.map((row) => (
                     <li key={row}>{row}</li>
                   ))}
@@ -505,7 +527,7 @@ export function CaseStudyMetaPanel({
                       <p className="text-[clamp(1.35rem,1.8vw,1.6rem)] font-semibold leading-tight">
                         {row.value}
                       </p>
-                      <p className="mt-1.5 text-[clamp(1.1rem,1.35vw,1.2rem)] leading-snug text-current">
+                      <p className={`mt-1.5 text-current ${META_BODY}`}>
                         {row.label}
                       </p>
                     </li>
@@ -524,7 +546,7 @@ export function CaseStudyMetaPanel({
                         <p className="text-[clamp(2.1rem,3.5vw,2.8rem)] font-semibold leading-tight tracking-[-0.03em]">
                           {row.value}
                         </p>
-                        <p className="mt-2 text-[clamp(1.1rem,1.35vw,1.2rem)] leading-snug text-current">
+                        <p className={`mt-2 text-current ${META_BODY}`}>
                           {row.label}
                         </p>
                       </li>
