@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
-import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEDIA, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 /**
  * Bespoke horizontal-scroll case study for LivePerson/SocialConnect,
@@ -93,7 +93,12 @@ export default function LivePersonCaseStudy() {
       <StickyNav
         watch="title"
         logo={
-          <div className="relative h-7 w-[130px] sm:h-8 sm:w-[152px]">
+          <div /* liveperson.svg is 668x106 with no padding — a 6.3 aspect — so
+                 object-contain is bound by WIDTH here, not height: at h-8 the
+                 mark wants 202px and only got 152. Widening is what makes it
+                 bigger. 210 draws it 210x33, still clear of the 50px
+                 --nav-logo-h the band is sized for. */
+            className="relative h-9 w-[170px] sm:h-11 sm:w-[210px]">
             <Image src={LOGO} alt="LivePerson" fill unoptimized className="object-contain object-left" />
           </div>
         }
@@ -188,10 +193,14 @@ export default function LivePersonCaseStudy() {
 
         {/* ── PUBLIC TWEET / PRIVATE THREAD ────────────────────────────── */}
         <BigImagePanel
-          src="/work/liveperson/public-tweet-private-thread.png"
+          /* The .webp sibling, not the .png: same transparent artwork, but
+             1800x739 against the png's 1100x446. Displayed at up to 1000 CSS
+             px the png was being upscaled about 1.8x on a 2x screen, which
+             is the fuzziness; the webp lands at 1.11x, so it resolves. */
+          src="/work/liveperson/public-tweet-private-thread.webp"
           alt="A public tweet on Twitter routed into the LiveEngage agent workspace, with the full private thread and social profile alongside it"
-          width={1100}
-          height={446}
+          width={1800}
+          height={739}
           maxWidth={1000}
           bare
         />
@@ -217,16 +226,37 @@ export default function LivePersonCaseStudy() {
             left repeats what the public-tweet/private-thread panel above
             already shows. */}
         <BigImagePanel
+          /* Molly's replacement export. 1200x563 against the old 1206x915 —
+             a 2.13 aspect, not 1.32 — so the width/height props move with it
+             or next/image reserves the wrong box and the composite gets cut
+             off at the right. Cut-out PNG, so `bare`. */
           src="/work/liveperson/all-channels-unified.png"
           alt="One surface for every channel — Facebook, Instagram, X, WhatsApp, SMS, and more"
-          width={1206}
-          height={915}
+          width={1200}
+          height={563}
           maxWidth={1040}
+          bare
         />
 
         {/* ── SOCIALCONNECT — SELF-SERVICE SETUP ───────────────────────── */}
         <TextPanel>
-          <Heading>SocialConnect</Heading>
+          {/* The lockup replaces the "SocialConnect" heading. The alt text
+              carries the title, so the section still announces itself to a
+              screen reader and still reads as an h2 in the outline. Capped
+              at 420: the export is 594px wide, so beyond that it upscales on
+              a 2x screen. */}
+          <SlideIn className={MEASURE}>
+            <h2>
+              <Image
+                src="/work/liveperson/socialconnect-lockup.png"
+                alt="SocialConnect"
+                width={594}
+                height={124}
+                unoptimized
+                className="h-auto w-[min(100%,260px)] sm:w-[min(100%,330px)] lg:w-[min(100%,420px)]"
+              />
+            </h2>
+          </SlideIn>
           <Body>
             Allows agents to connect social accounts that would be active in
             the LiveEngage portal, with the options to assign to admin and

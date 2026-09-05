@@ -250,6 +250,23 @@ export const INTRO_SUBTEXT =
  * Set on the flex wrapper rather than as a margin on the subhead, so the
  * pair has one mechanism wherever it appears.
  */
+/**
+ * Absolute-placement helper: centre a block in the field BELOW the parked
+ * mark, not on the panel as a whole.
+ *
+ * A plain top-1/2 centres on the panel, which reads high, because the top
+ * of the panel is not where the content area starts — the mark occupies
+ * --nav-park-top + --nav-logo-h before anything else can. Offsetting by
+ * half that band puts the block's middle midway between the bottom of the
+ * mark and the bottom of the panel. Read from the tokens so it follows if
+ * the park inset moves.
+ *
+ * Pair it with the block's own left/width; it supplies top and the
+ * translate only.
+ */
+export const CENTER_BELOW_MARK =
+  "lg:top-[calc(50%_+_(var(--nav-park-top)_+_var(--nav-logo-h))/2)] lg:-translate-y-1/2";
+
 export const HERO_COPY_GAP = "gap-2";
 
 export const HERO_TITLE =

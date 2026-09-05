@@ -1153,7 +1153,6 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
     ],
     timing: [
       { value: "2019–2020", label: "SocialConnect design & vision" },
-      { value: "Self-serve", label: "Brand onboarding unblocked" },
     ],
     tools: ["Figma", "Miro", "Jira"],
     projected: [

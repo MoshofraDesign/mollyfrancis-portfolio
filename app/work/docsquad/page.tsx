@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT} from "@/components/v2/CaseStudyKit";
+import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, CENTER_BELOW_MARK } from "@/components/v2/CaseStudyKit";
 
 /**
  * DocSquad — Figma deck (Portfolio › 4553:21862), left to right:
@@ -211,7 +211,7 @@ export default function DocSquadCaseStudy() {
             panel. Reading it from the tokens means it follows if the park
             inset moves again. */}
         <ScreenPanel className="!pt-16">
-          <div className="flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-[calc(50%_+_(var(--nav-park-top)_+_var(--nav-logo-h))/2)] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none lg:-translate-y-1/2">
+          <div className={`flex w-full max-w-[999px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[710px] xl:w-[888px] 2xl:w-[1066px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
             <SlideIn>
               <h2 className={`text-white ${INTRO_TITLE}`}>Problem</h2>
             </SlideIn>
@@ -230,7 +230,7 @@ export default function DocSquadCaseStudy() {
 
         {/* 3 — RESEARCH. Figma 4553:21883: 100,237 / 950×525, gap 16 */}
         <ScreenPanel>
-          <div className="flex w-full max-w-[950px] flex-col gap-4 lg:absolute lg:bottom-[171px] xl:bottom-[190px] 2xl:bottom-[214px] lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[676px] xl:w-[844px] 2xl:w-[1013px] lg:max-w-none lg:justify-end">
+          <div className={`flex w-full max-w-[950px] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[676px] xl:w-[844px] 2xl:w-[1013px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
             <SlideIn>
               <h2 className={H_DISPLAY}>Research</h2>
             </SlideIn>
@@ -372,7 +372,7 @@ export default function DocSquadCaseStudy() {
             magenta. Replaces the earlier circle-badge treatment, which
             didn't match the Figma reference. */}
         <ScreenPanel>
-          <div className="flex w-full max-w-[950px] flex-col items-start gap-10 pt-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:top-1/2 lg:w-[676px] xl:w-[844px] 2xl:w-[1013px] lg:max-w-none lg:-translate-y-1/2 lg:gap-14 lg:pt-0">
+          <div className={`flex w-full max-w-[950px] flex-col items-start gap-10 pt-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[676px] xl:w-[844px] 2xl:w-[1013px] lg:max-w-none lg:gap-14 lg:pt-0 ${CENTER_BELOW_MARK}`}>
             <div className="flex flex-col gap-4">
               <SlideIn>
                 <h2 className={H_DISPLAY}>Outcome</h2>
