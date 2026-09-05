@@ -97,10 +97,13 @@ function Photo({
   size = 240,
   crop,
   flip = false,
+  capVh = 32,
 }: {
   src: string;
   alt: string;
   size?: number;
+  /** Height ceiling in vh — 32 for a single row, 20 where two rows stack. */
+  capVh?: number;
   /** Exact Figma pan/zoom offset (percent, from the node's own absolute
    *  image transform) for photos framed off-center rather than centered. */
   crop?: PhotoCrop;
@@ -117,7 +120,7 @@ function Photo({
   return (
     <div
       className="relative aspect-square w-full min-w-0 overflow-hidden rounded-full bg-black/5"
-      style={{ maxWidth: `min(${size}px, 20vh)`, transform: flip ? "scaleX(-1)" : undefined }}
+      style={{ maxWidth: `min(${size}px, ${capVh}vh)`, transform: flip ? "scaleX(-1)" : undefined }}
     >
       {crop ? (
         // eslint-disable-next-line @next/next/no-img-element -- exact Figma
@@ -286,14 +289,14 @@ function CollectionsPanel({
           </SlideIn>
           <SlideIn delay={80} className="w-full" style={PHOTO_ROW(40)}>
             {rowOne.map((p) => (
-              <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
+              <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={20} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
         </div>
         <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-16">
           <SlideIn delay={140} className="w-full" style={PHOTO_ROW(40)}>
             {rowTwo.map((p) => (
-              <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
+              <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={20} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
           <SlideIn delay={200} className="w-[226px] max-w-full text-[clamp(0.9rem,1.4vw,20px)] leading-relaxed opacity-70">
@@ -331,7 +334,7 @@ function PackagingPanel({
           <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-16">
             <SlideIn className="w-full" style={PHOTO_ROW(40)}>
               {topRow.map((p) => (
-                <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
+                <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={20} crop={p.crop} flip={p.flip} />
               ))}
             </SlideIn>
             {topAside && (
@@ -353,7 +356,7 @@ function PackagingPanel({
             )}
           </div>
           {photos.map((p) => (
-            <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
+            <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={20} crop={p.crop} flip={p.flip} />
           ))}
         </SlideIn>
       </div>

@@ -64,6 +64,16 @@ const headlines = [
   "At my core, I love this work — building products that help real people.",
 ];
 
+/** Cursor reveal: a hard-edged circle, no falloff — two stops at the same
+ *  radius rather than 38% -> 72%. R is the radius both masks share. */
+const R = "6.5rem";
+const REVEAL = (x: number, y: number) =>
+  `radial-gradient(circle ${R} at ${x}% ${y}%, #000 99.5%, transparent 100%)`;
+const REVEAL_OFF = "radial-gradient(circle 0px at 50% 50%, #000, transparent)";
+/** The same circle, inverted: opaque everywhere except the hole. */
+const PUNCH = (x: number, y: number) =>
+  `radial-gradient(circle ${R} at ${x}% ${y}%, transparent 99.5%, #000 100%)`;
+
 const ROTATE_MS = 3400;
 
 export default function RotatingHero() {
@@ -111,12 +121,8 @@ export default function RotatingHero() {
             aria-hidden
             className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-full"
             style={{
-              WebkitMaskImage: spot.on
-                ? `radial-gradient(circle 6.5rem at ${spot.x}% ${spot.y}%, #000 38%, transparent 72%)`
-                : "radial-gradient(circle 0px at 50% 50%, #000, transparent)",
-              maskImage: spot.on
-                ? `radial-gradient(circle 6.5rem at ${spot.x}% ${spot.y}%, #000 38%, transparent 72%)`
-                : "radial-gradient(circle 0px at 50% 50%, #000, transparent)",
+              WebkitMaskImage: spot.on ? REVEAL(spot.x, spot.y) : REVEAL_OFF,
+              maskImage: spot.on ? REVEAL(spot.x, spot.y) : REVEAL_OFF,
             }}
           >
             <Image
@@ -129,7 +135,23 @@ export default function RotatingHero() {
               priority
             />
           </div>
-          <div className="pointer-events-none absolute left-[10.4%] top-[8.4%] z-[1] h-[83.2%] w-[82.3%]">
+          <div
+            className="pointer-events-none absolute left-[10.4%] top-[8.4%] z-[1] h-[83.2%] w-[82.3%]"
+            style={
+              spot.on
+                ? {
+                    WebkitMaskImage: PUNCH(
+                      ((spot.x - 10.4) / 82.3) * 100,
+                      ((spot.y - 8.4) / 83.2) * 100,
+                    ),
+                    maskImage: PUNCH(
+                      ((spot.x - 10.4) / 82.3) * 100,
+                      ((spot.y - 8.4) / 83.2) * 100,
+                    ),
+                  }
+                : undefined
+            }
+          >
             <Image
               src="/hero-halftone.svg"
               alt="Halftone portrait of Molly Francis"
