@@ -50,16 +50,14 @@ import {
    wordmarks to stacked lockups and one box can't flatter both. */
 const HERO_LOGO_BOX: Record<string, string> = {
   "bright-healthcare": "relative h-[5.5rem] w-full max-w-[520px] sm:h-28 md:h-36",
-  "volusion-admin": "relative h-24 w-full max-w-[460px] sm:h-28 md:h-32",
   default: "relative h-16 w-full max-w-[380px] sm:h-20 md:h-24",
 };
 const NAV_LOGO_BOX: Record<string, string> = {
   "bright-healthcare": "relative h-8 w-[130px] sm:h-9 sm:w-[150px]",
-  "volusion-admin": "relative h-9 w-[100px] sm:h-11 sm:w-[124px]",
   default: "relative h-6 w-[90px] sm:h-7 sm:w-[110px]",
 };
 
-const customSlugs = new Set(["govos-esubmission", "liveperson", "care-homepay", "netspend", "bright-healthcare", "docsquad", "athenawell", "athenahealth", "patient-io"]);
+const customSlugs = new Set(["govos-esubmission", "liveperson", "care-homepay", "netspend", "bright-healthcare", "docsquad", "athenawell", "athenahealth", "patient-io", "volusion-admin"]);
 
 export function generateStaticParams() {
   return projects
