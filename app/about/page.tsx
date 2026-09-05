@@ -86,6 +86,17 @@ const TIGHT_CLEAR = "!pt-10 sm:!pt-12 lg:!pt-[var(--nav-clear)] !pb-6 sm:!pb-8 l
  *  100px+ of fixed side padding eats too much of a phone's width. */
 const TIGHT_CLEAR_RAIL = `${TIGHT_CLEAR} !px-6 sm:!px-12 lg:!pl-[100px] lg:!pr-[min(16%,120px)]`;
 
+/** One row of circle photos. auto-fit means the browser fits whole columns
+ *  and drops to two (then one) rather than wrapping a row unevenly; 190px is
+ *  the floor a circle may shrink to before a column is dropped. */
+const PHOTO_ROW = (gap: number): React.CSSProperties => ({
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))",
+  justifyItems: "center",
+  alignItems: "center",
+  gap,
+});
+
 function Photo({
   src,
   alt,
@@ -109,12 +120,10 @@ function Photo({
   // force a CSS grid track wider than its column (the "I Love What I Do"
   // panel's 400px photo pushing its text off the right edge at tablet
   // widths). clamp() shrinks it smoothly down to a sane floor instead.
-  const width = `clamp(${Math.round(size * 0.37)}px, ${(size * 0.087).toFixed(1)}vw, ${size}px)`;
-
   return (
     <div
-      className="relative aspect-square shrink-0 overflow-hidden rounded-full bg-black/5 min-w-0"
-      style={{ width, maxWidth: width, transform: flip ? "scaleX(-1)" : undefined }}
+      className="relative aspect-square w-full min-w-0 overflow-hidden rounded-full bg-black/5"
+      style={{ maxWidth: `min(${size}px, 26vh)`, transform: flip ? "scaleX(-1)" : undefined }}
     >
       {crop ? (
         // eslint-disable-next-line @next/next/no-img-element -- exact Figma
@@ -154,7 +163,7 @@ function StoryPanel({
   return (
     <Panel width={VIEW} pad="center" className={`items-center ${TIGHT_CLEAR}`}>
       <div
-        className={`mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 sm:grid-cols-2 sm:gap-20 ${
+        className={`mx-auto grid w-full max-w-[1100px] items-center gap-10 sm:grid-cols-2 sm:gap-20 ${
           reverse ? "sm:[&>*:first-child]:order-2" : ""
         }`}
       >
@@ -220,7 +229,7 @@ function StackPanel({
   textWidth?: string;
 }) {
   const photoRow = (
-    <SlideIn className="flex flex-col items-center sm:flex-row sm:flex-wrap" style={{ gap: photoGap }}>
+    <SlideIn className="w-full" style={PHOTO_ROW(photoGap)}>
       {photos.map((p) => (
         <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} crop={p.crop} flip={p.flip} />
       ))}
@@ -240,7 +249,7 @@ function StackPanel({
   );
   return (
     <Panel width={VIEW} pad="rail" className={TIGHT_CLEAR_RAIL}>
-      <div className="flex w-full max-w-[min(1000px,90vw)] flex-col gap-8 sm:gap-10">
+      <div className="flex w-full max-w-[1000px] flex-col gap-8 sm:gap-10">
         {photosPosition === "top" ? (
           <>
             {photoRow}
@@ -274,21 +283,21 @@ function CollectionsPanel({
 }) {
   return (
     <Panel width={VIEW} pad="rail" className={TIGHT_CLEAR_RAIL}>
-      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-8">
-        <div className="flex flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-[30px]">
+      <div className="flex w-full max-w-[1150px] flex-col gap-8">
+        <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-[30px]">
           <SlideIn className="w-[260px] max-w-full">
             <h2 className="text-[clamp(1.75rem,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em]">
               {heading}
             </h2>
           </SlideIn>
-          <SlideIn delay={80} className="flex flex-col items-center gap-[40px] sm:flex-row sm:flex-wrap">
+          <SlideIn delay={80} className="w-full" style={PHOTO_ROW(40)}>
             {rowOne.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
         </div>
-        <div className="flex flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-16">
-          <SlideIn delay={140} className="flex flex-col items-center gap-[40px] sm:flex-row sm:flex-wrap">
+        <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-16">
+          <SlideIn delay={140} className="w-full" style={PHOTO_ROW(40)}>
             {rowTwo.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
             ))}
@@ -323,10 +332,10 @@ function PackagingPanel({
 }) {
   return (
     <Panel width={VIEW} pad="rail" className={TIGHT_CLEAR_RAIL}>
-      <div className="flex w-full max-w-[min(1150px,94vw)] flex-col gap-8">
+      <div className="flex w-full max-w-[1150px] flex-col gap-8">
         {topRow && (
-          <div className="flex flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-16">
-            <SlideIn className="flex flex-col items-center gap-[40px] sm:flex-row sm:flex-wrap">
+          <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-16">
+            <SlideIn className="w-full" style={PHOTO_ROW(40)}>
               {topRow.map((p) => (
                 <Photo key={p.src} src={p.src} alt={p.alt} size={250} crop={p.crop} flip={p.flip} />
               ))}
@@ -338,7 +347,7 @@ function PackagingPanel({
             )}
           </div>
         )}
-        <SlideIn delay={topRow ? 140 : 0} className="flex flex-col items-center gap-[40px] sm:flex-row sm:flex-wrap">
+        <SlideIn delay={topRow ? 140 : 0} className="w-full" style={PHOTO_ROW(40)}>
           <div className="w-[250px] max-w-full">
             <h2 className="text-[clamp(1.75rem,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em]">
               {heading}
@@ -374,7 +383,7 @@ export default function AboutPage() {
       <HorizontalScroll>
         {/* ── 1 — INTRO — Molly Francis (now the opening panel, per Figma) ── */}
         <Panel id="title" width={VIEW} pad="center" className="items-center !pt-20 sm:!pt-24">
-          <div className="mx-auto grid w-full max-w-[min(1100px,94vw)] items-center gap-10 sm:grid-cols-2 sm:gap-14">
+          <div className="mx-auto grid w-full max-w-[1100px] items-center gap-10 sm:grid-cols-2 sm:gap-14">
             <SlideIn className="min-w-0">
               <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-full bg-black/5" style={{ maxWidth: 400 }}>
                 <Image
