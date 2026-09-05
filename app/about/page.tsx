@@ -424,22 +424,6 @@ export default function AboutPage() {
                 individual designers to elevate their craft while
                 continuously shipping high-impact individual work.
               </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <a
-                  href="https://www.mollyfrancis.com/s/Molly-Francis-Product-Designer-Researcher-and-Leader-Resume-1.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-h-11 items-center rounded-full bg-[#141414] px-7 py-3 text-sm font-semibold text-[#f5f5f5] transition-opacity hover:opacity-80"
-                >
-                  Résumé ↗
-                </a>
-                <Link
-                  href="/contact"
-                  className="inline-flex min-h-11 items-center rounded-full border border-[#141414]/30 px-7 py-3 text-sm font-semibold transition-opacity hover:opacity-60"
-                >
-                  Say hi
-                </Link>
-              </div>
             </SlideIn>
           </div>
         </Panel>
