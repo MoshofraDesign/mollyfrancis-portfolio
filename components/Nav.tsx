@@ -34,7 +34,7 @@ export default function Nav() {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className="relative z-50 bg-white"
     >
-      <div className="w-full px-6 lg:px-10 h-32 flex items-center justify-between">
+      <div className="w-full px-6 md:px-8 lg:px-10 h-24 md:h-28 lg:h-32 flex items-center justify-between">
         <Link href="/" className="group">
           <Logo variant="lockup" size={64} />
         </Link>

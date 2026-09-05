@@ -369,11 +369,26 @@ body::before {
    about and contact shells plus the project thumbnail grids, so content
    lines up down the page instead of each section inventing its own inset.
    Same geometry as Tailwind's `mx-auto max-w-7xl px-6 lg:px-10`. */
+/* Work thumbnails are query containers: the logo, the hover copy and their
+   insets are all sized in cqw (a share of the tile's own width), so a tile
+   looks the same at every breakpoint instead of drifting with the viewport. */
+.thumb-cq {
+  container-type: inline-size;
+}
+
 .site-rail {
   margin-inline: auto;
   width: 100%;
   max-width: 80rem;
   padding-inline: 1.5rem;
+}
+/* Tablet used to inherit the phone's 24px inset all the way to 1024, so the
+   thumbnail grid sat tight against the edges on an iPad while the nav had
+   its own spacing. One step in between. */
+@media (min-width: 768px) {
+  .site-rail {
+    padding-inline: 2rem;
+  }
 }
 @media (min-width: 1024px) {
   .site-rail {

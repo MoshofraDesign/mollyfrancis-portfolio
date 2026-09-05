@@ -28,7 +28,7 @@ export default function CareGrid({ projects }: Props) {
         <Link
           key={project.slug}
           href={`/work/${project.slug}`}
-          className={`group block ${WORK_THUMB_TILE}`}
+          className={`group thumb-cq block ${WORK_THUMB_TILE}`}
         >
           <Image
             src={project.thumbnail}
@@ -47,9 +47,9 @@ export default function CareGrid({ projects }: Props) {
           {/* Default state: client's white SVG logo, centered — only
               rendered once a logo asset actually exists for this project. */}
           {project.logo && (
-            <div className="absolute inset-0 flex items-center justify-center p-6 opacity-100 transition-opacity duration-300 ease-out group-hover:opacity-0 sm:p-8">
+            <div className="absolute inset-0 flex items-center justify-center p-[7cqw] opacity-100 transition-opacity duration-300 ease-out group-hover:opacity-0">
               <div
-                className="relative h-full w-full max-h-36 max-w-[85%]"
+                className="relative h-full w-full max-h-[33cqw] max-w-[85%]"
                 style={{ transform: `scale(${project.logoScale ?? 1})` }}
               >
                 {/* unoptimized: the optimizer only passes SVGs through with
@@ -72,11 +72,11 @@ export default function CareGrid({ projects }: Props) {
               per line rather than left on `leading-relaxed`: at the 20px
               subtitle that was 32.5px of line height, which read as a gap
               between lines rather than a paragraph. */}
-          <div className="absolute inset-0 flex flex-col justify-center p-6 text-left opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 sm:p-8">
-            <p className="font-jost text-lg font-bold leading-[1.15] text-white sm:text-xl md:text-2xl lg:text-[28px]">
+          <div className="absolute inset-0 flex flex-col justify-center p-[7cqw] text-left opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100">
+            <p className="font-jost text-[clamp(0.95rem,7.5cqw,1.75rem)] font-bold leading-[1.15] text-white">
               {project.title}
             </p>
-            <p className="mt-2 max-w-[36ch] font-jost text-sm leading-[1.3] text-white/85 sm:mt-3 sm:text-base md:text-lg lg:text-[20px]">
+            <p className="mt-[2.5cqw] max-w-[36ch] font-jost text-[clamp(0.7rem,4.6cqw,1.25rem)] leading-[1.3] text-white/85">
               {project.subtitle}
             </p>
           </div>
