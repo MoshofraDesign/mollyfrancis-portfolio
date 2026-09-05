@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, CENTER_BELOW_MARK } from "@/components/v2/CaseStudyKit";
+import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, CENTER_BELOW_MARK, CAPTION } from "@/components/v2/CaseStudyKit";
 
 /**
  * DocSquad — Figma deck (Portfolio › 4553:21862), left to right:
@@ -259,7 +259,12 @@ export default function DocSquadCaseStudy() {
             the panel's overflow-hidden clip the bottom. The still fallback
             keeps object-cover, since that asset does match 977x681. */}
         <ScreenPanel>
-          <div className="relative aspect-[1400/1056] w-full max-w-[977px] lg:absolute lg:left-1/2 lg:top-[132px] xl:top-[146px] 2xl:top-[165px] lg:w-[695px] xl:w-[868px] 2xl:w-[1042px] lg:max-w-none lg:-translate-x-1/2 lg:aspect-auto lg:h-[524px] xl:h-[655px] 2xl:h-[786px] lg:max-h-[var(--panel-media-max-h)]">
+          {/* Wrapper carries the placement so the caption can sit under the
+              clip and travel with it. On CENTER_BELOW_MARK like the rest of
+              the page rather than the old stepped tops (132/146/165), which
+              also stops the pair hanging off the bottom on a short window. */}
+          <div className={`w-full max-w-[977px] lg:absolute lg:left-1/2 lg:w-[695px] xl:w-[868px] 2xl:w-[1042px] lg:max-w-none lg:-translate-x-1/2 ${CENTER_BELOW_MARK}`}>
+          <div className="relative aspect-[1400/1056] w-full lg:aspect-auto lg:h-[524px] xl:h-[655px] 2xl:h-[786px] lg:max-h-[var(--panel-media-max-h)]">
             {desktopVideo ? (
               <AutoplayVideo src={desktopVideo} className="h-full w-full rounded-[10px] object-contain" />
             ) : (
@@ -273,6 +278,10 @@ export default function DocSquadCaseStudy() {
               />
             )}
           </div>
+            <p className={`mt-5 text-center ${CAPTION}`}>
+              Provider Portal &ndash; Desktop
+            </p>
+          </div>
         </ScreenPanel>
 
         {/* 5 — FOUR PHONES — same treatment as the Netspend "user-test
@@ -281,7 +290,7 @@ export default function DocSquadCaseStudy() {
             sprite. No drop shadow: the screens are already outlined and the
             shadow only muddied the magenta behind them. */}
         <ScreenPanel>
-          <div className="mx-auto w-full max-w-[min(1100px,94vw)] lg:absolute lg:left-1/2 lg:top-1/2 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2">
+          <div className={`mx-auto w-full max-w-[min(1100px,94vw)] lg:absolute lg:left-1/2 lg:w-auto lg:max-w-none lg:-translate-x-1/2 ${CENTER_BELOW_MARK}`}>
             <div className="grid grid-cols-2 items-end justify-items-center gap-4 sm:gap-6 lg:flex lg:flex-nowrap lg:gap-8">
               {PHONE_CROPS.map((phone) => (
                 <SlideIn key={phone.alt}>
@@ -305,27 +314,33 @@ export default function DocSquadCaseStudy() {
                 </SlideIn>
               ))}
             </div>
-            <p className="mt-5 text-center text-[clamp(1rem,1.2vw,1.2rem)] font-medium text-white">
-              Provider App
+            <p className={`mt-5 text-center ${CAPTION}`}>
+              Provider Portal &ndash; Mobile
             </p>
           </div>
         </ScreenPanel>
 
         {/* 6 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
         <ScreenPanel>
-          <div /* Centred in the space below the parked mark rather than pinned to a
-                 fixed top: at 1440 the old top of 192 left it 3px under the
-                 mark with 293px of empty field beneath. top-1/2 plus half the
-                 nav band splits that space evenly. A step larger too. */
-              className="relative aspect-[720/519] w-full max-w-[720px] overflow-hidden rounded-[10px] lg:absolute lg:left-[256px] xl:left-[320px] 2xl:left-[384px] lg:top-[calc(50%_+_var(--nav-clear)/6)] lg:h-[437px] xl:h-[484px] 2xl:h-[545px] lg:w-[598px] xl:w-[746px] 2xl:w-[896px] lg:max-w-none lg:aspect-auto lg:-translate-y-1/2">
-            <Image
-              src={`${ASSET}/icons.png`}
-              alt="Custom illustration and icon set for the DocSquad design system"
-              fill
-              sizes="(max-width: 1023px) 90vw, 50vw"
-              className="object-cover"
-              unoptimized
-            />
+          {/* Wrapper carries the placement so the caption travels with the
+                 grid. On CENTER_BELOW_MARK like every other block on this
+                 page — it used to carry its own nav-clear/6 offset, a one-off
+                 tuned before the shared rule existed, which put it 26px above
+                 where the text sections and the phones sit. */}
+          <div className={`w-full max-w-[720px] lg:absolute lg:left-[256px] xl:left-[320px] 2xl:left-[384px] lg:w-[598px] xl:w-[746px] 2xl:w-[896px] lg:max-w-none ${CENTER_BELOW_MARK}`}>
+            <div className="relative aspect-[720/519] w-full overflow-hidden rounded-[10px] lg:aspect-auto lg:h-[437px] xl:h-[484px] 2xl:h-[545px]">
+              <Image
+                src={`${ASSET}/icons.png`}
+                alt="Custom illustration and icon set for the DocSquad design system"
+                fill
+                sizes="(max-width: 1023px) 90vw, 50vw"
+                className="object-cover"
+                unoptimized
+              />
+            </div>
+            <p className={`mt-5 text-center ${CAPTION}`}>
+              Custom Illustrations for provider and patient apps
+            </p>
           </div>
         </ScreenPanel>
 
