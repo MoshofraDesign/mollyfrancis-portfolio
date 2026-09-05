@@ -115,12 +115,12 @@ export default function ConsumerHealthCaseStudy() {
               105px from the left edge and 215px from the right at 1400 —
               visibly left-heavy, since the artwork is narrower than the
               rail-to-rail span it was drawn for. */}
-          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,1186px)] lg:absolute lg:left-1/2 lg:top-[252px] xl:top-[280px] 2xl:top-[315px] lg:mx-0 lg:w-[843px] xl:w-[1054px] 2xl:w-[1265px] lg:max-w-none lg:-translate-x-1/2">
+          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,1038px)] lg:absolute lg:left-1/2 lg:top-[252px] xl:top-[280px] 2xl:top-[315px] lg:mx-0 lg:w-[843px] xl:w-[1054px] 2xl:w-[1265px] lg:max-w-[calc((100dvh_-_276px)_*_1.6796)] xl:max-w-[calc((100dvh_-_304px)_*_1.6796)] 2xl:max-w-[calc((100dvh_-_339px)_*_1.6796)] lg:-translate-x-1/2">
             <Image
               src={`${ASSET}/hero.png`}
               alt="Redesigned patient portal dashboard on desktop and mobile"
-              width={1186}
-              height={650}
+              width={1038}
+              height={618}
               priority
               unoptimized
               className="h-auto w-full"
