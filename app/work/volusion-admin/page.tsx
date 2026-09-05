@@ -54,6 +54,19 @@ const jost = Jost({
 const SLUG = "volusion-admin";
 const BRAND = "#8759F2";
 const LOGO = "/logos/volusion.svg";
+/**
+ * The hero uses a tightly-cropped copy of the same mark.
+ *
+ * volusion.svg is a 738x294 viewBox with the artwork sitting at 100,10 and
+ * measuring 539x277 — 100 units of transparent padding down the left. So
+ * a box at left/top 100px positioned the PADDING at 100,100 and put the
+ * visible mark at roughly 168,107, which is why it didn't line up with
+ * every other project's large mark. volusion-tight.svg is the same paths
+ * on a viewBox of "100 10 539 277", so its ink starts at 0,0 and 100px
+ * means 100px. The padded original stays in use everywhere its inset is
+ * harmless or wanted — the parked mark, the work thumb, the Up next band.
+ */
+const HERO_LOGO = "/logos/volusion-tight.svg";
 const ASSET = "/work/volusion";
 
 /**
@@ -275,13 +288,12 @@ export default function VolusionCaseStudy() {
           id="title"
           className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
         >
-          {/* The box is wider and taller than Figma's 367x188 on purpose:
-              volusion.svg is a 738x294 viewBox whose ink fills only about
-              74% of the width, so object-contain fits by height and a 496x198
-              box draws the mark at Figma's size. */}
-          <div className="relative z-10 aspect-[496/198] w-[min(100%,320px)] sm:w-[min(100%,400px)] lg:absolute lg:left-[100px] lg:top-[100px] lg:aspect-auto lg:h-[158px] lg:w-[396px] xl:h-[178px] xl:w-[446px] 2xl:h-[198px] 2xl:w-[496px]">
+          {/* Box == mark, so left/top 100px lands where every other project's
+              does. Heights match what the padded asset was already drawing
+              (149/168/187 of visible mark), widths at its 1.946 aspect. */}
+          <div className="relative z-10 aspect-[539/277] w-[min(100%,234px)] sm:w-[min(100%,292px)] lg:absolute lg:left-[100px] lg:top-[100px] lg:aspect-auto lg:h-[149px] lg:w-[290px] xl:h-[168px] xl:w-[327px] 2xl:h-[187px] 2xl:w-[364px]">
             <Image
-              src={LOGO}
+              src={HERO_LOGO}
               alt="Volusion"
               fill
               unoptimized
@@ -303,15 +315,16 @@ export default function VolusionCaseStudy() {
 
           {/* Hero composite — the frame has only the wordmark and copy, so
               this takes the empty lower two-thirds. Bottom-anchored and
-              right-set, and sized off --figma-u rather than a percentage of
-              the panel: the cut-out is 866x553, and at a plain vw width a
-              short wide window would have scaled it tall enough to run up
-              into the copy. u is pinned by whichever axis is tighter, so it
-              shrinks with the viewport instead. */}
+              horizontally centred (left-1/2 + -translate-x-1/2 rather than
+              a right inset), and sized off --figma-u rather than a
+              percentage of the panel: the cut-out is 866x553, and at a plain
+              vw width a short wide window would have scaled it tall enough
+              to run up into the copy. u is pinned by whichever axis is
+              tighter, so it shrinks with the viewport instead. */}
           {hasHero && (
             <SlideIn
               delay={160}
-              className="relative z-0 mt-4 w-full max-w-[560px] self-center lg:absolute lg:bottom-0 lg:right-[71px] xl:right-[89px] 2xl:right-[107px] lg:mt-0 lg:w-[calc(866_*_var(--figma-u))] lg:max-w-none"
+              className="relative z-0 mt-4 w-full max-w-[560px] self-center lg:absolute lg:bottom-0 lg:left-1/2 lg:mt-0 lg:w-[calc(866_*_var(--figma-u))] lg:max-w-none lg:-translate-x-1/2"
             >
               <Image
                 src={hero}
