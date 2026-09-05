@@ -393,9 +393,13 @@ export default function BrightHealthcareCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className={`${STAT_ROW} mx-auto`}>
             <div className="grid gap-10 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
+              {/* Grouped by kind rather than by where the figure came
+                  from: both dollar figures under Savings, both time figures
+                  under Time saved, both counts under Users. $800K moved out
+                  of Time saved and 4 hrs/day moved into it. */}
               <SlideIn>
                 <h2 className={META_LABEL}>
-                  Usage
+                  Savings
                 </h2>
                 <p className="mt-5 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
                   $1.9m in savings
@@ -403,18 +407,18 @@ export default function BrightHealthcareCaseStudy() {
                 <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
                   Scaled monthly usage to 9-10K a month
                 </p>
+                <p className="mt-8 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
+                  $800K in savings
+                </p>
+                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
+                  7 minutes per case for clinicians reviewing cases
+                </p>
               </SlideIn>
               <SlideIn delay={80}>
                 <h2 className={META_LABEL}>
                   Time saved
                 </h2>
                 <p className="mt-5 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
-                  $800K in savings
-                </p>
-                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
-                  7 minutes per case for clinicians reviewing cases
-                </p>
-                <p className="mt-8 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
                   4 Hours per day saved
                 </p>
                 <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
@@ -430,12 +434,6 @@ export default function BrightHealthcareCaseStudy() {
                 </p>
                 <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
                   22K providers logged in
-                </p>
-                <p className="mt-8 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2.3rem] xl:text-[2.8rem] 2xl:text-[2.8rem] font-semibold leading-tight tracking-[-0.03em]">
-                  16.6k unique visitors
-                </p>
-                <p className="mt-2 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-snug text-white">
-                  Since go-live
                 </p>
               </SlideIn>
             </div>
