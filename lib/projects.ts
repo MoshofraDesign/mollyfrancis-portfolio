@@ -1065,7 +1065,6 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
     ],
     timing: [
       { value: "March – July 2021", label: "6 months" },
-      { value: "Weeks", label: "15%+ shift to portal after go-live" },
     ],
     tools: ["Figma", "Jira", "Confluence", "Miro", "Pendo", "Dovetail"],
     projected: [
