@@ -1082,7 +1082,6 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
     ],
     timing: [
       { value: "2022–2023", label: "Rebuild across desktop + native" },
-      { value: "< 2 min", label: "Routine visit diagnosis target" },
     ],
     tools: [
       "Figma",

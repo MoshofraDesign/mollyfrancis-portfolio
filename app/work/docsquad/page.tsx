@@ -250,11 +250,18 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 4 — DESKTOP. Figma 4669:14416: centered, 232≈, 183 / 977×681 */}
+        {/* 4 — DESKTOP. Figma 4669:14416: centered, 232≈, 183 / 977×681
+            The clip governs the box, not the frame: provider-desktop.mp4 is
+            1400x1056 (1.3258) against the frame's 977x681 (1.4346), so the
+            Figma heights would have letterboxed it against bg-black. Heights
+            are the widths at the clip's own aspect — 524/655/786 — with a
+            max-height so a short window scales it down rather than letting
+            the panel's overflow-hidden clip the bottom. The still fallback
+            keeps object-cover, since that asset does match 977x681. */}
         <ScreenPanel>
-          <div className="relative aspect-[977/681] w-full max-w-[977px] lg:absolute lg:left-1/2 lg:top-[132px] xl:top-[146px] 2xl:top-[165px] lg:w-[695px] xl:w-[868px] 2xl:w-[1042px] lg:max-w-none lg:-translate-x-1/2 lg:aspect-auto lg:h-[490px] xl:h-[545px] 2xl:h-[613px]">
+          <div className="relative aspect-[1400/1056] w-full max-w-[977px] lg:absolute lg:left-1/2 lg:top-[132px] xl:top-[146px] 2xl:top-[165px] lg:w-[695px] xl:w-[868px] 2xl:w-[1042px] lg:max-w-none lg:-translate-x-1/2 lg:aspect-auto lg:h-[524px] xl:h-[655px] 2xl:h-[786px] lg:max-h-[var(--panel-media-max-h)]">
             {desktopVideo ? (
-              <AutoplayVideo src={desktopVideo} className="h-full w-full rounded-[10px] bg-black" />
+              <AutoplayVideo src={desktopVideo} className="h-full w-full rounded-[10px] object-contain" />
             ) : (
               <Image
                 src={`${ASSET}/desktop-app.png`}
@@ -269,16 +276,17 @@ export default function DocSquadCaseStudy() {
         </ScreenPanel>
 
         {/* 5 — FOUR PHONES — same treatment as the Netspend "user-test
-            phones" panel: grid of individually framed screens (border +
-            drop shadow), bottom-aligned, with an uppercase caption below,
-            instead of one flat cropped sprite. */}
+            phones" panel: grid of individually framed screens, bottom-
+            aligned, with a caption below, instead of one flat cropped
+            sprite. No drop shadow: the screens are already outlined and the
+            shadow only muddied the magenta behind them. */}
         <ScreenPanel>
           <div className="mx-auto w-full max-w-[min(1100px,94vw)] lg:absolute lg:left-1/2 lg:top-1/2 lg:w-auto lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2">
             <div className="grid grid-cols-2 items-end justify-items-center gap-4 sm:gap-6 lg:flex lg:flex-nowrap lg:gap-8">
               {PHONE_CROPS.map((phone) => (
                 <SlideIn key={phone.alt}>
                   <div
-                    className="relative overflow-hidden rounded-xl border border-white/10 shadow-[0_12px_48px_rgba(0,0,0,0.35)]"
+                    className="relative overflow-hidden rounded-xl border border-white/10"
                     style={{ width: phone.width, height: 470, maxWidth: "42vw", maxHeight: "70vw" }}
                   >
                     {/* Sprite crop matches Figma 4553:21877–21880 (not next/image fill). */}
@@ -297,7 +305,7 @@ export default function DocSquadCaseStudy() {
                 </SlideIn>
               ))}
             </div>
-            <p className="mt-5 text-center text-[11px] font-medium uppercase tracking-[0.16em] text-white/45">
+            <p className="mt-5 text-center text-[clamp(1rem,1.2vw,1.2rem)] font-medium text-white">
               Provider App
             </p>
           </div>
@@ -335,8 +343,13 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 8 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at center, top 50%+20 */}
-        <ScreenPanel width="lg:w-[min(100vw,44rem)]">
+        {/* 8 — PORTRAIT. Figma 4622:11969 is 950×1000; circle 600 at center, top 50%+20
+            34rem, not 44: the circle caps at 472 and is centred, so a 704
+            panel left 116px of empty field either side of it — and the
+            Outcome copy that follows starts 71px into its own panel, so the
+            visible gap between the portrait and "Outcome" was 187px. At 544
+            it's 107. */}
+        <ScreenPanel width="lg:w-[min(100vw,34rem)]">
           <div /* No lg:w-[600px] alongside lg:size-[...]: both are lg utilities of
                  equal specificity, and w-* won in the bundle, so the box came
                  out 600 wide by 567 tall — an ellipse under rounded-full.
