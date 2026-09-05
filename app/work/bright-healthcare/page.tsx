@@ -161,31 +161,11 @@ export default function BrightHealthcareCaseStudy() {
                 />
               </div>
             </SlideIn>
-            {/* The horizontal padding is what the decorative quote marks hang
-                in — they sit outside the text box with right-full/left-full,
-                so trimming it clips them. */}
+            {/* No decorative marks on this one. The side padding went with
+                them — it existed only as the gutter they hung in, so keeping
+                it would leave the copy inset for no reason. */}
             <SlideIn delay={80} className="relative w-full max-w-[min(44rem,86vw)]">
-              {/* Both marks hang off the paragraph itself rather than off the
-                  first and last words. That way they land on lines, not on
-                  wherever the text happens to break: top-0 puts the opening
-                  mark on line one and top-[2.4em] puts the closing mark on
-                  line three (two lines at leading-[1.2]). em units resolve
-                  against the paragraph's own font size, so the pair scales
-                  with the type, and the 3.9em side padding is the gutter they
-                  sit in — an absolute child is placed against the padding
-                  box, so the mark clears the text by the gutter minus its
-                  own 3.125em width.
-                  Asymmetric gutters on purpose: quote.svg's ink fills its
-                  box exactly, so the two marks really are mirror images and
-                  a symmetric 3.9em gave each 0.775em. It still read tight on
-                  the left, because left-aligned text is flush at that edge
-                  while the right edge is ragged — the longest line stops
-                  about 0.6em short of the padding box, so the closing mark
-                  looked like it had ~1.4em. 4.5em on the left matches that
-                  optically instead of matching it on paper. */}
-              <p className="relative pl-[4.5em] pr-[3.9em] text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
-                <QuoteMark className="left-0 top-1/2 h-[2.47em] w-[3.125em] -translate-y-1/2" />
-                <QuoteMark close className="right-0 top-1/2 h-[2.47em] w-[3.125em] -translate-y-1/2" />
+              <p className="relative text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
                 Faxing in the world of digital experiences can cause providers and their staff added work, frustration, loss of trust in the company, and more importantly time away from caring for members.
               </p>
             </SlideIn>
