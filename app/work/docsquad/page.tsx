@@ -166,7 +166,7 @@ export default function DocSquadCaseStudy() {
             />
           </div>
 
-          <SlideIn className="relative z-10 flex max-w-[308px] flex-col gap-4 text-white lg:absolute lg:bottom-[74px] xl:bottom-[82px] 2xl:bottom-[93px] lg:left-[100px] lg:h-[150px] xl:h-[166px] 2xl:h-[187px] lg:max-w-[219px] xl:max-w-[274px] 2xl:max-w-[329px] lg:justify-end">
+          <SlideIn className="relative z-10 flex max-w-[308px] flex-col gap-2 text-white lg:absolute lg:bottom-[74px] xl:bottom-[82px] 2xl:bottom-[93px] lg:left-[100px] lg:h-[150px] xl:h-[166px] 2xl:h-[187px] lg:max-w-[219px] xl:max-w-[274px] 2xl:max-w-[329px] lg:justify-end">
             <p className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.28]">
               Virtual Care Telehealth App
             </p>

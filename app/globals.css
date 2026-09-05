@@ -19,18 +19,22 @@
    *
    * Flat, not height-aware. It was clamp(1.25rem, 5vh, 4.75rem) for a
    * while so short viewports could hand the space back to the content,
-   * but the Close control sits at a fixed offset (pt-5/sm:pt-7 plus a
-   * 48px hit area, so it runs to roughly 64px down) — and any park inset
-   * below ~76px puts the logo level with it. On a 1440x900 window the
-   * clamp resolved to 45px and the logo overlapped Close outright.
+   * but that resolved to 45px on a 1440x900 window and the media below
+   * rode up under the mark.
    *
-   * 4.75rem/76px is the Figma inset: it leaves a little padding under
-   * Close, and lines the parked logo up with each hero's large logo
-   * (lg:top-[72px]) so the small mark arrives where the big one was.
+   * 50px, matching --nav-park-left: the parked mark sits at 50,50. It was
+   * 76px, the Figma inset, on the reasoning that anything shallower put
+   * the mark level with the Close control (pt-5/sm:pt-7 plus a 48px hit
+   * area, so Close runs to roughly 64px down). Being level with Close is
+   * only a collision if they can touch, and they can't — Close is pinned
+   * to the right edge and the mark to the left — so it was an aesthetic
+   * call, and Molly's is 50.
    *
    * --nav-logo-h is the tallest sticky logo on any case study — Care.com's
-   * is 50px per Figma 4918:10267 — so one value clears them all. */
-  --nav-park-top: 4.75rem;
+   * is 50px per Figma 4918:10267 — so one value clears them all. Dropping
+   * park-top by 26 takes --nav-clear from 142 to 116, which hands those
+   * 26px back to every panel's media. */
+  --nav-park-top: 50px;
   --nav-logo-h: 3.125rem;
   --nav-clear: calc(var(--nav-park-top) + var(--nav-logo-h) + 1rem);
 

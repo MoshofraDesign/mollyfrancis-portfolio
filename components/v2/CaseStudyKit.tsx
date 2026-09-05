@@ -35,8 +35,20 @@ export const GUTTER = "px-[clamp(1.5rem,4vw,4.5rem)]";
 
 /* Content width scale — three steps, nothing in between. Each is capped in
  * vw as well as px so it still breathes inside the gutter on small screens. */
-/** Readable text measure — ~860px at typical desktop, scales with vw. */
-export const MEASURE = "w-full max-w-[min(54rem,86vw)]";
+/**
+ * Readable text measure for section copy — headings, paragraphs, bullet
+ * lists. 700px flat, per Molly; it was 54rem/864.
+ *
+ * Multi-column blocks must NOT use this — four stat columns inside 700
+ * leaves 175px each. Those take STAT_ROW below, which is the width this
+ * token used to be, so nothing narrows that wasn't meant to.
+ */
+export const MEASURE = "w-full max-w-[min(700px,86vw)]";
+/**
+ * Stat rows, persona rows and the closing meta panel — anything laying
+ * columns side by side rather than setting prose.
+ */
+export const STAT_ROW = "w-full max-w-[min(54rem,86vw)]";
 /**
  * Media / screenshot cap. `panel-media` (globals.css) centers it and, at
  * lg+, caps the images inside to the room left between the nav band and the
@@ -225,6 +237,21 @@ export const INTRO_SUBTEXT =
  * steps instead of jumping at each breakpoint. Care.com's hero title is the
  * same 2.25rem ceiling, taken from its frame's 36px.
  */
+/**
+ * Space between a hero's title and its subhead, on every horizontal case
+ * study.
+ *
+ * The pair had drifted from 8px to 24px across the ten of them — Netspend
+ * 8, Bright and GovOS 12, DocSquad and Volusion 16 (20 at lg), athenaWell
+ * 24 — so how tightly a hero read depended on which project you opened.
+ * Netspend's 8 is the reference, since that's the hero the others were
+ * asked to match.
+ *
+ * Set on the flex wrapper rather than as a margin on the subhead, so the
+ * pair has one mechanism wherever it appears.
+ */
+export const HERO_COPY_GAP = "gap-2";
+
 export const HERO_TITLE =
   "font-semibold leading-[1.28] tracking-[-0.01em] [text-wrap:pretty] text-[1.375rem] sm:text-[1.5rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
 export const HERO_SUBTEXT =
@@ -409,7 +436,7 @@ export function CaseStudyMetaPanel({
 }) {
   return (
     <Panel width={VIEW} pad="center">
-      <div className={`${MEASURE} mx-auto`}>
+      <div className={`${STAT_ROW} mx-auto`}>
         <SlideIn>
           <div className="flex flex-col gap-14 sm:gap-16">
             <div className={`grid gap-10 ${showProjected ? "sm:grid-cols-3" : "sm:grid-cols-2"} sm:gap-x-14 lg:gap-x-20`}>

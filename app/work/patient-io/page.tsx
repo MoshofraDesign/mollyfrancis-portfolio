@@ -11,7 +11,7 @@ import {
   Heading,
   Body,
   VIEW,
-  MEASURE,
+  STAT_ROW,
   NextProjectLink,
   CaseStudyMetaPanel,
 } from "@/components/v2/CaseStudyKit";
@@ -271,7 +271,7 @@ export default function PatientIoCaseStudy() {
 
         {/* ── IMPACT ────────────────────────────────────────────────────── */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
+          <div className={`${STAT_ROW} mx-auto`}>
             <Heading>Impact</Heading>
             <div className="mt-10 w-full space-y-8">
               {metrics.map((m, i) => (

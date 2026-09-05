@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Netspend Rewards & UCM — Molly Francis",
@@ -27,7 +27,6 @@ const ASSET = "/work/netspend";
 /** Full-viewport panels (Fresh Direct–style); content is centered inside. */
 const VIEW = "lg:w-screen";
 /** ~132rem on their fluid root ≈ 860px — readable measure that scales. */
-const MEASURE = "w-full max-w-[min(54rem,86vw)]";
 const MEDIA = "w-full max-w-[min(950px,90vw)]";
 
 const H_DISPLAY =
@@ -117,7 +116,7 @@ export default function NetspendCaseStudy() {
                 className="size-10 sm:size-[50px]"
               />
             </div>
-            <SlideIn className="flex flex-col gap-2 text-white">
+            <SlideIn className={`flex flex-col text-white ${HERO_COPY_GAP}`}>
               <p className="font-semibold leading-[1.28] text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem]">
                 Netspend Rewards
               </p>

@@ -12,7 +12,7 @@ import {
   Heading,
   Body,
   VIEW,
-  MEASURE,
+  STAT_ROW,
   MEDIA,
   NextProjectLink,
   CaseStudyMetaPanel,
@@ -136,7 +136,7 @@ export default function AthenaWellCaseStudy() {
             <Image src={LOGO} alt="athenaWell" fill unoptimized priority className="object-contain object-left" />
           </div>
 
-          <div className="flex flex-col gap-6 lg:max-w-[389px] xl:max-w-[486px] 2xl:max-w-[584px]">
+          <div className="flex flex-col gap-2 lg:max-w-[389px] xl:max-w-[486px] 2xl:max-w-[584px]">
             <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.5rem] 2xl:text-[3.5rem] font-semibold leading-[1.1]">
               Standalone apps for patients and care teams
             </p>
@@ -165,7 +165,7 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── USER TYPES ───────────────────────────────────────────────── */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
+          <div className={`${STAT_ROW} mx-auto`}>
             <Heading>User Types</Heading>
             <div className="mt-10 grid w-full gap-10 sm:grid-cols-2 sm:gap-14">
               <SlideIn>
@@ -207,7 +207,7 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── PERSONAS ──────────────────────────────────────────────────── */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
+          <div className={`${STAT_ROW} mx-auto`}>
             <Heading>Three Patient Personas</Heading>
             <div className="mt-10 grid w-full gap-10 sm:grid-cols-3 sm:gap-8">
               {personas.map((p, i) => (
@@ -262,7 +262,7 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── IMPACT ────────────────────────────────────────────────────── */}
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
+          <div className={`${STAT_ROW} mx-auto`}>
             <Heading>Impact</Heading>
             <div className="mt-10 w-full space-y-8">
               {metrics.map((m, i) => (

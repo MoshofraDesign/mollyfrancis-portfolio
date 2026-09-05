@@ -382,7 +382,7 @@ export default function GovOSCaseStudy() {
             />
             {/* No reveal here — the title panel is what you land on, so its
                 copy is simply present rather than animating in. */}
-            <div>
+            <div className="flex flex-col gap-2">
               {/* Had three stacked generations of size utilities. Tailwind
                   emits each once and the last set won, so the title rendered
                   at 15px and the paragraph below at 11px. Fixing that put
@@ -393,7 +393,7 @@ export default function GovOSCaseStudy() {
               <p className={`text-white ${HERO_TITLE}`}>
                 GovOS eSubmission
               </p>
-              <p className={`mt-3 max-w-[46ch] text-white ${HERO_SUBTEXT}`}>
+              <p className={`max-w-[46ch] text-white ${HERO_SUBTEXT}`}>
                 A cloud-based digital portal that allows external organizations, title
                 companies, law firms, and individuals to securely submit official
                 documents and records (such as land deeds or legal filings) directly to

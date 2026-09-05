@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
-import { Panel, TextPanel, Heading, Body, VIEW, MEASURE, MEDIA, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEDIA, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 /**
  * Bespoke horizontal-scroll case study for LivePerson/SocialConnect,
@@ -259,7 +259,7 @@ export default function LivePersonCaseStudy() {
             the panel's true middle — fine for media that needs the headroom,
             wrong for a short stat row. */}
         <Panel width={VIEW} pad="center" className="lg:!pb-[var(--nav-clear)]">
-          <div className={`${MEASURE} mx-auto`}>
+          <div className={`${STAT_ROW} mx-auto`}>
             <Heading>Impact</Heading>
             {/* Across, not down — the same shape as every other project's
                 stat row, and it stops four figures needing a full screen of

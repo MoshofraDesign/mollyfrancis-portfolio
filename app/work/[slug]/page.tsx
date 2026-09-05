@@ -14,7 +14,7 @@ import {
   WORK_THUMB_TILE,
 } from "@/lib/workGrid";
 import {
-  MEASURE,
+  STAT_ROW,
   MEDIA,
   VIEW,
   chunk,
@@ -92,7 +92,7 @@ function MetricsPanel({
 }) {
   return (
     <Panel width={VIEW} pad="center" className={className}>
-      <div className={`${MEASURE} mx-auto`}>
+      <div className={`${STAT_ROW} mx-auto`}>
         <Heading>Impact</Heading>
         <div className="mt-10 grid w-full grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
           {metrics.map((m, i) => (

@@ -14,7 +14,7 @@ import {
   Heading,
   Body,
   VIEW,
-  MEASURE,
+  STAT_ROW,
   MEDIA,
   HERO_TITLE,
   HERO_SUBTEXT,
@@ -304,7 +304,7 @@ export default function VolusionCaseStudy() {
 
           <SlideIn
             delay={80}
-            className="relative z-10 flex max-w-[46ch] flex-col gap-4 lg:absolute lg:left-[37.7%] lg:top-[14.2%] lg:max-w-[min(630px,40vw)] lg:gap-5"
+            className="relative z-10 flex max-w-[46ch] flex-col gap-2 lg:absolute lg:left-[37.7%] lg:top-[14.2%] lg:max-w-[min(630px,40vw)]"
           >
             <p className={HERO_TITLE}>E-Commerce Software Solution</p>
             <p className={HERO_SUBTEXT}>
@@ -382,6 +382,8 @@ export default function VolusionCaseStudy() {
             INTRO_SUBTEXT at a 1440 canvas. Trial/Store live inside the
             diagram — see CategoryVenn. */}
         <Panel width={VIEW} pad="center">
+          {/* The diagram is capped below the column so the heading keeps the
+              frame's 670 while the Venn itself reads smaller. */}
           <div className="mx-auto w-full max-w-[min(670px,86vw)] text-center">
             <SlideIn>
               <h2 className={INTRO_TITLE}>Google Analytics</h2>
@@ -389,7 +391,7 @@ export default function VolusionCaseStudy() {
             <SlideIn delay={80}>
               <p className={`mt-3 ${INTRO_SUBTEXT}`}>Most Popular Categories</p>
             </SlideIn>
-            <SlideIn delay={160} className="mt-8">
+            <SlideIn delay={160} className="mx-auto mt-8 w-full max-w-[min(520px,72vw)]">
               <CategoryVenn />
             </SlideIn>
           </div>
@@ -447,7 +449,7 @@ export default function VolusionCaseStudy() {
             every other project's numbers. !pb balances NAV_CLEAR's 142/24
             so the row centres on the panel instead of 59px below it. */}
         <Panel width={VIEW} pad="center" className="lg:!pb-[var(--nav-clear)]">
-          <div className={`${MEASURE} mx-auto`}>
+          <div className={`${STAT_ROW} mx-auto`}>
             <Heading>The Analytics</Heading>
             <div className="mt-10 grid w-full grid-cols-2 gap-8 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-12">
               {ANALYTICS.map((m, i) => (

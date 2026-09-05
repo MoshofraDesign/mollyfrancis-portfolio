@@ -25,7 +25,11 @@ const ACCENT = "#FFAF00";
 const LOGO = "/logos/bright-healthcare.svg";
 const ASSET = "/work/bright-healthcare";
 const VIEW = "lg:w-screen";
-const MEASURE = "w-full max-w-[min(54rem,86vw)]";
+/** Prose measure — 700, matching the kit. */
+const MEASURE = "w-full max-w-[min(700px,86vw)]";
+/** The numbers row lays three columns side by side, so it keeps the wider
+ *  width prose used to have. */
+const STAT_ROW = "w-full max-w-[min(54rem,86vw)]";
 
 const H_DISPLAY =
   "font-semibold leading-[1.15] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
@@ -103,9 +107,9 @@ export default function BrightHealthcareCaseStudy() {
               217 at 1440) and the two overlapped. The top is derived from the
               mark's height now, so the 28px gap holds at every width, and the
               pair is on the shared HERO scale the other projects use. */}
-          <SlideIn className="relative z-10 max-w-[466px] text-white lg:absolute lg:left-[100px] lg:top-[216px] xl:top-[228px] 2xl:top-[240px] lg:max-w-[640px]">
+          <SlideIn className="relative z-10 flex max-w-[466px] flex-col gap-2 text-white lg:absolute lg:left-[100px] lg:top-[216px] xl:top-[228px] 2xl:top-[240px] lg:max-w-[640px]">
             <p className={HERO_TITLE}>Prior Authorization Portal</p>
-            <p className={`mt-3 max-w-[46ch] ${HERO_SUBTEXT}`}>
+            <p className={`max-w-[46ch] ${HERO_SUBTEXT}`}>
               Enables providers to electronically submit prior authorization requests and view all requests and their statuses
             </p>
           </SlideIn>
@@ -169,8 +173,17 @@ export default function BrightHealthcareCaseStudy() {
                   against the paragraph's own font size, so the pair scales
                   with the type, and the 3.9em side padding is the gutter they
                   sit in — an absolute child is placed against the padding
-                  box, so the 3.125em mark clears the text by 0.775em. */}
-              <p className="relative px-[3.9em] text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
+                  box, so the mark clears the text by the gutter minus its
+                  own 3.125em width.
+                  Asymmetric gutters on purpose: quote.svg's ink fills its
+                  box exactly, so the two marks really are mirror images and
+                  a symmetric 3.9em gave each 0.775em. It still read tight on
+                  the left, because left-aligned text is flush at that edge
+                  while the right edge is ragged — the longest line stops
+                  about 0.6em short of the padding box, so the closing mark
+                  looked like it had ~1.4em. 4.5em on the left matches that
+                  optically instead of matching it on paper. */}
+              <p className="relative pl-[4.5em] pr-[3.9em] text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.2] text-white [text-wrap:pretty]">
                 <QuoteMark className="left-0 top-1/2 h-[2.47em] w-[3.125em] -translate-y-1/2" />
                 <QuoteMark close className="right-0 top-1/2 h-[2.47em] w-[3.125em] -translate-y-1/2" />
                 Faxing in the world of digital experiences can cause providers and their staff added work, frustration, loss of trust in the company, and more importantly time away from caring for members.
@@ -387,7 +400,7 @@ export default function BrightHealthcareCaseStudy() {
         </Panel>
 
         <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
+          <div className={`${STAT_ROW} mx-auto`}>
             <div className="grid gap-10 sm:grid-cols-3 sm:gap-x-14 lg:gap-x-20">
               <SlideIn>
                 <h2 className={META_LABEL}>

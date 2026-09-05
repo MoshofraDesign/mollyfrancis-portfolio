@@ -17,11 +17,11 @@ type Props = {
    */
   parkLeft?: number;
   /**
-   * Parked top inset (px). Defaults to the --nav-park-top token, which
-   * is height-aware (clamp(1.25rem, 5vh, 4.75rem)) so the band shrinks on
-   * short viewports. Overriding this with a raw number opts out of that,
-   * and out of the --nav-clear inset panels size themselves against —
-   * so keep any override at or below the token's 76px ceiling.
+   * Parked top inset (px). Defaults to the --nav-park-top token, which is
+   * a flat 50px — the same inset as parkLeft, so the mark parks at 50,50.
+   * Overriding this with a raw number opts out of the --nav-clear inset
+   * panels size themselves against, which is how media ends up sliding
+   * under the mark; prefer changing the token.
    */
   parkTop?: number;
   /**

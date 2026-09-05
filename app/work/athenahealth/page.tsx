@@ -25,6 +25,8 @@ const ACCENT = "#4800b5";
 const LOGO = "/logos/athenahealth.svg";
 const ASSET = "/work/athenahealth";
 const VIEW = "lg:w-screen";
+/** Only ever wraps the Usage / Time saved / Users grid on this page, so it
+ *  stays at the wider row width rather than the kit's 700 prose measure. */
 const MEASURE = "w-full max-w-[min(54rem,86vw)]";
 const MEDIA = "w-full max-w-[min(950px,90vw)]";
 
