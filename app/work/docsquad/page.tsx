@@ -180,7 +180,15 @@ export default function DocSquadCaseStudy() {
             />
           </div>
 
-          <SlideIn className="relative z-10 flex max-w-[308px] flex-col gap-2 text-white lg:absolute lg:bottom-[82px] lg:left-[100px] lg:h-auto lg:max-w-[274px]">
+          {/* 260ms and a shorter travel: this is the copy you land on, so the
+              default 700ms roll-in read as a lag before the page settled.
+              Everything further down the page keeps the 700ms, where the
+              motion is doing its job as a panel scrolls in. */}
+          <SlideIn
+            duration={260}
+            distance={24}
+            className="relative z-10 flex max-w-[308px] flex-col gap-2 text-white lg:absolute lg:bottom-[82px] lg:left-[100px] lg:h-auto lg:max-w-[274px]"
+          >
             <p className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.28]">
               Virtual Care Telehealth App
             </p>
@@ -189,16 +197,14 @@ export default function DocSquadCaseStudy() {
             </p>
           </SlideIn>
 
-          {/* Heights are the widths at hero.png's own 1.6841 aspect (Figma's
-              891x529 is the same ratio), because the stepped pairs had
-              drifted off it: 634x381 is 1.664, but 792x423 is 1.873 and
-              950x476 is 1.996 — so at xl and 2xl the box was far wider than
-              the artwork and object-cover ate the top and bottom of the
-              laptop. object-contain as well, so any residual mismatch
-              letterboxes rather than crops, and a max-height so a short
-              window scales the whole thing down instead of letting the
-              panel's overflow-hidden clip its bottom. */}
-          <div className="relative z-0 mx-auto aspect-[891/529] w-full max-w-[min(92vw,891px)] lg:absolute lg:left-[341px] xl:left-[426px] 2xl:left-[511px] lg:top-[251px] xl:top-[279px] 2xl:top-[314px] lg:mx-0 lg:h-[376px] xl:h-[470px] 2xl:h-[564px] lg:max-h-[var(--panel-media-max-h)] lg:w-[634px] xl:w-[792px] 2xl:w-[950px] lg:max-w-none lg:aspect-auto">
+          {/* Aspect-driven and width-capped, like the interview composite.
+              hero.png is 2026x1203 (1.6841); the box used to pair stepped
+              heights with a max-height, so once the cap bit the height shrank
+              while the width held and the box disagreed with the artwork. The
+              aspect sets the height now, and the width is what gets capped.
+              One top inset rather than three (251/279/314), a touch higher, so
+              it can't drift as the breakpoints change. */}
+          <div className="relative z-0 mx-auto aspect-[2026/1203] w-full max-w-[min(92vw,891px)] lg:absolute lg:left-[341px] xl:left-[426px] 2xl:left-[511px] lg:top-[228px] lg:mx-0 lg:w-[634px] xl:w-[792px] 2xl:w-[950px] lg:max-w-[calc(var(--panel-media-max-h)_*_1.6841)]">
             <Image
               src={`${ASSET}/hero.png`}
               alt="DocSquad provider desktop, native app, and watch"
@@ -280,7 +286,12 @@ export default function DocSquadCaseStudy() {
               the page rather than the old stepped tops (132/146/165), which
               also stops the pair hanging off the bottom on a short window. */}
           <div className={`w-full max-w-[977px] lg:absolute lg:left-1/2 lg:w-[695px] xl:w-[868px] 2xl:w-[1042px] lg:max-w-none lg:-translate-x-1/2 ${CENTER_BELOW_MARK}`}>
-          <div className="relative aspect-[1400/1056] w-full lg:aspect-auto lg:h-[524px] xl:h-[655px] 2xl:h-[786px] lg:max-h-[var(--panel-media-max-h)]">
+          {/* overflow-hidden + rounded on the BOX, not just the video. The
+                radius was on the <video> element, but object-contain paints
+                the clip inside that element, so the rounded corners were on an
+                invisible edge. The box aspect matches the clip exactly, so
+                rounding the box rounds what you actually see. */}
+            <div className="relative aspect-[1400/1056] w-full overflow-hidden rounded-[10px] lg:aspect-auto lg:h-[524px] xl:h-[655px] 2xl:h-[786px] lg:max-h-[var(--panel-media-max-h)]">
             {desktopVideo ? (
               <AutoplayVideo src={desktopVideo} className="h-full w-full rounded-[10px] object-contain" />
             ) : (
@@ -378,17 +389,22 @@ export default function DocSquadCaseStudy() {
 
         {/* 9 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
         <ScreenPanel>
-          {/* Aspect and stepped heights both track the asset: the replacement
-              export trims to 921x704 (1.308), not the old 920x683 (1.347),
-              so the previous box would have cropped it under object-cover.
-              Heights are the widths at 1.308. */}
-          <div className="relative mx-auto aspect-[921/704] w-full max-w-[921px] lg:absolute lg:left-[185px] xl:left-[231px] 2xl:left-[277px] lg:top-[130px] xl:top-[144px] 2xl:top-[162px] lg:mx-0 lg:h-[500px] xl:h-[625px] 2xl:h-[750px] lg:w-[654px] xl:w-[818px] 2xl:w-[981px] lg:max-h-[var(--panel-media-max-h)] lg:max-w-none lg:aspect-auto">
+          {/* Aspect-driven, width-capped — no explicit height.
+              It had a stepped height AND a max-height, which is the crop: the
+              moment the cap bit, the height shrank while the width stayed at
+              654/818/981, so the box went wider than the artwork's 1.308 and
+              object-cover ate the top and bottom. Letting the aspect set the
+              height means the box can never disagree with the asset, and the
+              width is what gets capped instead — by the room available times
+              that aspect. object-contain as the belt, so any future mismatch
+              letterboxes rather than crops. */}
+          <div className="relative mx-auto aspect-[921/704] w-full max-w-[921px] lg:absolute lg:left-[185px] xl:left-[231px] 2xl:left-[277px] lg:top-[130px] xl:top-[144px] 2xl:top-[162px] lg:mx-0 lg:w-[654px] xl:w-[818px] 2xl:w-[981px] lg:max-w-[calc(var(--panel-media-max-h)_*_1.3082)]">
             <Image
               src={`${ASSET}/interview-dashboard.png`}
               alt="Patient interview overlapping the logged-in DocSquad dashboard"
               fill
               sizes="(max-width: 1023px) 92vw, 64vw"
-              className="object-cover"
+              className="object-contain"
               unoptimized
             />
           </div>

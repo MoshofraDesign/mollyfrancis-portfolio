@@ -9,6 +9,12 @@ type Props = {
   delay?: number;
   /** How far it travels, in px. */
   distance?: number;
+  /**
+   * Transition length, in ms. 700 suits copy that arrives as a panel
+   * scrolls past; a landing panel's own copy wants less, since the visitor
+   * is already looking at it when it starts.
+   */
+  duration?: number;
   /** Element to render as — use "li" inside a list to keep the HTML valid. */
   as?: "div" | "li" | "span";
   /** Merged with the animation's own inline style (e.g. a dynamic max-width
@@ -43,6 +49,7 @@ export default function SlideIn({
   className = "",
   delay = 0,
   distance = 56,
+  duration = 700,
   as = "div",
   style: styleProp,
 }: Props) {
@@ -112,7 +119,7 @@ export default function SlideIn({
             ...styleProp,
             opacity: shown ? 1 : 0,
             transform: shown ? "translate(0, 0)" : rest,
-            transition: `opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
+            transition: `opacity ${duration}ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform ${duration}ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
             willChange: "opacity, transform",
           },
     },
