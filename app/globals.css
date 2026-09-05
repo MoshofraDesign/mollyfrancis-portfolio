@@ -301,13 +301,19 @@ body::before {
     line-height: calc(46 * var(--figma-u));
   }
 
-  /* 410,305 and 744,389. Full-length exports, so they run past the frame's
-     bottom edge exactly as Figma draws them and the panel's overflow-hidden
-     does the clipping. */
+  /* 410,305 and 744,389.
+     The exports are full-length, and at Figma's own top of 30.5% they ran
+     past the frame's bottom edge — 17% of each phone, at every window size,
+     clipped by the panel's overflow-hidden. Raised to 21% and scaled to 370u
+     (from 396.5), which lands them whole: 0px cut at 1490x1010, 1px at
+     1440x900, 0 at 1990x1180. The max(...,200px) floor is the mark, which is
+     a fixed 83px tall at top 100 and overlaps this column horizontally
+     (100..567 against a phone starting near 424) — so the phone must clear
+     183 in absolute px, not as a fraction of a short viewport. */
   main .care-hero-phone-l {
     left: 28.472%;
-    top: 30.5%;
-    width: calc(396.5 * var(--figma-u));
+    top: max(21%, 200px);
+    width: calc(370 * var(--figma-u));
   }
   /* Anchored to the LEFT phone in --figma-u, not to its own percentage of
      the panel. Both phones used to take a percentage left (28.472% and
@@ -319,9 +325,9 @@ body::before {
      Figma's overlap exactly, at any window shape. Same for the 84-unit
      vertical stagger (389 - 305). */
   main .care-hero-phone-r {
-    left: calc(28.472% + 334 * var(--figma-u));
-    top: calc(30.5% + 84 * var(--figma-u));
-    width: calc(407 * var(--figma-u));
+    left: calc(28.472% + 312 * var(--figma-u));
+    top: calc(max(21%, 200px) + 78 * var(--figma-u));
+    width: calc(380 * var(--figma-u));
   }
 
   /* 100,877. */

@@ -160,8 +160,13 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── WHAT IS ATHENAWELL ───────────────────────────────────────── */}
         <TextPanel>
-          <Heading intro>What is athenaWell?</Heading>
-          <Body intro>{project.overview}</Body>
+          <Heading intro>The care plan lived in a paper folder.</Heading>
+          <Body intro>
+            A patient seeing several specialists had their plan spread across
+            phone calls, folders and systems that didn&apos;t talk. Care teams
+            needed one place to build and track it. Patients needed to know what
+            to do today, and how to reach someone.
+          </Body>
         </TextPanel>
 
         {/* ── USER TYPES ───────────────────────────────────────────────── */}
@@ -209,7 +214,7 @@ export default function AthenaWellCaseStudy() {
         {/* ── PERSONAS ──────────────────────────────────────────────────── */}
         <Panel width={VIEW} pad="center">
           <div className={`${STAT_ROW} mx-auto`}>
-            <Heading>Three Patient Personas</Heading>
+            <Heading>The same plan, three different patients.</Heading>
             <div className="mt-10 grid w-full gap-10 sm:grid-cols-3 sm:gap-8">
               {personas.map((p, i) => (
                 <SlideIn key={p.name} delay={100 + i * 90}>
@@ -237,6 +242,19 @@ export default function AthenaWellCaseStudy() {
           caption="Daily patient tasks with a progress indicator testers found motivating"
         />
 
+        {/* ── RESONANCE TESTING. Molly's own note from projects.ts
+               approach[]: she expected tabbed care plans to confuse patients
+               and they didn't. Worth a panel of its own — a portfolio that
+               only reports the assumptions that held isn't showing judgment. */}
+        <TextPanel width={VIEW}>
+          <Heading>One assumption didn&apos;t survive testing.</Heading>
+          <Body>
+            Five interviews, walking each person through a working Care Plan
+            prototype. I expected the tabbed plan to confuse people. It
+            didn&apos;t — testers preferred it, so it shipped as designed.
+          </Body>
+        </TextPanel>
+
         {/* ── APOLLO CHAT BOT ───────────────────────────────────────────── */}
         <TextPanel>
           <Heading>Apollo Chat Bot</Heading>
@@ -248,7 +266,7 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── CARE TEAMS BEYOND THE CLINIC ─────────────────────────────── */}
         <TextPanel>
-          <Heading>Helping Care Teams Connect Beyond the Clinic</Heading>
+          <Heading>Care that reaches past the clinic.</Heading>
           <Body>
             Patients needed easier ways to reach their care teams. I designed apps that brought visits
             beyond the clinic — virtual, phone, and flexible scheduling.

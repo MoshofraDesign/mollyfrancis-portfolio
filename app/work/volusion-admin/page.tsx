@@ -381,8 +381,13 @@ export default function VolusionCaseStudy() {
 
         {/* ── PROBLEM — Figma 4724:8390 (999-wide copy on the 100px rail) */}
         <TextPanel width={VIEW}>
-          <Heading intro>Problem</Heading>
-          <Body intro>{project.overview}</Body>
+          <Heading intro>Thirty thousand shops, one admin.</Heading>
+          <Body intro>
+            Volusion&apos;s admin ran real businesses — orders, catalog,
+            storefront, onboarding — for tens of thousands of independent
+            merchants. It had grown a module at a time and stopped keeping up
+            with itself.
+          </Body>
         </TextPanel>
 
         {/* ── STOREFRONT EDITOR — sets up the clip that follows. Written
@@ -427,8 +432,13 @@ export default function VolusionCaseStudy() {
 
         {/* ── GOAL — Figma 4724:8397 */}
         <TextPanel width={VIEW}>
-          <Heading>Goal</Heading>
-          <Body>{project.outcome}</Body>
+          <Heading>Patterns, not screens.</Heading>
+          <Body>
+            So I designed for the parts that repeat — data-heavy tables, bulk
+            actions, a navigation that could take the next module — rather
+            than redrawing each feature. Those shipped across the whole
+            merchant base.
+          </Body>
         </TextPanel>
 
         {/* ── GOOGLE ANALYTICS — Figma 4724:8401

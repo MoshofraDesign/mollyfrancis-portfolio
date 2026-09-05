@@ -142,27 +142,33 @@ export default function PatientIoCaseStudy() {
 
         {/* ── WHAT IS PATIENT IO ───────────────────────────────────────── */}
         <TextPanel>
-          <Heading intro>What is Patient IO?</Heading>
-          <Body>{project.overview}</Body>
+          <Heading intro>Between visits, nobody knew.</Heading>
+          <Body>
+            A patient goes home with a regimen to follow. Their care team
+            doesn&apos;t hear anything until the next appointment — by which
+            point weeks of missed doses have already happened.
+          </Body>
         </TextPanel>
 
-        {/* ── PROBLEM ───────────────────────────────────────────────────── */}
+        {/* ── WHAT IT DID. The overview, said as what the product closes
+               rather than as a definition. */}
         <TextPanel>
-          <Heading>The Problem</Heading>
+          <Heading>So the plan reported on itself.</Heading>
           <Body>
-            Patients managing complex treatment regimens had no easy way to track medications and
-            vitals between office visits, and their care team had no visibility into whether the plan
-            was actually being followed.
+            Patient IO tracked medications, vitals and adherence between
+            visits and pushed it all back to the clinician — so the care team
+            saw the weeks they used to miss.
           </Body>
         </TextPanel>
 
         {/* ── APPROACH ──────────────────────────────────────────────────── */}
         <TextPanel>
-          <Heading>Approach</Heading>
+          <Heading>Every pill had to look like the real one.</Heading>
           <Body>
-            I designed the medications, vitals, and care-plan adherence experience end to end, then
-            built a component system that rendered each pill correctly from structured Epocrates data —
-            scaling cleanly to thousands of drugs instead of one-off custom art.
+            People recognise their medication by sight, so a generic capsule
+            icon is worse than useless. I built a component system that drew
+            each pill from structured Epocrates data — thousands of drugs,
+            no custom art.
           </Body>
         </TextPanel>
 
@@ -243,7 +249,7 @@ export default function PatientIoCaseStudy() {
 
         {/* ── THE TEAM ──────────────────────────────────────────────────── */}
         <TextPanel>
-          <Heading>The Team</Heading>
+          <Heading>Solo designer, fourteen people.</Heading>
           <Body>
             As the solo designer in a nimble 14-person team, I owned the end-to-end user experience for
             Patient IO&rsquo;s mobile and desktop care platform &mdash; medication tracking, vitals,
