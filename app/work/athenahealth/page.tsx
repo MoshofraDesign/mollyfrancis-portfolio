@@ -267,10 +267,10 @@ export default function ConsumerHealthCaseStudy() {
                   <h2 className={META_LABEL}>
                     Usage
                   </h2>
-                  <p className="mt-3 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
+                  <p className="mt-1.5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     25M patients
                   </p>
-                  <p className="mt-1.5 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
+                  <p className="mt-1 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
                     Registered on the portal
                   </p>
                 </div>
@@ -279,16 +279,16 @@ export default function ConsumerHealthCaseStudy() {
                   <h2 className={META_LABEL}>
                     Time saved
                   </h2>
-                  <p className="mt-3 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
+                  <p className="mt-1.5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     40% faster
                   </p>
-                  <p className="mt-1.5 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
+                  <p className="mt-1 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
                     Time to find appointments, meds, and billing
                   </p>
-                  <p className="mt-6 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
+                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     2 taps
                   </p>
-                  <p className="mt-1.5 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
+                  <p className="mt-1 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
                     From landing to the next action on a phone
                   </p>
                 </div>
@@ -297,16 +297,16 @@ export default function ConsumerHealthCaseStudy() {
                   <h2 className={META_LABEL}>
                     Users
                   </h2>
-                  <p className="mt-3 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
+                  <p className="mt-1.5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     2.1× completion
                   </p>
-                  <p className="mt-1.5 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
+                  <p className="mt-1 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
                     Mobile tasks vs the old Test Results dump
                   </p>
-                  <p className="mt-6 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
+                  <p className="mt-5 text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.92rem] xl:text-[2.35rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.03em]">
                     28% fewer tickets
                   </p>
-                  <p className="mt-1.5 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
+                  <p className="mt-1 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.95rem] 2xl:text-[1.05rem] leading-[1.45] text-white/55">
                     &ldquo;Where is my...&rdquo; support contacts
                   </p>
                 </div>

@@ -502,14 +502,14 @@ export default function GovOSCaseStudy() {
             section read as far wider than its content. 585 = the 440 the
             longest value needs plus the panel's own 72 gutters. */}
         <Panel width="lg:w-[min(100vw,585px)]">
-          <div className="flex w-full max-w-[440px] flex-col gap-6 text-white">
+          <div className="flex w-full max-w-[440px] flex-col gap-5 text-white">
             {[
               ["Citizen Completion Rate", "42% to 86%"],
               ["Validation Errors", "34% to 8%"],
               ["Time Saved", "14.5min to 4.2 min"],
             ].map(([label, value], i) => (
               <SlideIn key={label} delay={i * 90}>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-1.5">
                   <p className="font-[Helvetica,Arial,sans-serif] text-white text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.331rem] xl:text-[1.664rem] 2xl:text-[1.875rem] font-normal leading-[1.45] lg:leading-[1.45]">
                     {label}
                   </p>
