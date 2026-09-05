@@ -9,6 +9,12 @@ import { contrastColor } from "@/lib/contrastColor";
 import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, CAPTION, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
 
 /**
+ * LivePerson/SocialConnect, told as a story the way DocSquad is: it opens
+ * on the person (a care agent answering one customer in six dashboards),
+ * names the design problem the artwork shows (a complaint that starts in
+ * public and has to end in private), then the move (one transcript
+ * instead of a seventh tool), then self-service setup, then the numbers.
+ *
  * Bespoke horizontal-scroll case study for LivePerson/SocialConnect,
  * matching the Figma reference at node 4477:14881 — same mechanics as the
  * GovOS page (HorizontalScroll + StickyNav + snap panels), hand-authored
@@ -193,17 +199,14 @@ export default function LivePersonCaseStudy() {
           </div>
         </section>
 
-        {/* ── SOCIAL MEDIA MANAGEMENT ──────────────────────────────────── */}
+        {/* ── 1. THE AGENT'S DESK. Opens on the person, the way DocSquad
+               opens on the moonlighting clinician. */}
         <TextPanel>
-          <Heading intro>Social Media Management</Heading>
+          <Heading intro>Six tabs, one customer.</Heading>
           <Body>
-            To streamline LivePerson&rsquo;s omnichannel support, I redesigned
-            the LivePerson SocialConnect agent workspace to unify disparate
-            public and private social threads into a single, cohesive
-            interface. By implementing contextual post previews, intuitive
-            automated routing indicators, and clear threading for
-            asynchronous conversations, the new design significantly reduced
-            agent cognitive load.
+            A care agent answered the same customer in six places — email,
+            tweets, DMs, posts, chats, texts — each in its own dashboard. Every
+            channel meant another tool to learn and another window to check.
           </Body>
         </TextPanel>
 
@@ -221,19 +224,25 @@ export default function LivePersonCaseStudy() {
           bare
         />
 
-        {/* ── SINGLE PLATFORM ───────────────────────────────────────────── */}
+        {/* ── 3. THE HARD PART. Public-to-private is the design problem the
+               panel above shows, so it gets named here. */}
         <TextPanel>
-          <Heading>
-            Connecting those channels to a single conversation management
-            platform
-          </Heading>
+          <Heading>A complaint starts in public and has to finish in private.</Heading>
           <Body>
-            Most brands support customer inquiries across a variety of
-            channels — emails, tweets, DMs, chats, posts, texts — but have to
-            use multiple services and dashboards to manage everything. By
-            connecting those channels to a single conversation management
-            platform, brands can dramatically increase agent efficiency and
-            ensure they have access to standardized content and reporting.
+            Someone tweets. The reply has to move to a DM, keep the thread
+            intact, and stay on brand. No tool handled that handoff — so I
+            built the conversation surface around it, public and private in one
+            transcript.
+          </Body>
+        </TextPanel>
+
+        {/* ── 4. THE MOVE. Said before the composite that shows it. */}
+        <TextPanel>
+          <Heading>So every channel became one conversation.</Heading>
+          <Body>
+            Rather than a seventh dashboard, SocialConnect folded the channels
+            into the messaging product agents already had open. One transcript,
+            whoever the customer is and wherever they turned up.
           </Body>
         </TextPanel>
 
@@ -274,11 +283,9 @@ export default function LivePersonCaseStudy() {
             </h2>
           </SlideIn>
           <Body>
-            Allows agents to connect social accounts that would be active in
-            the LiveEngage portal, with the options to assign to admin and
-            specific agents. Includes adding media content and
-            keywords/hashtags for agents to use in the social transcript when
-            replying to public and private messages.
+            Brands connect their own accounts, route each one to a team, and
+            load the phrases and media their agents reply with. Onboarding used
+            to go through us; now it doesn&apos;t.
           </Body>
         </TextPanel>
 
@@ -294,7 +301,7 @@ export default function LivePersonCaseStudy() {
         <BigImagePanel
           src="/work/liveperson/connections-self-service.webp"
           alt="Future vision — SocialConnect inside the agent workspace"
-          caption="Future Vision: Integrate the SocialConnect feature into the entire LiveEngage experience."
+          caption="Where it goes next \u2014 SocialConnect woven through the rest of LiveEngage. This vision aligned the roadmap across three product teams."
           width={1280}
           height={760}
         />
