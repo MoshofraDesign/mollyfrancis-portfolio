@@ -218,10 +218,28 @@ function hasImage(src: string): boolean {
   }
 }
 
+/**
+ * Panel width for a height-capped clip.
+ *
+ * Measured at 1070x626: --panel-media-max-h resolves to 462, so every clip
+ * is capped to 462 tall and comes out 718-781 wide — inside a full-viewport
+ * 1070 panel, that left 144-176px of dead field either side, so consecutive
+ * clips sat ~320px apart with the parked mark floating alone in the gap.
+ * That's the "break" while scrolling: it isn't a glitch, it's the panel
+ * staying a full viewport wide while the height cap shrinks the clip. It
+ * only shows on a short window, which is why resizing brings it on.
+ *
+ * Tying the width to the same token closes it at every viewport: 1.6 is the
+ * widest of the three clips' aspects (1.554, 1.596, 1.326), so the widest
+ * still clears, and 9rem is the gutter either side.
+ */
+const CLIP_PANEL =
+  "lg:w-[min(100vw,calc(var(--panel-media-max-h)_*_1.6_+_9rem))]";
+
 /** Figma 4724:8384 / 4724:8388 — 950-wide media with a centred caption. */
 function BeforeAfterPanel({ video, label }: { video: string; label: string }) {
   return (
-    <Panel width={VIEW} pad="center" className="items-center">
+    <Panel width={CLIP_PANEL} pad="center" className="items-center">
       <SlideIn className={`mx-auto flex w-full flex-col items-center ${MEDIA}`}>
         <div className="w-full overflow-hidden rounded-[10px]">
           <AutoplayVideo
@@ -373,7 +391,7 @@ export default function VolusionCaseStudy() {
             800, and GIF's 256-colour palette dithers the photographic hero
             of the storefront badly. Same autoplay-loop-muted behaviour. */}
         {editorFlow && (
-          <Panel width={VIEW} pad="center" className="items-center">
+          <Panel width={CLIP_PANEL} pad="center" className="items-center">
             <SlideIn className={`mx-auto w-full ${MEDIA}`}>
               <div className="w-full overflow-hidden rounded-[10px]">
                 <AutoplayVideo
