@@ -149,7 +149,7 @@ export default function ConsumerHealthCaseStudy() {
         {/* So I made a real landing */}
         <TextPanel width={VIEW}>
           <SlideIn>
-            <h2 className={H_DISPLAY}>So I made a real landing.</h2>
+            <h2 className={H_DISPLAY}>So I made a real landing page and health overview page.</h2>
           </SlideIn>
           <SlideIn delay={100}>
             <p className={BODY_CAPTION}>One dashboard. What matters up top. A clear path to everything else.</p>
