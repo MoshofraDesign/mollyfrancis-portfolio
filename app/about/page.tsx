@@ -367,7 +367,7 @@ export default function AboutPage() {
       <StickyNav
         watch="title"
         logo={<Logo variant="mark" size={64} />}
-        action={<CloseLink />}
+        action={<CloseLink large />}
         parkImmediately
       />
 
