@@ -1184,7 +1184,7 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
     timing: [{ value: "Multi-year", label: "Admin patterns & modules" }],
     /* Figma didn't exist for most of this engagement — Molly's own marks
        for the tools she actually used, in /work/volusion/tools. */
-    tools: ["Sketch", "Miro", "Zeplin"],
+    tools: ["Sketch", "InVision", "Zeplin", "Miro"],
     toolIconBase: "/work/volusion/tools",
     projected: [
       { value: "Scalable admin", label: "Tables, bulk actions, nav" },
