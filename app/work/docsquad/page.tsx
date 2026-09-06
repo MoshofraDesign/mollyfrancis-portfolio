@@ -346,7 +346,11 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 7 — ONE UI. Why the same screens appear on desktop and phone. */}
+        {/* 7 — ONE UI, and the icon sheet it introduces. The copy sets up
+               the panel that follows it now: the design-system point was
+               there, but nothing said Molly drew the icons, so beat 8
+               arrived as a sheet of shapes with only a caption to explain
+               it. */}
         <ScreenPanel>
           <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
             <SlideIn>
@@ -354,9 +358,10 @@ export default function DocSquadCaseStudy() {
             </SlideIn>
             <SlideIn delay={80}>
               <p className={BODY}>
-                I rebuilt the design system with the flow, and engineering built
-                it in Flutter. One interface now ships to desktop, iOS and
-                Android — same components, same path, wherever the shift happens.
+                I rebuilt the design system with the flow, and engineering
+                shipped it in Flutter — one interface to desktop, iOS and
+                Android. I drew the icon and illustration set that came with
+                it, for the provider app and the patient app both.
               </p>
             </SlideIn>
           </div>
@@ -381,8 +386,28 @@ export default function DocSquadCaseStudy() {
               />
             </div>
             <p className={`mt-5 text-center ${CAPTION}`}>
-              Custom Illustrations for provider and patient apps
+              The set, drawn for both apps.
             </p>
+          </div>
+        </ScreenPanel>
+
+        {/* 8.5 — THE PATIENT SIDE. The dashboard panel that follows had no
+               copy in front of it, so the one part of this work that isn't
+               Molly's own drawing — mentoring the designer who owned the
+               patient app — went unsaid. Same block shape as beat 7. */}
+        <ScreenPanel>
+          <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
+            <SlideIn>
+              <h2 className={H_DISPLAY}>The patient side had to match.</h2>
+            </SlideIn>
+            <SlideIn delay={80}>
+              <p className={BODY}>
+                Another designer owned the patient app. I mentored them
+                through it — reviewing the work and holding it to the
+                provider app&rsquo;s patterns — so a visit felt like the same
+                product from either end.
+              </p>
+            </SlideIn>
           </div>
         </ScreenPanel>
 
