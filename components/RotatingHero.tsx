@@ -77,7 +77,7 @@ const PUNCH = (x: number, y: number) =>
 /** One type spec for the rotating headline, shared by the visible line and
  *  the invisible one that reserves its height. */
 const H1_TYPE =
-  "max-w-3xl xl:w-[580px] font-jost text-3xl font-medium leading-snug text-ink sm:text-4xl md:max-w-none md:text-5xl lg:text-[55px] lg:leading-[65px]";
+  "max-w-3xl xl:w-[540px] font-jost text-3xl font-medium leading-snug text-ink sm:text-4xl md:max-w-none md:text-5xl lg:text-[55px] lg:leading-[65px]";
 
 const LONGEST_HEADLINE = headlines.reduce(
   (a, b) => (b.length > a.length ? b : a),
@@ -117,13 +117,13 @@ export default function RotatingHero() {
 
   return (
     <section className="flex min-h-[560px] items-center px-6 py-16 sm:min-h-[600px] sm:py-0 lg:min-h-[660px] lg:px-10 xl:min-h-[720px]">
-      <div className="mx-auto grid w-full max-w-[96rem] grid-cols-1 items-center gap-8 md:gap-10 lg:grid-cols-[minmax(0,440px)_1fr] lg:gap-16 xl:w-fit xl:grid-cols-[520px_580px] xl:gap-14">
+      <div className="mx-auto grid w-full max-w-[96rem] grid-cols-1 items-center gap-8 md:gap-10 lg:grid-cols-[minmax(0,480px)_1fr] lg:gap-16 xl:w-fit xl:grid-cols-[580px_540px] xl:gap-12">
         <div
           ref={portraitRef}
           onMouseMove={onPortraitMove}
           onMouseEnter={onPortraitMove}
           onMouseLeave={() => setSpot((s) => ({ ...s, on: false }))}
-          className="group relative mx-auto aspect-square w-full max-w-[min(88vw,_420px)] sm:max-w-[480px] md:max-w-[560px] lg:mx-0 lg:max-w-[440px] xl:w-[520px] xl:max-w-[520px]"
+          className="group relative mx-auto aspect-square w-full max-w-[min(88vw,_420px)] sm:max-w-[480px] md:max-w-[600px] lg:mx-0 lg:max-w-[480px] xl:w-[580px] xl:max-w-[580px]"
         >
           {/* Color photo full-bleed (the circular headshot). Soft spotlight
               follows the cursor; gray dots sit inset on top, same as Figma. */}
