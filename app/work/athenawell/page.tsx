@@ -119,17 +119,21 @@ function MediaPanel({
   if (!hasAsset(src)) return null;
   return (
     <Panel
-      /* Full-viewport, with the picture's LEFT EDGE on the same 100px rail
-         the copy panels use — so the heading's left edge and the image's
-         left edge share one x and the eye tracks a single column across the
-         seam. That alignment is what ties a beat to its screen; it survives
-         a viewport of ground in between, where a peek at the next panel
-         (which only exists when the panel happens to be narrower than the
-         window) does not.
-         The picture is capped by its own natural width — these are 1x
-         exports, and stretching a 909px screenshot across a 1220px rail
-         softens it — and, at lg, by the height the panel actually has. */
-      width={VIEW}
+      /* The picture's LEFT EDGE sits on the same 100px rail the copy panels
+         use, so a heading's left edge and its picture's left edge share one
+         x and the eye tracks a single column across the seam.
+
+         Two caps, and both matter: the picture never exceeds its own natural
+         width (these are 1x exports — drawn any larger they go soft, which
+         is worse than being small), and never exceeds the height the panel
+         has. Then the PANEL hugs whichever of those won, plus the rail and
+         the right inset. That's what keeps a big monitor from opening a field
+         of empty ground after a picture that can't grow into it.
+
+         A hugged panel is narrower than a wide window, so the next panel
+         edges into view — which is fine, because every picture on this page
+         is followed by a heading rather than another picture. */
+      width="lg:w-[min(100vw,calc(var(--beat-max-w)_+_14rem),calc(var(--panel-media-max-h)_*_var(--beat-aspect)_+_14rem))]"
       pad="rail"
       style={
         {
@@ -321,7 +325,7 @@ export default function AthenaWellCaseStudy() {
           alt="The three athenaWell persona documents — Healthy Patient, High Risk and Rising Risk"
           width={2266}
           height={1343}
-          maxWidth={1600}
+          maxWidth={2266}
         />
 
         {/* ── 8. APOLLO. Beside the copy, not under it: one portrait phone
