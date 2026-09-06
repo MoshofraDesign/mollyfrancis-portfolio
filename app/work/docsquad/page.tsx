@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, CENTER_BELOW_MARK, CAPTION, TITLE, BODY_TYPE } from "@/components/v2/CaseStudyKit";
+import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, CENTER_BELOW_MARK, CAPTION, TITLE, BODY_TYPE, HERO_TITLE, HERO_SUBTEXT } from "@/components/v2/CaseStudyKit";
 
 /**
  * DocSquad — a moonlighter-first narrative over the Figma deck's assets
@@ -178,22 +178,23 @@ export default function DocSquadCaseStudy() {
             />
           </div>
 
-          {/* 260ms and a shorter travel: this is the copy you land on, so the
-              default 700ms roll-in read as a lag before the page settled.
-              Everything further down the page keeps the 700ms, where the
-              motion is doing its job as a panel scrolls in. */}
-          <SlideIn
-            duration={260}
-            distance={24}
-            className="relative z-10 flex max-w-[308px] flex-col gap-2 text-white lg:absolute lg:bottom-[82px] lg:left-[50px] lg:h-auto lg:max-w-[274px]"
-          >
-            <p className="text-[clamp(1.9rem,2.4vw,2.6rem)] font-semibold leading-[1.1]">
-              Virtual Care Telehealth App
+          {/* No reveal on this one. It's the copy you land on, so any
+              roll-in — even the 260ms/24px one it used to have — reads as a
+              lag before the page settles rather than as motion doing a job.
+              Everything further down the page keeps its SlideIn, where a
+              panel is actually scrolling in.
+
+              Type on the shared hero pair, which it wasn't: the title was
+              on the figure size (2.6rem at 2xl) and the subtext on the
+              caption size, so DocSquad's hero read larger than every other
+              project's. */}
+          <div className="relative z-10 flex max-w-[308px] flex-col gap-2 text-white lg:absolute lg:bottom-[82px] lg:left-[50px] lg:h-auto lg:max-w-[274px]">
+            <p className={HERO_TITLE}>Virtual Care Telehealth App</p>
+            <p className={HERO_SUBTEXT}>
+              Provider desktop and native apps for doctors, nurses and staff
+              to diagnose patients, asynchronously or in a live visit.
             </p>
-            <p className="text-[clamp(1.05rem,1.25vw,1.25rem)] font-normal leading-[1.45]">
-              Provider Desktop And Native Apps For Doctors, Nurses And Staff To Diagnosis Patients With Asynchronous And Synchronous Visits.
-            </p>
-          </SlideIn>
+          </div>
 
           {/* Aspect-driven and width-capped, like the interview composite.
               hero.png is 2026x1203 (1.6841); the box used to pair stepped
