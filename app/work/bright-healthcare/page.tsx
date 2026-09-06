@@ -21,12 +21,18 @@ const jost = Jost({
   display: "swap",
 });
 
-const ACCENT = "#FFAF00";
-const LOGO = "/logos/bright-healthcare.svg";
+/* The work-grid thumbnail and the "up next" band still use the project's
+   own accent from lib/projects.ts (#FFAF00) — this pair is the PAGE only.
+   White on #FFAF00 is about 1.9:1, which fails AA at any size; #141414 on
+   #f9f9f9 is 15.3:1. */
+const PAGE_BG = "#f9f9f9";
+const INK = "#141414";
+/* The colour lockup, for the page. The white one stays the thumbnail's. */
+const LOGO = "/logos/bright-healthcare-color.svg";
 const ASSET = "/work/bright-healthcare";
 
-const H_DISPLAY = `text-white ${TITLE}`;
-const BODY = `text-white ${BODY_TYPE}`;
+const H_DISPLAY = `text-[#141414] ${TITLE}`;
+const BODY = `text-[#141414] ${BODY_TYPE}`;
 
 /**
  * The quote marks. Both quotes place these on the quote block itself and on
@@ -56,7 +62,7 @@ export default function BrightHealthcareCaseStudy() {
   return (
     <main
       className={`${jost.variable} relative`}
-      style={{ background: ACCENT, color: "#ffffff", fontFamily: "var(--font-jost), system-ui, sans-serif" }}
+      style={{ background: PAGE_BG, color: INK, fontFamily: "var(--font-jost), system-ui, sans-serif" }}
     >
       {/* The mark is 731x119, so height is what binds the box below: at
           lg:h-12 the drawn wordmark comes out 295x48, up from 221x36. */}
@@ -67,7 +73,7 @@ export default function BrightHealthcareCaseStudy() {
             <Image src={LOGO} alt="Bright HealthCare" fill unoptimized className="object-contain object-left" />
           </div>
         }
-        action={<CloseLink large className="text-white" />}
+        action={<CloseLink large className="text-[#141414]" />}
       />
 
       <HorizontalScroll>
@@ -103,7 +109,7 @@ export default function BrightHealthcareCaseStudy() {
               217 at 1440) and the two overlapped. The top is derived from the
               mark's height now, so the 28px gap holds at every width, and the
               pair is on the shared HERO scale the other projects use. */}
-          <SlideIn className={`relative z-10 flex max-w-[466px] flex-col gap-2 text-white ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[178px] lg:max-w-[640px]`}>
+          <SlideIn className={`relative z-10 flex max-w-[466px] flex-col gap-2 text-[#141414] ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[178px] lg:max-w-[640px]`}>
             <p className={HERO_TITLE}>Prior Authorization Portal</p>
             <p className={`max-w-[46ch] ${HERO_SUBTEXT}`}>
               Enables providers to electronically submit prior authorization requests and view all requests and their statuses
@@ -147,7 +153,7 @@ export default function BrightHealthcareCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className={`${MEASURE} mx-auto`}>
             <SlideIn>
-              <h2 className={`text-white ${INTRO_TITLE}`}>
+              <h2 className={`text-[#141414] ${INTRO_TITLE}`}>
                 Every prior authorization started with a fax.
               </h2>
             </SlideIn>
@@ -158,7 +164,7 @@ export default function BrightHealthcareCaseStudy() {
                 going in, nothing coming back, a month, and people retyping
                 by hand. */}
             <SlideIn delay={100}>
-              <p className={`mt-3 text-white/90 ${INTRO_SUBTEXT}`}>
+              <p className={`mt-3 text-[#141414]/90 ${INTRO_SUBTEXT}`}>
                 Nothing was checked on the way in, and nothing came back
                 out. A request could take a month to clear, and staff spent
                 their days retyping faxes by hand.
@@ -188,7 +194,7 @@ export default function BrightHealthcareCaseStudy() {
                 them — it existed only as the gutter they hung in, so keeping
                 it would leave the copy inset for no reason. */}
             <SlideIn delay={80} className={`relative ${PORTRAIT_COPY}`}>
-              <p className="relative text-[clamp(1.35rem,1.9vw,2rem)] font-normal leading-[1.45] text-white [text-wrap:pretty]">
+              <p className="relative text-[clamp(1.35rem,1.9vw,2rem)] font-normal leading-[1.45] text-[#141414] [text-wrap:pretty]">
                 Faxing in the world of digital experiences can cause providers and their staff added work, frustration, loss of trust in the company, and more importantly time away from caring for members.
               </p>
             </SlideIn>
@@ -376,7 +382,7 @@ export default function BrightHealthcareCaseStudy() {
           <div className="relative mx-auto w-full max-w-[min(72rem,92vw)]">
             <SlideIn>
               <div className="relative mx-auto w-fit max-w-full pl-[1.9em] pr-[1.6em] text-[clamp(2rem,4.5vw,4.05rem)]">
-                <p className="relative font-semibold leading-[1.1] tracking-[-0.02em] text-white">
+                <p className="relative font-semibold leading-[1.1] tracking-[-0.02em] text-[#141414]">
                   <QuoteMark className="-left-[1.85em] top-1/2 h-[0.97em] w-[1.23em] -translate-y-1/2" />
                   <QuoteMark close className="-right-[1.6em] top-1/2 h-[0.97em] w-[1.23em] -translate-y-1/2" />
                   <span className="block w-fit sm:whitespace-nowrap">
@@ -386,7 +392,7 @@ export default function BrightHealthcareCaseStudy() {
                     the authorization portal!
                   </span>
                 </p>
-                <p className="mt-6 text-[clamp(1.25rem,1.6vw,1.65rem)] italic leading-[1.45] text-white">
+                <p className="mt-6 text-[clamp(1.25rem,1.6vw,1.65rem)] italic leading-[1.45] text-[#141414]">
                   Rebecca Schweitz
                   <br />
                   VP, Clinical Performance
@@ -443,7 +449,7 @@ export default function BrightHealthcareCaseStudy() {
                 what it says. */}
             <Heading>What it saved.</Heading>
             <StatRow
-              className="text-white"
+              className="text-[#141414]"
               items={[
                 { label: "Savings", value: "$1.9m in savings", detail: "Scaled monthly usage to 9-10K a month" },
                 { label: "Clinical review", value: "$800K in savings", detail: "7 minutes per case for clinicians reviewing cases" },
@@ -456,18 +462,18 @@ export default function BrightHealthcareCaseStudy() {
 
         {/* Team / Timing / Tools last, after the numbers — the credits
             at the end rather than a detour before them. */}
-        <CaseStudyMetaPanel meta={meta} lightText showProjected={false} />
+        <CaseStudyMetaPanel meta={meta} lightText={false} showProjected={false} />
 
         {project.prototype && (
           <Panel width={END_PANEL} pad="center">
             <div className={END_MEASURE}>
               <SlideIn>
-                <h2 className={`text-white ${END_TITLE}`}>Live Figma prototype</h2>
+                <h2 className={`text-[#141414] ${END_TITLE}`}>Live Figma prototype</h2>
                 <a
                   href={project.prototype}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[clamp(1.05rem,1.25vw,1.25rem)] text-white transition-opacity hover:opacity-60"
+                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-[#141414]/50 px-8 py-3 text-[clamp(1.05rem,1.25vw,1.25rem)] text-[#141414] transition-opacity hover:opacity-60"
                 >
                   Open prototype ↗
                 </a>
