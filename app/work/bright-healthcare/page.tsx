@@ -111,8 +111,20 @@ export default function BrightHealthcareCaseStudy() {
           </SlideIn>
           </div>
 
-          {/* Screens — Figma 4622:11847: 1174×668, centered, top 435, bleeds off the bottom */}
-          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,73.4rem)] lg:absolute lg:left-1/2 lg:top-[340px] xl:top-[372px] 2xl:top-[416px] lg:mx-0 lg:w-[835px] xl:w-[1044px] 2xl:w-[1252px] lg:max-w-none lg:-translate-x-1/2">
+          {/* Screens — Figma 4622:11847: 1174×668, centered, top 435.
+              Anchored to the BOTTOM of the panel with its width capped by
+              the height that's actually left, rather than pinned to a fixed
+              top at a fixed width. It was 835/1044/1252 wide at top
+              340/372/416 — pure width steps — so the composite's height
+              (width / 1.758) was whatever it happened to be, and on a short
+              window that put its bottom edge hundreds of pixels below the
+              panel: only the top third was visible. Now the height can
+              never exceed the room under the copy (--nav-clear plus 240 for
+              the mark and the title block), so a short window scales the
+              artwork instead of cutting it in half. Centred with a
+              translate, which is safe here — this div is not a SlideIn, so
+              nothing writes an inline transform over it. */}
+          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,73.4rem)] lg:absolute lg:bottom-0 lg:left-1/2 lg:mx-0 lg:w-[min(1252px,92vw,calc((100dvh_-_var(--nav-clear)_-_240px)_*_1.758))] lg:max-w-none lg:-translate-x-1/2">
             <Image
               src={`${ASSET}/hero.png`}
               alt="Member search and authorizations dashboard in the Authorization Portal"
