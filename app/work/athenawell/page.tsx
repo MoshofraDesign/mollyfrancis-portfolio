@@ -259,7 +259,7 @@ export default function AthenaWellCaseStudy() {
               <SlideIn delay={80}>
                 <p className="mt-3 text-[clamp(1.05rem,1.3vw,1.25rem)] leading-[1.45] opacity-90">
                   Designed for three risk tiers rather than an average patient
-                  — each with its own users, story, values and goals.
+                  — each with its own values, goals and pain points.
                 </p>
               </SlideIn>
               <SlideIn
