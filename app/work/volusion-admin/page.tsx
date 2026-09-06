@@ -242,9 +242,21 @@ const CLIP_PANEL =
   "lg:w-[min(100vw,calc(950px_+_9rem),calc((var(--panel-media-max-h)_-_5rem)_*_1.6_+_9rem))]";
 
 /** Figma 4724:8384 / 4724:8388 — 950-wide media with a centred caption. */
-function BeforeAfterPanel({ video, label }: { video: string; label: string }) {
+function BeforeAfterPanel({
+  video,
+  label,
+  full = false,
+}: {
+  video: string;
+  label: string;
+  /* The panel immediately after the title stays a full viewport: a narrower
+     one settles while the parked mark is still riding in, which leaves the
+     mark hanging between the title's tail and the clip. Every later clip
+     panel hugs. */
+  full?: boolean;
+}) {
   return (
-    <Panel width={CLIP_PANEL} pad="center" className="items-center">
+    <Panel width={full ? VIEW : CLIP_PANEL} pad="center" className="items-center">
       <SlideIn className={`mx-auto flex w-full flex-col items-center ${MEDIA} ${CLIP_CAP}`}>
         <div className="w-full overflow-hidden rounded-[10px]">
           <AutoplayVideo
@@ -384,7 +396,7 @@ export default function VolusionCaseStudy() {
         {/* ── BEFORE / AFTER — Figma 4724:8383 and 4724:8387
             Both wait on their clip: the panel is skipped entirely until the
             recording is in public/work/volusion/videos/. */}
-        {before && <BeforeAfterPanel video={before} label="Before" />}
+        {before && <BeforeAfterPanel video={before} label="Before" full />}
         {after && <BeforeAfterPanel video={after} label="After" />}
 
         {/* ── PROBLEM — Figma 4724:8390 (999-wide copy on the 100px rail) */}
