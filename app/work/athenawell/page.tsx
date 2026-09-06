@@ -148,7 +148,7 @@ export default function AthenaWellCaseStudy() {
 
           <div className="relative aspect-[5/3] w-full lg:absolute lg:bottom-0 lg:right-0 lg:h-[504px] xl:h-[560px] 2xl:h-[630px] lg:w-[553px] xl:w-[691px] 2xl:w-[829px] lg:max-w-none">
             <Image
-              src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1558469800892-B0L920CQQ1NRG9FD0HAL/Patient-CarePlans-Landing+Copy+2.png"
+              src="/legacy/patient-careplans-landing-copy-2-13759d.png"
               alt="athenaWell Care Plan landing page"
               fill
               sizes="(max-width: 1024px) 92vw, 54vw"
@@ -200,7 +200,7 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── CARE TEAM SCREENSHOT ─────────────────────────────────────── */}
         <BigImagePanel
-          src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513349531314-89U1IJ39DE46WB88QYI0/Screen+Shot+2017-12-15+at+8.51.43+AM.png"
+          src="/legacy/screen-shot-2017-12-15-at-8-51-43-am-42cc08.png"
           alt="athenaWell Care Team section — testers were drawn to the video chat option"
           caption="Care Team section — testers were especially drawn to the video chat option"
         />
@@ -230,14 +230,14 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── EDUCATION CONTENT SCREENSHOT ─────────────────────────────── */}
         <BigImagePanel
-          src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513349151416-RF4TP9N5LWQVAAVQGQB7/Screen+Shot+2017-12-15+at+8.44.23+AM.png"
+          src="/legacy/screen-shot-2017-12-15-at-8-44-23-am-5606ba.png"
           alt="Education content mapped to each patient's specific health concerns"
           caption="Education content mapped to each patient's specific health concerns"
         />
 
         {/* ── DAILY TASKS SCREENSHOT ───────────────────────────────────── */}
         <BigImagePanel
-          src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513348975246-YKX6GH1QTGSD7AYQAJJ2/Screen+Shot+2017-12-15+at+8.37.37+AM.png"
+          src="/legacy/screen-shot-2017-12-15-at-8-37-37-am-7013f8.png"
           alt="Daily patient tasks with a progress indicator testers found motivating"
           caption="Daily patient tasks with a progress indicator testers found motivating"
         />

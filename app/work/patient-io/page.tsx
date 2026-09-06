@@ -130,7 +130,7 @@ export default function PatientIoCaseStudy() {
               the Figma composition instead of being corner-anchored. */}
           <div className="relative mx-auto aspect-[5/3] w-full max-w-[900px] flex-1 lg:mt-4">
             <Image
-              src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965854643-56K9O8S9XMT6ZK4P38J8/Devices.png"
+              src="/legacy/devices-6cb33b.png"
               alt="Patient IO across devices"
               fill
               sizes="(max-width: 1024px) 92vw, 62vw"
@@ -212,7 +212,7 @@ export default function PatientIoCaseStudy() {
                   the build environment), so a plain <img> keeps its natural
                   aspect ratio instead of being forced into a guessed box. */}
               <img
-                src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511968056680-OYW7HQTA481IA0KX2EV3/image-asset.png"
+                src="/legacy/image-asset-06a4d4.png"
                 alt="Medications module"
                 loading="lazy"
                 className="h-auto max-h-[55vh] w-auto max-w-[92vw] rounded-md object-contain lg:max-w-[46vw]"
@@ -223,7 +223,7 @@ export default function PatientIoCaseStudy() {
             </SlideIn>
             <SlideIn delay={90} className="flex flex-col items-center gap-4">
               <img
-                src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0a7d94ff-64a3-4bb9-9202-85911eb02bbc/Screen+Shot+2022-11-02+at+8.03.55+PM.png"
+                src="/legacy/screen-shot-2022-11-02-at-8-03-55-pm-31c5b5.png"
                 alt="Pill-shape design system, generated from Epocrates data"
                 loading="lazy"
                 className="h-auto max-h-[40vh] w-auto max-w-[92vw] rounded-md object-contain lg:max-w-[46vw]"

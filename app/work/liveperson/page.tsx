@@ -242,7 +242,7 @@ export default function LivePersonCaseStudy() {
         </TextPanel>
 
         <BigImagePanel
-          src="https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1580743086322-L6ILER7K3CPFW4WMCO1E/Accounts-Multiple.png"
+          src="/legacy/accounts-multiple-611c4c.png"
           alt="Self-service: connect, assign, and manage social accounts"
           caption="Self-service: connect, assign, and manage social accounts"
           width={1122}

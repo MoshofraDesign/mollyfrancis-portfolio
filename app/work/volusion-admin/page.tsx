@@ -88,19 +88,19 @@ const PERSONAS = [
     title: "Struck out on their own (Freedom Seekers)",
     body:
       "People who started their business and are having some degree of success because they know their industry; relatively new to business but not to their niche. They might also be people who know business in general, and started one to start one, having assessed a number of business types as options.",
-    src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512052373839-DA345Q6MBX2L3GTAFUJH/1.png",
+    src: "/legacy/1-0b3a0b.png",
   },
   {
     title: "Family business owners (Legacy Builders)",
     body:
       "Have a family business with one or more members of the family; have more staying power than some other groups due to mutual support and commitment, but are less reliant on and capable with digital tools and online selling.",
-    src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512052602566-26V6KZU2NGIHU07IIP90/2.png",
+    src: "/legacy/2-76c8be.png",
   },
   {
     title: "Considering starting or recently started a business",
     body:
       "People who want to start a business but don't know where to start; motivated and may have an entrepreneurial mindset, but have limited business experience.",
-    src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512052727029-3KBO4H3QWR38EJZKSGZ3/3.png",
+    src: "/legacy/3-9c4b03.png",
   },
 ] as const;
 

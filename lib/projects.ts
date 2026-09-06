@@ -215,7 +215,7 @@ export const projects: Project[] = [
     role: "Principal Product Designer",
     tags: ["Healthcare", "Provider tools", "Design system", "0→1"],
     thumbnail: "/work-thumbnails/bright-healthcare-figma.webp",
-    hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489640575-FE1X3BSOCUHJVV45MVW0/Landing.jpg",
+    hero: "/legacy/landing-1af1c1.jpg",
     logo: "/logos/bright-healthcare-vert-2.svg",
     logoWide: "/logos/bright-healthcare.svg",
     logoScale: 1.45,
@@ -241,23 +241,23 @@ export const projects: Project[] = [
       "https://www.figma.com/proto/cxXiQ6LQOpNNjWi4Auf2DC/Bright-Provider-PreAuthPortal?node-id=892-27971&viewport=4575%2C-2862%2C0.5&t=0OJuceJUKOSH6o1m-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=892%3A31473&page-id=892%3A27941",
     images: [
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489521988-W8AEB4S7N95NOK3EGATT/01.jpg",
+        src: "/legacy/01-d1202f.jpg",
         caption: "Authorization dashboard with status filtering",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489522479-0LRNRNG9G4T94WYVXNX3/02.jpg",
+        src: "/legacy/02-3d2c72.jpg",
         caption: "Step-by-step submission flow with inline validation",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489523077-U6FA01YB37HK8NWKNHDU/03.jpg",
+        src: "/legacy/03-ba61e6.jpg",
         caption: "Service details, structured for downstream operations",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667489524593-1VI6DO5CFVOIJXS8BCS2/Submit.jpg",
+        src: "/legacy/submit-11bc30.jpg",
         caption: "Submission confirmation and provider next steps",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/6a83a6f4-3382-4474-a3d6-85c0bad4e6df/BH-PortFax.png",
+        src: "/legacy/bh-portfax-b28d84.png",
         caption:
           "The prior authorization fax form providers used before the Portal existed.",
       },
@@ -381,19 +381,19 @@ export const projects: Project[] = [
       "Two SSO-aware apps with timesheets, messaging, and structured exceptions. Future features include push-driven clock reminders and swipe approvals from the inbox.",
     images: [
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667510256928-D05OT1UPL3PICYJ296ZZ/Sign+up_SSO.png",
+        src: "/legacy/sign-up-sso-465949.png",
         caption: "SSO-aware onboarding for new caregivers",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667510257513-OCKLE4YPR6H1MXFZ4MQP/--ClockIn-Out.png",
+        src: "/legacy/clockin-out-bbde38.png",
         caption: "Clock in / out — quick, glanceable",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667510257556-BF5O4X105U0SB43QPU8A/Timesheets-Week-Hours-0Hours.png",
+        src: "/legacy/timesheets-week-hours-0hours-d9955b.png",
         caption: "Weekly timesheet with zero-state guidance",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667510258030-WMB043V9JK4LBO79MOR9/Inbox+-+Messages+tab+-+Swipe+action.png",
+        src: "/legacy/inbox-messages-tab-swipe-action-d6910e.png",
         caption: "Swipe actions for fast approvals in the inbox",
       },
     ],
@@ -407,7 +407,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer · IA lead",
     tags: ["Healthcare", "Information architecture", "Responsive"],
     thumbnail: "/work-thumbnails/consumer-health-2-raw.webp",
-    hero: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462027297-GRU05DN2D33B2JIOLPDP/CH-Dashboard.png",
+    hero: "/legacy/ch-dashboard-5c62f6.png",
     logo: "/logos/athenahealth.svg",
     accent: "#4800b5",
     aiSummary:
@@ -425,19 +425,19 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555335056852-1WDNMCGCPZAVC7GBU365/CH-Current-MyHealth.png",
+        src: "/legacy/ch-current-myhealth-5f03d1.png",
         caption: "Current My Health section — landed on Test Results only",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555437931422-FA85FIDWKHIDE0549C67/CH-MyHealth.png",
+        src: "/legacy/ch-myhealth-9fc070.png",
         caption: "Redesigned My Health landing — consolidated dashboard",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555335711321-VWKGE5EMWNE0E69EP9KD/CH-Current-Navigation.png",
+        src: "/legacy/ch-current-navigation-25506e.png",
         caption: "Current navigation — confusing structure",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1555462092362-M7ZKRJUT3DHC4SR7NI7H/CH-Navigation-Horz-04.png",
+        src: "/legacy/ch-navigation-horz-04-003cbb.png",
         caption: "New responsive navigation",
       },
     ],
@@ -476,19 +476,19 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1558469800892-B0L920CQQ1NRG9FD0HAL/Patient-CarePlans-Landing+Copy+2.png",
+        src: "/legacy/patient-careplans-landing-copy-2-13759d.png",
         caption: "Care Plan landing page — the shared source of truth for patients and care teams",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513349531314-89U1IJ39DE46WB88QYI0/Screen+Shot+2017-12-15+at+8.51.43+AM.png",
+        src: "/legacy/screen-shot-2017-12-15-at-8-51-43-am-42cc08.png",
         caption: "Care Team section — testers were especially drawn to the video chat option",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513349151416-RF4TP9N5LWQVAAVQGQB7/Screen+Shot+2017-12-15+at+8.44.23+AM.png",
+        src: "/legacy/screen-shot-2017-12-15-at-8-44-23-am-5606ba.png",
         caption: "Education content mapped to each patient's specific health concerns",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1513348975246-YKX6GH1QTGSD7AYQAJJ2/Screen+Shot+2017-12-15+at+8.37.37+AM.png",
+        src: "/legacy/screen-shot-2017-12-15-at-8-37-37-am-7013f8.png",
         caption: "Daily patient tasks with a progress indicator testers found motivating",
       },
     ],
@@ -512,19 +512,19 @@ export const projects: Project[] = [
       "athenahealth acquired Patient IO in 2016 and adopted its adherence-tracking and pill-rendering patterns as the design foundation for athenaWell.",
     images: [
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511965854643-56K9O8S9XMT6ZK4P38J8/Devices.png",
+        src: "/legacy/devices-6cb33b.png",
         caption: "Patient IO across devices",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511967913957-U3LHYLLHH507187LL8WZ/image-asset.png",
+        src: "/legacy/image-asset-e5019f.png",
         caption: "Tracking medications, vitals, and adherence",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1511968056680-OYW7HQTA481IA0KX2EV3/image-asset.png",
+        src: "/legacy/image-asset-06a4d4.png",
         caption: "Medications module",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/0a7d94ff-64a3-4bb9-9202-85911eb02bbc/Screen+Shot+2022-11-02+at+8.03.55+PM.png",
+        src: "/legacy/screen-shot-2022-11-02-at-8-03-55-pm-31c5b5.png",
         caption: "Pill-shape design system, generated from Epocrates data",
       },
     ],
@@ -566,89 +566,89 @@ export const projects: Project[] = [
       "Shipped new patterns for products, orders, and admin navigation across Volusion's full merchant base, replacing a legacy admin that hadn't kept pace with the product's growing feature set.",
     images: [
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462542831010-IXQ56XR6374O1BYZQ6LK/image-asset.png",
+        src: "/legacy/image-asset-1e27ed.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512052373839-DA345Q6MBX2L3GTAFUJH/1.png",
+        src: "/legacy/1-0b3a0b.png",
         caption: "Persona — Struck out on their own (freedom seekers)",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512052602566-26V6KZU2NGIHU07IIP90/2.png",
+        src: "/legacy/2-76c8be.png",
         caption: "Persona — Family business owners (legacy builders)",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512052727029-3KBO4H3QWR38EJZKSGZ3/3.png",
+        src: "/legacy/3-9c4b03.png",
         caption: "Persona — Considering starting or recently started",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1512053462663-OQUN662NOW47OD7YADHH/image-asset.png",
+        src: "/legacy/image-asset-b1175a.png",
         caption: "Top pages, based on Google Analytics",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893263562-TPA3IIUV00PKF9KU1J61/OLD-Dashboard-Landing.jpg",
+        src: "/legacy/old-dashboard-landing-ab3cca.jpg",
         caption: "Dashboard landing",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893264400-VHB0BCUP27M7KI7T7721/01-1+-+Top+Nav+-SubNav.jpg",
+        src: "/legacy/01-1-top-nav-subnav-46d3bb.jpg",
         caption: "Top nav with sub-nav",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893264133-1HB13QG0TKQ1AL9MLZWO/01-2+-+Top+Nav+-+Account+Dropdown.jpg",
+        src: "/legacy/01-2-top-nav-account-dropdown-cacd2d.jpg",
         caption: "Top nav — account dropdown",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893263481-GH93PMP36ECBJITKXI97/01-3+-+Admin+Notification.jpg",
+        src: "/legacy/01-3-admin-notification-d3e6ee.jpg",
         caption: "Admin notification",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893847300-J3TO347Y1HC2PGN012V3/02-1+-+Products+Grid.jpg",
+        src: "/legacy/02-1-products-grid-4740cd.jpg",
         caption: "Products grid",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893847163-A8RCW12MLK1L8HF31S19/02-2+-+Products+-+Grid+-Hover+Single.jpg",
+        src: "/legacy/02-2-products-grid-hover-single-a124a7.jpg",
         caption: "Products grid — hover, single select",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893847913-PTIZDDPSH2LIQXAUL7J2/02-3+-+Products+-+Grid+-+Hover+Multiple.jpg",
+        src: "/legacy/02-3-products-grid-hover-multiple-411a5c.jpg",
         caption: "Products grid — hover, multi-select",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893846066-VJ7G4Y7Q70V9DQB2755Y/04-1+-+Products+-+Search+Dropdown.jpg",
+        src: "/legacy/04-1-products-search-dropdown-e042d5.jpg",
         caption: "Products — search dropdown",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893846722-JJI1JWGLT9V0AOGIU0T4/04-2+-+Products+-+Search.jpg",
+        src: "/legacy/04-2-products-search-7d4be7.jpg",
         caption: "Products — search results",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462893846614-BNH6SJJ0FPR2T6DKHVJV/04-3+-+Products+-+Settings+Dropdown.jpg",
+        src: "/legacy/04-3-products-settings-dropdown-3aad07.jpg",
         caption: "Products — settings dropdown",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462889690104-X4CR0710EAPEKFKS1GD9/image-asset.jpeg",
+        src: "/legacy/image-asset-e4093e.jpeg",
         caption: "Product page — list view",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462889711347-3CZHI632LG7AJPVYK37G/image-asset.jpeg",
+        src: "/legacy/image-asset-7a9a34.jpeg",
         caption: "Advanced settings",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462889728893-PFO6HB9TJDOYN5M0HT7G/image-asset.jpeg",
+        src: "/legacy/image-asset-4c5ff3.jpeg",
         caption: "Product page",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462890251993-3RRX7PD8KCSM2MB4DXP6/image-asset.jpeg",
+        src: "/legacy/image-asset-0ef1a7.jpeg",
         caption: "Process orders",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462933946295-QSEVGLELQHKVKHNKJA2Q/-Order+Page-NEW.jpg",
+        src: "/legacy/order-page-new-9ace82.jpg",
         caption: "Order page — redesigned",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462542691474-54ZUVT0SMV4KUESUG9X6/image-asset.png",
+        src: "/legacy/image-asset-730808.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1462542909021-QGKA1KCN566886NHKS47/image-asset.png",
+        src: "/legacy/image-asset-94c04c.png",
       },
     ],
   },
@@ -670,67 +670,67 @@ export const projects: Project[] = [
       "Custom client storefronts and a library of paid templates sold on Volusion.com. The templates were designed for easy upkeep — merchants could change images and design elements without breaking the layout. Designs spanned fashion, home, food, lifestyle, and more.",
     images: [
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492582146-8CG7TNOVTMUVBXD8YYV0/web-bombshell.jpg",
+        src: "/legacy/web-bombshell-411fd3.jpg",
         caption: "Bombshell — apparel",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492906906-X91PFJ8K71PIR26M5PAK/web-vestidos.jpg",
+        src: "/legacy/web-vestidos-e82c30.jpg",
         caption: "Vestidos",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492886734-FJ69AYIZ87IDZTHDAOZR/combi.png",
+        src: "/legacy/combi-170569.png",
         caption: "Combi",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492987626-03RPZRPX9V2U1W6BU9N0/modernliving2.jpg",
+        src: "/legacy/modernliving2-8f185a.jpg",
         caption: "Modern Living",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492117946-E967FF9AR5FE6Z769YRZ/temptaion.png",
+        src: "/legacy/temptaion-af8243.png",
         caption: "Temptation",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492117511-NYQZT9PR0Y0NULZA2PVF/venetian.png",
+        src: "/legacy/venetian-07809b.png",
         caption: "Venetian",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492907630-PKRIA7S5BTR64JOJYT7G/web-express.jpg",
+        src: "/legacy/web-express-512a9d.jpg",
         caption: "Express",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492906956-4BBIIG1S5QG8WMVAMVAJ/web-pewter.jpg",
+        src: "/legacy/web-pewter-e96cae.jpg",
         caption: "Pewter",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1423492907480-F8C5VAWAIOK73SP4ICZZ/web-hillbillystills.jpg",
+        src: "/legacy/web-hillbillystills-360970.jpg",
         caption: "Hillbilly Stills",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422474229873-WVIY6F1FUOJNEB2LIS69/52f2bf9d604c0.jpg",
+        src: "/legacy/52f2bf9d604c0-4e5647.jpg",
         caption: "Boutique storefront",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1422381428436-R3GEUY7IA5DQY6BXAO4H/web-sweetgrass.jpg",
+        src: "/legacy/web-sweetgrass-a27d87.jpg",
         caption: "Sweetgrass",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667325725456-C9Y95F7G9ZJ62SX46B54/Definition-Device-Home.png",
+        src: "/legacy/definition-device-home-1c10ca.png",
         caption: "Definition — homepage across devices",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667325725320-HBQC7TAFA1KHYYNWII6T/Definition-Device-product.png",
+        src: "/legacy/definition-device-product-f3bc05.png",
         caption: "Definition — product page",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667326780441-08UMYK6WSYKQE5NJ7JMU/StFrancis-Device-Home.png",
+        src: "/legacy/stfrancis-device-home-569ddb.png",
         caption: "St. Francis — homepage",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667326779786-81IQWBLOAPRPKSH3LK1R/StFrancis-Device-Category.png",
+        src: "/legacy/stfrancis-device-category-0bec36.png",
         caption: "St. Francis — category",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667326779753-C3DXSBEL52V7O1YV5E56/StFrancis-Device-Product.png",
+        src: "/legacy/stfrancis-device-product-be231a.png",
         caption: "St. Francis — product",
       },
     ],
@@ -759,103 +759,103 @@ export const projects: Project[] = [
         caption: "Bohemian Hair Bows — logo and product card",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593463214-AW8X3YLIHXQIB1GVFWA6/gigglepoo.png",
+        src: "/legacy/gigglepoo-e4756f.png",
         caption: "Gigglepoo",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593459897-0H5XDZOLOJNWD1QHTUEQ/babybemine.png",
+        src: "/legacy/babybemine-9fb181.png",
         caption: "Baby Be Mine",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593465947-M92PQ2T8DP9M3I6G6NHE/orionleather.png",
+        src: "/legacy/orionleather-d1904d.png",
         caption: "Orion Leather",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593460738-R59BUTVUBCYPA19EXSLQ/bass.png",
+        src: "/legacy/bass-9386b0.png",
         caption: "Bass",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593462820-7LJZAXVEAFTPZKMWD7XZ/dunhamcarr.png",
+        src: "/legacy/dunhamcarr-10ff13.png",
         caption: "Dunham Carr",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593461718-KQL0JND2R1XG9WJBFNIR/chisholmtrail.png",
+        src: "/legacy/chisholmtrail-2a8d9d.png",
         caption: "Chisholm Trail",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593467310-LC1EG7AQ8F4OTWTVV1G0/Screen%2BShot%2B2022-11-03%2Bat%2B2.11.18%2BPM.png",
+        src: "/legacy/screen-shot-2022-11-03-at-2-11-18-pm-ce293f.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593461933-4GD54TS6L8BLHQ356MAW/circle7.png",
+        src: "/legacy/circle7-639ac5.png",
         caption: "Circle 7",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593467846-V31NHJHRLP9YB31CKXAZ/sparko.png",
+        src: "/legacy/sparko-cab190.png",
         caption: "Sparko",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593462450-K18FXOTL5WC36UWBR8ML/countryhearth.png",
+        src: "/legacy/countryhearth-04ac7c.png",
         caption: "Country Hearth",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593460100-JGCQW5ZI42N7ERKNAXRR/allah.png",
+        src: "/legacy/allah-85ae14.png",
         caption: "Allah",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593463438-H01437G4FTC82RMWEJFE/jessicalynn.png",
+        src: "/legacy/jessicalynn-210f5e.png",
         caption: "Jessica Lynn",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593466999-H83JWA8KFZ0QYRQH0OCP/Screen%2BShot%2B2022-11-03%2Bat%2B1.51.31%2BPM.png",
+        src: "/legacy/screen-shot-2022-11-03-at-1-51-31-pm-0c0410.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593466845-VEVOKWETUJ91PJBONWDG/Screen%2BShot%2B2022-11-03%2Bat%2B1.50.18%2BPM.png",
+        src: "/legacy/screen-shot-2022-11-03-at-1-50-18-pm-8e0293.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593463885-9Z9XMQ3QPWAX72K8281K/jilli.png",
+        src: "/legacy/jilli-29116f.png",
         caption: "Jilli",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593464186-GEEJB3SIXK8CG11V5QL1/kristinanderson.png",
+        src: "/legacy/kristinanderson-61c9e4.png",
         caption: "Kristin Anderson",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593464695-4UFYQVQLPH5CH911VEND/malaka.png",
+        src: "/legacy/malaka-299bcf.png",
         caption: "Malaka",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593465023-GVM99XE3TSHFU3NXLLJD/mylittlejewel.png",
+        src: "/legacy/mylittlejewel-ad7648.png",
         caption: "My Little Jewel",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593465336-303KAM619OC98GX6XAFT/origami.png",
+        src: "/legacy/origami-fa2bbd.png",
         caption: "Origami",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593469432-YRO0O6NVTMT6RPUCR9BW/wonkos.png",
+        src: "/legacy/wonkos-b9e715.png",
         caption: "Wonko's",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593467731-14TVIV315JH0H3ZV4VH9/southernliving.png",
+        src: "/legacy/southernliving-3d9e48.png",
         caption: "Southern Living",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593468849-3XUNRWTD7XJE87RD1HBD/templatetrader.png",
+        src: "/legacy/templatetrader-e2f044.png",
         caption: "Template Trader",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593468958-IGEUTR1VLOFR11UIPKWM/usabride.png",
+        src: "/legacy/usabride-d7fcd1.png",
         caption: "USA Bride",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593461261-1FJMQFNCHKCDFEL0CLY1/blackstarr.png",
+        src: "/legacy/blackstarr-248154.png",
         caption: "Black Starr",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667593466025-49K9OCCEH1L707AMJMWE/Screen%2BShot%2B2022-11-03%2Bat%2B1.42.49%2BPM.png",
+        src: "/legacy/screen-shot-2022-11-03-at-1-42-49-pm-36267d.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1715958656162-PXTW17VCIIGQ6O2QJWPV/provencal-thumb.jpg",
+        src: "/legacy/provencal-thumb-492732.jpg",
         caption: "Eclectic Provencal",
       },
     ],
@@ -877,82 +877,82 @@ export const projects: Project[] = [
       "Selected print design across holiday cards, invitations, posters, and editorial pieces — both client work and personal projects.",
     images: [
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591094175-0ZZBPBUC2XOYMON8UNJC/holiday1+2.43.23+PM.jpg",
+        src: "/legacy/holiday1-2-43-23-pm-5fc6cd.jpg",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591094207-HNEM47TFPX4AZ32Z9RH6/Holiday2+2.43.23+PM.jpg",
+        src: "/legacy/holiday2-2-43-23-pm-988eb2.jpg",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591094816-KPNMAKBPL1DPSNO4SFL7/Volusion-HolidayCard+2.43.24+PM.jpg",
+        src: "/legacy/volusion-holidaycard-2-43-24-pm-03f602.jpg",
         caption: "Volusion holiday card",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591552901-ZUK91M7N582K9KDG5PSF/Screen%2BShot%2B2022-11-03%2Bat%2B1.45.29%2BPM.png",
+        src: "/legacy/screen-shot-2022-11-03-at-1-45-29-pm-90bfd0.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591552506-LL9YL5D47JFB4RRLYYCU/Screen%2BShot%2B2022-11-03%2Bat%2B1.45.43%2BPM.png",
+        src: "/legacy/screen-shot-2022-11-03-at-1-45-43-pm-84330e.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591553656-FXXC6HMDFLIHM7BHY6I2/Screen%2BShot%2B2022-11-03%2Bat%2B1.46.10%2BPM.png",
+        src: "/legacy/screen-shot-2022-11-03-at-1-46-10-pm-f5e785.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591627485-TVIXZEO42AQLQEV6WBMK/print-fromevelyn+2.43.23+PM.jpg",
+        src: "/legacy/print-fromevelyn-2-43-23-pm-89f078.jpg",
         caption: "From Evelyn",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591627216-YERG84UEVVK0FQYHOWS3/print-madebyjoy+2.43.23+PM.jpg",
+        src: "/legacy/print-madebyjoy-2-43-23-pm-942091.jpg",
         caption: "Made by Joy",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591627963-LAOW14896A4HSFWN1JDC/print-vitagals+2.43.23+PM.jpg",
+        src: "/legacy/print-vitagals-2-43-23-pm-4c7209.jpg",
         caption: "Vita Gals",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591686173-DC0V25R1YOFRETGHABIE/Adri+2.43.24+PM.png",
+        src: "/legacy/adri-2-43-24-pm-741879.png",
         caption: "Adri",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591686493-JJ6K1BAI23L7F1EBO2YQ/print-christineinvite+2.43.23+PM.jpg",
+        src: "/legacy/print-christineinvite-2-43-23-pm-c6bd1c.jpg",
         caption: "Christine — invite",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591721541-JO4705XY7T8VL8UG1O7B/Amor+2.43.23+PM.png",
+        src: "/legacy/amor-2-43-23-pm-e2878a.png",
         caption: "Amor",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591721618-TO18J4QVCDKMNODTACKH/FakeItTilYaMakeIt+2.43.23+PM.jpg",
+        src: "/legacy/fakeittilyamakeit-2-43-23-pm-a5e5df.jpg",
         caption: "Fake It 'Til Ya Make It",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591722530-FYH33FRLO67SWQEDTP4M/print-memyselfi+2.43.23+PM.jpg",
+        src: "/legacy/print-memyselfi-2-43-23-pm-09f2ab.jpg",
         caption: "Me, Myself, & I",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591891691-I9JWERCKS5T60MYBRWJW/Screen%2BShot%2B2022-11-03%2Bat%2B1.52.54%2BPM.png",
+        src: "/legacy/screen-shot-2022-11-03-at-1-52-54-pm-fe9251.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591895955-V45CCDPTK02VQ0ATLKCR/Screen+Shot+2021-12-01+at+12.59.55+PM.png",
+        src: "/legacy/screen-shot-2021-12-01-at-12-59-55-pm-e6f3ce.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667590765493-U248DF258FOBXNGKRNUX/print-shopgrl%2Bcopy.jpg",
+        src: "/legacy/print-shopgrl-copy-17855b.jpg",
         caption: "Shopgrl",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667592293689-0HWYCXINWWPXW3G24UK6/Screen%2BShot%2B2022-11-03%2Bat%2B1.53.54%2BPM.png",
+        src: "/legacy/screen-shot-2022-11-03-at-1-53-54-pm-285085.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667590776300-6QQP3A0SGY3E1SSQTW2H/Screen%2BShot%2B2022-11-03%2Bat%2B1.47.45%2BPM.png",
+        src: "/legacy/screen-shot-2022-11-03-at-1-47-45-pm-d9d011.png",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591258473-AVMBX10G1K86Y4BEOWMM/cw-fall-2013+2.43.23+PM.jpg",
+        src: "/legacy/cw-fall-2013-2-43-23-pm-aa62a3.jpg",
         caption: "Fall 2013 lookbook",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591258255-KMJOCCDALMUWU0T039W0/cw-winter-2013-specialedition+2.43.23+PM.jpg",
+        src: "/legacy/cw-winter-2013-specialedition-2-43-23-pm-406d52.jpg",
         caption: "Winter 2013 special edition",
       },
       {
-        src: "https://images.squarespace-cdn.com/content/v1/5387376ae4b08610fe281471/1667591260063-M820WMIOE9EAM0IM16XA/Screen%2BShot%2B2022-11-03%2Bat%2B1.55.32%2BPM.png",
+        src: "/legacy/screen-shot-2022-11-03-at-1-55-32-pm-3a7031.png",
       },
     ],
   },
