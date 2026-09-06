@@ -452,6 +452,34 @@ export default function GovOSCaseStudy() {
           </Body>
         </Panel>
 
+        {/* ── 2a — RESEARCH. The page used to go from the problem straight
+               to "I designed a direct-to-county portal", so the discovery
+               that justifies that decision was invisible. Every fact here is
+               from the project's own research record in lib/projects.ts:
+               generative interviews with title-company submitters AND county
+               recording offices. */}
+        <Panel>
+          <Heading>So I sat on both sides of the counter.</Heading>
+          <Body>
+            Generative interviews with title-company submitters and with
+            county recording offices — the people sending documents and the
+            people receiving them. Two very different jobs, one transaction.
+          </Body>
+        </Panel>
+
+        {/* ── 2b — INSIGHT. What the interviews found, and the reason a
+               direct portal was the answer rather than a better vendor
+               integration. */}
+        <Panel width={COPY_PANEL}>
+          <Heading>Both sides wanted the middle gone.</Heading>
+          <Body>
+            Submitters were paying a fee for status they still couldn&rsquo;t
+            see. Counties were re-keying data that had already been typed
+            correctly once. Neither of them needed a vendor — they needed
+            each other.
+          </Body>
+        </Panel>
+
         {/* ── 3 — SOLUTION ─────────────────────────────────────────────── */}
         <Panel width={COPY_PANEL}>
           <Heading>I designed a direct-to-county portal.</Heading>
@@ -534,6 +562,14 @@ export default function GovOSCaseStudy() {
         >
           <Heading>Submitters drop the vendor fee.</Heading>
           <Body>One bulk ACH. Direct status. No go-between.</Body>
+          {/* A real quote from the project record — a Berks County
+              abstractor. It was sitting in lib/projects.ts unused, which is
+              a waste: nothing Molly writes about ease of use lands as hard
+              as a customer saying it. */}
+          <Body>
+            &ldquo;You could pull someone off the street and show them how to
+            do this in about 20 minutes.&rdquo;
+          </Body>
         </PortraitPanel>
 
         {/* 9 — COUNTY BENEFITS — portrait + copy now share one panel, side by side */}
@@ -543,7 +579,25 @@ export default function GovOSCaseStudy() {
         >
           <Heading>Counties stop scanning paper.</Heading>
           <Body>One clean report. Serve submitters directly.</Body>
+          {/* Cuyahoga County, from the project record. */}
+          <Body>
+            &ldquo;A fantastic opportunity to more directly and better serve
+            our title companies.&rdquo;
+          </Body>
         </PortraitPanel>
+
+        {/* 9.4 — TESTING. The other half of the research record that never
+               made the page: rounds of moderated testing, and what they
+               actually turned up. Numbers and tools are the project's own. */}
+        <Panel>
+          <Heading>Five users, twelve problems, every round.</Heading>
+          <Body>
+            Live usability testing in a QA environment with submitters,
+            synthesized in Dovetail and triaged into Jira with the PM. Twelve
+            or more issues a round — and the rounds kept going until they
+            stopped finding them.
+          </Body>
+        </Panel>
 
         {/* 9.5 — ACCESSIBILITY / VPAT.
             Sits with the county beat rather than the outcome stats: for a
