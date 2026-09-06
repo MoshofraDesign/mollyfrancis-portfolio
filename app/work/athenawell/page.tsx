@@ -316,25 +316,38 @@ export default function AthenaWellCaseStudy() {
         </TextPanel>
 
         {/* ── APOLLO CHAT BOT ───────────────────────────────────────────── */}
-        <TextPanel>
-          <Heading>A question answered without the phone queue.</Heading>
-          <Body>
-            Apollo, the chat bot: reactive messaging with event-driven AI
-            assistance, so reaching the care team didn&apos;t mean waiting on
-            hold — and an urgent symptom got an urgent answer.
-          </Body>
-        </TextPanel>
-
-        {/* A single phone, so this one is capped much narrower than the
-            desktop composites — at 950 it would have been comically large. */}
-        <MediaPanel
-          src={`${ASSET}/apollo.png`}
-          alt="Apollo, the athenaWell chat bot, answering a patient's symptom question and sending a Mayo Clinic article"
-          width={299}
-          height={600}
-          maxWidth={300}
-          caption="Apollo — triage first, then the education article that answers the question."
-        />
+        {/* ── APOLLO. Copy and phone in ONE panel, side by side at lg.
+               The export is a single portrait phone (0.498) — on a panel of
+               its own it was a small object in a very large empty field, so
+               it read as a section with nothing in it rather than as the
+               picture belonging to the words. Stacked below lg. */}
+        <Panel width={VIEW} pad="center">
+          <div className="mx-auto flex w-full max-w-[min(1100px,92vw)] flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-center lg:gap-16">
+            <div className="w-full lg:max-w-[min(600px,52vw)]">
+              <Heading>A question answered without the phone queue.</Heading>
+              <Body>
+                Apollo, the chat bot: reactive messaging with event-driven AI
+                assistance, so reaching the care team didn&apos;t mean waiting
+                on hold — and an urgent symptom got an urgent answer.
+              </Body>
+            </div>
+            {hasAsset(`${ASSET}/apollo.png`) && (
+              <SlideIn
+                delay={120}
+                className="w-[min(260px,62vw)] shrink-0 sm:w-[300px] lg:w-[min(300px,calc((var(--panel-media-max-h)_-_1rem)_*_0.4983))]"
+              >
+                <Image
+                  src={`${ASSET}/apollo.png`}
+                  alt="Apollo, the athenaWell chat bot, answering a patient's symptom question and sending a Mayo Clinic article"
+                  width={299}
+                  height={600}
+                  sizes="300px"
+                  className="h-auto w-full"
+                />
+              </SlideIn>
+            )}
+          </div>
+        </Panel>
 
         {/* ── CARE TEAMS BEYOND THE CLINIC ─────────────────────────────── */}
         <TextPanel>
