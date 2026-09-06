@@ -100,7 +100,14 @@ function MediaPanel({
   if (!hasAsset(src)) return null;
   return (
     <Panel
-      width={VIEW}
+      /* The panel hugs the picture instead of staying a full viewport wide,
+         so the next section starts sooner: whichever is narrower of the
+         image's own max width and the width its aspect allows in the height
+         the panel has, plus 9rem of gutter either side. Both terms come from
+         CSS variables — Tailwind scans source text at build time and can't
+         build a class from a runtime value. Text panels stay full-viewport,
+         same as every other project. */
+      width="lg:w-[min(100vw,calc(var(--beat-max-w)_+_9rem),calc(var(--panel-media-max-h)_*_var(--beat-aspect)_+_9rem))]"
       pad="center"
       className="items-center"
       style={
@@ -310,7 +317,11 @@ export default function AthenaWellCaseStudy() {
         {/* ── 9. CUSTOM ICONS. Media with a caption; the sheet carries
                itself, so no display heading. */}
         {hasAsset(`${ASSET}/custom-icons.webp`) && (
-          <Panel width={VIEW} pad="center" className="items-center">
+          <Panel
+            width="lg:w-[min(100vw,calc(660px_+_9rem),calc((var(--panel-media-max-h)_-_5rem)_*_1.211_+_9rem))]"
+            pad="center"
+            className="items-center"
+          >
             <SlideIn className="mx-auto flex w-full max-w-[min(660px,86vw)] flex-col items-center lg:max-w-[min(660px,86vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.211))]">
               <Image
                 src={`${ASSET}/custom-icons.webp`}

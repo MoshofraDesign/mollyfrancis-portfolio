@@ -86,15 +86,15 @@ function ClipPanel({
      and custom properties inherit, so setting it on the panel is enough for
      the width class here and the caps inside.
 
-     The panel itself is a full viewport, like every other section — these
-     used to hug the clip, which made the gap to the next section smaller
-     here than anywhere else on the site. Only the CLIP is capped: by width
-     (1100/92vw) and, at lg, by the room the panel actually has once the
-     caption is allowed for. The height-derived cap is lg-only, since below
-     lg the panel has no fixed height and 92vw is the real constraint. */
+     The panel hugs the clip rather than staying a full viewport wide, so
+     consecutive recordings don't sit a screen apart: whichever is narrower
+     of the clip's own 1100 cap and the width its aspect allows in the height
+     available, plus 9rem of gutter. The clip itself is capped the same way.
+     The height-derived caps are lg-only, since below lg the panel has no
+     fixed height and 92vw is the real constraint. */
   return (
     <Panel
-      width={VIEW}
+      width="lg:w-[min(100vw,calc(1100px_+_9rem),calc(var(--panel-media-max-h)_*_var(--clip-aspect)_+_9rem))]"
       pad="center"
       className="items-center"
       style={{ "--clip-aspect": String(aspect) } as React.CSSProperties}

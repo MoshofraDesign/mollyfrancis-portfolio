@@ -237,10 +237,14 @@ function hasImage(src: string): boolean {
 const CLIP_CAP =
   "lg:max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.6))]";
 
+/** …and the panel around it hugs that, so the next section starts sooner. */
+const CLIP_PANEL =
+  "lg:w-[min(100vw,calc(950px_+_9rem),calc((var(--panel-media-max-h)_-_5rem)_*_1.6_+_9rem))]";
+
 /** Figma 4724:8384 / 4724:8388 — 950-wide media with a centred caption. */
 function BeforeAfterPanel({ video, label }: { video: string; label: string }) {
   return (
-    <Panel width={VIEW} pad="center" className="items-center">
+    <Panel width={CLIP_PANEL} pad="center" className="items-center">
       <SlideIn className={`mx-auto flex w-full flex-col items-center ${MEDIA} ${CLIP_CAP}`}>
         <div className="w-full overflow-hidden rounded-[10px]">
           <AutoplayVideo
@@ -418,7 +422,7 @@ export default function VolusionCaseStudy() {
             800, and GIF's 256-colour palette dithers the photographic hero
             of the storefront badly. Same autoplay-loop-muted behaviour. */}
         {editorFlow && (
-          <Panel width={VIEW} pad="center" className="items-center">
+          <Panel width={CLIP_PANEL} pad="center" className="items-center">
             <SlideIn className={`mx-auto w-full ${MEDIA} ${CLIP_CAP}`}>
               <div className="w-full overflow-hidden rounded-[10px]">
                 <AutoplayVideo
@@ -503,7 +507,7 @@ export default function VolusionCaseStudy() {
         {/* ── vNEXT HOMEPAGE — Figma 4736:13899, 918x620.
             Waits on the export, same as Before/After. */}
         {hasVnext && (
-          <Panel width={VIEW} pad="center" className="items-center">
+          <Panel width={CLIP_PANEL} pad="center" className="items-center">
             <SlideIn className={`mx-auto w-full ${MEDIA} ${CLIP_CAP}`}>
               <Image
                 src={vnext}
