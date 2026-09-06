@@ -50,6 +50,22 @@ const ACCENT = "#0055CC";
 const LOGO = "/logos/athenawell.svg";
 const ASSET = "/work/athenawell";
 
+/**
+ * Width of a copy panel — the measure plus the rail, not a whole viewport.
+ *
+ * A 700px measure on the 100px rail inside a full-viewport panel left ~600px
+ * of empty ground between the last line of a heading and the picture that
+ * goes with it, which is the distance Molly flagged: they belong together and
+ * they were sitting a half-screen apart. 920 = 100 rail + 700 measure + the
+ * 120 right inset pad="rail" already applies, so the measure is untouched and
+ * only the dead field goes.
+ *
+ * The panel immediately after the title keeps VIEW: a narrower one settles
+ * while the parked mark is still riding in, and the roll-in is the part that
+ * reads right now.
+ */
+const COPY_PANEL = "lg:w-[min(100vw,920px)]";
+
 /** Panels that depend on a file skip themselves until the file is on disk. */
 function hasAsset(src: string): boolean {
   try {
@@ -229,7 +245,7 @@ export default function AthenaWellCaseStudy() {
         </Panel>
 
         {/* ── 3. THE TURN, with the plan itself running underneath it. */}
-        <Panel width={VIEW} pad="rail">
+        <Panel width={COPY_PANEL} pad="rail">
           <div className={MEASURE}>
           <Heading>So I put the whole plan in one place.</Heading>
           <Body>
@@ -249,7 +265,7 @@ export default function AthenaWellCaseStudy() {
         />
 
         {/* ── 4. THE CARE TEAM'S SIDE. */}
-        <Panel width={VIEW} pad="rail">
+        <Panel width={COPY_PANEL} pad="rail">
           <div className={MEASURE}>
           <Heading>The care team builds it and watches it.</Heading>
           <Body>
@@ -268,7 +284,7 @@ export default function AthenaWellCaseStudy() {
         />
 
         {/* ── 5. THE PATIENT'S SIDE. */}
-        <Panel width={VIEW} pad="rail">
+        <Panel width={COPY_PANEL} pad="rail">
           <div className={MEASURE}>
           <Heading>The patient only has to see today.</Heading>
           <Body>
@@ -288,7 +304,7 @@ export default function AthenaWellCaseStudy() {
         />
 
         {/* ── 6. THE PERSONAS, shown as the documents themselves. */}
-        <Panel width={VIEW} pad="rail">
+        <Panel width={COPY_PANEL} pad="rail">
           <div className={MEASURE}>
           <Heading>Three patients, one plan to hold them all.</Heading>
           <Body>
@@ -308,7 +324,7 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── 8. APOLLO. Beside the copy, not under it: one portrait phone
                on its own line reads as an empty section. */}
-        <Panel width={VIEW} pad="rail">
+        <Panel width={COPY_PANEL} pad="rail">
           <div className={MEASURE}>
           <Heading>A question shouldn&apos;t mean a phone queue.</Heading>
           <Body>
@@ -335,7 +351,7 @@ export default function AthenaWellCaseStudy() {
                ended up sharing a screen: two media panels back to back, both
                with narrow content on the rail, so the tail of one and the
                head of the next fit in the same view. */}
-        <Panel width={VIEW} pad="rail">
+        <Panel width={COPY_PANEL} pad="rail">
           <div className={MEASURE}>
             <Heading>Every icon drawn, not downloaded.</Heading>
             <Body>
@@ -357,7 +373,7 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── 10. OUTCOME, then the figures as a row of columns — the shape
                every other project closes on. */}
-        <Panel width={VIEW} pad="rail">
+        <Panel width={COPY_PANEL} pad="rail">
           <div className={MEASURE}>
           <Heading>The weeks between visits stopped being invisible.</Heading>
           <Body>
@@ -368,7 +384,7 @@ export default function AthenaWellCaseStudy() {
         </div>
         </Panel>
 
-        <Panel width={VIEW} pad="rail" className="lg:!pb-[var(--nav-clear)]">
+        <Panel width={COPY_PANEL} pad="rail" className="lg:!pb-[var(--nav-clear)]">
           <div className={STAT_ROW}>
             <Heading>What it shipped with.</Heading>
             <div className="mt-10 grid grid-cols-2 gap-10 gap-x-8 sm:gap-x-12 lg:grid-cols-3 lg:gap-x-10">
