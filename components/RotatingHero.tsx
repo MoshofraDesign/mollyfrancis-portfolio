@@ -116,7 +116,7 @@ export default function RotatingHero() {
   }, []);
 
   return (
-    <section className="flex min-h-[560px] items-center px-6 py-16 sm:min-h-[600px] sm:py-0 lg:min-h-[660px] lg:px-10 xl:min-h-[720px]">
+    <section className="flex min-h-[500px] items-center px-6 py-10 sm:min-h-[540px] sm:py-0 lg:min-h-[600px] lg:px-10 xl:min-h-[660px]">
       <div className="mx-auto grid w-full max-w-[96rem] grid-cols-1 items-center gap-8 md:gap-10 lg:grid-cols-[minmax(0,480px)_1fr] lg:gap-16 xl:w-fit xl:grid-cols-[580px_540px] xl:gap-12">
         <div
           ref={portraitRef}

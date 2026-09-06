@@ -1021,6 +1021,18 @@ export type CaseStudyMeta = {
 };
 
 const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
+  athenaconnect: {
+    /* Team and tools per Molly's Figma frame 4649:13876; projected is left
+       to the two figures the outcome already states rather than inventing a
+       third. */
+    team: ["1 Product Designer", "1 Product Manager", "2 Engineers"],
+    timing: [{ value: "2018\u20132019", label: "Discovery through rollout" }],
+    tools: ["Sketch", "InVision", "Figma", "Jira"],
+    projected: [
+      { value: "370+", label: "Partner integrations in the Marketplace" },
+      { value: "60+", label: "Specialties covered" },
+    ],
+  },
   netspend: {
     team: [
       "1 Lead UX Designer",

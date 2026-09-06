@@ -108,10 +108,17 @@ body::before {
   width: 28px;
   height: 28px;
   border-radius: 999px;
-  background: rgba(20, 20, 20, 0.85);
+  /* No mix-blend-mode. A blend mode makes the browser re-rasterize the
+     backdrop, and elements that own a stacking context (the nav, at
+     position: relative z-50) land in a different group from the rest of the
+     page — the two groups' whites don't come out identical, which is the
+     faint colour change at the nav's edge. `difference` also rendered the
+     dot itself as light grey on a white page. A solid dot with a white ring
+     reads on the light pages and on the accent-coloured case studies. */
+  background: rgba(20, 20, 20, 0.9);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.9);
   pointer-events: none;
   z-index: 60;
-  mix-blend-mode: difference;
   transform: translate(-50%, -50%);
   transition: width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
 }

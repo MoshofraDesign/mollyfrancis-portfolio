@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Bodoni_Moda, Jost } from "next/font/google";
 import Script from "next/script";
@@ -74,6 +75,9 @@ export default function RootLayout({
         </Script>
         <CursorBlob />
         <SiteChrome>{children}</SiteChrome>
+        {process.env.NEXT_PUBLIC_GA_ID ? (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        ) : null}
       </body>
     </html>
   );

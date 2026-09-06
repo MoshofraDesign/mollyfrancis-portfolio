@@ -64,7 +64,7 @@ const NAV_LOGO_BOX: Record<string, string> = {
   default: "relative h-6 w-[90px] sm:h-7 sm:w-[110px]",
 };
 
-const customSlugs = new Set(["govos-esubmission", "liveperson", "care-homepay", "netspend", "bright-healthcare", "docsquad", "athenawell", "athenahealth", "patient-io", "volusion-admin"]);
+const customSlugs = new Set(["govos-esubmission", "liveperson", "care-homepay", "netspend", "bright-healthcare", "docsquad", "athenawell", "athenahealth", "patient-io", "volusion-admin", "athenaconnect"]);
 
 export function generateStaticParams() {
   return projects
