@@ -36,7 +36,12 @@ const jost = Jost({
 });
 
 const SLUG = "govos-esubmission";
-const BRAND = "#0091CF";
+/* #0091CF is the brand blue, and white on it measures 3.53:1 — enough for
+   large type, short of the 4.5:1 AA needs for body copy, and this page is
+   mostly body copy. #00306B is 12.84:1. The work-grid tile and the "up
+   next" band still use the accent from lib/projects.ts; the grid derives an
+   accessible pair for its hover text on the fly (readableOnAccent). */
+const BRAND = "#00306B";
 
 export function generateMetadata() {
   const p = getProject(SLUG);
@@ -592,7 +597,10 @@ export default function GovOSCaseStudy() {
                 width={752}
                 height={432}
                 sizes="(max-width: 1023px) 90vw, min(90vw, 752px)"
-                className="h-auto w-full rounded-[10px]"
+                /* The sheet's own background is #041C4D, which is 1.28:1
+                   against the new page colour — the card edge would simply
+                   dissolve. A hairline draws it back. */
+                className="h-auto w-full rounded-[10px] ring-1 ring-white/15"
               />
             </SlideIn>
           </Panel>
