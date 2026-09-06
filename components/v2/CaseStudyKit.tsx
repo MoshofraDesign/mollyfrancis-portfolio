@@ -396,6 +396,14 @@ export const HERO_COPY_GAP = "gap-2";
 /**
  * Hero title + subtext — the one scale, on every case study.
  *
+ * STEPPED, not clamped, unlike the rest of the scale. A hero's copy is
+ * absolutely placed against a mark at a fixed inset, so a size that scales
+ * continuously with the viewport changes the copy block's height on every
+ * pixel of a window drag — the title rewraps, the subtext slides, and the
+ * whole hero appears to crawl while you resize. Fixed steps hold still
+ * between breakpoints. The steps are the old clamp's own endpoints, so
+ * nothing changes size at rest.
+ *
  * Nine of the ten heroes had set their own: 2.25rem at 2xl on athenahealth
  * and Netspend, 2.75 on athenaWell and Patient IO, 35px on LivePerson,
  * 2.25 from the token on Bright/GovOS/Volusion. So how large a client's name
@@ -403,9 +411,9 @@ export const HERO_COPY_GAP = "gap-2";
  * now, one step smaller than the old token's ceiling.
  */
 export const HERO_TITLE =
-  "font-semibold leading-[1.1] tracking-[-0.01em] [text-wrap:balance] text-[1.25rem] sm:text-[1.375rem] lg:text-[clamp(1.375rem,2.15vw,1.95rem)]";
+  "font-semibold leading-[1.1] tracking-[-0.01em] [text-wrap:balance] text-[1.25rem] sm:text-[1.375rem] lg:text-[1.5rem] xl:text-[1.75rem] 2xl:text-[1.95rem]";
 export const HERO_SUBTEXT =
-  "font-normal leading-[1.45] [text-wrap:pretty] text-[0.95rem] sm:text-[1rem] lg:text-[clamp(0.95rem,1.25vw,1.125rem)]";
+  "font-normal leading-[1.45] [text-wrap:pretty] text-[0.95rem] sm:text-[1rem] lg:text-[1.05rem] xl:text-[1.1rem] 2xl:text-[1.125rem]";
 
 export function Heading({ children, intro = false }: { children: React.ReactNode; intro?: boolean }) {
   return (

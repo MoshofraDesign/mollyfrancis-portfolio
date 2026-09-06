@@ -5,7 +5,7 @@ import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
-import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL, END_MEASURE, HERO_TITLE, HERO_SUBTEXT, PORTRAIT_CIRCLE, PORTRAIT_COPY, VIEW, MEASURE, STAT_ROW, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, TITLE, BODY_TYPE, StatRow } from "@/components/v2/CaseStudyKit";
+import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL, END_MEASURE, HERO_TITLE, HERO_SUBTEXT, PORTRAIT_CIRCLE, PORTRAIT_COPY, VIEW, MEASURE, STAT_ROW, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, TITLE, BODY_TYPE, StatRow, Heading } from "@/components/v2/CaseStudyKit";
 import UcmScreensCarousel from "@/components/UcmScreensCarousel";
 
 export const metadata = {
@@ -427,6 +427,10 @@ export default function BrightHealthcareCaseStudy() {
             lines on 1.45 — the site-wide leading scale. */}
         <Panel width={VIEW} pad="center">
           <div className={`${STAT_ROW} mx-auto`}>
+            {/* The only numbers section on the site without a heading —
+                three of the four figures are money or time saved, so that's
+                what it says. */}
+            <Heading>What it saved.</Heading>
             <StatRow
               className="text-white"
               items={[
