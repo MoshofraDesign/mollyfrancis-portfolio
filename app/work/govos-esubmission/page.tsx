@@ -545,18 +545,18 @@ export default function GovOSCaseStudy() {
                panels back to back, and they were saying one thing twice: we
                kept testing, and accessibility was part of what we tested.
                One beat now, with the line that earns both halves on top.
-               One short paragraph now, in plain words — the tools it used to
-               name (Dovetail, Jira) are already in the closing meta panel.
-               No conformance level or score is claimed, only that the bar
+               Two plain sentences now. The tools it used to name (Dovetail,
+               Jira) are already in the closing meta panel, and "VPAT
+               against Section 508 and WCAG" was jargon the heading already
+               covers — a county that can't buy it is the point. No
+               conformance level or score is claimed, only that the bar
                shaped the work. */}
         <Panel>
           <Heading>A county can&rsquo;t buy what its staff can&rsquo;t use.</Heading>
           <Body>
-            So we tested with real submitters, round after round, until they
-            stopped finding problems. Accessibility was part of every round
-            rather than a cleanup pass at the end — counties buy against a
-            VPAT, so keyboard access and screen-reader support were
-            requirements from day&nbsp;one.
+            So we tested with real submitters until they stopped finding
+            problems — accessibility every round, not a cleanup at the end.
+            Keyboard and screen-reader support were requirements, not&nbsp;polish.
           </Body>
         </Panel>
 

@@ -32,6 +32,58 @@ const MEDIA = "w-full max-w-[min(950px,90vw)]";
 const H_DISPLAY = `text-white ${TITLE}`;
 const BODY_CAPTION = `mt-3 ${CAPTION}`;
 
+/**
+ * A screen recording on its own panel, with a caption under it.
+ *
+ * Height-capped, not just aspect-boxed: the wrapper used to be MEDIA
+ * (max 950/90vw) with the clip in a plain aspect box, so on a short window
+ * the box computed taller than the panel and the rounded container clipped
+ * the clip top and bottom instead of scaling it. Capping the WIDTH by the
+ * room available — panel-media-max-h less the caption block, times the
+ * clip's own aspect — makes the whole thing shrink together. Same pattern
+ * as Care.com's video panel. `panel-media` is off this wrapper on purpose:
+ * its `video { width: auto }` rule fights the fill inside an aspect box.
+ */
+function ClipPanel({
+  mov,
+  mp4,
+  aspect,
+  ratio,
+  caption,
+}: {
+  mov: string;
+  mp4: string;
+  /** Tailwind aspect class for the box — the clip's own dimensions. */
+  aspect: string;
+  /** The same ratio as a number, for the height-to-width cap. */
+  ratio: number;
+  caption: string;
+}) {
+  return (
+    <Panel width={VIEW} pad="center">
+      <div
+        className="mx-auto w-full max-w-[min(950px,90vw,var(--clip-cap))]"
+        style={{ ["--clip-cap" as string]: `calc((var(--panel-media-max-h) - 3.5rem) * ${ratio})` }}
+      >
+        <SlideIn>
+          <div className={`relative w-full ${aspect} overflow-hidden rounded-[10px] bg-black/20`}>
+            <AutoplayVideo
+              sources={[
+                { src: mov, type: "video/quicktime" },
+                { src: mp4, type: "video/mp4" },
+              ]}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </SlideIn>
+        <SlideIn delay={100}>
+          <p className={`mt-4 text-center ${CAPTION}`}>{caption}</p>
+        </SlideIn>
+      </div>
+    </Panel>
+  );
+}
+
 function StoryImage({
   src,
   alt,
@@ -148,58 +200,70 @@ export default function ConsumerHealthCaseStudy() {
           </SlideIn>
         </TextPanel>
 
-        {/* aspect matches the export (1928x746), not the Figma frame's
-            950x659. With `contain` inside a box a full 1.8x taller than the
-            picture, the caption underneath sat about 170px of empty purple
-            below the screenshot instead of under it. */}
-        <StoryImage
-          src={`${ASSET}/landing-before.png`}
-          alt="Legacy My Health page — Test Results only"
-          aspect="aspect-[1928/746]"
-          caption="This was the home before"
-          contain
-        />
+        {/* ── TWO PAGES, TWO BEFORE/AFTERS ────────────────────────────────
+            This used to be one before (the legacy home) and one after clip
+            under a headline that covered both pages at once — "a real
+            landing page AND health overview page" — with the clip actually
+            showing My Health. They're separate screens with separate
+            problems, so each gets its own pair: copy, the legacy screen,
+            then the redesign.
 
-        {/* So I made a real landing */}
+            Each media box carries the ASSET's own aspect, not the Figma
+            frame's. The home screenshot is 1928x746 in a box built for
+            950x659, which put ~170px of empty ground between the picture
+            and its caption. */}
+
+        {/* HOME — copy, then the pair */}
         <TextPanel width={VIEW}>
           <SlideIn>
-            <h2 className={H_DISPLAY}>So I made a real landing page and health overview page.</h2>
+            <h2 className={H_DISPLAY}>So I made a real landing page.</h2>
           </SlideIn>
           <SlideIn delay={100}>
             <p className={BODY_CAPTION}>One dashboard. What matters up top. A clear path to everything else.</p>
           </SlideIn>
         </TextPanel>
 
-        <Panel width={VIEW} pad="center">
-          {/* Height-capped, not just aspect-boxed. The wrapper was MEDIA
-              (max 950/90vw) with the clip in a plain aspect-[1544/1096]
-              box, so on a short window the box computed taller than the
-              panel and the rounded container clipped the clip top and
-              bottom instead of scaling it. Capping the WIDTH by the room
-              available — panel-media-max-h less the caption block, times
-              the clip's own 1.4088 aspect — makes the whole thing shrink
-              together. Same pattern as Care.com's video panel. `panel-media`
-              is off this wrapper on purpose: its `video { width: auto }`
-              rule fights the fill inside an aspect box. */}
-          <div className="mx-auto w-full max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_3.5rem)_*_1.4088))]">
-            <SlideIn>
-              <div className="relative w-full aspect-[1544/1096] overflow-hidden rounded-[10px] bg-black/20">
-                <AutoplayVideo
-                  sources={[
-                    { src: "/work/athenahealth/videos/landing-after.mov", type: "video/quicktime" },
-                    { src: "/work/athenahealth/videos/landing-after.mp4", type: "video/mp4" },
-                  ]}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </SlideIn>
-            <SlideIn delay={100}>
-              <p className={`mt-4 text-center ${CAPTION}`}>
-                My Health Landing – After
-              </p>
-            </SlideIn>
-          </div>
-        </Panel>
+        <StoryImage
+          src={`${ASSET}/landing-before.png`}
+          alt="Legacy patient portal home — a wall of panels"
+          aspect="aspect-[1928/746]"
+          caption="This was the home before"
+          contain
+        />
+
+        <ClipPanel
+          mov={`${ASSET}/videos/landing-after.mov`}
+          mp4={`${ASSET}/videos/landing-after.mp4`}
+          aspect="aspect-[818/618]"
+          ratio={818 / 618}
+          caption="The home now"
+        />
+
+        {/* MY HEALTH — copy, then the pair */}
+        <TextPanel width={VIEW}>
+          <SlideIn>
+            <h2 className={H_DISPLAY}>My Health opened on more than Test Results.</h2>
+          </SlideIn>
+          <SlideIn delay={100}>
+            <p className={BODY_CAPTION}>Medications, vitals, records and forms were already in there, one level down. The redesign brought them up.</p>
+          </SlideIn>
+        </TextPanel>
+
+        <StoryImage
+          src={`${ASSET}/myhealth-before.webp`}
+          alt="Legacy My Health — Test Results, with everything else in a sidebar"
+          aspect="aspect-[964/669]"
+          caption="This was My Health before"
+          contain
+        />
+
+        <ClipPanel
+          mov={`${ASSET}/videos/myhealth-after.mov`}
+          mp4={`${ASSET}/videos/myhealth-after.mp4`}
+          aspect="aspect-[1544/1096]"
+          ratio={1544 / 1096}
+          caption="My Health now"
+        />
 
         {/* The nav had the same hole */}
         <TextPanel width={VIEW}>
