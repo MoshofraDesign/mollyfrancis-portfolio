@@ -77,7 +77,7 @@ const PUNCH = (x: number, y: number) =>
 /** One type spec for the rotating headline, shared by the visible line and
  *  the invisible one that reserves its height. */
 const H1_TYPE =
-  "max-w-3xl font-jost text-2xl font-medium leading-snug text-ink sm:text-3xl md:max-w-none md:text-4xl lg:text-[55px] lg:leading-[65px]";
+  "max-w-3xl xl:w-[580px] font-jost text-2xl font-medium leading-snug text-ink sm:text-3xl md:max-w-none md:text-4xl lg:text-[55px] lg:leading-[65px]";
 
 const LONGEST_HEADLINE = headlines.reduce(
   (a, b) => (b.length > a.length ? b : a),
@@ -116,14 +116,14 @@ export default function RotatingHero() {
   }, []);
 
   return (
-    <section className="flex min-h-[70vh] items-center px-6 py-16 sm:min-h-[75vh] sm:py-0 lg:min-h-[80vh] lg:px-10">
-      <div className="mx-auto grid w-full max-w-[96rem] grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,380px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,640px)_1fr] lg:gap-16">
+    <section className="flex min-h-[70vh] items-center px-6 py-16 sm:min-h-[75vh] sm:py-0 lg:min-h-[80vh] lg:px-10 xl:min-h-[720px]">
+      <div className="mx-auto grid w-full max-w-[96rem] grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,380px)_1fr] md:gap-10 lg:grid-cols-[minmax(0,440px)_1fr] lg:gap-16 xl:w-fit xl:grid-cols-[520px_580px] xl:gap-14">
         <div
           ref={portraitRef}
           onMouseMove={onPortraitMove}
           onMouseEnter={onPortraitMove}
           onMouseLeave={() => setSpot((s) => ({ ...s, on: false }))}
-          className="group relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[400px] md:mx-0 md:max-w-none lg:max-w-[640px]"
+          className="group relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[400px] md:mx-0 md:max-w-none lg:max-w-[440px] xl:w-[520px] xl:max-w-[520px]"
         >
           {/* Color photo full-bleed (the circular headshot). Soft spotlight
               follows the cursor; gray dots sit inset on top, same as Figma. */}
