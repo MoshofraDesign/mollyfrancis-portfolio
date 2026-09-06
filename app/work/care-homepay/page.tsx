@@ -182,18 +182,19 @@ export default function CareHomepayCaseStudy() {
           {/* Below lg the pair goes full-bleed: negative margins cancel the
               section's own padding at each breakpoint (and its pb-10), and
               the phones are sized in percent with no px cap, so together
-              they span the window.
+              they grow with it — capped at 320 each, up from the 240 they
+              started at, but bounded: uncapped at 48% they filled a tablet
+              window edge to edge and read as two posters rather than a hero.
 
               Side by side with a gap, NOT overlapped. The lg frame overlaps
-              them by about 16% of a phone's width; at 48% of a portrait
-              window each phone is three times its desktop size, so the same
+              them by about 16% of a phone's width, and at this size the same
               ratio covered a headline instead of reading as depth. At lg the
               .care-hero-phone-* rules take over (position: absolute,
               margin: 0), so none of this survives into the desktop frame. */}
           <div className="order-3 -mx-6 -mb-10 mt-6 flex flex-1 items-end justify-center gap-3 sm:-mx-10 sm:gap-6 md:-mx-[50px] lg:contents">
             <SlideIn
               delay={80}
-              className="care-hero-phone-l w-[48%] max-w-none"
+              className="care-hero-phone-l w-[46%] max-w-[320px]"
             >
               <Image
                 src={`${ASSET}/phone-hero-left.png`}
@@ -206,7 +207,7 @@ export default function CareHomepayCaseStudy() {
             </SlideIn>
             <SlideIn
               delay={180}
-              className="care-hero-phone-r mt-[7%] w-[48%] max-w-none"
+              className="care-hero-phone-r mt-[7%] w-[46%] max-w-[320px]"
             >
               <Image
                 src={`${ASSET}/phone-hero-right.png`}

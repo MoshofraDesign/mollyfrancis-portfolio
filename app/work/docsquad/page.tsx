@@ -13,8 +13,8 @@ import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, CENTER
 /**
  * DocSquad — a moonlighter-first narrative over the Figma deck's assets
  * (Portfolio › 4553:21862), left to right:
- *   Title → the provider was already off the clock → they didn't want
- *   another platform → so the visit starts before the provider does →
+ *   Title → the provider was already off the clock (and what the research
+ *   said) → so the visit starts before the provider does →
  *   Provider Portal desktop → Provider Portal mobile → one interface,
  *   web and native → the icon set → interview+dashboard → portrait →
  *   Outcome.
@@ -237,8 +237,13 @@ export default function DocSquadCaseStudy() {
           </div>
         </section>
 
-        {/* 2 — THE SECOND JOB. Opens on who the clinician actually is,
-            because every constraint in this project follows from that. */}
+        {/* 2 — THE SECOND JOB AND WHAT THEY SAID. Two panels until now:
+            who the clinician is, then the research. They were one beat —
+            the research is what proves the first paragraph — so they share
+            a panel and the page goes problem → decision in two stops
+            instead of three. The research list is Molly's own
+            (lib/projects.ts research[]), stated as method rather than
+            reframed as a finding. */}
         <ScreenPanel className="!pt-16">
           <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
             <SlideIn>
@@ -252,32 +257,18 @@ export default function DocSquadCaseStudy() {
                 visit, then a second system to type it all into.
               </p>
             </SlideIn>
-          </div>
-        </ScreenPanel>
-
-        {/* 3 — WHAT THEY SAID. The research list is Molly's own
-            (lib/projects.ts research[]), stated as method rather than
-            reframed as a finding. */}
-        <ScreenPanel>
-          <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
-            <SlideIn>
-              <h2 className={H_DISPLAY}>They didn&apos;t want another platform.</h2>
-            </SlideIn>
-            <SlideIn delay={80}>
-              <p className={BODY}>
-                Five interviews with clinicians actually working these shifts,
-                teardowns of how competing platforms onboard, and testing of the
-                diagnosis flow itself.
-              </p>
+            <SlideIn delay={160}>
               <p className={`mt-8 ${BODY}`}>
-                They all said the same thing: don&apos;t hand us another tool.
-                Hand us less work.
+                Five interviews with clinicians actually working these shifts,
+                teardowns of how competing platforms onboard, and testing of
+                the diagnosis flow itself. They all said the same thing:
+                don&apos;t hand us another tool. Hand us less work.
               </p>
             </SlideIn>
           </div>
         </ScreenPanel>
 
-        {/* 4 — THE TURN. The design move the rest of the page shows. */}
+        {/* 3 — THE TURN. The design move the rest of the page shows. */}
         <ScreenPanel width={COPY_PANEL}>
           <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
             <SlideIn>
@@ -285,7 +276,7 @@ export default function DocSquadCaseStudy() {
             </SlideIn>
             <SlideIn delay={80}>
               <p className={BODY}>
-                So the intake happens first, on its own. Symptoms and history
+                The intake happens first, on its own. Symptoms and history
                 are collected before anyone opens the case — then it&apos;s read,
                 diagnosed, prescribed or passed on. No call, no retyping.
               </p>
@@ -293,7 +284,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 5 — DESKTOP. Figma 4669:14416: centered, 232≈, 183 / 977×681
+        {/* 4 — DESKTOP. Figma 4669:14416: centered, 232≈, 183 / 977×681
             The clip governs the box, not the frame: provider-desktop.mp4 is
             1400x1056 (1.3258) against the frame's 977x681 (1.4346), so the
             Figma heights would have letterboxed it against bg-black. Heights
@@ -332,7 +323,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 6 — FOUR PHONES — same treatment as the Netspend "user-test
+        {/* 5 — FOUR PHONES — same treatment as the Netspend "user-test
             phones" panel: grid of individually framed screens, bottom-
             aligned, with a caption below, instead of one flat cropped
             sprite. No drop shadow: the screens are already outlined and the
@@ -368,7 +359,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 7 — ONE UI, and the icon sheet it introduces. The copy sets up
+        {/* 6 — ONE UI, and the icon sheet it introduces. The copy sets up
                the panel that follows it now: the design-system point was
                there, but nothing said Molly drew the icons, so beat 8
                arrived as a sheet of shapes with only a caption to explain
@@ -389,7 +380,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 8 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
+        {/* 7 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
         <ScreenPanel width={MEDIA_PANEL}>
           {/* Wrapper carries the placement so the caption travels with the
                  grid. On CENTER_BELOW_MARK like every other block on this
@@ -433,7 +424,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 9 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
+        {/* 8 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
         <ScreenPanel width={MEDIA_PANEL}>
           {/* Aspect-driven, width-capped — no explicit height.
               It had a stepped height AND a max-height, which is the crop: the
@@ -456,7 +447,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 10 — PORTRAIT. Figma 4622:11969 is 950×1000.
+        {/* 9 — PORTRAIT. Figma 4622:11969 is 950×1000.
             Circle on the shared portrait size — min(24vw,320px), the same as
             Bright's and GovOS's — and centred on CENTER_BELOW_MARK, which is
             where the Outcome copy beside it centres, so the two line up
@@ -480,7 +471,7 @@ export default function DocSquadCaseStudy() {
           </div>
         </ScreenPanel>
 
-        {/* 11 — OUTCOME. Figma node 4672:15331 — left-aligned heading + copy,
+        {/* 10 — OUTCOME. Figma node 4672:15331 — left-aligned heading + copy,
             then three stacked stat columns (hero number, uppercase kicker,
             delta + down triangle, detail line), all in white on the brand
             magenta. Replaces the earlier circle-badge treatment, which

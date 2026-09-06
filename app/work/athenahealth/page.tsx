@@ -99,7 +99,7 @@ export default function ConsumerHealthCaseStudy() {
         {/* Title */}
         <section
           id="title"
-          className={`relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0`}
+          className={`relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 md:gap-14 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0`}
         >
           {/* Mark + "Patient Portal" are one wrapping row from tablet up —
               see HERO_ROW. The mark is capped at md so the label has room to
@@ -114,11 +114,18 @@ export default function ConsumerHealthCaseStudy() {
           </p>
           </div>
 
-          {/* Centred rather than pinned to the 100px rail. Left-anchored it sat
-              105px from the left edge and 215px from the right at 1400 —
-              visibly left-heavy, since the artwork is narrower than the
-              rail-to-rail span it was drawn for. */}
-          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,1038px)] lg:absolute lg:left-1/2 lg:top-[228px] xl:top-[252px] 2xl:top-[284px] lg:mx-0 lg:w-[843px] xl:w-[1054px] 2xl:w-[1265px] lg:max-w-[calc((100dvh_-_252px)_*_1.6796)] xl:max-w-[calc((100dvh_-_276px)_*_1.6796)] 2xl:max-w-[calc((100dvh_-_308px)_*_1.6796)] lg:-translate-x-1/2">
+          {/* Centred both ways in the space UNDER the mark.
+              Horizontally: left-anchored it sat 105px from the left edge and
+              215px from the right at 1400 — visibly left-heavy, since the
+              artwork is narrower than the rail-to-rail span it was drawn for.
+              Vertically: it was pinned at a fixed top (228/252/284 by
+              breakpoint), which left a growing gap above it on a tall window
+              and crowded the bottom on a short one. The mark sits at 50 and
+              is 83 tall, so the region runs 133 to the panel floor and its
+              middle is (100dvh + 133)/2. The height cap is that region less
+              a little air, converted to a width through the composite's own
+              1.6796 aspect. */}
+          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,1038px)] lg:absolute lg:left-1/2 lg:top-[calc((100dvh_+_133px)_/_2)] lg:mx-0 lg:w-[843px] xl:w-[1054px] 2xl:w-[1265px] lg:max-w-[calc((100dvh_-_181px)_*_1.6796)] lg:-translate-x-1/2 lg:-translate-y-1/2">
             <Image
               src={`${ASSET}/hero.png`}
               alt="Redesigned patient portal dashboard on desktop and mobile"
@@ -141,11 +148,15 @@ export default function ConsumerHealthCaseStudy() {
           </SlideIn>
         </TextPanel>
 
+        {/* aspect matches the export (1928x746), not the Figma frame's
+            950x659. With `contain` inside a box a full 1.8x taller than the
+            picture, the caption underneath sat about 170px of empty purple
+            below the screenshot instead of under it. */}
         <StoryImage
           src={`${ASSET}/landing-before.png`}
           alt="Legacy My Health page — Test Results only"
-          aspect="aspect-[950/659]"
-          caption="This was home."
+          aspect="aspect-[1928/746]"
+          caption="This was the home before"
           contain
         />
 

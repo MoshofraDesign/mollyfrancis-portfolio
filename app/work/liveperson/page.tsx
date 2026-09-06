@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
-import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, CAPTION, NextProjectLink, CaseStudyMetaPanel, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT, StatRow } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, CAPTION, NextProjectLink, CaseStudyMetaPanel, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT, BODY_TYPE, StatRow } from "@/components/v2/CaseStudyKit";
 
 /**
  * LivePerson/SocialConnect, told as a story the way DocSquad is: it opens
@@ -238,14 +238,20 @@ export default function LivePersonCaseStudy() {
           </Body>
         </TextPanel>
 
-        {/* ── SOCIALCONNECT — SELF-SERVICE SETUP ───────────────────────── */}
-        <TextPanel>
-          {/* The lockup replaces the "SocialConnect" heading. The alt text
-              carries the title, so the section still announces itself to a
-              screen reader and still reads as an h2 in the outline. Capped
-              at 420: the export is 594px wide, so beyond that it upscales on
-              a 2x screen. */}
-          <SlideIn className={MEASURE}>
+        {/* ── SOCIALCONNECT — SELF-SERVICE SETUP ───────────────────────────
+            One beat: the lockup and the copy sit above the screen they
+            describe, in the same panel. They were a text panel followed by
+            an image panel whose caption said the same thing the copy above
+            it already said, so the caption is gone and the two halves are
+            one section.
+
+            The lockup replaces the "SocialConnect" heading. The alt text
+            carries the title, so the section still announces itself to a
+            screen reader and still reads as an h2 in the outline. Capped at
+            420: the export is 594px wide, so beyond that it upscales on a 2x
+            screen. */}
+        <Panel width={VIEW} pad="center" className="items-center">
+          <SlideIn className={`mx-auto flex w-full flex-col ${MEDIA}`} style={{ maxWidth: "950px" }}>
             <h2>
               <Image
                 src="/work/liveperson/socialconnect-lockup.png"
@@ -256,21 +262,23 @@ export default function LivePersonCaseStudy() {
                 className="h-auto w-[min(100%,260px)] sm:w-[min(100%,330px)] lg:w-[min(100%,420px)]"
               />
             </h2>
+            <p className={`mt-4 max-w-[62ch] ${BODY_TYPE}`}>
+              Brands connect their own accounts, route each one to a team, and
+              load the phrases and media their agents reply with. Onboarding
+              used to go through us; now it doesn&apos;t.
+            </p>
+            <Image
+              src="/legacy/accounts-multiple-611c4c.png"
+              alt="Self-service: connect, assign, and manage social accounts"
+              width={1122}
+              height={562}
+              sizes="(max-width: 1024px) 92vw, min(90vw, 950px)"
+              /* Shorter cap than BigImagePanel's, because the copy above it
+                 shares the panel's height budget. */
+              className="mt-8 h-auto max-h-[440px] w-full rounded-md object-contain lg:max-h-[calc(var(--panel-media-max-h)_-_11rem)]"
+            />
           </SlideIn>
-          <Body>
-            Brands connect their own accounts, route each one to a team, and
-            load the phrases and media their agents reply with. Onboarding used
-            to go through us; now it doesn&apos;t.
-          </Body>
-        </TextPanel>
-
-        <BigImagePanel
-          src="/legacy/accounts-multiple-611c4c.png"
-          alt="Self-service: connect, assign, and manage social accounts"
-          caption="Self-service: connect, assign, and manage social accounts"
-          width={1122}
-          height={562}
-        />
+        </Panel>
 
         {/* ── FUTURE VISION ─────────────────────────────────────────────── */}
         <BigImagePanel
