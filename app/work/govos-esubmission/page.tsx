@@ -549,6 +549,40 @@ export default function GovOSCaseStudy() {
           caption="Running and authorizing an ACH report"
         />
 
+        {/* 7.3 — TESTING. The other half of the research record that never
+               made the page: rounds of moderated testing, and what they
+               actually turned up. Numbers and tools are the project's own. */}
+        <Panel>
+          <Heading>Five users, twelve problems, every round.</Heading>
+          <Body>
+            Live usability testing in a QA environment with submitters,
+            synthesized in Dovetail and triaged into Jira with the PM. Twelve
+            or more issues a round — and the rounds kept going until they
+            stopped finding them.
+          </Body>
+        </Panel>
+
+        {/* 7.4 — ACCESSIBILITY / VPAT.
+            Sits with the making, not after the results: for a government
+            buyer, conformance is part of whether the product can be bought
+            at all, and it was a constraint Molly designed to — so it belongs
+            beside the other design decisions, before the outcomes. No
+            conformance level or score is claimed, only that the bar shaped
+            the work. */}
+        <Panel>
+          <Heading>A county can&rsquo;t buy what its staff can&rsquo;t use.</Heading>
+          <Body>
+            Public-sector procurement asks for a VPAT — a written account of how a
+            product measures up against Section 508 and WCAG. That made
+            accessibility a design constraint, not a cleanup pass.
+          </Body>
+          <Body>
+            A keyboard path through every step of a submission. Fields and errors a
+            screen reader can announce. Contrast that survives a county monitor, and
+            focus that stays put inside a modal.
+          </Body>
+        </Panel>
+
         {/* 7.5 — CUSTOM ICONS. Its own copy beat first, like every other
             screen on this page: without one it followed the ACH recording
             directly, and two media panels back to back — both hugging their
@@ -604,38 +638,6 @@ export default function GovOSCaseStudy() {
             title companies.
           </Quote>
         </PortraitPanel>
-
-        {/* 9.4 — TESTING. The other half of the research record that never
-               made the page: rounds of moderated testing, and what they
-               actually turned up. Numbers and tools are the project's own. */}
-        <Panel>
-          <Heading>Five users, twelve problems, every round.</Heading>
-          <Body>
-            Live usability testing in a QA environment with submitters,
-            synthesized in Dovetail and triaged into Jira with the PM. Twelve
-            or more issues a round — and the rounds kept going until they
-            stopped finding them.
-          </Body>
-        </Panel>
-
-        {/* 9.5 — ACCESSIBILITY / VPAT.
-            Sits with the county beat rather than the outcome stats: for a
-            government buyer, conformance is part of whether the product can
-            be bought at all, not a result it produced. No conformance level
-            or score is claimed here — only that the bar shaped the design. */}
-        <Panel>
-          <Heading>A county can&rsquo;t buy what its staff can&rsquo;t use.</Heading>
-          <Body>
-            Public-sector procurement asks for a VPAT — a written account of how a
-            product measures up against Section 508 and WCAG. That made
-            accessibility a design constraint, not a cleanup pass.
-          </Body>
-          <Body>
-            A keyboard path through every step of a submission. Fields and errors a
-            screen reader can announce. Contrast that survives a county monitor, and
-            focus that stays put inside a modal.
-          </Body>
-        </Panel>
 
         {/* Outcome — three columns in a full-viewport section, the shape
             every other project's closing numbers use (Bright, Volusion,
