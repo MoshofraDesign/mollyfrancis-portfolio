@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
-import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, CAPTION, NextProjectLink, CaseStudyMetaPanel } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, CAPTION, NextProjectLink, CaseStudyMetaPanel, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD } from "@/components/v2/CaseStudyKit";
 
 /**
  * LivePerson/SocialConnect, told as a story the way DocSquad is: it opens
@@ -124,7 +124,7 @@ export default function LivePersonCaseStudy() {
             this collapses back to a plain stacked flex column. */}
         <section
           id="title"
-          className="relative flex w-full flex-col gap-10 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pt-0"
+          className={`relative flex w-full flex-col gap-10 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pt-0`}
         >
           {/* Mark and heading are placed independently at lg, both from the
               frame (4555:22442 at 100,100 / 4555:22443 at 890,107). The
@@ -133,12 +133,12 @@ export default function LivePersonCaseStudy() {
               than the frame draws it. 61.8% is the frame's own x. Giving it a
               box the mark's height and centring in that keeps the two lined
               up without matching numbers by hand. Below lg they stack. */}
-          <div className="contents">
+          <div className={HERO_ROW}>
             <div className="relative h-10 w-[220px] shrink-0 sm:h-14 sm:w-[300px] lg:absolute lg:left-[50px] lg:top-[50px] lg:z-10 lg:h-[94px] lg:w-[594px]">
               <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
             </div>
 
-            <p className="max-w-[300px] text-lg font-semibold sm:text-xl lg:absolute lg:left-[61.8%] lg:top-[50px] lg:z-10 lg:flex lg:h-[94px] lg:max-w-[min(417px,28vw)] lg:items-center lg:text-[24px] xl:text-[29px] 2xl:text-[35px] lg:leading-[1.1]">
+            <p className={`max-w-[300px] text-lg font-semibold sm:text-xl ${HERO_ROW_COPY} lg:absolute lg:left-[61.8%] lg:top-[50px] lg:z-10 lg:flex lg:h-[94px] lg:max-w-[min(417px,28vw)] lg:items-center lg:text-[24px] xl:text-[29px] 2xl:text-[35px] lg:leading-[1.1]`}>
               Social Media Management Product
             </p>
           </div>

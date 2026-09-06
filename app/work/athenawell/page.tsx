@@ -45,6 +45,7 @@ const jost = Jost({
 
 const ACCENT = "#0055CC";
 const LOGO = "/logos/athenawell.png";
+const ASSET = "/work/athenawell";
 
 const metrics = [
   { label: "Patient personas designed for", value: "3 risk tiers" },
@@ -272,6 +273,34 @@ export default function AthenaWellCaseStudy() {
             beyond the clinic — virtual, phone, and flexible scheduling.
           </Body>
         </TextPanel>
+
+        {/* ── CUSTOM ICONS. A craft beat before the outcome. The sheet's
+               width is capped against the room left after the heading and
+               body (--panel-media-max-h less ~13rem of type, times its 1.211
+               aspect) so a short window scales it rather than clipping it.
+               10px radius, matching every other framed image. */}
+        <Panel width={VIEW} pad="center">
+          <div className="mx-auto flex w-full max-w-[min(700px,86vw)] flex-col">
+            <Heading>Custom Icons</Heading>
+            <Body>
+              A full set drawn for the product — care plans, scheduling,
+              messaging, results — so every screen spoke one visual language.
+            </Body>
+            <SlideIn
+              delay={200}
+              className="mt-8 w-full max-w-[min(560px,86vw)] lg:max-w-[min(560px,86vw,calc((var(--panel-media-max-h)_-_13rem)_*_1.211))]"
+            >
+              <Image
+                src={`${ASSET}/custom-icons.webp`}
+                alt="The athenaWell icon set — twenty-four drawn icons"
+                width={752}
+                height={621}
+                sizes="(max-width: 1023px) 86vw, min(86vw, 560px)"
+                className="h-auto w-full rounded-[10px]"
+              />
+            </SlideIn>
+          </div>
+        </Panel>
 
         {/* ── OUTCOME ───────────────────────────────────────────────────── */}
         <TextPanel>

@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Netspend Rewards & UCM — Molly Francis",
@@ -66,10 +66,15 @@ export default function NetspendCaseStudy() {
             and the card fan isn’t clipped by the scrollbar gutter. */}
         <section
           id="title"
-          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-[100dvw] lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
+          className={`relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-[100dvw] lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0`}
         >
+          {/* Mark + the Rewards copy are one wrapping row from tablet up —
+              see HERO_ROW. The card fan follows them in the stack below lg;
+              at lg all three are absolutely placed, so DOM order there
+              makes no difference. */}
+          <div className={HERO_ROW}>
           {/* Large logo — same left/top anchor; height-driven so the wordmark never clips */}
-          <div className="relative z-10 h-[52px] w-[min(100%,20rem)] sm:h-[60px] sm:w-[22.5rem] lg:absolute lg:left-[50px] lg:top-[50px] lg:h-[72px] lg:w-[680px]">
+          <div className="relative z-10 h-[52px] w-[min(100%,20rem)] shrink-0 sm:h-[60px] sm:w-[22.5rem] lg:absolute lg:left-[50px] lg:top-[50px] lg:h-[72px] lg:w-[680px]">
             <Image
               src={LOGO}
               alt="Netspend"
@@ -80,23 +85,8 @@ export default function NetspendCaseStudy() {
             />
           </div>
 
-          {/* Debit cards — sit in the open area right of the logo/copy, fully inside
-              the frame (Figma 498,226 / 791×638). Insets + object-contain keep the
-              orange tip from getting cropped. */}
-          <div className="pointer-events-none relative z-0 mx-auto flex aspect-[791/638] w-full max-w-[min(90vw,26rem)] items-center justify-center lg:absolute lg:left-[25%] lg:right-[2%] lg:top-[19%] lg:bottom-[15%] lg:aspect-auto lg:w-auto lg:max-w-none lg:p-6 xl:left-[21%] xl:right-[1%] xl:top-[17%] xl:bottom-[11%] 2xl:left-[17%] 2xl:right-0 2xl:top-[15%] 2xl:bottom-[7%]">
-            <Image
-              src={`${ASSET}/debit-cards.png`}
-              alt="Netspend debit cards"
-              width={1200}
-              height={967}
-              priority
-              unoptimized
-              className="h-auto max-h-full w-auto max-w-full object-contain"
-            />
-          </div>
-
           {/* Badges + copy — one block on mobile so they can’t overlap */}
-          <div className="relative z-10 flex flex-col gap-5 lg:absolute lg:bottom-[10.3%] lg:left-[50px] lg:z-10 lg:w-[308px] lg:gap-8">
+          <div className={`relative z-10 flex flex-col gap-5 ${HERO_ROW_COPY} lg:absolute lg:bottom-[10.3%] lg:left-[50px] lg:z-10 lg:w-[308px] lg:gap-8`}>
             <div className="flex items-center gap-4">
               <Image
                 src={`${ASSET}/google-play.svg`}
@@ -125,6 +115,23 @@ export default function NetspendCaseStudy() {
               </p>
             </SlideIn>
           </div>
+          </div>
+
+          {/* Debit cards — sit in the open area right of the logo/copy, fully inside
+              the frame (Figma 498,226 / 791×638). Insets + object-contain keep the
+              orange tip from getting cropped. */}
+          <div className="pointer-events-none relative z-0 mx-auto flex aspect-[791/638] w-full max-w-[min(90vw,26rem)] items-center justify-center lg:absolute lg:left-[25%] lg:right-[2%] lg:top-[19%] lg:bottom-[15%] lg:aspect-auto lg:w-auto lg:max-w-none lg:p-6 xl:left-[21%] xl:right-[1%] xl:top-[17%] xl:bottom-[11%] 2xl:left-[17%] 2xl:right-0 2xl:top-[15%] 2xl:bottom-[7%]">
+            <Image
+              src={`${ASSET}/debit-cards.png`}
+              alt="Netspend debit cards"
+              width={1200}
+              height={967}
+              priority
+              unoptimized
+              className="h-auto max-h-full w-auto max-w-full object-contain"
+            />
+          </div>
+
         </section>
 
         {/* Rewards ran on spreadsheets... — matches production narrative */}

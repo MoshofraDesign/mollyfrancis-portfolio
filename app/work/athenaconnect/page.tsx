@@ -16,6 +16,10 @@ import {
   Body,
   VIEW,
   STAT_ROW,
+  META_LABEL,
+  HERO_ROW,
+  HERO_ROW_COPY,
+  HERO_INSET_MD,
   CAPTION,
   NextProjectLink,
   CaseStudyMetaPanel,
@@ -73,20 +77,30 @@ function ClipPanel({
   caption: string;
   delay?: number;
 }) {
-  const a = aspect.toFixed(4);
+  /* The aspect travels as a CSS custom property rather than inside the class
+     name. Tailwind scans source text at build time, so a class built from a
+     template literal (`max-w-[...${aspect}...]`) never gets generated — the
+     caps silently did nothing, the clip took the full panel width, and it
+     overflowed the panel's bottom edge and pushed the caption out of frame.
+     These class strings are static; --clip-aspect is what changes per clip,
+     and custom properties inherit, so setting it on the panel is enough for
+     the width class here and the caps inside.
+
+     The height-derived cap is lg-only: below lg the panel has no fixed
+     height, so 92vw is the real constraint and a 100dvh-derived cap would
+     shrink a landscape clip for no reason. */
   return (
     <Panel
-      width={`lg:w-[min(100vw,calc(var(--panel-media-max-h)_*_${a}_+_9rem))]`}
+      width="lg:w-[min(100vw,calc(var(--panel-media-max-h)_*_var(--clip-aspect)_+_9rem))]"
       pad="center"
       className="items-center"
+      style={{ "--clip-aspect": String(aspect) } as React.CSSProperties}
     >
-      <div
-        className={`mx-auto w-full max-w-[min(1100px,92vw,calc((var(--panel-media-max-h)_-_3.5rem)_*_${a}))]`}
-      >
+      <div className="mx-auto w-full max-w-[min(1100px,92vw)] lg:max-w-[min(1100px,92vw,calc((var(--panel-media-max-h)_-_4rem)_*_var(--clip-aspect)))]">
         <SlideIn delay={delay}>
           <div
             className="relative w-full overflow-hidden rounded-[10px] bg-black/10"
-            style={{ aspectRatio: String(aspect) }}
+            style={{ aspectRatio: "var(--clip-aspect)" }}
           >
             <AutoplayVideo src={src} className="h-full w-full object-cover" />
           </div>
@@ -141,9 +155,13 @@ export default function AthenaConnectCaseStudy() {
             like every other project's. */}
         <section
           id="title"
-          className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
+          className={`relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 sm:px-10 sm:pt-28 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0`}
         >
-          <div className="relative z-10 aspect-[2476/288] w-[min(100%,420px)] sm:w-[min(100%,520px)] lg:absolute lg:left-[50px] lg:top-[50px] lg:aspect-auto lg:h-[72px] lg:w-[619px] xl:h-[84px] xl:w-[722px] 2xl:h-[96px] 2xl:w-[825px]">
+          {/* Mark + subtitle become one wrapping row from tablet up — see
+              HERO_ROW. The mark keeps its size; the subtitle sits beside it
+              whenever the width allows and drops below it when it can't. */}
+          <div className={HERO_ROW}>
+          <div className="relative z-10 aspect-[2476/288] w-[min(100%,420px)] shrink-0 sm:w-[min(100%,520px)] lg:absolute lg:left-[50px] lg:top-[50px] lg:aspect-auto lg:h-[72px] lg:w-[619px] xl:h-[84px] xl:w-[722px] 2xl:h-[96px] 2xl:w-[825px]">
             <Image
               src={LOGO}
               alt="athenaConnect"
@@ -156,12 +174,13 @@ export default function AthenaConnectCaseStudy() {
 
           <SlideIn
             delay={80}
-            className="relative z-10 flex max-w-[46ch] flex-col gap-2 lg:absolute lg:left-[50px] lg:top-[148px] lg:max-w-[min(560px,42vw)] xl:top-[166px] 2xl:top-[184px]"
+            className={`relative z-10 flex max-w-[46ch] flex-col gap-2 ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[148px] lg:max-w-[min(560px,42vw)] xl:top-[166px] 2xl:top-[184px]`}
           >
             <p className="text-[1.05rem] leading-[1.45] opacity-90 lg:text-[clamp(1.05rem,1.25vw,1.25rem)]">
               {project.subtitle}
             </p>
           </SlideIn>
+          </div>
 
           {/* The composite is 2476x998 (2.481). Bottom-anchored and centred
               with a negative margin, not -translate-x-1/2: SlideIn writes
@@ -245,15 +264,50 @@ export default function AthenaConnectCaseStudy() {
           />
         )}
 
-        {/* 6 — OUTCOME. project.outcome's own figures, phrased as a
-            contribution rather than a claim. */}
-        <TextPanel>
-          <Heading>The catalogue got easier to shop.</Heading>
-          <Body>
-            Contributed to 71%+ customer adoption of partner solutions, across
-            370+ integrations and 60+ specialties.
-          </Body>
-        </TextPanel>
+        {/* 6 — OUTCOME. The same figures as project.outcome, but as a row of
+            columns rather than a sentence — the shape every other project's
+            closing numbers use (Bright, Volusion, LivePerson): label on
+            META_LABEL, figure on the 1.1 display ratio, detail on 1.45.
+            !pb balances NAV_CLEAR so the row centres on the panel. */}
+        <Panel width={VIEW} pad="center" className="lg:!pb-[var(--nav-clear)]">
+          <div className={`${STAT_ROW} mx-auto`}>
+            <Heading>The catalogue got easier to shop.</Heading>
+            <div className="mt-10 grid grid-cols-2 gap-10 gap-x-8 sm:gap-x-12 lg:grid-cols-3 lg:gap-x-10">
+              {[
+                {
+                  label: "Adoption",
+                  value: "71%+",
+                  detail: "of customers adopted partner solutions",
+                },
+                {
+                  label: "Integrations",
+                  value: "370+",
+                  detail: "partner products in the catalogue",
+                },
+                {
+                  label: "Specialties",
+                  value: "60+",
+                  detail: "covered across the partner ecosystem",
+                },
+              ].map((stat, i) => (
+                <SlideIn key={stat.label} delay={120 + i * 90}>
+                  <h2 className={META_LABEL}>{stat.label}</h2>
+                  <p className="mt-1.5 text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.03em] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.6rem]">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-[1.1rem] leading-[1.45] opacity-90 lg:text-[1.15rem] xl:text-[1.2rem]">
+                    {stat.detail}
+                  </p>
+                </SlideIn>
+              ))}
+            </div>
+            <SlideIn delay={420}>
+              <p className="mt-10 text-[clamp(1rem,1.2vw,1.2rem)] leading-[1.45] opacity-70">
+                Figures the redesigned catalogue contributed to.
+              </p>
+            </SlideIn>
+          </div>
+        </Panel>
 
         <CaseStudyMetaPanel
           meta={getCaseStudyMeta(project)}

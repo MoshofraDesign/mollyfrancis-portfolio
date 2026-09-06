@@ -18,6 +18,9 @@ import {
   CaseStudyMetaPanel,
   STAT_ROW,
   VIEW,
+  HERO_ROW,
+  HERO_ROW_COPY,
+  HERO_INSET_MD,
 } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
@@ -116,10 +119,16 @@ export default function CareHomepayCaseStudy() {
             the order-* classes stack it: logo, headline, phones, badges. */}
         <section
           id="title"
-          className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
+          className={`relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 sm:px-10 sm:pt-28 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0`}
         >
+          {/* Mark + headline are one wrapping row from tablet up — see
+              HERO_ROW. The wrapper is display:contents outside md, so the
+              order-* stacking below md and the .care-hero-* absolute
+              placement at lg (which resolves against the section) are both
+              untouched. */}
+          <div className={`${HERO_ROW} md:order-1`}>
           {/* Large logo — Figma 4555:22725, 672x120 at 100,100 */}
-          <div className="care-hero-logo order-1 relative h-[60px] w-[280px] sm:h-[80px] sm:w-[380px]">
+          <div className="care-hero-logo order-1 relative h-[60px] w-[280px] shrink-0 sm:h-[80px] sm:w-[380px]">
             <Image
               src={LOGO}
               alt="Care.com Homepay"
@@ -129,6 +138,16 @@ export default function CareHomepayCaseStudy() {
               className="object-contain object-left"
             />
           </div>
+
+            {/* Headline — Figma 4555:22842, 455 wide at 831,114: just right
+                of the wordmark, left-aligned. */}
+            <SlideIn className={`care-hero-title order-2 self-start max-w-[340px] text-left ${HERO_ROW_COPY}`}>
+              <p className="text-xl font-semibold leading-snug text-white [text-wrap:balance] sm:text-2xl">
+                Homepay Employee &amp; Employer Payroll&nbsp;App
+              </p>
+            </SlideIn>
+          </div>
+
 
           {/* App store badges — Figma 4555:22844, 50px each at 100,877 */}
           <div className="care-hero-badges order-4 mt-6 flex items-center gap-4">
@@ -149,14 +168,6 @@ export default function CareHomepayCaseStudy() {
               className="size-[50px]"
             />
           </div>
-
-          {/* Headline — Figma 4555:22842, 455 wide at 831,114: just right of
-              the wordmark, left-aligned. */}
-          <SlideIn className="care-hero-title order-2 self-start max-w-[340px] text-left">
-            <p className="text-xl font-semibold leading-snug text-white [text-wrap:balance] sm:text-2xl">
-              Homepay Employee &amp; Employer Payroll&nbsp;App
-            </p>
-          </SlideIn>
 
           {/* Two phones — a stacked pair below lg, absolutely placed at lg.
               The exports are full-length, so they run off the frame's bottom

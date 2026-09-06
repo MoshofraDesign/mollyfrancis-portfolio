@@ -18,6 +18,9 @@ import {
   MEDIA,
   HERO_TITLE,
   HERO_SUBTEXT,
+  HERO_ROW,
+  HERO_ROW_COPY,
+  HERO_INSET_MD,
   INTRO_TITLE,
   INTRO_SUBTEXT,
   NextProjectLink,
@@ -304,15 +307,17 @@ export default function VolusionCaseStudy() {
             it at 543,142, 630 wide. Stacked below lg. */}
         <section
           id="title"
-          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
+          className={`relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0`}
         >
+          {/* Mark + copy are one wrapping row from tablet up — see HERO_ROW. */}
+          <div className={HERO_ROW}>
           {/* Box == mark (volusion-tight.svg has no padding), so these insets
               are the mark's real position. 64 rather than the 100px rail the
               other projects use: this is a stacked lockup 149-187px tall
               against their ~75-100px wordmarks, so 100+187 pushed it far
               lower down the panel than theirs sit. Heights match what the
               padded asset was already drawing, widths at its 1.946 aspect. */}
-          <div className="relative z-10 aspect-[539/277] w-[min(100%,234px)] sm:w-[min(100%,292px)] lg:absolute lg:left-[50px] lg:top-[50px] lg:aspect-auto lg:h-[149px] lg:w-[290px]">
+          <div className="relative z-10 aspect-[539/277] w-[min(100%,234px)] shrink-0 sm:w-[min(100%,292px)] lg:absolute lg:left-[50px] lg:top-[50px] lg:aspect-auto lg:h-[149px] lg:w-[290px]">
             <Image
               src={HERO_LOGO}
               alt="Volusion"
@@ -332,7 +337,7 @@ export default function VolusionCaseStudy() {
                SlideIn writes an inline transform for its reveal, which beats
                any -translate-y utility, so a transform-based offset here
                silently does nothing. */
-            className="relative z-10 flex max-w-[46ch] flex-col gap-2 lg:absolute lg:left-[37.7%] lg:bottom-[calc(100%_-_199px)] lg:max-w-[min(630px,40vw)]"
+            className={`relative z-10 flex max-w-[46ch] flex-col gap-2 ${HERO_ROW_COPY} lg:absolute lg:left-[37.7%] lg:bottom-[calc(100%_-_199px)] lg:max-w-[min(630px,40vw)]`}
           >
             <p className={HERO_TITLE}>E-Commerce Software Solution</p>
             <p className={HERO_SUBTEXT}>
@@ -340,6 +345,7 @@ export default function VolusionCaseStudy() {
               products and inventory.
             </p>
           </SlideIn>
+          </div>
 
           {/* Hero composite — the frame has only the wordmark and copy, so
               this takes the empty lower two-thirds. Bottom-anchored and

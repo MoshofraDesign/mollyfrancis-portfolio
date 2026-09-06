@@ -32,17 +32,29 @@ const jost = Jost({
   display: "swap",
 });
 
+/* metadataBase resolves the relative image paths below — and the ones
+   Next generates from app/opengraph-image.png and app/twitter-image.png —
+   into the absolute URLs that link scrapers require. Without it a shared
+   link falls back to whatever image the crawler finds in the page, which is
+   how the portrait on About ended up as the preview. */
 export const metadata: Metadata = {
-  title: "Molly Francis — Lead Product Designer",
+  metadataBase: new URL("https://www.mollyfrancis.com"),
+  title: "Molly Francis — Product Designer, Researcher and Leader",
   description:
-    "Lead / Principal UX product designer in Austin, Texas. 20+ years designing healthcare, fintech, and SaaS products with research-driven, AI-augmented workflows.",
+    "Product designer, researcher and leader in Austin, Texas. 20+ years designing healthcare, fintech, and SaaS products with research-driven, AI-augmented workflows.",
   openGraph: {
-    title: "Molly Francis — Lead Product Designer",
+    title: "Molly Francis — Product Designer, Researcher and Leader",
     description:
-      "Lead / Principal UX product designer in Austin, Texas. 20+ years designing healthcare, fintech, and SaaS products.",
+      "Product designer, researcher and leader in Austin, Texas. 20+ years designing healthcare, fintech and SaaS products.",
     url: "https://www.mollyfrancis.com",
     siteName: "Molly Francis",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Molly Francis — Product Designer, Researcher and Leader",
+    description:
+      "Product designer, researcher and leader in Austin, Texas. 20+ years designing healthcare, fintech and SaaS products.",
   },
 };
 

@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, META_LABEL, CAPTION } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, META_LABEL, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Patient Portal — athenahealth — Molly Francis",
@@ -101,15 +101,20 @@ export default function ConsumerHealthCaseStudy() {
         {/* Title */}
         <section
           id="title"
-          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
+          className={`relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0`}
         >
-          <div className="relative z-10 aspect-[740/104] w-[min(100%,740px)] lg:absolute lg:left-[50px] lg:top-[50px] lg:h-[83px] lg:w-[658px] lg:max-w-none lg:aspect-auto">
+          {/* Mark + "Patient Portal" are one wrapping row from tablet up —
+              see HERO_ROW. The mark is capped at md so the label has room to
+              sit beside it, as it does at lg. */}
+          <div className={HERO_ROW}>
+          <div className="relative z-10 aspect-[740/104] w-[min(100%,740px)] shrink-0 md:w-[min(100%,420px)] lg:absolute lg:left-[50px] lg:top-[50px] lg:h-[83px] lg:w-[658px] lg:max-w-none lg:aspect-auto">
             <Image src={LOGO} alt="athenahealth" fill unoptimized priority className="object-contain object-left" />
           </div>
 
-          <p className="relative z-10 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.1] text-white lg:absolute lg:left-[740px] lg:top-[50px] lg:flex lg:h-[83px] lg:items-center">
+          <p className="relative z-10 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.1] text-white md:shrink-0 lg:absolute lg:left-[740px] lg:top-[50px] lg:flex lg:h-[83px] lg:items-center">
             Patient Portal
           </p>
+          </div>
 
           {/* Centred rather than pinned to the 100px rail. Left-anchored it sat
               105px from the left edge and 215px from the right at 1400 —

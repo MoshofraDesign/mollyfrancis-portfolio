@@ -5,7 +5,7 @@ import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
-import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL, END_MEASURE, HERO_TITLE, HERO_SUBTEXT, PORTRAIT_CIRCLE, PORTRAIT_COPY } from "@/components/v2/CaseStudyKit";
+import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL, END_MEASURE, HERO_TITLE, HERO_SUBTEXT, PORTRAIT_CIRCLE, PORTRAIT_COPY, VIEW, MEASURE, STAT_ROW, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD } from "@/components/v2/CaseStudyKit";
 import UcmScreensCarousel from "@/components/UcmScreensCarousel";
 
 export const metadata = {
@@ -24,23 +24,6 @@ const jost = Jost({
 const ACCENT = "#FFAF00";
 const LOGO = "/logos/bright-healthcare.svg";
 const ASSET = "/work/bright-healthcare";
-const VIEW = "lg:w-screen";
-/**
- * Panel width for the two portrait-and-copy beats.
- *
- * A 320 circle plus a 56 gap plus a 500 measure is 876 of content. In a
- * full-viewport panel that left over 550px of empty field either side at a
- * 1990 window — so consecutive sections sat more than a screen apart, which
- * is the gap Molly flagged. 1040 keeps 82px a side. The wide media panels
- * (research boards, empathy map, carousels) stay on VIEW: their content runs
- * to 1280 and hugging would squeeze them.
- */
-const PORTRAIT_PANEL = "lg:w-[min(100vw,1040px)]";
-/** Prose measure — 700, matching the kit. */
-const MEASURE = "w-full max-w-[min(700px,86vw)]";
-/** The numbers row lays three columns side by side, so it keeps the wider
- *  width prose used to have. */
-const STAT_ROW = "w-full max-w-[min(54rem,86vw)]";
 
 const H_DISPLAY =
   "font-semibold leading-[1.1] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
@@ -93,14 +76,18 @@ export default function BrightHealthcareCaseStudy() {
         {/* Hero — Figma 4553:22295 */}
         <section
           id="title"
-          className="relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0"
+          className={`relative flex w-full min-w-0 flex-col gap-8 overflow-x-hidden px-6 pb-12 pt-24 sm:px-10 sm:pt-28 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:overflow-hidden lg:px-0 lg:pb-0 lg:pt-0`}
         >
+          {/* Mark + copy are one wrapping row from tablet up — see HERO_ROW.
+              The mark is capped narrower at md than the 720 it can take on
+              phones, so the copy has somewhere to sit beside it. */}
+          <div className={HERO_ROW}>
           {/* Logo — Figma 4553:22296: 100,100 / 720×117 on a 1440×1000 frame */}
           {/* Stepped, not vw-driven. lg:w-[min(50vw,720px)] meant the mark
               resized continuously with the window and the copy below it —
               whose top was derived from that width — slid with it. These three
               steps hold the 6.14 aspect (540/88, 614/100, 688/112). */}
-          <div className="relative z-10 w-[min(100%,720px)] aspect-[720/117] lg:absolute lg:left-[50px] lg:top-[50px] lg:h-[100px] lg:w-[614px]">
+          <div className="relative z-10 w-[min(100%,720px)] shrink-0 aspect-[720/117] md:w-[min(100%,480px)] lg:absolute lg:left-[50px] lg:top-[50px] lg:h-[100px] lg:w-[614px]">
             <Image
               src={LOGO}
               alt="Bright HealthCare"
@@ -118,12 +105,13 @@ export default function BrightHealthcareCaseStudy() {
               217 at 1440) and the two overlapped. The top is derived from the
               mark's height now, so the 28px gap holds at every width, and the
               pair is on the shared HERO scale the other projects use. */}
-          <SlideIn className="relative z-10 flex max-w-[466px] flex-col gap-2 text-white lg:absolute lg:left-[50px] lg:top-[178px] lg:max-w-[640px]">
+          <SlideIn className={`relative z-10 flex max-w-[466px] flex-col gap-2 text-white ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[178px] lg:max-w-[640px]`}>
             <p className={HERO_TITLE}>Prior Authorization Portal</p>
             <p className={`max-w-[46ch] ${HERO_SUBTEXT}`}>
               Enables providers to electronically submit prior authorization requests and view all requests and their statuses
             </p>
           </SlideIn>
+          </div>
 
           {/* Screens — Figma 4622:11847: 1174×668, centered, top 435, bleeds off the bottom */}
           <div className="relative z-0 mx-auto w-full max-w-[min(92vw,73.4rem)] lg:absolute lg:left-1/2 lg:top-[340px] xl:top-[372px] 2xl:top-[416px] lg:mx-0 lg:w-[835px] xl:w-[1044px] 2xl:w-[1252px] lg:max-w-none lg:-translate-x-1/2">
@@ -158,7 +146,7 @@ export default function BrightHealthcareCaseStudy() {
         {/* 3 — the portrait and the fax quote in one beat. They were two
             panels; the circle was 600px on its own, which read as an
             interstitial rather than as evidence for the line beside it. */}
-        <Panel width={PORTRAIT_PANEL} pad="center">
+        <Panel width={VIEW} pad="center">
           <div className="mx-auto flex w-full max-w-[min(1040px,92vw)] flex-col items-center gap-10 lg:flex-row lg:gap-14">
             <SlideIn className="shrink-0">
               <div className={PORTRAIT_CIRCLE}>
@@ -389,7 +377,7 @@ export default function BrightHealthcareCaseStudy() {
 
         {/* The outcome beat: portrait, line, copy. The numbers that back it
             are the panel after this one. */}
-        <Panel width={PORTRAIT_PANEL} pad="center">
+        <Panel width={VIEW} pad="center">
           <div className="mx-auto flex w-full max-w-[min(1040px,92vw)] flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
             <SlideIn className="shrink-0">
               <div className={PORTRAIT_CIRCLE}>

@@ -12,6 +12,7 @@ import {
   Body,
   VIEW,
   STAT_ROW,
+  HERO_INSET_MD,
   NextProjectLink,
   CaseStudyMetaPanel,
 } from "@/components/v2/CaseStudyKit";
@@ -112,16 +113,19 @@ export default function PatientIoCaseStudy() {
         {/* ── TITLE ─────────────────────────────────────────────────── */}
         <section
           id="title"
-          className="relative flex w-full flex-col gap-8 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-12 lg:pl-[50px] lg:pr-[71px] xl:pr-[89px] 2xl:pr-[107px] lg:pt-[50px]"
+          className={`relative flex w-full flex-col gap-8 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-12 lg:pl-[50px] lg:pr-[71px] xl:pr-[89px] 2xl:pr-[107px] lg:pt-[50px]`}
         >
           {/* Logo + headline sit on one row on desktop, matching the Figma
               hero (node 4732:9502) — stacked on mobile/tablet since there's
               no room for them side by side below lg. */}
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-16">
+          {/* One wrapping row from tablet up rather than only at lg: the
+              headline sits beside the mark whenever its basis fits and drops
+              below it when it doesn't. */}
+          <div className="flex flex-col gap-6 md:flex-row md:flex-wrap md:items-start md:gap-x-10 md:gap-y-6 lg:flex-row lg:items-center lg:gap-16">
             <div className="relative h-12 w-[168px] shrink-0 sm:h-14 sm:w-[196px] md:h-16 md:w-[224px] lg:h-24 lg:w-[336px]">
               <Image src={LOGO} alt="Patient IO" fill unoptimized priority className="object-contain object-left" />
             </div>
-            <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.75rem] font-semibold leading-[1.1] lg:max-w-[32ch]">
+            <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.75rem] font-semibold leading-[1.1] md:min-w-0 md:basis-[16rem] md:grow lg:max-w-[32ch]">
               A patient engagement platform for patients and their care managers
             </p>
           </div>

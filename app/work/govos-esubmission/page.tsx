@@ -459,6 +459,36 @@ export default function GovOSCaseStudy() {
           caption="Running and authorizing an ACH report"
         />
 
+        {/* 7.5 — CUSTOM ICONS. A craft beat: the two drawn sets, on one
+            panel. The image's own width is capped against the room the panel
+            has left after the heading and body (--panel-media-max-h less
+            ~13rem of type, times the sheet's 1.741 aspect), so a short
+            window scales the sheet instead of pushing the caption out of
+            frame. 10px radius, matching every other framed image. */}
+        {hasImage("/work/govos/custom-icons.webp") && (
+          <Panel>
+            <Heading>Custom Icons</Heading>
+            <Body>
+              Two sets drawn for the product — one for the CloudSearch kiosk,
+              one for the GovOS portal — so every screen spoke the same
+              visual language.
+            </Body>
+            <SlideIn
+              delay={200}
+              className={`mt-8 ${MEDIA_W} lg:max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_13rem)_*_1.741))]`}
+            >
+              <Image
+                src="/work/govos/custom-icons.webp"
+                alt="Two drawn icon sets — CloudSearch Kiosk and GovOS Portal"
+                width={752}
+                height={432}
+                sizes="(max-width: 1023px) 90vw, min(90vw, 950px)"
+                className="h-auto w-full rounded-[10px]"
+              />
+            </SlideIn>
+          </Panel>
+        )}
+
         {/* 8 — SUBMITTER BENEFITS — portrait + copy now share one panel, side by side */}
         <PortraitPanel
           src="/work/govos/submitter-portrait-2.png"

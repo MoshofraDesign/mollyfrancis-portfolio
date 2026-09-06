@@ -75,6 +75,31 @@ export const WIDE = "w-full max-w-[min(1400px,92vw)]";
 /** @deprecated Prefer MEASURE — kept for existing imports. */
 export const TEXT_W = MEASURE;
 
+/**
+ * The title panel's logo + copy pair, from tablet up.
+ *
+ * At lg every hero is absolutely placed from the Figma frame, and below md
+ * it's a plain stacked column — so this only does something in between,
+ * where it turns the pair into ONE wrapping flex row: the mark keeps its
+ * size (md:shrink-0 on the mark) and the copy sits to its right whenever
+ * there's room for its flex-basis, dropping to the line below when there
+ * isn't. That's the "beside it if it fits" behaviour, decided by the
+ * browser at each width rather than by a breakpoint guess.
+ *
+ * `contents` at both ends is deliberate: the wrapper disappears from layout
+ * outside md, so the children stay direct flex items of the section and
+ * their order-* classes and lg absolute positioning (which resolves against
+ * the section, not the wrapper) both keep working untouched.
+ */
+export const HERO_ROW =
+  "contents md:flex md:flex-wrap md:items-start md:gap-x-10 md:gap-y-6 lg:contents";
+
+/** The copy half of HERO_ROW: wraps below the mark once it can't fit beside it. */
+export const HERO_ROW_COPY = "md:min-w-0 md:basis-[16rem] md:grow";
+
+/** Tablet title-panel padding — the same 50px top/left inset as lg. */
+export const HERO_INSET_MD = "md:px-[50px] md:pt-[50px]";
+
 export const VIEW = "lg:w-screen";
 
 /**
@@ -171,12 +196,18 @@ export function Panel({
   width = VIEW,
   pad = "center",
   id,
+  style,
 }: {
   children: React.ReactNode;
   className?: string;
   width?: string;
   pad?: "rail" | "center";
   id?: string;
+  /* Lets a caller hand the panel a CSS custom property its own width class
+     reads — Tailwind can't build a class name from a runtime value, so a
+     per-instance number has to travel as a variable. athenaConnect's clip
+     panels pass --clip-aspect this way. */
+  style?: React.CSSProperties;
 }) {
   // justify-[safe_center]: centers content when it fits, but falls back to
   // start-alignment (scrollable) once it overflows the fixed 100dvh height —
@@ -193,6 +224,7 @@ export function Panel({
   return (
     <section
       id={id}
+      style={style}
       className={`relative flex w-full flex-col justify-center gap-2 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:[justify-content:safe_center] lg:gap-0 lg:overflow-y-auto lg:overscroll-contain ${padLg} ${className}`}
     >
       {children}

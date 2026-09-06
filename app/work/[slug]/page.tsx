@@ -29,6 +29,9 @@ import {
   END_PANEL,
   END_TITLE,
   END_MEASURE,
+  HERO_ROW,
+  HERO_ROW_COPY,
+  HERO_INSET_MD,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -507,9 +510,19 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
           {/* ── FRAME 1 — mark, 950x609 shot, 265-wide copy ──────────── */}
           <section
             id="title"
-            className="relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0"
+            className={`relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-6 sm:px-10 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0`}
           >
-            <Mark className="ecom-mark relative h-[70px] w-full max-w-[300px] sm:h-[90px] sm:max-w-[380px]" />
+            {/* Mark + copy are one wrapping row from tablet up — see HERO_ROW.
+                The copy keeps order-3 so the stack below md is still
+                mark / shot / copy even though it now sits next to the mark
+                in the DOM. */}
+            <div className={HERO_ROW}>
+              <Mark className="ecom-mark relative h-[70px] w-full max-w-[300px] shrink-0 sm:h-[90px] sm:max-w-[380px]" />
+              <p className={`ecom-copy order-3 max-w-[20rem] text-[1.05rem] leading-[1.45] ${HERO_ROW_COPY}`}>
+                Designing and coding ecommerce websites that seamlessly blend
+                beautiful interfaces with robust, scalable functionality.
+              </p>
+            </div>
             <SlideIn className="ecom-shot order-2 w-full">
               <Image
                 src={`${ASSET}/definition-home.webp`}
@@ -521,10 +534,6 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
                 className="h-auto w-full lg:h-full lg:object-cover"
               />
             </SlideIn>
-            <p className="ecom-copy order-3 max-w-[20rem] text-[1.05rem] leading-[1.45]">
-              Designing and coding ecommerce websites that seamlessly blend
-              beautiful interfaces with robust, scalable functionality.
-            </p>
           </section>
 
           {/* ── FRAME 2 — the storefronts as one long strip ───────────── */}
@@ -532,7 +541,9 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             {/* No wordmark repeated here — the sticky nav carries it once
                 you're past the title panel, and two marks read as a
                 duplicate rather than as a second frame. */}
-            <div className="ecom-strip flex w-full flex-col gap-10 lg:w-auto lg:flex-row">
+            {/* Stacked below lg. The gap steps up on tablet — at 40px the shots
+                read as one continuous scroll rather than as separate pieces. */}
+            <div className="ecom-strip flex w-full flex-col gap-10 sm:gap-14 md:gap-20 lg:w-auto lg:flex-row">
               {STRIP.map((piece, i) => (
                 <SlideIn
                   key={piece.file}
