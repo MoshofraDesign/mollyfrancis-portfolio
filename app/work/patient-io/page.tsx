@@ -166,16 +166,6 @@ export default function PatientIoCaseStudy() {
         </TextPanel>
 
         {/* ── APPROACH ──────────────────────────────────────────────────── */}
-        <TextPanel>
-          <Heading>Every pill had to look like the real one.</Heading>
-          <Body>
-            People recognise their medication by sight, so a generic capsule
-            icon is worse than useless. I built a component system that drew
-            each pill from structured Epocrates data — thousands of drugs,
-            no custom art.
-          </Body>
-        </TextPanel>
-
         {/* ── PUBLIC USER SCREENS ── Figma frame 4732:9524 ─────────────── *
          * 6 individual screens (not one flat composite), laid out in a row
          * bottom-aligned and unframed — same "phones row" mechanic as the
@@ -204,10 +194,22 @@ export default function PatientIoCaseStudy() {
           </div>
         </Panel>
 
+        <TextPanel>
+          <Heading>Every pill had to look like the real one.</Heading>
+          <Body>
+            People recognise their medication by sight, so a generic capsule
+            icon is worse than useless. I built a component system that drew
+            each pill from structured Epocrates data — thousands of drugs,
+            no custom art.
+          </Body>
+        </TextPanel>
+
         {/* ── MEDICATIONS MODULE + DESIGN SYSTEM ───────────────────────── *
          * Figma frames 4732:9527 and 4732:9530, placed side by side in one
          * panel per Molly's call — the design-system components sit next
-         * to the medications module they're generated for. */}
+         * to the medications module they're generated for. Directly after
+         * the pill copy, since this is the artwork that copy describes; the
+         * app-screens panel used to sit in between them. */}
         <Panel width={VIEW} pad="center" className="items-center">
           <div className="mx-auto flex w-full max-w-[min(1400px,94vw)] flex-col items-center gap-10 lg:flex-row lg:items-end lg:justify-center lg:gap-10">
             <SlideIn className="flex flex-col items-center gap-4">
