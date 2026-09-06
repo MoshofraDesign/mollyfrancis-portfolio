@@ -233,7 +233,14 @@ export default function AthenaConnectCaseStudy() {
             catalogue has to serve both. */}
         <Panel width={VIEW} pad="center">
           <div className={`${STAT_ROW} mx-auto`}>
-            <Heading>Two visitors, one catalogue.</Heading>
+            {/* The kit's Heading measures 700px, which broke this line in
+                two. It's 28 characters — at the display size's 4.05rem
+                ceiling that wants ~820px, which the 54rem stat row around it
+                has to spare. So the measure is lifted and the line is held
+                on one row from lg up; below lg it wraps normally. */}
+            <div className="lg:whitespace-nowrap lg:[&>*]:max-w-none">
+              <Heading>Two visitors, one catalogue.</Heading>
+            </div>
             <div className="mt-10 grid gap-10 sm:grid-cols-2 sm:gap-x-14">
               <SlideIn delay={120}>
                 <h3 className="text-[clamp(1.35rem,1.8vw,1.6rem)] font-semibold leading-[1.2]">
