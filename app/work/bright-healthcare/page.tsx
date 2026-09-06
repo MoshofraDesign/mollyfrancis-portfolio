@@ -151,9 +151,17 @@ export default function BrightHealthcareCaseStudy() {
                 Every prior authorization started with a fax.
               </h2>
             </SlideIn>
+            {/* Was 48 words that led with a list of five states and used
+                "unstructured faxes into actionable records". The states are
+                scope, not story, and the heading above already says fax —
+                so this keeps only what a reader feels: nothing checked
+                going in, nothing coming back, a month, and people retyping
+                by hand. */}
             <SlideIn delay={100}>
               <p className={`mt-3 text-white/90 ${INTRO_SUBTEXT}`}>
-                Across five markets — Texas, Georgia, Utah, California, Virginia — fax was the only way in. No validation, no real-time data, no status once a request left the desk. Processing stretched up to a month, and internal teams spent hours turning unstructured faxes into actionable records.
+                Nothing was checked on the way in, and nothing came back
+                out. A request could take a month to clear, and staff spent
+                their days retyping faxes by hand.
               </p>
             </SlideIn>
           </div>
