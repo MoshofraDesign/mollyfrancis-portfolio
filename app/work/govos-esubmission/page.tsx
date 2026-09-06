@@ -503,10 +503,13 @@ export default function GovOSCaseStudy() {
           </Body>
         </Panel>
 
-        {/* 4 — REMEMBER THE USER — text removed, letting the recording carry it */}
+        {/* 4 — THE PORTAL ITSELF — text removed, letting the recording carry
+               it. The caption said "signing in and picking up a recent
+               submission", which is a different clip: this one is a tour of
+               the main screens. */}
         <VideoPanel
           src={findVideo("GovOS-MainScreens")}
-          caption="Signing in and picking up a recent submission"
+          caption="A pass through the portal's main screens"
         />
 
         {/* 5 — SUBMISSION FLOW */}

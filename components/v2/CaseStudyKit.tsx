@@ -132,6 +132,30 @@ export const STAT =
 
 export const VIEW = "lg:w-screen";
 
+/* ── Panel grouping: tight within a beat, loose between ──────────────────
+ *
+ * A case study reads as a sequence of beats, and a beat is usually a short
+ * text panel followed by the screen it's describing. When every panel is a
+ * full viewport, the gap between a heading and its own screen is identical
+ * to the gap between two unrelated beats, so nothing groups: the page is
+ * fourteen equally-spaced slides.
+ *
+ * So a text beat takes COPY_PANEL — narrower than the viewport, which pulls
+ * the screen after it closer — and the screen takes MEDIA_PANEL, its own
+ * artwork width plus a gutter. Established on GovOS and DocSquad; these are
+ * the shared values so a project doesn't have to redeclare them.
+ *
+ * A panel that stands alone — the opening statement, a numbers row, the meta
+ * block — stays on VIEW. Grouping only means something when there's
+ * something to group with.
+ */
+/** Text beat that has a screen after it. */
+export const COPY_PANEL = "lg:w-[min(100vw,920px)]";
+/** Screen that belongs to the text beat before it: artwork + 8rem of gutter. */
+export const MEDIA_PANEL = "lg:w-[min(100vw,1180px)]";
+/** For artwork wider than MEDIA_PANEL's 1050 — DocSquad's 1200 desktop shots. */
+export const MEDIA_PANEL_WIDE = "lg:w-[min(100vw,1328px)]";
+
 /**
  * Closing panel width — the prototype / Figma-file call to action that ends
  * each case study. These had drifted apart (full-viewport on GovOS and the

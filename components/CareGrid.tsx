@@ -38,7 +38,7 @@ export default function CareGrid({ projects }: Props) {
            page colour, fall back to deriving an accessible one from the
            accent — the hover is where the body copy sits, and several raw
            accents don't clear 4.5:1 with white or ink. */
-        const restBg = project.accent;
+        const restBg = project.thumbRest ?? project.accent;
         const hoverSource = project.thumbHover ?? project.pageBg;
         const { bg: hoverBg, fg } = hoverSource
           ? { bg: hoverSource, fg: readableOn(hoverSource) }

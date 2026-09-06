@@ -18,6 +18,8 @@ import {
   CaseStudyMetaPanel,
   STAT_ROW,
   VIEW,
+  COPY_PANEL,
+  MEDIA_PANEL,
   HERO_ROW,
   HERO_ROW_COPY,
   HERO_INSET_MD,
@@ -176,10 +178,17 @@ export default function CareHomepayCaseStudy() {
               from the top: the cut line lands exactly on the frame edge and
               reads as a bleed instead of a phone sliced off mid-body. Their
               own crop heights carry the vertical stagger. */}
-          <div className="order-3 mt-4 flex flex-1 items-end justify-center gap-4 sm:gap-8 lg:mt-0 lg:contents">
+          {/* Below lg the pair goes full-bleed: negative margins cancel the
+              section's own padding at each breakpoint (and its pb-10), and
+              the phones are sized in percent with no px cap, so together
+              they span the viewport and run off the bottom edge — the same
+              read as the lg frame, just filling a portrait window. At lg the
+              .care-hero-phone-* rules take over (position: absolute,
+              margin: 0), so none of this survives into the desktop frame. */}
+          <div className="order-3 -mx-6 -mb-10 mt-6 flex flex-1 items-end justify-center gap-0 overflow-hidden sm:-mx-10 md:-mx-[50px] lg:contents">
             <SlideIn
               delay={80}
-              className="care-hero-phone-l w-[46%] max-w-[240px]"
+              className="care-hero-phone-l w-[54%] max-w-none"
             >
               <Image
                 src={`${ASSET}/phone-hero-left.png`}
@@ -192,7 +201,7 @@ export default function CareHomepayCaseStudy() {
             </SlideIn>
             <SlideIn
               delay={180}
-              className="care-hero-phone-r mt-10 w-[46%] max-w-[240px] sm:mt-16"
+              className="care-hero-phone-r -ml-[9%] mt-[7%] w-[55%] max-w-none"
             >
               <Image
                 src={`${ASSET}/phone-hero-right.png`}
@@ -239,7 +248,10 @@ export default function CareHomepayCaseStudy() {
 
         {/* ── THE DEFAULT. The one opinionated decision in the product, and
                the reason the rest of it stays light. */}
-        <TextPanel width={VIEW}>
+        {/* COPY_PANEL, not VIEW: this beat exists to set up the clip in the
+               next panel, so it sits close to it rather than a full viewport
+               away. Same grouping as GovOS and DocSquad. */}
+        <TextPanel width={COPY_PANEL}>
           <Heading>Hours that add themselves up.</Heading>
           <Body>
             Clock in, clock out, and the week rolls up on its own — a default
@@ -249,7 +261,7 @@ export default function CareHomepayCaseStudy() {
         </TextPanel>
 
         {/* ── PANEL 3: VIDEO — Figma 4555:22858 */}
-        <Panel width={VIEW} pad="center">
+        <Panel width={MEDIA_PANEL} pad="center">
           <div className="mx-auto w-full max-w-[min(950px,90vw,calc(var(--panel-media-max-h)*1.2616))]">
             <SlideIn>
               <div className="relative aspect-[868/688] w-full overflow-hidden">
@@ -266,7 +278,7 @@ export default function CareHomepayCaseStudy() {
             Three 276x600 screens. Molly's transparent exports, so the panel
             colour shows between them — the old composite had a coral
             background baked into the gaps. */}
-        <Panel width={VIEW} pad="center">
+        <Panel width={MEDIA_PANEL} pad="center">
           <SlideIn className="mx-auto grid w-full max-w-[min(950px,90vw)] grid-cols-1 items-end gap-8 sm:grid-cols-3 sm:gap-[5.39%]">
             {[
               { n: 1, alt: "Add time — day picker" },
@@ -292,7 +304,11 @@ export default function CareHomepayCaseStudy() {
             at every window shape instead of drifting across the panel. */}
         {splits.map((s, i) => (
           <Panel key={s.key} width={VIEW} pad="center">
-            <div className="mx-auto grid w-full max-w-[min(1000px,86vw)] items-center gap-8 lg:grid-cols-[minmax(0,368fr)_minmax(0,634fr)] lg:gap-[3.33%]">
+            {/* md:gap-16, not gap-8, once the two halves are stacked: the
+                circle and its caption are one group and the screen pair is
+                another, and at tablet width an 8 was the same gap that sits
+                between the caption's own two lines. */}
+            <div className="mx-auto grid w-full max-w-[min(1000px,86vw)] items-center gap-8 md:gap-16 lg:grid-cols-[minmax(0,368fr)_minmax(0,634fr)] lg:gap-[3.33%] lg:gap-y-0">
               <SlideIn className="flex flex-col items-center gap-6 text-white">
                 <div className="relative size-[160px] shrink-0 overflow-hidden rounded-full sm:size-[220px] lg:aspect-square lg:h-auto lg:w-[min(320px,87%)]">
                   <Image
@@ -303,7 +319,12 @@ export default function CareHomepayCaseStudy() {
                     className="object-cover"
                   />
                 </div>
-                <div className="flex flex-col gap-4 text-center">
+                {/* Left-aligned and capped a little wider than the circle
+                    above it. Centred, the body ran the full 860px of the
+                    stacked panel and broke into one long line plus a two-word
+                    orphan; at this measure it wraps like a paragraph. The cap
+                    lifts at lg, where the copy has its own grid column. */}
+                <div className="flex w-full max-w-[300px] flex-col gap-4 text-left sm:max-w-[380px] lg:max-w-none">
                   <p className={SPLIT_TITLE}>{s.title}</p>
                   <p className={SPLIT_BODY}>{s.body}</p>
                 </div>
