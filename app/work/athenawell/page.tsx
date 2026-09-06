@@ -69,7 +69,7 @@ const metrics = [
 
 
 /**
- * A media panel — the picture on its own, with an optional caption.
+ * A media panel — the picture on its own.
  *
  * The beats that pair a heading with a screen read as two panels, not one:
  * sharing a panel with three or four lines of type left the picture a
@@ -77,15 +77,14 @@ const metrics = [
  * the rest of the site already uses — a text panel, then the screen it
  * describes — so the rhythm matches the other projects too.
  *
- * The lg cap is the room the panel actually has once the caption is allowed
- * for, times the image's own aspect. The aspect travels as a CSS variable:
+ * The lg cap is the room the panel actually has, times the image's own
+ * aspect. The aspect travels as a CSS variable:
  * Tailwind scans source text at build time and can't generate a class from
  * a runtime value.
  */
 function MediaPanel({
   src,
   alt,
-  caption,
   width,
   height,
   maxWidth = 1000,
@@ -93,7 +92,6 @@ function MediaPanel({
 }: {
   src: string;
   alt: string;
-  caption?: string;
   width: number;
   height: number;
   maxWidth?: number;
@@ -126,9 +124,6 @@ function MediaPanel({
             sizes="(max-width: 1023px) 92vw, min(92vw, 1000px)"
             className="h-auto w-full"
           />
-        )}
-        {caption && (
-          <p className={`mt-5 max-w-[70ch] text-center ${CAPTION}`}>{caption}</p>
         )}
       </SlideIn>
     </Panel>
@@ -272,7 +267,6 @@ export default function AthenaWellCaseStudy() {
           width={909}
           height={720}
           maxWidth={880}
-          caption="Goals when they want the shape of it, and one day's list when they don't."
         />
 
         {/* ── 6. THE PERSONAS, shown as the documents themselves. */}
