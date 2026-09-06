@@ -133,7 +133,13 @@ function MediaPanel({
          A hugged panel is narrower than a wide window, so the next panel
          edges into view — which is fine, because every picture on this page
          is followed by a heading rather than another picture. */
-      width="lg:w-[min(100vw,calc(var(--beat-max-w)_+_14rem),calc(var(--panel-media-max-h)_*_var(--beat-aspect)_+_14rem))]"
+      /* 21rem of gutter, not 14: the extra 7rem is all on the trailing
+         edge (the !pr below), so a group reads as one thing — the heading
+         sits tight against its picture, and the space opens up AFTER the
+         picture, before the next group's heading. Tight within, loose
+         between. */
+      width="lg:w-[min(100vw,calc(var(--beat-max-w)_+_21rem),calc(var(--panel-media-max-h)_*_var(--beat-aspect)_+_21rem))]"
+      className="lg:!pr-[15rem]"
       pad="rail"
       style={
         {

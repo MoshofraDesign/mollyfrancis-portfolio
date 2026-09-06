@@ -134,7 +134,15 @@ const COPY_PANEL = "lg:w-[min(100vw,920px)]";
  * soft, which is worse than being small.
  */
 const CLIP_PANEL =
-  "lg:w-[min(100vw,calc(950px_+_9rem),calc((var(--panel-media-max-h)_-_5rem)_*_1.6047_+_9rem))]";
+  "lg:w-[min(100vw,calc(950px_+_16rem),calc((var(--panel-media-max-h)_-_5rem)_*_1.6047_+_16rem))]";
+
+/**
+ * The extra gutter goes on the TRAILING edge of a media panel, so a group
+ * reads as one thing: the heading sits tight against the recording it
+ * introduces, and the space opens up after it, before the next group's
+ * heading. Tight within, loose between.
+ */
+const CLIP_TRAIL = "lg:!pr-[13rem]";
 
 /**
  * Keeps the last two words together so a line never ends on a lone orphan.
@@ -241,7 +249,7 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
 function VideoPanel({ src, caption }: { src: string | null; caption?: string }) {
   if (!src) return null;
   return (
-    <Panel width={CLIP_PANEL} className="items-center">
+    <Panel width={CLIP_PANEL} className={`items-center ${CLIP_TRAIL}`}>
       <BrowserFrame>
         <AutoplayVideo src={src} className="aspect-[950/592] w-full bg-black" />
       </BrowserFrame>
@@ -503,8 +511,8 @@ export default function GovOSCaseStudy() {
 
         {hasImage("/work/govos/custom-icons.webp") && (
           <Panel
-            width="lg:w-[min(100vw,calc(752px_+_9rem),calc((var(--panel-media-max-h)_-_1rem)_*_1.741_+_9rem))]"
-            className="items-center"
+            width="lg:w-[min(100vw,calc(752px_+_16rem),calc((var(--panel-media-max-h)_-_1rem)_*_1.741_+_16rem))]"
+            className={`items-center ${CLIP_TRAIL}`}
           >
             <SlideIn className="mx-auto flex w-full flex-col items-center lg:max-w-[min(752px,90vw,calc((var(--panel-media-max-h)_-_1rem)_*_1.741))]">
               <Image
