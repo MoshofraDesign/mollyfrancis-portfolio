@@ -49,7 +49,11 @@ const jost = Jost({
   display: "swap",
 });
 
-const ACCENT = "#00A883";
+/* Page background, darkened off the brand accent so white body copy
+   clears AA: #00A883 gives it 3.03:1, this gives 4.6+. The work-grid tile
+   keeps the bright #00A883 (see pageBg in lib/projects.ts, which is what the
+   tile's hover previews). */
+const ACCENT = "#008366";
 const LOGO = "/logos/athenaconnect.png";
 const ASSET = "/work/athenaconnect";
 

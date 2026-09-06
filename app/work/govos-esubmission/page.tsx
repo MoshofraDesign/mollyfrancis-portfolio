@@ -539,37 +539,26 @@ export default function GovOSCaseStudy() {
           caption="Running and authorizing an ACH report"
         />
 
-        {/* 7.3 — TESTING. The other half of the research record that never
-               made the page: rounds of moderated testing, and what they
-               actually turned up. Numbers and tools are the project's own. */}
-        <Panel>
-          <Heading>Five users, twelve problems, every round.</Heading>
-          <Body>
-            Live usability testing in a QA environment with submitters,
-            synthesized in Dovetail and triaged into Jira with the PM. Twelve
-            or more issues a round — and the rounds kept going until they
-            stopped finding them.
-          </Body>
-        </Panel>
-
-        {/* 7.4 — ACCESSIBILITY / VPAT.
-            Sits with the making, not after the results: for a government
-            buyer, conformance is part of whether the product can be bought
-            at all, and it was a constraint Molly designed to — so it belongs
-            beside the other design decisions, before the outcomes. No
-            conformance level or score is claimed, only that the bar shaped
-            the work. */}
+        {/* 7.3 — VALIDATION. Testing and the VPAT constraint used to be two
+               panels back to back, and they were saying one thing twice: we
+               kept testing, and accessibility was part of what we tested.
+               One beat now, with the line that earns both halves on top.
+               Numbers and tools are the project's own; no conformance level
+               or score is claimed, only that the bar shaped the work. */}
         <Panel>
           <Heading>A county can&rsquo;t buy what its staff can&rsquo;t use.</Heading>
           <Body>
-            Public-sector procurement asks for a VPAT — a written account of how a
-            product measures up against Section 508 and WCAG. That made
-            accessibility a design constraint, not a cleanup pass.
+            So we tested — live sessions with submitters in a QA environment,
+            synthesized in Dovetail and triaged into Jira with the PM. Twelve
+            or more issues a round, and the rounds kept going until they
+            stopped finding them.
           </Body>
           <Body>
-            A keyboard path through every step of a submission. Fields and errors a
-            screen reader can announce. Contrast that survives a county monitor, and
-            focus that stays put inside a modal.
+            Accessibility was one of the things being tested. Procurement asks
+            for a VPAT against Section 508 and WCAG, so a keyboard path through
+            every step, fields and errors a screen reader can announce, and
+            focus that stays put inside a modal were requirements — not a
+            cleanup pass.
           </Body>
         </Panel>
 

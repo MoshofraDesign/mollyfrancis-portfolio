@@ -56,37 +56,41 @@ export default function CursorBlob() {
       }
     };
 
-    /* Inside a [data-cursor="none"] region the blob hides completely — the
-       hero portrait draws its own cursor (the halftone reveal circle), and
-       two custom cursors on one pointer means the blob sits on top of the
-       reveal and over the quote bubbles.
+    /* One delegated listener instead of per-element mouseenter/mouseleave.
 
-       The flag matters because the quote hotspots live INSIDE that region:
-       without it, leaving a hotspot would run onLeaveInteractive and set
-       opacity back to 1 while the pointer is still over the portrait. */
+       Those were bound once, on first mount, from a querySelectorAll — and
+       CursorBlob lives in the root layout, so a client-side navigation to the
+       homepage swapped the DOM underneath it and the [data-cursor='none']
+       node it had listened for was never there to bind. The blob then sat on
+       the halftone reveal for anyone who arrived at home from a project page.
+
+       mouseover bubbles and fires on every element the pointer crosses,
+       including on the way back out of a child into its parent, so the state
+       is recomputed from the event target each time — nothing to bind,
+       nothing to keep in sync, and it covers nodes added later. */
+    const SIZE_REST = "28px";
+    const SIZE_HOVER = "40px";
+
     let inNoCursorZone = false;
 
-    const onEnterInteractive = () => {
-      if (inNoCursorZone) return;
-      blob.style.width = "60px";
-      blob.style.height = "60px";
-      blob.style.opacity = "0.7";
-    };
-    const onLeaveInteractive = () => {
-      if (inNoCursorZone) return;
-      blob.style.width = "28px";
-      blob.style.height = "28px";
-      blob.style.opacity = "1";
-    };
-    const onEnterNoCursor = () => {
-      inNoCursorZone = true;
-      blob.style.opacity = "0";
-    };
-    const onLeaveNoCursor = () => {
+    const onOver = (e: MouseEvent) => {
+      const target = e.target instanceof Element ? e.target : null;
+
+      /* Over the portrait the reveal circle IS the cursor, so the blob goes
+         away entirely — no dot riding on the reveal, none over the quote
+         bubbles inside it. The quote hotspots are children of that region,
+         which is why this is checked before the interactive test. */
+      if (target?.closest("[data-cursor='none']")) {
+        inNoCursorZone = true;
+        blob.style.opacity = "0";
+        return;
+      }
+
       inNoCursorZone = false;
-      blob.style.width = "28px";
-      blob.style.height = "28px";
-      blob.style.opacity = "1";
+      const interactive = target?.closest("a, button, [data-cursor='hover']");
+      blob.style.width = interactive ? SIZE_HOVER : SIZE_REST;
+      blob.style.height = interactive ? SIZE_HOVER : SIZE_REST;
+      blob.style.opacity = interactive ? "0.7" : "1";
     };
 
     const tick = () => {
@@ -97,27 +101,13 @@ export default function CursorBlob() {
     };
 
     window.addEventListener("mousemove", onMove);
-    document
-      .querySelectorAll("a, button, [data-cursor='hover']")
-      .forEach((el) => {
-        el.addEventListener("mouseenter", onEnterInteractive);
-        el.addEventListener("mouseleave", onLeaveInteractive);
-      });
-
-    const noCursorZones = document.querySelectorAll("[data-cursor='none']");
-    noCursorZones.forEach((el) => {
-      el.addEventListener("mouseenter", onEnterNoCursor);
-      el.addEventListener("mouseleave", onLeaveNoCursor);
-    });
+    document.addEventListener("mouseover", onOver);
 
     tick();
 
     return () => {
       window.removeEventListener("mousemove", onMove);
-      noCursorZones.forEach((el) => {
-        el.removeEventListener("mouseenter", onEnterNoCursor);
-        el.removeEventListener("mouseleave", onLeaveNoCursor);
-      });
+      document.removeEventListener("mouseover", onOver);
       cancelAnimationFrame(rafId);
     };
   }, []);

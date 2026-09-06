@@ -50,7 +50,11 @@ const jost = Jost({
   display: "swap",
 });
 
-const ACCENT = "#00CCB7";
+/* Page background, darkened off the brand accent so white body copy
+   clears AA: #00CCB7 gives it 2.03:1, this gives 4.6+. The work-grid tile
+   keeps the bright #00CCB7 (see pageBg in lib/projects.ts, which is what the
+   tile's hover previews). */
+const ACCENT = "#008375";
 const LOGO = "/logos/patient-io.svg";
 
 const metrics = [

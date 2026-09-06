@@ -204,16 +204,11 @@ export default function NetspendCaseStudy() {
           </div>
         </Panel>
 
-        {/* Zero to one. Five months. — lone headline beat */}
-        <TextPanel width={VIEW}>
-          <SlideIn>
-            <h2 className={H_DISPLAY}>Zero to one. Five months.</h2>
-          </SlideIn>
-        </TextPanel>
-
         {/* A NEW WAY OF WORKING — Figma 4553:22209.
-            Placed right after "Zero to one. Five months." because it answers
-            the question that headline raises. Copy stays in the page's voice:
+            The "Zero to one. Five months." headline used to sit in its own
+            panel just above this one. It was saying what the hero and the
+            numbers row already say, so it's gone — this beat now follows the
+            campaign-setup clip directly. Copy stays in the page's voice:
             two short beats, no tool-vendor pitch. The three marks are the
             tools named in the sentence, nothing more — the meta panel at the
             end still carries the full tool list. */}
@@ -345,7 +340,12 @@ export default function NetspendCaseStudy() {
         {/* Outcome stats — Figma 4553:22220 layout: stacked stats left, the
             cashback portrait (circular photo + floating offer card) right. */}
         <Panel width={VIEW} pad="center">
-          <div className="mx-auto grid w-full max-w-[min(980px,92vw)] items-center gap-10 lg:grid-cols-2 lg:gap-12">
+          {/* Not lg:grid-cols-2. Two equal columns gave the two-line stat
+              stack the same 490px the photo had, and the stack only needs
+              about 340 — so the leftover sat as dead air between the copy
+              and the picture. The copy column is sized to its content now
+              and the photo takes the rest, at a tighter gap. */}
+          <div className="mx-auto grid w-full max-w-[min(1120px,94vw)] items-center gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-8">
             {/* Through StatRow like every other project's figures: label
                 above value on the shared scale. This one was the outlier —
                 value above label, at TITLE size (4.05rem), in a bespoke
@@ -373,7 +373,10 @@ export default function NetspendCaseStudy() {
                 width={834}
                 height={600}
                 unoptimized
-                className="h-auto w-full max-w-[420px] object-contain"
+                /* 834x600 is 1.39:1, so the height cap converts straight
+                   into a width cap — the photo grows to fill the column and
+                   only shrinks when the panel is short. */
+                className="h-auto w-full max-w-[min(640px,calc(var(--panel-media-max-h)_*_1.39))] object-contain"
               />
             </SlideIn>
           </div>

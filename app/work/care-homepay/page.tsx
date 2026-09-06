@@ -171,8 +171,11 @@ export default function CareHomepayCaseStudy() {
           </div>
 
           {/* Two phones — a stacked pair below lg, absolutely placed at lg.
-              The exports are full-length, so they run off the frame's bottom
-              edge the way Figma draws them; the panel clips them. */}
+              Molly's exports are cut at the Figma frame's bottom edge, so
+              they're anchored to the panel's bottom rather than positioned
+              from the top: the cut line lands exactly on the frame edge and
+              reads as a bleed instead of a phone sliced off mid-body. Their
+              own crop heights carry the vertical stagger. */}
           <div className="order-3 mt-4 flex flex-1 items-end justify-center gap-4 sm:gap-8 lg:mt-0 lg:contents">
             <SlideIn
               delay={80}
@@ -181,8 +184,8 @@ export default function CareHomepayCaseStudy() {
               <Image
                 src={`${ASSET}/phone-hero-left.png`}
                 alt="HomePay splash — Time tracking has never been easier"
-                width={397}
-                height={836}
+                width={793}
+                height={1378}
                 priority
                 className="h-auto w-full"
               />
@@ -194,8 +197,8 @@ export default function CareHomepayCaseStudy() {
               <Image
                 src={`${ASSET}/phone-hero-right.png`}
                 alt="HomePay splash — Easy time tracking with your employer"
-                width={407}
-                height={840}
+                width={793}
+                height={1210}
                 priority
                 className="h-auto w-full"
               />

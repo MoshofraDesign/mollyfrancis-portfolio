@@ -7,7 +7,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import PrintGallery from "@/components/PrintGallery";
 import SlideIn from "@/components/SlideIn";
-import { contrastColor } from "@/lib/contrastColor";
+import { contrastColor, readableOn } from "@/lib/contrastColor";
 import {
   WORK_THUMB_GRID_CLASS,
   WORK_THUMB_SECTION,
@@ -277,7 +277,12 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   const idx = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(idx + 1) % projects.length];
   const isBright = project.slug === "bright-healthcare";
-  const fg = isBright ? "#ffffff" : contrastColor(project.accent);
+  /* readableOn, not contrastColor: this has to answer for the background
+     that's actually painted, which is pageBg where a project declares one.
+     contrastColor decides from a perceived-luminance threshold rather than a
+     measured ratio, and picks the worse of white/ink on eight of the site's
+     accents. */
+  const fg = isBright ? "#ffffff" : readableOn(project.pageBg ?? project.accent);
   const isLogos = project.slug === "logos";
   const isPrint = project.slug === "print";
   const isEcommerce = project.slug === "ecommerce";
@@ -600,7 +605,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   return (
     <main
       className={`${jost.variable} relative`}
-      style={{ background: project.accent, color: fg, fontFamily: "var(--font-jost), system-ui, sans-serif" }}
+      style={{ background: project.pageBg ?? project.accent, color: fg, fontFamily: "var(--font-jost), system-ui, sans-serif" }}
     >
       <StickyNav
         watch="title"

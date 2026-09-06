@@ -56,7 +56,11 @@ const jost = Jost({
 });
 
 const SLUG = "volusion-admin";
-const BRAND = "#8759F2";
+/* Page background, darkened off the brand accent so white body copy
+   clears AA: #8759F2 gives it 4.43:1, this gives 4.6+. The work-grid tile
+   keeps the bright #8759F2 (see pageBg in lib/projects.ts, which is what the
+   tile's hover previews). */
+const BRAND = "#8255E8";
 const LOGO = "/logos/volusion.svg";
 /**
  * The hero uses a tightly-cropped copy of the same mark.

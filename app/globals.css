@@ -324,7 +324,12 @@ body::before {
      183 in absolute px, not as a fraction of a short viewport. */
   main .care-hero-phone-l {
     left: 28.472%;
-    top: max(26%, 200px);
+    /* Bottom-anchored, not top-positioned. The export is already cut at the
+       frame's bottom edge, so placing it from the top left the cut line
+       floating ~10% above the panel floor — a phone visibly sliced in half.
+       Flush to the floor, the same cut reads as the handset running off the
+       frame, which is how Figma draws it. */
+    bottom: 0;
     width: calc(370 * var(--figma-u));
   }
   /* Anchored to the LEFT phone in --figma-u, not to its own percentage of
@@ -338,7 +343,10 @@ body::before {
      vertical stagger (389 - 305). */
   main .care-hero-phone-r {
     left: calc(28.472% + 312 * var(--figma-u));
-    top: calc(max(26%, 200px) + 78 * var(--figma-u));
+    /* Also floor-anchored. The 78-unit stagger no longer needs stating: the
+       right export is the shorter crop of the two, so bottom-aligning them
+       puts its top ~63 units below the left phone's on its own. */
+    bottom: 0;
     width: calc(380 * var(--figma-u));
   }
 

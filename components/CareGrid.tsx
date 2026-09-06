@@ -26,20 +26,36 @@ export default function CareGrid({ projects }: Props) {
   return (
     <div className={WORK_THUMB_GRID_CLASS}>
       {projects.map((project) => {
-        /* At rest the tile is the bright accent. On hover it becomes the
-           colour of the page it opens — a preview of where you're going —
-           for the projects that declare one. Everywhere else it falls back
-           to deriving an accessible pair from the accent, because most page
-           colours are still the raw accent and several of those don't clear
-           4.5:1 with either white or ink. */
-        const { bg, fg } = project.pageBg
-          ? { bg: project.pageBg, fg: readableOn(project.pageBg) }
+        /* Two colours, two states — they were one, which is why changing
+           the hover changed the tile.
+
+           At REST the tile is the project's own bright accent, untouched:
+           that's the colour Molly wants in the grid, with the white logo
+           on it.
+
+           On HOVER it becomes the colour of the page it opens, so the tile
+           previews where you're going. Where a project hasn't declared a
+           page colour, fall back to deriving an accessible one from the
+           accent — the hover is where the body copy sits, and several raw
+           accents don't clear 4.5:1 with white or ink. */
+        const restBg = project.accent;
+        const hoverSource = project.thumbHover ?? project.pageBg;
+        const { bg: hoverBg, fg } = hoverSource
+          ? { bg: hoverSource, fg: readableOn(hoverSource) }
           : readableOnAccent(project.accent);
         return (
         <Link
           key={project.slug}
           href={`/work/${project.slug}`}
           className={`group thumb-cq block ${WORK_THUMB_TILE}`}
+          /* A wide, low-opacity shadow — not a card lift. It only goes on
+             the tiles whose accent is light enough to float against the
+             page (today, Bright's yellow). */
+          style={
+            project.thumbShadow
+              ? { boxShadow: "0 26px 70px -28px rgba(20,20,20,0.45), 0 10px 30px -18px rgba(20,20,20,0.22)" }
+              : undefined
+          }
         >
           <Image
             src={project.thumbnail}
@@ -49,10 +65,17 @@ export default function CareGrid({ projects }: Props) {
             className="object-cover"
           />
 
-          {/* Color-MASTER overlay — 80% by default, fully opaque on hover. */}
+          {/* Colour-MASTER overlay, in two layers. The accent at 80% is the
+              resting tile; the hover colour (the page it opens, or an
+              explicit thumbHover) fades in over it, fully opaque so the
+              accent underneath doesn't tint it. */}
           <div
-            className="absolute inset-0 opacity-80 transition-opacity duration-500 ease-out group-hover:opacity-100"
-            style={{ backgroundColor: bg }}
+            className="absolute inset-0 opacity-80 transition-opacity duration-500 ease-out"
+            style={{ backgroundColor: restBg }}
+          />
+          <div
+            className="absolute inset-0 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+            style={{ backgroundColor: hoverBg }}
           />
 
           {/* Default state: client's white SVG logo, centered — only

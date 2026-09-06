@@ -32,6 +32,16 @@ export type Project = {
    * it 1.84:1).
    */
   pageBg?: string;
+  /**
+   * Overrides the grid tile's hover colour when the page colour is the wrong
+   * thing to preview. Bright's page went light (#f9f9f9), which as a hover
+   * washes the tile out next to its neighbours — so its hover takes a dark
+   * shade of the same yellow instead, at 4.9:1 with white.
+   */
+  thumbHover?: string;
+  /** Soft wide drop shadow under the grid tile, for the light accents that
+   *  otherwise float on the page. */
+  thumbShadow?: boolean;
   // AI-enhanced description (generated, 2-3 sentences)
   aiSummary: string;
   // Longer overview for case-study pages
@@ -232,6 +242,8 @@ export const projects: Project[] = [
     logoScale: 1.45,
     accent: "#FFAF00",
     pageBg: "#f9f9f9",
+    thumbHover: "#9A6600",
+    thumbShadow: true,
     featured: true,
     aiSummary:
       "Designed a provider-facing portal that lets clinicians submit prior authorization requests electronically — replacing a paper fax workflow used across five state markets. Within months the team scaled from 100 monthly users to ~10K, surfaced $1.9M in operational savings, and cut clinical intake time in half.",
@@ -287,6 +299,7 @@ export const projects: Project[] = [
     hero: "/work/docsquad/hero.png",
     logo: "/logos/docsquad.svg",
     accent: "#dd00e2",
+    pageBg: "#CB00D0",
     featured: true,
     aiSummary:
       "Rebuilt a desktop-only telehealth tool into a unified provider experience across desktop and native mobile (Flutter). Generative research with 'virtual moonlighter' clinicians shaped a workflow that can diagnose a routine visit in under two minutes — without a second video call.",
@@ -340,6 +353,7 @@ export const projects: Project[] = [
     hero: "/work/liveperson/bb-mobile-social-dm.png",
     logo: "/logos/liveperson.svg",
     accent: "#FE5E00",
+    pageBg: "#CB4B00",
     featured: true,
     aiSummary:
       "Unified email, X, Instagram, Facebook, and chat into a single LiveEngage conversation surface so customer-care agents could stop swivel-chairing between dashboards. Self-service setup meant brands could connect their own social accounts, route them to specific teams, and ship a consistent voice across channels.",
@@ -516,6 +530,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/patient-io-photo.jpg",
     logo: "/logos/patient-io.svg",
     accent: "#00CCB7",
+    pageBg: "#008375",
     aiSummary:
       "Patient IO helped patients stick to complex treatment regimens and gave health professionals visibility between visits. As solo designer on a 14-person team, I owned the end-to-end experience -- work that led athenahealth to acquire the company in 2016 and adopt the framework as the design foundation for athenaWell.",
     overview:
@@ -552,6 +567,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/athenaconnect.webp",
     logo: "/logos/athenaconnect.png",
     accent: "#00A883",
+    pageBg: "#008366",
     aiSummary: "Redesigned athenahealth's partner Marketplace discovery experience -- improving search, filtering, and content structure -- contributing to 71%+ customer adoption of partner solutions across 370+ integrations and 60+ specialties.",
     overview: "athenaConnect is athenahealth's partner Marketplace, where clinicians and customers find and evaluate third-party health-tech products.",
     problem: "Weak search and flat filtering made it hard for customers to find the right partner solution among hundreds of options.",
@@ -570,6 +586,7 @@ export const projects: Project[] = [
     logo: "/logos/volusion.svg",
     logoWide: "/logos/volusion-horizontal.svg",
     accent: "#8759F2",
+    pageBg: "#8255E8",
     aiSummary:
       "Redesigned the admin used by Volusion's merchant base — order management, catalog, marketing, and storefront tools. Defined patterns for data-heavy tables, bulk actions, and a navigation that scaled as the product added modules.",
     overview:
@@ -676,6 +693,7 @@ export const projects: Project[] = [
     logo: "/logos/ecommerce-websites.svg",
     logoScale: 0.75,
     accent: "#F05844",
+    pageBg: "#CA4A39",
     aiSummary:
       "A gallery of Volusion ecommerce designs — each started with a client phone call to align on look, feel, and merchandising goals, plus a set of paid templates flexible enough that clients could swap their own imagery and brand colors without breaking the design.",
     overview:
@@ -883,6 +901,7 @@ export const projects: Project[] = [
     thumbnail: "/work-thumbnails/print-figma.webp",
     logo: "/logos/print.svg",
     accent: "#1EB571",
+    pageBg: "#168251",
     aiSummary:
       "Print work over the years — holiday cards and corporate gifts at Volusion, personal stationery, invitations, posters, and seasonal lookbooks. A mix of agency, client, and personal projects that lean illustrative.",
     overview:

@@ -34,25 +34,6 @@ const ASSET = "/work/bright-healthcare";
 const H_DISPLAY = `text-[#141414] ${TITLE}`;
 const BODY = `text-[#141414] ${BODY_TYPE}`;
 
-/**
- * The quote marks. Both quotes place these on the quote block itself and on
- * its vertical centre — one outside the left edge, one outside the right —
- * rather than pinning them to the first and last lines. Line-anchored marks
- * meant every change to the copy or the measure moved them, which is what
- * made them so hard to position.
- */
-function QuoteMark({ close = false, className = "" }: { close?: boolean; className?: string }) {
-  return (
-    <img
-      src={`${ASSET}/quote.svg`}
-      alt=""
-      width={100}
-      height={79}
-      className={`pointer-events-none absolute max-w-none ${close ? "rotate-180" : ""} ${className}`}
-    />
-  );
-}
-
 export default function BrightHealthcareCaseStudy() {
   const idx = projects.findIndex((p) => p.slug === "bright-healthcare");
   const project = projects[idx];
@@ -386,30 +367,6 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </Panel>
 
-        <Panel width={VIEW} pad="center">
-          <div className="relative mx-auto w-full max-w-[min(72rem,92vw)]">
-            <SlideIn>
-              <div className="relative mx-auto w-fit max-w-full pl-[1.9em] pr-[1.6em] text-[clamp(2rem,4.5vw,4.05rem)]">
-                <p className="relative font-semibold leading-[1.1] tracking-[-0.02em] text-[#141414]">
-                  <QuoteMark className="-left-[1.85em] top-1/2 h-[0.97em] w-[1.23em] -translate-y-1/2" />
-                  <QuoteMark close className="-right-[1.6em] top-1/2 h-[0.97em] w-[1.23em] -translate-y-1/2" />
-                  <span className="block w-fit sm:whitespace-nowrap">
-                    You have Marie Kondo’d
-                  </span>
-                  <span className="block w-fit sm:whitespace-nowrap">
-                    the authorization portal!
-                  </span>
-                </p>
-                <p className="mt-6 text-[clamp(1.25rem,1.6vw,1.65rem)] italic leading-[1.45] text-[#141414]">
-                  Rebecca Schweitz
-                  <br />
-                  VP, Clinical Performance
-                </p>
-              </div>
-            </SlideIn>
-          </div>
-        </Panel>
-
         {/* The outcome beat: portrait, line, copy. The numbers that back it
             are the panel after this one. */}
         <Panel width={VIEW} pad="center">
@@ -439,6 +396,22 @@ export default function BrightHealthcareCaseStudy() {
                   the best tool they&apos;d used — one team put the saving at
                   four hours per provider, per day.
                 </p>
+              </SlideIn>
+              {/* Rebecca's line used to be its own full-viewport panel, set
+                  at display size between the design-system beat and the
+                  numbers — a pull quote with nothing around it to land on.
+                  It belongs to this outcome, so it sits under it now, in the
+                  GovOS treatment: a rule, italic body scale, attribution
+                  beneath. */}
+              <SlideIn delay={160}>
+                <blockquote className="mt-6 border-l-2 border-[#141414]/25 pl-5">
+                  <p className={`italic text-[#141414] ${BODY}`}>
+                    You have Marie Kondo&rsquo;d the authorization portal!
+                  </p>
+                  <footer className="mt-2 text-[clamp(1.05rem,1.25vw,1.25rem)] leading-[1.45] text-[#141414]/60">
+                    Rebecca Schweitz, VP, Clinical Performance
+                  </footer>
+                </blockquote>
               </SlideIn>
             </div>
           </div>

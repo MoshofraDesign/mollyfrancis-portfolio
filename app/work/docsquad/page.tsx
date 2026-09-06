@@ -40,7 +40,11 @@ const jost = Jost({
 });
 
 const SLUG = "docsquad";
-const BRAND = "#dd00e2";
+/* Page background, darkened off the brand accent so white body copy
+   clears AA: #dd00e2 gives it 4.06:1, this gives 4.6+. The work-grid tile
+   keeps the bright #dd00e2 (see pageBg in lib/projects.ts, which is what the
+   tile's hover previews). */
+const BRAND = "#CB00D0";
 const LOGO = "/logos/docsquad.svg";
 const ASSET = "/work/docsquad";
 

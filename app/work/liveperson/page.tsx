@@ -37,7 +37,11 @@ const jost = Jost({
   display: "swap",
 });
 
-const ACCENT = "#FE5E00";
+/* Page background, darkened off the brand accent so white body copy
+   clears AA: #FE5E00 gives it 3.08:1, this gives 4.6+. The work-grid tile
+   keeps the bright #FE5E00 (see pageBg in lib/projects.ts, which is what the
+   tile's hover previews). */
+const ACCENT = "#CB4B00";
 const LOGO = "/logos/liveperson.svg";
 
 const metrics = [
