@@ -613,22 +613,30 @@ export function StatRow({
   items,
   note,
   className = "",
+  stack = false,
 }: {
   items: readonly { readonly label: string; readonly value: string; readonly detail?: string }[];
   note?: React.ReactNode;
   className?: string;
+  /** One column, for a numbers pair sharing a panel with something else. */
+  stack?: boolean;
 }) {
-  const cols =
-    ({
+  const cols = stack
+    ? "sm:grid-cols-1"
+    : ({
       1: "sm:grid-cols-1",
       2: "sm:grid-cols-2",
       3: "sm:grid-cols-3",
       4: "sm:grid-cols-4",
       5: "sm:grid-cols-5",
-    } as Record<number, string>)[items.length] ?? "sm:grid-cols-3";
+      } as Record<number, string>)[items.length] ?? "sm:grid-cols-3";
   return (
     <div className={className}>
-      <div className={`mt-10 grid grid-cols-2 gap-10 gap-x-8 sm:gap-x-10 ${cols}`}>
+      <div
+        className={`mt-10 grid gap-10 gap-x-8 sm:gap-x-10 ${
+          stack ? "grid-cols-1" : "grid-cols-2"
+        } ${cols}`}
+      >
         {items.map((s, i) => (
           <SlideIn key={s.label} delay={120 + i * 90}>
             <h3 className={META_LABEL}>{s.label}</h3>

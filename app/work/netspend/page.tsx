@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT, TITLE, SUBHEAD, BODY_TYPE } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT, TITLE, SUBHEAD, BODY_TYPE, StatRow } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Netspend Rewards & UCM — Molly Francis",
@@ -130,10 +130,19 @@ export default function NetspendCaseStudy() {
 
         </section>
 
-        {/* Rewards ran on spreadsheets... — matches production narrative */}
+        {/* The problem beat. It was a heading with nothing under it — the
+            only opening on the site without a paragraph, so the page went
+            straight from the claim to the solution. */}
         <TextPanel width={VIEW}>
           <SlideIn>
             <h2 className={`text-white ${INTRO_TITLE}`}>Rewards ran on spreadsheets. No one could see what was live — or what was working.</h2>
+          </SlideIn>
+          <SlideIn delay={100}>
+            <p className={`mt-3 ${BODY_MUTED}`}>
+              Every offer lived in a spreadsheet, and changing one meant an
+              engineering ticket. Nobody could say which rewards were live,
+              let alone which were earning anything.
+            </p>
           </SlideIn>
         </TextPanel>
 
@@ -322,8 +331,14 @@ export default function NetspendCaseStudy() {
           <SlideIn>
             <h2 className={H_DISPLAY}>Handoff-ready in five months. And it replaced a vendor the company was paying for.</h2>
           </SlideIn>
+          {/* The AI paragraph that used to be here is beat 4's ("A new way
+              of working") almost word for word. Said once, where it belongs;
+              this beat lands the outcome instead. */}
           <SlideIn delay={100}>
-            <p className={`mt-3 ${BODY_MUTED}`}>AI ran through the whole process — Claude and Gemini turned Jira tickets into clear requirements, Cursor and Figma Make spun up quick HTML mockups to compare directions, and the strongest ones became the real designs. More directions tested per round than doing it by hand allows.</p>
+            <p className={`mt-3 ${BODY_MUTED}`}>
+              The tool went to engineering handoff-ready, and the rewards it
+              configures stopped needing a ticket to change.
+            </p>
           </SlideIn>
         </TextPanel>
 
@@ -331,23 +346,26 @@ export default function NetspendCaseStudy() {
             cashback portrait (circular photo + floating offer card) right. */}
         <Panel width={VIEW} pad="center">
           <div className="mx-auto grid w-full max-w-[min(980px,92vw)] items-center gap-10 lg:grid-cols-2 lg:gap-12">
-            <div className="flex flex-col gap-8">
-              {[
-                [meta.projected[0]?.value ?? "$500K → $10M", "projected rewards revenue"],
-                [meta.projected[1]?.value ?? "0 → 1", "a platform that didn't exist five months ago"],
-              ].map(([value, label], i) => (
-                <SlideIn key={label} delay={i * 80}>
-                  <div>
-                    <p className="font-semibold leading-[1.1] tracking-[-0.04em] text-white text-[clamp(2rem,4.5vw,4.05rem)]">
-                      {value}
-                    </p>
-                    <p className="mt-3 text-[clamp(1.25rem,1.6vw,1.65rem)] leading-[1.45] text-white/55 [text-wrap:pretty]">
-                      {label}
-                    </p>
-                  </div>
-                </SlideIn>
-              ))}
-            </div>
+            {/* Through StatRow like every other project's figures: label
+                above value on the shared scale. This one was the outlier —
+                value above label, at TITLE size (4.05rem), in a bespoke
+                stack. Stacked rather than side by side because it shares
+                the panel with the portrait. Labelled as projections, since
+                that's what they are: no post-launch data exists yet. */}
+            <StatRow
+              stack
+              className="text-white"
+              items={[
+                {
+                  label: "Projected rewards revenue",
+                  value: meta.projected[0]?.value ?? "$500K → $10M",
+                },
+                {
+                  label: "Built in five months",
+                  value: meta.projected[1]?.value ?? "0 → 1",
+                },
+              ]}
+            />
             <SlideIn delay={160} className="flex justify-center lg:justify-start">
               <Image
                 src={`${ASSET}/portrait-cashback.png`}
