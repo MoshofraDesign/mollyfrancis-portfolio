@@ -219,18 +219,12 @@ export default function AthenaConnectCaseStudy() {
           </Body>
         </TextPanel>
 
-        {/* 3 — THE PUBLIC MARKETPLACE */}
-        {hasAsset(publicClip) && (
-          <ClipPanel
-            src={publicClip}
-            aspect={1478 / 1132}
-            caption="Marketplace.com — search, filters and the partner listing grid"
-          />
-        )}
-
-        {/* 4 — TWO VISITORS. Figma gives each persona its own 700-wide frame;
+        {/* 3 — TWO VISITORS. Figma gives each persona its own 700-wide frame;
             they read better as one beat, since the point is that the same
-            catalogue has to serve both. */}
+            catalogue has to serve both — and one beat can sit AHEAD of both
+            recordings and frame them, where a split pair could not: the
+            second clip is the partner-side listing editor, not the athenaNet
+            view, so it can't carry a persona label of its own. */}
         <Panel width={VIEW} pad="center">
           <div className={`${STAT_ROW} mx-auto`}>
             {/* The kit's Heading measures 700px, which broke this line in
@@ -263,6 +257,15 @@ export default function AthenaConnectCaseStudy() {
             </div>
           </div>
         </Panel>
+
+        {/* 4 — THE PUBLIC MARKETPLACE */}
+        {hasAsset(publicClip) && (
+          <ClipPanel
+            src={publicClip}
+            aspect={1478 / 1132}
+            caption="Marketplace.com — search, filters and the partner listing grid"
+          />
+        )}
 
         {/* 5 — THE LISTING TOOLS */}
         {hasAsset(listingClip) && (
