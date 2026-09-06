@@ -514,50 +514,55 @@ export default function GovOSCaseStudy() {
         {/* 5 — SUBMISSION FLOW */}
         <Panel width={COPY_PANEL}>
           <Heading>One task at a time.</Heading>
-          <Body>A step-by-step package. Jump around, or save and come back.</Body>
+          {/* "Start to finish" carries what the clip's caption used to say
+              ("walking through a submission end to end"), so the clip runs
+              uncaptioned — the copy that sets it up is a panel away, not a
+              scroll away. */}
+          <Body>
+            A step-by-step package, start to finish. Jump around, or save and
+            come back.
+          </Body>
         </Panel>
-        <VideoPanel
-          src={findVideo("GovOS-CreatePackage")}
-          caption="Creating a package — walking through a submission end to end"
-        />
+        <VideoPanel src={findVideo("GovOS-CreatePackage")} />
 
         {/* 6 — USER INVITATIONS */}
         <Panel width={COPY_PANEL}>
           <Heading>Invite a teammate in one modal.</Heading>
           <Body>Email, role, send. The old security loop is gone.</Body>
         </Panel>
-        <VideoPanel
-          src={findVideo("GovOS-InviteTeamMember")}
-          caption="Inviting a teammate in a single modal"
-        />
+        {/* Uncaptioned: the heading above it already says "in one modal". */}
+        <VideoPanel src={findVideo("GovOS-InviteTeamMember")} />
 
         {/* 7 — PAYMENT FULFILLMENT */}
         <Panel width={COPY_PANEL}>
           <Heading>One ACH report. Per company. Per period.</Heading>
           <Body>The county authorizes the transfer. Reconciliation is a line, not a pile.</Body>
         </Panel>
-        <VideoPanel
-          src={findVideo("GovOS-Payments")}
-          caption="Running and authorizing an ACH report"
-        />
+        {/* Uncaptioned: the copy above it names the ACH report and who
+            authorizes it. */}
+        <VideoPanel src={findVideo("GovOS-Payments")} />
 
-        {/* 7.3 — VALIDATION. Testing and the VPAT constraint used to be two
-               panels back to back, and they were saying one thing twice: we
-               kept testing, and accessibility was part of what we tested.
-               One beat now, with the line that earns both halves on top.
-               Two plain sentences now. The tools it used to name (Dovetail,
-               Jira) are already in the closing meta panel. VPAT stays
-               named — Molly wants it there, and a government-side recruiter
-               scans for the word — but without the "against Section 508 and
-               WCAG" tail the heading already covers. No conformance level or
-               score is claimed, only that the bar shaped the work. */}
+        {/* 7.3 — WHAT IT SHIPPED AS. An outcome, not a method note, and the
+               hinge into the two benefit beats that follow: this is the last
+               thing said about the making, and the submitter and county
+               portraits after it are who it paid off for.
+
+               It was two panels, then two paragraphs, then a method
+               paragraph headed by the county line. The county line is the
+               takeaway now — it closes the paragraph instead of opening the
+               beat — and the heading carries the result. VPAT stays named;
+               Molly wants it there, and a government-side recruiter scans
+               for the word. The tools the testing used (Dovetail, Jira) are
+               in the closing meta panel. No conformance level or score is
+               claimed, only that the bar shaped the work. */}
         <Panel>
-          <Heading>A county can&rsquo;t buy what its staff can&rsquo;t use.</Heading>
+          <Heading>Tested until it held. Accessible by&nbsp;requirement.</Heading>
           <Body>
-            So we tested with real submitters until they stopped finding
-            problems — accessibility every round, not a cleanup at the end.
-            Counties buy against a VPAT, so keyboard and screen-reader
-            support were requirements, not&nbsp;polish.
+            Rounds of usability testing with real submitters, run until they
+            stopped finding problems — and a VPAT for procurement, with
+            keyboard access and screen-reader support designed in rather than
+            patched on. A county can&rsquo;t buy what its staff can&rsquo;t
+            use.
           </Body>
         </Panel>
 
