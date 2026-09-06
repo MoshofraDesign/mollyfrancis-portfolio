@@ -260,6 +260,32 @@ export default function AthenaWellCaseStudy() {
           </div>
         </Panel>
 
+        {/* ── THE PERSONA DOCUMENTS. The three text columns above carry the
+               content readably; this is the artifact itself — evidence the
+               persona work happened, rather than stock faces standing in for
+               patients. Transparent export cropped to the sheets, so they
+               float on the panel the way the hero composite does; no radius,
+               since the sheets have their own edges. 2266x1343 -> 1.687, and
+               the width is capped against the room left after the caption. */}
+        {hasAsset(`${ASSET}/personas.png`) && (
+          <Panel width={VIEW} pad="center" className="items-center">
+            <SlideIn className="mx-auto flex w-full max-w-[min(1000px,92vw)] flex-col items-center lg:max-w-[min(1000px,92vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.687))]">
+              <Image
+                src={`${ASSET}/personas.png`}
+                alt="The three athenaWell persona documents — Healthy Patient, High Risk and Rising Risk"
+                width={2266}
+                height={1343}
+                sizes="(max-width: 1023px) 92vw, min(92vw, 1000px)"
+                className="h-auto w-full"
+              />
+              <p className={`mt-5 text-center ${CAPTION}`}>
+                The persona documents — users, story, values and goals for
+                each risk tier.
+              </p>
+            </SlideIn>
+          </Panel>
+        )}
+
         {/* ── EDUCATION CONTENT SCREENSHOT ─────────────────────────────── */}
         <BigImagePanel
           src="/legacy/screen-shot-2017-12-15-at-8-44-23-am-5606ba.png"
