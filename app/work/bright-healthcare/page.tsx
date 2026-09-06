@@ -119,12 +119,18 @@ export default function BrightHealthcareCaseStudy() {
               (width / 1.758) was whatever it happened to be, and on a short
               window that put its bottom edge hundreds of pixels below the
               panel: only the top third was visible. Now the height can
-              never exceed the room under the copy (--nav-clear plus 240 for
-              the mark and the title block), so a short window scales the
-              artwork instead of cutting it in half. Centred with a
+              never exceed the room under the copy (--nav-clear plus 170,
+              which is what the mark and title block actually occupy — 240
+              was over-reserved and left the composite small), so a short
+              window scales the artwork instead of cutting it in half. It
+              bleeds 2% past the bottom edge, the way the frame draws it.
+
+              The two windows in the export are staggered, so its visual
+              mass sits right of centre even though the box is centred —
+              that's the composition, not a placement bug. Centred with a
               translate, which is safe here — this div is not a SlideIn, so
               nothing writes an inline transform over it. */}
-          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,73.4rem)] lg:absolute lg:bottom-0 lg:left-1/2 lg:mx-0 lg:w-[min(1252px,92vw,calc((100dvh_-_var(--nav-clear)_-_240px)_*_1.758))] lg:max-w-none lg:-translate-x-1/2">
+          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,73.4rem)] lg:absolute lg:-bottom-[2%] lg:left-1/2 lg:mx-0 lg:w-[min(1400px,94vw,calc((100dvh_-_var(--nav-clear)_-_170px)_*_1.758))] lg:max-w-none lg:-translate-x-1/2">
             <Image
               src={`${ASSET}/hero.png`}
               alt="Member search and authorizations dashboard in the Authorization Portal"
