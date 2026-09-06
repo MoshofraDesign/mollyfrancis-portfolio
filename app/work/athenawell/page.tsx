@@ -279,6 +279,18 @@ export default function AthenaWellCaseStudy() {
           </Panel>
         )}
 
+        {/* ── THE PATIENT SIDE gets its own copy beat: it was the one
+               export arriving without a line of its own, straight off the
+               back of the persona sheets. */}
+        <TextPanel>
+          <Heading>The whole plan, down to today.</Heading>
+          <Body>
+            Goals and conditions when a patient wants the shape of it, and a
+            single day&apos;s list when they just want to know what to do
+            next.
+          </Body>
+        </TextPanel>
+
         {/* ── THE PATIENT SIDE. Goals, the daily plan, and the tasks
                list — the progress ring is the part testers called out. */}
         <MediaPanel
