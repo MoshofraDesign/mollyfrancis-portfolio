@@ -467,49 +467,34 @@ export default function GovOSCaseStudy() {
           </div>
         </section>
 
-        {/* ── 2 — PROBLEM ──────────────────────────────────────────────── */}
+        {/* ── 2 — PROBLEM, and how it was looked into.
+               Four text-only screens used to run before the first recording:
+               problem, research, insight, decision. That's a lot of reading
+               with nothing to look at, so the four are two.
+
+               This one carries the problem and ends on the research, which
+               is what earns the finding on the next screen. */}
         <Panel>
           <Heading>Recording a deed meant a vendor in the middle.</Heading>
           <Body>
-            Counties scanned paper. Submitters paid a go-between. Nobody saw status
-            until it cleared.
+            Counties scanned paper. Submitters paid a go-between. Nobody saw
+            status until it cleared. So I interviewed both ends of it — the
+            title companies sending documents and the county offices
+            receiving them.
           </Body>
         </Panel>
 
-        {/* ── 2a — RESEARCH. The page used to go from the problem straight
-               to "I designed a direct-to-county portal", so the discovery
-               that justifies that decision was invisible. Every fact here is
-               from the project's own research record in lib/projects.ts:
-               generative interviews with title-company submitters AND county
-               recording offices. */}
-        <Panel>
-          <Heading>So I sat on both sides of the counter.</Heading>
-          <Body>
-            Generative interviews with title-company submitters and with
-            county recording offices — the people sending documents and the
-            people receiving them. Two very different jobs, one transaction.
-          </Body>
-        </Panel>
-
-        {/* ── 2b — INSIGHT. What the interviews found, and the reason a
-               direct portal was the answer rather than a better vendor
-               integration. */}
+        {/* ── 3 — THE FINDING, and the decision it led to. One thought:
+               they wanted the middle gone, so the middle went. Pairs with
+               the recording that follows, so this reads as one group rather
+               than a third screen of type. */}
         <Panel width={COPY_PANEL}>
           <Heading>Both sides wanted the middle gone.</Heading>
           <Body>
             Submitters were paying a fee for status they still couldn&rsquo;t
             see. Counties were re-keying data that had already been typed
-            correctly once. Neither of them needed a vendor — they needed
-            each other.
-          </Body>
-        </Panel>
-
-        {/* ── 3 — SOLUTION ─────────────────────────────────────────────── */}
-        <Panel width={COPY_PANEL}>
-          <Heading>I designed a direct-to-county portal.</Heading>
-          <Body>
-            Upload. Validate. Pay by ACH. The county gets clean data. The vendor is
-            gone.
+            correctly once. So I designed a direct-to-county portal: upload,
+            validate, pay by ACH — clean data in, no go-between.
           </Body>
         </Panel>
 
