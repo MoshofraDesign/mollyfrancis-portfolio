@@ -222,28 +222,26 @@ function hasImage(src: string): boolean {
 }
 
 /**
- * Panel width for a height-capped clip.
+ * Cap for a clip inside a full-viewport panel.
  *
- * Measured at 1070x626: --panel-media-max-h resolves to 462, so every clip
- * is capped to 462 tall and comes out 718-781 wide — inside a full-viewport
- * 1070 panel, that left 144-176px of dead field either side, so consecutive
- * clips sat ~320px apart with the parked mark floating alone in the gap.
- * That's the "break" while scrolling: it isn't a glitch, it's the panel
- * staying a full viewport wide while the height cap shrinks the clip. It
- * only shows on a short window, which is why resizing brings it on.
- *
- * Tying the width to the same token closes it at every viewport: 1.6 is the
- * widest of the three clips' aspects (1.554, 1.596, 1.326), so the widest
- * still clears, and 9rem is the gutter either side.
+ * These panels used to hug their clip — the width was tied to
+ * --panel-media-max-h so consecutive clips sat closer together. That made
+ * the gap between sections smaller on this project than anywhere else on
+ * the site, and it left the parked mark riding in over a panel narrower
+ * than the viewport. Every panel is a full viewport now, and it's the CLIP
+ * that's capped instead: 950/90vw as before, and at lg no taller than the
+ * room the panel has once the caption is allowed for. 1.6 is the widest of
+ * the three clips' aspects (1.554, 1.596, 1.326), so the widest still
+ * clears.
  */
-const CLIP_PANEL =
-  "lg:w-[min(100vw,calc(var(--panel-media-max-h)_*_1.6_+_9rem))]";
+const CLIP_CAP =
+  "lg:max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.6))]";
 
 /** Figma 4724:8384 / 4724:8388 — 950-wide media with a centred caption. */
 function BeforeAfterPanel({ video, label }: { video: string; label: string }) {
   return (
-    <Panel width={CLIP_PANEL} pad="center" className="items-center">
-      <SlideIn className={`mx-auto flex w-full flex-col items-center ${MEDIA}`}>
+    <Panel width={VIEW} pad="center" className="items-center">
+      <SlideIn className={`mx-auto flex w-full flex-col items-center ${MEDIA} ${CLIP_CAP}`}>
         <div className="w-full overflow-hidden rounded-[10px]">
           <AutoplayVideo
             src={video}
@@ -420,8 +418,8 @@ export default function VolusionCaseStudy() {
             800, and GIF's 256-colour palette dithers the photographic hero
             of the storefront badly. Same autoplay-loop-muted behaviour. */}
         {editorFlow && (
-          <Panel width={CLIP_PANEL} pad="center" className="items-center">
-            <SlideIn className={`mx-auto w-full ${MEDIA}`}>
+          <Panel width={VIEW} pad="center" className="items-center">
+            <SlideIn className={`mx-auto w-full ${MEDIA} ${CLIP_CAP}`}>
               <div className="w-full overflow-hidden rounded-[10px]">
                 <AutoplayVideo
                   src={editorFlow}
@@ -506,7 +504,7 @@ export default function VolusionCaseStudy() {
             Waits on the export, same as Before/After. */}
         {hasVnext && (
           <Panel width={VIEW} pad="center" className="items-center">
-            <SlideIn className={`mx-auto w-full ${MEDIA}`}>
+            <SlideIn className={`mx-auto w-full ${MEDIA} ${CLIP_CAP}`}>
               <Image
                 src={vnext}
                 alt="The vNext Volusion storefront homepage"
