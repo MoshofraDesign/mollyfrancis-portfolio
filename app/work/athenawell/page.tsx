@@ -286,18 +286,6 @@ export default function AthenaWellCaseStudy() {
           maxWidth={1000}
         />
 
-        {/* ── 7. THE JUDGMENT CALL. Text only — this one is thinking, not a
-               screen, and a portfolio that only reports the assumptions
-               that held isn't showing any. */}
-        <TextPanel>
-          <Heading>One assumption didn&apos;t survive testing.</Heading>
-          <Body>
-            Five interviews on a working prototype. I expected the tabbed plan
-            to confuse people. It didn&apos;t — they preferred it, so it
-            shipped as designed.
-          </Body>
-        </TextPanel>
-
         {/* ── 8. APOLLO. Beside the copy, not under it: one portrait phone
                on its own line reads as an empty section. */}
         <TextPanel>
