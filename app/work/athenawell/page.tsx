@@ -60,9 +60,11 @@ const ASSET = "/work/athenawell";
  * 120 right inset pad="rail" already applies, so the measure is untouched and
  * only the dead field goes.
  *
- * The panel immediately after the title keeps VIEW: a narrower one settles
- * while the parked mark is still riding in, and the roll-in is the part that
- * reads right now.
+ * Only for a heading whose picture comes next. A copy panel followed by
+ * another copy panel stays VIEW — two 920s sit in one screen together, which
+ * is the opposite complaint. And the panel immediately after the title keeps
+ * VIEW too: a narrower one settles while the parked mark is still riding in,
+ * and the roll-in is the part that reads right.
  */
 const COPY_PANEL = "lg:w-[min(100vw,920px)]";
 
@@ -373,7 +375,11 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── 10. OUTCOME, then the figures as a row of columns — the shape
                every other project closes on. */}
-        <Panel width={COPY_PANEL} pad="rail">
+        {/* Full-viewport, not COPY_PANEL: this beat is followed by another
+            text section rather than by its own picture, and two 920s sit in
+            one screen together. COPY_PANEL is for a heading that hugs the
+            picture it belongs to. */}
+        <Panel width={VIEW} pad="rail">
           <div className={MEASURE}>
           <Heading>The weeks between visits stopped being invisible.</Heading>
           <Body>
@@ -384,7 +390,7 @@ export default function AthenaWellCaseStudy() {
         </div>
         </Panel>
 
-        <Panel width={COPY_PANEL} pad="rail" className="lg:!pb-[var(--nav-clear)]">
+        <Panel width={VIEW} pad="rail" className="lg:!pb-[var(--nav-clear)]">
           <div className={STAT_ROW}>
             <Heading>What it shipped with.</Heading>
             <div className="mt-10 grid grid-cols-2 gap-10 gap-x-8 sm:gap-x-12 lg:grid-cols-3 lg:gap-x-10">
