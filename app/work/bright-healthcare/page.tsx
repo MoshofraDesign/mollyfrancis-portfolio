@@ -330,6 +330,8 @@ export default function BrightHealthcareCaseStudy() {
           <SlideIn className="w-full">
             <UcmScreensCarousel
               label="Authorization portal screens"
+              /* Plays itself, ~2.6s a step. */
+              autoplayMs={2600}
               frameClassName="mx-auto aspect-[650/571] h-[min(70dvh,calc(100dvh-8.5rem))] !w-auto max-w-full overflow-hidden rounded-[10px] shadow-none drop-shadow-none"
               imageClassName="absolute inset-0 size-full object-cover object-top shadow-none drop-shadow-none"
               screens={[

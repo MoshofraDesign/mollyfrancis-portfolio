@@ -202,8 +202,16 @@ export default function LivePersonCaseStudy() {
           src="/work/liveperson/public-tweet-private-thread.webp"
           alt="A public tweet on the left, the same conversation continued as a private thread on the right, with the agent workspace between them"
           caption="The same complaint, public on one side and private on the other — one transcript."
-          width={1800}
-          height={739}
+          width={3870}
+          height={1620}
+          /* 1500 rather than the 950 default: the new export is 3870 wide, so
+             the panel's own max-height steps are what bind (504/560/630 at
+             lg/xl/2xl, giving 1204/1338/1500 at this 2.389 aspect) instead
+             of an arbitrary width. `bare` because it's a cut-out on the
+             panel colour — there's no card edge to round, and rounded-md
+             would nick the artwork's own corners. */
+          maxWidth={1500}
+          bare
         />
 
         {/* ── 3. THE HARD PART. Public-to-private is the design problem the
