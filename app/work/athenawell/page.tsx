@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import Image from "next/image";
 import { Jost } from "next/font/google";
 import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
@@ -5,6 +7,7 @@ import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
+import AutoplayVideo from "@/components/AutoplayVideo";
 import { contrastColor } from "@/lib/contrastColor";
 import {
   Panel,
@@ -17,6 +20,7 @@ import {
   HERO_ROW,
   HERO_ROW_COPY,
   HERO_INSET_MD,
+  META_LABEL,
   MEDIA,
   NextProjectLink,
   CaseStudyMetaPanel,
@@ -50,10 +54,19 @@ const ACCENT = "#0055CC";
 const LOGO = "/logos/athenawell.png";
 const ASSET = "/work/athenawell";
 
+/** Panels that depend on a file skip themselves until the file is on disk. */
+function hasAsset(src: string): boolean {
+  try {
+    return fs.existsSync(path.join(process.cwd(), "public", src));
+  } catch {
+    return false;
+  }
+}
+
 const metrics = [
-  { label: "Patient personas designed for", value: "3 risk tiers" },
-  { label: "Resonance-testing interviews", value: "5" },
-  { label: "Wearable device integrations", value: "200+" },
+  { label: "Patient personas", value: "3 risk tiers" },
+  { label: "Resonance interviews", value: "5" },
+  { label: "Wearable integrations", value: "200+" },
 ];
 
 const personas = [
@@ -158,12 +171,18 @@ export default function AthenaWellCaseStudy() {
           </div>
           </div>
 
-          <div className="relative aspect-[5/3] w-full lg:absolute lg:bottom-0 lg:right-0 lg:h-[504px] xl:h-[560px] 2xl:h-[630px] lg:w-[553px] xl:w-[691px] 2xl:w-[829px] lg:max-w-none">
+          {/* Hero composite — the laptop-and-phone export, cropped to the
+              artwork so the box IS the ink (the old asset carried a dead
+              margin, which is what made it so fiddly to place). 2366x1152,
+              so 2.054. Sized in --figma-u rather than vw: u is pinned by
+              whichever axis is tighter, so a short wide window scales it
+              down instead of running it up into the copy. */}
+          <div className="relative aspect-[2366/1152] w-full lg:absolute lg:bottom-[6%] lg:right-[50px] lg:aspect-auto lg:h-[calc(497_*_var(--figma-u))] lg:w-[calc(1020_*_var(--figma-u))] lg:max-w-none">
             <Image
-              src="/legacy/patient-careplans-landing-copy-2-13759d.png"
-              alt="athenaWell Care Plan landing page"
+              src={`${ASSET}/hero.png`}
+              alt="The athenaWell care plan on a laptop and the patient app on a phone"
               fill
-              sizes="(max-width: 1024px) 92vw, 54vw"
+              sizes="(max-width: 1023px) 92vw, 70vw"
               className="object-contain object-bottom"
               priority
             />
@@ -181,34 +200,35 @@ export default function AthenaWellCaseStudy() {
           </Body>
         </TextPanel>
 
-        {/* ── USER TYPES ───────────────────────────────────────────────── */}
-        <Panel width={VIEW} pad="center">
-          <div className={`${STAT_ROW} mx-auto`}>
-            <Heading>User Types</Heading>
-            <div className="mt-10 grid w-full gap-10 sm:grid-cols-2 sm:gap-14">
-              <SlideIn>
-                <p className="text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.15rem] xl:text-[1.28rem] 2xl:text-[1.5rem] font-semibold">Public User</p>
-                <p className="mt-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] leading-[1.45] opacity-90">
-                  Prospective customers browsing the Marketplace evaluate athenahealth&rsquo;s partner
-                  ecosystem, so the experience has to stand on its own.
-                </p>
-              </SlideIn>
-              <SlideIn delay={100}>
-                <p className="text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] lg:text-[1.15rem] xl:text-[1.28rem] 2xl:text-[1.5rem] font-semibold">athenaNet User</p>
-                <p className="mt-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] leading-[1.45] opacity-90">
-                  Self-service tools let existing athenahealth customers evaluate partner products right
-                  inside their daily workflow.
-                </p>
-              </SlideIn>
-            </div>
-          </div>
-        </Panel>
-
-        {/* ── PROBLEM ───────────────────────────────────────────────────── */}
+        {/* ── SO THE PLAN MOVED. The intro panel above already tells the
+               problem as a scene, so this is the turn rather than a second
+               "The Problem" restatement of it. */}
         <TextPanel>
-          <Heading>The Problem</Heading>
-          <Body>{project.problem}</Body>
+          <Heading>So the plan moved somewhere both sides could see it.</Heading>
+          <Body>
+            One place for the care team to build, assign and track a plan —
+            and one daily view for the patient of what to do today, with a
+            direct line to the people who assigned it.
+          </Body>
         </TextPanel>
+
+        {/* ── THE CARE PLAN, RUNNING. Molly's own screen recording. */}
+        {hasAsset(`${ASSET}/videos/careplan.mp4`) && (
+          <Panel width={VIEW} pad="center" className="items-center">
+            <SlideIn className="mx-auto flex w-full max-w-[min(1100px,92vw)] flex-col items-center lg:max-w-[min(1100px,92vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.622))]">
+              <div className="w-full overflow-hidden rounded-[10px]">
+                <AutoplayVideo
+                  src={`${ASSET}/videos/careplan.mp4`}
+                  className="h-auto w-full object-contain"
+                />
+              </div>
+              <p className={`mt-5 text-center ${CAPTION}`}>
+                The Care Plan — conditions, goals, daily tasks and the care
+                team, on one page.
+              </p>
+            </SlideIn>
+          </Panel>
+        )}
 
         {/* ── CARE TEAM SCREENSHOT ─────────────────────────────────────── */}
         <BigImagePanel
@@ -217,16 +237,16 @@ export default function AthenaWellCaseStudy() {
           caption="Care Team section — testers were especially drawn to the video chat option"
         />
 
-        {/* ── APPROACH ──────────────────────────────────────────────────── */}
-        <TextPanel>
-          <Heading>Approach</Heading>
-          <Body>{project.approach}</Body>
-        </TextPanel>
-
         {/* ── PERSONAS ──────────────────────────────────────────────────── */}
         <Panel width={VIEW} pad="center">
           <div className={`${STAT_ROW} mx-auto`}>
-            <Heading>The same plan, three different patients.</Heading>
+            <Heading>Three patients, one plan to hold them all.</Heading>
+            <SlideIn delay={80}>
+              <p className="mt-3 text-[clamp(1.05rem,1.3vw,1.25rem)] leading-[1.45] opacity-90">
+                Designed for three risk tiers rather than an average patient
+                — each with its own values, goals and pain points.
+              </p>
+            </SlideIn>
             <div className="mt-10 grid w-full gap-10 sm:grid-cols-3 sm:gap-8">
               {personas.map((p, i) => (
                 <SlideIn key={p.name} delay={100 + i * 90}>
@@ -269,10 +289,11 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── APOLLO CHAT BOT ───────────────────────────────────────────── */}
         <TextPanel>
-          <Heading>Apollo Chat Bot</Heading>
+          <Heading>A question answered without the phone queue.</Heading>
           <Body>
-            Reactive messaging with event-driven AI assistance — built so patients could reach out and
-            get a response without waiting on a phone queue.
+            Apollo, the chat bot: reactive messaging with event-driven AI
+            assistance, so reaching the care team didn&apos;t mean waiting on
+            hold.
           </Body>
         </TextPanel>
 
@@ -307,26 +328,36 @@ export default function AthenaWellCaseStudy() {
           </SlideIn>
         </Panel>
 
-        {/* ── OUTCOME ───────────────────────────────────────────────────── */}
+        {/* ── OUTCOME. One beat: the declarative, then the figures as a
+               row of columns — the shape every other project's closing
+               numbers use. !pb balances NAV_CLEAR so the row centres. */}
         <TextPanel>
-          <Heading>Outcome</Heading>
-          <Body>{project.outcome}</Body>
+          <Heading>The plan reported on itself, daily.</Heading>
+          <Body>
+            A daily task view — check-ins, surveys, education — with a
+            progress indicator testers called out as the motivating part.
+          </Body>
         </TextPanel>
 
-        {/* ── IMPACT ────────────────────────────────────────────────────── */}
-        <Panel width={VIEW} pad="center">
+        <Panel width={VIEW} pad="center" className="lg:!pb-[var(--nav-clear)]">
           <div className={`${STAT_ROW} mx-auto`}>
-            <Heading>Impact</Heading>
-            <div className="mt-10 w-full space-y-8">
+            <Heading>What it shipped with.</Heading>
+            <div className="mt-10 grid grid-cols-2 gap-10 gap-x-8 sm:gap-x-12 lg:grid-cols-3 lg:gap-x-10">
               {metrics.map((m, i) => (
                 <SlideIn key={m.label} delay={120 + i * 90}>
-                  <p className="text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1rem] font-medium opacity-80">{m.label}</p>
-                  <p className="mt-1 text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[2.75rem] 2xl:text-[2.75rem] font-semibold leading-[1.1]">
+                  <h2 className={META_LABEL}>{m.label}</h2>
+                  <p className="mt-1.5 text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.03em] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.6rem]">
                     {m.value}
                   </p>
                 </SlideIn>
               ))}
             </div>
+            <SlideIn delay={420}>
+              <p className="mt-10 text-[clamp(1rem,1.2vw,1.2rem)] leading-[1.45] opacity-70">
+                Wearables through Validic; education content from Mayo Clinic,
+                NIH and epocrates.
+              </p>
+            </SlideIn>
           </div>
         </Panel>
 
