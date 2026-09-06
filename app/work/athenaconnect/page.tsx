@@ -24,6 +24,7 @@ import {
   NextProjectLink,
   CaseStudyMetaPanel,
   HERO_SUBTEXT,
+  StatRow,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -241,19 +242,19 @@ export default function AthenaConnectCaseStudy() {
             </div>
             <div className="mt-10 grid gap-10 sm:grid-cols-2 sm:gap-x-14">
               <SlideIn delay={120}>
-                <h3 className="text-[clamp(1.35rem,1.8vw,1.6rem)] font-semibold leading-[1.2]">
+                <h3 className="text-[clamp(1.35rem,1.9vw,2rem)] font-semibold leading-[1.2]">
                   Public User
                 </h3>
-                <p className="mt-2 text-[clamp(1.05rem,1.3vw,1.25rem)] leading-[1.45] opacity-90">
+                <p className="mt-2 text-[clamp(1.05rem,1.25vw,1.25rem)] leading-[1.45] opacity-90">
                   Prospects on Marketplace.com are sizing up the whole
                   ecosystem. That page has to stand on its own.
                 </p>
               </SlideIn>
               <SlideIn delay={210}>
-                <h3 className="text-[clamp(1.35rem,1.8vw,1.6rem)] font-semibold leading-[1.2]">
+                <h3 className="text-[clamp(1.35rem,1.9vw,2rem)] font-semibold leading-[1.2]">
                   athenaNet User
                 </h3>
-                <p className="mt-2 text-[clamp(1.05rem,1.3vw,1.25rem)] leading-[1.45] opacity-90">
+                <p className="mt-2 text-[clamp(1.05rem,1.25vw,1.25rem)] leading-[1.45] opacity-90">
                   Customers inside athenaNet are judging a tool mid-workflow.
                   That page has to fit into their day.
                 </p>
@@ -288,40 +289,14 @@ export default function AthenaConnectCaseStudy() {
         <Panel width={VIEW} pad="center" className="lg:!pb-[var(--nav-clear)]">
           <div className={`${STAT_ROW} mx-auto`}>
             <Heading>The catalogue got easier to shop.</Heading>
-            <div className="mt-10 grid grid-cols-2 gap-10 gap-x-8 sm:gap-x-12 lg:grid-cols-3 lg:gap-x-10">
-              {[
-                {
-                  label: "Adoption",
-                  value: "71%+",
-                  detail: "of customers adopted partner solutions",
-                },
-                {
-                  label: "Integrations",
-                  value: "370+",
-                  detail: "partner products in the catalogue",
-                },
-                {
-                  label: "Specialties",
-                  value: "60+",
-                  detail: "covered across the partner ecosystem",
-                },
-              ].map((stat, i) => (
-                <SlideIn key={stat.label} delay={120 + i * 90}>
-                  <h2 className={META_LABEL}>{stat.label}</h2>
-                  <p className="mt-1.5 text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.03em] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.6rem]">
-                    {stat.value}
-                  </p>
-                  <p className="mt-1 text-[1.1rem] leading-[1.45] opacity-90 lg:text-[1.15rem] xl:text-[1.2rem]">
-                    {stat.detail}
-                  </p>
-                </SlideIn>
-              ))}
-            </div>
-            <SlideIn delay={420}>
-              <p className="mt-10 text-[clamp(1rem,1.2vw,1.2rem)] leading-[1.45] opacity-70">
-                Figures the redesigned catalogue contributed to.
-              </p>
-            </SlideIn>
+            <StatRow
+              items={[
+                { label: "Adoption", value: "71%+", detail: "of customers adopted partner solutions" },
+                { label: "Integrations", value: "370+", detail: "partner products in the catalogue" },
+                { label: "Specialties", value: "60+", detail: "covered across the partner ecosystem" },
+              ]}
+              note="Figures the redesigned catalogue contributed to."
+            />
           </div>
         </Panel>
 

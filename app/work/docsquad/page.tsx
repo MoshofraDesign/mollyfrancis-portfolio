@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, CENTER_BELOW_MARK, CAPTION } from "@/components/v2/CaseStudyKit";
+import { NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, CENTER_BELOW_MARK, CAPTION, TITLE, BODY_TYPE } from "@/components/v2/CaseStudyKit";
 
 /**
  * DocSquad — a moonlighter-first narrative over the Figma deck's assets
@@ -45,11 +45,9 @@ const LOGO = "/logos/docsquad.svg";
 const ASSET = "/work/docsquad";
 
 /** Figma Header Large: Jost SemiBold 81/95. */
-const H_DISPLAY =
-  "font-semibold leading-[1.1] text-white text-[2rem] sm:text-[2.25rem] md:text-[2.7rem] lg:text-[3.6rem] xl:text-[4.5rem] 2xl:text-[5.062rem] lg:leading-[1.1] [text-wrap:pretty]";
+const H_DISPLAY = `text-white ${TITLE}`;
 /** Figma Paragraph: Jost Regular 32, 16px under the heading. */
-const BODY =
-  "text-[1.05rem] sm:text-[1.05rem] md:text-[1.066rem] lg:text-[1.421rem] xl:text-[1.776rem] 2xl:text-[2rem] font-normal leading-[1.1] text-white [text-wrap:pretty]";
+const BODY = `text-white/90 ${BODY_TYPE}`;
 
 /** Outcome stat columns — Figma node 4672:15331: 29% / 71% / $1.2m,
  *  each with a big hero number, uppercase kicker, delta + down triangle,
@@ -189,10 +187,10 @@ export default function DocSquadCaseStudy() {
             distance={24}
             className="relative z-10 flex max-w-[308px] flex-col gap-2 text-white lg:absolute lg:bottom-[82px] lg:left-[50px] lg:h-auto lg:max-w-[274px]"
           >
-            <p className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.1]">
+            <p className="text-[clamp(1.9rem,2.4vw,2.6rem)] font-semibold leading-[1.1]">
               Virtual Care Telehealth App
             </p>
-            <p className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1rem] 2xl:text-[1.125rem] font-normal leading-[1.45]">
+            <p className="text-[clamp(1.05rem,1.25vw,1.25rem)] font-normal leading-[1.45]">
               Provider Desktop And Native Apps For Doctors, Nurses And Staff To Diagnosis Patients With Asynchronous And Synchronous Visits.
             </p>
           </SlideIn>
@@ -460,13 +458,13 @@ export default function DocSquadCaseStudy() {
               <div className="flex w-full flex-col gap-10 sm:flex-row sm:flex-wrap sm:gap-x-14 sm:gap-y-10">
                 {OUTCOME_STATS.map((stat) => (
                   <div key={stat.kicker} className="flex flex-col items-start gap-1 text-white">
-                    <p className="text-[2.75rem] sm:text-[2.75rem] md:text-[2.75rem] lg:text-[3.52rem] xl:text-[4.4rem] 2xl:text-[5.062rem] font-semibold uppercase leading-[1.1] tracking-[-0.02em]">
+                    <p className="text-[clamp(2rem,4.5vw,4.05rem)] font-semibold uppercase leading-[1.1] tracking-[-0.02em]">
                       {stat.hero}
                     </p>
-                    <p className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1.12rem] 2xl:text-[1.25rem] font-semibold uppercase tracking-[0.06em]">
+                    <p className="text-[clamp(1.05rem,1.25vw,1.25rem)] font-semibold uppercase tracking-[0.06em]">
                       {stat.kicker}
                     </p>
-                    <p className="mt-3 flex items-center gap-2 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.664rem] xl:text-[2.08rem] 2xl:text-[2.25rem] font-semibold leading-[1.1]">
+                    <p className="mt-3 flex items-center gap-2 text-[clamp(1.9rem,2.4vw,2.6rem)] font-semibold leading-[1.1]">
                       {stat.delta}
                       <img
                         src={`${ASSET}/down-triangle-green.svg`}
@@ -476,7 +474,7 @@ export default function DocSquadCaseStudy() {
                         className="size-5 shrink-0 rotate-180 brightness-0 invert"
                       />
                     </p>
-                    <p className="text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[1.12rem] 2xl:text-[1.25rem] font-normal">
+                    <p className="text-[clamp(1.05rem,1.25vw,1.25rem)] font-normal">
                       {stat.detail}
                     </p>
                   </div>

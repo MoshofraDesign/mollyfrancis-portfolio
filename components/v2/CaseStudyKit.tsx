@@ -100,6 +100,36 @@ export const HERO_ROW_COPY = "md:min-w-0 md:basis-[16rem] md:grow";
 /** Tablet title-panel padding — the same 50px top/left inset as lg. */
 export const HERO_INSET_MD = "md:px-[50px] md:pt-[50px]";
 
+/**
+ * THE TYPE SCALE — five sizes, and every case study uses these.
+ *
+ * There were ninety-odd distinct font sizes across the ten projects: six
+ * different "small body" values, five heading ladders (2.88/3.6/4.05 on
+ * four projects, 3.6/4.5/5.06 on DocSquad, 2.16/2.56/2.75 elsewhere), and
+ * one-off px steps in the generic template. Nothing was wrong with any
+ * single value; the problem was that the same role got a different size
+ * depending on which page you opened.
+ *
+ * Each token is a clamp, so it scales between a phone and a wide monitor
+ * without a breakpoint ladder. Pick by ROLE, not by how big you want it:
+ *
+ *   TITLE    section and intro headings — the biggest type on a panel
+ *   SUBHEAD  column heads, persona names, a sub-section inside a panel
+ *   BODY     paragraphs and bullets
+ *   SMALL    captions, detail lines under a figure, meta notes
+ *   STAT     the figures in a numbers row
+ */
+export const TITLE =
+  "font-semibold leading-[1.1] tracking-[-0.02em] [text-wrap:balance] text-[clamp(2rem,4.5vw,4.05rem)]";
+export const SUBHEAD =
+  "font-semibold leading-[1.2] [text-wrap:balance] text-[clamp(1.35rem,1.9vw,2rem)]";
+export const BODY_TYPE =
+  "font-normal leading-[1.45] [text-wrap:pretty] text-[clamp(1.25rem,1.6vw,1.65rem)]";
+export const SMALL =
+  "font-normal leading-[1.45] [text-wrap:pretty] text-[clamp(1.05rem,1.25vw,1.25rem)]";
+export const STAT =
+  "font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.9rem,2.4vw,2.6rem)]";
+
 export const VIEW = "lg:w-screen";
 
 /**
@@ -277,10 +307,8 @@ export function TextPanel({
  * separate tokens rather than deleted, since a dozen call sites name them
  * and the distinction may earn its way back.
  */
-export const INTRO_TITLE =
-  "font-semibold leading-[1.1] tracking-[-0.02em] [text-wrap:pretty] text-[2rem] sm:text-[2rem] lg:text-[clamp(2rem,4.5vw,4.05rem)]";
-export const INTRO_SUBTEXT =
-  "font-normal leading-[1.45] [text-wrap:pretty] text-[1.25rem] sm:text-[1.25rem] lg:text-[clamp(1.25rem,1.6vw,1.65rem)]";
+export const INTRO_TITLE = TITLE;
+export const INTRO_SUBTEXT = BODY_TYPE;
 
 /**
  * Hero type — the client's name and the one-line description on a project's
@@ -375,7 +403,7 @@ export const HERO_COPY_GAP = "gap-2";
  * now, one step smaller than the old token's ceiling.
  */
 export const HERO_TITLE =
-  "font-semibold leading-[1.1] tracking-[-0.01em] [text-wrap:pretty] text-[1.25rem] sm:text-[1.375rem] lg:text-[clamp(1.375rem,2.15vw,1.95rem)]";
+  "font-semibold leading-[1.1] tracking-[-0.01em] [text-wrap:balance] text-[1.25rem] sm:text-[1.375rem] lg:text-[clamp(1.375rem,2.15vw,1.95rem)]";
 export const HERO_SUBTEXT =
   "font-normal leading-[1.45] [text-wrap:pretty] text-[0.95rem] sm:text-[1rem] lg:text-[clamp(0.95rem,1.25vw,1.125rem)]";
 
@@ -386,7 +414,7 @@ export function Heading({ children, intro = false }: { children: React.ReactNode
         className={
           intro
             ? INTRO_TITLE
-            : "text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.1] tracking-[-0.02em] [text-wrap:pretty]"
+            : TITLE
         }
       >
         {typeof children === "string" ? noOrphan(children) : children}
@@ -412,7 +440,7 @@ export function Body({
         className={
           intro
             ? `mt-3 ${INTRO_SUBTEXT}`
-            : "mt-3 text-[clamp(1.25rem,1.6vw,1.65rem)] font-normal leading-[1.45] opacity-90 [text-wrap:pretty]"
+            : `mt-3 opacity-90 ${BODY_TYPE}`
         }
       >
         {typeof children === "string" ? noOrphan(children) : children}
@@ -554,8 +582,61 @@ export function NextProjectLink({
  * synthesised on some pages). One token, so all four stay identical on
  * every project.
  */
-export const META_LABEL =
-  "text-[clamp(1.15rem,1.5vw,1.35rem)] font-semibold leading-[1.2] text-current/60";
+export const META_LABEL = `font-semibold text-current/60 ${SMALL}`;
+
+/**
+ * A numbers row — the closing figures on a case study.
+ *
+ * One component because there were ten of these and no two matched: four
+ * columns on Bright and LivePerson, three on athenaConnect, a vertical
+ * space-y stack on Patient IO, figure-above-label on Care and
+ * label-above-figure everywhere else, and figure sizes from 1.9rem to
+ * 4.05rem. Same content, ten shapes.
+ *
+ * Label above figure, on the shared scale, and the columns stay a ROW from
+ * sm up — as many columns as there are figures — rather than folding into a
+ * 2x2 block at tablet width. Two-up below sm, since four figures across a
+ * phone is unreadable.
+ *
+ * Colour comes from the panel: META_LABEL is text-current/60, so pass
+ * "text-white" in className on a page whose panels don't already set it.
+ */
+export function StatRow({
+  items,
+  note,
+  className = "",
+}: {
+  items: readonly { readonly label: string; readonly value: string; readonly detail?: string }[];
+  note?: React.ReactNode;
+  className?: string;
+}) {
+  const cols =
+    ({
+      1: "sm:grid-cols-1",
+      2: "sm:grid-cols-2",
+      3: "sm:grid-cols-3",
+      4: "sm:grid-cols-4",
+      5: "sm:grid-cols-5",
+    } as Record<number, string>)[items.length] ?? "sm:grid-cols-3";
+  return (
+    <div className={className}>
+      <div className={`mt-10 grid grid-cols-2 gap-10 gap-x-8 sm:gap-x-10 ${cols}`}>
+        {items.map((s, i) => (
+          <SlideIn key={s.label} delay={120 + i * 90}>
+            <h3 className={META_LABEL}>{s.label}</h3>
+            <p className={`mt-1.5 ${STAT}`}>{s.value}</p>
+            {s.detail && <p className={`mt-1 opacity-90 ${SMALL}`}>{s.detail}</p>}
+          </SlideIn>
+        ))}
+      </div>
+      {note && (
+        <SlideIn delay={240 + items.length * 90}>
+          <p className={`mt-10 opacity-70 ${SMALL}`}>{note}</p>
+        </SlideIn>
+      )}
+    </div>
+  );
+}
 
 export function CaseStudyMetaPanel({
   meta,

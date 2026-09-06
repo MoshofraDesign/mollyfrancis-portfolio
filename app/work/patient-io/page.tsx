@@ -16,6 +16,7 @@ import {
   NextProjectLink,
   CaseStudyMetaPanel,
   HERO_TITLE,
+  StatRow,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -191,7 +192,7 @@ export default function PatientIoCaseStudy() {
                 </SlideIn>
               ))}
             </div>
-            <p className="text-center text-[0.85rem] opacity-80">The patient-facing app — daily tasks, vitals, and reminders that keep the care plan on track</p>
+            <p className="text-center text-[clamp(1.05rem,1.25vw,1.25rem)] opacity-80">The patient-facing app — daily tasks, vitals, and reminders that keep the care plan on track</p>
           </div>
         </Panel>
 
@@ -224,7 +225,7 @@ export default function PatientIoCaseStudy() {
                 loading="lazy"
                 className="h-auto max-h-[55vh] w-auto max-w-[92vw] rounded-md object-contain lg:max-w-[46vw]"
               />
-              <p className="text-center text-[0.85rem] opacity-80">
+              <p className="text-center text-[clamp(1.05rem,1.25vw,1.25rem)] opacity-80">
                 A system for patients and caregivers to manage medications
               </p>
             </SlideIn>
@@ -235,7 +236,7 @@ export default function PatientIoCaseStudy() {
                 loading="lazy"
                 className="h-auto max-h-[40vh] w-auto max-w-[92vw] rounded-md object-contain lg:max-w-[46vw]"
               />
-              <p className="text-center text-[0.85rem] opacity-80">Medication Design System Components</p>
+              <p className="text-center text-[clamp(1.05rem,1.25vw,1.25rem)] opacity-80">Medication Design System Components</p>
             </SlideIn>
           </div>
         </Panel>
@@ -286,18 +287,7 @@ export default function PatientIoCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className={`${STAT_ROW} mx-auto`}>
             <Heading>Impact</Heading>
-            <div className="mt-10 w-full space-y-8">
-              {metrics.map((m, i) => (
-                <SlideIn key={m.label} delay={120 + i * 90}>
-                  <p className="text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[2.75rem] 2xl:text-[2.75rem] font-semibold leading-[1.1]">
-                    {m.value}
-                  </p>
-                  <p className="mt-1 text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1rem] font-medium opacity-80">
-                    {m.label}
-                  </p>
-                </SlideIn>
-              ))}
-            </div>
+            <StatRow items={metrics} />
           </div>
         </Panel>
 

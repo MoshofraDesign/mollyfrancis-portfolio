@@ -5,7 +5,7 @@ import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
-import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL, END_MEASURE, HERO_TITLE, HERO_SUBTEXT, PORTRAIT_CIRCLE, PORTRAIT_COPY, VIEW, MEASURE, STAT_ROW, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD } from "@/components/v2/CaseStudyKit";
+import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, META_LABEL, END_MEASURE, HERO_TITLE, HERO_SUBTEXT, PORTRAIT_CIRCLE, PORTRAIT_COPY, VIEW, MEASURE, STAT_ROW, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, TITLE, BODY_TYPE, StatRow } from "@/components/v2/CaseStudyKit";
 import UcmScreensCarousel from "@/components/UcmScreensCarousel";
 
 export const metadata = {
@@ -25,10 +25,8 @@ const ACCENT = "#FFAF00";
 const LOGO = "/logos/bright-healthcare.svg";
 const ASSET = "/work/bright-healthcare";
 
-const H_DISPLAY =
-  "font-semibold leading-[1.1] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
-const BODY =
-  "text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.2] text-white [text-wrap:pretty]";
+const H_DISPLAY = `text-white ${TITLE}`;
+const BODY = `text-white ${BODY_TYPE}`;
 
 /**
  * The quote marks. Both quotes place these on the quote block itself and on
@@ -164,7 +162,7 @@ export default function BrightHealthcareCaseStudy() {
                 them — it existed only as the gutter they hung in, so keeping
                 it would leave the copy inset for no reason. */}
             <SlideIn delay={80} className={`relative ${PORTRAIT_COPY}`}>
-              <p className="relative text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2rem] font-normal leading-[1.45] text-white [text-wrap:pretty]">
+              <p className="relative text-[clamp(1.35rem,1.9vw,2rem)] font-normal leading-[1.45] text-white [text-wrap:pretty]">
                 Faxing in the world of digital experiences can cause providers and their staff added work, frustration, loss of trust in the company, and more importantly time away from caring for members.
               </p>
             </SlideIn>
@@ -255,14 +253,14 @@ export default function BrightHealthcareCaseStudy() {
               so the space between them is the gap and nothing else. */}
           <div className="mx-auto flex w-full max-w-[min(92vw,80rem)] flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-start lg:gap-12">
             <SlideIn className="w-full max-w-[748px] lg:w-auto lg:max-w-[600px] lg:shrink-0">
-              <h2 className="text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.02em]">😟 Pains</h2>
+              <h2 className="text-[clamp(1.9rem,2.4vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.02em]">😟 Pains</h2>
               <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
                 <li>Burnout from repetitive admin tasks.</li>
                 <li>No visibility into status or timelines.</li>
                 <li>Endless back-and-forth with payers.</li>
                 <li>Delays hurting patient satisfaction and care.</li>
               </ul>
-              <h2 className="mt-8 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.792rem] xl:text-[2.24rem] 2xl:text-[2.35rem] font-semibold leading-[1.1] tracking-[-0.02em]">🌟 Gains</h2>
+              <h2 className="mt-8 text-[clamp(1.9rem,2.4vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.02em]">🌟 Gains</h2>
               <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
                 <li>One system, fully integrated with their EHR.</li>
                 <li>Clear approval requirements—less rework.</li>
@@ -354,7 +352,7 @@ export default function BrightHealthcareCaseStudy() {
         <Panel width={VIEW} pad="center">
           <div className="relative mx-auto w-full max-w-[min(72rem,92vw)]">
             <SlideIn>
-              <div className="relative mx-auto w-fit max-w-full pl-[1.9em] pr-[1.6em] text-[1.85rem] sm:text-[1.85rem] md:text-[1.85rem] lg:text-[2.432rem] xl:text-[3.04rem] 2xl:text-[3.648rem]">
+              <div className="relative mx-auto w-fit max-w-full pl-[1.9em] pr-[1.6em] text-[clamp(2rem,4.5vw,4.05rem)]">
                 <p className="relative font-semibold leading-[1.1] tracking-[-0.02em] text-white">
                   <QuoteMark className="-left-[1.85em] top-1/2 h-[0.97em] w-[1.23em] -translate-y-1/2" />
                   <QuoteMark close className="-right-[1.6em] top-1/2 h-[0.97em] w-[1.23em] -translate-y-1/2" />
@@ -365,7 +363,7 @@ export default function BrightHealthcareCaseStudy() {
                     the authorization portal!
                   </span>
                 </p>
-                <p className="mt-6 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] italic leading-[1.45] text-white">
+                <p className="mt-6 text-[clamp(1.25rem,1.6vw,1.65rem)] italic leading-[1.45] text-white">
                   Rebecca Schweitz
                   <br />
                   VP, Clinical Performance
@@ -417,40 +415,15 @@ export default function BrightHealthcareCaseStudy() {
             lines on 1.45 — the site-wide leading scale. */}
         <Panel width={VIEW} pad="center">
           <div className={`${STAT_ROW} mx-auto`}>
-            <div className="grid gap-10 sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-4 lg:gap-x-10">
-              {[
-                {
-                  label: "Savings",
-                  value: "$1.9m in savings",
-                  detail: "Scaled monthly usage to 9-10K a month",
-                },
-                {
-                  label: "Clinical review",
-                  value: "$800K in savings",
-                  detail: "7 minutes per case for clinicians reviewing cases",
-                },
-                {
-                  label: "Time saved",
-                  value: "4 Hours per day saved",
-                  detail: "Went down 4 minutes per authorization, per provider",
-                },
-                {
-                  label: "Users",
-                  value: "50K authorization submissions",
-                  detail: "22K providers logged in",
-                },
-              ].map((stat, i) => (
-                <SlideIn key={stat.value} delay={i * 80}>
-                  <h2 className={META_LABEL}>{stat.label}</h2>
-                  <p className="mt-1.5 text-[2.1rem] sm:text-[2.1rem] md:text-[2.1rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.6rem] font-semibold leading-[1.1] tracking-[-0.03em]">
-                    {stat.value}
-                  </p>
-                  <p className="mt-1 text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-[1.45] text-white">
-                    {stat.detail}
-                  </p>
-                </SlideIn>
-              ))}
-            </div>
+            <StatRow
+              className="text-white"
+              items={[
+                { label: "Savings", value: "$1.9m in savings", detail: "Scaled monthly usage to 9-10K a month" },
+                { label: "Clinical review", value: "$800K in savings", detail: "7 minutes per case for clinicians reviewing cases" },
+                { label: "Time saved", value: "4 Hours per day saved", detail: "Went down 4 minutes per authorization, per provider" },
+                { label: "Users", value: "50K authorization submissions", detail: "22K providers logged in" },
+              ]}
+            />
           </div>
         </Panel>
 
@@ -467,7 +440,7 @@ export default function BrightHealthcareCaseStudy() {
                   href={project.prototype}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] text-white transition-opacity hover:opacity-60"
+                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[clamp(1.05rem,1.25vw,1.25rem)] text-white transition-opacity hover:opacity-60"
                 >
                   Open prototype ↗
                 </a>

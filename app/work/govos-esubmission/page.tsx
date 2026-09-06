@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, END_MEASURE, NextProjectLink, CaseStudyMetaPanel, END_PANEL, CAPTION, PORTRAIT_CIRCLE, PORTRAIT_COPY, META_LABEL, STAT_ROW } from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, END_MEASURE, NextProjectLink, CaseStudyMetaPanel, END_PANEL, CAPTION, PORTRAIT_CIRCLE, PORTRAIT_COPY, META_LABEL, STAT_ROW, StatRow, SUBHEAD, BODY_TYPE } from "@/components/v2/CaseStudyKit";
 
 /**
  * GovOS eSubmission — horizontal case study built to match the Figma deck
@@ -166,7 +166,7 @@ function noOrphan(text: string) {
 function Heading({ children }: { children: React.ReactNode }) {
   return (
     <SlideIn className={TEXT_W}>
-      <h2 className="text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] font-semibold leading-[1.1] tracking-[-0.02em] text-white [text-wrap:pretty]">
+      <h2 className="text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </h2>
     </SlideIn>
@@ -177,7 +177,7 @@ function Heading({ children }: { children: React.ReactNode }) {
 function Body({ children }: { children: React.ReactNode }) {
   return (
     <SlideIn delay={120} className={TEXT_W}>
-      <p className="mt-3 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] font-normal leading-[1.45] text-white [text-wrap:pretty]">
+      <p className="mt-3 text-[clamp(1.25rem,1.6vw,1.65rem)] font-normal leading-[1.45] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </p>
     </SlideIn>
@@ -193,7 +193,7 @@ function Bullets({ items }: { items: string[] }) {
           key={b}
           as="li"
           delay={120 + i * 90}
-          className="text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] font-normal leading-[1.45] text-white [text-wrap:pretty]"
+          className="text-[clamp(1.25rem,1.6vw,1.65rem)] font-normal leading-[1.45] text-white [text-wrap:pretty]"
         >
           {noOrphan(b)}
         </SlideIn>
@@ -299,12 +299,12 @@ function ChallengeBlock({
   return (
     <div>
       <SlideIn delay={delay}>
-        <h3 className="text-[1.15rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.5rem] xl:text-[1.5rem] 2xl:text-[1.5rem] font-semibold leading-[1.1] text-white sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.408rem] xl:text-[1.76rem] 2xl:text-[2.112rem] [text-wrap:pretty]">
+        <h3 className="text-[clamp(1.25rem,1.6vw,1.65rem)] font-semibold leading-[1.1] text-white text-[clamp(1.35rem,1.9vw,2rem)] [text-wrap:pretty]">
           {title}
         </h3>
       </SlideIn>
       <SlideIn delay={delay + 90}>
-        <p className="mt-2 text-[1rem] sm:text-[1.36rem] md:text-[1.375rem] lg:text-[1.375rem] xl:text-[1.375rem] 2xl:text-[1.375rem] font-normal leading-[1.45] text-white sm:text-[1rem] md:text-[1rem] lg:text-[1.088rem] xl:text-[1.36rem] 2xl:text-[1.375rem] [text-wrap:pretty]">
+        <p className={`mt-2 text-white ${BODY_TYPE}`}>
           {noOrphan(children)}
         </p>
       </SlideIn>
@@ -575,20 +575,14 @@ export default function GovOSCaseStudy() {
         <Panel>
           <div className={STAT_ROW}>
             <Heading>What changed after launch.</Heading>
-            <div className="mt-10 grid grid-cols-2 gap-10 gap-x-8 sm:gap-x-12 lg:grid-cols-3 lg:gap-x-10">
-              {[
-                ["Citizen completion", "42% to 86%"],
-                ["Validation errors", "34% to 8%"],
-                ["Time to submit", "14.5min to 4.2min"],
-              ].map(([label, value], i) => (
-                <SlideIn key={label} delay={120 + i * 90}>
-                  <h3 className={`text-white ${META_LABEL}`}>{label}</h3>
-                  <p className="mt-1.5 text-[1.9rem] font-semibold leading-[1.1] tracking-[-0.03em] text-white lg:text-[1.85rem] xl:text-[2.2rem] 2xl:text-[2.4rem]">
-                    {value}
-                  </p>
-                </SlideIn>
-              ))}
-            </div>
+            <StatRow
+              className="text-white"
+              items={[
+                { label: "Citizen completion", value: "42% to 86%" },
+                { label: "Validation errors", value: "34% to 8%" },
+                { label: "Time to submit", value: "14.5min to 4.2min" },
+              ]}
+            />
           </div>
         </Panel>
 
@@ -605,7 +599,7 @@ export default function GovOSCaseStudy() {
                 href={project.prototype}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] text-white transition-opacity hover:opacity-60"
+                className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[clamp(1.05rem,1.25vw,1.25rem)] text-white transition-opacity hover:opacity-60"
               >
                 Open prototype ↗
               </a>

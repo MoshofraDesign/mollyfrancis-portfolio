@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
-import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, CAPTION, NextProjectLink, CaseStudyMetaPanel, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT} from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, CAPTION, NextProjectLink, CaseStudyMetaPanel, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT, StatRow } from "@/components/v2/CaseStudyKit";
 
 /**
  * LivePerson/SocialConnect, told as a story the way DocSquad is: it opens
@@ -266,19 +266,7 @@ export default function LivePersonCaseStudy() {
         <Panel width={VIEW} pad="center" className="lg:!pb-[var(--nav-clear)]">
           <div className={`${STAT_ROW} mx-auto`}>
             <Heading>Impact</Heading>
-            {/* Across, not down — the same shape as every other project's
-                stat row, and it stops four figures needing a full screen of
-                height. */}
-            <div className="mt-10 grid w-full grid-cols-2 gap-8 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-12">
-              {metrics.map((m, i) => (
-                <SlideIn key={m.label} delay={120 + i * 90}>
-                  <p className="text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] 2xl:text-[1.2rem] leading-[1.45] opacity-80">{m.label}</p>
-                  <p className="mt-2 text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.1rem] xl:text-[2.3rem] 2xl:text-[2.3rem] font-semibold leading-[1.1] tracking-[-0.03em]">
-                    {m.value}
-                  </p>
-                </SlideIn>
-              ))}
-            </div>
+            <StatRow items={metrics} />
           </div>
         </Panel>
 

@@ -32,6 +32,8 @@ import {
   HERO_ROW,
   HERO_ROW_COPY,
   HERO_INSET_MD,
+  BODY_TYPE,
+  StatRow,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -104,16 +106,7 @@ function MetricsPanel({
     <Panel width={VIEW} pad="center" className={className}>
       <div className={`${STAT_ROW} mx-auto`}>
         <Heading>Impact</Heading>
-        <div className="mt-10 grid w-full grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
-          {metrics.map((m, i) => (
-            <SlideIn key={m.label} delay={120 + i * 90}>
-              <div className="text-[1.75rem] sm:text-[1.75rem] md:text-[1.92rem] lg:text-[2.56rem] xl:text-[3rem] 2xl:text-[3rem] font-semibold leading-[1.1]">
-                {m.value}
-              </div>
-              <p className="mt-3 text-[0.85rem] sm:text-[0.85rem] md:text-[0.85rem] lg:text-[0.85rem] xl:text-[0.88rem] 2xl:text-[1rem] opacity-70">{m.label}</p>
-            </SlideIn>
-          ))}
-        </div>
+        <StatRow items={metrics} />
       </div>
     </Panel>
   );
@@ -161,7 +154,7 @@ function ImageGridPanel({
  * Leading opens slightly as the size comes down. Both pages share the token,
  * which is what keeps the two openings the same size.
  */
-const LEDE = "text-[clamp(1.2rem,1.6vw,1.5rem)] leading-[1.2] [text-wrap:pretty]";
+const LEDE = `leading-[1.2] ${BODY_TYPE}`;
 /**
  * ...and the column it sits in. One width for both pages: Logos was on
  * 36rem and Print on 46rem, so the two openings didn't line up, and at
@@ -241,7 +234,7 @@ function TitlePanel({
             />
           </div>
         ) : (
-          <p className="text-[1.75rem] sm:text-[2rem] md:text-[2.4rem] lg:text-[2.5rem] xl:text-[2.5rem] 2xl:text-[2.5rem] font-semibold">
+          <p className="text-[clamp(1.9rem,2.4vw,2.6rem)] font-semibold">
             {project.title}
           </p>
         )}
@@ -249,10 +242,10 @@ function TitlePanel({
           <Eyebrow>
             {project.client} · {project.year}
           </Eyebrow>
-          <p className="mt-3 text-[1.341rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] font-semibold leading-[1.2] sm:text-[1.2rem] md:text-[1.44rem] lg:text-[1.75rem] xl:text-[1.75rem] 2xl:text-[1.75rem] md:text-[12px] lg:text-[15px] xl:text-[19px] 2xl:text-[23px]">
+          <p className="mt-3 text-[clamp(1.35rem,1.9vw,2rem)] font-semibold leading-[1.2]">
             {project.title}
           </p>
-          <p className="mt-4 max-w-[60ch] text-[0.975rem] sm:text-[1.2rem] md:text-[1.2rem] lg:text-[1.2rem] xl:text-[1.2rem] 2xl:text-[1.2rem] font-normal leading-[1.4] opacity-90 sm:text-[0.95rem] md:text-[1.056rem] lg:text-[1.2rem] xl:text-[1.2rem] 2xl:text-[1.2rem] md:text-[8px] lg:text-[11px] xl:text-[13px] 2xl:text-[16px]">
+          <p className="mt-4 max-w-[60ch] text-[clamp(1.05rem,1.25vw,1.25rem)] font-normal leading-[1.4] opacity-90">
             {project.subtitle}
           </p>
         </div>
@@ -518,7 +511,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
                 in the DOM. */}
             <div className={HERO_ROW}>
               <Mark className="ecom-mark relative h-[70px] w-full max-w-[300px] shrink-0 sm:h-[90px] sm:max-w-[380px]" />
-              <p className={`ecom-copy order-3 max-w-[20rem] text-[1.05rem] leading-[1.45] ${HERO_ROW_COPY}`}>
+              <p className={`ecom-copy order-3 max-w-[20rem] text-[clamp(1.05rem,1.25vw,1.25rem)] leading-[1.45] ${HERO_ROW_COPY}`}>
                 Designing and coding ecommerce websites that seamlessly blend
                 beautiful interfaces with robust, scalable functionality.
               </p>
@@ -697,7 +690,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
                   href={project.prototype}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border px-8 py-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] transition-opacity hover:opacity-60"
+                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border px-8 py-3 text-[clamp(1.05rem,1.25vw,1.25rem)] transition-opacity hover:opacity-60"
                   style={{ borderColor: `${fg}99` }}
                 >
                   {isFigmaFile ? "Open in Figma ↗" : "Open prototype ↗"}

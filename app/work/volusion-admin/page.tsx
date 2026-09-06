@@ -25,6 +25,7 @@ import {
   INTRO_SUBTEXT,
   NextProjectLink,
   CaseStudyMetaPanel,
+  StatRow,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -507,7 +508,7 @@ export default function VolusionCaseStudy() {
                 <p className="mt-8 text-[clamp(1.35rem,1.9vw,2rem)] font-semibold leading-[1.1]">
                   {p.title}
                 </p>
-                <p className="mt-4 text-[clamp(1rem,1.15vw,1.2rem)] font-normal leading-[1.4] opacity-90">
+                <p className="mt-4 text-[clamp(1.05rem,1.25vw,1.25rem)] font-normal leading-[1.4] opacity-90">
                   {p.body}
                 </p>
               </SlideIn>
@@ -543,23 +544,7 @@ export default function VolusionCaseStudy() {
         <Panel width={VIEW} pad="center" className="lg:!pb-[var(--nav-clear)]">
           <div className={`${STAT_ROW} mx-auto`}>
             <Heading>The Analytics</Heading>
-            <div className="mt-10 grid w-full grid-cols-2 gap-8 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-12">
-              {ANALYTICS.map((m, i) => (
-                <SlideIn key={m.label} delay={120 + i * 90}>
-                  <p className="text-[clamp(1.1rem,1.4vw,1.2rem)] leading-[1.45] opacity-80">
-                    {m.label}
-                  </p>
-                  <p className="mt-2 text-[clamp(1.75rem,2.4vw,2.3rem)] font-semibold leading-[1.1] tracking-[-0.03em]">
-                    {m.value}
-                  </p>
-                </SlideIn>
-              ))}
-            </div>
-            <SlideIn delay={480}>
-              <p className="mt-10 text-[clamp(1rem,1.2vw,1.2rem)] leading-[1.45] opacity-70">
-                All in the first quarter post-launch.
-              </p>
-            </SlideIn>
+            <StatRow items={ANALYTICS} note="All in the first quarter post-launch." />
           </div>
         </Panel>
 

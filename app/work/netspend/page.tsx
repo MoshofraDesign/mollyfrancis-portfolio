@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT} from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT, TITLE, SUBHEAD, BODY_TYPE } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Netspend Rewards & UCM — Molly Francis",
@@ -28,14 +28,10 @@ const ASSET = "/work/netspend";
 const VIEW = "lg:w-screen";
 /** ~132rem on their fluid root ≈ 860px — readable measure that scales. */
 
-const H_DISPLAY =
-  "font-semibold leading-[1.1] tracking-[-0.02em] text-white text-[2rem] sm:text-[2rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.6rem] 2xl:text-[4.05rem] [text-wrap:pretty]";
-const H_SECTION =
-  "font-semibold leading-[1.1] tracking-[-0.02em] text-white text-[1.75rem] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[2.304rem] xl:text-[2.88rem] 2xl:text-[3rem] [text-wrap:pretty]";
-const BODY =
-  "text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.45] text-white [text-wrap:pretty]";
-const BODY_MUTED =
-  "text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.45] text-white/70 [text-wrap:pretty]";
+const H_DISPLAY = `text-white ${TITLE}`;
+const H_SECTION = `text-white ${SUBHEAD}`;
+const BODY = `text-white ${BODY_TYPE}`;
+const BODY_MUTED = `text-white/80 ${BODY_TYPE}`;
 
 export default function NetspendCaseStudy() {
   const idx = projects.findIndex((p) => p.slug === "netspend");
@@ -245,7 +241,7 @@ export default function NetspendCaseStudy() {
                     unoptimized
                     className="size-7 shrink-0 object-contain sm:size-8"
                   />
-                  <span className="text-[0.95rem] leading-[1.45] text-white/70 sm:text-[1rem]">
+                  <span className="text-[clamp(1.05rem,1.25vw,1.25rem)] leading-[1.45] text-white/70 sm:text-[clamp(1.05rem,1.25vw,1.25rem)]">
                     {label}
                   </span>
                 </div>
@@ -258,7 +254,7 @@ export default function NetspendCaseStudy() {
         <Panel width={VIEW} pad="center" className="items-center">
           <div className="mx-auto w-full max-w-[min(1200px,94vw)]">
             <SlideIn>
-              <h2 className="mb-8 text-center font-semibold leading-[1.1] tracking-[-0.02em] text-white text-[1.5rem] sm:text-[1.5rem] md:text-[1.536rem] lg:text-[2.048rem] xl:text-[2.56rem] 2xl:text-[2.65rem] [text-wrap:pretty]">
+              <h2 className="mb-8 text-center font-semibold leading-[1.1] tracking-[-0.02em] text-white text-[clamp(1.9rem,2.4vw,2.6rem)] [text-wrap:pretty]">
                 Then the side cardholders actually see.
               </h2>
             </SlideIn>
@@ -278,7 +274,7 @@ export default function NetspendCaseStudy() {
                     unoptimized
                     className="h-auto w-full object-contain"
                   />
-                  <p className="mt-2 text-center text-[0.8rem] sm:text-[0.8rem] md:text-[0.8rem] lg:text-[0.8rem] xl:text-[0.8rem] 2xl:text-[0.95rem] leading-[1.45] text-white/55">
+                  <p className="mt-2 text-center text-[clamp(1.05rem,1.25vw,1.25rem)] leading-[1.45] text-white/55">
                     {caption}
                   </p>
                 </SlideIn>
@@ -342,10 +338,10 @@ export default function NetspendCaseStudy() {
               ].map(([value, label], i) => (
                 <SlideIn key={label} delay={i * 80}>
                   <div>
-                    <p className="font-semibold leading-[1.1] tracking-[-0.04em] text-white text-[2.4rem] sm:text-[2.4rem] md:text-[2.88rem] lg:text-[3.36rem] xl:text-[3.84rem] 2xl:text-[4.05rem]">
+                    <p className="font-semibold leading-[1.1] tracking-[-0.04em] text-white text-[clamp(2rem,4.5vw,4.05rem)]">
                       {value}
                     </p>
-                    <p className="mt-3 text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.3rem] xl:text-[1.45rem] 2xl:text-[1.65rem] leading-[1.45] text-white/55 [text-wrap:pretty]">
+                    <p className="mt-3 text-[clamp(1.25rem,1.6vw,1.65rem)] leading-[1.45] text-white/55 [text-wrap:pretty]">
                       {label}
                     </p>
                   </div>
@@ -377,7 +373,7 @@ export default function NetspendCaseStudy() {
                   href={project.prototype}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[0.95rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[0.95rem] xl:text-[0.96rem] 2xl:text-[1.1rem] text-white transition-opacity hover:opacity-60"
+                  className="mt-8 inline-flex min-h-11 w-fit items-center rounded-full border border-white/60 px-8 py-3 text-[clamp(1.05rem,1.25vw,1.25rem)] text-white transition-opacity hover:opacity-60"
                 >
                   Open prototype ↗
                 </a>

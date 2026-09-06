@@ -21,6 +21,7 @@ import {
   NextProjectLink,
   CaseStudyMetaPanel,
   HERO_TITLE,
+  StatRow,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -404,22 +405,10 @@ export default function AthenaWellCaseStudy() {
         <Panel width={VIEW} pad="rail" className="lg:!pb-[var(--nav-clear)]">
           <div className={STAT_ROW}>
             <Heading>What it shipped with.</Heading>
-            <div className="mt-10 grid grid-cols-2 gap-10 gap-x-8 sm:gap-x-12 lg:grid-cols-3 lg:gap-x-10">
-              {metrics.map((m, i) => (
-                <SlideIn key={m.label} delay={120 + i * 90}>
-                  <h2 className={META_LABEL}>{m.label}</h2>
-                  <p className="mt-1.5 text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.03em] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.6rem]">
-                    {m.value}
-                  </p>
-                </SlideIn>
-              ))}
-            </div>
-            <SlideIn delay={420}>
-              <p className="mt-10 text-[clamp(1rem,1.2vw,1.2rem)] leading-[1.45] opacity-70">
-                Wearables through Validic; education content from Mayo Clinic,
-                NIH and epocrates.
-              </p>
-            </SlideIn>
+            <StatRow
+              items={metrics}
+              note="Wearables through Validic; education content from Mayo Clinic, NIH and epocrates."
+            />
           </div>
         </Panel>
 
