@@ -193,6 +193,19 @@ export default function LivePersonCaseStudy() {
           </Body>
         </TextPanel>
 
+        {/* ── 2. THE HANDOFF ITSELF. This panel went missing when the hero
+               was rebuilt around all-channels-unified — that composite shows
+               the channels feeding in, not the public-to-private move, so
+               dropping this left the beat above with nothing to point at.
+               1800x739 export, so 2.436. */}
+        <BigImagePanel
+          src="/work/liveperson/public-tweet-private-thread.webp"
+          alt="A public tweet on the left, the same conversation continued as a private thread on the right, with the agent workspace between them"
+          caption="The same complaint, public on one side and private on the other — one transcript."
+          width={1800}
+          height={739}
+        />
+
         {/* ── 3. THE HARD PART. Public-to-private is the design problem the
                panel above shows, so it gets named here. */}
         <TextPanel>
