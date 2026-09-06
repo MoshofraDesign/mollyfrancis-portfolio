@@ -15,7 +15,6 @@ import {
   Body,
   VIEW,
   STAT_ROW,
-  CAPTION,
   MEASURE,
   HERO_INSET_MD,
   META_LABEL,
@@ -88,6 +87,7 @@ function MediaPanel({
   height,
   maxWidth = 1000,
   video = false,
+  rounded = false,
 }: {
   src: string;
   alt: string;
@@ -95,6 +95,8 @@ function MediaPanel({
   height: number;
   maxWidth?: number;
   video?: boolean;
+  /** For an export with no edges of its own — the icon sheet is a plate. */
+  rounded?: boolean;
 }) {
   if (!hasAsset(src)) return null;
   return (
@@ -130,7 +132,7 @@ function MediaPanel({
             width={width}
             height={height}
             sizes="(max-width: 1023px) 92vw, min(92vw, 1000px)"
-            className="h-auto w-full"
+            className={`h-auto w-full${rounded ? " rounded-[10px]" : ""}`}
           />
         )}
       </SlideIn>
@@ -327,26 +329,31 @@ export default function AthenaWellCaseStudy() {
           maxWidth={299}
         />
 
-        {/* ── 9. CUSTOM ICONS. Media with a caption; the sheet carries
-               itself, so no display heading. */}
-        {hasAsset(`${ASSET}/custom-icons.webp`) && (
-          <Panel width={VIEW} pad="rail">
-            <SlideIn className="mx-auto flex w-full max-w-[min(660px,86vw)] flex-col lg:mx-0 lg:max-w-[min(752px,100%,calc((var(--panel-media-max-h)_-_5rem)_*_1.211))]">
-              <Image
-                src={`${ASSET}/custom-icons.webp`}
-                alt="The athenaWell icon set — twenty-four drawn icons"
-                width={752}
-                height={621}
-                sizes="(max-width: 1023px) 86vw, min(86vw, 660px)"
-                className="h-auto w-full rounded-[10px]"
-              />
-              <p className={`mt-5 ${CAPTION}`}>
-                Custom icons — one drawn set across care plans, scheduling,
-                messaging and results.
-              </p>
-            </SlideIn>
-          </Panel>
-        )}
+        {/* ── 9. CUSTOM ICONS. Its own copy beat first, like every other
+               screen on the page — this was the one picture arriving with no
+               heading in front of it, which is why it and the Apollo phone
+               ended up sharing a screen: two media panels back to back, both
+               with narrow content on the rail, so the tail of one and the
+               head of the next fit in the same view. */}
+        <Panel width={VIEW} pad="rail">
+          <div className={MEASURE}>
+            <Heading>Every icon drawn, not downloaded.</Heading>
+            <Body>
+              One set across care plans, scheduling, messaging and results —
+              so a patient learned each shape once.
+            </Body>
+          </div>
+        </Panel>
+
+        <MediaPanel
+          src={`${ASSET}/custom-icons.webp`}
+          alt="The athenaWell icon set — twenty-four drawn icons"
+          width={752}
+          height={621}
+          maxWidth={752}
+          rounded
+        />
+
 
         {/* ── 10. OUTCOME, then the figures as a row of columns — the shape
                every other project closes on. */}
