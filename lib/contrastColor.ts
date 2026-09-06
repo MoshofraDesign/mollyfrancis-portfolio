@@ -76,3 +76,19 @@ export function readableOnAccent(accent: string): { bg: string; fg: string } {
   }
   return { bg: scale(accent, 0.6), fg: WHITE };
 }
+
+/**
+ * White or ink on a given background — whichever actually measures better.
+ *
+ * Not the same as contrastColor(), which decides from a 0.299/0.587/0.114
+ * perceived-luminance threshold rather than a real WCAG ratio, and so picks
+ * the WORSE of the two on eight of the site's fourteen accents (#00CCB7:
+ * light at 1.87:1 where ink gives 9.05:1). Left alone for now because
+ * flipping it changes the text colour on eight project pages, which is a
+ * design decision rather than a fix. New code should use this.
+ */
+export function readableOn(bg: string): string {
+  const WHITE = "#ffffff";
+  const INK = "#141414";
+  return contrastRatio(bg, WHITE) >= contrastRatio(bg, INK) ? WHITE : INK;
+}

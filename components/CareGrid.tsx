@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Project } from "@/lib/projects";
-import { readableOnAccent } from "@/lib/contrastColor";
+import { readableOnAccent, readableOn } from "@/lib/contrastColor";
 import { WORK_THUMB_GRID_CLASS, WORK_THUMB_TILE } from "@/lib/workGrid";
 
 type Props = {
@@ -26,7 +26,15 @@ export default function CareGrid({ projects }: Props) {
   return (
     <div className={WORK_THUMB_GRID_CLASS}>
       {projects.map((project) => {
-        const { bg, fg } = readableOnAccent(project.accent);
+        /* At rest the tile is the bright accent. On hover it becomes the
+           colour of the page it opens — a preview of where you're going —
+           for the projects that declare one. Everywhere else it falls back
+           to deriving an accessible pair from the accent, because most page
+           colours are still the raw accent and several of those don't clear
+           4.5:1 with either white or ink. */
+        const { bg, fg } = project.pageBg
+          ? { bg: project.pageBg, fg: readableOn(project.pageBg) }
+          : readableOnAccent(project.accent);
         return (
         <Link
           key={project.slug}

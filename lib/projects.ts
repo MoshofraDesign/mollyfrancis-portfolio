@@ -22,6 +22,16 @@ export type Project = {
   // logo aspect ratios vary a lot — defaults to 1 when unset.
   logoScale?: number;
   accent: string;
+  /**
+   * The colour the project's own page uses, when it differs from the accent.
+   *
+   * The work-grid tile keeps the bright accent at rest — Molly's call — but
+   * hovering it previews the page you're about to open, so the hover takes
+   * this. Only set it where a page has moved off its accent for contrast:
+   * GovOS (#0091CF gives white body copy 3.53:1) and Bright (#FFAF00 gives
+   * it 1.84:1).
+   */
+  pageBg?: string;
   // AI-enhanced description (generated, 2-3 sentences)
   aiSummary: string;
   // Longer overview for case-study pages
@@ -93,6 +103,7 @@ export const projects: Project[] = [
     logo: "/logos/govos-esubmission-figma.svg",
     logoScale: 0.75,
     accent: "#0091CF",
+    pageBg: "#00306B",
     featured: true,
     aiSummary:
       "Designed a direct-to-county eRecording portal so title companies could submit deeds electronically — cutting out the third-party submitters that sat between them. AI-assisted synthesis (Dovetail transcript clustering, GPT-generated Jira tickets) kept research turnaround fast.",
@@ -220,6 +231,7 @@ export const projects: Project[] = [
     logoWide: "/logos/bright-healthcare.svg",
     logoScale: 1.45,
     accent: "#FFAF00",
+    pageBg: "#f9f9f9",
     featured: true,
     aiSummary:
       "Designed a provider-facing portal that lets clinicians submit prior authorization requests electronically — replacing a paper fax workflow used across five state markets. Within months the team scaled from 100 monthly users to ~10K, surfaced $1.9M in operational savings, and cut clinical intake time in half.",
