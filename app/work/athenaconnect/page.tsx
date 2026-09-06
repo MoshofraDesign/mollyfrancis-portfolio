@@ -122,7 +122,7 @@ export default function AthenaConnectCaseStudy() {
       <StickyNav
         watch="title"
         logo={
-          <div className="relative h-8 w-[150px] sm:h-9 sm:w-[180px]">
+          <div className="relative h-9 w-[200px] sm:h-10 sm:w-[240px]">
             <Image
               src={LOGO}
               alt="athenaConnect"
