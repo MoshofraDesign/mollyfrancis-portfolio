@@ -8,7 +8,7 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, END_MEASURE, NextProjectLink, CaseStudyMetaPanel, END_PANEL, CAPTION, PORTRAIT_CIRCLE, PORTRAIT_COPY } from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, END_MEASURE, NextProjectLink, CaseStudyMetaPanel, END_PANEL, CAPTION, PORTRAIT_CIRCLE, PORTRAIT_COPY, META_LABEL, STAT_ROW } from "@/components/v2/CaseStudyKit";
 
 /**
  * GovOS eSubmission — horizontal case study built to match the Figma deck
@@ -109,6 +109,34 @@ const TEXT_W = "w-full max-w-[min(700px,86vw)]";
 const MEDIA_W = "w-full max-w-[min(950px,90vw)]";
 
 /**
+ * Width of a copy panel whose picture comes next — the measure plus the
+ * rail, not a whole viewport.
+ *
+ * A 700px measure inside a full-viewport panel leaves a half-screen of
+ * empty ground between a heading and the recording it introduces, so the two
+ * read as unrelated. 920 = the measure plus the gutters this page's Panel
+ * already applies.
+ *
+ * Only when the picture is what follows. A copy panel followed by another
+ * copy panel stays full-viewport: two 920s sit in one view together, which
+ * is the opposite problem.
+ */
+const COPY_PANEL = "lg:w-[min(100vw,920px)]";
+
+/**
+ * Width of a media panel — it hugs its own artwork.
+ *
+ * The clip is 950 wide at 950/592 inside the browser frame, so the panel
+ * takes whichever is narrower of that and the width the aspect allows in the
+ * height available, plus 9rem of gutter. Without it a 950px clip sat in a
+ * full viewport and a wide monitor opened a field of empty ground after it;
+ * without the 950 cap the clip would be drawn past its own resolution and go
+ * soft, which is worse than being small.
+ */
+const CLIP_PANEL =
+  "lg:w-[min(100vw,calc(950px_+_9rem),calc((var(--panel-media-max-h)_-_5rem)_*_1.6047_+_9rem))]";
+
+/**
  * Keeps the last two words together so a line never ends on a lone orphan.
  * Joining them with a non-breaking space is the typographic fix — it lets the
  * browser rewrap freely at every other break point.
@@ -196,7 +224,9 @@ function Frame({ src, alt }: { src: string; alt: string }) {
  */
 function BrowserFrame({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${MEDIA_W} overflow-hidden rounded-[10px] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.1)]`}>
+    <div
+      className={`${MEDIA_W} overflow-hidden rounded-[10px] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.1)] lg:max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.6047))]`}
+    >
       <div className="flex h-9 items-center gap-2 pl-3.5">
         <span className="h-3 w-3 rounded-full bg-[#FF5F57]" />
         <span className="h-3 w-3 rounded-full bg-[#FFBD2E]" />
@@ -211,7 +241,7 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
 function VideoPanel({ src, caption }: { src: string | null; caption?: string }) {
   if (!src) return null;
   return (
-    <Panel width="lg:w-screen" className="items-center">
+    <Panel width={CLIP_PANEL} className="items-center">
       <BrowserFrame>
         <AutoplayVideo src={src} className="aspect-[950/592] w-full bg-black" />
       </BrowserFrame>
@@ -415,7 +445,7 @@ export default function GovOSCaseStudy() {
         </Panel>
 
         {/* ── 3 — SOLUTION ─────────────────────────────────────────────── */}
-        <Panel>
+        <Panel width={COPY_PANEL}>
           <Heading>I designed a direct-to-county portal.</Heading>
           <Body>
             Upload. Validate. Pay by ACH. The county gets clean data. The vendor is
@@ -430,7 +460,7 @@ export default function GovOSCaseStudy() {
         />
 
         {/* 5 — SUBMISSION FLOW */}
-        <Panel>
+        <Panel width={COPY_PANEL}>
           <Heading>One task at a time.</Heading>
           <Body>A step-by-step package. Jump around, or save and come back.</Body>
         </Panel>
@@ -440,7 +470,7 @@ export default function GovOSCaseStudy() {
         />
 
         {/* 6 — USER INVITATIONS */}
-        <Panel>
+        <Panel width={COPY_PANEL}>
           <Heading>Invite a teammate in one modal.</Heading>
           <Body>Email, role, send. The old security loop is gone.</Body>
         </Panel>
@@ -450,7 +480,7 @@ export default function GovOSCaseStudy() {
         />
 
         {/* 7 — PAYMENT FULFILLMENT */}
-        <Panel>
+        <Panel width={COPY_PANEL}>
           <Heading>One ACH report. Per company. Per period.</Heading>
           <Body>The county authorizes the transfer. Reconciliation is a line, not a pile.</Body>
         </Panel>
@@ -459,29 +489,32 @@ export default function GovOSCaseStudy() {
           caption="Running and authorizing an ACH report"
         />
 
-        {/* 7.5 — CUSTOM ICONS. The sheet carries itself, so this is a
-            media panel with a caption rather than a display heading and a
-            paragraph — the same shape as every other captioned image on the
-            site. Width capped against the room left after the caption
-            (--panel-media-max-h less ~5rem, times the sheet's 1.741 aspect),
-            so a short window scales it instead of clipping it. */}
+        {/* 7.5 — CUSTOM ICONS. Its own copy beat first, like every other
+            screen on this page: without one it followed the ACH recording
+            directly, and two media panels back to back — both hugging their
+            artwork — put two pictures in one view. */}
+        <Panel width={COPY_PANEL}>
+          <Heading>Every icon drawn, not downloaded.</Heading>
+          <Body>
+            Two sets — one for the CloudSearch kiosk, one for the GovOS
+            portal — so every screen spoke the same visual language.
+          </Body>
+        </Panel>
+
         {hasImage("/work/govos/custom-icons.webp") && (
-          <Panel className="items-center">
-            <SlideIn
-              className={`mx-auto flex w-full flex-col items-center ${MEDIA_W} lg:max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.741))]`}
-            >
+          <Panel
+            width="lg:w-[min(100vw,calc(752px_+_9rem),calc((var(--panel-media-max-h)_-_1rem)_*_1.741_+_9rem))]"
+            className="items-center"
+          >
+            <SlideIn className="mx-auto flex w-full flex-col items-center lg:max-w-[min(752px,90vw,calc((var(--panel-media-max-h)_-_1rem)_*_1.741))]">
               <Image
                 src="/work/govos/custom-icons.webp"
                 alt="Two drawn icon sets — CloudSearch Kiosk and GovOS Portal"
                 width={752}
                 height={432}
-                sizes="(max-width: 1023px) 90vw, min(90vw, 950px)"
+                sizes="(max-width: 1023px) 90vw, min(90vw, 752px)"
                 className="h-auto w-full rounded-[10px]"
               />
-              <p className={`mt-5 text-center ${CAPTION}`}>
-                Custom icons — one set for the CloudSearch kiosk, one for the
-                GovOS portal, so every screen spoke the same visual language.
-              </p>
             </SlideIn>
           </Panel>
         )}
@@ -523,39 +556,31 @@ export default function GovOSCaseStudy() {
           </Body>
         </Panel>
 
-        {/* Outcome — before/after metrics */}
-        {/* Not lg:w-screen — the three stats are a narrow left-aligned stack,
-            so a full-viewport panel left most of the field empty and the
-            section read as far wider than its content. 585 = the 440 the
-            longest value needs plus the panel's own 72 gutters. */}
-        <Panel width="lg:w-[min(100vw,585px)]">
-          <div className="flex w-full max-w-[440px] flex-col gap-5 text-white">
-            {[
-              ["Citizen Completion Rate", "42% to 86%"],
-              ["Validation Errors", "34% to 8%"],
-              ["Time Saved", "14.5min to 4.2 min"],
-            ].map(([label, value], i) => (
-              <SlideIn key={label} delay={i * 90}>
-                <div className="flex flex-col gap-1.5">
-                  <p className="font-[Helvetica,Arial,sans-serif] text-white text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.331rem] xl:text-[1.664rem] 2xl:text-[1.875rem] font-normal leading-[1.45] lg:leading-[1.45]">
-                    {label}
+        {/* Outcome — three columns in a full-viewport section, the shape
+            every other project's closing numbers use (Bright, Volusion,
+            LivePerson, athenaConnect): label on META_LABEL, the figure on
+            the display ratio. It used to be a narrow left-aligned stack in a
+            585px panel with a direction triangle beside each figure — the
+            triangle pointed the same way on all three even though completion
+            went up while errors and time went down, and "42% to 86%" says
+            the direction on its own. */}
+        <Panel>
+          <div className={STAT_ROW}>
+            <Heading>What changed after launch.</Heading>
+            <div className="mt-10 grid grid-cols-2 gap-10 gap-x-8 sm:gap-x-12 lg:grid-cols-3 lg:gap-x-10">
+              {[
+                ["Citizen completion", "42% to 86%"],
+                ["Validation errors", "34% to 8%"],
+                ["Time to submit", "14.5min to 4.2min"],
+              ].map(([label, value], i) => (
+                <SlideIn key={label} delay={120 + i * 90}>
+                  <h3 className={`text-white ${META_LABEL}`}>{label}</h3>
+                  <p className="mt-1.5 text-[1.9rem] font-semibold leading-[1.1] tracking-[-0.03em] text-white lg:text-[1.85rem] xl:text-[2.2rem] 2xl:text-[2.4rem]">
+                    {value}
                   </p>
-                  <div className="flex items-center gap-4">
-                    <p className="font-[Helvetica,Arial,sans-serif] text-white text-[1.75rem] sm:text-[1.75rem] md:text-[1.8rem] lg:text-[2.4rem] xl:text-[3rem] 2xl:text-[3.375rem] font-bold leading-[1.1] lg:leading-[1.1] whitespace-nowrap">
-                      {value}
-                    </p>
-                    <Image
-                      src="/work/docsquad/down-triangle.svg"
-                      alt=""
-                      width={40}
-                      height={40}
-                      unoptimized
-                      className="size-6 shrink-0 rotate-180"
-                    />
-                  </div>
-                </div>
-              </SlideIn>
-            ))}
+                </SlideIn>
+              ))}
+            </div>
           </div>
         </Panel>
 
