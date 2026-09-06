@@ -16,7 +16,7 @@ const HOTSPOTS: Hotspot[] = [
   {
     id: "brain",
     label: "🧠 Currently running 123 browser tabs and one very good idea.",
-    style: { top: "10%", left: "36%", width: "28%", height: "12%", position: "absolute" },
+    style: { top: "6%", left: "30%", width: "40%", height: "18%", position: "absolute" },
     bubbleStyle: { top: "-80px", left: "30%", transformOrigin: "bottom left" },
     dotAStyle: { bottom: "-10px", left: "38%", width: 10, height: 10 },
     dotBStyle: { bottom: "-17px", left: "46%", width: 6, height: 6 },
@@ -24,7 +24,7 @@ const HOTSPOTS: Hotspot[] = [
   {
     id: "eye-l",
     label: "👁 That spacing is off by 4px. I can't unsee it.",
-    style: { top: "31%", left: "28%", width: "18%", height: "8%", position: "absolute" },
+    style: { top: "28%", left: "24%", width: "25%", height: "13%", position: "absolute" },
     bubbleStyle: { top: "-70px", right: "0%", left: "auto", transformOrigin: "bottom right" },
     dotAStyle: { bottom: "-10px", right: "20%", width: 10, height: 10 },
     dotBStyle: { bottom: "-17px", right: "12%", width: 6, height: 6 },
@@ -32,7 +32,7 @@ const HOTSPOTS: Hotspot[] = [
   {
     id: "eye-r",
     label: "👁 Is that a drop shadow on a drop shadow?",
-    style: { top: "31%", left: "52%", width: "18%", height: "8%", position: "absolute" },
+    style: { top: "28%", left: "49%", width: "25%", height: "13%", position: "absolute" },
     bubbleStyle: { top: "-70px", left: "30%", transformOrigin: "bottom left" },
     dotAStyle: { bottom: "-10px", left: "20%", width: 10, height: 10 },
     dotBStyle: { bottom: "-17px", left: "12%", width: 6, height: 6 },
@@ -40,7 +40,7 @@ const HOTSPOTS: Hotspot[] = [
   {
     id: "ear",
     label: "👂 \"We'll just add it in dev.\" — heard that before.",
-    style: { top: "42%", left: "10%", width: "10%", height: "14%", position: "absolute" },
+    style: { top: "39%", left: "7%", width: "16%", height: "20%", position: "absolute" },
     bubbleStyle: { top: "0%", left: "110%", transformOrigin: "bottom left" },
     dotAStyle: { top: "50%", left: "-10px", width: 10, height: 10 },
     dotBStyle: { top: "50%", left: "-17px", width: 6, height: 6 },
@@ -48,7 +48,7 @@ const HOTSPOTS: Hotspot[] = [
   {
     id: "mouth",
     label: "💬 \"Can we make the logo bigger?\" No. No we cannot.",
-    style: { top: "63%", left: "32%", width: "24%", height: "8%", position: "absolute" },
+    style: { top: "60%", left: "28%", width: "32%", height: "14%", position: "absolute" },
     bubbleStyle: { bottom: "-80px", top: "auto", left: "10%", transformOrigin: "top left" },
     dotAStyle: { top: "-10px", left: "30%", width: 10, height: 10 },
     dotBStyle: { top: "-17px", left: "40%", width: 6, height: 6 },
@@ -66,7 +66,7 @@ const headlines = [
 
 /** Cursor reveal: a hard-edged circle, no falloff — two stops at the same
  *  radius rather than 38% -> 72%. R is the radius both masks share. */
-const R = "6.5rem";
+const R = "5.25rem";
 const REVEAL = (x: number, y: number) =>
   `radial-gradient(circle ${R} at ${x}% ${y}%, #000 99.5%, transparent 100%)`;
 const REVEAL_OFF = "radial-gradient(circle 0px at 50% 50%, #000, transparent)";

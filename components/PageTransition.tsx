@@ -1,8 +1,17 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
+/**
+ * Fades page content in on navigation.
+ *
+ * Deliberately CSS, not framer-motion: the old motion.div animated opacity
+ * and y together, which promoted the entire page body to its own compositing
+ * layer. A promoted layer's white can render a shade off the page's own white
+ * on macOS, and the result was a visible seam directly under the nav. A
+ * keyframe animation with no transform leaves nothing behind when it ends —
+ * see .page-fade in globals.css.
+ */
 export default function PageTransition({
   children,
 }: {
@@ -10,16 +19,8 @@ export default function PageTransition({
 }) {
   const pathname = usePathname();
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <div key={pathname} className="page-fade">
+      {children}
+    </div>
   );
 }

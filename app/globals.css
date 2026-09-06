@@ -372,6 +372,20 @@ body::before {
 /* Work thumbnails are query containers: the logo, the hover copy and their
    insets are all sized in cqw (a share of the tile's own width), so a tile
    looks the same at every breakpoint instead of drifting with the viewport. */
+/* Page-navigation fade. Opacity only — no transform, so the element is not
+   promoted to its own layer and cannot paint a slightly different white than
+   the page behind it. will-change stays unset for the same reason. */
+@keyframes page-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.page-fade {
+  animation: page-fade 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-fade { animation: none; }
+}
+
 .thumb-cq {
   container-type: inline-size;
 }

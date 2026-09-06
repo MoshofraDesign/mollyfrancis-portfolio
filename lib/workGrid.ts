@@ -31,7 +31,10 @@ export const WORK_THUMB_SECTION = "site-rail";
  * at 1280px, about the 375px the tiles were originally drawn at.
  */
 export const WORK_THUMB_GRID_CLASS =
-  "grid w-full grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3";
+  /* Gutters step with the tiles: 24 on a phone, 20 through tablet — where
+     three ~219px tiles were separated by a 32px gap, the widest gutter on the
+     page at the width the tiles are smallest — and 32 again from lg up. */
+  "grid w-full grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-5 md:grid-cols-3 md:gap-5 lg:gap-8";
 
 /** Square tile that fills its column, with a 4px radius. */
 export const WORK_THUMB_TILE =

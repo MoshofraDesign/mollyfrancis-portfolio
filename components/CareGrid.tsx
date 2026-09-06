@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Project } from "@/lib/projects";
+import { readableOnAccent } from "@/lib/contrastColor";
 import { WORK_THUMB_GRID_CLASS, WORK_THUMB_TILE } from "@/lib/workGrid";
 
 type Props = {
@@ -24,7 +25,9 @@ type Props = {
 export default function CareGrid({ projects }: Props) {
   return (
     <div className={WORK_THUMB_GRID_CLASS}>
-      {projects.map((project) => (
+      {projects.map((project) => {
+        const { bg, fg } = readableOnAccent(project.accent);
+        return (
         <Link
           key={project.slug}
           href={`/work/${project.slug}`}
@@ -41,7 +44,7 @@ export default function CareGrid({ projects }: Props) {
           {/* Color-MASTER overlay — 80% by default, fully opaque on hover. */}
           <div
             className="absolute inset-0 opacity-80 transition-opacity duration-500 ease-out group-hover:opacity-100"
-            style={{ backgroundColor: project.accent }}
+            style={{ backgroundColor: bg }}
           />
 
           {/* Default state: client's white SVG logo, centered — only
@@ -73,15 +76,22 @@ export default function CareGrid({ projects }: Props) {
               subtitle that was 32.5px of line height, which read as a gap
               between lines rather than a paragraph. */}
           <div className="absolute inset-0 flex flex-col justify-center p-[7cqw] text-left opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100">
-            <p className="font-jost text-[clamp(0.95rem,7.5cqw,1.75rem)] font-bold leading-[1.15] text-white">
+            <p
+              className="font-jost text-[clamp(1.125rem,7.5cqw,1.75rem)] font-bold leading-[1.15]"
+              style={{ color: fg }}
+            >
               {project.title}
             </p>
-            <p className="mt-[2.5cqw] max-w-[36ch] font-jost text-[clamp(0.7rem,4.6cqw,1.25rem)] leading-[1.3] text-white/85">
+            <p
+              className="mt-[2.5cqw] max-w-[36ch] font-jost text-[clamp(1rem,4.6cqw,1.25rem)] leading-[1.35]"
+              style={{ color: fg }}
+            >
               {project.subtitle}
             </p>
           </div>
         </Link>
-      ))}
+        );
+      })}
     </div>
   );
 }
