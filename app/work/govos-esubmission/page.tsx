@@ -184,6 +184,30 @@ function Body({ children }: { children: React.ReactNode }) {
   );
 }
 
+/**
+ * A customer quote, with its source.
+ *
+ * These two came off the project record and were rendering as ordinary body
+ * paragraphs, which made them read as Molly's own sentences in quotation
+ * marks. A quote earns its weight from the attribution — "a county said
+ * this" is evidence, "this is easy to use" is a claim — so the source line
+ * is part of the component, not optional.
+ */
+function Quote({ children, from }: { children: React.ReactNode; from: string }) {
+  return (
+    <SlideIn delay={200} className={TEXT_W}>
+      <blockquote className="mt-6 border-l-2 border-white/30 pl-5">
+        <p className="text-[clamp(1.25rem,1.6vw,1.65rem)] font-normal italic leading-[1.45] text-white [text-wrap:pretty]">
+          {children}
+        </p>
+        <footer className="mt-2 text-[clamp(1.05rem,1.25vw,1.25rem)] leading-[1.45] text-white/60">
+          {from}
+        </footer>
+      </blockquote>
+    </SlideIn>
+  );
+}
+
 /** Bullets cascade in one after another, behind the heading. */
 function Bullets({ items }: { items: string[] }) {
   return (
@@ -562,14 +586,10 @@ export default function GovOSCaseStudy() {
         >
           <Heading>Submitters drop the vendor fee.</Heading>
           <Body>One bulk ACH. Direct status. No go-between.</Body>
-          {/* A real quote from the project record — a Berks County
-              abstractor. It was sitting in lib/projects.ts unused, which is
-              a waste: nothing Molly writes about ease of use lands as hard
-              as a customer saying it. */}
-          <Body>
-            &ldquo;You could pull someone off the street and show them how to
-            do this in about 20 minutes.&rdquo;
-          </Body>
+          <Quote from="Abstractor, Berks County">
+            You could pull someone off the street and show them how to do
+            this in about 20 minutes.
+          </Quote>
         </PortraitPanel>
 
         {/* 9 — COUNTY BENEFITS — portrait + copy now share one panel, side by side */}
@@ -579,11 +599,10 @@ export default function GovOSCaseStudy() {
         >
           <Heading>Counties stop scanning paper.</Heading>
           <Body>One clean report. Serve submitters directly.</Body>
-          {/* Cuyahoga County, from the project record. */}
-          <Body>
-            &ldquo;A fantastic opportunity to more directly and better serve
-            our title companies.&rdquo;
-          </Body>
+          <Quote from="Cuyahoga County Recorder&rsquo;s Office">
+            A fantastic opportunity to more directly and better serve our
+            title companies.
+          </Quote>
         </PortraitPanel>
 
         {/* 9.4 — TESTING. The other half of the research record that never
@@ -628,13 +647,19 @@ export default function GovOSCaseStudy() {
             the direction on its own. */}
         <Panel>
           <div className={STAT_ROW}>
-            <Heading>What changed after launch.</Heading>
+            {/* The page's Heading carries the 700px TEXT_W measure, and this
+                line wants ~810px at the display size, so it broke after
+                "changed". Measure lifted and held on one row from lg up;
+                below lg it wraps as before. */}
+            <div className="lg:whitespace-nowrap lg:[&>*]:max-w-none">
+              <Heading>What changed after launch.</Heading>
+            </div>
             <StatRow
               className="text-white"
               items={[
                 { label: "Citizen completion", value: "42% to 86%" },
                 { label: "Validation errors", value: "34% to 8%" },
-                { label: "Time to submit", value: "14.5min to 4.2min" },
+                { label: "Time to submit", value: "14.5min\u00a0to\u00a04.2min" },
               ]}
             />
           </div>
