@@ -215,20 +215,17 @@ export default function BrightHealthcareCaseStudy() {
                 A fax is one flat page. A portal needs a structure.
               </h2>
             </SlideIn>
+            {/* Was three paragraphs and ~95 words: the shape of it, the
+                clinical-ops rules, status, and a reusable-patterns claim.
+                Two sentences keep what only Molly can say — that the rules
+                were in people's heads and she turned them into the form —
+                and drop the rest. */}
             <SlideIn delay={100}>
               <p className={`mt-3 ${BODY}`}>
-                So I drew the shape of it: what belongs on the dashboard, what
-                belongs inside a request, and what a provider needs to see after
-                they hit submit. Authorization rules came out of clinical ops&rsquo;
-                heads and became the form&rsquo;s own logic.
-              </p>
-            </SlideIn>
-            <SlideIn delay={180}>
-              <p className={`mt-4 ${BODY}`}>
-                Status got a place of its own — the one thing a fax could never
-                give back. And the patterns that came out of it were reusable, so
-                the next Bright surface started from a structure instead of a
-                blank page.
+                So I decided what goes where: the dashboard, the request
+                itself, and what a provider sees after they hit submit. The
+                rules lived in clinical ops&rsquo; heads — I made them the
+                form&rsquo;s logic, and gave status a place of its own.
               </p>
             </SlideIn>
           </div>
