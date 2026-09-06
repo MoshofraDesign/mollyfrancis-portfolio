@@ -11,7 +11,6 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import { contrastColor } from "@/lib/contrastColor";
 import {
   Panel,
-  TextPanel,
   Heading,
   Body,
   VIEW,
@@ -100,16 +99,18 @@ function MediaPanel({
   if (!hasAsset(src)) return null;
   return (
     <Panel
-      /* The panel hugs the picture instead of staying a full viewport wide,
-         so the next section starts sooner: whichever is narrower of the
-         image's own max width and the width its aspect allows in the height
-         the panel has, plus 9rem of gutter either side. Both terms come from
-         CSS variables — Tailwind scans source text at build time and can't
-         build a class from a runtime value. Text panels stay full-viewport,
-         same as every other project. */
-      width="lg:w-[min(100vw,calc(var(--beat-max-w)_+_9rem),calc(var(--panel-media-max-h)_*_var(--beat-aspect)_+_9rem))]"
-      pad="center"
-      className="items-center"
+      /* Full-viewport, with the picture's LEFT EDGE on the same 100px rail
+         the copy panels use — so the heading's left edge and the image's
+         left edge share one x and the eye tracks a single column across the
+         seam. That alignment is what ties a beat to its screen; it survives
+         a viewport of ground in between, where a peek at the next panel
+         (which only exists when the panel happens to be narrower than the
+         window) does not.
+         The picture is capped by its own natural width — these are 1x
+         exports, and stretching a 909px screenshot across a 1220px rail
+         softens it — and, at lg, by the height the panel actually has. */
+      width={VIEW}
+      pad="rail"
       style={
         {
           "--beat-aspect": String(width / height),
@@ -117,7 +118,7 @@ function MediaPanel({
         } as React.CSSProperties
       }
     >
-      <SlideIn className="mx-auto flex w-full max-w-[min(var(--beat-max-w),92vw)] flex-col items-center lg:max-w-[min(var(--beat-max-w),92vw,calc((var(--panel-media-max-h)_-_5rem)_*_var(--beat-aspect)))]">
+      <SlideIn className="mx-auto flex w-full max-w-[min(var(--beat-max-w),92vw)] flex-col lg:mx-0 lg:max-w-[min(var(--beat-max-w),100%,calc(var(--panel-media-max-h)_*_var(--beat-aspect)))]">
         {video ? (
           <div className="w-full overflow-hidden rounded-[10px]">
             <AutoplayVideo src={src} className="h-auto w-full object-contain" />
@@ -214,23 +215,27 @@ export default function AthenaWellCaseStudy() {
         {/* ── 2. THE PROBLEM, as a scene. Text only: the site's openings
                are a statement panel, and the pictures start once there's
                something to show. */}
-        <TextPanel>
+        <Panel width={VIEW} pad="rail">
+          <div className={MEASURE}>
           <Heading intro>The care plan lived in a paper folder.</Heading>
           <Body intro>
             A patient seeing four specialists had their plan spread across
             phone calls, folders and systems that didn&apos;t talk. Nobody
             had the whole picture — least of all the patient.
           </Body>
-        </TextPanel>
+        </div>
+        </Panel>
 
         {/* ── 3. THE TURN, with the plan itself running underneath it. */}
-        <TextPanel>
+        <Panel width={VIEW} pad="rail">
+          <div className={MEASURE}>
           <Heading>So I put the whole plan in one place.</Heading>
           <Body>
             One plan the care team builds and the patient follows — instead of
             two versions of it that never quite matched.
           </Body>
-        </TextPanel>
+        </div>
+        </Panel>
 
         <MediaPanel
           src={`${ASSET}/videos/careplan.mp4`}
@@ -238,70 +243,78 @@ export default function AthenaWellCaseStudy() {
           width={1882}
           height={1160}
           video
-          maxWidth={1100}
+          maxWidth={1882}
         />
 
         {/* ── 4. THE CARE TEAM'S SIDE. */}
-        <TextPanel>
+        <Panel width={VIEW} pad="rail">
+          <div className={MEASURE}>
           <Heading>The care team builds it and watches it.</Heading>
           <Body>
             Everything a nurse needed was on the patient&apos;s page: the plan,
             the timeline, and a way to reach them.
           </Body>
-        </TextPanel>
+        </div>
+        </Panel>
 
         <MediaPanel
           src={`${ASSET}/care-team.png`}
           alt="The athenaWell care-team view — patient list, care plan, timeline and a video call"
           width={1001}
           height={558}
-          maxWidth={1080}
+          maxWidth={1001}
         />
 
         {/* ── 5. THE PATIENT'S SIDE. */}
-        <TextPanel>
+        <Panel width={VIEW} pad="rail">
+          <div className={MEASURE}>
           <Heading>The patient only has to see today.</Heading>
           <Body>
             Six tasks, a progress ring, and one tap to their care team. Testers
             kept pointing at the ring — that was the part that brought them
             back.
           </Body>
-        </TextPanel>
+        </div>
+        </Panel>
 
         <MediaPanel
           src={`${ASSET}/patient-app.png`}
           alt="The athenaWell patient app — goals, the daily care plan, and the task list"
           width={909}
           height={720}
-          maxWidth={880}
+          maxWidth={909}
         />
 
         {/* ── 6. THE PERSONAS, shown as the documents themselves. */}
-        <TextPanel>
+        <Panel width={VIEW} pad="rail">
+          <div className={MEASURE}>
           <Heading>Three patients, one plan to hold them all.</Heading>
           <Body>
             Designed for three risk tiers rather than an average patient —
             each with its own values, goals and pain points.
           </Body>
-        </TextPanel>
+        </div>
+        </Panel>
 
         <MediaPanel
           src={`${ASSET}/personas.png`}
           alt="The three athenaWell persona documents — Healthy Patient, High Risk and Rising Risk"
           width={2266}
           height={1343}
-          maxWidth={1000}
+          maxWidth={1600}
         />
 
         {/* ── 8. APOLLO. Beside the copy, not under it: one portrait phone
                on its own line reads as an empty section. */}
-        <TextPanel>
+        <Panel width={VIEW} pad="rail">
+          <div className={MEASURE}>
           <Heading>A question shouldn&apos;t mean a phone queue.</Heading>
           <Body>
             Apollo answered in the app — triage first, then the article that
             actually answers the question.
           </Body>
-        </TextPanel>
+        </div>
+        </Panel>
 
         {/* One portrait phone, so the cap is height-first: the panel's own
             room rather than a panel-wide width that would blow a 299px
@@ -311,18 +324,14 @@ export default function AthenaWellCaseStudy() {
           alt="Apollo, the athenaWell chat bot, answering a patient's symptom question and sending a Mayo Clinic article"
           width={299}
           height={600}
-          maxWidth={360}
+          maxWidth={299}
         />
 
         {/* ── 9. CUSTOM ICONS. Media with a caption; the sheet carries
                itself, so no display heading. */}
         {hasAsset(`${ASSET}/custom-icons.webp`) && (
-          <Panel
-            width="lg:w-[min(100vw,calc(660px_+_9rem),calc((var(--panel-media-max-h)_-_5rem)_*_1.211_+_9rem))]"
-            pad="center"
-            className="items-center"
-          >
-            <SlideIn className="mx-auto flex w-full max-w-[min(660px,86vw)] flex-col items-center lg:max-w-[min(660px,86vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.211))]">
+          <Panel width={VIEW} pad="rail">
+            <SlideIn className="mx-auto flex w-full max-w-[min(660px,86vw)] flex-col lg:mx-0 lg:max-w-[min(752px,100%,calc((var(--panel-media-max-h)_-_5rem)_*_1.211))]">
               <Image
                 src={`${ASSET}/custom-icons.webp`}
                 alt="The athenaWell icon set — twenty-four drawn icons"
@@ -331,7 +340,7 @@ export default function AthenaWellCaseStudy() {
                 sizes="(max-width: 1023px) 86vw, min(86vw, 660px)"
                 className="h-auto w-full rounded-[10px]"
               />
-              <p className={`mt-5 text-center ${CAPTION}`}>
+              <p className={`mt-5 ${CAPTION}`}>
                 Custom icons — one drawn set across care plans, scheduling,
                 messaging and results.
               </p>
@@ -341,17 +350,19 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── 10. OUTCOME, then the figures as a row of columns — the shape
                every other project closes on. */}
-        <TextPanel>
+        <Panel width={VIEW} pad="rail">
+          <div className={MEASURE}>
           <Heading>The weeks between visits stopped being invisible.</Heading>
           <Body>
             Daily check-ins, surveys and education, with 200+ wearables
             feeding it — so the care team could see the time they used to
             miss.
           </Body>
-        </TextPanel>
+        </div>
+        </Panel>
 
-        <Panel width={VIEW} pad="center" className="lg:!pb-[var(--nav-clear)]">
-          <div className={`${STAT_ROW} mx-auto`}>
+        <Panel width={VIEW} pad="rail" className="lg:!pb-[var(--nav-clear)]">
+          <div className={STAT_ROW}>
             <Heading>What it shipped with.</Heading>
             <div className="mt-10 grid grid-cols-2 gap-10 gap-x-8 sm:gap-x-12 lg:grid-cols-3 lg:gap-x-10">
               {metrics.map((m, i) => (
