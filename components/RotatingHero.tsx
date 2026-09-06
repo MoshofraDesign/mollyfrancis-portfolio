@@ -66,7 +66,7 @@ const headlines = [
 
 /** Cursor reveal: a hard-edged circle, no falloff — two stops at the same
  *  radius rather than 38% -> 72%. R is the radius both masks share. */
-const R = "3.75rem";
+const R = "2.75rem";
 const REVEAL = (x: number, y: number) =>
   `radial-gradient(circle ${R} at ${x}% ${y}%, #000 99.5%, transparent 100%)`;
 const REVEAL_OFF = "radial-gradient(circle 0px at 50% 50%, #000, transparent)";
