@@ -211,35 +211,10 @@ export default function BrightHealthcareCaseStudy() {
             </SlideIn>
             <SlideIn delay={100}>
               <p className={`mt-3 ${BODY}`}>
-                Provider interviews on how authorizations actually got done, then usability testing on the digital submission flow to find where it still caught. Both synthesized into empathy maps.
-              </p>
-            </SlideIn>
-          </div>
-        </Panel>
-
-        {/* 5.5 — INFORMATION ARCHITECTURE. Sits between the research and the
-            research board: it's the move the interviews led to. Grounded in
-            what the project actually did (lib/projects.ts approach) — rules
-            from clinical ops became form logic, the dashboard grew with the
-            user, and status became something the product owned. */}
-        <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
-            <SlideIn>
-              <h2 className={H_DISPLAY}>
-                A fax is one flat page. A portal needs a structure.
-              </h2>
-            </SlideIn>
-            {/* Was three paragraphs and ~95 words: the shape of it, the
-                clinical-ops rules, status, and a reusable-patterns claim.
-                Two sentences keep what only Molly can say — that the rules
-                were in people's heads and she turned them into the form —
-                and drop the rest. */}
-            <SlideIn delay={100}>
-              <p className={`mt-3 ${BODY}`}>
-                So I decided what goes where: the dashboard, the request
-                itself, and what a provider sees after they hit submit. The
-                rules lived in clinical ops&rsquo; heads — I made them the
-                form&rsquo;s logic, and gave status a place of its own.
+                Interviews with providers and their staff on how an
+                authorization actually got done, then usability tests on the
+                submission flow to find where it still caught. What came back
+                wasn&rsquo;t a list of features.
               </p>
             </SlideIn>
           </div>
@@ -268,7 +243,8 @@ export default function BrightHealthcareCaseStudy() {
             </SlideIn>
             <SlideIn delay={100}>
               <p className={`mt-3 ${BODY}`}>
-                What providers wanted was narrow and specific, and almost none of it was about a better form.
+                Tell me what&rsquo;s required before I submit. Tell me where
+                it stands. Don&rsquo;t make me call to find out.
               </p>
             </SlideIn>
           </div>
@@ -321,6 +297,36 @@ export default function BrightHealthcareCaseStudy() {
             <SlideIn delay={100}>
               <p className={`mt-3 ${BODY}`}>
                 I mapped authorization rules into form logic with clinical operations, so the portal could tell a provider what was required before they submitted rather than after. Continuous prototype testing tightened every step of the flow, and an empty-state dashboard grew with the user.
+              </p>
+            </SlideIn>
+          </div>
+        </Panel>
+
+        {/* 8 — INFORMATION ARCHITECTURE, and it has to come HERE.
+            It used to sit before the research board and the empathy map,
+            which read as though the structure was decided first and the
+            research arrived afterwards to agree with it. The arc a UX
+            portfolio is judged on is research, then the insight, then the
+            decision — so this is the decision, and the flow that follows
+            is that decision built. */}
+        <Panel width={VIEW} pad="center">
+          <div className={`${MEASURE} mx-auto`}>
+            <SlideIn>
+              <h2 className={H_DISPLAY}>
+                A fax is one flat page. A portal needs a structure.
+              </h2>
+            </SlideIn>
+            {/* The rules-into-form-logic sentence used to be here too. It
+                belongs to the beat above, which names the rules AS the design
+                problem; saying it twice made the second one sound like a
+                summary. What's left is the decision itself, and the status
+                line, which is the sharpest thing on the page. */}
+            <SlideIn delay={100}>
+              <p className={`mt-3 ${BODY}`}>
+                So I decided what goes where: the dashboard, the request
+                itself, and what a provider sees after they hit submit. Status
+                got a place of its own — the one thing a fax could never give
+                back.
               </p>
             </SlideIn>
           </div>
