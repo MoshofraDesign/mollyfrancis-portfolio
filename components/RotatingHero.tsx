@@ -123,6 +123,10 @@ export default function RotatingHero() {
           onMouseMove={onPortraitMove}
           onMouseEnter={onPortraitMove}
           onMouseLeave={() => setSpot((s) => ({ ...s, on: false }))}
+          /* Over the portrait, the reveal circle IS the cursor. The site's
+             cursor blob has nothing to add here and everything to obscure:
+             it sat right on the reveal and over the quote bubbles. */
+          data-cursor="none"
           className="group relative mx-auto aspect-square w-full max-w-[min(88vw,_420px)] sm:max-w-[480px] md:max-w-[600px] lg:mx-0 lg:max-w-[480px] xl:w-[580px] xl:max-w-[580px]"
         >
           {/* Color photo full-bleed (the circular headshot). Soft spotlight
