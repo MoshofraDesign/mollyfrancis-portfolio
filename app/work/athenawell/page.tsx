@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import Image from "next/image";
 import { Jost } from "next/font/google";
-import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
+import { getProject, getCaseStudyMeta, nextProject } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
@@ -172,8 +172,7 @@ function MediaPanel({
 
 export default function AthenaWellCaseStudy() {
   const project = getProject("athenawell");
-  const idx = projects.findIndex((p) => p.slug === "athenawell");
-  const next = projects[(idx + 1) % projects.length];
+  const next = nextProject("athenawell");
   const fg = contrastColor(ACCENT);
   if (!project) return null;
 

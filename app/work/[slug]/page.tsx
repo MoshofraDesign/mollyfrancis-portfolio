@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Jost } from "next/font/google";
-import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
+import { projects, getProject, getCaseStudyMeta, nextProject } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
@@ -207,7 +207,7 @@ function TitlePanel({
   return (
     <section
       id="title"
-      className="relative flex w-full flex-col md:flex-row md:items-center lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:overflow-y-auto lg:overscroll-contain"
+      className="relative flex w-full flex-col md:flex-row md:items-center lg:h-[100dvh] lg:w-[min(100vw,1280px)] lg:shrink-0 lg:snap-start lg:overflow-y-auto lg:overscroll-contain"
     >
       <div className="flex w-full flex-col justify-between gap-10 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 md:w-[40%] md:gap-6 lg:h-full lg:gap-0 lg:pb-[10%] lg:pl-[100px] lg:pt-[100px]">
         {project.logo ? (
@@ -274,8 +274,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
   const project = getProject(params.slug);
   if (!project) notFound();
 
-  const idx = projects.findIndex((p) => p.slug === project.slug);
-  const next = projects[(idx + 1) % projects.length];
+  const next = nextProject(project.slug);
   const isBright = project.slug === "bright-healthcare";
   /* readableOn, not contrastColor: this has to answer for the background
      that's actually painted, which is pageBg where a project declares one.

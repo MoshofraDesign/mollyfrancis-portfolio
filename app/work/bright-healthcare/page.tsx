@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Jost } from "next/font/google";
-import { projects, getCaseStudyMeta } from "@/lib/projects";
+import { projects, getCaseStudyMeta, nextProject } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
@@ -37,7 +37,7 @@ const BODY = `text-[#141414] ${BODY_TYPE}`;
 export default function BrightHealthcareCaseStudy() {
   const idx = projects.findIndex((p) => p.slug === "bright-healthcare");
   const project = projects[idx];
-  const next = projects[(idx + 1) % projects.length];
+  const next = nextProject("bright-healthcare");
   const meta = getCaseStudyMeta(project);
 
   return (

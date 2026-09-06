@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { Jost } from "next/font/google";
-import { projects, getCaseStudyMeta } from "@/lib/projects";
+import { projects, getCaseStudyMeta, nextProject } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT, TITLE, SUBHEAD, BODY_TYPE, StatRow } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT, TITLE, SUBHEAD, BODY_TYPE, StatRow, VIEW } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Netspend Rewards & UCM — Molly Francis",
@@ -25,7 +25,6 @@ const ACCENT = "#313131";
 const LOGO = "/logos/netspend.svg";
 const ASSET = "/work/netspend";
 /** Full-viewport panels (Fresh Direct–style); content is centered inside. */
-const VIEW = "lg:w-screen";
 /** ~132rem on their fluid root ≈ 860px — readable measure that scales. */
 
 const H_DISPLAY = `text-white ${TITLE}`;
@@ -36,7 +35,7 @@ const BODY_MUTED = `text-white/80 ${BODY_TYPE}`;
 export default function NetspendCaseStudy() {
   const idx = projects.findIndex((p) => p.slug === "netspend");
   const project = projects[idx];
-  const next = projects[(idx + 1) % projects.length];
+  const next = nextProject("netspend");
   const meta = getCaseStudyMeta(project);
 
   return (

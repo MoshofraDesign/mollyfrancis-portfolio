@@ -130,7 +130,23 @@ export const SMALL =
 export const STAT =
   "font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.9rem,2.4vw,2.6rem)]";
 
-export const VIEW = "lg:w-screen";
+/**
+ * A full-bleed section — but capped at the page rail's own 80rem.
+ *
+ * This was `lg:w-screen`, which is right up to about 1440 and wrong past
+ * it: content sits on a 700px measure (or an 864px stat row), so on a wide
+ * window each panel grew to 1900+ while its contents stayed put, and the
+ * gap between one section's copy and the next section's was over a
+ * thousand pixels of empty ground. Sections stop growing at the same 1280
+ * the rest of the site stops at, and a wide window shows the edges of the
+ * neighbouring panels instead of a void — the behaviour GovOS and DocSquad
+ * already had from their capped panels.
+ *
+ * Heroes are unaffected: they're bespoke sections that write their own
+ * `lg:w-screen` / `lg:w-[100dvw]`, because their children are placed at
+ * fractions of the frame and need the whole viewport to resolve against.
+ */
+export const VIEW = "lg:w-[min(100vw,1280px)]";
 
 /* ── Panel grouping: tight within a beat, loose between ──────────────────
  *

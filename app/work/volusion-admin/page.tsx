@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import { Jost } from "next/font/google";
-import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
+import { projects, getProject, getCaseStudyMeta, nextProject } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
@@ -281,8 +281,7 @@ export default function VolusionCaseStudy() {
   const project = getProject(SLUG);
   if (!project) return null;
 
-  const idx = projects.findIndex((p) => p.slug === SLUG);
-  const next = projects[(idx + 1) % projects.length];
+  const next = nextProject("volusion-admin");
 
   const before = findVideo("before");
   const after = findVideo("after");

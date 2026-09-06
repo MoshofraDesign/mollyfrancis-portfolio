@@ -46,6 +46,13 @@ export type Project = {
    * belongs and only the tile is overridden.
    */
   thumbRest?: string;
+  /**
+   * Keeps the project out of the work grid and out of the Up-next chain.
+   * AI Challenges is side work, so it gets its own band under the grid
+   * rather than a tile in it — see AiChallengesBand. The record still
+   * exists, and its case-study page still works.
+   */
+  offGrid?: boolean;
   /** Soft wide drop shadow under the grid tile, for the light accents that
    *  otherwise float on the page. */
   thumbShadow?: boolean;
@@ -1001,11 +1008,14 @@ export const projects: Project[] = [
     ],
   },
   {
-    /* The one project with no client, no ticket and no deadline. Last in
-       the grid — Molly's call — so the client work leads and the play sits
-       at the end. The array order is the grid order, so moving this record
-       moves the tile. */
+    /* The one project with no client, no ticket and no deadline, and the
+       one that isn't a tile: offGrid keeps it out of the work grid and out
+       of the Up-next chain, and it's reached from its own band under the
+       grid instead. That's the separation Molly wanted — it's not client
+       work — while the page itself stays a horizontal-scroll case study
+       like every other project. */
     slug: "ai-challenges",
+    offGrid: true,
     title: "Playing with AI",
     subtitle: "Learning on the side for fun :)",
     client: "AI Challenges",
@@ -1312,6 +1322,28 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
 };
 
 /** Meta panel content for a case study — explicit override or sensible defaults. */
+/**
+ * The projects the work grid shows and the Up-next chain runs through.
+ *
+ * `projects` is still the full record set — the AI Challenges page reads its
+ * own entry from there — but anything flagged offGrid is not part of the
+ * client-work sequence and must not appear in either.
+ */
+export const gridProjects: Project[] = projects.filter((p) => !p.offGrid);
+
+/**
+ * The project a case study's Up-next band should point at.
+ *
+ * Every page used to do `projects[(idx + 1) % projects.length]`, which
+ * walked the raw array — so the project sitting before an offGrid record
+ * would send visitors into it. This walks the grid sequence instead, and an
+ * offGrid project (which isn't in that sequence) hands back the first one.
+ */
+export function nextProject(slug: string): Project {
+  const i = gridProjects.findIndex((p) => p.slug === slug);
+  return i === -1 ? gridProjects[0] : gridProjects[(i + 1) % gridProjects.length];
+}
+
 export function getCaseStudyMeta(project: Project): CaseStudyMeta {
   const override = CASE_STUDY_META[project.slug];
   if (override) return override;

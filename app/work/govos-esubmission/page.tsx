@@ -2,13 +2,13 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import { Jost } from "next/font/google";
-import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
+import { getProject, getCaseStudyMeta, nextProject } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import AutoplayVideo from "@/components/AutoplayVideo";
 import SlideIn from "@/components/SlideIn";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
-import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, END_MEASURE, NextProjectLink, CaseStudyMetaPanel, END_PANEL, CAPTION, PORTRAIT_CIRCLE, PORTRAIT_COPY, META_LABEL, STAT_ROW, StatRow, SUBHEAD, BODY_TYPE } from "@/components/v2/CaseStudyKit";
+import { GUTTER, NAV_CLEAR, HERO_TITLE, HERO_SUBTEXT, END_TITLE, END_MEASURE, NextProjectLink, CaseStudyMetaPanel, END_PANEL, CAPTION, PORTRAIT_CIRCLE, PORTRAIT_COPY, META_LABEL, STAT_ROW, StatRow, SUBHEAD, BODY_TYPE, VIEW } from "@/components/v2/CaseStudyKit";
 
 /**
  * GovOS eSubmission — horizontal case study built to match the Figma deck
@@ -87,7 +87,7 @@ function hasImage(src: string) {
 function Panel({
   children,
   className = "",
-  width = "lg:w-screen",
+  width = VIEW,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -304,7 +304,7 @@ function TextPanel({
   return (
     <section
       id={id}
-      className={`relative flex w-full justify-center ${GUTTER} ${NAV_CLEAR} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain`}
+      className={`relative flex w-full justify-center ${GUTTER} ${NAV_CLEAR} lg:h-[100dvh] lg:w-[min(100vw,1280px)] lg:shrink-0 lg:snap-start lg:items-center lg:overflow-y-auto lg:overscroll-contain`}
     >
       <div className={TEXT_W}>{children}</div>
     </section>
@@ -364,7 +364,7 @@ function PortraitPanel({
 }) {
   const hasPhoto = hasImage(src);
   return (
-    <section className={`relative flex w-full flex-col items-center justify-center gap-10 ${GUTTER} ${NAV_CLEAR} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-center lg:flex-row lg:justify-center lg:gap-[51px] xl:gap-[64px] 2xl:gap-[77px] lg:overflow-y-auto lg:overscroll-contain`}>
+    <section className={`relative flex w-full flex-col items-center justify-center gap-10 ${GUTTER} ${NAV_CLEAR} lg:h-[100dvh] lg:w-[min(100vw,1280px)] lg:shrink-0 lg:snap-center lg:flex-row lg:justify-center lg:gap-[51px] xl:gap-[64px] 2xl:gap-[77px] lg:overflow-y-auto lg:overscroll-contain`}>
       {hasPhoto && (
         <div className={PORTRAIT_CIRCLE}>
           <Image
@@ -387,8 +387,7 @@ export default function GovOSCaseStudy() {
   const project = getProject(SLUG);
   if (!project) return null;
 
-  const idx = projects.findIndex((p) => p.slug === SLUG);
-  const next = projects[(idx + 1) % projects.length];
+  const next = nextProject("govos-esubmission");
 
   return (
     <main

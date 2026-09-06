@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Jost } from "next/font/google";
-import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
+import { getProject, getCaseStudyMeta, nextProject } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
@@ -95,8 +95,7 @@ const PUBLIC_SCREENS = [
 
 export default function PatientIoCaseStudy() {
   const project = getProject("patient-io");
-  const idx = projects.findIndex((p) => p.slug === "patient-io");
-  const next = projects[(idx + 1) % projects.length];
+  const next = nextProject("patient-io");
   const fg = "#ffffff";
   if (!project) return null;
 

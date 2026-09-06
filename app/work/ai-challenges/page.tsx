@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import { Jost } from "next/font/google";
-import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
+import { getProject, getCaseStudyMeta, nextProject } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
@@ -51,6 +51,18 @@ const ASSET = "/work/ai-challenges";
  */
 const COPY_PANEL = "lg:w-[min(100vw,920px)]";
 const MEDIA_PANEL = "lg:w-[min(100vw,1180px)]";
+/**
+ * The last panel of a challenge takes the extra gutter on its TRAILING edge,
+ * so the two challenges read as two things.
+ *
+ * Each challenge is three panels — the brief, the prompt as typed, the clip
+ * of what came back — and with every panel the same width the seam between
+ * challenge 1's outcome and challenge 2's brief looked exactly like the seam
+ * between a brief and its own prompt. The space goes after the outcome
+ * instead: tight within a challenge, loose between the two.
+ */
+const MEDIA_PANEL_END = "lg:w-[min(100vw,calc(1180px_+_18rem))]";
+const MEDIA_TRAIL = "lg:!pr-[18rem]";
 
 const H_DISPLAY = `text-white ${TITLE}`;
 const BODY = `text-white ${BODY_TYPE}`;
@@ -90,22 +102,41 @@ const CHALLENGES = [
 
 /**
  * A media beat: the tool's mark, then the artwork, left-aligned with each
- * other the way the Figma frame has them. The height cap converts into a
- * width cap through the artwork's own aspect, so a short window scales the
- * picture instead of pushing it past the panel.
+ * other the way the Figma frame has them.
+ *
+ * --beat-media-h is the height the ARTWORK actually gets, which is not
+ * --panel-media-max-h: the mark and the gap under it sit in the same column,
+ * so they come off the budget first. Sizing against the panel's full height
+ * is what ran both screenshots and both clips off the bottom of the frame.
+ * Each child turns that height into a width cap through its own aspect
+ * ratio, so a short window scales the picture instead of overflowing.
  */
 function MediaBeat({
   mark,
   markAlt,
   children,
+  /** Last panel of a challenge — carries the gutter that separates the two. */
+  endsGroup = false,
 }: {
   mark: string;
   markAlt: string;
   children: React.ReactNode;
+  endsGroup?: boolean;
 }) {
   return (
-    <Panel width={MEDIA_PANEL} pad="center">
-      <div className="mx-auto flex w-full max-w-[min(1050px,92vw)] flex-col items-start gap-5">
+    <Panel
+      width={endsGroup ? MEDIA_PANEL_END : MEDIA_PANEL}
+      pad="center"
+      className={endsGroup ? MEDIA_TRAIL : ""}
+    >
+      <div
+        className="mx-auto flex w-full max-w-[min(1050px,92vw)] flex-col items-start gap-5"
+        style={{
+          /* mark (40) + gap (20) + a little slack, in rem so it tracks type. */
+          ["--beat-media-h" as string]:
+            "calc(var(--panel-media-max-h) - 5rem)",
+        }}
+      >
         <SlideIn>
           <Image
             src={mark}
@@ -126,8 +157,7 @@ export default function AiChallengesCaseStudy() {
   const project = getProject(SLUG);
   if (!project) return null;
 
-  const idx = projects.findIndex((p) => p.slug === SLUG);
-  const next = projects[(idx + 1) % projects.length];
+  const next = nextProject("ai-challenges");
   const meta = getCaseStudyMeta(project);
 
   return (
@@ -223,20 +253,20 @@ export default function AiChallengesCaseStudy() {
                   sizes="(max-width: 1023px) 92vw, min(92vw, 1050px)"
                   className="h-auto w-full rounded-[10px]"
                   style={{
-                    maxWidth: `calc(var(--panel-media-max-h) * ${c.prompt.aspect})`,
+                    maxWidth: `calc(var(--beat-media-h) * ${c.prompt.aspect})`,
                   }}
                 />
               </SlideIn>
             </MediaBeat>
 
-            {/* What came back. */}
-            <MediaBeat mark={c.toolMark} markAlt={c.tool}>
+            {/* What came back — and the end of this challenge. */}
+            <MediaBeat mark={c.toolMark} markAlt={c.tool} endsGroup>
               <SlideIn delay={80} className="w-full">
                 <div
                   className="relative w-full overflow-hidden rounded-[10px]"
                   style={{
                     aspectRatio: c.result.aspect.replace("/", " / "),
-                    maxWidth: `calc(var(--panel-media-max-h) * ${c.result.ratio})`,
+                    maxWidth: `calc(var(--beat-media-h) * ${c.result.ratio})`,
                   }}
                 >
                   <AutoplayVideo

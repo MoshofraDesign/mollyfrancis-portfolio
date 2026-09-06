@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Jost } from "next/font/google";
-import { projects, getProject, getCaseStudyMeta } from "@/lib/projects";
+import { getProject, getCaseStudyMeta, nextProject } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
@@ -90,8 +90,7 @@ function BigImagePanel({
 
 export default function LivePersonCaseStudy() {
   const project = getProject("liveperson");
-  const idx = projects.findIndex((p) => p.slug === "liveperson");
-  const next = projects[(idx + 1) % projects.length];
+  const next = nextProject("liveperson");
   const fg = contrastColor(ACCENT);
   if (!project) return null;
 

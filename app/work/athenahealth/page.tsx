@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, META_LABEL, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, TITLE, SUBHEAD } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, META_LABEL, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, TITLE, SUBHEAD, VIEW } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Patient Portal — athenahealth — Molly Francis",
@@ -24,7 +24,6 @@ const jost = Jost({
 const ACCENT = "#4800b5";
 const LOGO = "/logos/athenahealth.svg";
 const ASSET = "/work/athenahealth";
-const VIEW = "lg:w-screen";
 /** Only ever wraps the Usage / Time saved / Users grid on this page, so it
  *  stays at the wider row width rather than the kit's 700 prose measure. */
 const MEASURE = "w-full max-w-[min(54rem,86vw)]";
