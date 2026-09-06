@@ -135,8 +135,10 @@ export default function AthenaConnectCaseStudy() {
     >
       <StickyNav
         watch="title"
+        // The lockup is 8.6:1, so WIDTH is what makes the parked mark read
+        // bigger — the box height only has to stay clear of it. 240 -> 300.
         logo={
-          <div className="relative h-9 w-[200px] sm:h-10 sm:w-[240px]">
+          <div className="relative h-10 w-[250px] sm:h-12 sm:w-[300px]">
             <Image
               src={LOGO}
               alt="athenaConnect"
