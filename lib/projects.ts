@@ -107,38 +107,6 @@ export const projects: Project[] = [
       "A consumer rewards IA that scales as UCM ships new reward types, and an internal tool that lets non-technical teams configure rewards without engineering tickets.",
   },
   {
-    /* The one project with no client, no ticket and no deadline. It sits
-       second rather than last because it's the most current work on the
-       site and it shares a thread with Netspend — both are about designing
-       with these tools rather than around them. Move the record in this
-       array to move the tile. */
-    slug: "ai-challenges",
-    title: "Playing with AI",
-    subtitle: "Learning on the side for fun :)",
-    client: "AI Challenges",
-    year: "2026",
-    role: "Self-directed",
-    tags: ["AI", "Prompting", "Concept UI", "Side project"],
-    thumbnail: "/work-thumbnails/ai-challenges.webp",
-    logo: "/logos/ai-challenges.svg",
-    logoWide: "/logos/ai-challenges-wide.svg",
-    accent: "#FF2CD5",
-    /* The page is charcoal, so the tile can't preview it the way the client
-       tiles do — a dark grey hover next to Netspend's would read as the same
-       project. A darker cut of the same magenta instead, at 4.7:1 with
-       white. */
-    pageBg: "#333333",
-    thumbHover: "#D600AB",
-    aiSummary:
-      "A standing side habit: write myself an absurd design brief, hand it to an AI tool, and design against whatever comes back. Two challenges so far \u2014 a cyberpunk sign-up flow for an app powered by the human body, and an ATM built for cats.",
-    overview:
-      "Not a project so much as a habit. I give myself a brief no client would ever write, hand it to an AI tool, and see how far the two of us get. The constraints are real \u2014 a fixed screen count, a named aesthetic \u2014 so the result has to be judged, not just generated.",
-    approach:
-      "Write the brief myself, prompt once, then design against what comes back. Claude Cowork for the first challenge, Cursor for the second. The interesting part isn\u2019t the render \u2014 it\u2019s how much of a brief survives contact with a model, and which parts I have to put back by hand.",
-    outcome:
-      "Two finished concepts, and a much sharper sense of where these tools are strong \u2014 atmosphere, a first pass, scaffolding \u2014 and where they aren\u2019t: hierarchy, restraint, and knowing when to stop.",
-  },
-  {
     slug: "govos-esubmission",
     title: "GovOS eSubmission",
     subtitle:
@@ -1031,6 +999,37 @@ export const projects: Project[] = [
         src: "/legacy/screen-shot-2022-11-03-at-1-55-32-pm-3a7031.png",
       },
     ],
+  },
+  {
+    /* The one project with no client, no ticket and no deadline. Last in
+       the grid — Molly's call — so the client work leads and the play sits
+       at the end. The array order is the grid order, so moving this record
+       moves the tile. */
+    slug: "ai-challenges",
+    title: "Playing with AI",
+    subtitle: "Learning on the side for fun :)",
+    client: "AI Challenges",
+    year: "2026",
+    role: "Self-directed",
+    tags: ["AI", "Prompting", "Concept UI", "Side project"],
+    thumbnail: "/work-thumbnails/ai-challenges.webp",
+    logo: "/logos/ai-challenges.svg",
+    logoWide: "/logos/ai-challenges-wide.svg",
+    accent: "#FF2CD5",
+    /* The page is charcoal, so the tile can't preview it the way the client
+       tiles do — a dark grey hover next to Netspend's would read as the same
+       project. A darker cut of the same magenta instead, at 4.7:1 with
+       white. */
+    pageBg: "#333333",
+    thumbHover: "#D600AB",
+    aiSummary:
+      "A standing side habit: write myself an absurd design brief, hand it to an AI tool, and design against whatever comes back. Two challenges so far \u2014 a cyberpunk sign-up flow for an app powered by the human body, and an ATM built for cats.",
+    overview:
+      "Not a project so much as a habit. I give myself a brief no client would ever write, hand it to an AI tool, and see how far the two of us get. The constraints are real \u2014 a fixed screen count, a named aesthetic \u2014 so the result has to be judged, not just generated.",
+    approach:
+      "Write the brief myself, prompt once, then design against what comes back. Claude Cowork for the first challenge, Cursor for the second. The interesting part isn\u2019t the render \u2014 it\u2019s how much of a brief survives contact with a model, and which parts I have to put back by hand.",
+    outcome:
+      "Two finished concepts, and a much sharper sense of where these tools are strong \u2014 atmosphere, a first pass, scaffolding \u2014 and where they aren\u2019t: hierarchy, restraint, and knowing when to stop.",
   },
 ];
 

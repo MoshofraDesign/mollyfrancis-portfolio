@@ -115,13 +115,13 @@ body::before {
      faint colour change at the nav's edge. `difference` also rendered the
      dot itself as light grey on a white page.
 
-     These two are the fallback for the first paint only: CursorBlob then
-     sets both from the computed colour of <main>, so the dot is whatever
-     the page uses for type — light on the accent-coloured case studies,
-     dark on Bright and the light gallery pages — with the ring going the
-     other way. See the component for why it's derived rather than listed. */
-  background: rgba(20, 20, 20, 0.9);
-  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.9);
+     The dot is light on every page — it rides over the work-grid tiles, so
+     a dark one is the one thing it can't be. Only the ring is derived:
+     CursorBlob reads <main>'s computed text colour to tell a light ground
+     from a dark one and swaps the hairline accordingly. This pair is the
+     first-paint fallback, set for a light page. */
+  background: #f7f7f7;
+  box-shadow: 0 0 0 1px rgba(20, 20, 20, 0.3);
   pointer-events: none;
   z-index: 60;
   transform: translate(-50%, -50%);

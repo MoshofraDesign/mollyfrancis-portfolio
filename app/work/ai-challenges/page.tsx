@@ -19,8 +19,6 @@ import {
   HERO_COPY_GAP,
   HERO_TITLE,
   HERO_SUBTEXT,
-  INTRO_TITLE,
-  INTRO_SUBTEXT,
   TITLE,
   BODY_TYPE,
   SMALL,
@@ -73,7 +71,6 @@ const CHALLENGES = [
     promptAlt: "The brief typed into Claude Cowork",
     result: { src: `${ASSET}/videos/plug-in-flow.mp4`, aspect: "1070/790", ratio: "1.354" },
     resultAlt: "The sign-up flow that came back — cyberpunk, five screens",
-    resultCaption: "Five screens, one prompt, then a lot of editing.",
   },
   {
     key: "paws-bank",
@@ -88,7 +85,6 @@ const CHALLENGES = [
     promptAlt: "The brief typed into Cursor",
     result: { src: `${ASSET}/videos/paws-bank.mp4`, aspect: "1104/792", ratio: "1.394" },
     resultAlt: "Paws Bank — the ATM the brief asked for",
-    resultCaption: "Paws Bank. Insert paw to begin.",
   },
 ] as const;
 
@@ -102,12 +98,10 @@ function MediaBeat({
   mark,
   markAlt,
   children,
-  caption,
 }: {
   mark: string;
   markAlt: string;
   children: React.ReactNode;
-  caption?: string;
 }) {
   return (
     <Panel width={MEDIA_PANEL} pad="center">
@@ -123,11 +117,6 @@ function MediaBeat({
           />
         </SlideIn>
         {children}
-        {caption && (
-          <SlideIn delay={140}>
-            <p className={`opacity-70 ${SMALL}`}>{caption}</p>
-          </SlideIn>
-        )}
       </div>
     </Panel>
   );
@@ -206,27 +195,6 @@ export default function AiChallengesCaseStudy() {
           </div>
         </section>
 
-        {/* ── PANEL 2: WHAT THIS IS. The one beat that isn't in the Figma
-            frame: without it the page opens on "Challenge 1" with nothing
-            saying why any of this exists. */}
-        <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
-            <SlideIn>
-              <h1 className={`text-white ${INTRO_TITLE}`}>
-                Briefs no client would ever write.
-              </h1>
-            </SlideIn>
-            <SlideIn delay={100}>
-              <p className={`mt-3 text-white/80 ${INTRO_SUBTEXT}`}>
-                I set myself an absurd problem, hand it to an AI tool, and
-                design against whatever comes back. The constraints are real
-                &mdash; a screen count, a named aesthetic &mdash; so the result
-                has to be judged, not just generated.
-              </p>
-            </SlideIn>
-          </div>
-        </Panel>
-
         {CHALLENGES.map((c) => (
           <Fragment key={c.key}>
             {/* The brief — Figma 4874:669 / 4874:674 */}
@@ -262,7 +230,7 @@ export default function AiChallengesCaseStudy() {
             </MediaBeat>
 
             {/* What came back. */}
-            <MediaBeat mark={c.toolMark} markAlt={c.tool} caption={c.resultCaption}>
+            <MediaBeat mark={c.toolMark} markAlt={c.tool}>
               <SlideIn delay={80} className="w-full">
                 <div
                   className="relative w-full overflow-hidden rounded-[10px]"

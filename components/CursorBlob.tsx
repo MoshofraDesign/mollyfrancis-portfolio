@@ -8,30 +8,33 @@ export default function CursorBlob() {
   const pathname = usePathname();
 
   /**
-   * The dot takes the page's own text colour.
+   * The dot is light on every page. It used to take the page's own text
+   * colour, which made it white on the case studies but ink-dark on the
+   * homepage and the light gallery pages — and a dark dot is the one thing
+   * it can't be, since it rides over the work-grid tiles.
    *
-   * A dark dot is invisible on Netspend's near-black and unreadable on
-   * athenahealth's purple; a white one disappears on Bright's #f9f9f9 and on
-   * the light gallery pages. Rather than keep a list of which project is
-   * which — a list that goes stale the moment an accent changes — it reads
-   * the computed colour of <main>, which every case study already sets from
-   * contrastColor(accent). Whatever the page uses for type is by definition
-   * readable on that page's ground, so the dot uses it too, with a ring in
-   * the opposite direction so it never vanishes into the type.
+   * So the fill is fixed and only the ring is derived: on a light ground a
+   * white dot needs a dark hairline to exist at all, and on a dark ground it
+   * needs the opposite (a barely-there light ring, which keeps its edge from
+   * dissolving into a mid-tone accent). <main>'s computed text colour is the
+   * cheapest read of which ground this is — every case study already sets it
+   * from the page colour — so it still drives that one decision.
    */
   useEffect(() => {
     const blob = blobRef.current;
     const main = document.querySelector("main");
-    if (!blob || !main) return;
-    const color = getComputedStyle(main).color;
-    const nums = color.match(/[\d.]+/g);
+    if (!blob) return;
+    blob.style.background = "#f7f7f7";
+    if (!main) return;
+    const nums = getComputedStyle(main).color.match(/[\d.]+/g);
     if (!nums) return;
     const [r, g, b] = nums.map(Number);
-    const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
-    blob.style.background = color;
-    blob.style.boxShadow = `0 0 0 1.5px ${
-      lum > 0.5 ? "rgba(20,20,20,0.55)" : "rgba(255,255,255,0.9)"
-    }`;
+    const textLum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+    // Light text means a dark page, and vice versa.
+    blob.style.boxShadow =
+      textLum > 0.5
+        ? "0 0 0 1px rgba(255,255,255,0.28)"
+        : "0 0 0 1px rgba(20,20,20,0.3)";
   }, [pathname]);
 
   useEffect(() => {
@@ -52,7 +55,7 @@ export default function CursorBlob() {
       // showing as a stray dot on any device that never fires mousemove,
       // e.g. a resized desktop window under trackpad-only test).
       if (blob.style.opacity === "0" && !inNoCursorZone) {
-        blob.style.opacity = "1";
+        blob.style.opacity = OPACITY_REST;
       }
     };
 
@@ -70,6 +73,13 @@ export default function CursorBlob() {
        nothing to keep in sync, and it covers nodes added later. */
     const SIZE_REST = "28px";
     const SIZE_HOVER = "40px";
+    /* Both states are washes, not discs. At full opacity the dot read as a
+       solid sticker sitting on the page — worst over the work-grid tiles,
+       where it covered the artwork it was meant to point at. The hover state
+       is the more transparent of the two, since that's when it's largest and
+       has something underneath worth seeing. */
+    const OPACITY_REST = "0.8";
+    const OPACITY_HOVER = "0.35";
 
     let inNoCursorZone = false;
 
@@ -90,7 +100,7 @@ export default function CursorBlob() {
       const interactive = target?.closest("a, button, [data-cursor='hover']");
       blob.style.width = interactive ? SIZE_HOVER : SIZE_REST;
       blob.style.height = interactive ? SIZE_HOVER : SIZE_REST;
-      blob.style.opacity = interactive ? "0.7" : "1";
+      blob.style.opacity = interactive ? OPACITY_HOVER : OPACITY_REST;
     };
 
     const tick = () => {
