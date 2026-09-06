@@ -107,14 +107,28 @@ export default function CareGrid({ projects }: Props) {
               subtitle that was 32.5px of line height, which read as a gap
               between lines rather than a paragraph. */}
           <div className="absolute inset-0 flex flex-col justify-center p-[7cqw] text-left opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100">
+            {/* Both sizes are up a step for desktop. The middle term is in
+                cqw, so it's the tile's own width that drives them and the
+                increase lands where the tiles are biggest — a 379px tile at
+                the capped rail goes 28px to 36px on the title.
+
+                The subtitle needed its cqw raised, not just its ceiling: at
+                4.6cqw it rendered ~17px on a desktop tile and never reached
+                the 1.25rem cap, so lifting the cap alone would have changed
+                nothing.
+
+                There's room for it. The longest pair on the site — 17
+                characters of title over athenahealth's 94-character
+                subtitle — comes to about 215px of the 326px a desktop tile
+                has inside its 7cqw padding. */}
             <p
-              className="font-jost text-[clamp(1.125rem,7.5cqw,1.75rem)] font-bold leading-[1.15]"
+              className="font-jost text-[clamp(1.125rem,9.5cqw,2.375rem)] font-bold leading-[1.15]"
               style={{ color: fg }}
             >
               {project.title}
             </p>
             <p
-              className="mt-[2.5cqw] max-w-[36ch] font-jost text-[clamp(1rem,4.6cqw,1.25rem)] leading-[1.35]"
+              className="mt-[2.5cqw] max-w-[36ch] font-jost text-[clamp(1rem,6cqw,1.5rem)] leading-[1.35]"
               style={{ color: fg }}
             >
               {project.subtitle}

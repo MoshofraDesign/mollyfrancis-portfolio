@@ -351,10 +351,18 @@ export default function ResumePage() {
           <Reveal as="div" className="lg:col-span-3">
             <h2 className="font-serif text-h2 text-ink">Skills</h2>
           </Reveal>
-          <Reveal as="div" className="lg:col-span-9 space-y-8">
+          {/* Three columns, and the group labels are bold.
+              One column stacked all six groups into a single 1,000px run of
+              identically-weighted lines, so the labels read as list items
+              and the groups didn't separate. items-start keeps the columns
+              top-aligned when they run to different lengths. */}
+          <Reveal
+            as="div"
+            className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-9 lg:grid-cols-3 lg:items-start"
+          >
             {skillGroups.map((group) => (
               <div key={group.label}>
-                <p className="text-base tracking-normal text-ink mb-2">
+                <p className="mb-2 text-base font-semibold tracking-normal text-ink">
                   {group.label}
                 </p>
                 <ul className="space-y-1.5">

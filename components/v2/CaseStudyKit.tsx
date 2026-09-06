@@ -295,7 +295,7 @@ export function Panel({
     <section
       id={id}
       style={style}
-      className={`relative flex w-full flex-col justify-center gap-2 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:[justify-content:safe_center] lg:gap-0 lg:overflow-y-auto lg:overscroll-contain ${padLg} ${className}`}
+      className={`relative flex w-full flex-col justify-center gap-2 lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-center lg:[justify-content:safe_center] lg:gap-0 no-scrollbar lg:overflow-y-auto lg:overscroll-contain ${padLg} ${className}`}
     >
       {children}
     </section>
@@ -320,7 +320,7 @@ export function TextPanel({
   return (
     <section
       id={id}
-      className={`relative flex w-full justify-center lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] lg:overflow-y-auto lg:overscroll-contain ${GUTTER} ${NAV_CLEAR} ${className}`}
+      className={`relative flex w-full justify-center lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] no-scrollbar lg:overflow-y-auto lg:overscroll-contain ${GUTTER} ${NAV_CLEAR} ${className}`}
     >
       <div className={MEASURE}>{children}</div>
     </section>
@@ -572,7 +572,13 @@ export function NextProjectLink({
             : "w-full max-w-[min(32rem,86vw)]"
         }
       >
-        {/* Full strength, not the 0.55 it was: on the nine dark accents fg is
+        {/* Just "Up next". It read "Up next — Netspend" over the Netspend
+            wordmark over "Netspend Rewards" — the client name three times in
+            one block. The mark and the title carry it; the label only has to
+            say what this is. `client` still names the mark for screen
+            readers, which is the one place it isn't repetition.
+
+            Full strength, not the 0.55 it was: on the nine dark accents fg is
             the same cream as the title below, so dropping the tint is what
             makes this read white rather than grey. On the five light accents
             (GovOS, Bright, Patient.io, Ecommerce, Logos) fg is ink — white
@@ -581,7 +587,7 @@ export function NextProjectLink({
           className="text-[clamp(1.05rem,1.4vw,1.35rem)] font-normal"
           style={{ color: fg }}
         >
-          Up next — {client}
+          Up next
         </p>
         {logo && (
           /* Equal height, with width only as a ceiling. The marks run from

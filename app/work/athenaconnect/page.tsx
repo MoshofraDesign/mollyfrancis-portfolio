@@ -49,11 +49,11 @@ const jost = Jost({
   display: "swap",
 });
 
-/* Page background, darkened off the brand accent so white body copy
-   clears AA: #00A883 gives it 3.03:1, this gives 4.6+. The work-grid tile
-   keeps the bright #00A883 (see pageBg in lib/projects.ts, which is what the
-   tile's hover previews). */
-const ACCENT = "#008366";
+/* Molly's green. One value for the page AND the work-grid tile — the tile
+   used to keep the brighter #00A883 with the page a shade down at #008366,
+   and she'd rather both be this. White body copy sits at 6.6:1 on it, up
+   from 4.7:1. Kept in lib/projects.ts as both accent and pageBg. */
+const ACCENT = "#006B3F";
 const LOGO = "/logos/athenaconnect.png";
 const ASSET = "/work/athenaconnect";
 

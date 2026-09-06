@@ -2,15 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { getProject } from "@/lib/projects";
 import SlideIn from "@/components/SlideIn";
+import { WORK_THUMB_SECTION } from "@/lib/workGrid";
 
 /**
  * The AI Challenges band — Figma 4945:17715.
  *
  * The side work isn't a client project, so it isn't a tile: it's a single
- * full-bleed strip under the work grid, which is what separates it from the
- * work above without hiding it. The project record carries offGrid, so it's
- * out of the grid and out of the Up-next chain; this is the only way in, and
- * the page it opens is a horizontal-scroll case study like every other one.
+ * strip under the work grid, which is what separates it from the work above
+ * without hiding it. The project record carries offGrid, so it's out of the
+ * grid and out of the Up-next chain; this is the only way in, and the page it
+ * opens is a horizontal-scroll case study like every other one.
  *
  * Frame reference: 131 tall, 32px insets, sparkle then wordmark then the
  * tagline on the left, the button hard right.
@@ -20,12 +21,15 @@ export default function AiChallengesBand() {
   if (!project) return null;
 
   return (
-    /* Full-bleed on purpose: the grid above sits inside .site-rail, and a
-       band that shared that rail would read as a fifteenth tile rather than
-       a rule under the set. The content inside still lines up with the rail. */
-    <section className="w-full bg-[#333333]">
-      <SlideIn className="site-rail">
-        <div className="flex flex-col items-start gap-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:py-7">
+    /* On the same rail as the work grid, not full-bleed: the charcoal is on
+       the box inside the rail, so the strip starts and ends exactly where the
+       three columns above it do. It takes the tiles' own 4px radius too — it
+       lines up with them, so it should be cut like them. Its horizontal
+       padding is the frame's 32px, since the rail's padding now sits outside
+       the colour rather than inside it. */
+    <section className={WORK_THUMB_SECTION}>
+      <SlideIn>
+        <div className="flex flex-col items-start gap-6 rounded-[4px] bg-[#333333] px-6 py-7 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-8">
           {/* One row, all three optically centred on it — the frame has the
               sparkle, the wordmark and the tagline inside a single 50-tall
               row. They were nested in a baseline-aligned pair before, and an

@@ -46,8 +46,10 @@ export default function Home() {
             Design Roots
           </h2>
           <p className="mt-2 font-jost text-[clamp(1rem,1.3vw,1.2rem)] leading-[1.5] text-ink/70 [text-wrap:pretty]">
-            Logos, storefronts and print, from before product design. Still in
-            the toolbox &mdash; pull any of it out if a project needs it.
+            Before product design I was a graphic and web designer &mdash;
+            logos, storefronts and print. It&rsquo;s on the site because that
+            craft still shapes how I work, and because when a project needs
+            it, I don&rsquo;t have to hand it off.
           </p>
         </div>
         <CareGrid projects={rootsProjects} />

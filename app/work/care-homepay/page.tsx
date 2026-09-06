@@ -180,14 +180,18 @@ export default function CareHomepayCaseStudy() {
           {/* Below lg the pair goes full-bleed: negative margins cancel the
               section's own padding at each breakpoint (and its pb-10), and
               the phones are sized in percent with no px cap, so together
-              they span the viewport and run off the bottom edge — the same
-              read as the lg frame, just filling a portrait window. At lg the
+              they span the window.
+
+              Side by side with a gap, NOT overlapped. The lg frame overlaps
+              them by about 16% of a phone's width; at 48% of a portrait
+              window each phone is three times its desktop size, so the same
+              ratio covered a headline instead of reading as depth. At lg the
               .care-hero-phone-* rules take over (position: absolute,
               margin: 0), so none of this survives into the desktop frame. */}
-          <div className="order-3 -mx-6 -mb-10 mt-6 flex flex-1 items-end justify-center gap-0 overflow-hidden sm:-mx-10 md:-mx-[50px] lg:contents">
+          <div className="order-3 -mx-6 -mb-10 mt-6 flex flex-1 items-end justify-center gap-3 sm:-mx-10 sm:gap-6 md:-mx-[50px] lg:contents">
             <SlideIn
               delay={80}
-              className="care-hero-phone-l w-[54%] max-w-none"
+              className="care-hero-phone-l w-[48%] max-w-none"
             >
               <Image
                 src={`${ASSET}/phone-hero-left.png`}
@@ -200,7 +204,7 @@ export default function CareHomepayCaseStudy() {
             </SlideIn>
             <SlideIn
               delay={180}
-              className="care-hero-phone-r -ml-[9%] mt-[7%] w-[55%] max-w-none"
+              className="care-hero-phone-r mt-[7%] w-[48%] max-w-none"
             >
               <Image
                 src={`${ASSET}/phone-hero-right.png`}
@@ -323,7 +327,11 @@ export default function CareHomepayCaseStudy() {
                     stacked panel and broke into one long line plus a two-word
                     orphan; at this measure it wraps like a paragraph. The cap
                     lifts at lg, where the copy has its own grid column. */}
-                <div className="flex w-full max-w-[300px] flex-col gap-4 text-left sm:max-w-[380px] lg:max-w-none">
+                {/* gap-3, the same 12px every other heading-over-body pair
+                    on the site uses (the kit's Body sits on mt-3). 16 read
+                    loose here because SPLIT_TITLE is the smaller SUBHEAD
+                    scale, not a full Heading. */}
+                <div className="flex w-full max-w-[300px] flex-col gap-3 text-left sm:max-w-[380px] lg:max-w-none">
                   <p className={SPLIT_TITLE}>{s.title}</p>
                   <p className={SPLIT_BODY}>{s.body}</p>
                 </div>

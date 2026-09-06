@@ -437,6 +437,13 @@ body::before {
 }
 
 /* Hide scrollbars on horizontal carousels */
+/* Panels scroll their own overflow at lg, and a panel narrower than the
+   viewport puts its scrollbar mid-screen: with VIEW capped at the rail, the
+   gutter between two panels drew a dark vertical hairline about two-thirds
+   of the panel's height — the "weird breaks" between sections. Hiding the
+   per-panel scrollbar removes it; the safe-center fallback still lets a tall
+   panel scroll, it just doesn't paint a track. Same class the horizontal
+   scroller already uses on itself. */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
