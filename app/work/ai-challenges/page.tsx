@@ -212,14 +212,25 @@ export default function AiChallengesCaseStudy() {
 
             {/* Figma 4874:658 — 87,238, i.e. the mark's own left edge, just
                 under it. */}
-            <SlideIn
-              className={`relative z-10 flex flex-col text-white ${HERO_COPY_GAP} ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[23.8%] lg:w-[420px]`}
+            {/* A plain div, not SlideIn. A hero's title and tagline are the
+                first thing on screen, and rolling them in delays the one
+                line that says what the project is — Molly's call, applied
+                to every project's hero. The media in the hero still
+                reveals; only the copy is static. */}
+            <div
+              className={`relative z-10 flex flex-col text-white ${HERO_COPY_GAP} ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[23.8%] lg:w-[420px] xl:w-[480px]`}
             >
               <p className={HERO_TITLE}>Playing with AI</p>
+              {/* The frame's line is "Learning on the side for fun:)", which
+                  the band under the work grid still carries. Here it says
+                  what the learning actually is, because this is the page
+                  where someone decides whether to keep reading. */}
               <p className={`opacity-90 ${HERO_SUBTEXT}`}>
-                Learning on the side for fun&nbsp;:)
+                Learning the new AI tools on my own time &mdash; writing
+                prompts, judging what comes back, and keeping the parts worth
+                bringing to work on&nbsp;Monday.
               </p>
-            </SlideIn>
+            </div>
           </div>
 
           {/* Figma 4900:11154 — the sparkle cluster, 505x484 at 648,337. */}
@@ -289,7 +300,7 @@ export default function AiChallengesCaseStudy() {
           </Fragment>
         ))}
 
-        <CaseStudyMetaPanel meta={meta} showProjected />
+        <CaseStudyMetaPanel meta={meta} showProjected={false} />
 
         <NextProjectLink
           href={`/work/${next.slug}`}

@@ -100,7 +100,12 @@ export default function NetspendCaseStudy() {
                 className="size-10 sm:size-[50px]"
               />
             </div>
-            <SlideIn className={`flex flex-col text-white ${HERO_COPY_GAP}`}>
+            {/* A plain div, not SlideIn. A hero's title and tagline are the
+                first thing on screen, and rolling them in delays the one
+                line that says what the project is — Molly's call, applied
+                to every project's hero. The media in the hero still
+                reveals; only the copy is static. */}
+            <div className={`flex flex-col text-white ${HERO_COPY_GAP}`}>
               <p className={HERO_TITLE}>
                 Netspend Rewards
               </p>
@@ -108,7 +113,7 @@ export default function NetspendCaseStudy() {
                 Rewards helps you earn cash back by giving you rewards for some
                 of your everyday purchases.
               </p>
-            </SlideIn>
+            </div>
           </div>
           </div>
 
@@ -320,10 +325,13 @@ export default function NetspendCaseStudy() {
           </div>
         </Panel>
 
-        {/* Handoff-ready in five months */}
+        {/* The outcome beat. The headline opened "Handoff-ready in five
+            months." and the numbers panel beside it already says "Built in
+            five months / 0 → 1" — so the headline lands the part no figure
+            covers, and the body still carries the handoff once. */}
         <TextPanel width={VIEW}>
           <SlideIn>
-            <h2 className={H_DISPLAY}>Handoff-ready in five months. And it replaced a vendor the company was paying for.</h2>
+            <h2 className={H_DISPLAY}>It replaced a vendor the company was paying for.</h2>
           </SlideIn>
           {/* The AI paragraph that used to be here is beat 4's ("A new way
               of working") almost word for word. Said once, where it belongs;

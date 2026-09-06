@@ -346,8 +346,12 @@ export default function VolusionCaseStudy() {
             />
           </div>
 
-          <SlideIn
-            delay={80}
+          {/* A plain div, not SlideIn. A hero's title and tagline are the
+                first thing on screen, and rolling them in delays the one
+                line that says what the project is — Molly's call, applied
+                to every project's hero. The media in the hero still
+                reveals; only the copy is static. */}
+          <div
             /* Bottom-aligned to the mark rather than top-aligned to the
                panel: the mark runs 64 to 213/232/251, so the copy's bottom
                edge is set there and the two line up along their baselines.
@@ -362,7 +366,7 @@ export default function VolusionCaseStudy() {
               Built for large and small businesses, selling a wide range of
               products and inventory.
             </p>
-          </SlideIn>
+          </div>
           </div>
 
           {/* Hero composite — the frame has only the wordmark and copy, so

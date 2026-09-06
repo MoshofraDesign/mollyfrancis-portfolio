@@ -37,11 +37,11 @@ const jost = Jost({
   display: "swap",
 });
 
-/* Page background, darkened off the brand accent so white body copy
-   clears AA: #FE5E00 gives it 3.08:1, this gives 4.6+. The work-grid tile
-   keeps the bright #FE5E00 (see pageBg in lib/projects.ts, which is what the
-   tile's hover previews). */
-const ACCENT = "#CB4B00";
+/* Back to the brand's own orange, Molly's call — it had been darkened to
+   #CB4B00 so white body copy cleared AA (this gives it 3.08:1). The tile is
+   unchanged: it rests on this orange and still hovers to #CB4B00, which it
+   now carries as thumbHover rather than inheriting from the page. */
+const ACCENT = "#FE5E00";
 const LOGO = "/logos/liveperson.svg";
 
 const metrics = [
@@ -174,15 +174,14 @@ export default function LivePersonCaseStudy() {
               so it holds its distance from the panel edge while the artwork
               above it scales; it sits over the composite's transparent
               lower-left, which is how the frame draws it too. */}
-          <SlideIn
-            delay={200}
-            className="max-w-[46ch] lg:absolute lg:bottom-[5.5%] lg:left-[50px] lg:max-w-[min(489px,34vw)]"
-          >
+          {/* A plain div, not SlideIn — hero copy doesn't roll in on any
+              project. The composite above it still reveals. */}
+          <div className="max-w-[46ch] lg:absolute lg:bottom-[5.5%] lg:left-[50px] lg:max-w-[min(489px,34vw)]">
             <p className={`opacity-95 ${HERO_SUBTEXT}`}>
               Enables brands to interact with consumers over email and social
               media platforms through the LiveEngage messaging product.
             </p>
-          </SlideIn>
+          </div>
         </section>
 
         {/* ── 1. THE AGENT'S DESK. Opens on the person, the way DocSquad

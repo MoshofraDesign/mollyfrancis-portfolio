@@ -29,14 +29,19 @@ export default function AiChallengesBand() {
        the colour rather than inside it. */
     <section className={WORK_THUMB_SECTION}>
       <SlideIn>
-        <div className="flex flex-col items-start gap-6 rounded-[4px] bg-[#333333] px-6 py-7 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-8">
+        {/* py-5, down from 7. The button's min-h-11 is the tap-target floor
+            and sets the box's inner height, so the padding is the only place
+            height comes off without shrinking the target. */}
+        <div className="flex flex-col items-start gap-6 rounded-[4px] bg-[#333333] px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-8">
           {/* One row, all three optically centred on it — the frame has the
               sparkle, the wordmark and the tagline inside a single 50-tall
               row. They were nested in a baseline-aligned pair before, and an
               <img> aligns its BOTTOM edge to a text baseline: the wordmark's
               cut includes the descender on "Challenges", so the tagline sat a
               few pixels low against it. Gaps are the frame's own 16px, and
-              the sparkle is 50:42 against the wordmark like the frame. */}
+              the sparkle is 50:42 against the wordmark like the frame — a
+              step down from where it started, so the lockup sits under the
+              band's own height rather than setting it. */}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <Image
               src="/work/ai-challenges/sparkle-white.svg"
@@ -44,7 +49,7 @@ export default function AiChallengesBand() {
               width={52}
               height={50}
               unoptimized
-              className="h-[31px] w-auto shrink-0 sm:h-[40px]"
+              className="h-[27px] w-auto shrink-0 sm:h-[34px]"
             />
             <Image
               src="/logos/ai-challenges-wide.svg"
@@ -52,7 +57,7 @@ export default function AiChallengesBand() {
               width={655}
               height={83}
               unoptimized
-              className="h-[26px] w-auto sm:h-[34px]"
+              className="h-[23px] w-auto sm:h-[29px]"
             />
             <p className="font-jost text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.45] text-white/80">
               Learning for fun&nbsp;:)

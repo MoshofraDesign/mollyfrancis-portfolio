@@ -90,12 +90,17 @@ export default function BrightHealthcareCaseStudy() {
               217 at 1440) and the two overlapped. The top is derived from the
               mark's height now, so the 28px gap holds at every width, and the
               pair is on the shared HERO scale the other projects use. */}
-          <SlideIn className={`relative z-10 flex max-w-[466px] flex-col gap-2 text-[#141414] ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[178px] lg:max-w-[640px]`}>
+            {/* A plain div, not SlideIn. A hero's title and tagline are the
+                first thing on screen, and rolling them in delays the one
+                line that says what the project is — Molly's call, applied
+                to every project's hero. The media in the hero still
+                reveals; only the copy is static. */}
+          <div className={`relative z-10 flex max-w-[466px] flex-col gap-2 text-[#141414] ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[178px] lg:max-w-[640px]`}>
             <p className={HERO_TITLE}>Prior Authorization Portal</p>
             <p className={`max-w-[46ch] ${HERO_SUBTEXT}`}>
               Enables providers to electronically submit prior authorization requests and view all requests and their statuses
             </p>
-          </SlideIn>
+          </div>
           </div>
 
           {/* Screens — Figma 4622:11847: 1174×668, centered, top 435.

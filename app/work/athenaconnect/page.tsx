@@ -107,6 +107,11 @@ function ClipPanel({
     >
       <div className="mx-auto w-full max-w-[min(1100px,92vw)] lg:max-w-[min(1100px,92vw,calc((var(--panel-media-max-h)_-_4rem)_*_var(--clip-aspect)))]">
         <SlideIn delay={delay}>
+          {/* A plain div, not SlideIn. A hero's title and tagline are the
+                first thing on screen, and rolling them in delays the one
+                line that says what the project is — Molly's call, applied
+                to every project's hero. The media in the hero still
+                reveals; only the copy is static. */}
           <div
             className="relative w-full overflow-hidden rounded-[10px] bg-black/10"
             style={{ aspectRatio: "var(--clip-aspect)" }}
@@ -182,14 +187,13 @@ export default function AthenaConnectCaseStudy() {
             />
           </div>
 
-          <SlideIn
-            delay={80}
+          <div
             className={`relative z-10 flex max-w-[46ch] flex-col gap-2 ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[148px] lg:max-w-[min(560px,42vw)] xl:top-[166px] 2xl:top-[184px]`}
           >
             <p className={`opacity-90 ${HERO_SUBTEXT}`}>
               {project.subtitle}
             </p>
-          </SlideIn>
+          </div>
           </div>
 
           {/* The composite is 2476x998 (2.481). Bottom-anchored and centred

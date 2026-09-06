@@ -60,8 +60,12 @@ export type Project = {
    * answers "what's my range" rather than "how do I work".
    */
   roots?: boolean;
-  /** Soft wide drop shadow under the grid tile, for the light accents that
-   *  otherwise float on the page. */
+  /**
+   * A very subtle drop shadow on the tile's MARK — not on the tile. Bright's
+   * white wordmark sits on a light yellow, where it has almost nothing to
+   * separate it from the photo underneath; a shadow on the tile itself was
+   * the wrong fix and read as a lifted card.
+   */
   thumbShadow?: boolean;
   // AI-enhanced description (generated, 2-3 sentences)
   aiSummary: string;
@@ -375,7 +379,10 @@ export const projects: Project[] = [
     hero: "/work/liveperson/bb-mobile-social-dm.png",
     logo: "/logos/liveperson.svg",
     accent: "#FE5E00",
-    pageBg: "#CB4B00",
+    /* The page went back to the brand orange, so the hover can't come from
+       it any more — it would be the same colour as the resting tile. Kept
+       explicitly at the darkened orange the tile already used. */
+    thumbHover: "#CB4B00",
     featured: true,
     aiSummary:
       "Unified email, X, Instagram, Facebook, and chat into a single LiveEngage conversation surface so customer-care agents could stop swivel-chairing between dashboards. Self-service setup meant brands could connect their own social accounts, route them to specific teams, and ship a consistent voice across channels.",
@@ -1153,10 +1160,10 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
       { value: "2", label: "Challenges finished so far" },
     ],
     tools: ["Figma", "Claude", "Cursor"],
-    projected: [
-      { value: "5 screens", label: "The cap challenge 1 had to live inside" },
-      { value: "1 prompt", label: "Before any of it became my problem" },
-    ],
+    /* No projected column — the page passes showProjected={false}. Nothing
+       here is a number worth a figure: the screen cap and the prompt count
+       are the brief's own constraints, not an outcome. */
+    projected: [],
   },
   "govos-esubmission": {
     team: [

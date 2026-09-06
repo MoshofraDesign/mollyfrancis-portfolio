@@ -155,6 +155,10 @@ const skillGroups = [
   },
   {
     label: "Execution & Craft",
+    /* Eleven items against five or seven everywhere else. It takes two of
+       the three columns and splits its own list down the middle rather than
+       running twice as long as its neighbours. */
+    wide: true,
     items: [
       "User Research",
       "Complex Problem Solving",
@@ -360,20 +364,43 @@ export default function ResumePage() {
             as="div"
             className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-9 lg:grid-cols-3 lg:items-start"
           >
-            {skillGroups.map((group) => (
-              <div key={group.label}>
-                <p className="mb-2 text-base font-semibold tracking-normal text-ink">
-                  {group.label}
-                </p>
-                <ul className="space-y-1.5">
-                  {group.items.map((s) => (
-                    <li key={s} className="text-ink break-inside-avoid">
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {skillGroups.map((group) => {
+              /* A wide group spans two of the three columns and its items
+                 fill DOWN the first sub-column before starting the second —
+                 grid-flow-col over an explicit row count, so the halves stay
+                 even whatever the list length. On a phone the row count is
+                 harmless: one column, flowing by row, gives back a single
+                 list. */
+              const rows = Math.ceil(group.items.length / 2);
+              return (
+                <div
+                  key={group.label}
+                  className={group.wide ? "sm:col-span-2" : undefined}
+                >
+                  <p className="mb-2 text-base font-semibold tracking-normal text-ink">
+                    {group.label}
+                  </p>
+                  <ul
+                    className={
+                      group.wide
+                        ? "grid grid-cols-1 gap-x-10 gap-y-1.5 sm:grid-flow-col sm:grid-cols-2"
+                        : "space-y-1.5"
+                    }
+                    style={
+                      group.wide
+                        ? { gridTemplateRows: `repeat(${rows}, auto)` }
+                        : undefined
+                    }
+                  >
+                    {group.items.map((s) => (
+                      <li key={s} className="text-ink break-inside-avoid">
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </Reveal>
         </div>
       </section>

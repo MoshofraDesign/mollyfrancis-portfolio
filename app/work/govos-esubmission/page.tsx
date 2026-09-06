@@ -545,57 +545,20 @@ export default function GovOSCaseStudy() {
                panels back to back, and they were saying one thing twice: we
                kept testing, and accessibility was part of what we tested.
                One beat now, with the line that earns both halves on top.
-               Numbers and tools are the project's own; no conformance level
-               or score is claimed, only that the bar shaped the work. */}
+               One short paragraph now, in plain words — the tools it used to
+               name (Dovetail, Jira) are already in the closing meta panel.
+               No conformance level or score is claimed, only that the bar
+               shaped the work. */}
         <Panel>
           <Heading>A county can&rsquo;t buy what its staff can&rsquo;t use.</Heading>
           <Body>
-            So we tested — live sessions with submitters in a QA environment,
-            synthesized in Dovetail and triaged into Jira with the PM. Twelve
-            or more issues a round, and the rounds kept going until they
-            stopped finding them.
-          </Body>
-          <Body>
-            Accessibility was one of the things being tested. Procurement asks
-            for a VPAT against Section 508 and WCAG, so a keyboard path through
-            every step, fields and errors a screen reader can announce, and
-            focus that stays put inside a modal were requirements — not a
-            cleanup pass.
+            So we tested with real submitters, round after round, until they
+            stopped finding problems. Accessibility was part of every round
+            rather than a cleanup pass at the end — counties buy against a
+            VPAT, so keyboard access and screen-reader support were
+            requirements from day&nbsp;one.
           </Body>
         </Panel>
-
-        {/* 7.5 — CUSTOM ICONS. Its own copy beat first, like every other
-            screen on this page: without one it followed the ACH recording
-            directly, and two media panels back to back — both hugging their
-            artwork — put two pictures in one view. */}
-        <Panel width={COPY_PANEL}>
-          <Heading>Every icon drawn, not downloaded.</Heading>
-          <Body>
-            Two sets — one for the CloudSearch kiosk, one for the GovOS
-            portal — so every screen spoke the same visual language.
-          </Body>
-        </Panel>
-
-        {hasImage("/work/govos/custom-icons.webp") && (
-          <Panel
-            width="lg:w-[min(100vw,calc(752px_+_19rem),calc((var(--panel-media-max-h)_-_1rem)_*_1.741_+_19rem))]"
-            className={`items-center ${CLIP_TRAIL}`}
-          >
-            <SlideIn className="mx-auto flex w-full flex-col items-center lg:max-w-[min(752px,90vw,calc((var(--panel-media-max-h)_-_1rem)_*_1.741))]">
-              <Image
-                src="/work/govos/custom-icons.webp"
-                alt="Two drawn icon sets — CloudSearch Kiosk and GovOS Portal"
-                width={752}
-                height={432}
-                sizes="(max-width: 1023px) 90vw, min(90vw, 752px)"
-                /* The sheet's own background is #041C4D, which is 1.28:1
-                   against the new page colour — the card edge would simply
-                   dissolve. A hairline draws it back. */
-                className="h-auto w-full rounded-[10px] ring-1 ring-white/15"
-              />
-            </SlideIn>
-          </Panel>
-        )}
 
         {/* 8 — SUBMITTER BENEFITS — portrait + copy now share one panel, side by side */}
         <PortraitPanel

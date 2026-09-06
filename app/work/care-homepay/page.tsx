@@ -143,11 +143,13 @@ export default function CareHomepayCaseStudy() {
 
             {/* Headline — Figma 4555:22842, 455 wide at 831,114: just right
                 of the wordmark, left-aligned. */}
-            <SlideIn className={`care-hero-title order-2 self-start max-w-[340px] text-left ${HERO_ROW_COPY}`}>
+            {/* A plain div, not SlideIn — hero copy doesn't roll in on any
+                project. */}
+            <div className={`care-hero-title order-2 self-start max-w-[340px] text-left ${HERO_ROW_COPY}`}>
               <p className="text-xl font-semibold leading-snug text-white [text-wrap:balance] sm:text-2xl">
                 Homepay Employee &amp; Employer Payroll&nbsp;App
               </p>
-            </SlideIn>
+            </div>
           </div>
 
 

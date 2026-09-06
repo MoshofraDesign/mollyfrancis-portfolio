@@ -48,14 +48,6 @@ export default function CareGrid({ projects }: Props) {
           key={project.slug}
           href={`/work/${project.slug}`}
           className={`group thumb-cq block ${WORK_THUMB_TILE}`}
-          /* A wide, low-opacity shadow — not a card lift. It only goes on
-             the tiles whose accent is light enough to float against the
-             page (today, Bright's yellow). */
-          style={
-            project.thumbShadow
-              ? { boxShadow: "0 26px 70px -28px rgba(20,20,20,0.45), 0 10px 30px -18px rgba(20,20,20,0.22)" }
-              : undefined
-          }
         >
           <Image
             src={project.thumbnail}
@@ -94,6 +86,21 @@ export default function CareGrid({ projects }: Props) {
                   alt={`${project.client} logo`}
                   fill
                   unoptimized
+                  /* thumbShadow puts a hairline shadow on the MARK, for the
+                     one tile where a white wordmark sits on a light accent
+                     (Bright's yellow) and has nothing to separate it from
+                     the photo behind. Two very low-opacity passes rather
+                     than one dark one, so it reads as an edge and not as a
+                     glow. The tile itself is flat — a shadow under the tile
+                     was the earlier attempt and looked like a lifted card. */
+                  style={
+                    project.thumbShadow
+                      ? {
+                          filter:
+                            "drop-shadow(0 1px 2px rgba(20,20,20,0.30)) drop-shadow(0 4px 10px rgba(20,20,20,0.16))",
+                        }
+                      : undefined
+                  }
                   className="object-contain"
                 />
               </div>
