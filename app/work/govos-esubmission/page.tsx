@@ -459,23 +459,16 @@ export default function GovOSCaseStudy() {
           caption="Running and authorizing an ACH report"
         />
 
-        {/* 7.5 — CUSTOM ICONS. A craft beat: the two drawn sets, on one
-            panel. The image's own width is capped against the room the panel
-            has left after the heading and body (--panel-media-max-h less
-            ~13rem of type, times the sheet's 1.741 aspect), so a short
-            window scales the sheet instead of pushing the caption out of
-            frame. 10px radius, matching every other framed image. */}
+        {/* 7.5 — CUSTOM ICONS. The sheet carries itself, so this is a
+            media panel with a caption rather than a display heading and a
+            paragraph — the same shape as every other captioned image on the
+            site. Width capped against the room left after the caption
+            (--panel-media-max-h less ~5rem, times the sheet's 1.741 aspect),
+            so a short window scales it instead of clipping it. */}
         {hasImage("/work/govos/custom-icons.webp") && (
-          <Panel>
-            <Heading>Custom Icons</Heading>
-            <Body>
-              Two sets drawn for the product — one for the CloudSearch kiosk,
-              one for the GovOS portal — so every screen spoke the same
-              visual language.
-            </Body>
+          <Panel className="items-center">
             <SlideIn
-              delay={200}
-              className={`mt-8 ${MEDIA_W} lg:max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_13rem)_*_1.741))]`}
+              className={`mx-auto flex w-full flex-col items-center ${MEDIA_W} lg:max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.741))]`}
             >
               <Image
                 src="/work/govos/custom-icons.webp"
@@ -485,6 +478,10 @@ export default function GovOSCaseStudy() {
                 sizes="(max-width: 1023px) 90vw, min(90vw, 950px)"
                 className="h-auto w-full rounded-[10px]"
               />
+              <p className={`mt-5 text-center ${CAPTION}`}>
+                Custom icons — one set for the CloudSearch kiosk, one for the
+                GovOS portal, so every screen spoke the same visual language.
+              </p>
             </SlideIn>
           </Panel>
         )}

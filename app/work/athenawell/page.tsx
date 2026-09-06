@@ -14,6 +14,9 @@ import {
   VIEW,
   STAT_ROW,
   CAPTION,
+  HERO_ROW,
+  HERO_ROW_COPY,
+  HERO_INSET_MD,
   MEDIA,
   NextProjectLink,
   CaseStudyMetaPanel,
@@ -132,19 +135,27 @@ export default function AthenaWellCaseStudy() {
         {/* ── TITLE ─────────────────────────────────────────────────── */}
         <section
           id="title"
-          className="relative flex w-full flex-col justify-center gap-8 px-5 pb-10 pt-24 sm:px-8 sm:pt-28 lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-10 lg:pl-[50px] lg:pr-[71px] xl:pr-[89px] 2xl:pr-[107px] lg:pt-[50px]"
+          className={`relative flex w-full flex-col justify-center gap-8 overflow-hidden px-5 pb-10 pt-24 sm:px-8 sm:pt-28 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:justify-start lg:gap-10 lg:pl-[50px] lg:pr-[71px] xl:pr-[89px] 2xl:pr-[107px] lg:pt-[50px]`}
         >
-          <div className="relative h-8 w-[190px] sm:h-9 sm:w-[220px]">
+          {/* Mark + copy are one wrapping row from tablet up (HERO_ROW), and
+              at lg they're placed from the corner the way every other
+              project's hero is: mark at 50/50, copy on the same rail
+              directly beneath it. This panel used to centre the whole stack
+              vertically, which floated the mark in the middle of the field
+              while every other project's sat in the corner. */}
+          <div className={HERO_ROW}>
+          <div className="relative h-[46px] w-[283px] shrink-0 sm:h-[52px] sm:w-[320px] lg:absolute lg:left-[50px] lg:top-[50px] lg:h-[72px] lg:w-[443px] xl:h-[84px] xl:w-[517px] 2xl:h-[96px] 2xl:w-[590px]">
             <Image src={LOGO} alt="athenaWell" fill unoptimized priority className="object-contain object-left" />
           </div>
 
-          <div className="flex flex-col gap-2 lg:max-w-[389px] xl:max-w-[486px] 2xl:max-w-[584px]">
+          <div className={`flex flex-col gap-2 ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[148px] lg:max-w-[min(560px,40vw)] xl:top-[166px] xl:max-w-[min(640px,40vw)] 2xl:top-[184px] 2xl:max-w-[min(720px,40vw)]`}>
             <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2.88rem] xl:text-[3.5rem] 2xl:text-[3.5rem] font-semibold leading-[1.1]">
               Standalone apps for patients and care teams
             </p>
             <p className="max-w-[46ch] text-base leading-[1.45] opacity-90 sm:text-lg lg:text-[13px] xl:text-[17px] 2xl:text-[20px]">
               {project.subtitle}
             </p>
+          </div>
           </div>
 
           <div className="relative aspect-[5/3] w-full lg:absolute lg:bottom-0 lg:right-0 lg:h-[504px] xl:h-[560px] 2xl:h-[630px] lg:w-[553px] xl:w-[691px] 2xl:w-[829px] lg:max-w-none">
@@ -274,32 +285,26 @@ export default function AthenaWellCaseStudy() {
           </Body>
         </TextPanel>
 
-        {/* ── CUSTOM ICONS. A craft beat before the outcome. The sheet's
-               width is capped against the room left after the heading and
-               body (--panel-media-max-h less ~13rem of type, times its 1.211
-               aspect) so a short window scales it rather than clipping it.
-               10px radius, matching every other framed image. */}
-        <Panel width={VIEW} pad="center">
-          <div className="mx-auto flex w-full max-w-[min(700px,86vw)] flex-col">
-            <Heading>Custom Icons</Heading>
-            <Body>
-              A full set drawn for the product — care plans, scheduling,
-              messaging, results — so every screen spoke one visual language.
-            </Body>
-            <SlideIn
-              delay={200}
-              className="mt-8 w-full max-w-[min(560px,86vw)] lg:max-w-[min(560px,86vw,calc((var(--panel-media-max-h)_-_13rem)_*_1.211))]"
-            >
-              <Image
-                src={`${ASSET}/custom-icons.webp`}
-                alt="The athenaWell icon set — twenty-four drawn icons"
-                width={752}
-                height={621}
-                sizes="(max-width: 1023px) 86vw, min(86vw, 560px)"
-                className="h-auto w-full rounded-[10px]"
-              />
-            </SlideIn>
-          </div>
+        {/* ── CUSTOM ICONS. A media panel with a caption rather than a
+               display heading and a paragraph — the sheet carries itself,
+               and this is the shape every other captioned image on the site
+               uses. Width capped against the room left after the caption
+               (--panel-media-max-h less ~5rem, times its 1.211 aspect). */}
+        <Panel width={VIEW} pad="center" className="items-center">
+          <SlideIn className="mx-auto flex w-full max-w-[min(520px,86vw)] flex-col items-center lg:max-w-[min(520px,86vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.211))]">
+            <Image
+              src={`${ASSET}/custom-icons.webp`}
+              alt="The athenaWell icon set — twenty-four drawn icons"
+              width={752}
+              height={621}
+              sizes="(max-width: 1023px) 86vw, min(86vw, 520px)"
+              className="h-auto w-full rounded-[10px]"
+            />
+            <p className={`mt-5 text-center ${CAPTION}`}>
+              Custom icons — one drawn set across care plans, scheduling,
+              messaging and results.
+            </p>
+          </SlideIn>
         </Panel>
 
         {/* ── OUTCOME ───────────────────────────────────────────────────── */}

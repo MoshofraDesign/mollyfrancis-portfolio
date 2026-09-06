@@ -54,6 +54,9 @@ export default function StickyNav({
   const [pastTitle, setPastTitle] = useState(false);
   const [isLg, setIsLg] = useState(false);
   const raf = useRef<number | null>(null);
+  // Measured so the ride can end when the mark clears the title panel by its
+  // own width, rather than a viewport's worth of scrolling later.
+  const markBox = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
@@ -82,7 +85,30 @@ export default function StickyNav({
         return;
       }
       const pad = window.innerWidth >= 1024 ? parkLeft : window.innerWidth >= 640 ? 32 : 20;
-      setOffset(Math.max(0, window.innerWidth - pad - scroller.scrollLeft));
+      const vw = window.innerWidth;
+
+      /* The mark rides in from the right edge and parks at the rail. It used
+         to travel 1:1 with scrollLeft, finishing only after a full viewport
+         of scrolling — which assumes the panel after the title is also a
+         full viewport wide. It often isn't: the panels that hug their media
+         (Volusion's clips, athenaConnect's) are narrower, so they reach
+         their resting position while the mark is still ~120px short of the
+         rail, leaving it hanging in the field between the title's tail and
+         the media. That's the "weird alignment" as the second section
+         arrives.
+
+         So the ride is measured against the title panel's own right edge and
+         ends as soon as the mark clears it by the mark's own width — the
+         moment it would otherwise start floating over the title's empty
+         field. Same start (just off the right edge), same direction, just
+         finished by the time the next panel settles, whatever its width. */
+      const markW = markBox.current?.offsetWidth ?? 0;
+      const titleRight = title
+        ? title.getBoundingClientRect().right
+        : vw - scroller.scrollLeft;
+      const ride = Math.max(1, vw - pad - markW);
+      const progress = Math.min(1, Math.max(0, (vw - titleRight) / ride));
+      setOffset((vw - pad) * (1 - progress));
     };
 
     const onScroll = () => {
@@ -115,7 +141,11 @@ export default function StickyNav({
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex items-start justify-between pr-5 sm:pr-8">
-      <div className={isLg ? undefined : "pl-5 pt-5 sm:pl-8 sm:pt-7"} style={logoStyle}>
+      <div
+        ref={markBox}
+        className={isLg ? undefined : "pl-5 pt-5 sm:pl-8 sm:pt-7"}
+        style={logoStyle}
+      >
         {logo}
       </div>
       <div className="pt-5 sm:pt-7">{action}</div>
