@@ -69,53 +69,57 @@ const metrics = [
   { label: "Wearable integrations", value: "200+" },
 ];
 
-const personas = [
-  {
-    name: "Healthy",
-    body: "Visit the doctor twice a year for general checkups. Genuinely interested in tracking sleep, meals, step count, and exercise — and sharing that data.",
-  },
-  {
-    name: "Rising Risk",
-    body: "Managing a chronic condition without a major health event yet. Frequent doctor visits, and lifestyle changes are a real source of frustration.",
-  },
-  {
-    name: "High-Risk",
-    body: "Known by the care team on a first-name basis. Juggling multiple specialists, mounting medical bills, and no single place to turn when they need help most.",
-  },
-];
 
-/** One large image, centered, fill-based since exact source dimensions
- *  aren't available — object-contain keeps every screenshot uncropped. */
-function BigImagePanel({
+/**
+ * One export, centred, with its caption under it.
+ *
+ * Width-first rather than fill-into-an-aspect-box: these are real exports
+ * with known dimensions and their own transparency, so they float on the
+ * panel the way the hero composite does instead of sitting in a 16/10 box
+ * that crops or letterboxes them. The lg cap is the room the panel has once
+ * the caption is allowed for, times the image's own aspect — passed as a
+ * CSS variable, because Tailwind can't build a class name from a runtime
+ * value.
+ */
+function MediaPanel({
   src,
   alt,
   caption,
+  width,
+  height,
   maxWidth = 950,
 }: {
   src: string;
   alt: string;
   caption?: string;
+  width: number;
+  height: number;
   maxWidth?: number;
 }) {
+  if (!hasAsset(src)) return null;
   return (
-    <Panel width={VIEW} pad="center" className="items-center">
-      <SlideIn
-        className={`mx-auto flex w-full flex-col items-center ${MEDIA}`}
-        style={{ maxWidth: `${maxWidth}px` }}
-      >
-        <div className="relative aspect-[16/10] w-full">
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            sizes={`(max-width: 1024px) 92vw, min(90vw, ${maxWidth}px)`}
-            className="object-contain"
-          />
-        </div>
+    <Panel
+      width={VIEW}
+      pad="center"
+      className="items-center"
+      style={
+        {
+          "--media-aspect": String(width / height),
+          "--media-max-w": `${maxWidth}px`,
+        } as React.CSSProperties
+      }
+    >
+      <SlideIn className="mx-auto flex w-full max-w-[min(var(--media-max-w),92vw)] flex-col items-center lg:max-w-[min(var(--media-max-w),92vw,calc((var(--panel-media-max-h)_-_5rem)_*_var(--media-aspect)))]">
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          sizes="(max-width: 1023px) 92vw, min(92vw, 950px)"
+          className="h-auto w-full"
+        />
         {caption && (
-          <p className={`mt-4 max-w-[70ch] text-center ${CAPTION}`}>
-            {caption}
-          </p>
+          <p className={`mt-5 max-w-[70ch] text-center ${CAPTION}`}>{caption}</p>
         )}
       </SlideIn>
     </Panel>
@@ -137,7 +141,7 @@ export default function AthenaWellCaseStudy() {
       <StickyNav
         watch="title"
         logo={
-          <div className="relative h-6 w-[140px] sm:h-7 sm:w-[165px]">
+          <div className="relative h-8 w-[190px] sm:h-9 sm:w-[220px]">
             <Image src={LOGO} alt="athenaWell" fill unoptimized className="object-contain object-left" />
           </div>
         }
@@ -230,74 +234,60 @@ export default function AthenaWellCaseStudy() {
           </Panel>
         )}
 
-        {/* ── CARE TEAM SCREENSHOT ─────────────────────────────────────── */}
-        <BigImagePanel
-          src="/legacy/screen-shot-2017-12-15-at-8-51-43-am-42cc08.png"
-          alt="athenaWell Care Team section — testers were drawn to the video chat option"
-          caption="Care Team section — testers were especially drawn to the video chat option"
+        {/* ── THE CARE TEAM SIDE. Build the plan, assign it, see the
+               patient's activity, and reach them without leaving the page. */}
+        <MediaPanel
+          src={`${ASSET}/care-team.png`}
+          alt="The athenaWell care-team view — patient list, care plan builder, timeline and a video call"
+          width={1001}
+          height={558}
+          maxWidth={1080}
+          caption="The care-team side — build the plan, assign it, and reach the patient without leaving the page."
         />
 
-        {/* ── PERSONAS ──────────────────────────────────────────────────── */}
-        <Panel width={VIEW} pad="center">
-          <div className={`${STAT_ROW} mx-auto`}>
-            <Heading>Three patients, one plan to hold them all.</Heading>
-            <SlideIn delay={80}>
-              <p className="mt-3 text-[clamp(1.05rem,1.3vw,1.25rem)] leading-[1.45] opacity-90">
-                Designed for three risk tiers rather than an average patient
-                — each with its own values, goals and pain points.
-              </p>
-            </SlideIn>
-            <div className="mt-10 grid w-full gap-10 sm:grid-cols-3 sm:gap-8">
-              {personas.map((p, i) => (
-                <SlideIn key={p.name} delay={100 + i * 90}>
-                  <p className="text-[1.1rem] sm:text-[1.1rem] md:text-[1.1rem] lg:text-[1.1rem] xl:text-[1.12rem] 2xl:text-[1.3rem] font-semibold">{p.name}</p>
-                  <p className="mt-3 text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[0.9rem] 2xl:text-[1rem] leading-[1.45] opacity-90">
-                    {p.body}
-                  </p>
-                </SlideIn>
-              ))}
-            </div>
-          </div>
-        </Panel>
-
-        {/* ── THE PERSONA DOCUMENTS. The three text columns above carry the
-               content readably; this is the artifact itself — evidence the
-               persona work happened, rather than stock faces standing in for
-               patients. Transparent export cropped to the sheets, so they
-               float on the panel the way the hero composite does; no radius,
-               since the sheets have their own edges. 2266x1343 -> 1.687, and
-               the width is capped against the room left after the caption. */}
+        {/* ── THE PERSONAS. The documents themselves rather than three text
+               columns restating them: users, story, values and goals are all
+               on the sheets. Transparent export cropped to the sheets, so
+               they float on the panel the way the hero composite does; no
+               radius, since the sheets have their own edges. 2266x1343 ->
+               1.687, and the width is capped against the room the panel has
+               left under the title block. */}
         {hasAsset(`${ASSET}/personas.png`) && (
           <Panel width={VIEW} pad="center" className="items-center">
-            <SlideIn className="mx-auto flex w-full max-w-[min(1000px,92vw)] flex-col items-center lg:max-w-[min(1000px,92vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.687))]">
-              <Image
-                src={`${ASSET}/personas.png`}
-                alt="The three athenaWell persona documents — Healthy Patient, High Risk and Rising Risk"
-                width={2266}
-                height={1343}
-                sizes="(max-width: 1023px) 92vw, min(92vw, 1000px)"
-                className="h-auto w-full"
-              />
-              <p className={`mt-5 text-center ${CAPTION}`}>
-                The persona documents — users, story, values and goals for
-                each risk tier.
-              </p>
-            </SlideIn>
+            <div className="mx-auto flex w-full max-w-[min(1000px,92vw)] flex-col">
+              <Heading>Three patients, one plan to hold them all.</Heading>
+              <SlideIn delay={80}>
+                <p className="mt-3 text-[clamp(1.05rem,1.3vw,1.25rem)] leading-[1.45] opacity-90">
+                  Designed for three risk tiers rather than an average patient
+                  — each with its own users, story, values and goals.
+                </p>
+              </SlideIn>
+              <SlideIn
+                delay={180}
+                className="mt-8 w-full self-center lg:max-w-[min(1000px,92vw,calc((var(--panel-media-max-h)_-_15rem)_*_1.687))]"
+              >
+                <Image
+                  src={`${ASSET}/personas.png`}
+                  alt="The three athenaWell persona documents — Healthy Patient, High Risk and Rising Risk"
+                  width={2266}
+                  height={1343}
+                  sizes="(max-width: 1023px) 92vw, min(92vw, 1000px)"
+                  className="h-auto w-full"
+                />
+              </SlideIn>
+            </div>
           </Panel>
         )}
 
-        {/* ── EDUCATION CONTENT SCREENSHOT ─────────────────────────────── */}
-        <BigImagePanel
-          src="/legacy/screen-shot-2017-12-15-at-8-44-23-am-5606ba.png"
-          alt="Education content mapped to each patient's specific health concerns"
-          caption="Education content mapped to each patient's specific health concerns"
-        />
-
-        {/* ── DAILY TASKS SCREENSHOT ───────────────────────────────────── */}
-        <BigImagePanel
-          src="/legacy/screen-shot-2017-12-15-at-8-37-37-am-7013f8.png"
-          alt="Daily patient tasks with a progress indicator testers found motivating"
-          caption="Daily patient tasks with a progress indicator testers found motivating"
+        {/* ── THE PATIENT SIDE. Goals, the daily plan, and the tasks
+               list — the progress ring is the part testers called out. */}
+        <MediaPanel
+          src={`${ASSET}/patient-app.png`}
+          alt="The athenaWell patient app — goals, the daily care plan, and the task list"
+          width={909}
+          height={720}
+          maxWidth={860}
+          caption="The patient side — goals, the day's plan, and a progress ring testers called the motivating part."
         />
 
         {/* ── RESONANCE TESTING. Molly's own note from projects.ts
@@ -319,9 +309,20 @@ export default function AthenaWellCaseStudy() {
           <Body>
             Apollo, the chat bot: reactive messaging with event-driven AI
             assistance, so reaching the care team didn&apos;t mean waiting on
-            hold.
+            hold — and an urgent symptom got an urgent answer.
           </Body>
         </TextPanel>
+
+        {/* A single phone, so this one is capped much narrower than the
+            desktop composites — at 950 it would have been comically large. */}
+        <MediaPanel
+          src={`${ASSET}/apollo.png`}
+          alt="Apollo, the athenaWell chat bot, answering a patient's symptom question and sending a Mayo Clinic article"
+          width={299}
+          height={600}
+          maxWidth={300}
+          caption="Apollo — triage first, then the education article that answers the question."
+        />
 
         {/* ── CARE TEAMS BEYOND THE CLINIC ─────────────────────────────── */}
         <TextPanel>
@@ -338,13 +339,13 @@ export default function AthenaWellCaseStudy() {
                uses. Width capped against the room left after the caption
                (--panel-media-max-h less ~5rem, times its 1.211 aspect). */}
         <Panel width={VIEW} pad="center" className="items-center">
-          <SlideIn className="mx-auto flex w-full max-w-[min(520px,86vw)] flex-col items-center lg:max-w-[min(520px,86vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.211))]">
+          <SlideIn className="mx-auto flex w-full max-w-[min(660px,86vw)] flex-col items-center lg:max-w-[min(660px,86vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.211))]">
             <Image
               src={`${ASSET}/custom-icons.webp`}
               alt="The athenaWell icon set — twenty-four drawn icons"
               width={752}
               height={621}
-              sizes="(max-width: 1023px) 86vw, min(86vw, 520px)"
+              sizes="(max-width: 1023px) 86vw, min(86vw, 660px)"
               className="h-auto w-full rounded-[10px]"
             />
             <p className={`mt-5 text-center ${CAPTION}`}>
@@ -387,7 +388,14 @@ export default function AthenaWellCaseStudy() {
           </div>
         </Panel>
 
-        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText={fg === "#f5f5f5"} />
+        {/* No Projected Numbers block: the three personas and the 200+
+            integrations are already the closing figures row, so repeating
+            them in the credits panel says the same thing twice. */}
+        <CaseStudyMetaPanel
+          meta={getCaseStudyMeta(project)}
+          lightText={fg === "#f5f5f5"}
+          showProjected={false}
+        />
 
         <NextProjectLink
           href={`/work/${next.slug}`}

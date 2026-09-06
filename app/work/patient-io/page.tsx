@@ -298,7 +298,7 @@ export default function PatientIoCaseStudy() {
           </div>
         </Panel>
 
-        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText />
+        <CaseStudyMetaPanel meta={getCaseStudyMeta(project)} lightText showProjected={false} />
 
         <NextProjectLink
           href={`/work/${next.slug}`}
