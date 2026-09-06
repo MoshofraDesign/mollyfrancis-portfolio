@@ -266,10 +266,21 @@ export function TextPanel({
  * Section headings further down the page stay on the smaller Heading/Body
  * scale — the intro is deliberately the largest type on the page.
  */
+/**
+ * The opening statement panel used to be the largest type on a page —
+ * 5.625vw to a 6.5rem ceiling, from Care.com's frame — while every section
+ * heading after it ran 4.5vw to 4.05rem. On a wide window that made the
+ * first panel read as a different page from the rest of the case study.
+ *
+ * Both pairs are the section scale now: an intro is still the first thing
+ * you read and still gets a panel to itself, but it doesn't shout. Kept as
+ * separate tokens rather than deleted, since a dozen call sites name them
+ * and the distinction may earn its way back.
+ */
 export const INTRO_TITLE =
-  "font-semibold leading-[1.1] tracking-[-0.02em] [text-wrap:pretty] text-[2rem] sm:text-[2.5rem] lg:text-[clamp(2rem,5.625vw,6.5rem)]";
+  "font-semibold leading-[1.1] tracking-[-0.02em] [text-wrap:pretty] text-[2rem] sm:text-[2rem] lg:text-[clamp(2rem,4.5vw,4.05rem)]";
 export const INTRO_SUBTEXT =
-  "font-normal leading-[1.45] [text-wrap:pretty] text-[1.05rem] sm:text-[1.05rem] lg:text-[clamp(1.05rem,2.22vw,2.25rem)]";
+  "font-normal leading-[1.45] [text-wrap:pretty] text-[1.25rem] sm:text-[1.25rem] lg:text-[clamp(1.25rem,1.6vw,1.65rem)]";
 
 /**
  * Hero type — the client's name and the one-line description on a project's
@@ -354,8 +365,17 @@ export const META_BODY = "text-[clamp(1.1rem,1.35vw,1.25rem)] leading-[1.45]";
 
 export const HERO_COPY_GAP = "gap-2";
 
+/**
+ * Hero title + subtext — the one scale, on every case study.
+ *
+ * Nine of the ten heroes had set their own: 2.25rem at 2xl on athenahealth
+ * and Netspend, 2.75 on athenaWell and Patient IO, 35px on LivePerson,
+ * 2.25 from the token on Bright/GovOS/Volusion. So how large a client's name
+ * read depended on which project you opened. All of them come through here
+ * now, one step smaller than the old token's ceiling.
+ */
 export const HERO_TITLE =
-  "font-semibold leading-[1.1] tracking-[-0.01em] [text-wrap:pretty] text-[1.375rem] sm:text-[1.5rem] lg:text-[clamp(1.5rem,2.5vw,2.25rem)]";
+  "font-semibold leading-[1.1] tracking-[-0.01em] [text-wrap:pretty] text-[1.25rem] sm:text-[1.375rem] lg:text-[clamp(1.375rem,2.15vw,1.95rem)]";
 export const HERO_SUBTEXT =
   "font-normal leading-[1.45] [text-wrap:pretty] text-[0.95rem] sm:text-[1rem] lg:text-[clamp(0.95rem,1.25vw,1.125rem)]";
 

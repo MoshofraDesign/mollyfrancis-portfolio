@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import { contrastColor } from "@/lib/contrastColor";
-import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, CAPTION, NextProjectLink, CaseStudyMetaPanel, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, CAPTION, NextProjectLink, CaseStudyMetaPanel, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT} from "@/components/v2/CaseStudyKit";
 
 /**
  * LivePerson/SocialConnect, told as a story the way DocSquad is: it opens
@@ -138,7 +138,7 @@ export default function LivePersonCaseStudy() {
               <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
             </div>
 
-            <p className={`max-w-[300px] text-lg font-semibold sm:text-xl ${HERO_ROW_COPY} lg:absolute lg:left-[61.8%] lg:top-[50px] lg:z-10 lg:flex lg:h-[94px] lg:max-w-[min(417px,28vw)] lg:items-center lg:text-[24px] xl:text-[29px] 2xl:text-[35px] lg:leading-[1.1]`}>
+            <p className={`max-w-[300px] ${HERO_TITLE} ${HERO_ROW_COPY} lg:absolute lg:left-[61.8%] lg:top-[50px] lg:z-10 lg:flex lg:h-[94px] lg:max-w-[min(417px,28vw)] lg:items-center`}>
               Social Media Management Product
             </p>
           </div>
@@ -175,7 +175,7 @@ export default function LivePersonCaseStudy() {
             delay={200}
             className="max-w-[46ch] lg:absolute lg:bottom-[5.5%] lg:left-[50px] lg:max-w-[min(489px,34vw)]"
           >
-            <p className="text-base leading-[1.45] opacity-95 sm:text-xl lg:text-[clamp(1rem,1.4vw,1.55rem)] lg:leading-[1.4]">
+            <p className={`opacity-95 ${HERO_SUBTEXT}`}>
               Enables brands to interact with consumers over email and social
               media platforms through the LiveEngage messaging product.
             </p>

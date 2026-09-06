@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, META_LABEL, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, META_LABEL, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE} from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Patient Portal — athenahealth — Molly Francis",
@@ -111,7 +111,7 @@ export default function ConsumerHealthCaseStudy() {
             <Image src={LOGO} alt="athenahealth" fill unoptimized priority className="object-contain object-left" />
           </div>
 
-          <p className="relative z-10 text-[1.5rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem] font-semibold leading-[1.1] text-white md:shrink-0 lg:absolute lg:left-[740px] lg:top-[50px] lg:flex lg:h-[83px] lg:items-center">
+          <p className={`relative z-10 text-white ${HERO_TITLE} md:shrink-0 lg:absolute lg:left-[740px] lg:top-[50px] lg:flex lg:h-[83px] lg:items-center`}>
             Patient Portal
           </p>
           </div>

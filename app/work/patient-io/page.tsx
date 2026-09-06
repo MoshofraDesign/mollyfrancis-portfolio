@@ -15,6 +15,7 @@ import {
   HERO_INSET_MD,
   NextProjectLink,
   CaseStudyMetaPanel,
+  HERO_TITLE,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -125,7 +126,7 @@ export default function PatientIoCaseStudy() {
             <div className="relative h-12 w-[168px] shrink-0 sm:h-14 sm:w-[196px] md:h-16 md:w-[224px] lg:h-24 lg:w-[336px]">
               <Image src={LOGO} alt="Patient IO" fill unoptimized priority className="object-contain object-left" />
             </div>
-            <p className="text-[1.75rem] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.75rem] font-semibold leading-[1.1] md:min-w-0 md:basis-[16rem] md:grow lg:max-w-[32ch]">
+            <p className={`${HERO_TITLE} md:min-w-0 md:basis-[16rem] md:grow lg:max-w-[32ch]`}>
               A patient engagement platform for patients and their care managers
             </p>
           </div>

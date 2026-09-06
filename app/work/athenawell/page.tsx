@@ -20,6 +20,7 @@ import {
   META_LABEL,
   NextProjectLink,
   CaseStudyMetaPanel,
+  HERO_TITLE,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -204,7 +205,7 @@ export default function AthenaWellCaseStudy() {
               mark it has ~680px to work in, and at the old 2.88rem it ran
               three lines and stood taller than the mark it's aligned to. */}
           <div className="flex flex-col gap-6 md:flex-row md:flex-wrap md:items-center md:gap-x-10 md:gap-y-6 lg:absolute lg:left-[50px] lg:top-[50px] lg:z-10 lg:flex-nowrap lg:items-center lg:gap-12 xl:gap-14">
-            <div className="relative h-[46px] w-[283px] shrink-0 sm:h-[52px] sm:w-[320px] lg:h-[100px] lg:w-[615px] xl:h-[115px] xl:w-[707px] 2xl:h-[130px] 2xl:w-[799px]">
+            <div className="relative h-[46px] w-[283px] shrink-0 sm:h-[52px] sm:w-[320px] lg:h-[88px] lg:w-[541px] xl:h-[100px] xl:w-[615px] 2xl:h-[112px] 2xl:w-[689px]">
               <Image src={LOGO} alt="athenaWell" fill unoptimized priority className="object-contain object-left" />
             </div>
 
@@ -215,7 +216,7 @@ export default function AthenaWellCaseStudy() {
                 title broke into four lines. These widths fit the longest
                 line ("patients and care teams") and not a word more. */}
             <div className="flex flex-col gap-2 md:min-w-0 md:basis-[16rem] md:grow lg:max-w-[420px] lg:grow-0 lg:basis-auto xl:max-w-[480px] 2xl:max-w-[560px]">
-              <p className="text-[1.75rem] font-semibold leading-[1.1] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.75rem]">
+              <p className={HERO_TITLE}>
                 Standalone apps for patients and care teams
               </p>
             </div>

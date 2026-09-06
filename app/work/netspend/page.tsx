@@ -6,7 +6,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD } from "@/components/v2/CaseStudyKit";
+import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT} from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "Netspend Rewards & UCM — Molly Francis",
@@ -106,10 +106,10 @@ export default function NetspendCaseStudy() {
               />
             </div>
             <SlideIn className={`flex flex-col text-white ${HERO_COPY_GAP}`}>
-              <p className="font-semibold leading-[1.1] text-[1.25rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.6rem] xl:text-[2rem] 2xl:text-[2.25rem]">
+              <p className={HERO_TITLE}>
                 Netspend Rewards
               </p>
-              <p className="text-[0.9rem] sm:text-[0.9rem] md:text-[0.9rem] lg:text-[0.9rem] xl:text-[1rem] 2xl:text-[1.125rem] leading-[1.45] opacity-90">
+              <p className={`opacity-90 ${HERO_SUBTEXT}`}>
                 Rewards helps you earn cash back by giving you rewards for some
                 of your everyday purchases.
               </p>

@@ -23,6 +23,7 @@ import {
   CAPTION,
   NextProjectLink,
   CaseStudyMetaPanel,
+  HERO_SUBTEXT,
 } from "@/components/v2/CaseStudyKit";
 
 /**
@@ -181,7 +182,7 @@ export default function AthenaConnectCaseStudy() {
             delay={80}
             className={`relative z-10 flex max-w-[46ch] flex-col gap-2 ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[148px] lg:max-w-[min(560px,42vw)] xl:top-[166px] 2xl:top-[184px]`}
           >
-            <p className="text-[1.05rem] leading-[1.45] opacity-90 lg:text-[clamp(1.05rem,1.25vw,1.25rem)]">
+            <p className={`opacity-90 ${HERO_SUBTEXT}`}>
               {project.subtitle}
             </p>
           </SlideIn>
