@@ -17,6 +17,7 @@ import {
   VIEW,
   STAT_ROW,
   CAPTION,
+  MEASURE,
   HERO_INSET_MD,
   META_LABEL,
   NextProjectLink,
@@ -48,7 +49,7 @@ const jost = Jost({
 });
 
 const ACCENT = "#0055CC";
-const LOGO = "/logos/athenawell.png";
+const LOGO = "/logos/athenawell.svg";
 const ASSET = "/work/athenawell";
 
 /** Panels that depend on a file skip themselves until the file is on disk. */
@@ -68,53 +69,50 @@ const metrics = [
 
 
 /**
- * One story beat: a heading, one short paragraph, and the picture of it —
- * all in the SAME panel, so the copy and the artwork scroll as one thing.
+ * A media panel — the picture on its own, with an optional caption.
  *
- * The media's width is capped by the room the panel has left under the type
- * (--panel-media-max-h less ~13rem) times the image's own aspect, so a short
- * window scales the picture instead of pushing it out of frame. The aspect
- * travels as a CSS variable: Tailwind scans source text at build time and
- * can't generate a class from a runtime value.
+ * The beats that pair a heading with a screen read as two panels, not one:
+ * sharing a panel with three or four lines of type left the picture a
+ * fraction of the height and it ran off the bottom edge. This is the shape
+ * the rest of the site already uses — a text panel, then the screen it
+ * describes — so the rhythm matches the other projects too.
  *
- * `aside` puts the media beside the copy instead of under it — for a single
- * portrait phone, which on its own line is a small object in a very large
- * empty field.
+ * The lg cap is the room the panel actually has once the caption is allowed
+ * for, times the image's own aspect. The aspect travels as a CSS variable:
+ * Tailwind scans source text at build time and can't generate a class from
+ * a runtime value.
  */
-function Beat({
-  heading,
-  children,
+function MediaPanel({
   src,
+  alt,
+  caption,
   width,
   height,
-  caption,
   maxWidth = 1000,
-  aside = false,
   video = false,
 }: {
-  heading: string;
-  children: React.ReactNode;
-  src?: string;
-  width?: number;
-  height?: number;
+  src: string;
+  alt: string;
   caption?: string;
+  width: number;
+  height: number;
   maxWidth?: number;
-  aside?: boolean;
   video?: boolean;
 }) {
-  const has = src ? hasAsset(src) : false;
-  const aspect = width && height ? width / height : 1;
-
-  const media =
-    has && src ? (
-      <SlideIn
-        delay={160}
-        className={
-          aside
-            ? "w-[min(260px,62vw)] shrink-0 sm:w-[300px] lg:w-[min(300px,calc((var(--panel-media-max-h)_-_1rem)_*_var(--beat-aspect)))]"
-            : "mt-8 w-full self-center lg:max-w-[min(var(--beat-max-w),92vw,calc((var(--panel-media-max-h)_-_13rem)_*_var(--beat-aspect)))]"
-        }
-      >
+  if (!hasAsset(src)) return null;
+  return (
+    <Panel
+      width={VIEW}
+      pad="center"
+      className="items-center"
+      style={
+        {
+          "--beat-aspect": String(width / height),
+          "--beat-max-w": `${maxWidth}px`,
+        } as React.CSSProperties
+      }
+    >
+      <SlideIn className="mx-auto flex w-full max-w-[min(var(--beat-max-w),92vw)] flex-col items-center lg:max-w-[min(var(--beat-max-w),92vw,calc((var(--panel-media-max-h)_-_5rem)_*_var(--beat-aspect)))]">
         {video ? (
           <div className="w-full overflow-hidden rounded-[10px]">
             <AutoplayVideo src={src} className="h-auto w-full object-contain" />
@@ -122,49 +120,17 @@ function Beat({
         ) : (
           <Image
             src={src}
-            alt={caption ?? heading}
+            alt={alt}
             width={width}
             height={height}
-            sizes={aside ? "300px" : "(max-width: 1023px) 92vw, min(92vw, 1000px)"}
+            sizes="(max-width: 1023px) 92vw, min(92vw, 1000px)"
             className="h-auto w-full"
           />
         )}
-      </SlideIn>
-    ) : null;
-
-  const copy = (
-    <div className={aside ? "w-full lg:max-w-[min(600px,52vw)]" : "w-full"}>
-      <Heading>{heading}</Heading>
-      <Body>{children}</Body>
-    </div>
-  );
-
-  return (
-    <Panel
-      width={VIEW}
-      pad="center"
-      style={
-        {
-          "--beat-aspect": String(aspect),
-          "--beat-max-w": `${maxWidth}px`,
-        } as React.CSSProperties
-      }
-    >
-      <div
-        className={
-          aside
-            ? "mx-auto flex w-full max-w-[min(1100px,92vw)] flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-center lg:gap-16"
-            : "mx-auto flex w-full max-w-[min(var(--beat-max-w),92vw)] flex-col"
-        }
-      >
-        {copy}
-        {media}
-        {caption && !aside && media && (
-          <SlideIn delay={240}>
-            <p className={`mt-4 self-center text-center ${CAPTION}`}>{caption}</p>
-          </SlideIn>
+        {caption && (
+          <p className={`mt-5 max-w-[70ch] text-center ${CAPTION}`}>{caption}</p>
         )}
-      </div>
+      </SlideIn>
     </Panel>
   );
 }
@@ -209,12 +175,15 @@ export default function AthenaWellCaseStudy() {
               <Image src={LOGO} alt="athenaWell" fill unoptimized priority className="object-contain object-left" />
             </div>
 
-            <div className="flex flex-col gap-2 md:min-w-0 md:basis-[16rem] md:grow lg:max-w-[26ch] lg:grow-0 lg:basis-auto">
+            {/* Two lines: "Standalone apps for / patients and care teams".
+                The cap has to be in px, not ch — ch resolves against the
+                element's OWN font-size, and on this wrapper that's the
+                inherited 16px, so lg:max-w-[26ch] was really ~208px and the
+                title broke into four lines. These widths fit the longest
+                line ("patients and care teams") and not a word more. */}
+            <div className="flex flex-col gap-2 md:min-w-0 md:basis-[16rem] md:grow lg:max-w-[420px] lg:grow-0 lg:basis-auto xl:max-w-[480px] 2xl:max-w-[560px]">
               <p className="text-[1.75rem] font-semibold leading-[1.1] sm:text-[1.8rem] md:text-[2.16rem] lg:text-[2rem] xl:text-[2.4rem] 2xl:text-[2.75rem]">
                 Standalone apps for patients and care teams
-              </p>
-              <p className="max-w-[46ch] text-base leading-[1.45] opacity-90 sm:text-lg lg:text-[0.95rem] xl:text-[1.1rem] 2xl:text-[1.25rem]">
-                {project.subtitle}
               </p>
             </div>
           </div>
@@ -253,57 +222,75 @@ export default function AthenaWellCaseStudy() {
         </TextPanel>
 
         {/* ── 3. THE TURN, with the plan itself running underneath it. */}
-        <Beat
-          heading="So I put the whole plan in one place."
+        <TextPanel>
+          <Heading>So I put the whole plan in one place.</Heading>
+          <Body>
+            One plan the care team builds and the patient follows — instead of
+            two versions of it that never quite matched.
+          </Body>
+        </TextPanel>
+
+        <MediaPanel
           src={`${ASSET}/videos/careplan.mp4`}
+          alt="The athenaWell care plan — conditions, goals, tasks and the care team"
           width={1882}
           height={1160}
           video
           maxWidth={1100}
-          caption="Conditions, goals, the day's tasks and the care team, on one page."
-        >
-          One plan the care team builds and the patient follows — instead of
-          two versions of it that never quite matched.
-        </Beat>
+        />
 
         {/* ── 4. THE CARE TEAM'S SIDE. */}
-        <Beat
-          heading="The care team builds it and watches it."
+        <TextPanel>
+          <Heading>The care team builds it and watches it.</Heading>
+          <Body>
+            Everything a nurse needed was on the patient&apos;s page: the plan,
+            the timeline, and a way to reach them.
+          </Body>
+        </TextPanel>
+
+        <MediaPanel
           src={`${ASSET}/care-team.png`}
+          alt="The athenaWell care-team view — patient list, care plan, timeline and a video call"
           width={1001}
           height={558}
           maxWidth={1080}
-          caption="Assign a goal, log a call, start a video visit — without leaving the patient's page."
-        >
-          Everything a nurse needed was on the patient&apos;s page: the plan,
-          the timeline, and a way to reach them.
-        </Beat>
+        />
 
         {/* ── 5. THE PATIENT'S SIDE. */}
-        <Beat
-          heading="The patient only has to see today."
+        <TextPanel>
+          <Heading>The patient only has to see today.</Heading>
+          <Body>
+            Six tasks, a progress ring, and one tap to their care team. Testers
+            kept pointing at the ring — that was the part that brought them
+            back.
+          </Body>
+        </TextPanel>
+
+        <MediaPanel
           src={`${ASSET}/patient-app.png`}
+          alt="The athenaWell patient app — goals, the daily care plan, and the task list"
           width={909}
           height={720}
           maxWidth={880}
           caption="Goals when they want the shape of it, and one day's list when they don't."
-        >
-          Six tasks, a progress ring, and one tap to their care team. Testers
-          kept pointing at the ring — that was the part that brought them
-          back.
-        </Beat>
+        />
 
         {/* ── 6. THE PERSONAS, shown as the documents themselves. */}
-        <Beat
-          heading="Three patients, one plan to hold them all."
+        <TextPanel>
+          <Heading>Three patients, one plan to hold them all.</Heading>
+          <Body>
+            Designed for three risk tiers rather than an average patient —
+            each with its own values, goals and pain points.
+          </Body>
+        </TextPanel>
+
+        <MediaPanel
           src={`${ASSET}/personas.png`}
+          alt="The three athenaWell persona documents — Healthy Patient, High Risk and Rising Risk"
           width={2266}
           height={1343}
           maxWidth={1000}
-        >
-          Designed for three risk tiers rather than an average patient — each
-          with its own values, goals and pain points.
-        </Beat>
+        />
 
         {/* ── 7. THE JUDGMENT CALL. Text only — this one is thinking, not a
                screen, and a portfolio that only reports the assumptions
@@ -319,16 +306,24 @@ export default function AthenaWellCaseStudy() {
 
         {/* ── 8. APOLLO. Beside the copy, not under it: one portrait phone
                on its own line reads as an empty section. */}
-        <Beat
-          heading="A question shouldn't mean a phone queue."
+        <TextPanel>
+          <Heading>A question shouldn&apos;t mean a phone queue.</Heading>
+          <Body>
+            Apollo answered in the app — triage first, then the article that
+            actually answers the question.
+          </Body>
+        </TextPanel>
+
+        {/* One portrait phone, so the cap is height-first: the panel's own
+            room rather than a panel-wide width that would blow a 299px
+            export up to 1000. */}
+        <MediaPanel
           src={`${ASSET}/apollo.png`}
+          alt="Apollo, the athenaWell chat bot, answering a patient's symptom question and sending a Mayo Clinic article"
           width={299}
           height={600}
-          aside
-        >
-          Apollo answered in the app — triage first, then the article that
-          actually answers the question.
-        </Beat>
+          maxWidth={360}
+        />
 
         {/* ── 9. CUSTOM ICONS. Media with a caption; the sheet carries
                itself, so no display heading. */}

@@ -451,7 +451,7 @@ export const projects: Project[] = [
     role: "Senior Product Designer",
     tags: ["Healthcare", "Care management", "Research"],
     thumbnail: "/work-thumbnails/athenawell.webp",
-    logo: "/logos/athenawell.png",
+    logo: "/logos/athenawell.svg",
     accent: "#0055CC",
     aiSummary:
       "Designed athenaWell, a care management platform giving patients and care teams one shared source of truth for a care plan. Built around three patient personas and validated with resonance testing, it shipped daily patient tasks, 200+ wearable integrations, and content partnerships with Mayo Clinic and NIH.",
