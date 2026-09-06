@@ -74,6 +74,16 @@ const REVEAL_OFF = "radial-gradient(circle 0px at 50% 50%, #000, transparent)";
 const PUNCH = (x: number, y: number) =>
   `radial-gradient(circle ${R} at ${x}% ${y}%, transparent 99.5%, #000 100%)`;
 
+/** One type spec for the rotating headline, shared by the visible line and
+ *  the invisible one that reserves its height. */
+const H1_TYPE =
+  "max-w-3xl font-jost text-2xl font-medium leading-snug text-ink sm:text-3xl md:max-w-none md:text-4xl lg:text-[55px] lg:leading-[65px]";
+
+const LONGEST_HEADLINE = headlines.reduce(
+  (a, b) => (b.length > a.length ? b : a),
+  headlines[0],
+);
+
 const ROTATE_MS = 3400;
 
 export default function RotatingHero() {
@@ -228,12 +238,22 @@ export default function RotatingHero() {
             Hello, I&rsquo;m Molly Francis
             <span aria-hidden="true">🖐️</span>
           </p>
-          <h1
-            className="max-w-3xl font-jost text-2xl font-medium leading-snug text-ink transition-opacity duration-[400ms] ease-out sm:text-3xl md:max-w-none md:text-4xl lg:text-[55px] lg:leading-[65px]"
-            style={{ opacity: visible ? 1 : 0 }}
-          >
-            {headlines[index]}
-          </h1>
+          {/* The rotating line holds a constant height: the longest headline
+              is rendered invisibly to reserve the space, and the live one sits
+              on top of it. Without this, a two-line headline following a
+              three-line one collapsed the block and shoved the page around
+              every few seconds. */}
+          <div className="relative">
+            <p aria-hidden className={`${H1_TYPE} invisible`}>
+              {LONGEST_HEADLINE}
+            </p>
+            <h1
+              className={`${H1_TYPE} absolute inset-0 transition-opacity duration-[400ms] ease-out`}
+              style={{ opacity: visible ? 1 : 0 }}
+            >
+              {headlines[index]}
+            </h1>
+          </div>
         </div>
       </div>
     </section>

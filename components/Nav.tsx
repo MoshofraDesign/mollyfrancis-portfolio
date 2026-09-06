@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import { FaLinkedin, FaDribbble, FaInstagram, FaEnvelope } from "react-icons/fa";
 import Logo from "./Logo";
 
@@ -28,12 +27,7 @@ const socials = [
 export default function Nav() {
   const pathname = usePathname();
   return (
-    <motion.header
-      initial={{ y: -32, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="relative z-50 bg-white"
-    >
+    <header className="relative z-50 bg-[var(--color-bg)]">
       <div className="w-full px-6 md:px-8 lg:px-10 h-24 md:h-28 lg:h-32 flex items-center justify-between">
         <Link href="/" className="group">
           <Logo variant="lockup" size={64} />
@@ -122,6 +116,6 @@ export default function Nav() {
           </details>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }
