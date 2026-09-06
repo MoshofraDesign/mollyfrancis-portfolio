@@ -1,4 +1,4 @@
-import { gridProjects } from "@/lib/projects";
+import { gridProjects, rootsProjects } from "@/lib/projects";
 import CareGrid from "@/components/CareGrid";
 import AiChallengesBand from "@/components/AiChallengesBand";
 import { WORK_THUMB_SECTION } from "@/lib/workGrid";
@@ -29,6 +29,29 @@ export default function Home() {
           own so it reads as separate from the client work. See
           AiChallengesBand, and offGrid in lib/projects.ts. */}
       <AiChallengesBand />
+
+      {/* DESIGN ROOTS -----------------------------------------------------
+          The graphic and web design work, in its own group. Same tiles at
+          the same size as the grid above — a heading and the spacing do the
+          separating, because the point of keeping this work on the site is
+          range, and shrinking it would argue the opposite. The main grid
+          deliberately has no heading of its own: this is the section that
+          needs naming. */}
+      <section
+        id="roots"
+        className={`${WORK_THUMB_SECTION} scroll-mt-24 pb-12 pt-14 md:scroll-mt-28 md:pb-16 md:pt-20 lg:scroll-mt-32 lg:pb-20 lg:pt-24`}
+      >
+        <div className="mb-8 max-w-[46rem] md:mb-10">
+          <h2 className="font-jost text-[clamp(1.5rem,2.6vw,2.25rem)] font-semibold leading-[1.15] tracking-[-0.01em] text-ink">
+            Design Roots
+          </h2>
+          <p className="mt-2 font-jost text-[clamp(1rem,1.3vw,1.2rem)] leading-[1.5] text-ink/70 [text-wrap:pretty]">
+            Logos, storefronts and print, from before product design. Still in
+            the toolbox &mdash; pull any of it out if a project needs it.
+          </p>
+        </div>
+        <CareGrid projects={rootsProjects} />
+      </section>
 
     </div>
   );

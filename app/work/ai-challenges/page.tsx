@@ -50,7 +50,15 @@ const ASSET = "/work/ai-challenges";
  * between.
  */
 const COPY_PANEL = "lg:w-[min(100vw,920px)]";
-const MEDIA_PANEL = "lg:w-[min(100vw,1180px)]";
+const MEDIA_PANEL = "lg:w-[min(100vw,1000px)]";
+/**
+ * The artwork's own size in the frame: 800 of 1440, which is what the 2x
+ * exports are cut for. It was capped at 1050 and filling the panel nearly
+ * edge to edge — bigger than anything in the Figma, and nothing like its
+ * proportions. 800 is the drawn size, and the panel above is that plus its
+ * gutter.
+ */
+const MEDIA_W = "max-w-[min(800px,92vw)]";
 /**
  * The last panel of a challenge takes the extra gutter on its TRAILING edge,
  * so the two challenges read as two things.
@@ -61,7 +69,7 @@ const MEDIA_PANEL = "lg:w-[min(100vw,1180px)]";
  * between a brief and its own prompt. The space goes after the outcome
  * instead: tight within a challenge, loose between the two.
  */
-const MEDIA_PANEL_END = "lg:w-[min(100vw,calc(1180px_+_18rem))]";
+const MEDIA_PANEL_END = "lg:w-[min(100vw,calc(1000px_+_18rem))]";
 const MEDIA_TRAIL = "lg:!pr-[18rem]";
 
 const H_DISPLAY = `text-white ${TITLE}`;
@@ -130,7 +138,7 @@ function MediaBeat({
       className={endsGroup ? MEDIA_TRAIL : ""}
     >
       <div
-        className="mx-auto flex w-full max-w-[min(1050px,92vw)] flex-col items-start gap-5"
+        className={`mx-auto flex w-full flex-col items-start gap-5 ${MEDIA_W}`}
         style={{
           /* mark (40) + gap (20) + a little slack, in rem so it tracks type. */
           ["--beat-media-h" as string]:
@@ -144,6 +152,8 @@ function MediaBeat({
             width={160}
             height={40}
             unoptimized
+            /* 160x40 against the frame's 800-wide media — so h-10 is the
+               frame's own scale, not a guess. */
             className="h-8 w-auto sm:h-10"
           />
         </SlideIn>

@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Jost } from "next/font/google";
@@ -69,7 +71,55 @@ const NAV_LOGO_BOX: Record<string, string> = {
   default: "relative h-6 w-[90px] sm:h-7 sm:w-[110px]",
 };
 
-const customSlugs = new Set(["govos-esubmission", "liveperson", "care-homepay", "netspend", "bright-healthcare", "docsquad", "athenawell", "athenahealth", "patient-io", "volusion-admin", "athenaconnect"]);
+/**
+ * Slugs that have a page of their own under app/work/, and so must NOT be
+ * pre-rendered from this template.
+ *
+ * This list is why /work/ai-challenges shipped as the generic gallery
+ * layout: a static segment beats a dynamic one at request time, which is
+ * what dev shows you — but generateStaticParams had already written a
+ * pre-rendered file at that URL during the build, and in production that
+ * file is what gets served. Adding a bespoke page and forgetting this list
+ * is a silent failure that only appears once deployed.
+ *
+ * So the list reads the directory as well. The hardcoded names stay as the
+ * floor: if the fs read ever comes back empty, they still keep the eleven
+ * existing bespoke pages out, and the worst the fs half can do is exclude a
+ * slug that has no page (which just 404s a project that had no page anyway).
+ */
+const BESPOKE_SLUGS = [
+  "govos-esubmission",
+  "liveperson",
+  "care-homepay",
+  "netspend",
+  "bright-healthcare",
+  "docsquad",
+  "athenawell",
+  "athenahealth",
+  "patient-io",
+  "volusion-admin",
+  "athenaconnect",
+  "ai-challenges",
+];
+
+function slugsWithOwnPage(): string[] {
+  try {
+    const dir = path.join(process.cwd(), "app", "work");
+    return fs
+      .readdirSync(dir, { withFileTypes: true })
+      .filter((e) => e.isDirectory() && !e.name.startsWith("["))
+      .filter((e) =>
+        ["page.tsx", "page.ts", "page.jsx", "page.js"].some((f) =>
+          fs.existsSync(path.join(dir, e.name, f)),
+        ),
+      )
+      .map((e) => e.name);
+  } catch {
+    return [];
+  }
+}
+
+const customSlugs = new Set([...BESPOKE_SLUGS, ...slugsWithOwnPage()]);
 
 export function generateStaticParams() {
   return projects

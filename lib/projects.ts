@@ -53,6 +53,13 @@ export type Project = {
    * exists, and its case-study page still works.
    */
   offGrid?: boolean;
+  /**
+   * Moves the project into the Design Roots group under the work grid —
+   * the graphic and web design that came before the product work. Still a
+   * tile, still in the Up-next chain; just a separate section, because it
+   * answers "what's my range" rather than "how do I work".
+   */
+  roots?: boolean;
   /** Soft wide drop shadow under the grid tile, for the light accents that
    *  otherwise float on the page. */
   thumbShadow?: boolean;
@@ -698,6 +705,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ecommerce",
+    roots: true,
     title: "Ecommerce Designs",
     subtitle: "Custom Volusion storefronts and paid templates for independent merchants",
     client: "Volusion",
@@ -783,6 +791,7 @@ export const projects: Project[] = [
   
   {
     slug: "logos",
+    roots: true,
     title: "Logos",
     subtitle: "Selected logo and identity work for clients and side projects",
     client: "Various",
@@ -912,6 +921,7 @@ export const projects: Project[] = [
   },
   {
     slug: "print",
+    roots: true,
     title: "Print Over the Years",
     subtitle: "Print design across holiday cards, invites, and editorial",
     client: "Various",
@@ -1329,19 +1339,33 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
  * own entry from there — but anything flagged offGrid is not part of the
  * client-work sequence and must not appear in either.
  */
-export const gridProjects: Project[] = projects.filter((p) => !p.offGrid);
+/** Up-next order: every project with a page, in array order. */
+export const chainProjects: Project[] = projects.filter((p) => !p.offGrid);
+
+/** The main work grid — the product and UX case studies. */
+export const gridProjects: Project[] = chainProjects.filter((p) => !p.roots);
+
+/**
+ * Design Roots: the graphic and web design work, in its own group under the
+ * grid. Same tiles at the same size — the heading and the spacing do the
+ * separating, so nothing about the work itself is diminished by being older.
+ */
+export const rootsProjects: Project[] = chainProjects.filter((p) => p.roots);
 
 /**
  * The project a case study's Up-next band should point at.
  *
  * Every page used to do `projects[(idx + 1) % projects.length]`, which
  * walked the raw array — so the project sitting before an offGrid record
- * would send visitors into it. This walks the grid sequence instead, and an
- * offGrid project (which isn't in that sequence) hands back the first one.
+ * would send visitors into it. This walks the chain instead, which still
+ * includes the Design Roots galleries (they have pages, and dropping them
+ * from Up next would orphan them) and excludes only offGrid.
  */
 export function nextProject(slug: string): Project {
-  const i = gridProjects.findIndex((p) => p.slug === slug);
-  return i === -1 ? gridProjects[0] : gridProjects[(i + 1) % gridProjects.length];
+  const i = chainProjects.findIndex((p) => p.slug === slug);
+  return i === -1
+    ? chainProjects[0]
+    : chainProjects[(i + 1) % chainProjects.length];
 }
 
 export function getCaseStudyMeta(project: Project): CaseStudyMeta {
