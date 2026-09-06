@@ -113,6 +113,25 @@ function findVideo(name: string): string | null {
  * 1200 keeps the widest block (1005 from a 100px inset, so 1105) inside the
  * panel and takes roughly 240px of emptiness out of every gap.
  */
+/**
+ * Width of a copy panel whose picture comes next — the measure plus its
+ * rail, not the full 1200 every panel used to take.
+ *
+ * A 700px measure at a 71px inset inside a 1200 panel left ~430px of empty
+ * ground between a heading and the screen it introduces. 920 closes it.
+ * Only when the picture is what follows: a copy panel followed by another
+ * copy panel keeps the full width, since two 920s sit in one view together.
+ */
+const COPY_PANEL = "lg:w-[min(100vw,920px)]";
+
+/**
+ * A media panel keeps the 1200 its artwork is placed against and adds the
+ * extra gutter on the TRAILING edge, so a beat reads as one thing: the
+ * heading sits tight against its screen, and the space opens up after the
+ * screen, before the next heading. Tight within, loose between.
+ */
+const MEDIA_PANEL = "lg:w-[min(100vw,1328px)]";
+
 function ScreenPanel({
   children,
   className = "",
@@ -256,7 +275,7 @@ export default function DocSquadCaseStudy() {
         </ScreenPanel>
 
         {/* 4 — THE TURN. The design move the rest of the page shows. */}
-        <ScreenPanel>
+        <ScreenPanel width={COPY_PANEL}>
           <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
             <SlideIn>
               <h2 className={H_DISPLAY}>So the visit starts before the provider does.</h2>
@@ -279,7 +298,7 @@ export default function DocSquadCaseStudy() {
             max-height so a short window scales it down rather than letting
             the panel's overflow-hidden clip the bottom. The still fallback
             keeps object-cover, since that asset does match 977x681. */}
-        <ScreenPanel>
+        <ScreenPanel width={MEDIA_PANEL}>
           {/* Wrapper carries the placement so the caption can sit under the
               clip and travel with it. On CENTER_BELOW_MARK like the rest of
               the page rather than the old stepped tops (132/146/165), which
@@ -315,7 +334,7 @@ export default function DocSquadCaseStudy() {
             aligned, with a caption below, instead of one flat cropped
             sprite. No drop shadow: the screens are already outlined and the
             shadow only muddied the magenta behind them. */}
-        <ScreenPanel>
+        <ScreenPanel width={MEDIA_PANEL}>
           <div className={`mx-auto w-full max-w-[min(1100px,94vw)] lg:absolute lg:left-1/2 lg:w-auto lg:max-w-none lg:-translate-x-1/2 ${CENTER_BELOW_MARK}`}>
             <div className="grid grid-cols-2 items-end justify-items-center gap-4 sm:gap-6 lg:flex lg:flex-nowrap lg:gap-8">
               {PHONE_CROPS.map((phone) => (
@@ -351,7 +370,7 @@ export default function DocSquadCaseStudy() {
                there, but nothing said Molly drew the icons, so beat 8
                arrived as a sheet of shapes with only a caption to explain
                it. */}
-        <ScreenPanel>
+        <ScreenPanel width={COPY_PANEL}>
           <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
             <SlideIn>
               <h2 className={H_DISPLAY}>One interface, web and native.</h2>
@@ -368,7 +387,7 @@ export default function DocSquadCaseStudy() {
         </ScreenPanel>
 
         {/* 8 — ICONS. Figma 4553:21899: 360,240 / 720×519 r10 */}
-        <ScreenPanel>
+        <ScreenPanel width={MEDIA_PANEL}>
           {/* Wrapper carries the placement so the caption travels with the
                  grid. On CENTER_BELOW_MARK like every other block on this
                  page — it used to carry its own nav-clear/6 offset, a one-off
@@ -395,7 +414,7 @@ export default function DocSquadCaseStudy() {
                copy in front of it, so the one part of this work that isn't
                Molly's own drawing — mentoring the designer who owned the
                patient app — went unsaid. Same block shape as beat 7. */}
-        <ScreenPanel>
+        <ScreenPanel width={COPY_PANEL}>
           <div className={`flex w-full max-w-[min(700px,86vw)] flex-col gap-4 lg:absolute lg:left-[71px] xl:left-[89px] 2xl:left-[107px] lg:w-[min(700px,86vw)] ${CENTER_BELOW_MARK}`}>
             <SlideIn>
               <h2 className={H_DISPLAY}>The patient side had to match.</h2>
@@ -412,7 +431,7 @@ export default function DocSquadCaseStudy() {
         </ScreenPanel>
 
         {/* 9 — INTERVIEW + DASHBOARD. Figma 4669:14424: 260,180 / 920×683 */}
-        <ScreenPanel>
+        <ScreenPanel width={MEDIA_PANEL}>
           {/* Aspect-driven, width-capped — no explicit height.
               It had a stepped height AND a max-height, which is the crop: the
               moment the cap bit, the height shrank while the width stayed at
