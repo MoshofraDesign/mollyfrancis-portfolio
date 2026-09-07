@@ -100,8 +100,9 @@ const PHOTO_ROW = (
   justifyItems: "center",
   alignItems: "center",
   gap,
-  /* The row is capped to what the circles actually occupy, so the columns
-     stop being wider than what sits in them. 1fr columns in a 1000px row
+  /* Figma runs 300px circles at 50px gaps inside a 1000px row (4553:21787
+     and its siblings), and the row is capped to what the circles actually
+     occupy so the columns stop being wider than what sits in them. 1fr columns in a 1000px row
      came out ~307px each around a 235px circle, and that 70px of slop per
      column — not the gap — is what held the circles apart. The cap uses the
      same min(size, capVh) the circle itself is capped by, so they agree. */
@@ -237,7 +238,7 @@ function StackPanel({
   photos,
   photosPosition = "top",
   photoSize = 300,
-  photoGap = 28,
+  photoGap = 50,
   textWidth = "max-w-xl",
 }: {
   /** Optional: a continuation row of photos has no heading of its own. */
@@ -290,7 +291,11 @@ function StackPanel({
   );
 }
 
-/** Collections — two side-by-side rows, matching the Figma frame: the
+/** UNUSED as of the Figma pass — Collections is two StackPanels now, one
+ *  per row of three, with its own heading each (4553:21821 / 4958:17819).
+ *  Kept only so the reasoning below stays on the record; safe to delete.
+ *
+ *  Collections — two side-by-side rows, matching the Figma frame: the
  *  heading sits beside row one (vertically centered together), and row two
  *  sits beside the "I blame McDonald's..." aside (also vertically centered
  *  together) — not a heading stacked above everything.
@@ -326,14 +331,14 @@ function CollectionsPanel({
               {heading}
             </h2>
           </SlideIn>
-          <SlideIn delay={80} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(28, 250, 30)}>
+          <SlideIn delay={80} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(50, 300, 32)}>
             {rowOne.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={30} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
         </div>
         <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:gap-x-16">
-          <SlideIn delay={140} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(28, 250, 30)}>
+          <SlideIn delay={140} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(50, 300, 32)}>
             {rowTwo.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={30} crop={p.crop} flip={p.flip} />
             ))}
@@ -347,7 +352,10 @@ function CollectionsPanel({
   );
 }
 
-/** Packaging — two rows, matching the Figma frame exactly: a top row of
+/** UNUSED as of the Figma pass — Packaging is a StackPanel now, heading and
+ *  caption above one row of three (4736:9927). Safe to delete.
+ *
+ *  Packaging — two rows: a top row of
  *  3 photos beside the reused "I blame McDonald's..." aside, and below it
  *  the "I Love Packaging" row (heading in a fixed 250px slot, same as a
  *  photo would, plus 3 more photos). */
@@ -373,7 +381,7 @@ function PackagingPanel({
             instead of the whole line, so the aside stays beside it. */}
         {topRow && (
           <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:gap-x-16">
-            <SlideIn className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(28, 250, 30)}>
+            <SlideIn className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(50, 300, 32)}>
               {topRow.map((p) => (
                 <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={30} crop={p.crop} flip={p.flip} />
               ))}
@@ -385,7 +393,7 @@ function PackagingPanel({
             )}
           </div>
         )}
-        <SlideIn delay={topRow ? 140 : 0} className="w-full" style={PHOTO_ROW(28, 250, 30)}>
+        <SlideIn delay={topRow ? 140 : 0} className="w-full" style={PHOTO_ROW(50, 300, 32)}>
           <div className="w-[250px] max-w-full">
             <h2 className="text-[clamp(1.75rem,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em]">
               {heading}
@@ -549,8 +557,11 @@ export default function AboutPage() {
           </p>
         </StackPanel>
 
-        {/* The second three — a continuation, so no heading of its own. */}
+        {/* Figma 4958:17819 — the second three are their own panel with
+            their own heading, not an unlabelled continuation. */}
         <StackPanel
+          heading="Like I said&hellip; a LOT"
+          photosPosition="bottom"
           photos={[
             { src: "/about/collect-desk.png", alt: "Reading nook with bookshelves" },
             { src: "/about/collect-pens.jpg", alt: "Pen cup with globes" },
@@ -562,7 +573,6 @@ export default function AboutPage() {
         <StackPanel
           heading="👣 When I was little…"
           photosPosition="bottom"
-          photoGap={30}
           textWidth="max-w-3xl"
           photos={[
             {
@@ -589,14 +599,15 @@ export default function AboutPage() {
         </StackPanel>
 
         {/* ── 7 — PACKAGING — heading and photos bottom-aligned ──────────── */}
-        {/* One row, not two. The second row's caption was the Collections
-            aside word for word ("I blame McDonald's and Hardies happy meal
-            toys…"), so the extra row went with it — the heading now sits
-            with its own copy and three photos, like every other panel on
-            the page. Swap the three in `photos` if you'd rather show the
-            Cheetos Popcorn / Bloody Mary / Coors trio. */}
-        <PackagingPanel
+        {/* ── 7 — I LOVE PACKAGING — Figma 4736:9927: heading at 232, the
+               caption under it at 300, the row of three at 430. On
+               StackPanel like the rest of the page — PackagingPanel put the
+               heading inside the photo grid as a fourth cell, which isn't
+               what the frame does. Its second row's caption was the
+               Collections aside word for word, so that row went with it. */}
+        <StackPanel
           heading="I Love Packaging"
+          photosPosition="bottom"
           photos={[
             { src: "/about/packaging-dolly.png", alt: "Dolly Parton coconut flakes" },
             { src: "/about/packaging-2.jpg", alt: "Pickle beer" },
@@ -604,7 +615,7 @@ export default function AboutPage() {
           ]}
         >
           <p>I will always buy something if the packaging is cool.</p>
-        </PackagingPanel>
+        </StackPanel>
 
         {/* ── 8 — I LOVE WHAT I DO — closes the story sequence, per Figma ── */}
         <StoryPanel
