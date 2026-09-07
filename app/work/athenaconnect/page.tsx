@@ -24,6 +24,7 @@ import {
   NextProjectLink,
   CaseStudyMetaPanel,
   HERO_SUBTEXT,
+  HERO_TITLE,
   StatRow,
 } from "@/components/v2/CaseStudyKit";
 
@@ -190,9 +191,11 @@ export default function AthenaConnectCaseStudy() {
           <div
             className={`relative z-10 flex max-w-[46ch] flex-col gap-2 ${HERO_ROW_COPY} lg:absolute lg:left-[50px] lg:top-[148px] lg:max-w-[min(560px,42vw)] xl:top-[166px] 2xl:top-[184px]`}
           >
-            <p className={`opacity-90 ${HERO_SUBTEXT}`}>
-              {project.subtitle}
-            </p>
+            {/* HERO_TITLE, not HERO_SUBTEXT: this line IS the hero heading
+                here — athenaConnect's hero carries no second line — so it
+                reads at the same size as "Prior Authorization Portal" and
+                every other project's hero title. */}
+            <p className={HERO_TITLE}>{project.subtitle}</p>
           </div>
           </div>
 
@@ -318,6 +321,10 @@ export default function AthenaConnectCaseStudy() {
           client={next.client}
           title={next.title}
           accent={next.accent}
+          /* This page was the only one not passing the destination's mark,
+             so its band showed the label and title with a hole above them. */
+          logo={next.logoWide ?? next.logo}
+          logoScale={next.logoBandScale}
         />
       </HorizontalScroll>
     </main>
