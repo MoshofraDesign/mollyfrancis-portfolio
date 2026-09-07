@@ -179,7 +179,11 @@ function StoryPanel({
   return (
     <Panel width={VIEW} pad="center" className={`items-center ${TIGHT_CLEAR}`}>
       <div
-        className={`mx-auto grid w-full max-w-[1100px] items-center gap-10 sm:grid-cols-2 sm:gap-12 ${
+        /* gap-8, not gap-12: with 1fr columns the photo also had ~60px of
+           its own column's slack on each side, so a 48px gap read as ~110.
+           The photo hugs the gutter instead (justify-items-end below), and
+           32px is then the real distance between picture and copy. */
+        className={`mx-auto grid w-full max-w-[1100px] items-center gap-8 sm:grid-cols-2 ${
           reverse ? "sm:[&>*:first-child]:order-2" : ""
         }`}
       >
@@ -203,8 +207,16 @@ function StoryPanel({
             /* A single photo got grid-cols-2, so it sat in half the column
                and read small and far from the copy. One photo, one column. */
             <div
-              className={`grid justify-items-center gap-[28px] ${
+              className={`grid gap-[28px] ${
                 photos.length > 2 ? "grid-cols-3" : photos.length > 1 ? "grid-cols-2" : "grid-cols-1"
+              } ${
+                /* One photo sits against the copy, on whichever side the
+                   copy is; a row of them stays centred in its column. */
+                photos.length === 1
+                  ? reverse
+                    ? "justify-items-center sm:justify-items-start"
+                    : "justify-items-center sm:justify-items-end"
+                  : "justify-items-center"
               }`}
             >
               {photos.map((p) => (
@@ -625,7 +637,7 @@ export default function AboutPage() {
             /* No crop. width 201.12% against height 222.64% on a 1.519
                source is a non-proportional scale — that's the squish. */
             {
-              src: "/about/love-coffee.jpg",
+              src: "/about/love-coffee.png",
               alt: "Coffee cup and 'welcome to your life' sketch",
             },
           ]}

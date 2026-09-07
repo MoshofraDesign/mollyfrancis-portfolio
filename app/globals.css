@@ -272,7 +272,7 @@ body::before {
    the panel instead, so the left-edge furniture stays on the left edge at any
    window shape — and because the sizes still come from --figma-u, the phones
    shrink with the viewport rather than climbing into the logo or Close. */
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   main .care-hero-logo,
   main .care-hero-title,
   main .care-hero-badges,
@@ -306,7 +306,7 @@ body::before {
   main .care-hero-title {
     left: 50px;
     top: 158px;
-    width: min(520px, 36%);
+    width: min(520px, 42%);
     text-align: left;
     align-self: auto;
   }
@@ -364,6 +364,58 @@ body::before {
   main .care-hero-badges img {
     width: calc(50 * var(--figma-u));
     height: calc(50 * var(--figma-u));
+  }
+}
+
+/* ── Care.com hero, DESKTOP (>=1024) ──────────────────────────────────────
+   Two layouts, one frame. Molly picked the tablet composition — mark at
+   50/50 with the headline under it and the phones pushed right — for md,
+   and the Figma frame itself for lg: the full 672x120 wordmark at 100,100,
+   the headline beside it at 57.708%, and the phone pair back near the
+   middle at 28.472%.
+
+   The phones stay floor-anchored rather than top-positioned (top: 26% used
+   to slice the left handset mid-panel on a short window). The left export
+   is the short crop, so bottom: 0 puts its cut exactly on the panel edge,
+   where it reads as the handset running off the frame. The right export is
+   full length and 380 wide = 801 tall against the left's 643, so a shared
+   bottom: 0 stood it TALLER and its top ended up ABOVE the left phone's —
+   the frame staggers it 78 units BELOW. -236u is that 78: panelH - (panelH
+   - 643 + 78 + 801), which cancels the panel height, so the stagger holds
+   at every window shape. */
+@media (min-width: 1024px) {
+  main .care-hero-logo {
+    left: 100px;
+    top: 100px;
+    width: calc(672 * var(--figma-u));
+    height: calc(120 * var(--figma-u));
+  }
+
+  main .care-hero-title {
+    left: 57.708%;
+    top: max(11.4%, 76px);
+    width: 31.597%;
+  }
+  main .care-hero-title p {
+    font-size: calc(36 * var(--figma-u));
+    line-height: calc(46 * var(--figma-u));
+  }
+
+  main .care-hero-phone-l {
+    left: 28.472%;
+    bottom: 0;
+    width: calc(370 * var(--figma-u));
+  }
+  main .care-hero-phone-r {
+    /* 410 -> 744 on the frame is 334 units, anchored to the left phone so
+       the overlap can't breathe as the window changes. */
+    left: calc(28.472% + 334 * var(--figma-u));
+    bottom: calc(-236 * var(--figma-u));
+    width: calc(380 * var(--figma-u));
+  }
+
+  main .care-hero-badges {
+    left: 100px;
   }
 }
 

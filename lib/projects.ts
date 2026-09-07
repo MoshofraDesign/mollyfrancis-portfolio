@@ -613,7 +613,16 @@ export const projects: Project[] = [
     tags: ["Ecommerce", "Dashboard", "SaaS"],
     thumbnail: "/work-thumbnails/volusion-figma.webp",
     logo: "/logos/volusion.svg",
-    logoWide: "/logos/volusion-horizontal.svg",
+    /* NOT volusion-horizontal.svg: despite the filename, that file is the
+       "eCommerce Websites" lockup at 582x181 (identical path data to
+       ecommerce-websites.svg, scaled 1.279x), so every Up-next band pointing
+       here showed the wrong company's mark. volusion-tight.svg is the real
+       Volusion mark with the export padding cropped out. */
+    logoWide: "/logos/volusion-tight.svg",
+    /* A stacked lockup (mark over wordmark, 1.95:1) against a row of wide
+       wordmarks: at the band's flat 34px height its wordmark lands at ~14px
+       and disappears. */
+    logoBandScale: 1.5,
     accent: "#8759F2",
     pageBg: "#8255E8",
     aiSummary:

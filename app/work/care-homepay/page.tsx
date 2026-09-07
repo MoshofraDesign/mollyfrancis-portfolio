@@ -22,7 +22,6 @@ import {
   MEDIA_PANEL,
   HERO_ROW,
   HERO_ROW_COPY,
-  HERO_INSET_MD,
   SUBHEAD,
   SMALL,
   StatRow,
@@ -121,7 +120,7 @@ export default function CareHomepayCaseStudy() {
             the order-* classes stack it: logo, headline, phones, badges. */}
         <section
           id="title"
-          className={`relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 sm:px-10 sm:pt-28 ${HERO_INSET_MD} lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0`}
+          className={`relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 sm:px-10 sm:pt-28 md:h-[100dvh] md:gap-0 md:px-0 md:pb-0 md:pt-0 lg:w-screen lg:shrink-0 lg:snap-start`}
         >
           {/* Mark + headline are one wrapping row from tablet up — see
               HERO_ROW. The wrapper is display:contents outside md, so the
@@ -191,7 +190,7 @@ export default function CareHomepayCaseStudy() {
               ratio covered a headline instead of reading as depth. At lg the
               .care-hero-phone-* rules take over (position: absolute,
               margin: 0), so none of this survives into the desktop frame. */}
-          <div className="order-3 -mx-6 -mb-10 mt-6 flex flex-1 items-end justify-center gap-3 sm:-mx-10 sm:gap-6 md:-mx-[50px] lg:contents">
+          <div className="order-3 -mx-6 -mb-10 mt-6 flex flex-1 items-end justify-center gap-3 sm:-mx-10 sm:gap-6 md:contents">
             <SlideIn
               delay={80}
               className="care-hero-phone-l w-[46%] max-w-[320px]"
