@@ -483,10 +483,10 @@ export default function AboutPage() {
         <StackPanel
           heading="I have a wonderful family"
           photos={[
-            /* No crop. The source is 350x350 — already square, like the
-               circle it sits in — so the 126.8%-wide pan was pure loss: it
-               showed 3.9% to 82.8% of the width and cut Molly off the right
-               edge of her own family photo. Uncropped, everyone is in it. */
+            /* Molly's own circle crops — 600x600, already masked to the
+               circle they sit in, so no crop or pan here. The old family-1
+               had a 126.8%-wide pan that showed 3.9% to 82.8% of the frame
+               and cut her off the right edge of her own family photo. */
             { src: "/about/family-1.jpg", alt: "Family group photo" },
             { src: "/about/family-2.jpg", alt: "Daughter with pink blanket" },
             { src: "/about/family-3.jpg", alt: "Molly and daughter" },
