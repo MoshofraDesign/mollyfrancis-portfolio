@@ -88,12 +88,25 @@ const TIGHT_CLEAR_RAIL = `${TIGHT_CLEAR} !px-6 sm:!px-12 lg:!pl-[100px] lg:!pr-[
 /** One row of circle photos. auto-fit means the browser fits whole columns
  *  and drops to two (then one) rather than wrapping a row unevenly; 190px is
  *  the floor a circle may shrink to before a column is dropped. */
-const PHOTO_ROW = (gap: number): React.CSSProperties => ({
+const PHOTO_ROW = (
+  gap: number,
+  /** The circle's own diameter and vh ceiling — see Photo. */
+  size = 300,
+  capVh = 32,
+  count = 3,
+): React.CSSProperties => ({
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 150px), 1fr))",
   justifyItems: "center",
   alignItems: "center",
   gap,
+  /* The row is capped to what the circles actually occupy, so the columns
+     stop being wider than what sits in them. 1fr columns in a 1000px row
+     came out ~307px each around a 235px circle, and that 70px of slop per
+     column — not the gap — is what held the circles apart. The cap uses the
+     same min(size, capVh) the circle itself is capped by, so they agree. */
+  maxWidth: `calc(${count} * min(${size}px, ${capVh}vh) + ${count - 1} * ${gap}px)`,
+  marginInline: "auto",
 });
 
 function Photo({
@@ -165,7 +178,7 @@ function StoryPanel({
   return (
     <Panel width={VIEW} pad="center" className={`items-center ${TIGHT_CLEAR}`}>
       <div
-        className={`mx-auto grid w-full max-w-[1100px] items-center gap-10 sm:grid-cols-2 sm:gap-20 ${
+        className={`mx-auto grid w-full max-w-[1100px] items-center gap-10 sm:grid-cols-2 sm:gap-12 ${
           reverse ? "sm:[&>*:first-child]:order-2" : ""
         }`}
       >
@@ -186,7 +199,13 @@ function StoryPanel({
               )}
             </div>
           ) : (
-            <div className={`grid justify-items-center gap-[40px] ${photos.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
+            /* A single photo got grid-cols-2, so it sat in half the column
+               and read small and far from the copy. One photo, one column. */
+            <div
+              className={`grid justify-items-center gap-[28px] ${
+                photos.length > 2 ? "grid-cols-3" : photos.length > 1 ? "grid-cols-2" : "grid-cols-1"
+              }`}
+            >
               {photos.map((p) => (
                 <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} crop={p.crop} flip={p.flip} />
               ))}
@@ -218,10 +237,11 @@ function StackPanel({
   photos,
   photosPosition = "top",
   photoSize = 300,
-  photoGap = 40,
+  photoGap = 28,
   textWidth = "max-w-xl",
 }: {
-  heading: string;
+  /** Optional: a continuation row of photos has no heading of its own. */
+  heading?: string;
   children?: React.ReactNode;
   photos: PhotoSpec[];
   photosPosition?: "top" | "bottom";
@@ -231,17 +251,19 @@ function StackPanel({
   textWidth?: string;
 }) {
   const photoRow = (
-    <SlideIn className="w-full" style={PHOTO_ROW(photoGap)}>
+    <SlideIn className="w-full" style={PHOTO_ROW(photoGap, photoSize, 32, photos.length)}>
       {photos.map((p) => (
         <Photo key={p.src} src={p.src} alt={p.alt} size={photoSize} crop={p.crop} flip={p.flip} />
       ))}
     </SlideIn>
   );
-  const text = (
+  const text = !heading && !children ? null : (
     <SlideIn delay={100} className={textWidth}>
-      <h2 className="text-[clamp(1.75rem,5vw,3.8rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
-        {heading}
-      </h2>
+      {heading && (
+        <h2 className="text-[clamp(1.75rem,5vw,3.8rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
+          {heading}
+        </h2>
+      )}
       {children && (
         <div className="mt-4 space-y-3 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
           {children}
@@ -304,14 +326,14 @@ function CollectionsPanel({
               {heading}
             </h2>
           </SlideIn>
-          <SlideIn delay={80} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(40)}>
+          <SlideIn delay={80} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(28, 250, 30)}>
             {rowOne.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={30} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
         </div>
         <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:gap-x-16">
-          <SlideIn delay={140} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(40)}>
+          <SlideIn delay={140} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(28, 250, 30)}>
             {rowTwo.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={30} crop={p.crop} flip={p.flip} />
             ))}
@@ -351,7 +373,7 @@ function PackagingPanel({
             instead of the whole line, so the aside stays beside it. */}
         {topRow && (
           <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:gap-x-16">
-            <SlideIn className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(40)}>
+            <SlideIn className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(28, 250, 30)}>
               {topRow.map((p) => (
                 <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={30} crop={p.crop} flip={p.flip} />
               ))}
@@ -363,7 +385,7 @@ function PackagingPanel({
             )}
           </div>
         )}
-        <SlideIn delay={topRow ? 140 : 0} className="w-full" style={PHOTO_ROW(40)}>
+        <SlideIn delay={topRow ? 140 : 0} className="w-full" style={PHOTO_ROW(28, 250, 30)}>
           <div className="w-[250px] max-w-full">
             <h2 className="text-[clamp(1.75rem,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em]">
               {heading}
@@ -389,11 +411,16 @@ export default function AboutPage() {
       className={`${jost.variable} relative bg-white text-[#2f2f2f]`}
       style={{ fontFamily: "var(--font-jost), system-ui, sans-serif" }}
     >
+      {/* parkImmediately was already set: the mark sits in the corner from
+          the first panel rather than sliding 1:1 with the scroller. On a
+          case study that ride reads as the hero mark being left behind;
+          here there is no hero mark, so it would just look like the logo
+          wandering. */}
       <StickyNav
+        parkImmediately
         watch="title"
         logo={<Logo variant="mark" size={64} />}
         action={<CloseLink large />}
-        parkImmediately
       />
 
       <HorizontalScroll>
@@ -435,19 +462,18 @@ export default function AboutPage() {
                 ))}
                 {" "}traits
               </p>
+              {/* 98 words to 52. Same claims, none of the résumé register —
+                  "proven track record", "high-stakes compliance data",
+                  "high-impact individual work" were three phrases for one
+                  idea, which is that she makes complicated things simple. */}
               <p className="mt-5 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
-                I am a UX leader and hands-on designer with a proven track
-                record of solving complex problems across Healthcare,
-                Conversational AI Platforms, Fintech, GovTech, and E-commerce.
-                Having shaped products for companies ranging from early-stage
-                startups like Patient IO to industry giants like athenahealth,
-                LivePerson, and Care.com, I thrive as a player-coach who
-                bridges strategy and execution. My expertise lies in
-                translating intricate workflows, high-stakes compliance data,
-                and diverse user needs into seamless digital products. I
-                excel at leading from the front and managing and mentoring
-                individual designers to elevate their craft while
-                continuously shipping high-impact individual work.
+                I&rsquo;m a UX leader who still designs. Twenty years across
+                healthcare, fintech, govtech, conversational AI and
+                e&#8209;commerce &mdash; from a startup like Patient IO to
+                athenahealth, LivePerson and Care.com. I&rsquo;m happiest as a
+                player&#8209;coach: mentoring designers and shipping work
+                myself. What I&rsquo;m best at is making complicated
+                workflows feel simple.
               </p>
             </SlideIn>
           </div>
@@ -457,11 +483,11 @@ export default function AboutPage() {
         <StackPanel
           heading="I have a wonderful family"
           photos={[
-            {
-              src: "/about/family-1.jpg",
-              alt: "Family group photo",
-              crop: { left: "-4.98%", top: "0%", width: "126.8%", height: "100%" },
-            },
+            /* No crop. The source is 350x350 — already square, like the
+               circle it sits in — so the 126.8%-wide pan was pure loss: it
+               showed 3.9% to 82.8% of the width and cut Molly off the right
+               edge of her own family photo. Uncropped, everyone is in it. */
+            { src: "/about/family-1.jpg", alt: "Family group photo" },
             { src: "/about/family-2.jpg", alt: "Daughter with pink blanket" },
             { src: "/about/family-3.jpg", alt: "Molly and daughter" },
           ]}
@@ -496,17 +522,16 @@ export default function AboutPage() {
           <p>I have two cats and a dog. They love to crash a good meeting :)</p>
         </StackPanel>
 
-        {/* ── 5 — COLLECTIONS — staggered two-row grid ───────────────────── */}
-        <CollectionsPanel
+        {/* ── 5 — COLLECTIONS — two sections of three, on StackPanel like
+               every other panel here. It used to be one bespoke
+               CollectionsPanel that tried to put the heading beside row one
+               and the caption beside row two; the photo groups were
+               full-width, so neither ever sat beside anything and both text
+               blocks ended up as orphaned columns. */}
+        <StackPanel
           heading="I collect a LOT of things"
-          aside={
-            <p>
-              I blame McDonald&rsquo;s and Hardies happy meal toys (the
-              California Raisins) and the scholastic book fair when I was a
-              kid :)
-            </p>
-          }
-          rowOne={[
+          photosPosition="bottom"
+          photos={[
             { src: "/about/collect-4.jpg", alt: "Doll heads shelf" },
             { src: "/about/collect-3.jpg", alt: "Terracotta sculpture" },
             {
@@ -516,7 +541,17 @@ export default function AboutPage() {
               crop: { left: "-0.04%", top: "-20.18%", width: "100.07%", height: "138.09%" },
             },
           ]}
-          rowTwo={[
+        >
+          <p>
+            I blame McDonald&rsquo;s and Hardies happy meal toys (the
+            California Raisins) and the scholastic book fair when I was a
+            kid :)
+          </p>
+        </StackPanel>
+
+        {/* The second three — a continuation, so no heading of its own. */}
+        <StackPanel
+          photos={[
             { src: "/about/collect-desk.png", alt: "Reading nook with bookshelves" },
             { src: "/about/collect-pens.jpg", alt: "Pen cup with globes" },
             { src: "/about/collect-candy.png", alt: "Hand reaching into a candy jar" },
@@ -554,20 +589,14 @@ export default function AboutPage() {
         </StackPanel>
 
         {/* ── 7 — PACKAGING — heading and photos bottom-aligned ──────────── */}
+        {/* One row, not two. The second row's caption was the Collections
+            aside word for word ("I blame McDonald's and Hardies happy meal
+            toys…"), so the extra row went with it — the heading now sits
+            with its own copy and three photos, like every other panel on
+            the page. Swap the three in `photos` if you'd rather show the
+            Cheetos Popcorn / Bloody Mary / Coors trio. */}
         <PackagingPanel
           heading="I Love Packaging"
-          topRow={[
-            { src: "/about/packaging-cheetos-popcorn.png", alt: "Cheetos Popcorn bag" },
-            { src: "/about/packaging-bloodymary.png", alt: "Bloody Mary on a Dude Perfect placemat" },
-            { src: "/about/packaging-coors.png", alt: "Coors Banquet can with a thumbs up" },
-          ]}
-          topAside={
-            <p>
-              I blame McDonald&rsquo;s and Hardies happy meal toys (the
-              California Raisins) and the scholastic book fair when I was a
-              kid :)
-            </p>
-          }
           photos={[
             { src: "/about/packaging-dolly.png", alt: "Dolly Parton coconut flakes" },
             { src: "/about/packaging-2.jpg", alt: "Pickle beer" },
@@ -582,10 +611,11 @@ export default function AboutPage() {
           heading="I love what I do"
           photoSize={400}
           photos={[
+            /* No crop. width 201.12% against height 222.64% on a 1.519
+               source is a non-proportional scale — that's the squish. */
             {
               src: "/about/love-coffee.jpg",
               alt: "Coffee cup and 'welcome to your life' sketch",
-              crop: { left: "-101.12%", top: "-69.96%", width: "201.12%", height: "222.64%" },
             },
           ]}
         >
