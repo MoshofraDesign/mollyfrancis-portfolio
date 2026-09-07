@@ -274,7 +274,7 @@ export default function LivePersonCaseStudy() {
                 width={594}
                 height={124}
                 unoptimized
-                className="h-auto w-[min(100%,180px)] sm:w-[min(100%,220px)] lg:w-[min(100%,260px)]"
+                className="h-auto w-[min(100%,130px)] sm:w-[min(100%,150px)] lg:w-[min(100%,170px)]"
               />
             </h2>
             <p className={`mt-4 max-w-[48ch] ${BODY_TYPE}`}>
