@@ -292,12 +292,12 @@ export default function ConsumerHealthCaseStudy() {
           </SlideIn>
         </TextPanel>
 
-        <StoryImage
-          src={`${ASSET}/nav-before.png`}
-          alt="Legacy patient portal navigation"
-          aspect="aspect-[964/373]"
-          caption="Seven links. No small-screen version."
-        />
+        {/* No legacy-nav screenshot here. The two before/afters above already
+            show that portal, twice — a third look at the same chrome for the
+            sake of its nav bar was the same picture again. "Seven links. No
+            small-screen version." is what the caption said, and the copy
+            above already says people couldn't find things and it had to work
+            on a phone. The redesigned nav follows directly. */}
 
         {/* Cut the repeats. Make it respond. */}
         <Panel width={VIEW} pad="center">
