@@ -4,15 +4,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
 
-const opportunities = [
-  "Lead / Principal / Staff design role",
-  "Design system or design ops leadership",
-  "0 → 1 product engagement (fractional)",
-  "AI / agentic product strategy",
-  "Workshop, audit, or expert review",
-  "Speaking, panels, or mentorship",
-];
-
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -23,12 +14,16 @@ export default function ContactPage() {
           <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-6">
             Get in touch
           </p>
-          <h1 className="font-serif text-hero">
+          {/* Semibold ink, and the second line in ink/45 rather than the
+              ochre token (#3DC185) — the green appears nowhere else on the
+              site, and every other page sets a heading in one weight with
+              the quieter half dropped in tone, not hue. */}
+          <h1 className="font-serif text-hero font-semibold tracking-[-0.02em]">
             Tell me about the problem.
             <br />
-            <em className="not-italic font-light text-ochre">
+            <span className="text-ink/45">
               I&rsquo;ll tell you if I&rsquo;m the right designer for it.
-            </em>
+            </span>
           </h1>
         </Reveal>
       </section>
@@ -52,7 +47,7 @@ export default function ContactPage() {
                   className="py-10 text-center"
                 >
                   <div className="text-5xl mb-6">✦</div>
-                  <h2 className="font-serif text-h1 mb-3">Thanks, got it.</h2>
+                  <h2 className="font-serif text-h1 font-semibold tracking-[-0.02em] mb-3">Thanks, got it.</h2>
                   <p className="text-ink/70 max-w-md mx-auto">
                     I&rsquo;ll get back to you within a few business days. If
                     it&rsquo;s urgent, please email{" "}
@@ -77,11 +72,6 @@ export default function ContactPage() {
                     />
                   </div>
                   <Field label="Company or team" name="company" />
-                  <SelectField
-                    label="What kind of work?"
-                    name="topic"
-                    options={opportunities}
-                  />
                   <Field
                     label="Tell me about it"
                     name="message"
@@ -118,19 +108,6 @@ export default function ContactPage() {
                 Based in Austin, Texas (CT). Comfortable async, on-site for the
                 right team.
               </p>
-            </div>
-
-            <div className="p-8 rounded-md border border-ink/10">
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/50 mb-4">
-                I&rsquo;m especially interested in
-              </p>
-              <ul className="space-y-2 text-ink/80">
-                {opportunities.map((o) => (
-                  <li key={o} className="flex gap-3">
-                    <span className="text-ochre">✦</span> {o}
-                  </li>
-                ))}
-              </ul>
             </div>
 
             <div className="p-8 rounded-md border border-ink/10">
@@ -194,7 +171,7 @@ function Field({
     <label className="block">
       <span className="text-xs uppercase tracking-[0.18em] text-ink/50">
         {label}
-        {required && <span className="text-ochre"> *</span>}
+        {required && <span className="text-ink/40"> *</span>}
       </span>
       {textarea ? (
         <textarea
@@ -211,38 +188,6 @@ function Field({
           className="mt-2 w-full bg-transparent border-b border-ink/20 focus:border-ink/60 outline-none py-2 font-serif text-lg"
         />
       )}
-    </label>
-  );
-}
-
-function SelectField({
-  label,
-  name,
-  options,
-}: {
-  label: string;
-  name: string;
-  options: string[];
-}) {
-  return (
-    <label className="block">
-      <span className="text-xs uppercase tracking-[0.18em] text-ink/50">
-        {label}
-      </span>
-      <select
-        name={name}
-        className="mt-2 w-full bg-transparent border-b border-ink/20 focus:border-ink/60 outline-none py-2 font-serif text-lg"
-        defaultValue=""
-      >
-        <option value="" disabled>
-          Choose one…
-        </option>
-        {options.map((o) => (
-          <option key={o} value={o}>
-            {o}
-          </option>
-        ))}
-      </select>
     </label>
   );
 }

@@ -704,8 +704,12 @@ export default function AboutPage() {
         </Panel>
 
         {/* ── CTA — Let's talk ──────────────────────────────────────── */}
-        <section className={`relative flex h-[100dvh] w-screen flex-col justify-center gap-2 shrink-0 snap-start overflow-y-auto overscroll-contain bg-[#141414] ${GUTTER} py-0 text-[#f5f5f5]`}>
-          <div className={MEASURE}>
+        {/* A 600px column, the same width as an Up-next panel, not a full
+            screen: the closing card is one short block of copy and two
+            buttons, and a full-viewport panel left it stranded in a field
+            of black. Same inner measure as the band, too. */}
+        <section className={`relative flex h-[100dvh] w-full flex-col justify-center gap-2 shrink-0 snap-start overflow-y-auto overscroll-contain bg-[#141414] ${GUTTER} py-0 text-[#f5f5f5] lg:w-[min(100vw,600px)]`}>
+          <div className="w-full max-w-[min(32rem,86vw)]">
           <SlideIn>
             <p className="text-xs uppercase tracking-[0.25em] text-white/60">
               Still reading?
