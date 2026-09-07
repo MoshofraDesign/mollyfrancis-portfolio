@@ -176,8 +176,11 @@ export default function ConsumerHealthCaseStudy() {
               is 83 tall, so the region runs 133 to the panel floor and its
               middle is (100dvh + 133)/2. The height cap is that region less
               a little air, converted to a width through the composite's own
-              1.6796 aspect. */}
-          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,1038px)] lg:absolute lg:left-1/2 lg:top-[calc((100dvh_+_133px)_/_2)] lg:mx-0 lg:w-[843px] xl:w-[1054px] 2xl:w-[1265px] lg:max-w-[calc((100dvh_-_181px)_*_1.6796)] lg:-translate-x-1/2 lg:-translate-y-1/2">
+              1.6796 aspect.
+              Sizes came down a step (843/1054/1265 to 720/880/1040, and the
+              height budget from -181 to -240): centred at the old widths it
+              filled the frame edge to edge and floor to nav. */}
+          <div className="relative z-0 mx-auto w-full max-w-[min(92vw,1038px)] lg:absolute lg:left-1/2 lg:top-[calc((100dvh_+_133px)_/_2)] lg:mx-0 lg:w-[720px] xl:w-[880px] 2xl:w-[1040px] lg:max-w-[calc((100dvh_-_240px)_*_1.6796)] lg:-translate-x-1/2 lg:-translate-y-1/2">
             <Image
               src={`${ASSET}/hero.png`}
               alt="Redesigned patient portal dashboard on desktop and mobile"
@@ -213,8 +216,15 @@ export default function ConsumerHealthCaseStudy() {
             950x659, which put ~170px of empty ground between the picture
             and its caption. */}
 
-        {/* HOME — copy, then the pair */}
-        <TextPanel width={VIEW}>
+        {/* HOME — copy, then the pair.
+            A wider measure from xl: at the 700px default this headline broke
+            across two lines on a big screen, and it's short enough to hold
+            one. Below xl it keeps the reading measure like every other
+            text beat. */}
+        <TextPanel
+          width={VIEW}
+          measure="w-full max-w-[min(700px,86vw)] xl:max-w-[min(1040px,90vw)]"
+        >
           <SlideIn>
             <h2 className={H_DISPLAY}>So I made a real landing page.</h2>
           </SlideIn>
@@ -249,12 +259,19 @@ export default function ConsumerHealthCaseStudy() {
           </SlideIn>
         </TextPanel>
 
+        {/* Rounded like every other screenshot on the site, and sized to
+            match the clip that follows it: same min(950, 90vw, height-cap)
+            formula as ClipPanel, through this asset's own 1.441 aspect
+            against the clip's 1.4088 — so the before and after render at the
+            same size at any window. `contain` is off, which is what turns
+            the 10px radius on; the box is the asset's exact aspect, so
+            object-cover has nothing to crop. */}
         <StoryImage
           src={`${ASSET}/myhealth-before.webp`}
           alt="Legacy My Health — Test Results, with everything else in a sidebar"
           aspect="aspect-[964/669]"
           caption="This was My Health before"
-          contain
+          mediaWidth="mx-auto w-full max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_3.5rem)_*_1.441))]"
         />
 
         <ClipPanel

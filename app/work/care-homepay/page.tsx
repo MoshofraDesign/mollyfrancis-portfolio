@@ -285,22 +285,27 @@ export default function CareHomepayCaseStudy() {
             colour shows between them — the old composite had a coral
             background baked into the gaps. */}
         <Panel width={MEDIA_PANEL} pad="center">
-          <SlideIn className="mx-auto grid w-full max-w-[min(950px,90vw)] grid-cols-1 items-end gap-8 sm:grid-cols-3 sm:gap-[5.39%]">
+          {/* One SlideIn PER screen, not one around the grid — they used to
+              reveal as a single block, so the row just appeared. Staggered
+              90ms apart, the same cascade the numbers rows and the icon
+              sheets use elsewhere. */}
+          <div className="mx-auto grid w-full max-w-[min(950px,90vw)] grid-cols-1 items-end gap-8 sm:grid-cols-3 sm:gap-[5.39%]">
             {[
               { n: 1, alt: "Add time — day picker" },
               { n: 2, alt: "Hours worked — weekly view" },
               { n: 3, alt: "Timesheet — totals and submit" },
-            ].map(({ n, alt }) => (
-              <Image
-                key={n}
-                src={`${ASSET}/screens-timesheet-${n}.png`}
-                alt={alt}
-                width={276}
-                height={600}
-                className="mx-auto h-auto w-full max-w-[min(276px,calc(var(--panel-media-max-h)*0.46))]"
-              />
+            ].map(({ n, alt }, i) => (
+              <SlideIn key={n} delay={i * 90}>
+                <Image
+                  src={`${ASSET}/screens-timesheet-${n}.png`}
+                  alt={alt}
+                  width={276}
+                  height={600}
+                  className="mx-auto h-auto w-full max-w-[min(276px,calc(var(--panel-media-max-h)*0.46))]"
+                />
+              </SlideIn>
             ))}
-          </SlideIn>
+          </div>
         </Panel>
 
         {/* ── PANELS 5-6: SECURE MESSAGING, CLOCK IN AND OUT

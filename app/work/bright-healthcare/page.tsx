@@ -272,33 +272,20 @@ export default function BrightHealthcareCaseStudy() {
           </div>
         </Panel>
 
-        {/* 9 — the real design problem */}
-        <Panel width={VIEW} pad="center">
-          <div className={`${MEASURE} mx-auto`}>
-            <SlideIn>
-              <h2 className={H_DISPLAY}>
-                The hard part wasn&apos;t the form. It was the rules behind it.
-              </h2>
-            </SlideIn>
-            <SlideIn delay={100}>
-              <p className={`mt-3 ${BODY}`}>
-                With clinical operations I mapped the rules into
-                the form, so it told providers what was required
-                before they submitted, not after. Prototype
-                testing tightened each step; the dashboard grew
-                with the user.
-              </p>
-            </SlideIn>
-          </div>
-        </Panel>
+        {/* 8/9 — THE DESIGN PROBLEM AND THE DECISION, in one beat.
+            These were two full-viewport text panels back to back with no
+            media between them, and they were the same move: the rules were
+            the hard part, so the portal got a structure. Two display
+            headlines in a row for one idea reads as a page padding itself
+            out, so the rules line is the body's opening clause now and the
+            fax/structure line — the sharper of the two — is the heading.
 
-        {/* 8 — INFORMATION ARCHITECTURE, and it has to come HERE.
-            It used to sit before the research board and the empathy map,
-            which read as though the structure was decided first and the
-            research arrived afterwards to agree with it. The arc a UX
-            portfolio is judged on is research, then the insight, then the
-            decision — so this is the decision, and the flow that follows
-            is that decision built. */}
+            It has to come HERE. It used to sit before the research board and
+            the empathy map, which read as though the structure was decided
+            first and the research arrived afterwards to agree with it. The
+            arc a UX portfolio is judged on is research, then the insight,
+            then the decision — so this is the decision, and the flow that
+            follows is that decision built. */}
         <Panel width={VIEW} pad="center">
           <div className={`${MEASURE} mx-auto`}>
             <SlideIn>
@@ -306,17 +293,20 @@ export default function BrightHealthcareCaseStudy() {
                 A fax is one flat page. A portal needs a structure.
               </h2>
             </SlideIn>
-            {/* The rules-into-form-logic sentence used to be here too. It
-                belongs to the beat above, which names the rules AS the design
-                problem; saying it twice made the second one sound like a
-                summary. What's left is the decision itself, and the status
-                line, which is the sharpest thing on the page. */}
             <SlideIn delay={100}>
               <p className={`mt-3 ${BODY}`}>
-                I decided what goes where: the dashboard, the
-                request, and what a provider sees after
-                submitting. Status got its own place &mdash; the
-                one thing a fax never gave back.
+                The hard part wasn&apos;t the form &mdash; it was the rules
+                behind it. With clinical operations I mapped them in, so the
+                form told providers what was required before they submitted,
+                not after.
+              </p>
+            </SlideIn>
+            <SlideIn delay={180}>
+              <p className={`mt-6 ${BODY}`}>
+                Then I decided what goes where: the request, what a provider
+                sees after submitting, and a dashboard that grew with them.
+                Status got its own place &mdash; the one thing a fax never
+                gave back.
               </p>
             </SlideIn>
           </div>

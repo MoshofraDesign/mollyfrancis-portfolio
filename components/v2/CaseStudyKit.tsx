@@ -308,11 +308,15 @@ export function TextPanel({
   id,
   width = VIEW,
   className = "",
+  measure = MEASURE,
 }: {
   children: React.ReactNode;
   id?: string;
   width?: string;
   className?: string;
+  /** Override the 700px reading measure — for a display line that should
+   *  hold to one line on a wide screen. Defaults to MEASURE. */
+  measure?: string;
 }) {
   // items-[safe_center]: same reasoning as Panel's justify-[safe_center] —
   // centers vertically when content fits, falls back to top-alignment
@@ -322,7 +326,7 @@ export function TextPanel({
       id={id}
       className={`relative flex w-full justify-center lg:h-[100dvh] ${width} lg:shrink-0 lg:snap-start lg:[align-items:safe_center] no-scrollbar lg:overflow-y-auto lg:overscroll-contain ${GUTTER} ${NAV_CLEAR} ${className}`}
     >
-      <div className={MEASURE}>{children}</div>
+      <div className={measure}>{children}</div>
     </section>
   );
 }

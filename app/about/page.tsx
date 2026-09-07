@@ -263,10 +263,13 @@ function StackPanel({
   );
 }
 
-/** Collections — two side-by-side rows, matching the Figma frame exactly:
+/** Collections — two side-by-side rows, matching the Figma frame: the
  *  heading sits beside row one (vertically centered together), and row two
  *  sits beside the "I blame McDonald's..." aside (also vertically centered
- *  together) — not a heading stacked above everything. */
+ *  together) — not a heading stacked above everything.
+ *
+ *  That was the intent all along; see the comment on the rows for why it
+ *  didn't render that way. */
 function CollectionsPanel({
   heading,
   aside,
@@ -280,26 +283,35 @@ function CollectionsPanel({
 }) {
   return (
     <Panel width={VIEW} pad="rail" className={TIGHT_CLEAR_RAIL}>
+      {/* The rows are rows again.
+          Each photo group carried `w-full` inside a flex-wrap row, so it
+          claimed the whole line and the heading could never sit beside it —
+          it wrapped above, the aside wrapped below, and both ended up as
+          narrow orphaned columns under the first circle. The text slots
+          don't shrink (shrink-0) and the photo group takes the rest
+          (flex-1 min-w-0), so its auto-fit grid absorbs the squeeze instead
+          of forcing a wrap. Below sm the container is flex-col, so this all
+          stacks as before. */}
       <div className="flex w-full max-w-[1150px] flex-col gap-8">
-        <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-[30px]">
-          <SlideIn className="w-[260px] max-w-full">
+        <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:gap-x-[30px]">
+          <SlideIn className="w-[260px] max-w-full sm:shrink-0">
             <h2 className="text-[clamp(1.75rem,4vw,50px)] font-semibold leading-[1.15] tracking-[-0.01em]">
               {heading}
             </h2>
           </SlideIn>
-          <SlideIn delay={80} className="w-full" style={PHOTO_ROW(40)}>
+          <SlideIn delay={80} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(40)}>
             {rowOne.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={20} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
         </div>
-        <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-16">
-          <SlideIn delay={140} className="w-full" style={PHOTO_ROW(40)}>
+        <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:gap-x-16">
+          <SlideIn delay={140} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(40)}>
             {rowTwo.map((p) => (
               <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={20} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
-          <SlideIn delay={200} className="w-[226px] max-w-full text-[clamp(0.9rem,1.4vw,20px)] leading-relaxed opacity-70">
+          <SlideIn delay={200} className="w-[226px] max-w-full text-[clamp(0.9rem,1.4vw,20px)] leading-relaxed opacity-70 sm:shrink-0">
             {aside}
           </SlideIn>
         </div>
@@ -330,15 +342,17 @@ function PackagingPanel({
   return (
     <Panel width={VIEW} pad="rail" className={TIGHT_CLEAR_RAIL}>
       <div className="flex w-full max-w-[1150px] flex-col gap-8">
+        {/* Same fix as Collections: the photo group takes the remainder
+            instead of the whole line, so the aside stays beside it. */}
         {topRow && (
-          <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:flex-wrap sm:gap-x-16">
-            <SlideIn className="w-full" style={PHOTO_ROW(40)}>
+          <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:gap-x-16">
+            <SlideIn className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(40)}>
               {topRow.map((p) => (
                 <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={20} crop={p.crop} flip={p.flip} />
               ))}
             </SlideIn>
             {topAside && (
-              <SlideIn delay={80} className="w-[226px] max-w-full text-[clamp(0.9rem,1.4vw,20px)] leading-relaxed opacity-70">
+              <SlideIn delay={80} className="w-[226px] max-w-full text-[clamp(0.9rem,1.4vw,20px)] leading-relaxed opacity-70 sm:shrink-0">
                 {topAside}
               </SlideIn>
             )}

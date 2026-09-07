@@ -250,8 +250,16 @@ export default function LivePersonCaseStudy() {
             screen reader and still reads as an h2 in the outline. Capped at
             420: the export is 594px wide, so beyond that it upscales on a 2x
             screen. */}
-        <Panel width={VIEW} pad="center" className="items-center">
-          <SlideIn className={`mx-auto flex w-full flex-col ${MEDIA}`} style={{ maxWidth: "950px" }}>
+        <Panel width={VIEW} pad="center">
+          {/* items-start, and the block capped to the picture's own width.
+              The screen is height-capped, so with a full-width box and
+              object-contain the picture floated in the middle of it while
+              the 62ch paragraph ran wider than the picture — the whole beat
+              read as centred and unaligned. The height cap converts into a
+              width cap through the shot's 1.997 aspect, so the box IS the
+              picture and the lockup, the copy and the screen share one left
+              edge. */}
+          <SlideIn className="mx-auto flex w-full max-w-[min(950px,92vw,calc((var(--panel-media-max-h)_-_12rem)_*_1.997))] flex-col items-start">
             <h2>
               <Image
                 src="/work/liveperson/socialconnect-lockup.png"
@@ -259,13 +267,12 @@ export default function LivePersonCaseStudy() {
                 width={594}
                 height={124}
                 unoptimized
-                className="h-auto w-[min(100%,260px)] sm:w-[min(100%,330px)] lg:w-[min(100%,420px)]"
+                className="h-auto w-[min(100%,180px)] sm:w-[min(100%,220px)] lg:w-[min(100%,260px)]"
               />
             </h2>
-            <p className={`mt-4 max-w-[62ch] ${BODY_TYPE}`}>
-              Brands connect their own accounts, route each one to a team, and
-              load the phrases and media their agents reply with. Onboarding
-              used to go through us; now it doesn&apos;t.
+            <p className={`mt-4 max-w-[48ch] ${BODY_TYPE}`}>
+              Brands connect their own accounts, route them to teams, and load
+              what their agents reply with. Onboarding used to go through us.
             </p>
             <Image
               src="/legacy/accounts-multiple-611c4c.png"
@@ -273,9 +280,7 @@ export default function LivePersonCaseStudy() {
               width={1122}
               height={562}
               sizes="(max-width: 1024px) 92vw, min(90vw, 950px)"
-              /* Shorter cap than BigImagePanel's, because the copy above it
-                 shares the panel's height budget. */
-              className="mt-8 h-auto max-h-[440px] w-full rounded-md object-contain lg:max-h-[calc(var(--panel-media-max-h)_-_11rem)]"
+              className="mt-8 h-auto w-full rounded-md"
             />
           </SlideIn>
         </Panel>
