@@ -25,7 +25,7 @@ import { Panel, TextPanel, Heading, Body, VIEW, STAT_ROW, MEASURE, MEDIA, CAPTIO
  */
 
 export const metadata = {
-  title: "SocialConnect — LivePerson — Molly Francis",
+  title: "SocialConnect · LivePerson · Molly Francis",
   description:
     "Redesigned the LivePerson SocialConnect agent workspace to unify public and private social threads into a single, cohesive interface.",
 };
@@ -168,7 +168,7 @@ export default function LivePersonCaseStudy() {
           >
             <Image
               src="/work/liveperson/all-channels-unified.png"
-              alt="The LiveEngage agent workspace with a social conversation open, and every channel — Facebook, Instagram, X, Messenger, SMS, WhatsApp — feeding into it"
+              alt="The LiveEngage agent workspace with a social conversation open, and every channel: Facebook, Instagram, X, Messenger, SMS, WhatsApp: feeding into it"
               width={1200}
               height={563}
               sizes="(max-width: 1023px) 92vw, 83vw"
@@ -197,7 +197,7 @@ export default function LivePersonCaseStudy() {
           <Heading intro>Six tabs, one customer.</Heading>
           <Body>
             One agent answered the same customer in six places
-            &mdash; email, tweets, DMs, posts, chats, texts &mdash;
+            (email, tweets, DMs, posts, chats, texts)
             each in its own dashboard. Every channel was another
             tool to learn.
           </Body>
@@ -211,7 +211,7 @@ export default function LivePersonCaseStudy() {
         <BigImagePanel
           src="/work/liveperson/public-tweet-private-thread.webp"
           alt="A public tweet on the left, the same conversation continued as a private thread on the right, with the agent workspace between them"
-          caption="The same complaint, public on one side and private on the other — one transcript."
+          caption="The same complaint, public on one side and private on the other: one transcript."
           width={3870}
           height={1620}
           /* 1500 rather than the 950 default: the new export is 3870 wide, so
@@ -295,8 +295,8 @@ export default function LivePersonCaseStudy() {
         {/* ── FUTURE VISION ─────────────────────────────────────────────── */}
         <BigImagePanel
           src="/work/liveperson/connections-self-service.webp"
-          alt="Future vision — SocialConnect inside the agent workspace"
-          caption="Where it goes next — SocialConnect woven through the rest of LiveEngage."
+          alt="Future vision: SocialConnect inside the agent workspace"
+          caption="Where it goes next: SocialConnect woven through the rest of LiveEngage."
           width={1280}
           height={760}
         />

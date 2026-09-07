@@ -9,9 +9,9 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, INTRO_TITLE, INTRO_SUBTEXT, META_LABEL, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, TITLE, SUBHEAD, VIEW } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
-  title: "Patient Portal — athenahealth — Molly Francis",
+  title: "Patient Portal · athenahealth · Molly Francis",
   description:
-    "Re-architected athenahealth's 25M-patient portal around what people actually do — a consolidated dashboard and a responsive nav that finally works on a phone.",
+    "Re-architected athenahealth's 25M-patient portal around what people actually do: a consolidated dashboard and a responsive nav that finally works on a phone.",
 };
 
 const jost = Jost({
@@ -199,7 +199,7 @@ export default function ConsumerHealthCaseStudy() {
             <h2 className={`text-white ${INTRO_TITLE}`}>25 million patients opened the portal and landed on Test Results.</h2>
           </SlideIn>
           <SlideIn delay={100}>
-            <p className={`text-white/90 ${INTRO_SUBTEXT}`}>Appointments, meds, billing — all there, none of it findable. Especially on a phone.</p>
+            <p className={`text-white/90 ${INTRO_SUBTEXT}`}>Appointments, meds, billing: all there, none of it findable. Especially on a phone.</p>
           </SlideIn>
         </TextPanel>
 
@@ -235,7 +235,7 @@ export default function ConsumerHealthCaseStudy() {
 
         <StoryImage
           src={`${ASSET}/landing-before.png`}
-          alt="Legacy patient portal home — a wall of panels"
+          alt="Legacy patient portal home: a wall of panels"
           aspect="aspect-[1928/746]"
           caption="This was the home before"
           contain
@@ -268,7 +268,7 @@ export default function ConsumerHealthCaseStudy() {
             object-cover has nothing to crop. */}
         <StoryImage
           src={`${ASSET}/myhealth-before.webp`}
-          alt="Legacy My Health — Test Results, with everything else in a sidebar"
+          alt="Legacy My Health: Test Results, with everything else in a sidebar"
           aspect="aspect-[964/669]"
           caption="This was My Health before"
           mediaWidth="mx-auto w-full max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_3.5rem)_*_1.441))]"
@@ -313,7 +313,7 @@ export default function ConsumerHealthCaseStudy() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`${ASSET}/nav-after.png`}
-                    alt="Desktop navigation — dropdown menus"
+                    alt="Desktop navigation: dropdown menus"
                     className="h-full w-full object-contain"
                   />
                 </div>
@@ -321,7 +321,7 @@ export default function ConsumerHealthCaseStudy() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`${ASSET}/nav-after-mobile.png`}
-                    alt="Mobile navigation drawer — account panel and main menu"
+                    alt="Mobile navigation drawer: account panel and main menu"
                     className="h-full w-full object-contain"
                   />
                 </div>

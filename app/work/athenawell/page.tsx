@@ -36,7 +36,7 @@ import {
  */
 
 export const metadata = {
-  title: "athenaWell — athenahealth — Molly Francis",
+  title: "athenaWell · athenahealth · Molly Francis",
   description:
     "Designed athenaWell, a care management platform giving patients and care teams one shared source of truth for a care plan.",
 };
@@ -252,7 +252,7 @@ export default function AthenaWellCaseStudy() {
           <Body intro>
             A patient seeing four specialists had their plan spread across
             phone calls, folders and systems that didn&apos;t talk. Nobody
-            had the whole picture — least of all the patient.
+            had the whole picture, least of all the patient.
           </Body>
         </div>
         </Panel>
@@ -262,7 +262,7 @@ export default function AthenaWellCaseStudy() {
           <div className={MEASURE}>
           <Heading>So I put the whole plan in one place.</Heading>
           <Body>
-            One plan the care team builds and the patient follows — instead of
+            One plan the care team builds and the patient follows, instead of
             two versions of it that never quite matched.
           </Body>
         </div>
@@ -270,7 +270,7 @@ export default function AthenaWellCaseStudy() {
 
         <MediaPanel
           src={`${ASSET}/videos/careplan.mp4`}
-          alt="The athenaWell care plan — conditions, goals, tasks and the care team"
+          alt="The athenaWell care plan: conditions, goals, tasks and the care team"
           width={1882}
           height={1160}
           video
@@ -290,7 +290,7 @@ export default function AthenaWellCaseStudy() {
 
         <MediaPanel
           src={`${ASSET}/care-team.png`}
-          alt="The athenaWell care-team view — patient list, care plan, timeline and a video call"
+          alt="The athenaWell care-team view: patient list, care plan, timeline and a video call"
           width={1001}
           height={558}
           maxWidth={1001}
@@ -302,7 +302,7 @@ export default function AthenaWellCaseStudy() {
           <Heading>The patient only has to see today.</Heading>
           <Body>
             Six tasks, a progress ring, and one tap to their care team. Testers
-            kept pointing at the ring — that was the part that brought them
+            kept pointing at the ring: that was the part that brought them
             back.
           </Body>
         </div>
@@ -310,7 +310,7 @@ export default function AthenaWellCaseStudy() {
 
         <MediaPanel
           src={`${ASSET}/patient-app.png`}
-          alt="The athenaWell patient app — goals, the daily care plan, and the task list"
+          alt="The athenaWell patient app: goals, the daily care plan, and the task list"
           width={909}
           height={720}
           maxWidth={909}
@@ -321,7 +321,7 @@ export default function AthenaWellCaseStudy() {
           <div className={MEASURE}>
           <Heading>Three patients, one plan to hold them all.</Heading>
           <Body>
-            Designed for three risk tiers rather than an average patient —
+            Designed for three risk tiers rather than an average patient,
             each with its own values, goals and pain points.
           </Body>
         </div>
@@ -329,7 +329,7 @@ export default function AthenaWellCaseStudy() {
 
         <MediaPanel
           src={`${ASSET}/personas.png`}
-          alt="The three athenaWell persona documents — Healthy Patient, High Risk and Rising Risk"
+          alt="The three athenaWell persona documents: Healthy Patient, High Risk and Rising Risk"
           width={2266}
           height={1343}
           maxWidth={2266}
@@ -341,7 +341,7 @@ export default function AthenaWellCaseStudy() {
           <div className={MEASURE}>
           <Heading>A question shouldn&apos;t mean a phone queue.</Heading>
           <Body>
-            Apollo answered in the app — triage first, then the article that
+            Apollo answered in the app: triage first, then the article that
             actually answers the question.
           </Body>
         </div>
@@ -368,7 +368,7 @@ export default function AthenaWellCaseStudy() {
           <div className={MEASURE}>
             <Heading>Every icon drawn, not downloaded.</Heading>
             <Body>
-              One set across care plans, scheduling, messaging and results —
+              One set across care plans, scheduling, messaging and results,
               so a patient learned each shape once.
             </Body>
           </div>
@@ -376,7 +376,7 @@ export default function AthenaWellCaseStudy() {
 
         <MediaPanel
           src={`${ASSET}/custom-icons.webp`}
-          alt="The athenaWell icon set — twenty-four drawn icons"
+          alt="The athenaWell icon set: twenty-four drawn icons"
           width={752}
           height={621}
           maxWidth={752}
@@ -395,7 +395,7 @@ export default function AthenaWellCaseStudy() {
           <Heading>The weeks between visits stopped being invisible.</Heading>
           <Body>
             Daily check-ins, surveys and education, with 200+ wearables
-            feeding it — so the care team could see the time they used to
+            feeding it, so the care team could see the time they used to
             miss.
           </Body>
         </div>

@@ -9,9 +9,9 @@ import Logo from "@/components/Logo";
 import { TEXT_W, MEASURE, VIEW, GUTTER, Eyebrow, Panel, TextPanel, Heading, Body } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
-  title: "About — Molly Francis",
+  title: "About · Molly Francis",
   description:
-    "Lead / Principal UX Product Designer in Austin, TX. ENFP, big ideas, twenty years of design — plus cats, a dog, BigFoot, and a small mountain of collections.",
+    "Lead / Principal UX Product Designer in Austin, TX. ENFP, big ideas, twenty years of design, plus cats, a dog, BigFoot, and a small mountain of collections.",
 };
 
 const jost = Jost({
@@ -47,7 +47,7 @@ const traits = [
 const principles = [
   {
     t: "Lead with research, ship with conviction.",
-    b: "Evidence sets the direction. Once we've heard the user, the team commits — no second-guessing the obvious.",
+    b: "Evidence sets the direction. Once we've heard the user, the team commits. No second-guessing the obvious.",
   },
   {
     t: "Systems beat snowflakes.",
@@ -55,7 +55,7 @@ const principles = [
   },
   {
     t: "Design the seams.",
-    b: "The handoffs between products, between teams, between humans and AI — that's where good products are won or lost.",
+    b: "The handoffs between products, between teams, between humans and AI: that's where good products are won or lost.",
   },
   {
     t: "Use AI honestly.",
@@ -504,7 +504,7 @@ export default function AboutPage() {
               <p className="mt-5 text-[clamp(1rem,2vw,1.15rem)] leading-[1.5] opacity-85">
                 I&rsquo;m a UX leader who still designs. Twenty years across
                 healthcare, fintech, govtech, conversational AI and
-                e&#8209;commerce &mdash; from a startup like Patient IO to
+                e&#8209;commerce, from a startup like Patient IO to
                 athenahealth, LivePerson and Care.com. I&rsquo;m happiest as a
                 player&#8209;coach: mentoring designers and shipping work
                 myself. What I&rsquo;m best at is making complicated
@@ -531,7 +531,7 @@ export default function AboutPage() {
         {/* ── 3 — THE SIXBEES — photo left, text right (not reversed) ──── */}
         <StoryPanel
           heading="The Sixbees"
-          photos={[{ src: "/about/sixbees.jpg", alt: "The Sixbees — design friends" }]}
+          photos={[{ src: "/about/sixbees.jpg", alt: "The Sixbees: design friends" }]}
           photoShape="rect"
         >
           <p>
@@ -665,12 +665,12 @@ export default function AboutPage() {
 
         {/* ── BRIDGE TO THE WORK ─────────────────────────────────────── */}
         <TextPanel>
-          <Eyebrow>And — the work</Eyebrow>
+          <Eyebrow>And the work</Eyebrow>
           <Heading>
             I design things that work, for people on their hardest day.
           </Heading>
           <Body>
-            Most of my career has been in healthcare and complex SaaS —
+            Most of my career has been in healthcare and complex SaaS:
             places where the tool is the difference between &ldquo;I got my
             answer&rdquo; and &ldquo;I gave up.&rdquo;
           </Body>
@@ -718,8 +718,8 @@ export default function AboutPage() {
               Let&rsquo;s talk.
             </h2>
             <p className="mt-5 max-w-md text-white/80 leading-relaxed">
-              If any of this resonates — the work, the cats, or the BigFoot
-              thing — I&rsquo;d love to hear what you&rsquo;re building.
+              If any of this resonates (the work, the cats, or the BigFoot
+              thing), I&rsquo;d love to hear what you&rsquo;re building.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a

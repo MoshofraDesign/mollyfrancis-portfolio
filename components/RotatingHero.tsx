@@ -39,7 +39,7 @@ const HOTSPOTS: Hotspot[] = [
   },
   {
     id: "ear",
-    label: "👂 \"We'll just add it in dev.\" — heard that before.",
+    label: "👂 \"We'll just add it in dev.\": heard that before.",
     style: { top: "39%", left: "7%", width: "16%", height: "20%", position: "absolute" },
     bubbleStyle: { top: "0%", left: "110%", transformOrigin: "bottom left" },
     dotAStyle: { top: "50%", left: "-10px", width: 10, height: 10 },
@@ -61,7 +61,7 @@ const headlines = [
   "A player-coach who bridges strategy and hands-on execution every day.",
   "I translate complex workflows and compliance data into seamless products.",
   "I lead from the front, mentoring designers while shipping high-impact work.",
-  "At my core, I love this work — building products that help real people.",
+  "At my core, I love this work, building products that help real people.",
 ];
 
 /** Cursor reveal: a hard-edged circle, no falloff — two stops at the same

@@ -131,7 +131,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   const p = getProject(params.slug);
   if (!p) return {};
   return {
-    title: `${p.title} — ${p.client} — Molly Francis`,
+    title: `${p.title} · ${p.client} · Molly Francis`,
     description: p.aiSummary,
   };
 }
@@ -499,8 +499,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
       { file: "bombshell", alt: "Bombshell Bath & Beauty", w: 950, h: 633 },
       { file: "danish-modern", alt: "Danish Modern Decor & Furniture", w: 950, h: 612 },
       { file: "vestidos", alt: "Vestidos Clothing", w: 950, h: 633 },
-      { file: "stfrancis-home", alt: "St. Francis — homepage", w: 1241, h: 612 },
-      { file: "stfrancis-category", alt: "St. Francis — dresses category", w: 1241, h: 616 },
+      { file: "stfrancis-home", alt: "St. Francis: homepage", w: 1241, h: 612 },
+      { file: "stfrancis-category", alt: "St. Francis: dresses category", w: 1241, h: 616 },
       { file: "artistic-express", alt: "Artistic Express Art Supplies", w: 950, h: 633 },
       { file: "temptation", alt: "Temptation Bridal Shop", w: 950, h: 597 },
       { file: "venetian", alt: "The Venetian Point Loma", w: 1086, h: 643 },
@@ -573,7 +573,7 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             <SlideIn className="ecom-shot order-2 w-full">
               <Image
                 src={`${ASSET}/definition-home.webp`}
-                alt="Definition — 2014 summer collection across devices"
+                alt="Definition: 2014 summer collection across devices"
                 width={950}
                 height={609}
                 priority

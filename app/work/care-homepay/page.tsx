@@ -28,7 +28,7 @@ import {
 } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
-  title: "Homepay Payroll — Care.com — Molly Francis",
+  title: "Homepay Payroll · Care.com · Molly Francis",
   description:
     "Paired employee and employer apps so caregivers can track hours and household employers can review, approve, and pay payroll.",
 };
@@ -70,7 +70,7 @@ export default function CareHomepayCaseStudy() {
       portrait: `${ASSET}/portrait-messaging.png`,
       portraitAlt: "Caregiver using secure messaging",
       screens: `${ASSET}/screens-messaging.png`,
-      screensAlt: "Secure messaging — inbox and conversation",
+      screensAlt: "Secure messaging: inbox and conversation",
     },
     {
       key: "clock",
@@ -79,7 +79,7 @@ export default function CareHomepayCaseStudy() {
       portrait: `${ASSET}/portrait-clock.png`,
       portraitAlt: "Employee clocking in",
       screens: `${ASSET}/screens-clock.png`,
-      screensAlt: "Clock in and out — map and start shift",
+      screensAlt: "Clock in and out: map and start shift",
     },
   ];
 
@@ -197,7 +197,7 @@ export default function CareHomepayCaseStudy() {
             >
               <Image
                 src={`${ASSET}/phone-hero-left.png`}
-                alt="HomePay splash — Time tracking has never been easier"
+                alt="HomePay splash: Time tracking has never been easier"
                 width={793}
                 height={1378}
                 priority
@@ -210,7 +210,7 @@ export default function CareHomepayCaseStudy() {
             >
               <Image
                 src={`${ASSET}/phone-hero-right.png`}
-                alt="HomePay splash — Easy time tracking with your employer"
+                alt="HomePay splash: Easy time tracking with your employer"
                 /* Full-length export: 793x1671, bezel and home indicator
                    included. The earlier one was cut at 1210, mid-body. */
                 width={793}
@@ -261,8 +261,8 @@ export default function CareHomepayCaseStudy() {
         <TextPanel width={COPY_PANEL}>
           <Heading>Hours that add themselves up.</Heading>
           <Body>
-            Clock in, clock out, and the week rolls up on its own
-            &mdash; fewer payroll edits, and neither side chasing
+            Clock in, clock out, and the week rolls up on its own:
+            fewer payroll edits, and neither side chasing
             them. Life happens, so every entry stays editable.
           </Body>
         </TextPanel>
@@ -292,9 +292,9 @@ export default function CareHomepayCaseStudy() {
               sheets use elsewhere. */}
           <div className="mx-auto grid w-full max-w-[min(950px,90vw)] grid-cols-1 items-end gap-8 sm:grid-cols-3 sm:gap-[5.39%]">
             {[
-              { n: 1, alt: "Add time — day picker" },
-              { n: 2, alt: "Hours worked — weekly view" },
-              { n: 3, alt: "Timesheet — totals and submit" },
+              { n: 1, alt: "Add time: day picker" },
+              { n: 2, alt: "Hours worked: weekly view" },
+              { n: 3, alt: "Timesheet: totals and submit" },
             ].map(({ n, alt }, i) => (
               <SlideIn key={n} delay={i * 90}>
                 <Image

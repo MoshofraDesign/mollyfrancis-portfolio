@@ -9,9 +9,9 @@ import { Panel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INT
 import UcmScreensCarousel from "@/components/UcmScreensCarousel";
 
 export const metadata = {
-  title: "Prior Authorization Portal — Bright HealthCare — Molly Francis",
+  title: "Prior Authorization Portal · Bright HealthCare · Molly Francis",
   description:
-    "Designed a provider-facing portal that lets clinicians submit prior authorization requests electronically — replacing a paper fax workflow used across five state markets.",
+    "Designed a provider-facing portal that lets clinicians submit prior authorization requests electronically, replacing a paper fax workflow used across five state markets.",
 };
 
 const jost = Jost({
@@ -254,7 +254,7 @@ export default function BrightHealthcareCaseStudy() {
               <h2 className="mt-8 text-[clamp(1.9rem,2.4vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.02em]">🌟 Gains</h2>
               <ul className={`mt-3 list-disc space-y-1.5 pl-7 ${BODY}`}>
                 <li>One system, fully integrated with their EHR.</li>
-                <li>Clear approval requirements—less rework.</li>
+                <li>Clear approval requirements, less rework.</li>
                 <li>Automated status updates and notifications.</li>
                 <li>Faster turnarounds, more time for patient care.</li>
               </ul>
@@ -295,7 +295,7 @@ export default function BrightHealthcareCaseStudy() {
             </SlideIn>
             <SlideIn delay={100}>
               <p className={`mt-3 ${BODY}`}>
-                The hard part wasn&apos;t the form &mdash; it was the rules
+                The hard part wasn&apos;t the form: it was the rules
                 behind it. With clinical operations I mapped them in, so the
                 form told providers what was required before they submitted,
                 not after.
@@ -305,7 +305,7 @@ export default function BrightHealthcareCaseStudy() {
               <p className={`mt-6 ${BODY}`}>
                 Then I decided what goes where: the request, what a provider
                 sees after submitting, and a dashboard that grew with them.
-                Status got its own place &mdash; the one thing a fax never
+                Status got its own place, the one thing a fax never
                 gave back.
               </p>
             </SlideIn>
@@ -323,23 +323,23 @@ export default function BrightHealthcareCaseStudy() {
               screens={[
                 {
                   src: `${ASSET}/flow/01.png`,
-                  alt: "Step 1 — Requesting information, provider search",
+                  alt: "Step 1: Requesting information, provider search",
                 },
                 {
                   src: `${ASSET}/flow/02.png`,
-                  alt: "Step 2 — Servicing provider and facility",
+                  alt: "Step 2: Servicing provider and facility",
                 },
                 {
                   src: `${ASSET}/flow/03.png`,
-                  alt: "Step 3 — Authorization request",
+                  alt: "Step 3: Authorization request",
                 },
                 {
                   src: `${ASSET}/flow/04.png`,
-                  alt: "Step 4 — Clinical documentation",
+                  alt: "Step 4: Clinical documentation",
                 },
                 {
                   src: `${ASSET}/flow/05.png`,
-                  alt: "Step 5 — Review and submit",
+                  alt: "Step 5: Review and submit",
                 },
                 {
                   src: `${ASSET}/flow/06.png`,

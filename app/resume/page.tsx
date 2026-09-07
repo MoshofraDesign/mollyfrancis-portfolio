@@ -2,9 +2,9 @@ import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
 
 export const metadata = {
-  title: "Résumé — Molly Francis",
+  title: "Résumé · Molly Francis",
   description:
-    "Principal Product Designer and design leader based in Austin, Texas. Over 20 years across design strategy, design systems governance, DesignOps, and cross-functional leadership — integrating emerging AI tools to streamline workflows and uncover deeper insights.",
+    "Principal Product Designer and design leader based in Austin, Texas. Over 20 years across design strategy, design systems governance, DesignOps, and cross-functional leadership, integrating emerging AI tools to streamline workflows and uncover deeper insights.",
 };
 
 type Job = {
@@ -22,9 +22,9 @@ const experience: Job[] = [
     company: "Netspend",
     domain: "netspend.com",
     icon: "netspend",
-    period: "November 2025 — Current",
+    period: "November 2025 – Current",
     bullets: [
-      "Own design strategy and end-to-end UX for Netspend's Rewards program — the consumer-facing app and the internal Unified Commerce Management (UCM) tool that powers it.",
+      "Own design strategy and end-to-end UX for Netspend's Rewards program: the consumer-facing app and the internal Unified Commerce Management (UCM) tool that powers it.",
       "Reworked the rewards layout and Information Architecture around new UCM capabilities.",
       "Run qualitative and quantitative user testing to validate decisions and guide iteration.",
       "Use AI-assisted workflows (Claude, Gemini, Figma Make) to accelerate design exploration, prototyping, and iteration speed.",
@@ -35,7 +35,7 @@ const experience: Job[] = [
     company: "GovOS (Neumo)",
     domain: "govos.com",
     icon: "govos",
-    period: "October 2023 — October 2025",
+    period: "October 2023 – October 2025",
     bullets: [
       "Drive UX strategy and design execution across core GovOS products, including eSubmission, Business Licensing & Tax, Cloud Search, and Cloud Records.",
       "Conduct and synthesize user research to uncover insights, validate solutions, and guide product decisions.",
@@ -49,7 +49,7 @@ const experience: Job[] = [
     company: "Bright Health",
     domain: "brighthealthcare.com",
     icon: "brighthealth",
-    period: "March 2021 — April 2023",
+    period: "March 2021 – April 2023",
     bullets: [
       "Established a 0 to 1 provider portal for Prior Authorizations, reducing manual paperwork and enabling providers to electronically submit and track authorization status in real time.",
       "Conducted user research and usability testing to validate workflows, uncover pain points, and ensure solutions met provider and patient needs.",
@@ -62,11 +62,11 @@ const experience: Job[] = [
     company: "Care.com (HomePay)",
     domain: "care.com",
     icon: "care",
-    period: "April 2020 — February 2021",
+    period: "April 2020 – February 2021",
     bullets: [
       "Led the HomePay design team for a payroll, tax, and HR solution serving families with household employees (nannies, senior caregivers, etc.).",
       "Partnered with executive leadership to integrate UX into agile workflows, aligning design with product strategy and business goals.",
-      "Managed and scaled the UX team — mentoring designers, facilitating critique, and building a stronger design culture to elevate quality and collaboration.",
+      "Managed and scaled the UX team, mentoring designers, facilitating critique, and building a stronger design culture to elevate quality and collaboration.",
       "Designed and enhanced internal Sales tools and client / employee-facing HomePay products, improving efficiency and user experience.",
     ],
   },
@@ -75,7 +75,7 @@ const experience: Job[] = [
     company: "Liveperson",
     domain: "liveperson.com",
     icon: "liveperson",
-    period: "July 2019 — February 2020",
+    period: "July 2019 – February 2020",
     bullets: [
       "Served as lead designer on a new social media management product, enabling brands to interact with consumers over social platforms through the LiveEngage AI-powered messaging product.",
       "Collaborated with the global UX team to update and scale the company's design system for AI and chatbot products, improving accessibility and consistency company-wide.",
@@ -86,7 +86,7 @@ const experience: Job[] = [
     company: "athenahealth",
     domain: "athenahealth.com",
     icon: "athenahealth",
-    period: "September 2016 — June 2019",
+    period: "September 2016 – June 2019",
     bullets: [
       "Conducted research and design for desktop and native mobile electronic health record (EHR) and patient portal products, improving usability and adoption for clinicians and patients.",
       "Collaborated with a multi-disciplinary agile R&D team to define, design, and test features, streamlining workflows and enhancing the overall user experience.",
@@ -98,7 +98,7 @@ const experience: Job[] = [
     company: "Patient IO",
     domain: "patientio.com",
     icon: "patientio",
-    period: "July 2016 — August 2016",
+    period: "July 2016 – August 2016",
     bullets: [
       "Served as Head of Product Design for desktop and native mobile apps supporting at-risk patients, designing for both patient-facing users and care managers.",
       "Worked in a lean, iterative environment, streamlining designs and eliminating waste while accelerating delivery.",
@@ -111,7 +111,7 @@ const experience: Job[] = [
     company: "Volusion / Mozu",
     domain: "volusion.com",
     icon: "volusion",
-    period: "September 2014 — June 2016",
+    period: "September 2014 – June 2016",
     bullets: [
       "Designed interaction flows, visual design, and user experiences for the Volusion and Mozu e-commerce platforms.",
       "Improved usability and engagement by refining UX flows and ensuring consistent visual design across the platforms.",
@@ -222,11 +222,11 @@ const education = [
 
 const recognition = [
   {
-    label: "RecruitLoop — Top 50 Female UI/UX Designers",
+    label: "RecruitLoop: Top 50 Female UI/UX Designers",
     location: "Austin, Texas",
   },
   {
-    label: "Built In ATX — Featured Employee at Bright Health",
+    label: "Built In ATX: Featured Employee at Bright Health",
     location: "Austin, Texas",
     href: "https://www.builtinaustin.com/company/bright-health/product-tech",
   },

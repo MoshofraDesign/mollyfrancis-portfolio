@@ -38,7 +38,7 @@ import {
  */
 
 export const metadata = {
-  title: "Patient IO — athenahealth (acquired) — Molly Francis",
+  title: "Patient IO · athenahealth (acquired) · Molly Francis",
   description:
     "Patient IO helped patients stick to complex treatment regimens and gave health professionals visibility between visits. As solo designer on a 14-person team, I owned the end-to-end experience -- work that led athenahealth to acquire the company in 2016.",
 };
@@ -69,27 +69,27 @@ const metrics = [
 const PUBLIC_SCREENS = [
   {
     src: "/work-thumbnails/patient-io/screens/care-plan.png",
-    alt: "Care Plan — daily task list with medication, education, and refill counts",
+    alt: "Care Plan: daily task list with medication, education, and refill counts",
   },
   {
     src: "/work-thumbnails/patient-io/screens/heart-rate.png",
-    alt: "Heart Rate — camera-based reading",
+    alt: "Heart Rate: camera-based reading",
   },
   {
     src: "/work-thumbnails/patient-io/screens/drink-water.png",
-    alt: "Drink Water — hydration task",
+    alt: "Drink Water: hydration task",
   },
   {
     src: "/work-thumbnails/patient-io/screens/select-date.png",
-    alt: "Select Date — last doctor visit",
+    alt: "Select Date: last doctor visit",
   },
   {
     src: "/work-thumbnails/patient-io/screens/complete-task.png",
-    alt: "Complete Task — caregiver confirmation",
+    alt: "Complete Task: caregiver confirmation",
   },
   {
     src: "/work-thumbnails/patient-io/screens/sleep-log.png",
-    alt: "Sleep Log — nightly sleep tracking",
+    alt: "Sleep Log: nightly sleep tracking",
   },
 ] as const;
 
@@ -154,7 +154,7 @@ export default function PatientIoCaseStudy() {
           <Heading intro>Between visits, nobody knew.</Heading>
           <Body>
             A patient goes home with a regimen to follow. Their care team
-            doesn&apos;t hear anything until the next appointment — by which
+            doesn&apos;t hear anything until the next appointment, by which
             point weeks of missed doses have already happened.
           </Body>
         </TextPanel>
@@ -165,7 +165,7 @@ export default function PatientIoCaseStudy() {
           <Heading>So the plan reported on itself.</Heading>
           <Body>
             Patient IO tracked medications, vitals and adherence between
-            visits and pushed it all back to the clinician — so the care team
+            visits and pushed it all back to the clinician, so the care team
             saw the weeks they used to miss.
           </Body>
         </TextPanel>
@@ -195,7 +195,7 @@ export default function PatientIoCaseStudy() {
                 </SlideIn>
               ))}
             </div>
-            <p className="text-center text-[clamp(1.05rem,1.25vw,1.25rem)] opacity-80">The patient-facing app — daily tasks, vitals, and reminders that keep the care plan on track</p>
+            <p className="text-center text-[clamp(1.05rem,1.25vw,1.25rem)] opacity-80">The patient-facing app: daily tasks, vitals, and reminders that keep the care plan on track</p>
           </div>
         </Panel>
 
@@ -204,7 +204,7 @@ export default function PatientIoCaseStudy() {
           <Body>
             People know their medication by sight, so a generic
             capsule is worse than useless. I built a system that
-            drew each pill from Epocrates data &mdash; thousands of
+            drew each pill from Epocrates data: thousands of
             drugs, no custom art.
           </Body>
         </TextPanel>
@@ -263,8 +263,8 @@ export default function PatientIoCaseStudy() {
           <Heading>Solo designer, fourteen people.</Heading>
           <Body>
             Solo designer on a 14-person team. I owned the
-            experience end to end &mdash; medication tracking,
-            vitals, care-plan adherence and the pill system &mdash;
+            experience end to end (medication tracking,
+            vitals, care-plan adherence and the pill system)
             from concept to shipped product.
           </Body>
         </TextPanel>
@@ -275,8 +275,8 @@ export default function PatientIoCaseStudy() {
           <Body>
             athenahealth acquired Patient IO in August 2016. The
             adherence and pill-rendering patterns became the
-            foundation for athenaWell, their flagship patient app
-            &mdash; three personas, 200+ wearable integrations,
+            foundation for athenaWell, their flagship patient app,
+            three personas, 200+ wearable integrations,
             content from Mayo Clinic and NIH.
           </Body>
         </TextPanel>

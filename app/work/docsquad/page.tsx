@@ -79,7 +79,7 @@ const OUTCOME_STATS = [
 
 /** Figma crops of the 4-phone sprite (node 4553:21876). */
 const PHONE_CROPS = [
-  { alt: "Intake — encounter history", left: "-11.26%", width: "217px" },
+  { alt: "Intake: encounter history", left: "-11.26%", width: "217px" },
   { alt: "Video visit in progress", left: "-121.98%", width: "216px" },
   { alt: "Assessment and diagnosis", left: "-233.51%", width: "216px" },
   { alt: "Review response to patient", left: "-345.04%", width: "217px" },
@@ -89,7 +89,7 @@ export function generateMetadata() {
   const p = getProject(SLUG);
   if (!p) return {};
   return {
-    title: `Virtual Care Telehealth — DocSquad — Molly Francis`,
+    title: `Virtual Care Telehealth · DocSquad · Molly Francis`,
     description: p.aiSummary,
   };
 }
@@ -261,7 +261,7 @@ export default function DocSquadCaseStudy() {
                 lib/projects.ts; the page's own later beats show the flow. */}
             <SlideIn delay={80}>
               <p className={BODY}>
-                DocSquad&apos;s clinicians moonlight — minutes between shifts,
+                DocSquad&apos;s clinicians moonlight: minutes between shifts,
                 not hours. The old product wanted a live video call every
                 visit, then a second system to retype it into. Five interviews
                 and competitor teardowns said the same thing: don&apos;t hand
@@ -312,7 +312,7 @@ export default function DocSquadCaseStudy() {
             ) : (
               <Image
                 src={`${ASSET}/desktop-app.png`}
-                alt="Provider desktop — Patient Queue"
+                alt="Provider desktop: Patient Queue"
                 fill
                 sizes="(max-width: 1023px) 92vw, 68vw"
                 className="object-cover"
@@ -343,7 +343,7 @@ export default function DocSquadCaseStudy() {
                     {/* Sprite crop matches Figma 4553:21877–21880 (not next/image fill). */}
                     <img
                       src={`${ASSET}/phones.png`}
-                      alt={`DocSquad provider native app — ${phone.alt}`}
+                      alt={`DocSquad provider native app: ${phone.alt}`}
                       className="pointer-events-none absolute max-w-none"
                       style={{
                         height: "107.9%",
@@ -423,7 +423,7 @@ export default function DocSquadCaseStudy() {
             <SlideIn delay={80}>
               <p className={BODY}>
                 Another designer owned the patient app. I mentored them and
-                held it to the provider patterns &mdash; one product from
+                held it to the provider patterns, one product from
                 either end.
               </p>
             </SlideIn>

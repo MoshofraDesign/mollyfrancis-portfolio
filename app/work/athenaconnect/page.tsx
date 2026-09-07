@@ -38,9 +38,9 @@ import {
  */
 
 export const metadata = {
-  title: "athenaConnect — athenahealth — Molly Francis",
+  title: "athenaConnect · athenahealth · Molly Francis",
   description:
-    "Redesigned discovery for athenahealth's partner Marketplace — search, filtering and content structure for public visitors and for customers evaluating tools inside athenaNet.",
+    "Redesigned discovery for athenahealth's partner Marketplace: search, filtering and content structure for public visitors and for customers evaluating tools inside athenaNet.",
 };
 
 const jost = Jost({
@@ -278,7 +278,7 @@ export default function AthenaConnectCaseStudy() {
           <ClipPanel
             src={publicClip}
             aspect={1478 / 1132}
-            caption="Marketplace.com — search, filters and the partner listing grid"
+            caption="Marketplace.com: search, filters and the partner listing grid"
           />
         )}
 
@@ -287,7 +287,7 @@ export default function AthenaConnectCaseStudy() {
           <ClipPanel
             src={listingClip}
             aspect={1492 / 894}
-            caption="Self-service tools — the form behind a partner listing"
+            caption="Self-service tools: the form behind a partner listing"
           />
         )}
 

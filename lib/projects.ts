@@ -118,7 +118,7 @@ export const projects: Project[] = [
     aiSummary:
       "Led UX for Netspend's app Rewards program and UCM, the internal tool that builds every reward shown to cardholders. Used generative research and AI-assisted prototyping (Claude, Gemini, Figma Make) to scale the IA as new reward types shipped.",
     overview:
-      "Rewards needed a consumer layout that could keep pace with UCM — new reward types, new merchants, more configuration — without turning into a junk drawer.",
+      "Rewards needed a consumer layout that could keep pace with UCM (new reward types, new merchants, more configuration), without turning into a junk drawer.",
     approach:
       "Owned both sides: the internal UCM tool ops teams use to build rewards, and the consumer IA that has to scale with it. Generative and moderated testing drove both, with AI tools speeding up synthesis and prototyping.",
     outcome:
@@ -142,16 +142,16 @@ export const projects: Project[] = [
     thumbRest: "#00306B",
     featured: true,
     aiSummary:
-      "Designed a direct-to-county eRecording portal so title companies could submit deeds electronically — cutting out the third-party submitters that sat between them. AI-assisted synthesis (Dovetail transcript clustering, GPT-generated Jira tickets) kept research turnaround fast.",
+      "Designed a direct-to-county eRecording portal so title companies could submit deeds electronically, cutting out the third-party submitters that sat between them. AI-assisted synthesis (Dovetail transcript clustering, GPT-generated Jira tickets) kept research turnaround fast.",
     overview:
-      "Recording a deed meant faxing a third-party submitter who relayed it to the county. eSubmission gave title companies a direct channel — upload, validate, and pay by ACH — with clean structured data flowing straight to the county.",
+      "Recording a deed meant faxing a third-party submitter who relayed it to the county. eSubmission gave title companies a direct channel (upload, validate, and pay by ACH), with clean structured data flowing straight to the county.",
     problem:
       "Electronic recording ran through paid intermediaries. Counties re-scanned every fax by hand, reconciliation was a per-document mess, and submitters had zero status visibility.",
     problemImages: [
       {
         src: "/work/govos/problem-before.jpg",
         caption:
-          "Every submission and every county question passed through a third-party eRecording vendor — neither side could reach the other directly.",
+          "Every submission and every county question passed through a third-party eRecording vendor. Neither side could reach the other directly.",
       },
       {
         src: "/work/govos/problem-challenges-submitters.jpg",
@@ -163,7 +163,7 @@ export const projects: Project[] = [
       },
     ],
     objective:
-      "Give Submitters — title companies or any county-approved entity — a direct interface to submit electronic recordings to the County, without the relay layer in between.",
+      "Give Submitters (title companies or any county-approved entity) a direct interface to submit electronic recordings to the County, without the relay layer in between.",
     objectiveBullets: [
       "Obviating the need for Submitters to physically present the documents in a county office",
       "Enhancing the productivity of the Recorder's office by not having to scan the recording",
@@ -193,7 +193,7 @@ export const projects: Project[] = [
         ],
         image: "/work/govos/login.jpg",
         imageCaption:
-          "Login picks up where you left off — recent submission types and last package surface immediately",
+          "Login picks up where you left off: recent submission types and last package surface immediately",
         // TODO: swap in real screen recording once uploaded — see
         // /public/work/govos/videos/remember-the-user.mp4
         video: "/work/govos/videos/remember-the-user.mp4",
@@ -205,7 +205,7 @@ export const projects: Project[] = [
         body: "Always know where you are in the submission process by referencing the progress bar. The step-by-step process puts the focus on the task at hand and removes unnecessary inputs. Easily navigate to previous steps or save your progress on a submission and finish it later.",
         image: "/work/govos/submission-flow.jpg",
         imageCaption:
-          "Step-by-step submission with a persistent progress bar — easy to save and finish later",
+          "Step-by-step submission with a persistent progress bar: easy to save and finish later",
         // TODO: swap in real screen recording once uploaded — see
         // /public/work/govos/videos/submission-flow.mp4
         video: "/work/govos/videos/submission-flow.mp4",
@@ -214,14 +214,14 @@ export const projects: Project[] = [
       {
         eyebrow: "Document review",
         heading: "Clear images. A review assistant for compliance.",
-        body: "eSubmission mitigates the most common rejection causes by guiding the user inline and giving them the option to replace a document mid-process — so packages move to recording on the first try.",
+        body: "eSubmission mitigates the most common rejection causes by guiding the user inline and giving them the option to replace a document mid-process, so packages move to recording on the first try.",
         image: "/work/govos/document-review.jpg",
         imageCaption:
-          "Document compliance review — guides submitters through the most common rejection causes",
+          "Document compliance review: guides submitters through the most common rejection causes",
       },
       {
         eyebrow: "Checkout",
-        heading: "Checkout with ease — and shareable receipts of the transaction.",
+        heading: "Checkout with ease, and shareable receipts of the transaction.",
         body: "Submitters share receipts of the submission transaction downstream into their accounting flow, without copying numbers by hand.",
         image: "/work/govos/checkout.jpg",
         imageCaption: "Checkout with shareable receipts of the transaction",
@@ -240,12 +240,12 @@ export const projects: Project[] = [
         heading: "One ACH transfer per period, per submitter.",
         bullets: [
           "Payments are fulfilled by initiating ACH with each submitter",
-          "The county runs an ACH report for a time period and a title company — surfacing the total amount due",
+          "The county runs an ACH report for a time period and a title company, surfacing the total amount due",
           "The county authorizes the ACH transaction",
         ],
         image: "/work/govos/ach-payment.jpg",
         imageCaption:
-          "ACH payment fulfillment — a single transfer rolls up every recording per submitter per period",
+          "ACH payment fulfillment: a single transfer rolls up every recording per submitter per period",
         // TODO: swap in real screen recording once uploaded — see
         // /public/work/govos/videos/payment-fulfillment.mp4
         video: "/work/govos/videos/payment-fulfillment.mp4",
@@ -272,7 +272,7 @@ export const projects: Project[] = [
     thumbShadow: true,
     featured: true,
     aiSummary:
-      "Designed a provider-facing portal that lets clinicians submit prior authorization requests electronically — replacing a paper fax workflow used across five state markets. Within months the team scaled from 100 monthly users to ~10K, surfaced $1.9M in operational savings, and cut clinical intake time in half.",
+      "Designed a provider-facing portal that lets clinicians submit prior authorization requests electronically, replacing a paper fax workflow used across five state markets. Within months the team scaled from 100 monthly users to ~10K, surfaced $1.9M in operational savings, and cut clinical intake time in half.",
     overview:
       "Bright HealthCare's providers across Texas, Georgia, Utah, California, and Virginia had only one way to submit prior authorizations: fax. Faxes lacked validation, real-time data, or status visibility, leaving every party frustrated. We expanded the existing Authorization Portal to give providers a direct digital path, with upfront validation and well-structured data flowing into internal operations.",
     problem:
@@ -280,7 +280,7 @@ export const projects: Project[] = [
     approach:
       "I led design across discovery, prototyping, validation, and rollout. Worked with clinical operations to map authorization rules into the form's logic, designed an empty-state dashboard that grew with the user, and shipped patterns the team could reuse across additional Bright surfaces. Continuous prototype testing with providers tightened every step of the submission flow.",
     outcome:
-      "Within weeks of go-live in new markets, 15%+ of authorizations shifted to the portal — climbing rapidly afterward. Providers consistently rated it the best tool they had used; one team estimated the workflow saved them four hours per provider per day.",
+      "Within weeks of go-live in new markets, 15%+ of authorizations shifted to the portal, climbing rapidly afterward. Providers consistently rated it the best tool they had used; one team estimated the workflow saved them four hours per provider per day.",
     metrics: [
       { label: "Monthly usage", value: "9–10K" },
       { label: "Operational savings", value: "$1.9M" },
@@ -328,13 +328,13 @@ export const projects: Project[] = [
     pageBg: "#CB00D0",
     featured: true,
     aiSummary:
-      "Rebuilt a desktop-only telehealth tool into a unified provider experience across desktop and native mobile (Flutter). Generative research with 'virtual moonlighter' clinicians shaped a workflow that can diagnose a routine visit in under two minutes — without a second video call.",
+      "Rebuilt a desktop-only telehealth tool into a unified provider experience across desktop and native mobile (Flutter). Generative research with 'virtual moonlighter' clinicians shaped a workflow that can diagnose a routine visit in under two minutes, without a second video call.",
     overview:
-      "DocSquad's desktop-only tool added another platform to an already heavy clinical workload. I rebuilt it end-to-end — desktop and native mobile in Flutter — around async intake that collects symptoms so providers can diagnose, prescribe, or escalate fast.",
+      "DocSquad's desktop-only tool added another platform to an already heavy clinical workload. I rebuilt it end-to-end (desktop and native mobile in Flutter) around async intake that collects symptoms so providers can diagnose, prescribe, or escalate fast.",
     problem:
       "The legacy product assumed synchronous video for every visit and heavy data entry. Providers wanted to treat patients in minutes, not run a parallel EHR.",
     approach:
-      "Led discovery with \"Virtual Moonlighters\" — clinicians picking up shifts on the side — then rebuilt the design system and diagnosis flow to support async and sync visits, partnering with engineering on a Flutter build that shipped one UI to web and native.",
+      "Led discovery with \"Virtual Moonlighters\" (clinicians picking up shifts on the side), then rebuilt the design system and diagnosis flow to support async and sync visits, partnering with engineering on a Flutter build that shipped one UI to web and native.",
     outcome:
       "One product across desktop, iOS and Android, on a new design system \u2014 handling urgent-care visits and prescription refills for clinicians working remote shifts.",
     research: [
@@ -351,11 +351,11 @@ export const projects: Project[] = [
       },
       {
         src: "/work/docsquad/desktop-app.png",
-        caption: "Provider desktop — Patient queue",
+        caption: "Provider desktop: Patient queue",
       },
       {
         src: "/work/docsquad/phones.png",
-        caption: "Provider native app — Intake, Video, Assessment, Review",
+        caption: "Provider native app: Intake, Video, Assessment, Review",
       },
       {
         src: "/work/docsquad/icons.png",
@@ -387,7 +387,7 @@ export const projects: Project[] = [
     aiSummary:
       "Unified email, X, Instagram, Facebook, and chat into a single LiveEngage conversation surface so customer-care agents could stop swivel-chairing between dashboards. Self-service setup meant brands could connect their own social accounts, route them to specific teams, and ship a consistent voice across channels.",
     overview:
-      "Brands answer customer questions across emails, tweets, DMs, posts, chats, and texts — usually with a different tool for each channel. SocialConnect collapsed those into LiveEngage's existing messaging product, so a single agent transcript handles every inbound conversation, public or private.",
+      "Brands answer customer questions across emails, tweets, DMs, posts, chats, and texts, usually with a different tool for each channel. SocialConnect collapsed those into LiveEngage's existing messaging product, so a single agent transcript handles every inbound conversation, public or private.",
     approach:
       "I designed the conversation surface, the public-vs-private response flows, and a self-service setup product that lets brand admins connect social accounts, route them to teams, and prep canned content. Designed an end-state vision that integrates SocialConnect into the broader LiveEngage experience.",
     outcome:
@@ -395,15 +395,15 @@ export const projects: Project[] = [
     images: [
       {
         src: "/work/liveperson/homeco-conversational-commerce.png",
-        caption: "Conversational commerce — browsing and buying without leaving the chat",
+        caption: "Conversational commerce: browsing and buying without leaving the chat",
       },
       {
         src: "/work/liveperson/agent-workspace-social-queue.png",
-        caption: "Agent workspace — every social thread lands in one queue, alongside the profile behind it",
+        caption: "Agent workspace: every social thread lands in one queue, alongside the profile behind it",
       },
       {
         src: "/work/liveperson/all-channels-unified.png",
-        caption: "One surface for every channel — Facebook, Instagram, X, WhatsApp, SMS, and more",
+        caption: "One surface for every channel: Facebook, Instagram, X, WhatsApp, SMS, and more",
       },
       {
         src: "/work/liveperson/connections-self-service.webp",
@@ -427,11 +427,11 @@ export const projects: Project[] = [
     logo: "/logos/care-homepay.svg",
     accent: "#025747",
     aiSummary:
-      "Designed paired employee and employer mobile apps so caregivers could log hours and household employers could review, approve, and pay payroll — all on a phone. The two products share a design system but speak two very different mental models, one trust-driven, one operational.",
+      "Designed paired employee and employer mobile apps so caregivers could log hours and household employers could review, approve, and pay payroll, all on a phone. The two products share a design system but speak two very different mental models, one trust-driven, one operational.",
     overview:
       "Care.com Homepay handles payroll, tax filings, and compliance for families employing nannies and caregivers. The app extended that to a phone-first hour tracking flow that works for both sides of the relationship.",
     approach:
-      "Mapped the two user journeys side by side, prototyped clock in / clock out, weekly timesheets, and messaging. Co-designed shared components with the brand team. Defined an opinionated default — automatic week roll-up — that minimizes payroll edits while staying editable when life intervenes.",
+      "Mapped the two user journeys side by side, prototyped clock in / clock out, weekly timesheets, and messaging. Co-designed shared components with the brand team. Defined an opinionated default (automatic week roll-up) that minimizes payroll edits while staying editable when life intervenes.",
     outcome:
       "Two SSO-aware apps with timesheets, messaging, and structured exceptions. Future features include push-driven clock reminders and swipe approvals from the inbox.",
     images: [
@@ -441,7 +441,7 @@ export const projects: Project[] = [
       },
       {
         src: "/legacy/clockin-out-bbde38.png",
-        caption: "Clock in / out — quick, glanceable",
+        caption: "Clock in / out: quick, glanceable",
       },
       {
         src: "/legacy/timesheets-week-hours-0hours-d9955b.png",
@@ -466,13 +466,13 @@ export const projects: Project[] = [
     logo: "/logos/athenahealth.svg",
     accent: "#4800b5",
     aiSummary:
-      "Led the IA and navigation redesign of athenahealth's patient portal — used by 25M registered patients. Cards, scrolls, and category labels were tested with hundreds of users to surface a structure that didn't bury appointments under 'Test Results' and that finally worked on mobile.",
+      "Led the IA and navigation redesign of athenahealth's patient portal, used by 25M registered patients. Cards, scrolls, and category labels were tested with hundreds of users to surface a structure that didn't bury appointments under 'Test Results' and that finally worked on mobile.",
     overview:
-      "The legacy portal landed users on Test Results — a single sub-category — and obscured everything else. With 92% of healthcare consumers saying customer experience is a top strategic priority for providers, the structure was costing athena's clients renewals. We rebuilt the IA, dashboard, and navigation for responsive web and laid groundwork for native iOS/Android apps.",
+      "The legacy portal landed users on Test Results (a single sub-category) and obscured everything else. With 92% of healthcare consumers saying customer experience is a top strategic priority for providers, the structure was costing athena's clients renewals. We rebuilt the IA, dashboard, and navigation for responsive web and laid groundwork for native iOS/Android apps.",
     approach:
       "Card sorts in Optimal Workshop, unmoderated remote testing, and content audits drove a new taxonomy. Designed a consolidated My Health dashboard, mobile-first navigation, and a system that could degrade gracefully across athena's many client deployments.",
     outcome:
-      "Shipped a consolidated My Health dashboard and mobile-first navigation for 25M registered patients — replacing a structure that landed everyone on 'Test Results' and buried appointments, messages, and prescriptions.",
+      "Shipped a consolidated My Health dashboard and mobile-first navigation for 25M registered patients, replacing a structure that landed everyone on 'Test Results' and buried appointments, messages, and prescriptions.",
     metrics: [
       { label: "Registered patients", value: "25M" },
       { label: "Will switch providers without good digital exp.", value: "90%" },
@@ -481,15 +481,15 @@ export const projects: Project[] = [
     images: [
       {
         src: "/legacy/ch-current-myhealth-5f03d1.png",
-        caption: "Current My Health section — landed on Test Results only",
+        caption: "Current My Health section: landed on Test Results only",
       },
       {
         src: "/legacy/ch-myhealth-9fc070.png",
-        caption: "Redesigned My Health landing — consolidated dashboard",
+        caption: "Redesigned My Health landing: consolidated dashboard",
       },
       {
         src: "/legacy/ch-current-navigation-25506e.png",
-        caption: "Current navigation — confusing structure",
+        caption: "Current navigation: confusing structure",
       },
       {
         src: "/legacy/ch-navigation-horz-04-003cbb.png",
@@ -511,11 +511,11 @@ export const projects: Project[] = [
     aiSummary:
       "Designed athenaWell, a care management platform giving patients and care teams one shared source of truth for a care plan. Built around three patient personas and validated with resonance testing, it shipped daily patient tasks, 200+ wearable integrations, and content partnerships with Mayo Clinic and NIH.",
     overview:
-      "athenaWell is a care management platform that gives patients and care teams a single, shared source of truth for a care plan — conditions, goals, and day-to-day tasks — that works whether care is happening inside or outside the athenahealth network.",
+      "athenaWell is a care management platform that gives patients and care teams a single, shared source of truth for a care plan (conditions, goals, and day-to-day tasks) that works whether care is happening inside or outside the athenahealth network.",
     problem:
-      "Care coordination was scattered across phone calls, paper folders, and disconnected systems — hardest on patients managing chronic or high-risk conditions across multiple specialists. Care teams needed one place to create, assign, and track a plan; patients needed a simple daily view of what to do and a direct line to their team.",
+      "Care coordination was scattered across phone calls, paper folders, and disconnected systems, hardest on patients managing chronic or high-risk conditions across multiple specialists. Care teams needed one place to create, assign, and track a plan; patients needed a simple daily view of what to do and a direct line to their team.",
     approach:
-      "Designed around three patient personas — Healthy, Rising Risk, High-Risk — then validated with resonance testing: 5 interviews walking through a working Care Plan prototype. One assumption didn't survive testing: I expected tabbed care plans to confuse patients; testers preferred them, so they shipped as designed.",
+      "Designed around three patient personas (Healthy, Rising Risk, High-Risk), then validated with resonance testing: 5 interviews walking through a working Care Plan prototype. One assumption didn't survive testing: I expected tabbed care plans to confuse patients; testers preferred them, so they shipped as designed.",
     outcome:
       "Shipped a daily task view (check-ins, surveys, education) with a progress indicator testers called out as motivating, plus 200+ wearable integrations via Validic and content partnerships with Mayo Clinic, NIH, and epocrates.",
     metrics: [
@@ -525,18 +525,18 @@ export const projects: Project[] = [
     ],
     research: [
       "Resonance testing: 5 interviews across a range of backgrounds, including a power user of a comparable product, walking through a working Care Plan prototype",
-      "Persona-driven design across Healthy, Rising Risk, and High-Risk patients — each with distinct values, goals, and pain points",
-      "An early IA assumption (tabbed care plans would confuse patients) was tested and overturned — patients preferred the separation",
+      "Persona-driven design across Healthy, Rising Risk, and High-Risk patients, each with distinct values, goals, and pain points",
+      "An early IA assumption (tabbed care plans would confuse patients) was tested and overturned: patients preferred the separation",
       "Designed care-team apps for reaching patients beyond the clinic (virtual, phone, flexible scheduling), plus an Apollo chatbot for event-driven patient messaging",
     ],
     images: [
       {
         src: "/legacy/patient-careplans-landing-copy-2-13759d.png",
-        caption: "Care Plan landing page — the shared source of truth for patients and care teams",
+        caption: "Care Plan landing page: the shared source of truth for patients and care teams",
       },
       {
         src: "/legacy/screen-shot-2017-12-15-at-8-51-43-am-42cc08.png",
-        caption: "Care Team section — testers were especially drawn to the video chat option",
+        caption: "Care Team section: testers were especially drawn to the video chat option",
       },
       {
         src: "/legacy/screen-shot-2017-12-15-at-8-44-23-am-5606ba.png",
@@ -626,9 +626,9 @@ export const projects: Project[] = [
     accent: "#8759F2",
     pageBg: "#8255E8",
     aiSummary:
-      "Redesigned the admin used by Volusion's merchant base — order management, catalog, marketing, and storefront tools. Defined patterns for data-heavy tables, bulk actions, and a navigation that scaled as the product added modules.",
+      "Redesigned the admin used by Volusion's merchant base: order management, catalog, marketing, and storefront tools. Defined patterns for data-heavy tables, bulk actions, and a navigation that scaled as the product added modules.",
     overview:
-      "Volusion's ecommerce admin gave small businesses everything they needed to run an online store. I worked across order management, catalog, storefront, and onboarding — defining patterns that could outlive any one feature.",
+      "Volusion's ecommerce admin gave small businesses everything they needed to run an online store. I worked across order management, catalog, storefront, and onboarding, defining patterns that could outlive any one feature.",
     outcome:
       "Shipped new patterns for products, orders, and admin navigation across Volusion's full merchant base, replacing a legacy admin that hadn't kept pace with the product's growing feature set.",
     images: [
@@ -637,15 +637,15 @@ export const projects: Project[] = [
       },
       {
         src: "/legacy/1-0b3a0b.png",
-        caption: "Persona — Struck out on their own (freedom seekers)",
+        caption: "Persona: Struck out on their own (freedom seekers)",
       },
       {
         src: "/legacy/2-76c8be.png",
-        caption: "Persona — Family business owners (legacy builders)",
+        caption: "Persona: Family business owners (legacy builders)",
       },
       {
         src: "/legacy/3-9c4b03.png",
-        caption: "Persona — Considering starting or recently started",
+        caption: "Persona: Considering starting or recently started",
       },
       {
         src: "/legacy/image-asset-b1175a.png",
@@ -661,7 +661,7 @@ export const projects: Project[] = [
       },
       {
         src: "/legacy/01-2-top-nav-account-dropdown-cacd2d.jpg",
-        caption: "Top nav — account dropdown",
+        caption: "Top nav: account dropdown",
       },
       {
         src: "/legacy/01-3-admin-notification-d3e6ee.jpg",
@@ -673,27 +673,27 @@ export const projects: Project[] = [
       },
       {
         src: "/legacy/02-2-products-grid-hover-single-a124a7.jpg",
-        caption: "Products grid — hover, single select",
+        caption: "Products grid: hover, single select",
       },
       {
         src: "/legacy/02-3-products-grid-hover-multiple-411a5c.jpg",
-        caption: "Products grid — hover, multi-select",
+        caption: "Products grid: hover, multi-select",
       },
       {
         src: "/legacy/04-1-products-search-dropdown-e042d5.jpg",
-        caption: "Products — search dropdown",
+        caption: "Products: search dropdown",
       },
       {
         src: "/legacy/04-2-products-search-7d4be7.jpg",
-        caption: "Products — search results",
+        caption: "Products: search results",
       },
       {
         src: "/legacy/04-3-products-settings-dropdown-3aad07.jpg",
-        caption: "Products — settings dropdown",
+        caption: "Products: settings dropdown",
       },
       {
         src: "/legacy/image-asset-e4093e.jpeg",
-        caption: "Product page — list view",
+        caption: "Product page: list view",
       },
       {
         src: "/legacy/image-asset-7a9a34.jpeg",
@@ -709,7 +709,7 @@ export const projects: Project[] = [
       },
       {
         src: "/legacy/order-page-new-9ace82.jpg",
-        caption: "Order page — redesigned",
+        caption: "Order page: redesigned",
       },
       {
         src: "/legacy/image-asset-730808.png",
@@ -734,13 +734,13 @@ export const projects: Project[] = [
     accent: "#F05844",
     pageBg: "#CA4A39",
     aiSummary:
-      "A gallery of Volusion ecommerce designs — each started with a client phone call to align on look, feel, and merchandising goals, plus a set of paid templates flexible enough that clients could swap their own imagery and brand colors without breaking the design.",
+      "A gallery of Volusion ecommerce designs, each started with a client phone call to align on look, feel, and merchandising goals, plus a set of paid templates flexible enough that clients could swap their own imagery and brand colors without breaking the design.",
     overview:
-      "Custom client storefronts and a library of paid templates sold on Volusion.com. The templates were designed for easy upkeep — merchants could change images and design elements without breaking the layout. Designs spanned fashion, home, food, lifestyle, and more.",
+      "Custom client storefronts and a library of paid templates sold on Volusion.com. The templates were designed for easy upkeep: merchants could change images and design elements without breaking the layout. Designs spanned fashion, home, food, lifestyle, and more.",
     images: [
       {
         src: "/legacy/web-bombshell-411fd3.jpg",
-        caption: "Bombshell — apparel",
+        caption: "Bombshell: apparel",
       },
       {
         src: "/legacy/web-vestidos-e82c30.jpg",
@@ -784,23 +784,23 @@ export const projects: Project[] = [
       },
       {
         src: "/legacy/definition-device-home-1c10ca.png",
-        caption: "Definition — homepage across devices",
+        caption: "Definition: homepage across devices",
       },
       {
         src: "/legacy/definition-device-product-f3bc05.png",
-        caption: "Definition — product page",
+        caption: "Definition: product page",
       },
       {
         src: "/legacy/stfrancis-device-home-569ddb.png",
-        caption: "St. Francis — homepage",
+        caption: "St. Francis: homepage",
       },
       {
         src: "/legacy/stfrancis-device-category-0bec36.png",
-        caption: "St. Francis — category",
+        caption: "St. Francis: category",
       },
       {
         src: "/legacy/stfrancis-device-product-be231a.png",
-        caption: "St. Francis — product",
+        caption: "St. Francis: product",
       },
     ],
   },
@@ -831,7 +831,7 @@ export const projects: Project[] = [
     images: [
       {
         src: "/work/bohemian-hair-bows-card.jpg",
-        caption: "Bohemian Hair Bows — logo and product card",
+        caption: "Bohemian Hair Bows: logo and product card",
       },
       {
         src: "/legacy/gigglepoo-e4756f.png",
@@ -949,9 +949,9 @@ export const projects: Project[] = [
     accent: "#1EB571",
     pageBg: "#168251",
     aiSummary:
-      "Print work over the years — holiday cards and corporate gifts at Volusion, personal stationery, invitations, posters, and seasonal lookbooks. A mix of agency, client, and personal projects that lean illustrative.",
+      "Print work over the years: holiday cards and corporate gifts at Volusion, personal stationery, invitations, posters, and seasonal lookbooks. A mix of agency, client, and personal projects that lean illustrative.",
     overview:
-      "Selected print design across holiday cards, invitations, posters, and editorial pieces — both client work and personal projects.",
+      "Selected print design across holiday cards, invitations, posters, and editorial pieces, both client work and personal projects.",
     images: [
       {
         src: "/legacy/holiday1-2-43-23-pm-5fc6cd.jpg",
@@ -990,7 +990,7 @@ export const projects: Project[] = [
       },
       {
         src: "/legacy/print-christineinvite-2-43-23-pm-c6bd1c.jpg",
-        caption: "Christine — invite",
+        caption: "Christine: invite",
       },
       {
         src: "/legacy/amor-2-43-23-pm-e2878a.png",

@@ -9,9 +9,9 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import { Panel, TextPanel, NextProjectLink, CaseStudyMetaPanel, END_PANEL, INTRO_TITLE, INTRO_SUBTEXT, END_TITLE, END_MEASURE, HERO_COPY_GAP, CAPTION, HERO_ROW, HERO_ROW_COPY, HERO_INSET_MD, HERO_TITLE, HERO_SUBTEXT, TITLE, SUBHEAD, BODY_TYPE, StatRow, VIEW } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
-  title: "Netspend Rewards & UCM — Molly Francis",
+  title: "Netspend Rewards & UCM · Molly Francis",
   description:
-    "Designed both sides of Netspend's rewards platform — the internal Unified Commerce Management tool built 0→1 in 5 months, and the consumer-facing Rewards Tab redesign.",
+    "Designed both sides of Netspend's rewards platform: the internal Unified Commerce Management tool built 0→1 in 5 months, and the consumer-facing Rewards Tab redesign.",
 };
 
 const jost = Jost({
@@ -139,7 +139,7 @@ export default function NetspendCaseStudy() {
             straight from the claim to the solution. */}
         <TextPanel width={VIEW}>
           <SlideIn>
-            <h2 className={`text-white ${INTRO_TITLE}`}>Rewards ran on spreadsheets. No one could see what was live — or what was working.</h2>
+            <h2 className={`text-white ${INTRO_TITLE}`}>Rewards ran on spreadsheets. No one could see what was live or what was working.</h2>
           </SlideIn>
           <SlideIn delay={100}>
             <p className={`mt-3 ${BODY_MUTED}`}>
@@ -201,7 +201,7 @@ export default function NetspendCaseStudy() {
             </SlideIn>
             <SlideIn delay={100}>
               <p className={`mt-4 text-center ${CAPTION}`}>
-                Campaign setup — a wizard, not a spreadsheet
+                Campaign setup: a wizard, not a spreadsheet
               </p>
             </SlideIn>
           </div>
@@ -233,7 +233,7 @@ export default function NetspendCaseStudy() {
           <SlideIn delay={180}>
             <p className={`mt-4 ${BODY_MUTED}`}>
               So one round compared three directions instead of
-              one &mdash; and the strongest became the
+              one, and the strongest became the
               real&nbsp;design.
             </p>
           </SlideIn>
@@ -301,7 +301,7 @@ export default function NetspendCaseStudy() {
             <h2 className={H_DISPLAY}>Configure it once. It shows up everywhere.</h2>
           </SlideIn>
           <SlideIn delay={100}>
-            <p className={`mt-3 ${BODY_MUTED}`}>Category, offer type, reward amount, eligibility — set in the internal tool, live in the consumer tab. One data model, two experiences.</p>
+            <p className={`mt-3 ${BODY_MUTED}`}>Category, offer type, reward amount, eligibility: set in the internal tool, live in the consumer tab. One data model, two experiences.</p>
           </SlideIn>
         </TextPanel>
 
@@ -380,7 +380,7 @@ export default function NetspendCaseStudy() {
             <SlideIn delay={160} className="flex justify-center lg:justify-start">
               <Image
                 src={`${ASSET}/portrait-cashback.png`}
-                alt="Cardholder with cashback offers — 7-Eleven, Finish Line, Doordash"
+                alt="Cardholder with cashback offers: 7-Eleven, Finish Line, Doordash"
                 width={834}
                 height={600}
                 unoptimized

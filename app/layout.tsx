@@ -39,11 +39,11 @@ const jost = Jost({
    how the portrait on About ended up as the preview. */
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.mollyfrancis.com"),
-  title: "Molly Francis — Product Designer, Researcher and Leader",
+  title: "Molly Francis · Product Designer, Researcher and Leader",
   description:
     "Product designer, researcher and leader in Austin, Texas. 20+ years designing healthcare, fintech, and SaaS products with research-driven, AI-augmented workflows.",
   openGraph: {
-    title: "Molly Francis — Product Designer, Researcher and Leader",
+    title: "Molly Francis · Product Designer, Researcher and Leader",
     description:
       "Product designer, researcher and leader in Austin, Texas. 20+ years designing healthcare, fintech and SaaS products.",
     url: "https://www.mollyfrancis.com",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Molly Francis — Product Designer, Researcher and Leader",
+    title: "Molly Francis · Product Designer, Researcher and Leader",
     description:
       "Product designer, researcher and leader in Austin, Texas. 20+ years designing healthcare, fintech and SaaS products.",
   },

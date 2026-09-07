@@ -47,7 +47,7 @@ export function generateMetadata() {
   const p = getProject(SLUG);
   if (!p) return {};
   return {
-    title: `${p.title} — ${p.client} — Molly Francis`,
+    title: `${p.title} · ${p.client} · Molly Francis`,
     description: p.aiSummary,
   };
 }
@@ -474,7 +474,7 @@ export default function GovOSCaseStudy() {
           <div className="relative z-0 mt-4 w-full lg:absolute lg:bottom-[4%] lg:left-1/2 lg:mt-0 lg:ml-[calc(-480.5_*_var(--figma-u))] lg:w-[calc(961_*_var(--figma-u))]">
             <Frame
               src="/work/govos/macbook-hero.png"
-              alt="GovOS eSubmission dashboard — all submissions, statuses, and team at a glance"
+              alt="GovOS eSubmission dashboard: all submissions, statuses, and team at a glance"
             />
           </div>
         </section>
@@ -490,7 +490,7 @@ export default function GovOSCaseStudy() {
           <Heading>Recording a deed meant a vendor in the middle.</Heading>
           <Body>
             Counties scanned paper. Submitters paid a go-between. Nobody saw
-            status until it cleared. So I interviewed both ends of it — the
+            status until it cleared. So I interviewed both ends of it: the
             title companies sending documents and the county offices
             receiving them.
           </Body>
@@ -505,7 +505,7 @@ export default function GovOSCaseStudy() {
           <Body>
             Submitters paid a fee for status they couldn&rsquo;t
             see. Counties re-keyed data already typed correctly
-            once. So: a direct-to-county portal &mdash; upload,
+            once. So: a direct-to-county portal: upload,
             validate, pay by ACH. No go-between.
           </Body>
         </Panel>

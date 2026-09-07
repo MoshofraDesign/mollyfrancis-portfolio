@@ -24,7 +24,7 @@ import {
 } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
-  title: "Playing with AI — Molly Francis",
+  title: "Playing with AI · Molly Francis",
   description:
     "Self-set design challenges run with AI tools: a cyberpunk sign-up flow for an app powered by the human body, and an ATM built for cats.",
 };
@@ -82,14 +82,14 @@ const CHALLENGES = [
     n: "Challenge 1",
     title: "Plug In to Power Up",
     brief:
-      "It’s 2038 — AI broke the grid, and the only power source left is the human body. Design an AI-era app that runs on muscle, motion, and heat. Make it look desirable. Deliver a sign-up flow (max 5 screens) that convinces someone to plug in.",
+      "It’s 2038: AI broke the grid, and the only power source left is the human body. Design an AI-era app that runs on muscle, motion, and heat. Make it look desirable. Deliver a sign-up flow (max 5 screens) that convinces someone to plug in.",
     tool: "Claude",
     toolMark: `${ASSET}/tools/claude.svg`,
     /* 1600x1148 export of the 800x574 frame. */
     prompt: { src: `${ASSET}/challenge-1-prompt.png`, w: 1600, h: 1148, aspect: "1.394" },
     promptAlt: "The brief typed into Claude Cowork",
     result: { src: `${ASSET}/videos/plug-in-flow.mp4`, aspect: "1070/790", ratio: "1.354" },
-    resultAlt: "The sign-up flow that came back — cyberpunk, five screens",
+    resultAlt: "The sign-up flow that came back: cyberpunk, five screens",
   },
   {
     key: "paws-bank",
@@ -103,7 +103,7 @@ const CHALLENGES = [
     prompt: { src: `${ASSET}/challenge-2-prompt.png`, w: 1600, h: 916, aspect: "1.747" },
     promptAlt: "The brief typed into Cursor",
     result: { src: `${ASSET}/videos/paws-bank.mp4`, aspect: "1104/792", ratio: "1.394" },
-    resultAlt: "Paws Bank — the ATM the brief asked for",
+    resultAlt: "Paws Bank: the ATM the brief asked for",
   },
 ] as const;
 
@@ -224,7 +224,7 @@ export default function AiChallengesCaseStudy() {
                   what the learning actually is, because this is the page
                   where someone decides whether to keep reading. */}
               <p className={`opacity-90 ${HERO_SUBTEXT}`}>
-                Learning the new AI tools on my own time &mdash; writing
+                Learning the new AI tools on my own time: writing
                 prompts, judging what comes back, and keeping the parts worth
                 bringing to work on&nbsp;Monday.
               </p>

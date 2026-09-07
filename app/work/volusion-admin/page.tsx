@@ -193,7 +193,7 @@ export function generateMetadata() {
   const p = getProject(SLUG);
   if (!p) return {};
   return {
-    title: "Ecommerce Admin — Volusion — Molly Francis",
+    title: "Ecommerce Admin · Volusion · Molly Francis",
     description: p.aiSummary,
   };
 }
@@ -411,8 +411,8 @@ export default function VolusionCaseStudy() {
         <TextPanel width={VIEW}>
           <Heading intro>Thirty thousand shops, one admin.</Heading>
           <Body intro>
-            Volusion&apos;s admin ran real businesses — orders, catalog,
-            storefront, onboarding — for tens of thousands of independent
+            Volusion&apos;s admin ran real businesses (orders, catalog,
+            storefront, onboarding) for tens of thousands of independent
             merchants. It had grown a module at a time and stopped keeping up
             with itself.
           </Body>
@@ -426,8 +426,7 @@ export default function VolusionCaseStudy() {
           <Body>
             75% of new customers wanted to start their store right
             away. So editing moved onto the storefront itself
-            &mdash; logo, navigation, styles, content, themes
-            &mdash; changed where you can see them.
+            (logo, navigation, styles, content, themes) changed where you can see them.
           </Body>
           <Body className="mt-5">
             The old codebase limited what was possible. The harder call was what
@@ -458,9 +457,9 @@ export default function VolusionCaseStudy() {
         <TextPanel width={VIEW}>
           <Heading>Patterns, not screens.</Heading>
           <Body>
-            So I designed the parts that repeat &mdash; data-heavy
+            So I designed the parts that repeat (data-heavy
             tables, bulk actions, navigation that could take the
-            next module &mdash; instead of redrawing each feature.
+            next module) instead of redrawing each feature.
             They shipped to the whole merchant base.
           </Body>
         </TextPanel>

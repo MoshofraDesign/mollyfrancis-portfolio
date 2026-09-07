@@ -7,7 +7,7 @@ export default function NotFound() {
         Lost the trail
       </p>
       <h1 className="font-serif text-hero">
-        404 — <em className="not-italic font-light text-ochre">that page isn&rsquo;t here.</em>
+        404. <em className="not-italic font-light text-ochre">That page isn&rsquo;t here.</em>
       </h1>
       <p className="mt-6 text-lg text-ink/70">
         Probably a redesigned URL. Let&rsquo;s get you back somewhere useful.
