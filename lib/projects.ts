@@ -1153,18 +1153,6 @@ const CASE_STUDY_META: Partial<Record<string, CaseStudyMeta>> = {
       { value: "0 → 1", label: "UCM platform in 5 months" },
     ],
   },
-  "ai-challenges": {
-    team: ["Me", "Whichever model was open at the time"],
-    timing: [
-      { value: "2026", label: "Ongoing, whenever a brief occurs to me" },
-      { value: "2", label: "Challenges finished so far" },
-    ],
-    tools: ["Figma", "Claude", "Cursor"],
-    /* No projected column — the page passes showProjected={false}. Nothing
-       here is a number worth a figure: the screen cap and the prompt count
-       are the brief's own constraints, not an outcome. */
-    projected: [],
-  },
   "govos-esubmission": {
     team: [
       "1 Lead Product Designer",

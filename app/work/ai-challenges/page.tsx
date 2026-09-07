@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import { Jost } from "next/font/google";
-import { getProject, getCaseStudyMeta, nextProject } from "@/lib/projects";
+import { getProject, nextProject } from "@/lib/projects";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
@@ -10,7 +10,6 @@ import AutoplayVideo from "@/components/AutoplayVideo";
 import {
   Panel,
   NextProjectLink,
-  CaseStudyMetaPanel,
   VIEW,
   MEASURE,
   HERO_ROW,
@@ -168,7 +167,6 @@ export default function AiChallengesCaseStudy() {
   if (!project) return null;
 
   const next = nextProject("ai-challenges");
-  const meta = getCaseStudyMeta(project);
 
   return (
     <main
@@ -300,7 +298,11 @@ export default function AiChallengesCaseStudy() {
           </Fragment>
         ))}
 
-        <CaseStudyMetaPanel meta={meta} showProjected={false} />
+        {/* No closing meta panel. "The Team: Me / Whichever model was open
+            at the time" and a two-line Timing block is scaffolding a client
+            case study needs and this one doesn't — there's no team, no
+            engagement, and no tools list worth a panel. The page ends on the
+            second challenge and hands straight to Up next. */}
 
         <NextProjectLink
           href={`/work/${next.slug}`}
