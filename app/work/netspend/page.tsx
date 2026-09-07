@@ -220,16 +220,21 @@ export default function NetspendCaseStudy() {
             <h2 className={H_DISPLAY}>A new way of working.</h2>
           </SlideIn>
           <SlideIn delay={100}>
+                        {/* The tool names came out of the prose — the
+                three marks directly below say Claude Cowork,
+                Cursor and Gemini, so the paragraph was
+                labelling its own legend. */}
             <p className={`mt-3 ${BODY_MUTED}`}>
-              AI sat inside the process, not next to it. Claude Cowork and Gemini
-              turned Jira tickets into requirements I could design from. Cursor
-              built working mockups out of our design-system components.
+              AI sat inside the process, not next to it. Jira
+              tickets became requirements I could design from; our
+              design-system components became working mockups.
             </p>
           </SlideIn>
           <SlideIn delay={180}>
             <p className={`mt-4 ${BODY_MUTED}`}>
-              So one round compared three directions instead of one — and the
-              strongest one became the real&nbsp;design.
+              So one round compared three directions instead of
+              one &mdash; and the strongest became the
+              real&nbsp;design.
             </p>
           </SlideIn>
           <SlideIn delay={260}>
