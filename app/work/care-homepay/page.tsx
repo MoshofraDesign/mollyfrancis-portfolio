@@ -238,10 +238,10 @@ export default function CareHomepayCaseStudy() {
             </SlideIn>
             <SlideIn delay={100}>
               <p className={`mt-3 text-white ${INTRO_SUBTEXT}`}>
-                A caregiver and the family who employs her aren&rsquo;t a company
-                and a contractor — they see each other every day. Payday still
-                has to be exact. HomePay had to serve both sides without making
-                it awkward.
+                A caregiver and the family who employs her see
+                each other every day. Payday still has to be
+                exact. HomePay had to serve both sides without
+                making it awkward.
               </p>
             </SlideIn>
             <SlideIn delay={200} className="mt-6">
@@ -260,9 +260,9 @@ export default function CareHomepayCaseStudy() {
         <TextPanel width={COPY_PANEL}>
           <Heading>Hours that add themselves up.</Heading>
           <Body>
-            Clock in, clock out, and the week rolls up on its own — a default
-            that keeps payroll edits down instead of asking either side to
-            chase them. Life still happens, so every entry stays editable.
+            Clock in, clock out, and the week rolls up on its own
+            &mdash; fewer payroll edits, and neither side chasing
+            them. Life happens, so every entry stays editable.
           </Body>
         </TextPanel>
 

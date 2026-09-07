@@ -424,10 +424,10 @@ export default function VolusionCaseStudy() {
         <TextPanel width={VIEW}>
           <Heading>Storefront Editor</Heading>
           <Body>
-            75% of new customers wanted to start their store right away. So I
-            put the editing on the storefront itself: logo, navigation, styles,
-            content, themes — changed where you can see them, with a clear way
-            back into the admin.
+            75% of new customers wanted to start their store right
+            away. So editing moved onto the storefront itself
+            &mdash; logo, navigation, styles, content, themes
+            &mdash; changed where you can see them.
           </Body>
           <Body className="mt-5">
             The old codebase limited what was possible. The harder call was what
@@ -458,10 +458,10 @@ export default function VolusionCaseStudy() {
         <TextPanel width={VIEW}>
           <Heading>Patterns, not screens.</Heading>
           <Body>
-            So I designed for the parts that repeat — data-heavy tables, bulk
-            actions, a navigation that could take the next module — rather
-            than redrawing each feature. Those shipped across the whole
-            merchant base.
+            So I designed the parts that repeat &mdash; data-heavy
+            tables, bulk actions, navigation that could take the
+            next module &mdash; instead of redrawing each feature.
+            They shipped to the whole merchant base.
           </Body>
         </TextPanel>
 

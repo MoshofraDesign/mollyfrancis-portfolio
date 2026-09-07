@@ -170,10 +170,9 @@ export default function NetspendCaseStudy() {
           </SlideIn>
           <SlideIn delay={100}>
             <p className="mt-3 text-[clamp(1.25rem,1.6vw,1.65rem)] font-normal leading-[1.45] text-white/90 [text-wrap:pretty]">
-              I designed both sides of it: the internal tool where the team
-              builds and manages every reward, and the cardholder app
-              experience it powers. One system, so what gets configured is
-              exactly what customers see.
+              I designed both sides: the internal tool the team
+              builds rewards in, and the cardholder app it powers.
+              What gets configured is exactly what customers see.
             </p>
           </SlideIn>
         </TextPanel>

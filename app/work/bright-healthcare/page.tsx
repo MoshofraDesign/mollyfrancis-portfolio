@@ -197,10 +197,10 @@ export default function BrightHealthcareCaseStudy() {
             </SlideIn>
             <SlideIn delay={100}>
               <p className={`mt-3 ${BODY}`}>
-                Interviews with providers and their staff on how an
-                authorization actually got done, then usability tests on the
-                submission flow to find where it still caught. What came back
-                wasn&rsquo;t a list of features.
+                Interviews with providers and their staff on how
+                an authorization actually got done, then
+                usability tests to find where the flow still
+                caught. Nobody asked for features.
               </p>
             </SlideIn>
           </div>
@@ -282,7 +282,11 @@ export default function BrightHealthcareCaseStudy() {
             </SlideIn>
             <SlideIn delay={100}>
               <p className={`mt-3 ${BODY}`}>
-                I mapped authorization rules into form logic with clinical operations, so the portal could tell a provider what was required before they submitted rather than after. Continuous prototype testing tightened every step of the flow, and an empty-state dashboard grew with the user.
+                With clinical operations I mapped the rules into
+                the form, so it told providers what was required
+                before they submitted, not after. Prototype
+                testing tightened each step; the dashboard grew
+                with the user.
               </p>
             </SlideIn>
           </div>
@@ -309,10 +313,10 @@ export default function BrightHealthcareCaseStudy() {
                 line, which is the sharpest thing on the page. */}
             <SlideIn delay={100}>
               <p className={`mt-3 ${BODY}`}>
-                So I decided what goes where: the dashboard, the request
-                itself, and what a provider sees after they hit submit. Status
-                got a place of its own — the one thing a fax could never give
-                back.
+                I decided what goes where: the dashboard, the
+                request, and what a provider sees after
+                submitting. Status got its own place &mdash; the
+                one thing a fax never gave back.
               </p>
             </SlideIn>
           </div>
@@ -396,9 +400,10 @@ export default function BrightHealthcareCaseStudy() {
                 {/* Tighter than project.outcome, which runs three lines at
                     nearly 950px beside the portrait. Same facts. */}
                 <p className={`mt-3 ${BODY}`}>
-                  Within weeks of go-live in a new market, 15%+ of
-                  authorizations had moved to the portal. Providers rated it
-                  the best tool they&apos;d used — one team put the saving at
+                  Within weeks of go-live, 15%+ of
+                  authorizations had moved to the portal.
+                  Providers called it the best tool
+                  they&apos;d used; one team put the saving at
                   four hours per provider, per day.
                 </p>
               </SlideIn>

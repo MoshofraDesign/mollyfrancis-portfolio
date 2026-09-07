@@ -189,9 +189,10 @@ export default function LivePersonCaseStudy() {
         <TextPanel>
           <Heading intro>Six tabs, one customer.</Heading>
           <Body>
-            A care agent answered the same customer in six places — email,
-            tweets, DMs, posts, chats, texts — each in its own dashboard. Every
-            channel meant another tool to learn and another window to check.
+            One agent answered the same customer in six places
+            &mdash; email, tweets, DMs, posts, chats, texts &mdash;
+            each in its own dashboard. Every channel was another
+            tool to learn.
           </Body>
         </TextPanel>
 
@@ -221,10 +222,9 @@ export default function LivePersonCaseStudy() {
         <TextPanel>
           <Heading>A complaint starts in public and has to finish in private.</Heading>
           <Body>
-            Someone tweets. The reply has to move to a DM, keep the thread
-            intact, and stay on brand. No tool handled that handoff — so I
-            built the conversation surface around it, public and private in one
-            transcript.
+            Someone tweets. The reply has to move to a DM, keep the
+            thread intact, and stay on brand. No tool handled that
+            handoff, so I designed around it.
           </Body>
         </TextPanel>
 

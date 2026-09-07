@@ -202,10 +202,10 @@ export default function PatientIoCaseStudy() {
         <TextPanel>
           <Heading>Every pill had to look like the real one.</Heading>
           <Body>
-            People recognise their medication by sight, so a generic capsule
-            icon is worse than useless. I built a component system that drew
-            each pill from structured Epocrates data — thousands of drugs,
-            no custom art.
+            People know their medication by sight, so a generic
+            capsule is worse than useless. I built a system that
+            drew each pill from Epocrates data &mdash; thousands of
+            drugs, no custom art.
           </Body>
         </TextPanel>
 
@@ -262,10 +262,10 @@ export default function PatientIoCaseStudy() {
         <TextPanel>
           <Heading>Solo designer, fourteen people.</Heading>
           <Body>
-            As the solo designer in a nimble 14-person team, I owned the end-to-end user experience for
-            Patient IO&rsquo;s mobile and desktop care platform &mdash; medication tracking, vitals,
-            care-plan adherence, and the pill-rendering system, from early concept through shipping
-            product.
+            Solo designer on a 14-person team. I owned the
+            experience end to end &mdash; medication tracking,
+            vitals, care-plan adherence and the pill system &mdash;
+            from concept to shipped product.
           </Body>
         </TextPanel>
 
@@ -273,10 +273,11 @@ export default function PatientIoCaseStudy() {
         <TextPanel>
           <Heading>Acquired by athenahealth</Heading>
           <Body>
-            Our success led athenahealth to acquire Patient IO in August 2016. The adherence-tracking
-            and pill-rendering patterns we built became the design foundation for their flagship patient
-            app, athenaWell &mdash; carried forward into a platform built around three patient personas
-            and 200+ wearable integrations, with content partnerships spanning Mayo Clinic and NIH.
+            athenahealth acquired Patient IO in August 2016. The
+            adherence and pill-rendering patterns became the
+            foundation for athenaWell, their flagship patient app
+            &mdash; three personas, 200+ wearable integrations,
+            content from Mayo Clinic and NIH.
           </Body>
         </TextPanel>
 

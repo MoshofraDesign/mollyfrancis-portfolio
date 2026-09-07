@@ -495,10 +495,10 @@ export default function GovOSCaseStudy() {
         <Panel width={COPY_PANEL}>
           <Heading>Both sides wanted the middle gone.</Heading>
           <Body>
-            Submitters were paying a fee for status they still couldn&rsquo;t
-            see. Counties were re-keying data that had already been typed
-            correctly once. So I designed a direct-to-county portal: upload,
-            validate, pay by ACH — clean data in, no go-between.
+            Submitters paid a fee for status they couldn&rsquo;t
+            see. Counties re-keyed data already typed correctly
+            once. So: a direct-to-county portal &mdash; upload,
+            validate, pay by ACH. No go-between.
           </Body>
         </Panel>
 
@@ -558,11 +558,10 @@ export default function GovOSCaseStudy() {
         <Panel>
           <Heading>Tested until it held. Accessible by&nbsp;requirement.</Heading>
           <Body>
-            Rounds of usability testing with real submitters, run until they
-            stopped finding problems — and a VPAT for procurement, with
-            keyboard access and screen-reader support designed in rather than
-            patched on. A county can&rsquo;t buy what its staff can&rsquo;t
-            use.
+            Round after round with real submitters, until they
+            stopped finding problems. And a VPAT: keyboard and
+            screen-reader support designed in rather than bolted on.
+            A county can&rsquo;t buy what its staff can&rsquo;t use.
           </Body>
         </Panel>
 
