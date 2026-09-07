@@ -168,9 +168,17 @@ function noOrphan(text: string) {
  * absurdly large one. The vw value in the middle keeps the same fluid feel
  * within the normal viewport range; the clamp only kicks in at the extremes.
  */
-function Heading({ children }: { children: React.ReactNode }) {
+/**
+ * @param wide Widens the measure at lg so a long display line breaks into
+ *   two rather than three. "Tested until it held. Accessible by requirement."
+ *   is 47 characters, which at the top of the clamp is about 21 per line in
+ *   the 700px measure — three lines, with the last one two words long. 900
+ *   takes it to two. Below lg it falls back to the reading measure, so the
+ *   extra lines only come back once the screen actually needs them.
+ */
+function Heading({ children, wide = false }: { children: React.ReactNode; wide?: boolean }) {
   return (
-    <SlideIn className={TEXT_W}>
+    <SlideIn className={wide ? `${TEXT_W} lg:max-w-[min(900px,86vw)]` : TEXT_W}>
       <h2 className="text-[clamp(2rem,4.5vw,4.05rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </h2>
@@ -556,7 +564,7 @@ export default function GovOSCaseStudy() {
                in the closing meta panel. No conformance level or score is
                claimed, only that the bar shaped the work. */}
         <Panel>
-          <Heading>Tested until it held. Accessible by&nbsp;requirement.</Heading>
+          <Heading wide>Tested until it held. Accessible by&nbsp;requirement.</Heading>
           <Body>
             Round after round with real submitters, until they
             stopped finding problems. And a VPAT: keyboard and

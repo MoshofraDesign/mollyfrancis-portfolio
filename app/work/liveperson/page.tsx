@@ -141,7 +141,14 @@ export default function LivePersonCaseStudy() {
               <Image src={LOGO} alt="LivePerson" fill unoptimized priority className="object-contain object-left" />
             </div>
 
-            <p className={`max-w-[300px] ${HERO_TITLE} ${HERO_ROW_COPY} lg:absolute lg:left-[61.8%] lg:top-[50px] lg:z-10 lg:flex lg:h-[94px] lg:max-w-[min(417px,28vw)] lg:items-center`}>
+            {/* Anchored to the wordmark, not to a percentage of the panel.
+                The mark is a fixed 594px at left 50, so it ends at 644 —
+                but the title sat at 61.8%, which is 822px on a 1330 panel
+                and left a 178px hole between them. 694 is the mark's right
+                edge plus the same 50 the mark is inset by. Below lg it's
+                back in HERO_ROW on a 300px measure, so it breaks to two
+                lines under the mark. */}
+            <p className={`max-w-[300px] ${HERO_TITLE} ${HERO_ROW_COPY} lg:absolute lg:left-[694px] lg:top-[50px] lg:z-10 lg:flex lg:h-[94px] lg:max-w-[min(417px,26vw)] lg:items-center`}>
               Social Media Management Product
             </p>
           </div>

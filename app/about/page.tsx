@@ -80,6 +80,11 @@ const TIGHT_CLEAR = "!pt-10 sm:!pt-12 lg:!pt-[var(--nav-clear)] !pb-6 sm:!pb-8 l
  *  100px+ of fixed side padding eats too much of a phone's width. */
 const TIGHT_CLEAR_RAIL = `${TIGHT_CLEAR} !px-6 sm:!px-12 lg:!pl-[100px] lg:!pr-[min(16%,120px)]`;
 
+/* capVh was 20 on the two-row panels, which is what left the circles
+   floating: at 20vh a circle is ~174px on a 870px-tall window while its
+   auto-fit column is ~270px wide, so each one sat in 96px of slop. At 30vh
+   the 250px size cap binds instead and the circle fills its column. */
+
 /** One row of circle photos. auto-fit means the browser fits whole columns
  *  and drops to two (then one) rather than wrapping a row unevenly; 190px is
  *  the floor a circle may shrink to before a column is dropped. */
@@ -301,14 +306,14 @@ function CollectionsPanel({
           </SlideIn>
           <SlideIn delay={80} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(40)}>
             {rowOne.map((p) => (
-              <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={20} crop={p.crop} flip={p.flip} />
+              <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={30} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
         </div>
         <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:gap-x-16">
           <SlideIn delay={140} className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(40)}>
             {rowTwo.map((p) => (
-              <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={20} crop={p.crop} flip={p.flip} />
+              <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={30} crop={p.crop} flip={p.flip} />
             ))}
           </SlideIn>
           <SlideIn delay={200} className="w-[226px] max-w-full text-[clamp(0.9rem,1.4vw,20px)] leading-relaxed opacity-70 sm:shrink-0">
@@ -348,7 +353,7 @@ function PackagingPanel({
           <div className="flex w-full flex-col items-center gap-y-6 sm:flex-row sm:gap-x-16">
             <SlideIn className="w-full min-w-0 sm:flex-1" style={PHOTO_ROW(40)}>
               {topRow.map((p) => (
-                <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={20} crop={p.crop} flip={p.flip} />
+                <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={30} crop={p.crop} flip={p.flip} />
               ))}
             </SlideIn>
             {topAside && (
@@ -370,7 +375,7 @@ function PackagingPanel({
             )}
           </div>
           {photos.map((p) => (
-            <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={20} crop={p.crop} flip={p.flip} />
+            <Photo key={p.src} src={p.src} alt={p.alt} size={250} capVh={30} crop={p.crop} flip={p.flip} />
           ))}
         </SlideIn>
       </div>

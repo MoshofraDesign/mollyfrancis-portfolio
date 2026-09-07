@@ -253,18 +253,19 @@ export default function DocSquadCaseStudy() {
                 the beat a recruiter reads first, and the long version made
                 them work for the same two facts: who the clinician is, and
                 what the research came back with. */}
+            {/* One paragraph, not two. It's a single thought — who the
+                clinician is, what the old product asked of them, and what
+                the research came back with — and two blocks made the
+                research read as a separate beat that happened later. The
+                diagnosis-flow testing lives in research[] in
+                lib/projects.ts; the page's own later beats show the flow. */}
             <SlideIn delay={80}>
               <p className={BODY}>
                 DocSquad&apos;s clinicians moonlight — minutes between shifts,
                 not hours. The old product wanted a live video call every
-                visit, then a second system to retype it into.
-              </p>
-            </SlideIn>
-            <SlideIn delay={160}>
-              <p className={`mt-8 ${BODY}`}>
-                Five interviews, competitor teardowns, testing on the diagnosis
-                flow. Every clinician said the same thing: don&apos;t hand us
-                another tool — hand us less work.
+                visit, then a second system to retype it into. Five interviews
+                and competitor teardowns said the same thing: don&apos;t hand
+                us another tool, hand us less work.
               </p>
             </SlideIn>
           </div>
