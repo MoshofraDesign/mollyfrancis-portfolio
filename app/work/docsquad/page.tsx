@@ -249,20 +249,22 @@ export default function DocSquadCaseStudy() {
             <SlideIn>
               <h2 className={H_DISPLAY}>The provider was already off the clock.</h2>
             </SlideIn>
+            {/* Two paragraphs of about 25 words each, down from 78. This is
+                the beat a recruiter reads first, and the long version made
+                them work for the same two facts: who the clinician is, and
+                what the research came back with. */}
             <SlideIn delay={80}>
               <p className={BODY}>
-                DocSquad&apos;s clinicians moonlight — telehealth shifts squeezed
-                around a full-time job. They arrive with minutes, not hours. The
-                old product asked for the opposite: a live video call every
-                visit, then a second system to type it all into.
+                DocSquad&apos;s clinicians moonlight — minutes between shifts,
+                not hours. The old product wanted a live video call every
+                visit, then a second system to retype it into.
               </p>
             </SlideIn>
             <SlideIn delay={160}>
               <p className={`mt-8 ${BODY}`}>
-                Five interviews with clinicians actually working these shifts,
-                teardowns of how competing platforms onboard, and testing of
-                the diagnosis flow itself. They all said the same thing:
-                don&apos;t hand us another tool. Hand us less work.
+                Five interviews, competitor teardowns, testing on the diagnosis
+                flow. Every clinician said the same thing: don&apos;t hand us
+                another tool — hand us less work.
               </p>
             </SlideIn>
           </div>
@@ -276,9 +278,9 @@ export default function DocSquadCaseStudy() {
             </SlideIn>
             <SlideIn delay={80}>
               <p className={BODY}>
-                The intake happens first, on its own. Symptoms and history
-                are collected before anyone opens the case — then it&apos;s read,
-                diagnosed, prescribed or passed on. No call, no retyping.
+                Symptoms and history are collected before anyone opens the
+                case. Then it&apos;s read, diagnosed, prescribed or passed
+                on. No call, no retyping.
               </p>
             </SlideIn>
           </div>
@@ -370,11 +372,15 @@ export default function DocSquadCaseStudy() {
               <h2 className={H_DISPLAY}>One interface, web and native.</h2>
             </SlideIn>
             <SlideIn delay={80}>
+              {/* No platform list here: the closing Outcome already says
+                  "one product across desktop, iOS and Android, on a new
+                  design system", and the heading above carries it too.
+                  This beat keeps what only it says — who built it, in
+                  what, and that the icons and illustrations are hers. */}
               <p className={BODY}>
                 I rebuilt the design system with the flow, and engineering
-                shipped it in Flutter — one interface to desktop, iOS and
-                Android. I drew the icon and illustration set that came with
-                it, for the provider app and the patient app both.
+                shipped it in Flutter. The icons and illustrations are mine,
+                for both apps.
               </p>
             </SlideIn>
           </div>
@@ -415,10 +421,9 @@ export default function DocSquadCaseStudy() {
             </SlideIn>
             <SlideIn delay={80}>
               <p className={BODY}>
-                Another designer owned the patient app. I mentored them
-                through it — reviewing the work and holding it to the
-                provider app&rsquo;s patterns — so a visit felt like the same
-                product from either end.
+                Another designer owned the patient app. I mentored them and
+                held it to the provider patterns &mdash; one product from
+                either end.
               </p>
             </SlideIn>
           </div>
