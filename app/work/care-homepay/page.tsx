@@ -212,8 +212,10 @@ export default function CareHomepayCaseStudy() {
               <Image
                 src={`${ASSET}/phone-hero-right.png`}
                 alt="HomePay splash — Easy time tracking with your employer"
+                /* Full-length export: 793x1671, bezel and home indicator
+                   included. The earlier one was cut at 1210, mid-body. */
                 width={793}
-                height={1210}
+                height={1671}
                 priority
                 className="h-auto w-full"
               />
