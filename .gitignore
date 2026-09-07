@@ -14,3 +14,6 @@ _to_delete/
 
 # scratch renders used while checking layout against Figma
 .tmp_preview/
+
+# Review screenshots Claude drops here — not site assets
+Claude outputs/
