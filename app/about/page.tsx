@@ -270,8 +270,22 @@ function StackPanel({
       ))}
     </SlideIn>
   );
+  /* The row is capped to what the circles occupy and centred in the 1000px
+     stage, so its left edge sits inboard of the panel rail. The heading has
+     to start on that same edge — it was aligning to the rail instead, a
+     visible ~20-70px to the left of the first circle depending on window
+     height (the cap moves with min(size, 32vh)). Same expression, so the
+     two edges can't drift apart. */
+  const rowMax = `calc(${photos.length} * min(${photoSize}px, 32vh) + ${
+    photos.length - 1
+  } * ${photoGap}px)`;
   const text = !heading && !children ? null : (
-    <SlideIn delay={100} className={textWidth}>
+    <SlideIn
+      delay={100}
+      className="w-full"
+      style={{ maxWidth: rowMax, marginInline: "auto" }}
+    >
+      <div className={textWidth}>
       {heading && (
         <h2 className="text-[clamp(1.75rem,5vw,3.8rem)] font-semibold leading-[1.15] tracking-[-0.01em]">
           {heading}
@@ -282,6 +296,7 @@ function StackPanel({
           {children}
         </div>
       )}
+      </div>
     </SlideIn>
   );
   return (
