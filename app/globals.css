@@ -495,9 +495,12 @@ body::before {
 
   /* Frame 1 — mark 455x141.365 at 100,112; the Definition device shot
      950x609 at 435,314; copy 265 wide at 102,741, Jost Regular 18/26. */
+  /* 50/50, the site-wide rule for a hero mark — Figma has this one at
+     100,112. Every other project's mark sits at 50px from the top and the
+     left, and this was the last one still on the frame's own inset. */
   main .ecom-mark {
-    left: 100px;
-    top: 100px;
+    left: 50px;
+    top: 50px;
     width: calc(455 * var(--figma-u));
     height: calc(141.365 * var(--figma-u));
   }
@@ -507,8 +510,9 @@ body::before {
     width: calc(950 * var(--figma-u));
     height: calc(609 * var(--figma-u));
   }
+  /* 50px too, so the copy shares the mark's left edge. */
   main .ecom-copy {
-    left: 100px;
+    left: 50px;
     top: 74.1%;
     width: calc(265 * var(--figma-u));
     font-size: calc(18 * var(--figma-u));
