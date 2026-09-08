@@ -29,10 +29,13 @@ export default function AiChallengesBand() {
        the colour rather than inside it. */
     <section className={WORK_THUMB_SECTION}>
       <SlideIn>
-        {/* py-5, down from 7. The button's min-h-11 is the tap-target floor
-            and sets the box's inner height, so the padding is the only place
-            height comes off without shrinking the target. */}
-        <div className="flex flex-col items-start gap-6 rounded-[4px] bg-[#333333] px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-8">
+        {/* The button's min-h-11 is the tap-target floor and sets the box's
+            inner height, so padding is the only place height comes off
+            without shrinking the target: 14px below sm, 16 at sm, the
+            frame's 20 at lg. The lockup steps down with it — a 34px sparkle
+            over a 29px wordmark was setting the band's height on a tablet
+            rather than sitting inside it. */}
+        <div className="flex flex-col items-start gap-6 rounded-[4px] bg-[#333333] px-6 py-3.5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-8 sm:py-4 lg:py-5">
           {/* One row, all three optically centred on it — the frame has the
               sparkle, the wordmark and the tagline inside a single 50-tall
               row. They were nested in a baseline-aligned pair before, and an
@@ -49,7 +52,7 @@ export default function AiChallengesBand() {
               width={52}
               height={50}
               unoptimized
-              className="h-[27px] w-auto shrink-0 sm:h-[34px]"
+              className="h-[22px] w-auto shrink-0 sm:h-[26px] lg:h-[34px]"
             />
             <Image
               src="/logos/ai-challenges-wide.svg"
@@ -57,7 +60,7 @@ export default function AiChallengesBand() {
               width={655}
               height={83}
               unoptimized
-              className="h-[23px] w-auto sm:h-[29px]"
+              className="h-[19px] w-auto sm:h-[22px] lg:h-[29px]"
             />
             <p className="font-jost text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.45] text-white/80">
               Learning for fun&nbsp;:)

@@ -240,11 +240,11 @@ function hasImage(src: string): boolean {
  * clears.
  */
 const CLIP_CAP =
-  "lg:max-w-[min(950px,90vw,calc((var(--panel-media-max-h)_-_5rem)_*_1.6))]";
+  "lg:max-w-[min(880px,90vw,calc((var(--panel-media-max-h)_-_8rem)_*_1.6))]";
 
 /** …and the panel around it hugs that, so the next section starts sooner. */
 const CLIP_PANEL =
-  "lg:w-[min(100vw,calc(950px_+_9rem),calc((var(--panel-media-max-h)_-_5rem)_*_1.6_+_9rem))]";
+  "lg:w-[min(100vw,calc(880px_+_9rem),calc((var(--panel-media-max-h)_-_8rem)_*_1.6_+_9rem))]";
 
 /** Figma 4724:8384 / 4724:8388 — 950-wide media with a centred caption. */
 function BeforeAfterPanel({
@@ -260,8 +260,13 @@ function BeforeAfterPanel({
      panel hugs. */
   full?: boolean;
 }) {
+  /* !pb balances NAV_CLEAR: the panel pads 142 at the top for the fixed
+     mark and only 24 at the bottom, so the clip and its caption sat low
+     with a wide band of empty ground above them. Equal-ish padding centres
+     the pair, and the cap above (8rem of headroom rather than 5) keeps it
+     inside the panel on a short window. */
   return (
-    <Panel width={full ? VIEW : CLIP_PANEL} pad="center" className="items-center">
+    <Panel width={full ? VIEW : CLIP_PANEL} pad="center" className="items-center lg:!pb-[calc(var(--nav-clear)_-_3.5rem)]">
       <SlideIn className={`mx-auto flex w-full flex-col items-center ${MEDIA} ${CLIP_CAP}`}>
         <div className="w-full overflow-hidden rounded-[10px]">
           <AutoplayVideo

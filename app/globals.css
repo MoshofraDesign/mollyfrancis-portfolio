@@ -348,10 +348,13 @@ body::before {
      vertical stagger (389 - 305). */
   main .care-hero-phone-r {
     left: calc(43% + 312 * var(--figma-u));
-    /* Also floor-anchored. The 78-unit stagger no longer needs stating: the
-       right export is the shorter crop of the two, so bottom-aligning them
-       puts its top ~63 units below the left phone's on its own. */
-    bottom: 0;
+    /* Staggered 78 units below the left phone, like the frame. Both were
+       flush to the floor, and since the right export is full length (801u
+       tall at 380 wide, against the left crop's 643) that stood it TALLER
+       and put its top ABOVE the left phone's. -236u is the 78: panelH -
+       (panelH - 643 + 78 + 801), which cancels the panel height, so the
+       stagger holds at every window shape. */
+    bottom: calc(-236 * var(--figma-u));
     width: calc(380 * var(--figma-u));
   }
 

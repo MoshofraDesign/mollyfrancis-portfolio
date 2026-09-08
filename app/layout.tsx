@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { DM_Sans, Bodoni_Moda, Jost } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import PageGround from "@/components/PageGround";
 import CursorBlob from "@/components/CursorBlob";
 import SiteChrome from "@/components/SiteChrome";
 
@@ -85,6 +86,7 @@ export default function RootLayout({
         <Script id="cancel-hash-jump" strategy="beforeInteractive">
           {`try{if(window.location.hash){history.scrollRestoration='manual';window.scrollTo(0,0);}}catch(e){}`}
         </Script>
+        <PageGround />
         <CursorBlob />
         <SiteChrome>{children}</SiteChrome>
         {process.env.NEXT_PUBLIC_GA_ID ? (

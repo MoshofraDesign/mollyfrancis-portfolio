@@ -187,9 +187,13 @@ function Heading({ children, wide = false }: { children: React.ReactNode; wide?:
 }
 
 /** Figma "Paragraph": fluid rem-like body that stays readable at extremes. */
-function Body({ children }: { children: React.ReactNode }) {
+function Body({ children, wide = false }: { children: React.ReactNode; wide?: boolean }) {
+  /* wide has to travel with the heading it sits under. Panels centre their
+     children, so a 900px heading over a 700px paragraph put the paragraph's
+     left edge 100px inboard of the heading's — the two blocks read as
+     indented from each other rather than as one column. */
   return (
-    <SlideIn delay={120} className={TEXT_W}>
+    <SlideIn delay={120} className={wide ? `${TEXT_W} lg:max-w-[min(900px,86vw)]` : TEXT_W}>
       <p className="mt-3 text-[clamp(1.25rem,1.6vw,1.65rem)] font-normal leading-[1.45] text-white [text-wrap:pretty]">
         {typeof children === "string" ? noOrphan(children) : children}
       </p>
@@ -565,7 +569,7 @@ export default function GovOSCaseStudy() {
                claimed, only that the bar shaped the work. */}
         <Panel>
           <Heading wide>Tested until it held. Accessible by&nbsp;requirement.</Heading>
-          <Body>
+          <Body wide>
             Round after round with real submitters, until they
             stopped finding problems. And a VPAT: keyboard and
             screen-reader support designed in rather than bolted on.

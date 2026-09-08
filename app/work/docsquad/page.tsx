@@ -333,7 +333,10 @@ export default function DocSquadCaseStudy() {
             shadow only muddied the magenta behind them. */}
         <ScreenPanel width={MEDIA_PANEL}>
           <div className={`mx-auto w-full max-w-[min(1100px,94vw)] lg:absolute lg:left-1/2 lg:w-auto lg:max-w-none lg:-translate-x-1/2 ${CENTER_BELOW_MARK}`}>
-            <div className="grid grid-cols-2 items-end justify-items-center gap-4 sm:gap-6 lg:flex lg:flex-nowrap lg:gap-8">
+            {/* max-content columns, not 1fr: the phones are capped at 42vw, so two
+                1fr tracks each held ~100px of slack and pushed the pair apart —
+                a 24px gap read as 160. Now the gap is the gap. */}
+            <div className="grid grid-cols-[repeat(2,max-content)] items-end justify-center gap-4 sm:gap-6 lg:flex lg:flex-nowrap lg:gap-8">
               {PHONE_CROPS.map((phone) => (
                 <SlideIn key={phone.alt}>
                   <div
@@ -441,7 +444,13 @@ export default function DocSquadCaseStudy() {
               width is what gets capped instead — by the room available times
               that aspect. object-contain as the belt, so any future mismatch
               letterboxes rather than crops. */}
-          <div className="relative mx-auto aspect-[921/704] w-full max-w-[921px] lg:absolute lg:left-[185px] xl:left-[231px] 2xl:left-[277px] lg:top-[130px] xl:top-[144px] 2xl:top-[162px] lg:mx-0 lg:w-[654px] xl:w-[818px] 2xl:w-[981px] lg:max-w-[calc(var(--panel-media-max-h)_*_1.3082)]">
+          {/* Centred on CENTER_BELOW_MARK like the rest of the page, not on the
+              frame's stepped tops (130/144/162): those left the composite
+              riding high in a full-height panel with all the empty space
+              below it. A step bigger too — 735/920/1104 against 654/818/981
+              — with the same height cap, so a short window still scales it
+              down rather than running it off the panel. */}
+          <div className={`relative mx-auto aspect-[921/704] w-full max-w-[921px] lg:absolute lg:left-[185px] xl:left-[231px] 2xl:left-[277px] lg:mx-0 lg:w-[735px] xl:w-[920px] 2xl:w-[1104px] lg:max-w-[calc(var(--panel-media-max-h)_*_1.3082)] ${CENTER_BELOW_MARK}`}>
             <Image
               src={`${ASSET}/interview-dashboard.png`}
               alt="Patient interview overlapping the logged-in DocSquad dashboard"
@@ -465,7 +474,7 @@ export default function DocSquadCaseStudy() {
                  equal specificity, and w-* won in the bundle, so the box came
                  out wider than it was tall — an ellipse under rounded-full.
                  size-* alone keeps it square. */
-              className={`relative aspect-square w-[220px] sm:w-[280px] overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:size-[min(24vw,320px)] lg:-translate-x-1/2 ${CENTER_BELOW_MARK}`}>
+              className={`relative mt-10 aspect-square w-[220px] overflow-hidden rounded-full sm:mt-16 sm:w-[280px] lg:absolute lg:left-1/2 lg:mt-0 lg:size-[min(24vw,320px)] lg:-translate-x-1/2 ${CENTER_BELOW_MARK}`}>
             <Image
               src={`${ASSET}/portrait.png`}
               alt="A virtual moonlighter clinician"

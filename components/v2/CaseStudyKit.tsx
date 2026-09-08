@@ -91,8 +91,14 @@ export const TEXT_W = MEASURE;
  * their order-* classes and lg absolute positioning (which resolves against
  * the section, not the wrapper) both keep working untouched.
  */
+/* Stacked at md, not a row. A wrapping row only wrapped when the copy
+ * could not fit beside the mark, so on a ~800px tablet the store icons,
+ * title and subtext crowded in beside the wordmark instead of sitting
+ * under it the way they do on a phone. Below md the wrapper is
+ * display:contents, so the section's own order-* stack is untouched, and
+ * at lg it goes back to contents for the absolute frame. */
 export const HERO_ROW =
-  "contents md:flex md:flex-wrap md:items-start md:gap-x-10 md:gap-y-6 lg:contents";
+  "contents md:flex md:flex-col md:items-start md:gap-6 lg:contents";
 
 /** The copy half of HERO_ROW: wraps below the mark once it can't fit beside it. */
 export const HERO_ROW_COPY = "md:min-w-0 md:basis-[16rem] md:grow";
@@ -206,7 +212,13 @@ export const END_PANEL = "lg:w-[min(100vw,530px)] lg:!pl-10";
  * centred title with a centred button under it left the two on different
  * left edges at every width the title happened to wrap to.
  */
-export const END_MEASURE = "mx-auto w-full max-w-[min(24rem,86vw)]";
+/* Left on the page rail below lg, centred in its own narrow column at lg.
+   Panel keeps items-center unprefixed (it is what centres media in the
+   stacked layout), so the closing title and its button rode in the middle
+   of a tablet or phone screen while every other block on the page sat on
+   the rail. self-start opts this one block out below lg. */
+export const END_MEASURE =
+  "w-full max-w-[min(24rem,86vw)] self-start lg:mx-auto lg:self-auto";
 
 /**
  * Closing-panel title. Deliberately well below the intro scale — this is a
@@ -424,8 +436,12 @@ export const CAPTION =
  */
 export const PORTRAIT_CIRCLE =
   "relative aspect-square w-[220px] shrink-0 overflow-hidden rounded-full sm:w-[280px] lg:w-[min(24vw,320px)]";
-/** The copy that sits beside PORTRAIT_CIRCLE. */
-export const PORTRAIT_COPY = "min-w-0 w-full lg:max-w-[500px]";
+/** The copy that sits beside PORTRAIT_CIRCLE at lg, and under it below that.
+ *  Below lg it takes the shared 700px measure, centred: at full panel
+ *  width it ran edge to edge on a tablet, a good 50px wider on each side
+ *  than every other paragraph on the page, which sits in that measure. */
+export const PORTRAIT_COPY =
+  "min-w-0 w-full mx-auto max-w-[min(700px,86vw)] lg:mx-0 lg:max-w-[500px]";
 
 /**
  * Body text inside the closing meta panel — the team lines and the detail
