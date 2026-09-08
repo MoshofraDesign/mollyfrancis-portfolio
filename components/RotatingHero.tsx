@@ -115,8 +115,14 @@ export default function RotatingHero() {
     return () => clearInterval(id);
   }, []);
 
+  /* No min-height below lg. A 500/540px floor plus py-10, centred, held the
+     portrait a good 115px down from the nav on a phone and pushed the rotating
+     line under the fold: on a tablet or phone the hero should start where the
+     nav ends and be exactly as tall as it needs to be. The floor stays at lg,
+     where it keeps the two-column hero from collapsing on a short laptop
+     window. */
   return (
-    <section className="flex min-h-[500px] items-center px-6 py-10 sm:min-h-[540px] sm:py-0 lg:min-h-[600px] lg:px-10 xl:min-h-[660px]">
+    <section className="flex items-center px-6 pb-8 pt-2 sm:pb-10 sm:pt-3 lg:min-h-[600px] lg:px-10 lg:py-0 xl:min-h-[660px]">
       <div className="mx-auto grid w-full max-w-[96rem] grid-cols-1 items-center gap-8 md:gap-10 lg:grid-cols-[minmax(0,480px)_1fr] lg:gap-16 xl:w-fit xl:grid-cols-[580px_540px] xl:gap-12">
         <div
           ref={portraitRef}
