@@ -1,0 +1,78 @@
+Molly Francis
+Building cool products in Austin, Texas
+mollyfrancis.com | linkedin.com/in/molly-francis-89041515 | dribbble.com/mollyfrancis | instagram.com/moshofra | yo@mollyfrancis.com
+
+EXPERIENCE
+
+Lead Product Designer, Netspend
+November 2025 - Current
+- Own design strategy and end-to-end UX for Netspend's Rewards program: the consumer-facing app and the internal Unified Commerce Management (UCM) tool that powers it.
+- Reworked the rewards layout and Information Architecture around new UCM capabilities.
+- Run qualitative and quantitative user testing to validate decisions and guide iteration.
+- Use AI-assisted workflows (Claude, Claude Cowork, Gemini, Cursor, Figma Make) to accelerate design exploration, prototyping, and iteration speed.
+
+Lead Product Designer, GovOS (Neumo)
+October 2023 - October 2025
+- Drive UX strategy and design execution across core GovOS products, including eSubmission, Business Licensing & Tax, Cloud Search, and Cloud Records.
+- Conduct and synthesize user research to uncover insights, validate solutions, and guide product decisions.
+- Partner with cross-functional teams and executive stakeholders to align user needs with business goals, driving go-to-market decisions for complex government workflows.
+- Lead design systems governance, accessibility, and DesignOps initiatives to ensure long-term product growth and meaningful public impact.
+- Designed to Section 508 / WCAG standards so products could carry a VPAT for public-sector procurement.
+- Piloted AI-assisted design and prototyping workflows (ChatGPT) to accelerate iteration and validate solutions faster across GovOS products.
+
+Principal Product Designer, Bright Health
+March 2021 - April 2023
+- Established a 0 to 1 provider portal for Prior Authorizations, reducing manual paperwork and enabling providers to electronically submit and track authorization status in real time.
+- Conducted user research and usability testing to validate workflows, uncover pain points, and ensure solutions met provider and patient needs.
+- Provided design leadership and mentorship, managing two designers and co-creating and governing a design system at a WCAG 2.2 AA accessibility standard that improved consistency and accelerated delivery across multiple products.
+- Designed a telehealth app (desktop + native mobile) that expanded patient access to care by supporting asynchronous / synchronous urgent visits and prescription refills.
+
+Principal Product Designer, Care.com (HomePay)
+April 2020 - February 2021
+- Led the HomePay design team for a payroll, tax, and HR solution serving families with household employees (nannies, senior caregivers, etc.).
+- Partnered with executive leadership to integrate UX into agile workflows, aligning design with product strategy and business goals.
+- Managed and scaled the UX team: mentoring designers, facilitating critique, and building a stronger design culture to elevate quality and collaboration.
+- Designed and enhanced internal Sales tools and client / employee-facing HomePay products, improving efficiency and user experience.
+
+Lead UX Designer, Liveperson
+July 2019 - February 2020
+- Served as lead designer on a new social media management product, enabling brands to interact with consumers over social platforms through the LiveEngage AI-powered messaging product.
+- Collaborated with the global UX team to update and scale the company's design system for AI and chatbot products, improving accessibility and consistency company-wide.
+
+Principal Product Designer, athenahealth
+September 2016 - June 2019
+- Conducted research and design for desktop and native mobile electronic health record (EHR) and patient portal products, improving usability and adoption for clinicians and patients.
+- Collaborated with a multi-disciplinary agile R&D team to define, design, and test features, streamlining workflows and enhancing the overall user experience.
+- Led user testing and validation, identifying pain points and driving design improvements that increased efficiency, reduced errors, and elevated patient satisfaction.
+
+Lead Product Designer, Patient IO
+July 2016 - August 2016
+- Served as Head of Product Design for desktop and native mobile apps supporting at-risk patients, designing for both patient-facing users and care managers.
+- Worked in a lean, iterative environment, streamlining designs and eliminating waste while accelerating delivery.
+- Collaborated with cross-functional teams to align design with product strategy and operational goals.
+- Maintained a customer-centric perspective, ensuring design decisions prioritized patient needs and improved care outcomes.
+
+Senior UX Designer, Volusion / Mozu
+September 2014 - June 2016
+- Designed interaction flows, visual design, and user experiences for the Volusion and Mozu e-commerce platforms.
+- Improved usability and engagement by refining UX flows and ensuring consistent visual design across the platforms.
+
+See more experiences on linkedin.com/mollyfrancisdesign.
+
+SKILLS
+
+Leadership & Strategy: Product Vision, Design Strategy & Roadmap, Design Operations (DesignOps), Design Systems Governance, ROI of Design
+Stakeholder & Business Alignment: Cross-Functional Leadership, Executive Stakeholder Management, Go-to-Market Strategy, Change Management, Business Metrics Alignment
+Mentorship & Team Growth: Design Mentorship, Talent Development, Team Building, Critique Facilitation, Design Culture
+Execution & Craft: User Research, Complex Problem Solving, Service Design, Information Architecture, Interaction Design, Accessibility (WCAG 2.2 AA), Design Tokens & Component Libraries, Agile / Scrum Workflows, Prototyping, Storytelling, Workshop Facilitation
+Data & Validation: Product Analytics, A/B Testing, Quantitative Research, Qualitative Validation, Cohort Analysis, KPIs & Business Metrics, Usability Testing
+
+PROGRAMS
+
+Figma, UserBit, Pendo, Adobe CC, Miro, Optimal Workshop, Usertesting.com, Dovetail, Jira, Asana, Slack, HTML, CSS, Claude, Claude Cowork, ChatGPT, Cursor, GitHub, Vercel, Lovable, Notion, Amazon QuickSight
+
+SCHOOL & RECOGNITION
+
+Oklahoma State University, Bachelor of Fine Arts in Graphic Design
+- RecruitLoop: Top 50 Female UI/UX Designers, Austin, Texas
+- Built In ATX: Featured Employee at Bright Health, Austin, Texas

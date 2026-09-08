@@ -293,6 +293,18 @@ export default function ResumePage() {
             >
               ATS version ↓
             </a>
+            {/* For application forms. A PDF has no notion of a paragraph —
+                every line is its own run of positioned glyphs — so copying a
+                wrapped bullet out of any viewer lands a hard newline in the
+                middle of the sentence. The .txt keeps one bullet on one line,
+                so a paste comes out as a single clean sentence. */}
+            <a
+              href="/molly-francis-resume.txt"
+              download="Molly-Francis-Resume.txt"
+              className="magnetic ghost"
+            >
+              Plain text (paste-friendly) ↓
+            </a>
           </div>
         </Reveal>
       </section>
