@@ -323,8 +323,10 @@ body::before {
      step, and nothing that can disagree about where the two phones sit.
 
      aspect-ratio + height is what makes the placement exact. The height is
-     93.6dvh — the frame's own pair height — capped at 76vw so a tall,
-     narrow window can't run it wider than 56% of the panel. bottom is then
+     93.6dvh — the frame's own pair height — capped at 100vw so a portrait
+     window still gets the frame's proportions (at 76vw the cap bound early:
+     the bleed disappeared and the phones sat on the floor under a band of
+     empty green). bottom is then
      whatever hangs the top edge at 33dvh, which is where the frame puts it:
      67dvh (the visible part) minus the full height. min(0px, ...) keeps it
      from floating: when the vw cap binds and the pair is shorter than 67dvh,
@@ -336,12 +338,12 @@ body::before {
        stylesheet one — the pair ended up half its width right of centre. The
        margin is half the width, which is half the height at the artwork's
        0.79345 aspect. */
-    margin-left: calc(min(93.6dvh, 76vw) * -0.396725);
+    margin-left: calc(min(93.6dvh, 100vw) * -0.396725);
     aspect-ratio: 1506 / 1898;
-    height: min(93.6dvh, 76vw);
+    height: min(93.6dvh, 100vw);
     width: auto;
     max-width: none;
-    bottom: min(0px, calc(67dvh - min(93.6dvh, 76vw)));
+    bottom: min(0px, calc(67dvh - min(93.6dvh, 100vw)));
   }
   main .care-hero-phones img {
     height: 100%;
@@ -350,10 +352,15 @@ body::before {
     object-position: bottom center;
   }
 
-  /* 100,877. */
+  /* Under the headline at md, not at the frame's bottom-left. A portrait
+     window gives the phone pair ~79% of the panel width, so its left edge
+     reaches about 10% in and the store badges ended up behind the left
+     handset — the App Store mark disappeared entirely. At lg the pair is
+     43-46% wide and never gets near them, so the frame's own 100,877 is
+     restored there. */
   main .care-hero-badges {
     left: 50px;
-    top: 87.7%;
+    top: 240px;
     gap: calc(16 * var(--figma-u));
   }
   main .care-hero-badges img {
@@ -391,6 +398,7 @@ body::before {
 
   main .care-hero-badges {
     left: 100px;
+    top: 87.7%;
   }
 }
 
