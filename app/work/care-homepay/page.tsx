@@ -172,54 +172,25 @@ export default function CareHomepayCaseStudy() {
             />
           </div>
 
-          {/* Two phones — a stacked pair below lg, absolutely placed at lg.
-              Molly's exports are cut at the Figma frame's bottom edge, so
-              they're anchored to the panel's bottom rather than positioned
-              from the top: the cut line lands exactly on the frame edge and
-              reads as a bleed instead of a phone sliced off mid-body. Their
-              own crop heights carry the vertical stagger. */}
-          {/* Below lg the pair goes full-bleed: negative margins cancel the
-              section's own padding at each breakpoint (and its pb-10), and
-              the phones are sized in percent with no px cap, so together
-              they grow with it — capped at 320 each, up from the 240 they
-              started at, but bounded: uncapped at 48% they filled a tablet
-              window edge to edge and read as two posters rather than a hero.
-
-              Side by side with a gap, NOT overlapped. The lg frame overlaps
-              them by about 16% of a phone's width, and at this size the same
-              ratio covered a headline instead of reading as depth. At lg the
-              .care-hero-phone-* rules take over (position: absolute,
-              margin: 0), so none of this survives into the desktop frame. */}
-          <div className="order-3 -mx-6 -mb-10 mt-6 flex flex-1 items-end justify-center gap-3 sm:-mx-10 sm:gap-6 md:contents">
-            <SlideIn
-              delay={80}
-              className="care-hero-phone-l w-[46%] max-w-[320px]"
-            >
-              <Image
-                src={`${ASSET}/phone-hero-left.png`}
-                alt="HomePay splash: Time tracking has never been easier"
-                width={793}
-                height={1378}
-                priority
-                className="h-auto w-full"
-              />
-            </SlideIn>
-            <SlideIn
-              delay={180}
-              className="care-hero-phone-r mt-[7%] w-[46%] max-w-[320px]"
-            >
-              <Image
-                src={`${ASSET}/phone-hero-right.png`}
-                alt="HomePay splash: Easy time tracking with your employer"
-                /* Full-length export: 793x1671, bezel and home indicator
-                   included. The earlier one was cut at 1210, mid-body. */
-                width={793}
-                height={1671}
-                priority
-                className="h-auto w-full"
-              />
-            </SlideIn>
-          </div>
+          {/* ONE composite, not two exports. Molly re-exported the pair as a
+              single transparent PNG (1506x1898), which is what makes this
+              behave: the overlap and the stagger are baked into the artwork,
+              so there is nothing left to keep in sync — no mismatched crop
+              lengths, no per-phone offsets that drift with the window. It is
+              centred and bled off the panel floor; see .care-hero-phones. */}
+          <SlideIn
+            delay={80}
+            className="care-hero-phones order-3 mx-auto -mb-10 mt-6 w-full max-w-[min(92vw,560px)] md:mb-0 md:mt-0"
+          >
+            <Image
+              src={`${ASSET}/phones-hero.png`}
+              alt="HomePay employee and employer apps, side by side"
+              width={1506}
+              height={1898}
+              priority
+              className="h-auto w-full"
+            />
+          </SlideIn>
         </section>
 
         {/* ── PANEL 2: STATEMENT — Figma 4555:22849

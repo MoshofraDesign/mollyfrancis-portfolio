@@ -276,8 +276,7 @@ body::before {
   main .care-hero-logo,
   main .care-hero-title,
   main .care-hero-badges,
-  main .care-hero-phone-l,
-  main .care-hero-phone-r {
+  main .care-hero-phones {
     position: absolute;
     margin: 0;
     max-width: none;
@@ -317,45 +316,38 @@ body::before {
 
   /* 410,305 and 744,389.
      The exports are full-length, and at Figma's own top of 30.5% they ran
-     past the frame's bottom edge — 17% of each phone, at every window size,
-     clipped by the panel's overflow-hidden. Raised to 21% and scaled to 370u
-     (from 396.5), which lands them whole: 0px cut at 1490x1010, 1px at
-     1440x900, 0 at 1990x1180. The max(...,200px) floor is the mark, which is
-     a fixed 83px tall at top 100 and overlaps this column horizontally
-     (100..567 against a phone starting near 424) — so the phone must clear
-     183 in absolute px, not as a fraction of a short viewport. */
-  /* Pushed right, from 28.472%. The headline moved under the wordmark on
-     the panel's left edge, so the phones had to clear that column instead
-     of sitting behind it — and the frame's whole right half was empty. */
-  main .care-hero-phone-l {
-    left: 43%;
-    /* Bottom-anchored, not top-positioned. The export is already cut at the
-       frame's bottom edge, so placing it from the top left the cut line
-       floating ~10% above the panel floor — a phone visibly sliced in half.
-       Flush to the floor, the same cut reads as the handset running off the
-       frame, which is how Figma draws it. */
-    bottom: 0;
-    width: calc(370 * var(--figma-u));
+     past the frame's bottom edge, clipped by the panel's overflow-hidden. */
+  /* One composite, centred, bled off the floor.
+     Molly's export carries both handsets with the overlap and the stagger
+     already in it, so this is a single box: no sibling offsets to keep in
+     step, and nothing that can disagree about where the two phones sit.
+
+     aspect-ratio + height is what makes the placement exact. The height is
+     93.6dvh — the frame's own pair height — capped at 76vw so a tall,
+     narrow window can't run it wider than 56% of the panel. bottom is then
+     whatever hangs the top edge at 33dvh, which is where the frame puts it:
+     67dvh (the visible part) minus the full height. min(0px, ...) keeps it
+     from floating: when the vw cap binds and the pair is shorter than 67dvh,
+     it just sits on the floor instead. */
+  main .care-hero-phones {
+    left: 50%;
+    /* A negative margin, not translateX(-50%): SlideIn writes its own
+       transform inline to roll the panel in, and an inline transform beats a
+       stylesheet one — the pair ended up half its width right of centre. The
+       margin is half the width, which is half the height at the artwork's
+       0.79345 aspect. */
+    margin-left: calc(min(93.6dvh, 76vw) * -0.396725);
+    aspect-ratio: 1506 / 1898;
+    height: min(93.6dvh, 76vw);
+    width: auto;
+    max-width: none;
+    bottom: min(0px, calc(67dvh - min(93.6dvh, 76vw)));
   }
-  /* Anchored to the LEFT phone in --figma-u, not to its own percentage of
-     the panel. Both phones used to take a percentage left (28.472% and
-     51.667%), so the distance between them grew with the window while their
-     widths — sized in --figma-u, which is pinned by whichever axis is
-     tighter — did not. On a wide, short window the gap outran the overlap and
-     the two handsets came apart: at 1950x790 the 23.195% gap is 452px against
-     a 313px phone. Offsetting by the frame's own 334 units (744 - 410) keeps
-     Figma's overlap exactly, at any window shape. Same for the 84-unit
-     vertical stagger (389 - 305). */
-  main .care-hero-phone-r {
-    left: calc(43% + 312 * var(--figma-u));
-    /* Staggered 78 units below the left phone, like the frame. Both were
-       flush to the floor, and since the right export is full length (801u
-       tall at 380 wide, against the left crop's 643) that stood it TALLER
-       and put its top ABOVE the left phone's. -236u is the 78: panelH -
-       (panelH - 643 + 78 + 801), which cancels the panel height, so the
-       stagger holds at every window shape. */
-    bottom: calc(-236 * var(--figma-u));
-    width: calc(380 * var(--figma-u));
+  main .care-hero-phones img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: bottom center;
   }
 
   /* 100,877. */
@@ -371,21 +363,11 @@ body::before {
 }
 
 /* ── Care.com hero, DESKTOP (>=1024) ──────────────────────────────────────
-   Two layouts, one frame. Molly picked the tablet composition — mark at
-   50/50 with the headline under it and the phones pushed right — for md,
-   and the Figma frame itself for lg: the full 672x120 wordmark at 100,100,
-   the headline beside it at 57.708%, and the phone pair back near the
-   middle at 28.472%.
-
-   The phones stay floor-anchored rather than top-positioned (top: 26% used
-   to slice the left handset mid-panel on a short window). The left export
-   is the short crop, so bottom: 0 puts its cut exactly on the panel edge,
-   where it reads as the handset running off the frame. The right export is
-   full length and 380 wide = 801 tall against the left's 643, so a shared
-   bottom: 0 stood it TALLER and its top ended up ABOVE the left phone's —
-   the frame staggers it 78 units BELOW. -236u is that 78: panelH - (panelH
-   - 643 + 78 + 801), which cancels the panel height, so the stagger holds
-   at every window shape. */
+   Two layouts, one frame, and only the left-edge furniture differs. md keeps
+   the composition Molly picked — mark at 50/50 with the headline under it —
+   and lg goes back to the frame: the full 672x120 wordmark at 100,100 with
+   the headline beside it at 57.708%. The phones are the centred pair defined
+   in the md block above; both breakpoints share it. */
 @media (min-width: 1024px) {
   main .care-hero-logo {
     left: 100px;
@@ -404,18 +386,8 @@ body::before {
     line-height: calc(46 * var(--figma-u));
   }
 
-  main .care-hero-phone-l {
-    left: 28.472%;
-    bottom: 0;
-    width: calc(370 * var(--figma-u));
-  }
-  main .care-hero-phone-r {
-    /* 410 -> 744 on the frame is 334 units, anchored to the left phone so
-       the overlap can't breathe as the window changes. */
-    left: calc(28.472% + 334 * var(--figma-u));
-    bottom: calc(-236 * var(--figma-u));
-    width: calc(380 * var(--figma-u));
-  }
+  /* Phones: see .care-hero-phones in the md block — one composite serves
+     both breakpoints. */
 
   main .care-hero-badges {
     left: 100px;
@@ -598,5 +570,132 @@ body::before {
     height: calc(var(--eh) * var(--figma-u));
     max-width: none;
     margin: 0;
+  }
+}
+
+/* ── PRINT: the résumé page IS the résumé PDF ──────────────────────────────
+   The designed PDF used to be a Figma export, and its text was unusable to
+   anything that reads a résumé: two overlapping text layers (every sentence
+   twice, 34pt apart), on one 726x1948 two-column page, so a parser read it
+   doubled and with the columns interleaved. Printing the real page instead
+   gives one flow of real text in document order — the same copy the site
+   already maintains, so it can't drift either.
+
+   Everything here is scoped to .resume-print except the site chrome, which
+   has to go on any printed page. */
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 0.55in 0.6in;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  /* Chrome off: nav, footer, the cursor dot, and anything the page marks. */
+  header,
+  footer,
+  .cursor-blob,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  main.page-shell {
+    padding: 0 !important;
+  }
+
+  /* Reveal starts its children at opacity 0 and only animates them in when
+     they scroll into view. A print run never scrolls, so without this every
+     section below the first prints blank. */
+  .resume-print,
+  .resume-print * {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .resume-print .site-rail {
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .resume-print section {
+    padding-top: 0 !important;
+    padding-bottom: 10pt !important;
+    border-top: 0 !important;
+  }
+
+  /* One column. The page's 12-column grids and its lg: two-column rows are
+     screen furniture; on paper the label sits above its content. */
+  .resume-print .grid,
+  .resume-print .flex {
+    display: block !important;
+  }
+  .resume-print [class*="col-span-3"]:empty {
+    display: none !important;
+  }
+
+  /* A job, a degree or an award never splits across pages. */
+  .resume-print .print-entry {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding-top: 9pt !important;
+    padding-bottom: 3pt !important;
+    border-top: 0.5pt solid rgba(20, 20, 20, 0.18) !important;
+  }
+
+  /* Type in points, because the screen sizes are clamp(vw) — against a
+     page's own width those resolve tiny. */
+  .resume-print {
+    color: #141414 !important;
+    font-size: 9.5pt;
+    line-height: 1.4;
+  }
+  .resume-print h1 {
+    font-size: 25pt !important;
+    line-height: 1.05 !important;
+    margin-bottom: 2pt;
+  }
+  .resume-print h2 {
+    font-size: 12pt !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 4pt;
+  }
+  .resume-print h3 {
+    font-size: 12.5pt !important;
+    margin-bottom: 1pt !important;
+  }
+  .resume-print li,
+  .resume-print p {
+    font-size: 9.5pt !important;
+    line-height: 1.4 !important;
+  }
+  .resume-print ul {
+    max-width: none !important;
+  }
+  .resume-print li {
+    display: list-item !important;
+    margin-left: 12pt;
+  }
+  /* The rendered bullet glyph is a span in the markup; on paper the list
+     marker does that job, so the span would print twice. */
+  .resume-print li > span[aria-hidden="true"] {
+    display: none !important;
+  }
+
+  .resume-print a {
+    color: #141414 !important;
+    text-decoration: none !important;
+  }
+
+  /* Company favicons are decoration; the company name is right beside them
+     and a parser only wants the text. */
+  .resume-print img {
+    display: none !important;
   }
 }

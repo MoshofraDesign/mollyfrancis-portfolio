@@ -251,7 +251,9 @@ function Favicon({ icon, alt }: { icon: string; alt: string }) {
 
 export default function ResumePage() {
   return (
-    <div className="page-shell">
+    /* resume-print is the hook every @media print rule in globals.css
+       hangs off: printing this page is how the designed PDF is made now. */
+    <div className="page-shell resume-print">
       {/* HEADER */}
       <section className="site-rail pt-8 pb-12 lg:pb-16">
         <Reveal as="div" className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
@@ -279,7 +281,7 @@ export default function ResumePage() {
               Building cool products in Austin, Texas
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3" data-print-hide>
             <MagneticButton
               href="/molly-francis-resume.pdf"
               download="Molly-Francis-Resume.pdf"
@@ -323,7 +325,7 @@ export default function ResumePage() {
               key={job.role + job.company + job.period}
               as="div"
               delay={i * 30}
-              className="grid grid-cols-12 gap-4 lg:gap-8 py-10 border-t border-ink/10"
+              className="print-entry grid grid-cols-12 gap-4 lg:gap-8 py-10 border-t border-ink/10"
             >
               <div className="col-span-12 lg:col-span-3" />
               <div className="col-span-12 lg:col-span-9">
