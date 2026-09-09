@@ -446,7 +446,7 @@ export default function GovOSCaseStudy() {
               subtext beside it at 662,93 in a 450 column, and the laptop
               centred below at 240,329 / 961x560 (240 left, 239 right).
               Below lg it all stacks in source order. */}
-          <div className="relative z-10 aspect-[508/130] w-[min(100%,300px)] sm:w-[min(100%,380px)] lg:absolute lg:left-[50px] lg:top-[50px] lg:aspect-auto lg:h-[114px] lg:w-[445px]">
+          <div className="relative z-10 aspect-[508/130] w-[min(100%,300px)] sm:w-[min(100%,380px)] lg:absolute lg:left-[50px] lg:top-[50px] lg:aspect-auto lg:h-[99px] lg:w-[385px]">
             <Image
               src="/work/govos/govos-logo-white.svg"
               alt="GovOS"
@@ -458,8 +458,14 @@ export default function GovOSCaseStudy() {
           </div>
 
           {/* No reveal here — the title panel is what you land on, so its
-              copy is simply present rather than animating in. */}
-          <div className="relative z-10 flex flex-col gap-2 lg:absolute lg:left-[45.97%] lg:bottom-[calc(100%_-_164px)] lg:max-w-[min(450px,32vw)]">
+              copy is simply present rather than animating in.
+
+              On the left rail under the wordmark (50px, the mark's own left
+              edge) rather than out at 45.97%: the two were the only things in
+              the panel's top half and they read as unrelated, floating either
+              side of it. Below lg this is just the next block in the stack,
+              so the breakpoints keep the same reading order. */}
+          <div className="relative z-10 flex flex-col gap-2 lg:absolute lg:left-[50px] lg:top-[180px] lg:max-w-[min(450px,34vw)]">
             <p className={`text-white ${HERO_TITLE}`}>eSubmission</p>
             <p className={`max-w-[46ch] text-white ${HERO_SUBTEXT}`}>
               A secure digital portal for submitting official documents and
@@ -474,8 +480,14 @@ export default function GovOSCaseStudy() {
               the height keeps it whole, and u — pinned by whichever axis is
               tighter — means a short window shrinks it instead of running it
               off the bottom. Centred with a negative margin (half the width
-              in the same unit), not a translate. */}
-          <div className="relative z-0 mt-4 w-full lg:absolute lg:bottom-[4%] lg:left-1/2 lg:mt-0 lg:ml-[calc(-480.5_*_var(--figma-u))] lg:w-[calc(961_*_var(--figma-u))]">
+              in the same unit), not a translate.
+
+              1000u rather than the frame's 961: Molly wanted the laptop to
+              carry more of the panel and the wordmark a step less (385x99
+              against 445x114). It stops at 1000 because the copy moved under
+              the wordmark on the left rail — any wider and the laptop's top
+              edge climbs into that column. */}
+          <div className="govos-hero-shot relative z-0 mt-4 w-full lg:absolute lg:bottom-[4%] lg:left-1/2 lg:mt-0">
             <Frame
               src="/work/govos/macbook-hero.png"
               alt="GovOS eSubmission dashboard: all submissions, statuses, and team at a glance"

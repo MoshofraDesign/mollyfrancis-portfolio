@@ -676,3 +676,22 @@ body::before {
     display: none !important;
   }
 }
+
+/* ── GovOS title panel: the laptop keeps clear of the copy ────────────────
+   The wordmark and the copy under it own the panel's left rail down to about
+   315px, and the laptop is centred, so on a short window (1440x900, 1280x800)
+   the shot's top edge climbed into that column. Its width is the smaller of
+   the frame's own 1000u and the width at which the asset still fits under
+   315px of rail plus a little air — 1.5134 is macbook-hero.png's aspect, so
+   the second term is "as wide as the remaining height allows". Centred with
+   half of whichever term wins. */
+@media (min-width: 1024px) {
+  main .govos-hero-shot {
+    --shot-w: min(
+      calc(1000 * var(--figma-u)),
+      calc((100dvh - 340px) * 1.5134)
+    );
+    width: var(--shot-w);
+    margin-left: calc(var(--shot-w) / -2);
+  }
+}
