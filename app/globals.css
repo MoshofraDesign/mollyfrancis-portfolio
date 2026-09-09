@@ -272,7 +272,14 @@ body::before {
    the panel instead, so the left-edge furniture stays on the left edge at any
    window shape — and because the sizes still come from --figma-u, the phones
    shrink with the viewport rather than climbing into the logo or Close. */
-@media (min-width: 768px) {
+/* lg only. This block was briefly opened up to md, with the section forced to
+   100dvh so the absolute placement had a stage — and that fought the way a
+   tablet actually reads the page: md scrolls vertically, so a viewport-tall
+   frame parked you between two half-composed panels, mark and headline off the
+   top and the phones cut at the bottom. Below lg the hero is a plain column
+   again — mark, headline, phones, badges — which is what the rest of the site
+   does at that width. */
+@media (min-width: 1024px) {
   main .care-hero-logo,
   main .care-hero-title,
   main .care-hero-badges,
@@ -290,10 +297,10 @@ body::before {
      headline at the narrowest lg: 57.708% of 1024 is 591, and 100 + 467
      stops at 567. */
   main .care-hero-logo {
-    left: 50px;
-    top: 50px;
-    width: 467px;
-    height: 83px;
+    left: 100px;
+    top: 100px;
+    width: calc(672 * var(--figma-u));
+    height: calc(120 * var(--figma-u));
   }
 
   /* Under the wordmark and on its left edge, not out at 57.708%.
@@ -303,15 +310,15 @@ body::before {
      the mark is 83 tall at top 50, so 158 clears it by 25.
      Bigger, too: 44/54 units against the old 36/46. */
   main .care-hero-title {
-    left: 50px;
-    top: 158px;
-    width: min(520px, 42%);
+    left: 57.708%;
+    top: max(11.4%, 76px);
+    width: 31.597%;
     text-align: left;
     align-self: auto;
   }
   main .care-hero-title p {
-    font-size: calc(44 * var(--figma-u));
-    line-height: calc(54 * var(--figma-u));
+    font-size: calc(36 * var(--figma-u));
+    line-height: calc(46 * var(--figma-u));
   }
 
   /* 410,305 and 744,389.
@@ -352,53 +359,15 @@ body::before {
     object-position: bottom center;
   }
 
-  /* Under the headline at md, not at the frame's bottom-left. A portrait
-     window gives the phone pair ~79% of the panel width, so its left edge
-     reaches about 10% in and the store badges ended up behind the left
-     handset — the App Store mark disappeared entirely. At lg the pair is
-     43-46% wide and never gets near them, so the frame's own 100,877 is
-     restored there. */
+  /* 100,877 on the frame. */
   main .care-hero-badges {
-    left: 50px;
-    top: 240px;
+    left: 100px;
+    top: 87.7%;
     gap: calc(16 * var(--figma-u));
   }
   main .care-hero-badges img {
     width: calc(50 * var(--figma-u));
     height: calc(50 * var(--figma-u));
-  }
-}
-
-/* ── Care.com hero, DESKTOP (>=1024) ──────────────────────────────────────
-   Two layouts, one frame, and only the left-edge furniture differs. md keeps
-   the composition Molly picked — mark at 50/50 with the headline under it —
-   and lg goes back to the frame: the full 672x120 wordmark at 100,100 with
-   the headline beside it at 57.708%. The phones are the centred pair defined
-   in the md block above; both breakpoints share it. */
-@media (min-width: 1024px) {
-  main .care-hero-logo {
-    left: 100px;
-    top: 100px;
-    width: calc(672 * var(--figma-u));
-    height: calc(120 * var(--figma-u));
-  }
-
-  main .care-hero-title {
-    left: 57.708%;
-    top: max(11.4%, 76px);
-    width: 31.597%;
-  }
-  main .care-hero-title p {
-    font-size: calc(36 * var(--figma-u));
-    line-height: calc(46 * var(--figma-u));
-  }
-
-  /* Phones: see .care-hero-phones in the md block — one composite serves
-     both breakpoints. */
-
-  main .care-hero-badges {
-    left: 100px;
-    top: 87.7%;
   }
 }
 

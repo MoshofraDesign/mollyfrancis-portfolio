@@ -120,7 +120,7 @@ export default function CareHomepayCaseStudy() {
             the order-* classes stack it: logo, headline, phones, badges. */}
         <section
           id="title"
-          className={`relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 sm:px-10 sm:pt-28 md:h-[100dvh] md:gap-0 md:px-0 md:pb-0 md:pt-0 lg:w-screen lg:shrink-0 lg:snap-start`}
+          className={`relative flex w-full flex-col gap-8 overflow-hidden px-6 pb-10 pt-24 sm:px-10 sm:pt-28 md:px-[50px] md:pt-[50px] lg:h-[100dvh] lg:w-screen lg:shrink-0 lg:snap-start lg:gap-0 lg:px-0 lg:pb-0 lg:pt-0`}
         >
           {/* Mark + headline are one wrapping row from tablet up — see
               HERO_ROW. The wrapper is display:contents outside md, so the
@@ -180,7 +180,7 @@ export default function CareHomepayCaseStudy() {
               centred and bled off the panel floor; see .care-hero-phones. */}
           <SlideIn
             delay={80}
-            className="care-hero-phones order-3 mx-auto -mb-10 mt-6 w-full max-w-[min(92vw,560px)] md:mb-0 md:mt-0"
+            className="care-hero-phones order-3 mx-auto -mb-10 mt-6 w-full max-w-[min(92vw,560px)] md:-mb-[50px] md:max-w-[min(78vw,620px)] lg:mb-0 lg:mt-0"
           >
             <Image
               src={`${ASSET}/phones-hero.png`}
