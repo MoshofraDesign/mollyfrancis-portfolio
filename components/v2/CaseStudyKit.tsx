@@ -100,8 +100,13 @@ export const TEXT_W = MEASURE;
 export const HERO_ROW =
   "contents md:flex md:flex-col md:items-start md:gap-6 lg:contents";
 
-/** The copy half of HERO_ROW: wraps below the mark once it can't fit beside it. */
-export const HERO_ROW_COPY = "md:min-w-0 md:basis-[16rem] md:grow";
+/** The copy half of HERO_ROW, which stacks under the mark at md.
+ *  basis-[16rem] and grow are gone: they were written when HERO_ROW was a
+ *  wrapping ROW, where basis is a width. Once the row became a column at md
+ *  the same basis became a HEIGHT — a 256px floor under a block of copy about
+ *  90px tall — so every hero carried ~165px of dead space between its subtext
+ *  and the artwork below it. */
+export const HERO_ROW_COPY = "md:min-w-0";
 
 /** Tablet title-panel padding — the same 50px top/left inset as lg. */
 export const HERO_INSET_MD = "md:px-[50px] md:pt-[50px]";
