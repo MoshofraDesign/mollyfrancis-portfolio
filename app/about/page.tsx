@@ -5,7 +5,7 @@ import StickyNav from "@/components/StickyNav";
 import CloseLink from "@/components/CloseLink";
 import SlideIn from "@/components/SlideIn";
 import Logo from "@/components/Logo";
-import { TEXT_W, MEASURE, VIEW, GUTTER, Eyebrow, Panel, TextPanel, Heading, Body } from "@/components/v2/CaseStudyKit";
+import { TEXT_W, MEASURE, VIEW, GUTTER, Eyebrow, Panel, TextPanel, Heading } from "@/components/v2/CaseStudyKit";
 
 export const metadata = {
   title: "About · Molly Francis",
@@ -668,11 +668,6 @@ export default function AboutPage() {
           <Heading>
             I design things that work, for people on their hardest day.
           </Heading>
-          <Body>
-            Most of my career has been in healthcare and complex SaaS:
-            places where the tool is the difference between &ldquo;I got my
-            answer&rdquo; and &ldquo;I gave up.&rdquo;
-          </Body>
         </TextPanel>
 
         {/* ── OPERATING PRINCIPLES ──────────────────────────────────── */}

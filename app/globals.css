@@ -707,7 +707,7 @@ body::before {
   align-items: center;
   gap: 0.5rem;
   align-self: center;
-  margin-top: 1.75rem;
+  margin-top: 0.25rem;
   padding: 0.25rem 0.75rem 0.5rem;
   min-height: 44px; /* tap target */
   text-decoration: none;
@@ -727,7 +727,7 @@ body::before {
 }
 @media (min-width: 1024px) {
   .scroll-cue {
-    margin-top: 2.5rem;
+    margin-top: 0.75rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {
