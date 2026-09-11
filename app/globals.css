@@ -695,3 +695,43 @@ body::before {
     margin-left: calc(var(--shot-w) / -2);
   }
 }
+
+/* ── Homepage scroll cue ──────────────────────────────────────────────────
+   A chevron under the hero pointing at the work grid. Centred on the page,
+   not on the text column, so it reads as belonging to the page rather than to
+   the headline; the bob is small and slow on purpose — it should register at
+   the edge of your attention, not wave at you. */
+.scroll-cue {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: center;
+  margin-top: 1.75rem;
+  padding: 0.25rem 0.75rem 0.5rem;
+  min-height: 44px; /* tap target */
+  text-decoration: none;
+}
+.scroll-cue-arrow {
+  animation: scroll-cue-bob 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+@keyframes scroll-cue-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+@media (min-width: 1024px) {
+  .scroll-cue {
+    margin-top: 2.5rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue-arrow {
+    animation: none;
+  }
+}

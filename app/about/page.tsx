@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Jost } from "next/font/google";
 import HorizontalScroll from "@/components/v2/HorizontalScroll";
 import StickyNav from "@/components/StickyNav";
@@ -728,12 +727,6 @@ export default function AboutPage() {
               >
                 yo@mollyfrancis.com →
               </a>
-              <Link
-                href="/contact"
-                className="inline-flex min-h-11 items-center rounded-full border border-white/30 px-7 py-3 text-sm font-semibold transition-opacity hover:opacity-60"
-              >
-                Project inquiry
-              </Link>
             </div>
           </SlideIn>
           </div>

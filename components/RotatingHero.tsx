@@ -122,7 +122,7 @@ export default function RotatingHero() {
      where it keeps the two-column hero from collapsing on a short laptop
      window. */
   return (
-    <section className="flex items-center px-6 pb-8 pt-2 sm:pb-10 sm:pt-3 lg:min-h-[600px] lg:px-10 lg:py-0 xl:min-h-[660px]">
+    <section className="flex flex-col items-stretch px-6 pb-8 pt-2 sm:pb-10 sm:pt-3 lg:min-h-[600px] lg:justify-center lg:px-10 lg:py-0 xl:min-h-[660px]">
       <div className="mx-auto grid w-full max-w-[96rem] grid-cols-1 items-center gap-8 md:gap-10 lg:grid-cols-[minmax(0,480px)_1fr] lg:gap-16 xl:w-fit xl:grid-cols-[580px_540px] xl:gap-12">
         <div
           ref={portraitRef}
@@ -266,6 +266,33 @@ export default function RotatingHero() {
           </div>
         </div>
       </div>
+
+      {/* Scroll cue. The hero fills the first screen on a laptop, and nothing
+          in it said there was work underneath — so a small chevron on the
+          page's own rail, pointing at #work. It is a real anchor, so it works
+          without JS and reads as "Skip to the work" to a screen reader;
+          ScrollToWork handles the smooth landing. The bob is 6px over 2s and
+          stops entirely under prefers-reduced-motion (see .scroll-cue). */}
+      <a href="#work" className="scroll-cue group" aria-label="Skip to the work">
+        <span
+          aria-hidden="true"
+          className="text-xs uppercase tracking-[0.25em] text-ink/45 transition-colors duration-300 group-hover:text-ink/70"
+        >
+          Work
+        </span>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="scroll-cue-arrow size-5 text-ink/45 transition-colors duration-300 group-hover:text-ink/70"
+        >
+          <path d="M12 5v14M19 12l-7 7-7-7" />
+        </svg>
+      </a>
     </section>
   );
 }

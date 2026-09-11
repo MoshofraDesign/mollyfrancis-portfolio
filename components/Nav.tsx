@@ -12,7 +12,6 @@ const links = [
   { href: "/#work", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/resume", label: "Résumé" },
-  { href: "/contact", label: "Contact" },
 ];
 
 // Same set as the footer's social row (mollyfrancis.com), mirrored here so
