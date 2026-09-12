@@ -39,15 +39,18 @@ const jost = Jost({
    link falls back to whatever image the crawler finds in the page, which is
    how the portrait on About ended up as the preview. */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.mollyfrancis.com"),
+  metadataBase: new URL("https://mollyfrancis.com"),
   title: "Molly Francis · Product Designer, Researcher and Leader",
   description:
     "Product designer, researcher and leader in Austin, Texas. 20+ years designing healthcare, fintech, and SaaS products with research-driven, AI-augmented workflows.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Molly Francis · Product Designer, Researcher and Leader",
     description:
       "Product designer, researcher and leader in Austin, Texas. 20+ years designing healthcare, fintech and SaaS products.",
-    url: "https://www.mollyfrancis.com",
+    url: "https://mollyfrancis.com",
     siteName: "Molly Francis",
     type: "website",
   },
@@ -86,6 +89,38 @@ export default function RootLayout({
         <Script id="cancel-hash-jump" strategy="beforeInteractive">
           {`try{if(window.location.hash){history.scrollRestoration='manual';window.scrollTo(0,0);}}catch(e){}`}
         </Script>
+        {/* Person schema. Search engines read the pages fine, but nothing in
+            them says "Molly Francis" is a PERSON with a job title and a set of
+            profiles rather than a phrase that happens to repeat — which is
+            what a name search needs to land here rather than on an old
+            Dribbble page. Kept in the layout so it ships on every route, and
+            as a plain script tag because it is data, not behaviour. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Molly Francis",
+              jobTitle: "Lead / Principal Product Designer",
+              description:
+                "Product designer, researcher and leader in Austin, Texas. 20+ years designing healthcare, fintech and SaaS products.",
+              url: "https://mollyfrancis.com",
+              email: "mailto:yo@mollyfrancis.com",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Austin",
+                addressRegion: "TX",
+                addressCountry: "US",
+              },
+              sameAs: [
+                "https://www.linkedin.com/in/molly-francis-89041515/",
+                "https://dribbble.com/mollyfrancis",
+                "https://www.instagram.com/moshofra/",
+              ],
+            }),
+          }}
+        />
         <PageGround />
         <CursorBlob />
         <SiteChrome>{children}</SiteChrome>
